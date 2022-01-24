@@ -2418,9 +2418,11 @@ namespace SwachBharat.CMS.Bll.Services
                         //string gcTime = x.gcDate.ToString();
                         houseLocation.Add(new SBALHouseLocationMapView()
                         {
+                            ssid = Convert.ToInt32(x.SSId),
+                            lwid = Convert.ToInt32(x.LWId),
                             houseId = Convert.ToInt32(x.houseId),
                             ReferanceId = x.ReferanceId,
-                            houseOwnerName = (x.houseOwner == null ? "" : x.houseOwner),
+                            houseOwnerName = (x.houseOwner == null ? "" : x.houseOwner.ToUpper()),
                             houseOwnerMobile = (x.houseOwnerMobile == null ? "" : x.houseOwnerMobile),
                             houseAddress = checkNull(x.houseAddress).Replace("Unnamed Road, ", ""),
                             gcDate = dt.ToString("dd-MM-yyyy"),
@@ -2754,6 +2756,8 @@ namespace SwachBharat.CMS.Bll.Services
                         model.BifurgatedCount = data.BifurgatedCount;
                         model.NotCollected = data.NotCollected;
                         model.NotSpecified = data.NotSpecified;
+                        model.LiquidCollection = data.TotalLiquidLatLongCount;
+                        model.StreetCollection = data.TotalStreetLatLongCount;
                         return model;
                     }
 

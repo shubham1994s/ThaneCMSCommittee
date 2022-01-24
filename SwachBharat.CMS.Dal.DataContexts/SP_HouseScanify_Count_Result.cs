@@ -20,5 +20,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> BifurgatedCount { get; set; }
         public Nullable<int> NotCollected { get; set; }
         public Nullable<int> NotSpecified { get; set; }
+        public Nullable<int> TotalLiquidLatLongCount { get; set; }
+        public Nullable<int> TotalStreetLatLongCount { get; set; }
     }
 }

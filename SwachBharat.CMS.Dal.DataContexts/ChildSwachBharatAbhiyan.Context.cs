@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -170,11 +170,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HouseDetails_ReferanceId_Result>("HouseDetails_ReferanceId", referanceIdParameter);
         }
     
-        public virtual ObjectResult<SP_HouseScanify_Count_Result> SP_HouseScanify_Count()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Count_Result>("SP_HouseScanify_Count");
-        }
-    
         public virtual ObjectResult<RPT_1POINT7_DETAILS_Result> RPT_1POINT7_DETAILS(Nullable<int> iNSERT_ID)
         {
             var iNSERT_IDParameter = iNSERT_ID.HasValue ?
@@ -211,39 +206,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<RPT_ONE_POINT_NINE_SHOW_Result> RPT_ONE_POINT_NINE_SHOW()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RPT_ONE_POINT_NINE_SHOW_Result>("RPT_ONE_POINT_NINE_SHOW");
-        }
-    
-        public virtual ObjectResult<SP_HouseOnMapDetails_Result> SP_HouseOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> garbageType, Nullable<int> filterType)
-        {
-            var gcDateParameter = gcDate.HasValue ?
-                new ObjectParameter("gcDate", gcDate) :
-                new ObjectParameter("gcDate", typeof(System.DateTime));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            var zoneIdParameter = zoneId.HasValue ?
-                new ObjectParameter("ZoneId", zoneId) :
-                new ObjectParameter("ZoneId", typeof(int));
-    
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("AreaId", areaId) :
-                new ObjectParameter("AreaId", typeof(int));
-    
-            var wardNoParameter = wardNo.HasValue ?
-                new ObjectParameter("WardNo", wardNo) :
-                new ObjectParameter("WardNo", typeof(int));
-    
-            var garbageTypeParameter = garbageType.HasValue ?
-                new ObjectParameter("GarbageType", garbageType) :
-                new ObjectParameter("GarbageType", typeof(int));
-    
-            var filterTypeParameter = filterType.HasValue ?
-                new ObjectParameter("FilterType", filterType) :
-                new ObjectParameter("FilterType", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseOnMapDetails_Result>("SP_HouseOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter);
         }
     
         public virtual ObjectResult<SP_GetLiveTracking_Result> SP_GetLiveTracking()
@@ -578,6 +540,44 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("gcdate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
+        }
+    
+        public virtual ObjectResult<SP_HouseOnMapDetails_Result> SP_HouseOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> garbageType, Nullable<int> filterType)
+        {
+            var gcDateParameter = gcDate.HasValue ?
+                new ObjectParameter("gcDate", gcDate) :
+                new ObjectParameter("gcDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var garbageTypeParameter = garbageType.HasValue ?
+                new ObjectParameter("GarbageType", garbageType) :
+                new ObjectParameter("GarbageType", typeof(int));
+    
+            var filterTypeParameter = filterType.HasValue ?
+                new ObjectParameter("FilterType", filterType) :
+                new ObjectParameter("FilterType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseOnMapDetails_Result>("SP_HouseOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter);
+        }
+    
+        public virtual ObjectResult<SP_HouseScanify_Count_Result> SP_HouseScanify_Count()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Count_Result>("SP_HouseScanify_Count");
         }
     }
 }

@@ -14,14 +14,16 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class SP_HouseOnMapDetails_Result
     {
         public Nullable<int> userId { get; set; }
-        public int houseId { get; set; }
+        public Nullable<int> houseId { get; set; }
+        public Nullable<int> LWId { get; set; }
+        public Nullable<int> SSId { get; set; }
         public string ReferanceId { get; set; }
         public string houseNumber { get; set; }
         public string houseOwner { get; set; }
         public string houseOwnerMobile { get; set; }
         public string houseAddress { get; set; }
         public Nullable<int> garbageType { get; set; }
-        public Nullable<System.DateTime> gcDate { get; set; }
+        public Nullable<int> gcDate { get; set; }
         public string houseLat { get; set; }
         public string houseLong { get; set; }
     }
