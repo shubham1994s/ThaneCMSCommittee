@@ -374,7 +374,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 case "HouseScanify":
                     gridRepository = new HouseScanifyGridRepository(0, searchString, fdate, tdate, userId, appId);
                     return gridRepository;
-                    break;
+                    break; 
 
                 case "LeagueDetail":
                     gridRepository = new LeagueGridRepository(0, searchString, fdate, tdate, userId, appId);
