@@ -29,5 +29,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string bloodGroup { get; set; }
         public Nullable<bool> isActive { get; set; }
         public string gcTarget { get; set; }
+        public string EmployeeType { get; set; }
+        public string imoNo2 { get; set; }
     }
 }

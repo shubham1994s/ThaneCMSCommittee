@@ -27,6 +27,7 @@
           <Property Name="totalKm" Type="int" />
           <Property Name="OutbatteryStatus" Type="varchar" MaxLength="20" />
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
+          <Property Name="CType" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="DumpYardDetails">
           <Key>
@@ -205,6 +206,7 @@
           <Property Name="RFIDReaderId" Type="nvarchar" MaxLength="255" />
           <Property Name="SourceId" Type="int" />
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
+          <Property Name="CType" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Qr_Employee_Daily_Attendance">
           <Key>
@@ -264,7 +266,7 @@
           <Property Name="lastModifyDate" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.SauchalayAddress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SauchalayAddress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SauchalayAddress">
           <Key>
             <PropertyRef Name="Id" />
@@ -291,7 +293,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.SauchalayAddr
           <Property Name="INSERT_ID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.SS_1.4_QUESTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SS_1_4_QUESTION">
           <Key>
             <PropertyRef Name="Q_ID" />
@@ -480,7 +482,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.SS_1.4_QUESTI
           <Property Name="name" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Vw_MsgNotification">
           <Key>
             <PropertyRef Name="userId" />
@@ -500,6 +502,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
           <Property Name="bloodGroup" Type="nvarchar" MaxLength="250" />
           <Property Name="isActive" Type="bit" />
           <Property Name="gcTarget" Type="varchar" MaxLength="250" />
+          <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
+          <Property Name="imoNo2" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_SS_1_4_ANSWER_SS_1_4_ANSWER">
           <End Role="SS_1_4_ANSWER" Type="Self.SS_1_4_ANSWER" Multiplicity="1" />
@@ -719,7 +723,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
     [Vw_MsgNotification].[imoNo] AS [imoNo], 
     [Vw_MsgNotification].[bloodGroup] AS [bloodGroup], 
     [Vw_MsgNotification].[isActive] AS [isActive], 
-    [Vw_MsgNotification].[gcTarget] AS [gcTarget]
+    [Vw_MsgNotification].[gcTarget] AS [gcTarget], 
+    [Vw_MsgNotification].[EmployeeType] AS [EmployeeType], 
+    [Vw_MsgNotification].[imoNo2] AS [imoNo2]
     FROM [dbo].[Vw_MsgNotification] AS [Vw_MsgNotification]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_SS_1_4_ANSWER_SS_1_4_ANSWER" Association="Self.FK_SS_1_4_ANSWER_SS_1_4_ANSWER">
@@ -805,7 +811,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="Daily_Attendance" EntityType="DevSwachhBharatNagpurModel.Daily_Attendance" />
           <EntitySet Name="WM_Garbage_Sales" EntityType="DevSwachhBharatNagpurModel.WM_Garbage_Sales" />
           <EntitySet Name="HouseMasters" EntityType="DevSwachhBharatNagpurModel.HouseMaster" />
           <EntitySet Name="Vw_MsgNotification" EntityType="DevSwachhBharatNagpurModel.Vw_MsgNotification" />
@@ -904,6 +909,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_HouseScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result)" />
+          <EntitySet Name="Daily_Attendance" EntityType="DevSwachhBharatNagpurModel.Daily_Attendance" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -1463,29 +1469,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
           <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
         </ComplexType>
-        <EntityType Name="Daily_Attendance">
-          <Key>
-            <PropertyRef Name="daID" />
-          </Key>
-          <Property Name="daID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userId" Type="Int32" />
-          <Property Name="startLat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="startLong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="endLat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="endLong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="startTime" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="endTime" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="daDate" Type="DateTime" Precision="0" />
-          <Property Name="daEndDate" Type="DateTime" Precision="0" />
-          <Property Name="vtId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="daStartNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="daEndNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="vehicleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="batteryStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="totalKm" Type="Int32" />
-          <Property Name="OutbatteryStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="WM_Garbage_Sales">
           <Key>
             <PropertyRef Name="ID" />
@@ -1540,6 +1523,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
           <Property Name="bloodGroup" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="isActive" Type="Boolean" />
           <Property Name="gcTarget" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="imoNo2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="SP_GarbageCollection_Result">
           <Property Type="Int32" Name="gcId" Nullable="false" />
@@ -1655,6 +1640,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
           <Property Name="RFIDReaderId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SourceId" Type="Int32" />
           <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="SP_LSEmployeeSummary_Result">
           <Property Type="Int32" Name="daID" Nullable="true" />
@@ -1995,6 +1981,30 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
           <Property Type="Int32" Name="TotalLiquidLatLongCount" Nullable="true" />
           <Property Type="Int32" Name="TotalStreetLatLongCount" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Daily_Attendance">
+          <Key>
+            <PropertyRef Name="daID" />
+          </Key>
+          <Property Name="daID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="startLat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="startLong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="endLat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="endLong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="startTime" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="endTime" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="daDate" Type="DateTime" Precision="0" />
+          <Property Name="daEndDate" Type="DateTime" Precision="0" />
+          <Property Name="vtId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="daStartNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="daEndNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vehicleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="batteryStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="totalKm" Type="Int32" />
+          <Property Name="OutbatteryStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2487,30 +2497,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Daily_Attendance">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.Daily_Attendance">
-              <MappingFragment StoreEntitySet="Daily_Attendance">
-                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
-                <ScalarProperty Name="OutbatteryStatus" ColumnName="OutbatteryStatus" />
-                <ScalarProperty Name="totalKm" ColumnName="totalKm" />
-                <ScalarProperty Name="batteryStatus" ColumnName="batteryStatus" />
-                <ScalarProperty Name="vehicleNumber" ColumnName="vehicleNumber" />
-                <ScalarProperty Name="daEndNote" ColumnName="daEndNote" />
-                <ScalarProperty Name="daStartNote" ColumnName="daStartNote" />
-                <ScalarProperty Name="vtId" ColumnName="vtId" />
-                <ScalarProperty Name="daEndDate" ColumnName="daEndDate" />
-                <ScalarProperty Name="daDate" ColumnName="daDate" />
-                <ScalarProperty Name="endTime" ColumnName="endTime" />
-                <ScalarProperty Name="startTime" ColumnName="startTime" />
-                <ScalarProperty Name="endLong" ColumnName="endLong" />
-                <ScalarProperty Name="endLat" ColumnName="endLat" />
-                <ScalarProperty Name="startLong" ColumnName="startLong" />
-                <ScalarProperty Name="startLat" ColumnName="startLat" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="daID" ColumnName="daID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="WM_Garbage_Sales">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.WM_Garbage_Sales">
               <MappingFragment StoreEntitySet="WM_Garbage_Sales">
@@ -2551,6 +2537,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
           <EntitySetMapping Name="Vw_MsgNotification">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.Vw_MsgNotification">
               <MappingFragment StoreEntitySet="Vw_MsgNotification">
+                <ScalarProperty Name="imoNo2" ColumnName="imoNo2" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
                 <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
@@ -2683,6 +2671,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.Location">
               <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="CType" ColumnName="CType" />
                 <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
                 <ScalarProperty Name="SourceId" ColumnName="SourceId" />
                 <ScalarProperty Name="RFIDReaderId" ColumnName="RFIDReaderId" />
@@ -3129,6 +3118,31 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatNagpur.dbo.Vw_MsgNotific
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Daily_Attendance">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.Daily_Attendance">
+              <MappingFragment StoreEntitySet="Daily_Attendance">
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="OutbatteryStatus" ColumnName="OutbatteryStatus" />
+                <ScalarProperty Name="totalKm" ColumnName="totalKm" />
+                <ScalarProperty Name="batteryStatus" ColumnName="batteryStatus" />
+                <ScalarProperty Name="vehicleNumber" ColumnName="vehicleNumber" />
+                <ScalarProperty Name="daEndNote" ColumnName="daEndNote" />
+                <ScalarProperty Name="daStartNote" ColumnName="daStartNote" />
+                <ScalarProperty Name="vtId" ColumnName="vtId" />
+                <ScalarProperty Name="daEndDate" ColumnName="daEndDate" />
+                <ScalarProperty Name="daDate" ColumnName="daDate" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="endLong" ColumnName="endLong" />
+                <ScalarProperty Name="endLat" ColumnName="endLat" />
+                <ScalarProperty Name="startLong" ColumnName="startLong" />
+                <ScalarProperty Name="startLat" ColumnName="startLat" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="daID" ColumnName="daID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
          
         </EntityContainerMapping>
       </Mapping>

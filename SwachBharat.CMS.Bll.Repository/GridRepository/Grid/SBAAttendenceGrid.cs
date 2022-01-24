@@ -24,6 +24,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public Nullable<DateTime> CompareDate { get; set; }
         public string Date { get; set; }
         public string daDateTIme { get; set; }
+         public string CType { get; set; }
 
 
     }

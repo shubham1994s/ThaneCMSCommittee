@@ -2676,6 +2676,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     x.vehicleNumber = checkNull(x.vehicleNumber);
                     x.daEndNote = checkNull(x.daEndNote);
                     x.daStartNote = checkNull(x.daStartNote);
+                    x.CType= checkNull(x.CType);
                     string endate = "";
                     if (x.daEndDate == null)
                     {
@@ -2706,6 +2707,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         vtId = vt,
                         vehicleNumber = x.vehicleNumber,
                         CompareDate = x.daDate,
+                        CType=x.CType,
                         daDateTIme = (displayTime + " " + time)
                     });
                 }

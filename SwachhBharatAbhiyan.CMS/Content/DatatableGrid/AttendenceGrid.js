@@ -96,6 +96,8 @@
               { "data": "vehicleNumber", "name": "vehicleNumber", "autoWidth": true },
               { "data": "CompareDate", "name": "daID", "autoWidth": true },
               { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
+              { "data": "CType", "name": "CType", "autoWidth": true },
+
              
         ],
        // Sort: "locId DESC"
