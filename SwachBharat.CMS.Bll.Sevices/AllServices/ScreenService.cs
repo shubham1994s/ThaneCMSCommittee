@@ -114,6 +114,14 @@ namespace SwachBharat.CMS.Bll.Services
                         model.TotalHousePropertyCount = Convert.ToInt32(houseCount.TotalHousePropertyCount);
                         model.TotalDumpPropertyCount = Convert.ToInt32(houseCount.TotalDumpPropertyCount);
 
+                        model.TotalCDWCount = Convert.ToInt32(houseCount.TotalCDW);
+                        model.TotalHWCount = Convert.ToInt32(houseCount.TotalHW);
+                        model.TotalWetWaste = Convert.ToInt32(houseCount.TotalWetWaste);
+                        model.TotalDryWaste = Convert.ToInt32(houseCount.TotalDryWaste);
+                        model.TotalDHWCount = Convert.ToInt32(houseCount.TotalDHW);
+                        model.TotalSWCount = Convert.ToInt32(houseCount.TotalSW);
+
+
                         //For Liquid Waste
 
                         model.LWGcWeightCount = Convert.ToDouble(houseCount.LWGcWeightCount);
@@ -4407,6 +4415,21 @@ namespace SwachBharat.CMS.Bll.Services
                         model.TotalStreet = data.TotalStreet;
                         model.TotalStreetUpdated = data.TotalStreetUpdated;
                         model.TotalStreetUpdated_CurrentDay = data.TotalStreetUpdated_CurrentDay;
+
+                        model.TotalResidentialUpdated = data.TotalResidential;
+                        model.TotalResidentialUpdated_CurrentDay = data.TotalResidentialUpdated_CurrentDay;
+
+                        model.TotalBuildingUpdated = data.TotalBuilding;
+                        model.TotalBuildingUpdated_CurrentDay = data.TotalBuildingUpdated_CurrentDay;
+
+                        model.TotalSlumUpdated = data.TotalSlum;
+                        model.TotalSlumUpdated_CurrentDay = data.TotalSlumUpdated_CurrentDay;
+
+                        model.TotalCommercialUpdated = data.TotalCommercial;
+                        model.TotalCommercialUpdated_CurrentDay = data.TotalCommercialUpdated_CurrentDay;
+
+
+
 
                         return model;
                     }

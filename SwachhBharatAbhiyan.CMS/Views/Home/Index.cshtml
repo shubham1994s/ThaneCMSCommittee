@@ -134,7 +134,7 @@
         box-shadow: none !important
     }
 
-   
+
     .gd-success {
         color: #fff;
         border: none;
@@ -193,8 +193,13 @@
 <input value="@Model.BifurgatedCount" type="hidden" id="bif_coll" />
 <input value="@Model.NotCollected" type="hidden" id="not_coll" />
 <input value="@Model.NotSpecified" type="hidden" id="not_spec_coll" />
-<input value="@Model.TotalDryWaste" type="hidden" id="TotalDryWaste_coll" />
+
+<input value="@Model.TotalCDWCount" type="hidden" id="TotalCDW_coll" />
+<input value="@Model.TotalHWCount " type="hidden" id="TotalHW_coll" />
 <input value="@Model.TotalWetWaste" type="hidden" id="TotalWetWaste_coll" />
+<input value="@Model.TotalDryWaste" type="hidden" id="TotalDryWaste_coll" />
+<input value="@Model.TotalDHWCount" type="hidden" id="TotalDHW_coll" />
+<input value="@Model.TotalSWCount " type="hidden" id="TotalSW_coll" />
 
 
 @*dump data*@
@@ -756,10 +761,10 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC1bURZcQZ-I__gSCjm4g0GWauNHW52Ow&callback=myMap3" type="text/javascript"></script>*@
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM&callback=myMap" type="text/javascript"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM&callback=myMap3" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM&callback=myMap3" type="text/javascript"></script>
 
 @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn5cRS1OJ9s5BPjZ4G0L_5OobNRbdvCqU&callback=myMap" type="text/javascript"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn5cRS1OJ9s5BPjZ4G0L_5OobNRbdvCqU&callback=myMap3" type="text/javascript"></script>*@
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn5cRS1OJ9s5BPjZ4G0L_5OobNRbdvCqU&callback=myMap3" type="text/javascript"></script>*@
 
 <!-- Dashboard Header Section    -->
 <script src="~/Content/Custom/HomeIndex.js"></script>

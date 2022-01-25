@@ -26,6 +26,10 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public Nullable<int> DumpCount { get; set; }
         public Nullable<int> PointCount { get; set; }
 
+        public Nullable<int> BuildingCount { get; set; }
+        public Nullable<int> SlumCount { get; set; }
+        public Nullable<int> CommercialCount { get; set; }
+
         public string StartDate { get; set; }
         public string StartTime { get; set; }
         public string EndDate { get; set; }

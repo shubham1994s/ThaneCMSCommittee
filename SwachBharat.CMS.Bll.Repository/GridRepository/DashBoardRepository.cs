@@ -3913,6 +3913,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     DumpCount = x.DumpCount,
                     LiquidCount=x.LiquidCount,
                     StreetCount=x.StreetCount,
+                    BuildingCount=x.BuildingCount,
+                    SlumCount=x.SlumCount,
+                    CommercialCount=x.CommercialCount,
                     //StartDate = (string.IsNullOrEmpty(x.StartDate.ToString()) ? "" : Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy")) + " " + x.StartTime,
                     //StartDate = (x.StartDate == null ? "" : Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy")) + " " + x.StartTime,
                     // EndDate = (x.EndDate == null ? " " : Convert.ToDateTime(x.EndDate).ToString("dd/MM/yyyy")) + " " +  x.EndTime,
@@ -4384,22 +4387,47 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             List<EmployeeHouseCollectionType> obj = new List<EmployeeHouseCollectionType>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_EmployeeHouseCollectionType().ToList();
+                //var data = db.SP_EmployeeHouseCollectionType().ToList();
+                var data = "1";
 
                 foreach (var x in data)
                 {
                     obj.Add(new EmployeeHouseCollectionType()
                     {
-                        inTime = x.inTime,
-                        Count = x.Count,
-                        ToDate = x.TodayDate.ToString(),
-                        MixedCount = x.MixedCount,
-                        Bifur = x.Bifur,
-                        NotCollected = x.NotCollected,
-                        gcTarget = x.gcTarget,
-                        NotSpecidfied = x.NotSpecidfied,
-                        userId = x.userId,
-                        userName = x.userName
+                        //inTime = x.inTime,
+                        //Count = x.Count,
+                        //ToDate = x.TodayDate.ToString(),
+                        //MixedCount = x.MixedCount,
+                        //Bifur = x.Bifur,
+                        //NotCollected = x.NotCollected,
+                        //gcTarget = x.gcTarget,
+                        //NotSpecidfied = x.NotSpecidfied,
+                        //userId = x.userId,
+                        //userName = x.userName,
+                        //ConstructionAndDemolition=x.DHW,
+                        //Horticulture=x.HW,
+                        //WetWaste=x.WetWaste,
+                        //DryWaste=x.DryWaste,
+                        //DomesticHazardous=x.DHW,
+                        //Sanitary=x.SW
+
+                        inTime ="10.25",
+                        Count = 100,
+                        ToDate ="25-01-2022",
+                        MixedCount = 10,
+                        Bifur =10,
+                        NotCollected =10,
+                        gcTarget = "100",
+                        NotSpecidfied = 10,
+                        userId = 1,
+                        userName ="XYZ",
+                        ConstructionAndDemolition = 10,
+                        Horticulture = 10,
+                        WetWaste =10,
+                        DryWaste =10,
+                        DomesticHazardous = 10,
+                        Sanitary = 10
+
                     });
                 }
                 return obj.OrderBy(c => c.userName);
