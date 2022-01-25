@@ -83,7 +83,7 @@ function myMap2() {
 
                 loc = new google.maps.LatLng(data[i].lat, data[i].log),
 
-                bounds.extend(loc);
+                    bounds.extend(loc);
 
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
@@ -161,7 +161,7 @@ function myMapHouse() {
 
                     loc = new google.maps.LatLng(data[i].houseLat, data[i].houseLong),
 
-                bounds.extend(loc);
+                        bounds.extend(loc);
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
@@ -190,7 +190,7 @@ function myMapHouse() {
 
                     loc = new google.maps.LatLng(data[i].houseLat, data[i].houseLong),
 
-                bounds.extend(loc);
+                        bounds.extend(loc);
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
@@ -219,7 +219,7 @@ function myMapHouse() {
 
                     loc = new google.maps.LatLng(data[i].houseLat, data[i].houseLong),
 
-                bounds.extend(loc);
+                        bounds.extend(loc);
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
@@ -248,7 +248,7 @@ function myMapHouse() {
 
                     loc = new google.maps.LatLng(data[i].houseLat, data[i].houseLong),
 
-                bounds.extend(loc);
+                        bounds.extend(loc);
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
@@ -277,7 +277,7 @@ function myMapHouse() {
 
                     loc = new google.maps.LatLng(data[i].houseLat, data[i].houseLong),
 
-                bounds.extend(loc);
+                        bounds.extend(loc);
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
@@ -365,7 +365,7 @@ $(document).ready(function () {
                         verticalAlign: 'center',
                     });
                 else
-            	    (chart.options.subtitles = []);
+                    (chart.options.subtitles = []);
             }
 
 
@@ -381,20 +381,39 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
- //   debugger;
-    var not_coll = $('#not_coll').val();
-    var mixed_coll = $('#mixed_coll').val();
-    var bif_coll = $('#bif_coll').val();
-    var not_spec_coll = $('#not_spec_coll').val();
-   // var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
-   // var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
+    //   debugger;
+    //var not_coll = $('#not_coll').val();
+    //var mixed_coll = $('#mixed_coll').val();
+    //var bif_coll = $('#bif_coll').val();
+    //var not_spec_coll = $('#not_spec_coll').val();
 
-    var tot_house_null_check = $('#tot_house_coll').val();
+    //var TotalCDW_coll = $('#TotalCDW_coll').val();
+    //var TotalHW_coll = $('#TotalHW_coll').val();
+    //var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
+    //var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
+    //var TotalDHW_coll = $('#TotalDHW_coll').val();
+    //var TotalSW_coll = $('#TotalSW_coll').val();
+    //var tot_house_null_check = $('#tot_house_coll').val();
+
+    var not_coll = 10;
+    var mixed_coll = 10;
+    var bif_coll = 10;
+    var not_spec_coll = 10;
+
+    var TotalCDW_coll = 10;
+    var TotalHW_coll = 10;
+    var TotalDryWaste_coll = 10;
+    var TotalWetWaste_coll = 10;
+    var TotalDHW_coll = 10;
+    var TotalSW_coll = 10;
+    var tot_house_null_check = 100;
+
     var tot_house_coll;
     if (tot_house_null_check == 0) {
         tot_house_coll = null;
     } else {
-        tot_house_coll = $('#tot_house_coll').val();
+        /*tot_house_coll = $('#tot_house_coll').val();*/
+        tot_house_coll = 100;
     }
 
     var res_mixed_coll = mixed_coll * 100 / tot_house_coll;
@@ -402,8 +421,12 @@ $(document).ready(function () {
     var res_not_coll = not_coll * 100 / tot_house_coll;
     var res_not_spec_coll = not_spec_coll * 100 / tot_house_coll;
 
-   // var res_TotalDryWaste_coll = TotalDryWaste_coll * 100 / tot_house_coll;
-    //var res_TotalWetWaste_coll = TotalWetWaste_coll * 100 / tot_house_coll;
+    var res_TotalCDW_coll = TotalCDW_coll * 100 / tot_house_coll;
+    var res_TotalHW_coll = TotalHW_coll * 100 / tot_house_coll;
+    var res_TotalDryWaste_coll = TotalDryWaste_coll * 100 / tot_house_coll;
+    var res_TotalWetWaste_coll = TotalWetWaste_coll * 100 / tot_house_coll;
+    var res_TotalDHW_coll = TotalDHW_coll * 100 / tot_house_coll;
+    var res_TotalSW_coll = TotalSW_coll * 100 / tot_house_coll;
 
 
     var ary3 = []
@@ -411,8 +434,13 @@ $(document).ready(function () {
     ary3.push({ v: mixed_coll });
     ary3.push({ v: not_coll });
     ary3.push({ v: not_spec_coll });
-    //ary3.push({ v: TotalDryWaste_coll });
-    //ary3.push({ v: TotalWetWaste_coll });
+
+    ary3.push({ v: TotalCDW_coll });
+    ary3.push({ v: TotalHW_coll });
+    ary3.push({ v: TotalDryWaste_coll });
+    ary3.push({ v: TotalWetWaste_coll });
+    ary3.push({ v: TotalDHW_coll });
+    ary3.push({ v: TotalSW_coll });
 
 
     //console.log(ary3);
@@ -453,12 +481,17 @@ $(document).ready(function () {
                 //{ y: res_not_coll, label: "कचरा मिळाला नाही", hover_number: not_coll, color: '#fe9436' },
                 //{ y: res_not_spec_coll, label: "वर्णन उपलब्ध नाही", hover_number: not_spec_coll, color: '#0086c3' },
 
-                 { y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, color: '#388e3c' },
+                { y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, color: '#388e3c' },
                 { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, color: '#f44336' },
                 { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, color: '#fe9436' },
                 { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, color: '#0086c3' },
-               // { y: res_TotalDryWaste_coll, label: "Dry Waste Garbage", hover_number: TotalDryWaste_coll, color: '#0462EA' },
-                //{ y: res_TotalWetWaste_coll, label: "Wet Waste Garbage", hover_number: TotalWetWaste_coll, color: '#186634' },
+
+                { y: res_TotalCDW_coll, label: "CDW", hover_number: TotalCDW_coll, color: '#63676e' },
+                { y: res_TotalHW_coll, label: "HW", hover_number: TotalHW_coll, color: '#1ad15c' },
+                { y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, color: '#66a2d5' },
+                { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, color: '#186634' },
+                { y: res_TotalDHW_coll, label: "DHW", hover_number: TotalDHW_coll, color: '#8f8b28' },
+                { y: res_TotalSW_coll, label: "SW", hover_number: TotalSW_coll, color: '#c384d3' },
             ],
         }]
     });
@@ -517,41 +550,41 @@ $(document).ready(function () {
             }
 
             var chart = new CanvasJS.Chart("chartContainerTarget",
-       {
+                {
 
-           axisY: {
-               title: "Employee Target",
-           },
-           legend: {
-               fontSize: 14
-           },
-           data: [
-                       {
-                           type: "column",
-                           color: "#9bbb59",
-                           toolTipContent: "Achieved: {y}",
-                           showInLegend: true,
-                           legendText: "Achieved",
-                           indexLabelFontSize: 14,
-                           indexLabel: "{y}",
-                           dataPoints:
-                               ary
+                    axisY: {
+                        title: "Employee Target",
+                    },
+                    legend: {
+                        fontSize: 14
+                    },
+                    data: [
+                        {
+                            type: "column",
+                            color: "#9bbb59",
+                            toolTipContent: "Achieved: {y}",
+                            showInLegend: true,
+                            legendText: "Achieved",
+                            indexLabelFontSize: 14,
+                            indexLabel: "{y}",
+                            dataPoints:
+                                ary
 
-                       }, {
-                           type: "column",
-                           color: "#c0504d",
-                           toolTipContent: "Target: {y}",
-                           showInLegend: true,
-                           legendText: "Target",
-                           indexLabelFontSize: 14,
-                           indexLabelPlacement: "outside",
-                           indexLabel: "{y}",
-                           dataPoints:
-                              ary2
+                        }, {
+                            type: "column",
+                            color: "#c0504d",
+                            toolTipContent: "Target: {y}",
+                            showInLegend: true,
+                            legendText: "Target",
+                            indexLabelFontSize: 14,
+                            indexLabelPlacement: "outside",
+                            indexLabel: "{y}",
+                            dataPoints:
+                                ary2
 
-                       }
-           ]
-       });
+                        }
+                    ]
+                });
             showDefaultText(chart, "No Data available");
             chart.render();
             function showDefaultText(chart, text) {
@@ -565,8 +598,8 @@ $(document).ready(function () {
                         text: text,
                         verticalAlign: 'center',
                     });
-                else 
-            	    (chart.options.subtitles = []);
+                else
+                    (chart.options.subtitles = []);
             }
 
 
@@ -635,7 +668,7 @@ $(document).ready(function () {
                 //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
                 //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
 
-                 { y: res_dry_count, label: "Total Weight (Dry Waste)", hover_number: dry_count, color: '#0086c3' },
+                { y: res_dry_count, label: "Total Weight (Dry Waste)", hover_number: dry_count, color: '#0086c3' },
                 { y: res_wet_count, label: "Total Weight (Wet Waste)", hover_number: wet_count, color: '#01ad35' },
 
 
@@ -672,7 +705,7 @@ $(document).ready(function () {
 
 
 
-        var date = new Date();
+var date = new Date();
 
 var day = date.getDate();
 var month = date.getMonth() + 1;
@@ -681,7 +714,7 @@ var year = date.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 
-var today = month+ "/" + day+ "/" + year;
+var today = month + "/" + day + "/" + year;
 
 document.getElementById('txt_fdate').value = today;
 
@@ -691,21 +724,21 @@ document.getElementById('txt_fdate').value = today;
 
 
 
-  $('.datepicker').datepicker({
-      format: 'mm/dd/yyyy',
-      weekStart: 1,
-      color: 'red',
-      pickTime: false
-  }).on('changeDate', function (e) {
+$('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    weekStart: 1,
+    color: 'red',
+    pickTime: false
+}).on('changeDate', function (e) {
 
-      $(this).datepicker('hide');
+    $(this).datepicker('hide');
 
-  });
+});
 //hide  show on hover
 $('#txt_fdate').focus(function () {
     $('.dtpk_drpdwn').eq(1).hide();
 });
- 
+
 
 // by neha 8 july 2019
 $(document).ready(function () {
@@ -721,9 +754,14 @@ $(document).ready(function () {
             var not_coll = [];
             var mixed = [];
             var seg = [];
-            //var dry = [];
-            //var wet = [];
+            var cdw = [];
+            var hw = [];
+            var dry = [];
+            var wet = [];
+            var dhw = [];
+            var sw = [];
             var emp_tar = [];
+            debugger;
             for (var i = 0; i < data.length; i++) {
                 // alert(data[i].inTime);
                 var name = data[i].userName;
@@ -736,7 +774,7 @@ $(document).ready(function () {
                 } else {
                     lastname_firstchar = lastname_array[1][0];
                 }
-                
+
 
                 //var fname = name.substring(0, name.indexOf(" "));
                 var fname = name.replace(/ .*/, ' ');
@@ -745,124 +783,168 @@ $(document).ready(function () {
                 not_coll.push({ y: data[i].NotCollected, label: 'Not Collected', color: '#fe9436', intime: data[i].inTime });
                 mixed.push({ y: data[i].MixedCount, label: 'Mixed', color: '#f44336', intime: data[i].inTime });
                 seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });
-                //dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#0462EA', intime: data[i].inTime });
-                //wet.push({y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
+                cdw.push({ y: data[i].ConstructionAndDemolition, label: 'Construction & Demolition', color: '#63676e', intime: data[i].inTime });
+                hw.push({ y: data[i].Horticulture, label: 'Horticulture', color: '#1ad15c', intime: data[i].inTime });
+                wet.push({ y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
+                dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
+                dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
+                sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
                 emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar, z: data[i].Count, intime: data[i].inTime });
                 // ary2.push({ y: parseInt(data[i].gcTarget), label: data[i].userName });
 
             }
 
             var chart = new CanvasJS.Chart("chartContainerTarget2",
-       {
-           //title: {
-           //    text: "Grouped Stacked Chart"
-           //},
-           theme: "theme3",
-           // interval :1,
-           axisY: {
-               labelFontSize: 10,
-               labelFontColor: "dimGrey",
-               interval: 1
-           },
-           axisX: {
-               labelAngle: -10,
-               labelFontSize: 10,
-               interval: 1
-           },
-           axisY: {
-               title: "House Collection",
-           },
+                {
+                    //title: {
+                    //    text: "Grouped Stacked Chart"
+                    //},
+                    theme: "theme3",
+                    // interval :1,
+                    axisY: {
+                        labelFontSize: 10,
+                        labelFontColor: "dimGrey",
+                        interval: 1
+                    },
+                    axisX: {
+                        labelAngle: -10,
+                        labelFontSize: 10,
+                        interval: 1
+                    },
+                    axisY: {
+                        title: "House Collection",
+                    },
 
-           data: [
+                    data: [
 
-                 {
-                     //indexLabel: "#total",
-                     //indexLabelPlacement: "outside",
-                     //indexLabelPlacement: "outside",
-                     type: "stackedColumn",
-                     showInLegend: true,
-                     legendText: "Segregated",
-                     toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                     color: "#388e3c",
-                     dataPoints: seg
-                 },
-                 {
-                     //indexLabel: "#total",
-                     //indexLabelPlacement: "outside",
-                     type: "stackedColumn",
-                     showInLegend: true,
-                     legendText: "Mixed",
-                     toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                     color: "#f44336",
-                     dataPoints: mixed
-                 },
-                 {
-                     //indexLabel: "#total",
-                     //indexLabelPlacement: "outside",
-                     type: "stackedColumn",
-                     showInLegend: true,
-                     legendText: "NotCollected",
-                     toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                     color: "#fe9436",
-                     dataPoints: not_coll
-                 },
-                 {
-                     indexLabel: "#total",
-                     indexLabelPlacement: "outside",
-                     type: "stackedColumn",
-                     showInLegend: true,
-                     legendText: "NotSpecified",
-                     toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                     color: "#0086c3",
-                     dataPoints: not_spec
-               },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Segregated",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#388e3c",
+                            dataPoints: seg
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Mixed",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#f44336",
+                            dataPoints: mixed
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "NotCollected",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#fe9436",
+                            dataPoints: not_coll
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "NotSpecified",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#0086c3",
+                            dataPoints: not_spec
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "ConstructionAndDemolition",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#63676e",
+                            dataPoints: cdw
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Horticulture",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#1ad15c",
+                            dataPoints: hw
+                        },
+                         {
+                             //indexLabel: "#total",
+                             //indexLabelPlacement: "outside",
+                             type: "stackedColumn",
+                             showInLegend: true,
+                             legendText: "Wetwaste",
+                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                             color: "#186634",
+                             dataPoints: wet
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "drywaste",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#66a2d5",
+                            dataPoints: dry
+                        },
+                         {
+                             //indexLabel: "#total",
+                             //indexLabelPlacement: "outside",
+                             type: "stackedColumn",
+                             showInLegend: true,
+                             legendText: "domestic",
+                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                             color: "#8f8b28",
+                             dataPoints: dhw
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Sanitary",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#c384d3",
+                            dataPoints: sw
+                        },
 
-               //{
-               //    //indexlabel: "#total",
-               //    //indexlabelplacement: "outside",
-               //    //indexlabelplacement: "outside",
-               //    type: "stackedcolumn",
-               //    showinlegend: true,
-               //    legendtext: "dry waste",
-               //    tooltipcontent: "intime:{intime} <br>{label}:{y} ",
-               //    color: "#0462ea",
-               //    datapoints: dry
-               //},
-               //{
-               //    //indexlabel: "#total",
-               //    //indexlabelplacement: "outside",
-               //    //indexlabelplacement: "outside",
-               //    type: "stackedcolumn",
-               //    showinlegend: true,
-               //    legendtext: "wet waste",
-               //    tooltipcontent: "intime:{intime} <br>{label}:{y} ",
-               //    color: "#186634",
-               //    datapoints: wet
-               //},
-                     {
-                         type: "line",
-                         color: "#c0504d",
-                         dataPoints: emp_tar,
-                         // indexLabel: "{y}",
-                         showInLegend: true,
-                         name: "Target",
-                     }
-                 //{
-                 //    type: "stackedColumn",
-                 //    color: "#c0504d",
-                 //    axisYType: "secondary",
-                 //    toolTipContent: "Target:{y} <br> InTime:{intime}",
-                 //    showInLegend: true,
-                 //    legendText: "Target",
-                 //    indexLabelFontSize: 14,
-                 //    indexLabelPlacement: "outside",
-                 //    indexLabel: "{z}/{y}",
-                 //    dataPoints: emp_tar
-                 //}
 
 
-           ]
-       });
+                        {
+                            type: "line",
+                            color: "#c0504d",
+                            dataPoints: emp_tar,
+                            // indexLabel: "{y}",
+                            showInLegend: true,
+                            name: "Target",
+                        }
+                        //{
+                        //    type: "stackedColumn",
+                        //    color: "#c0504d",
+                        //    axisYType: "secondary",
+                        //    toolTipContent: "Target:{y} <br> InTime:{intime}",
+                        //    showInLegend: true,
+                        //    legendText: "Target",
+                        //    indexLabelFontSize: 14,
+                        //    indexLabelPlacement: "outside",
+                        //    indexLabel: "{z}/{y}",
+                        //    dataPoints: emp_tar
+                        //}
+
+
+                    ]
+                });
             showDefaultText(chart, "No Data available");
             chart.render();
             function showDefaultText(chart, text) {
@@ -877,7 +959,7 @@ $(document).ready(function () {
                         verticalAlign: 'center',
                     });
                 else
-            	    (chart.options.subtitles = []);
+                    (chart.options.subtitles = []);
             }
         }
     });

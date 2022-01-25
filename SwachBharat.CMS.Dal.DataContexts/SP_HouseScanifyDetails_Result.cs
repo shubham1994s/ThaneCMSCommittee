@@ -28,5 +28,13 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> TotalStreet { get; set; }
         public Nullable<int> TotalStreetUpdated { get; set; }
         public Nullable<int> TotalStreetUpdated_CurrentDay { get; set; }
+        public Nullable<int> TotalBuilding { get; set; }
+        public Nullable<int> TotalBuildingUpdated_CurrentDay { get; set; }
+        public Nullable<int> TotalSlum { get; set; }
+        public Nullable<int> TotalSlumUpdated_CurrentDay { get; set; }
+        public Nullable<int> TotalCommercial { get; set; }
+        public Nullable<int> TotalCommercialUpdated_CurrentDay { get; set; }
+        public Nullable<int> TotalResidential { get; set; }
+        public Nullable<int> TotalResidentialUpdated_CurrentDay { get; set; }
     }
 }

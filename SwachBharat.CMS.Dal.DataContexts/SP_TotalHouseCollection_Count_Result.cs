@@ -18,8 +18,12 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> BifurgatedCount { get; set; }
         public Nullable<int> NotCollected { get; set; }
         public Nullable<int> NotSpecified { get; set; }
+        public Nullable<int> TotalCDW { get; set; }
+        public Nullable<int> TotalHW { get; set; }
         public Nullable<int> TotalDryWaste { get; set; }
         public Nullable<int> TotalWetWaste { get; set; }
+        public Nullable<int> TotalDHW { get; set; }
+        public Nullable<int> TotalSW { get; set; }
         public decimal GcWeightCount { get; set; }
         public decimal DryWeightCount { get; set; }
         public decimal WetWeightCount { get; set; }

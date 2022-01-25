@@ -27,5 +27,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<bool> IsOffline { get; set; }
         public string ReferanceID { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string CType { get; set; }
     }
 }
