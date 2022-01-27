@@ -97,6 +97,7 @@
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="LWId" Type="int" />
           <Property Name="SSId" Type="int" />
+          <Property Name="LOS" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GarbagePointDetails">
           <Key>
@@ -910,10 +911,10 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="AreaId" Mode="In" Type="Int32" />
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
-          <Parameter Name="gcdate" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)" />
+          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
+            <Parameter Name="gcdate" Mode="In" Type="DateTime" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -1772,6 +1773,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="LWId" Type="Int32" />
           <Property Name="SSId" Type="Int32" />
+          <Property Name="LOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="SP_LiquidEmployeeTarget_Result">
           <Property Type="Int32" Name="userId" Nullable="true" />
@@ -1977,6 +1979,24 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="SP_EmployeeHouseCollectionType_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="inTime" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="Bifur" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecidfied" Nullable="true" />
+          <Property Type="Int32" Name="CDW" Nullable="true" />
+          <Property Type="Int32" Name="HW" Nullable="true" />
+          <Property Type="Int32" Name="WetWaste" Nullable="true" />
+          <Property Type="Int32" Name="DryWaste" Nullable="true" />
+          <Property Type="Int32" Name="DHW" Nullable="true" />
+          <Property Type="Int32" Name="SW" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="SP_TotalHouseCollection_Count_Result">
           <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
           <Property Type="Int32" Name="MixedCount" Nullable="true" />
@@ -2013,24 +2033,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalStreetPropertyCount" Nullable="true" />
           <Property Type="Int32" Name="TotalHousePropertyCount" Nullable="true" />
           <Property Type="Int32" Name="TotalDumpPropertyCount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_EmployeeHouseCollectionType_Result">
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="inTime" Nullable="true" MaxLength="200" />
-          <Property Type="Int32" Name="Count" Nullable="true" />
-          <Property Type="Int32" Name="MixedCount" Nullable="true" />
-          <Property Type="Int32" Name="Bifur" Nullable="true" />
-          <Property Type="Int32" Name="NotCollected" Nullable="true" />
-          <Property Type="Int32" Name="NotSpecidfied" Nullable="true" />
-          <Property Type="Int32" Name="CDW" Nullable="true" />
-          <Property Type="Int32" Name="HW" Nullable="true" />
-          <Property Type="Int32" Name="WetWaste" Nullable="true" />
-          <Property Type="Int32" Name="DryWaste" Nullable="true" />
-          <Property Type="Int32" Name="DHW" Nullable="true" />
-          <Property Type="Int32" Name="SW" Nullable="true" />
+          <Property Type="Decimal" Name="GcHWWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="GcCDWWeightCount" Nullable="false" Precision="38" Scale="4" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2837,6 +2841,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="GarbageCollectionDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.GarbageCollectionDetail">
               <MappingFragment StoreEntitySet="GarbageCollectionDetails">
+                <ScalarProperty Name="LOS" ColumnName="LOS" />
                 <ScalarProperty Name="SSId" ColumnName="SSId" />
                 <ScalarProperty Name="LWId" ColumnName="LWId" />
                 <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
@@ -3130,6 +3135,28 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EmployeeHouseCollectionType" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeHouseCollectionType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
+                <ScalarProperty Name="inTime" ColumnName="inTime" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="Bifur" ColumnName="Bifur" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecidfied" ColumnName="NotSpecidfied" />
+                <ScalarProperty Name="CDW" ColumnName="CDW" />
+                <ScalarProperty Name="HW" ColumnName="HW" />
+                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
+                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
+                <ScalarProperty Name="DHW" ColumnName="DHW" />
+                <ScalarProperty Name="SW" ColumnName="SW" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_TotalHouseCollection_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_TotalHouseCollection_Count">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result">
@@ -3168,28 +3195,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalStreetPropertyCount" ColumnName="TotalStreetPropertyCount" />
                 <ScalarProperty Name="TotalHousePropertyCount" ColumnName="TotalHousePropertyCount" />
                 <ScalarProperty Name="TotalDumpPropertyCount" ColumnName="TotalDumpPropertyCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_EmployeeHouseCollectionType" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeHouseCollectionType">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
-                <ScalarProperty Name="inTime" ColumnName="inTime" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
-                <ScalarProperty Name="Bifur" ColumnName="Bifur" />
-                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
-                <ScalarProperty Name="NotSpecidfied" ColumnName="NotSpecidfied" />
-                <ScalarProperty Name="CDW" ColumnName="CDW" />
-                <ScalarProperty Name="HW" ColumnName="HW" />
-                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
-                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
-                <ScalarProperty Name="DHW" ColumnName="DHW" />
-                <ScalarProperty Name="SW" ColumnName="SW" />
+                <ScalarProperty Name="GcHWWeightCount" ColumnName="GcHWWeightCount" />
+                <ScalarProperty Name="GcCDWWeightCount" ColumnName="GcCDWWeightCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
