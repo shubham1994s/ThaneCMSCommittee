@@ -617,11 +617,16 @@ $(document).ready(function () {
     var dry_count = $('#dry_count').val();
     var wet_count = $('#wet_count').val();
     var tot_dump_null_check = $('#tot_dump_count').val();
+    //var dry_count = 45;
+    //var wet_count =55;
+    //var tot_dump_null_check =100;
+
     var tot_dump_count;
     if (tot_dump_null_check == 0) {
         tot_dump_count = null;
     } else {
         tot_dump_count = $('#tot_dump_count').val();
+       // tot_dump_count = 100;
     }
 
     var res_dry_count = parseFloat(dry_count) * 100 / parseFloat(tot_dump_count);

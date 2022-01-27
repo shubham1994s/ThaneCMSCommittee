@@ -108,6 +108,7 @@ namespace SwachBharat.CMS.Bll.Services
                         model.GcWeightCount = Convert.ToDouble(houseCount.GcWeightCount);
                         model.DryWeightCount = Convert.ToDouble(houseCount.DryWeightCount);
                         model.WetWeightCount = Convert.ToDouble(houseCount.WetWeightCount);
+
                         model.TotalGcWeightCount = Convert.ToDouble(houseCount.TotalGcWeightCount);
                         model.TotalDryWeightCount = Convert.ToDouble(houseCount.TotalDryWeightCount);
                         model.TotalWetWeightCount = Convert.ToDouble(houseCount.TotalWetWeightCount);
