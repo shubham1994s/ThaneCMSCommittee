@@ -382,38 +382,27 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     //   debugger;
-    //var not_coll = $('#not_coll').val();
-    //var mixed_coll = $('#mixed_coll').val();
-    //var bif_coll = $('#bif_coll').val();
-    //var not_spec_coll = $('#not_spec_coll').val();
+    var not_coll = $('#not_coll').val();
+    var mixed_coll = $('#mixed_coll').val();
+    var bif_coll = $('#bif_coll').val();
+    var not_spec_coll = $('#not_spec_coll').val();
 
-    //var TotalCDW_coll = $('#TotalCDW_coll').val();
-    //var TotalHW_coll = $('#TotalHW_coll').val();
-    //var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
-    //var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
-    //var TotalDHW_coll = $('#TotalDHW_coll').val();
-    //var TotalSW_coll = $('#TotalSW_coll').val();
-    //var tot_house_null_check = $('#tot_house_coll').val();
+    var TotalCDW_coll = $('#TotalCDW_coll').val();
+    var TotalHW_coll = $('#TotalHW_coll').val();
+    var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
+    var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
+    var TotalDHW_coll = $('#TotalDHW_coll').val();
+    var TotalSW_coll = $('#TotalSW_coll').val();
+    var tot_house_null_check = $('#tot_house_coll').val();
 
-    var not_coll = 10;
-    var mixed_coll = 10;
-    var bif_coll = 10;
-    var not_spec_coll = 10;
-
-    var TotalCDW_coll = 10;
-    var TotalHW_coll = 10;
-    var TotalDryWaste_coll = 10;
-    var TotalWetWaste_coll = 10;
-    var TotalDHW_coll = 10;
-    var TotalSW_coll = 10;
-    var tot_house_null_check = 100;
+   
 
     var tot_house_coll;
     if (tot_house_null_check == 0) {
         tot_house_coll = null;
     } else {
-        /*tot_house_coll = $('#tot_house_coll').val();*/
-        tot_house_coll = 100;
+        tot_house_coll = $('#tot_house_coll').val();
+      
     }
 
     var res_mixed_coll = mixed_coll * 100 / tot_house_coll;
