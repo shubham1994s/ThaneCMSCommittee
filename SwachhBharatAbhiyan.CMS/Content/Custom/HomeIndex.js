@@ -603,14 +603,19 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-    var dry_count = $('#dry_count').val();
-    var wet_count = $('#wet_count').val();
-    var tot_dump_null_check = $('#tot_dump_count').val();
+    //var dry_count = $('#dry_count').val();
+    //var wet_count = $('#wet_count').val();
+    //var tot_dump_null_check = $('#tot_dump_count').val();
+    var dry_count = 45;
+    var wet_count =55;
+    var tot_dump_null_check =100;
+
     var tot_dump_count;
     if (tot_dump_null_check == 0) {
         tot_dump_count = null;
     } else {
-        tot_dump_count = $('#tot_dump_count').val();
+       /* tot_dump_count = $('#tot_dump_count').val();*/
+        tot_dump_count = 100;
     }
 
     var res_dry_count = parseFloat(dry_count) * 100 / parseFloat(tot_dump_count);
@@ -691,7 +696,95 @@ $(document).ready(function () {
 
 });
 
+$(document).ready(function () {
 
+    //var TotalCDW_coll = $('#TotalCDW_coll').val();
+    //var TotalHW_coll = $('#TotalHW_coll').val();
+    var TotalCDW_coll = 45;
+    var TotalHW_coll = 55;
+    var tot_Total_HW_CDW = TotalCDW_coll + TotalHW_coll;
+
+    //var tot_dump_count;
+    //if (tot_dump_null_check == 0) {
+    //    tot_dump_count = null;
+    //} else {
+    //    /* tot_dump_count = $('#tot_dump_count').val();*/
+    //    tot_dump_count = 100;
+    //}
+
+    var res_TotalCDW_coll = TotalCDW_coll * 100 / tot_Total_HW_CDW;
+    var res_TotalHW_coll = TotalHW_coll * 100 / tot_Total_HW_CDW;
+
+    //var ary3 = []
+    //ary3.push({ v: dry_count });
+    //ary3.push({ v: wet_count });
+
+
+    //console.log(ary3);
+    var chart = new CanvasJS.Chart("chartContainerPieHWCDW", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            //text: "विलगिकरण प्रकार ",
+            fontSize: 24,
+            padding: 10
+        },
+        subtitles: [{
+            //text: "United Kingdom, 2016",
+            //fontSize: 16
+        }],
+        toolTip: {
+            content: "In Numbers {hover_number} Ton",
+        },
+        legend: {
+            maxWidth: 180,
+            itemWidth: 75,
+            fontSize: 12,
+            // horizontalAlign: "right", // left, center ,right 
+            //verticalAlign: "center",
+        },
+        data: [{
+            type: "pie",
+            indexLabelFontSize: 12,
+            showInLegend: true,
+            legendText: "{hover_number}",
+            radius: 60,
+            indexLabel: "{label} - {y}",
+            yValueFormatString: "###0.0\"%\"",
+            click: explodePie,
+            dataPoints: [
+                { y: res_TotalCDW_coll, label: "CDW", hover_number: TotalCDW_coll, color: '#63676e' },
+                { y: res_TotalHW_coll, label: "HW", hover_number: TotalHW_coll, color: '#1ad15c' },
+
+            ],
+        }]
+    });
+    showDefaultText(chart, "No Data available");
+    chart.render();
+    function showDefaultText(chart, text) {
+        var isEmpty = !(tot_dump_count && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+
+        if (isEmpty) {
+            chart.options.subtitles.push({
+                text: text,
+                verticalAlign: 'center',
+            });
+            (chart.options.data[0].dataPoints = []);
+        }
+
+
+
+    }
+    function explodePie(e) {
+        for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+            if (i !== e.dataPointIndex)
+                e.dataSeries.dataPoints[i].exploded = false;
+        }
+    }
+
+});
 
 
 var date = new Date();
