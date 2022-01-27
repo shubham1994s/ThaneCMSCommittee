@@ -140,6 +140,10 @@ namespace SwachBharat.CMS.Bll.Services
                         model.SSTotalDryWeightCount = Convert.ToDouble(houseCount.SSTotalDryWeightCount);
                         model.SSTotalWetWeightCount = Convert.ToDouble(houseCount.SSTotalWetWeightCount);
 
+                        //for Horticulture waste & Construction demolation waste
+                        model.GcHWWeightCount = Convert.ToDouble(houseCount.GcHWWeightCount);
+                        model.GcCDWWeightCount = Convert.ToDouble(houseCount.GcCDWWeightCount);
+
                         return model;
                     }
 

@@ -207,6 +207,10 @@
 <input value="@Model.DryWeightCount" type="hidden" id="dry_count" />
 <input value="@Model.WetWeightCount" type="hidden" id="wet_count" />
 
+@*for Horticulture waste & Construction demolation waste*@
+<input value="@Model.GcHWWeightCount" type="hidden" id="GcHW_Weight_coll" />
+<input value="@Model.GcCDWWeightCount" type="hidden" id="GcCDW_Weight_coll" />
+
 <input type="hidden" id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
 
 <section class="dashboard-counts no-padding-bottom">
@@ -393,57 +397,57 @@
 <section class="dashboard-counts no-padding-bottom">
     <div class="container-fluid">
         @*<div class="row  has-shadow" style="padding:0px 15px;background-color:#fff;">
-            <div class="col-lg-12">
-                <div class="bar-chart-example card">
-                    <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">Household Collection</h3>
+                <div class="col-lg-12">
+                    <div class="bar-chart-example card">
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h4">Household Collection</h3>
 
-                    </div>
-                    <div class="card-body">
-                        <div style="position:relative ;height: 200px; width: 100%;">
-                            <div style="position:relative;top: 100%;z-index: 1; background-color:#fff;height:12px;width:60px;padding-top:10px">
+                        </div>
+                        <div class="card-body">
+                            <div style="position:relative ;height: 200px; width: 100%;">
+                                <div style="position:relative;top: 100%;z-index: 1; background-color:#fff;height:12px;width:60px;padding-top:10px">
 
-                            </div>
-                            <div id="chartContainer" style="height: 200px; width: 100%;position:absolute">
+                                </div>
+                                <div id="chartContainer" style="height: 200px; width: 100%;position:absolute">
+                                </div>
+
                             </div>
 
                         </div>
-
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         @*<div class="row  has-shadow" style="padding:0px 15px;background-color:#fff;margin-top: 25px;">
-            <div class="col-lg-12">
-                <div class="bar-chart-example card">
-                    <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">Target Achieved </h3>
-                    </div>
-                    <div class="card-body">
-                        <div style="position:relative ;height: 200px; width: 100%;">
-                            <div style="position:relative;top: 100%;z-index: 1; background-color:#fff;height:12px;width:60px;padding-top:10px">
+                <div class="col-lg-12">
+                    <div class="bar-chart-example card">
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h4">Target Achieved </h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="position:relative ;height: 200px; width: 100%;">
+                                <div style="position:relative;top: 100%;z-index: 1; background-color:#fff;height:12px;width:60px;padding-top:10px">
 
-                            </div>
-                            <div id="chartContainerTarget" style="height: 200px; width: 100%;position:absolute">
+                                </div>
+                                <div id="chartContainerTarget" style="height: 200px; width: 100%;position:absolute">
+                                </div>
+
                             </div>
 
                         </div>
-
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         @*<ul class="nav nav-tabs" role="tablist" style="border-bottom: none;">
-            <li class="nav-item">
-                <a class="tabid nav-link active" data-toggle="tab" href="#housetotal">Household Collection Target</a>
-            </li>
-            <li class="nav-item" style="padding-left: 3px;">
-                <a class="tabid nav-link" data-toggle="tab" href="#houseward">Ward / Prabhag Wise Collection</a>
-            </li>
-            <li class="nav-item" style="padding-left: 3px;">
-                <a class="tabid nav-link" data-toggle="tab" href="#housearea">Area Wise Collection</a>
-            </li>
-        </ul>*@
+                <li class="nav-item">
+                    <a class="tabid nav-link active" data-toggle="tab" href="#housetotal">Household Collection Target</a>
+                </li>
+                <li class="nav-item" style="padding-left: 3px;">
+                    <a class="tabid nav-link" data-toggle="tab" href="#houseward">Ward / Prabhag Wise Collection</a>
+                </li>
+                <li class="nav-item" style="padding-left: 3px;">
+                    <a class="tabid nav-link" data-toggle="tab" href="#housearea">Area Wise Collection</a>
+                </li>
+            </ul>*@
 
         <div class="row  has-shadow" style="padding:0px 15px;background-color:#fff">
 
@@ -502,7 +506,7 @@
                 <div class="bar-chart-example card">
                     <div class="card-header d-flex align-items-center">
                         @*<h3 class="h4" style="width:50%">वर्गीकरणाचे प्रकार</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण घर संकलन
-                        : @Model.TotalHouseCount</span>*@
+                            : @Model.TotalHouseCount</span>*@
                         <h3 class="h4" style="width:35%"> Segregation Types</h3><span style="font-size:14px;font-weight:700;width:65%;text-align:right">
                             Total Household Collection
                             : @Model.TotalHouseCount
@@ -514,8 +518,8 @@
 
                             </div>
                             @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
-                                <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
-                            </div>*@
+                                    <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                                </div>*@
                             <div id="chartContainerPie" style="height: 200px; width: 100%;position:absolute">
                             </div>
 
@@ -535,8 +539,8 @@
 
                             </div>
                             @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
-                                <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
-                            </div>*@
+                                    <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                                </div>*@
                             @*style="color:#fff;background-color: #3ab59e;"*@
                             <div id="chartContainerPieDump" style="height: 200px; width: 100%;position:absolute">
                             </div>
@@ -548,12 +552,12 @@
         </div>
 
         <div class="row  has-shadow" style="padding:0px 15px;background-color:#fff;margin-top: 25px;">
-            
+
             <div class="col-lg-6">
                 <div class="bar-chart-example card">
                     <div class="card-header d-flex align-items-center">
                         @*<h3 class="h4" style="width:50%">डंप यार्ड तपशील</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण वजन: @Model.TotalGcWeightCount Ton</span>*@
-                        <h3 class="h4" style="width:35%">Horticulture and Construction Demolation Waste Details</h3><span style="font-size:14px;font-weight:700;width:65%;text-align:right">Total weight: @Model.GcWeightCount Ton</span>
+                        <h3 class="h4" style="width:35%">Horticulture and Construction Demolation Waste Details</h3><span style="font-size:14px;font-weight:700;width:65%;text-align:right">Total weight: @(Model.GcHWWeightCount + Model.GcCDWWeightCount) Ton</span>
                     </div>
                     <div class="card-body">
                         <div style="position:relative ;height: 200px; width: 100%;">
@@ -561,8 +565,8 @@
 
                             </div>
                             @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
-                                <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
-                            </div>*@
+                                    <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                                </div>*@
                             @*style="color:#fff;background-color: #3ab59e;"*@
                             <div id="chartContainerPieHWCDW" style="height: 200px; width: 100%;position:absolute">
                             </div>

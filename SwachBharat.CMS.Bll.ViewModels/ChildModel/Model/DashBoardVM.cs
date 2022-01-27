@@ -100,6 +100,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<double> SSGcWeightCount { get; set; }
         public Nullable<double> SSDryWeightCount { get; set; }
         public Nullable<double> SSWetWeightCount { get; set; }
-
+        public Nullable<double> GcHWWeightCount { get; set; }
+        public Nullable<double> GcCDWWeightCount { get; set; }
     }
 }

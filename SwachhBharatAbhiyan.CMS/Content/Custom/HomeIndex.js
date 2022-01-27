@@ -709,12 +709,17 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-    //var TotalCDW_coll = $('#TotalCDW_coll').val();
-    //var TotalHW_coll = $('#TotalHW_coll').val();
-    var TotalCDW_coll = 45;
-    var TotalHW_coll = 55;
-    var tot_Total_HW_CDW = TotalCDW_coll + TotalHW_coll;
+    var TotalCDW_coll = $('#GcCDW_Weight_coll').val();
+    var TotalHW_coll = $('#GcHW_Weight_coll').val();
 
+    //var TotalCDW_coll = 45;
+    //var TotalHW_coll = 55;
+
+    var tot_Total_HW_CDW = TotalCDW_coll + TotalHW_coll;
+    if (tot_Total_HW_CDW == 0) {
+        tot_Total_HW_CDW = null;
+
+    }
     //var tot_dump_count;
     //if (tot_dump_null_check == 0) {
     //    tot_dump_count = null;
