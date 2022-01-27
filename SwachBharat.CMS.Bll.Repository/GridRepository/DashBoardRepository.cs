@@ -2614,6 +2614,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     gpIdfk = x.gcId,
                     gpIdpk = x.gcId,
                     batteryStatus = x.batteryStatus,
+                    los=x.los,
 
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
@@ -3991,7 +3992,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                 t1.endNote,
                                 t2.qrEmpName,
 
-                            }).OrderByDescending(c => c.startDate).ThenByDescending(c => c.startTime).ToList();
+                            }).OrderByDescending(c => c.qrEmpDaId).ToList();//.OrderByDescending(c => c.startTime).ToList();
 
                 //return obj.OrderBy(c => c.Date).ThenByDescending(c => c.StartTime);
 
@@ -4103,7 +4104,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 //    obj = obj.Where(fullEntry => fullEntry.CompareDate >= fdate && fullEntry.CompareDate <= dt1).OrderByDescending(c => c.CompareDate).ToList();
                 //}
 
-                return obj.OrderByDescending(c => c.daDateTIme).ToList();
+                return obj.OrderByDescending(c => c.qrEmpDaId).ToList();
             }
         }
 
