@@ -149,6 +149,7 @@
             { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": false },
             { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
             { "data": "gcDate", "name": "gcDate", "autoWidth": false },
+            { "data": "los", "name": "los", "autoWidth": false },
 
 
         ]
