@@ -961,6 +961,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.isActive = data.isActive;
                             model.bloodGroup = data.bloodGroup;
                             model.gcTarget = data.gcTarget;
+                            model.userDesignation = data.userDesignation;
                             //model.EmployeeType = Emptype;
                             db.SaveChanges();
                         }
@@ -3115,6 +3116,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.isActive = data.isActive;
             model.gcTarget = data.gcTarget;
             model.EmployeeType = Emptype;
+            model.userDesignation = data.userDesignation;
             return model;
         }
 
@@ -3582,6 +3584,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.bloodGroup = data.bloodGroup;
             model.gcTarget = data.gcTarget;
             model.EmployeeType = data.EmployeeType;
+            model.userDesignation = data.userDesignation;
             return model;
         }
 

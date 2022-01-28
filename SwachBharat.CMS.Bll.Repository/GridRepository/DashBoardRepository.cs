@@ -594,8 +594,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
-
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == null).ToList();
@@ -631,6 +631,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -649,7 +651,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                               (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
 
 
                         data = model.ToList();
@@ -677,7 +680,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        
 
 
                     }).Where(x => x.isActive == "False" && x.EmployeeType == null).ToList();
@@ -713,6 +718,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -724,7 +731,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -751,7 +759,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == "L").ToList();
@@ -787,6 +796,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -798,7 +809,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -824,7 +836,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == "S").ToList();
@@ -860,6 +873,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -871,7 +886,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -898,7 +914,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).Where(x => x.isActive == "False" && x.EmployeeType == "L").ToList();
@@ -934,6 +951,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -945,7 +964,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -971,7 +991,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).Where(x => x.isActive == "False" && x.EmployeeType == "S").ToList();
@@ -1007,6 +1028,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -1018,7 +1041,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -1045,7 +1069,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).Where(x => x.EmployeeType == "").ToList();
@@ -1081,6 +1106,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -1092,7 +1119,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -1119,7 +1147,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).Where(x => x.EmployeeType == "L").ToList();
@@ -1155,6 +1184,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -1166,7 +1197,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -1193,7 +1225,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).Where(x => x.EmployeeType == "S").ToList();
@@ -1229,6 +1262,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
                     if (!string.IsNullOrEmpty(SearchString))
@@ -1240,7 +1275,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
-                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -1266,7 +1302,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
-                        EmployeeType = x.EmployeeType
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
 
 
                     }).ToList();
@@ -1302,6 +1339,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         {
                             item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
                         }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
                     }
 
 

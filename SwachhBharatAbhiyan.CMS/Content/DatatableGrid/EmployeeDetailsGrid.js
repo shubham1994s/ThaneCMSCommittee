@@ -78,6 +78,7 @@ function Employee() {
             { "data": "bloodGroup", "name": "bloodGroup", "width": "25%" },
             { "data": "isActive", "name": "isActive", "width": "25%" },
             { "data": "gcTarget", "name": "gcTarget", "width": "25%" },
+            { "data": "userDesignation", "name": "userDesignation", "width": "25%" },
             { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"   onclick="Edit(' + full["userId"] + ')"  ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
             //<a  data-toggle="modal" style="cursor:pointer;margin-left:10px;" class="tooltip1" style="cursor:pointer"onclick="Delete(' + full["userId"] + ')" ><i class="material-icons delete-icon">delete</i><span class="tooltiptext1">Delete</span> </a>
         ]
@@ -206,6 +207,7 @@ function NotActiveEmployee() {
             { "data": "bloodGroup", "name": "bloodGroup", "width": "25%" },
             { "data": "isActive", "name": "isActive", "width": "25%" },
             { "data": "gcTarget", "name": "gcTarget", "width": "25%" },
+            { "data": "userDesignation", "name": "userDesignation", "width": "25%" },
             { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"   onclick="Edit(' + full["userId"] + ')"  ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
             //<a  data-toggle="modal" style="cursor:pointer;margin-left:10px;" class="tooltip1" style="cursor:pointer"onclick="Delete(' + full["userId"] + ')" ><i class="material-icons delete-icon">delete</i><span class="tooltiptext1">Delete</span> </a>
         ]
