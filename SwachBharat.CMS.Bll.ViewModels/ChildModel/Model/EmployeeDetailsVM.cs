@@ -25,5 +25,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string gcTarget { get; set; }
 
         public string EmployeeType { get; set; }
+        public string userDesignation { get; set; }
+
+
     }
 }

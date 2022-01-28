@@ -190,24 +190,24 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             @*@Html.Label("रक्त गट / Blood Group ")*@
                             @Html.Label("Blood Group ")
-                                @{  var RlistItems = new List<SelectListItem>();
+                            @{ var RlistItems = new List<SelectListItem>();
 
-                RlistItems.Add(new SelectListItem { Text = "Select Blood Group", Value = "0" });
-                RlistItems.Add(new SelectListItem { Text = "A+ve", Value = "A+ve" });
-                RlistItems.Add(new SelectListItem { Text = "A-ve", Value = "A-ve" });
-                RlistItems.Add(new SelectListItem { Text = "B+ve", Value = "B+ve" });
-                RlistItems.Add(new SelectListItem { Text = "B-ve", Value = "B-ve" });
-                RlistItems.Add(new SelectListItem { Text = "O+ve", Value = "O+ve" });
-                RlistItems.Add(new SelectListItem { Text = "O-ve", Value = "O-ve" });
-                RlistItems.Add(new SelectListItem { Text = "AB+ve", Value = "AB+ve" });
-                RlistItems.Add(new SelectListItem { Text = "AB-ve", Value = "AB-ve" });
-                                }
+                                RlistItems.Add(new SelectListItem { Text = "Select Blood Group", Value = "0" });
+                                RlistItems.Add(new SelectListItem { Text = "A+ve", Value = "A+ve" });
+                                RlistItems.Add(new SelectListItem { Text = "A-ve", Value = "A-ve" });
+                                RlistItems.Add(new SelectListItem { Text = "B+ve", Value = "B+ve" });
+                                RlistItems.Add(new SelectListItem { Text = "B-ve", Value = "B-ve" });
+                                RlistItems.Add(new SelectListItem { Text = "O+ve", Value = "O+ve" });
+                                RlistItems.Add(new SelectListItem { Text = "O-ve", Value = "O-ve" });
+                                RlistItems.Add(new SelectListItem { Text = "AB+ve", Value = "AB+ve" });
+                                RlistItems.Add(new SelectListItem { Text = "AB-ve", Value = "AB-ve" });
+                            }
                             @Html.DropDownListFor(model => model.bloodGroup, RlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-                      
+
 
 
                             <span class="text-danger" id="err_pw"></span>
@@ -215,16 +215,24 @@
                         </div>
 
                     </div>
-                    <div class="col-md-2"><br />
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @*@Html.Label("आयएमईआय संख्या / Login Number ")*@
+                            @Html.Label("Employee Designation")
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.userDesignation, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                            <span class="text-danger" id="err_Designation"></span>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <br />
                         <div class="form-group" style="margin-top:10px">
                             <label>Is Active </label>
                             @Html.CheckBox("isActive")
                         </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-                       
                     </div>
                 </div>
                 <div class="row">
@@ -395,7 +403,12 @@
                 $('#userPassword').focus();
                 return false;
             }
-
+            if ($.trim($("#userDesignation").val()) == '') {
+                //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
+                $("#err_Designation").html("Designation is Required").delay(1500).show().fadeOut('slow');
+                $('#userDesignation').focus();
+                return false;
+            }
           
 
             return true;
