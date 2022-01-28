@@ -26,6 +26,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string batteryStatus { get; set; }
         public string WasteType { get; set; }
         public string los { get; set; }
+        public string CType { get; set; }
         public string gpBeforImage { get; set; }
         public string gpAfterImage { get; set; }
         public Nullable<int> garbageType { get; set; }

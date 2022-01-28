@@ -382,38 +382,38 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     //   debugger;
-    //var not_coll = $('#not_coll').val();
-    //var mixed_coll = $('#mixed_coll').val();
-    //var bif_coll = $('#bif_coll').val();
-    //var not_spec_coll = $('#not_spec_coll').val();
+    var not_coll = $('#not_coll').val();
+    var mixed_coll = $('#mixed_coll').val();
+    var bif_coll = $('#bif_coll').val();
+    var not_spec_coll = $('#not_spec_coll').val();
 
-    //var TotalCDW_coll = $('#TotalCDW_coll').val();
-    //var TotalHW_coll = $('#TotalHW_coll').val();
-    //var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
-    //var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
-    //var TotalDHW_coll = $('#TotalDHW_coll').val();
-    //var TotalSW_coll = $('#TotalSW_coll').val();
-    //var tot_house_null_check = $('#tot_house_coll').val();
+    var TotalCDW_coll = $('#TotalCDW_coll').val();
+    var TotalHW_coll = $('#TotalHW_coll').val();
+    var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
+    var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
+    var TotalDHW_coll = $('#TotalDHW_coll').val();
+    var TotalSW_coll = $('#TotalSW_coll').val();
+    var tot_house_null_check = $('#tot_house_coll').val();
 
-    var not_coll = 10;
-    var mixed_coll = 10;
-    var bif_coll = 10;
-    var not_spec_coll = 10;
+    //var not_coll = 10;
+    //var mixed_coll = 10;
+    //var bif_coll = 10;
+    //var not_spec_coll = 10;
 
-    var TotalCDW_coll = 10;
-    var TotalHW_coll = 10;
-    var TotalDryWaste_coll = 10;
-    var TotalWetWaste_coll = 10;
-    var TotalDHW_coll = 10;
-    var TotalSW_coll = 10;
-    var tot_house_null_check = 100;
+    //var TotalCDW_coll = 10;
+    //var TotalHW_coll = 10;
+    //var TotalDryWaste_coll = 10;
+    //var TotalWetWaste_coll = 10;
+    //var TotalDHW_coll = 10;
+    //var TotalSW_coll = 10;
+    //var tot_house_null_check = 100;
 
     var tot_house_coll;
     if (tot_house_null_check == 0) {
         tot_house_coll = null;
     } else {
-        /*tot_house_coll = $('#tot_house_coll').val();*/
-        tot_house_coll = 100;
+        tot_house_coll = $('#tot_house_coll').val();
+        //tot_house_coll = 100;
     }
 
     var res_mixed_coll = mixed_coll * 100 / tot_house_coll;
@@ -613,20 +613,20 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-
-    //var dry_count = $('#dry_count').val();
-    //var wet_count = $('#wet_count').val();
-    //var tot_dump_null_check = $('#tot_dump_count').val();
-    var dry_count = 45;
-    var wet_count =55;
-    var tot_dump_null_check =100;
+    debugger;
+    var dry_count = $('#dry_count').val();
+    var wet_count = $('#wet_count').val();
+    var tot_dump_null_check = $('#tot_dump_count').val();
+    //var dry_count = 45;
+    //var wet_count =55;
+    //var tot_dump_null_check =100;
 
     var tot_dump_count;
     if (tot_dump_null_check == 0) {
         tot_dump_count = null;
     } else {
-       /* tot_dump_count = $('#tot_dump_count').val();*/
-        tot_dump_count = 100;
+        tot_dump_count = $('#tot_dump_count').val();
+       // tot_dump_count = 100;
     }
 
     var res_dry_count = parseFloat(dry_count) * 100 / parseFloat(tot_dump_count);
@@ -708,8 +708,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-
-    var TotalCDW_coll = $('#GcCDW_Weight_coll').val();
+    debugger;
     var TotalCDW_coll = $('#GcCDW_Weight_coll').val();
     var TotalHW_coll = $('#GcHW_Weight_coll').val();
 
@@ -720,6 +719,10 @@ $(document).ready(function () {
     if (tot_Total_HW_CDW == 0) {
         tot_Total_HW_CDW = null;
 
+    }
+    else {
+        tot_Total_HW_CDW = TotalCDW_coll + TotalHW_coll;
+        // tot_Total_HW_CDW = 100;
     }
     //var tot_dump_count;
     //if (tot_dump_null_check == 0) {
@@ -732,9 +735,9 @@ $(document).ready(function () {
     var res_TotalCDW_coll = TotalCDW_coll * 100 / tot_Total_HW_CDW;
     var res_TotalHW_coll = TotalHW_coll * 100 / tot_Total_HW_CDW;
 
-    //var ary3 = []
-    //ary3.push({ v: dry_count });
-    //ary3.push({ v: wet_count });
+    var ary3 = []
+    ary3.push({ v: TotalCDW_coll });
+    ary3.push({ v: TotalHW_coll });
 
 
     //console.log(ary3);
@@ -779,7 +782,7 @@ $(document).ready(function () {
     showDefaultText(chart, "No Data available");
     chart.render();
     function showDefaultText(chart, text) {
-        var isEmpty = !(tot_dump_count && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+        var isEmpty = !(tot_Total_HW_CDW && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
 
 
 
