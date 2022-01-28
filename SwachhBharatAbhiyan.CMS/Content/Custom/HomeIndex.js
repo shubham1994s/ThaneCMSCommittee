@@ -699,6 +699,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     var TotalCDW_coll = $('#GcCDW_Weight_coll').val();
+    var TotalCDW_coll = $('#GcCDW_Weight_coll').val();
     var TotalHW_coll = $('#GcHW_Weight_coll').val();
 
     //var TotalCDW_coll = 45;
