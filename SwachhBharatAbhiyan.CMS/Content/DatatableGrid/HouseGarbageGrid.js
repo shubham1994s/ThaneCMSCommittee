@@ -162,7 +162,26 @@
                     }
                 }
             },
-
+           // { "data": "ctype", "name": "ctype", "autoWidth": false },
+            {
+                "data": "ctype", "render": function (data, type, full, meta) {
+                    if (full["ctype"] == null) {
+                        return 'Residential';
+                    }
+                    else if (full["ctype"] == 'RBW') {
+                        return 'Residential Building Waste';
+                    }
+                    else if (full["ctype"] == 'RSW') {
+                        return 'Residential Slum Waste';
+                    }
+                    else if (full["ctype"] == 'CW') {
+                        return 'Commercial Waste';
+                    }
+                    else {
+                        return 'Not Available';
+                    }
+                }
+            },
 
         ]
     });
@@ -200,6 +219,7 @@ function PopImages(cel) {
 }
 
 function Search() {
+    debugger;
     var txt_fdate, txt_tdate, Client, UserId;
     var name = [];
     var arr = [$('#txt_fdate').val(), $('#txt_tdate').val()];

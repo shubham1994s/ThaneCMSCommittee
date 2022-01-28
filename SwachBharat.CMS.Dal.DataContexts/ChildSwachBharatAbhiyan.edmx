@@ -2033,6 +2033,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="batteryStatus" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="WasteType" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="los" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="gpBeforImage" Nullable="true" />
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
@@ -3196,6 +3197,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="batteryStatus" ColumnName="batteryStatus" />
                 <ScalarProperty Name="WasteType" ColumnName="WasteType" />
                 <ScalarProperty Name="los" ColumnName="los" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
                 <ScalarProperty Name="gpBeforImage" ColumnName="gpBeforImage" />
                 <ScalarProperty Name="gpAfterImage" ColumnName="gpAfterImage" />
                 <ScalarProperty Name="garbageType" ColumnName="garbageType" />
