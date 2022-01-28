@@ -34,7 +34,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
             {
                 sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
-                sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
+                 sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
+                //sortColumnDir = "desc";
+
             }
             var searchValue = Request.Form.GetValues("search[value]").FirstOrDefault();
             if (Convert.ToInt32(length) >= 5 || Session["rn"].ToString() == rn)

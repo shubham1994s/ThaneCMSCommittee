@@ -149,6 +149,19 @@
             { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": false },
             { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
             { "data": "gcDate", "name": "gcDate", "autoWidth": false },
+          //  { "data": "los", "name": "los", "autoWidth": false },
+            {
+                "data": "los", "render": function (data, type, full, meta) {
+                    if (full["los"] != null)
+                    {
+                        return '<p> ' + (full["los"])
+                    }
+                    else
+                    {
+                        return 'Not Available';
+                    }
+                }
+            },
 
 
         ]
