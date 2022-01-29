@@ -2561,7 +2561,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAGrabageCollectionGridRow> GetHouseGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3)
+        public IEnumerable<SBAGrabageCollectionGridRow> GetHouseGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -2632,7 +2632,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 //                }
 
 
-                var data = db.SP_GarbageCollection(appId, userId, fdate, tdate, param1, param2, param3).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_GarbageCollection(appId, userId, fdate, tdate, param1, param2, param3,param4).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -2640,9 +2640,11 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     UserName = x.houseOwner,
                     HouseNumber = x.houseOwner,
                     gcDate = x.gcDate,
-                    gcType = 1,
+                   // gcType = 1,
+                  
                     type1 = x.garbageType.ToString(),
-                    Address = checkNull(x.locAddresss).Replace("Unnamed Road,", ""),
+                    Ctype =x.gcType.ToString(),
+                    Address = (x.locAddresss).Replace("Unnamed Road,", ""),
                     gpBeforImage = x.gpBeforImage,
                     gpAfterImage = x.gpAfterImage,
                     VehicleNumber = x.vehicleNumber,
@@ -4445,29 +4447,14 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         NotSpecidfied = x.NotSpecidfied,
                         userId = x.userId,
                         userName = x.userName,
-                        ConstructionAndDemolition = x.DHW,
+                        ConstructionAndDemolition = x.CDW,
                         Horticulture = x.HW,
                         WetWaste = x.WetWaste,
                         DryWaste = x.DryWaste,
                         DomesticHazardous = x.DHW,
                         Sanitary = x.SW
 
-                        //inTime ="10.25",
-                        //Count = 100,
-                        //ToDate ="25-01-2022",
-                        //MixedCount = 10,
-                        //Bifur =10,
-                        //NotCollected =10,
-                        //gcTarget = "100",
-                        //NotSpecidfied = 10,
-                        //userId = 1,
-                        //userName ="XYZ",
-                        //ConstructionAndDemolition = 10,
-                        //Horticulture = 10,
-                        //WetWaste =10,
-                        //DryWaste =10,
-                        //DomesticHazardous = 10,
-                        //Sanitary = 10
+                      
 
                     });
                 }

@@ -88,7 +88,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             return FiltersDictionary;
         }
 
-        private IDataTableRepository GetRepository(string INSERT_ID,string RepositoryName, string searchString = "", DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientId = null, int? param1 = null, int? param2 = null, int? param3 = null)
+        private IDataTableRepository GetRepository(string INSERT_ID,string RepositoryName, string searchString = "", DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientId = null, int? param1 = null, int? param2 = null, int? param3 = null, int? param4 = null)
         {
             int product = 0, category = 0;
             //string[] arr = new string[6];
@@ -136,6 +136,14 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         if (arr[6].ToString() != null && arr[6].ToString() != "null" && arr[6] != "0" && arr[6] != " " && arr[5].ToString() != string.Empty)
                         { param3 = Convert.ToInt32(arr[6]); }
                         else param3 = null;
+                    }
+
+                    if (arr.Length > 7)
+                    {
+                        if (arr[7].ToString() != null && arr[7].ToString() != "null"  && arr[7] != " " && arr[7].ToString() != string.Empty)
+                        {
+                            param4 = Convert.ToInt32(arr[7]); }
+                        else param4 = null;
                     }
 
                     //if (arr[3].ToString() != null && arr[3] != " ")
@@ -259,7 +267,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "GarbageHouse":
-                    gridRepository = new HGarbageCotectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3);
+                    gridRepository = new HGarbageCotectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3,param4);
                     return gridRepository;
                     break;
 

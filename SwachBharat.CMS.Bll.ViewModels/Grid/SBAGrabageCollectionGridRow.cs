@@ -28,6 +28,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public string ReferanceId { get; set; }
         public string type1 { get; set; }
 
+        public string Ctype { get; set; }
+
         public Nullable<int> dyIdfk { get; set; }
         public Nullable<int> dyIdpk { get; set; }
 
