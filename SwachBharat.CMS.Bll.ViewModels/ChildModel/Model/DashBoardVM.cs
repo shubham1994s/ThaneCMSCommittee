@@ -102,5 +102,19 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<double> SSWetWeightCount { get; set; }
         public Nullable<double> GcHWWeightCount { get; set; }
         public Nullable<double> GcCDWWeightCount { get; set; }
+
+
+        public Nullable<int> ResidentialCollection { get; set; }
+        public Nullable<int> ResidentialBuildingCollection { get; set; }
+        public Nullable<int> ResidentialSlumCollection { get; set; }
+        public Nullable<int> CommercialCollection { get; set; }
+
+        public Nullable<int> ConstructionDemolitionCount { get; set; }
+        public Nullable<int> HorticultureCount { get; set; }
+        public Nullable<int> WetWasteCount { get; set; }
+        public Nullable<int> DryWasteCount { get; set; }
+        public Nullable<int> DemosticHazardousCount { get; set; }
+        public Nullable<int> SanitaryCount { get; set; }
+
     }
 }

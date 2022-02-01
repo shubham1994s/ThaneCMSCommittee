@@ -2739,6 +2739,7 @@ namespace SwachBharat.CMS.Bll.Services
         //}
         // Added By Saurabh (02 July 2019)
         public DashBoardVM GetHouseOnMapDetails()
+        
         {
             DashBoardVM model = new DashBoardVM();
             try
@@ -2772,6 +2773,19 @@ namespace SwachBharat.CMS.Bll.Services
                         model.NotSpecified = data.NotSpecified;
                         model.LiquidCollection = data.TotalLiquidLatLongCount;
                         model.StreetCollection = data.TotalStreetLatLongCount;
+
+                        model.ResidentialCollection = data.TotalRWLatLongCount;
+                        model.ResidentialBuildingCollection = data.TotalRBWLatLongCount;
+                        model.ResidentialSlumCollection = data.TotalRSWLatLongCount;
+                        model.CommercialCollection = data.TotalCWLatLongCount;
+
+                        model.ConstructionDemolitionCount = data.ConstructionDemolition;
+                        model.HorticultureCount = data.Horticulture;
+                        model.WetWasteCount = data.WetWaste;
+                        model.DryWasteCount = data.DryWaste;
+                        model.DemosticHazardousCount = data.DemosticHazardous;
+                        model.SanitaryCount = data.Sanitory;
+
                         return model;
                     }
 

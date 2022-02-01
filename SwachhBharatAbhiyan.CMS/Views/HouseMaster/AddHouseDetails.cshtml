@@ -20,6 +20,9 @@
         top: -1px;
         right: 5px;
     }
+    .capitalize {
+        text-transform: capitalize;
+    }
 </style>
 @*<title class="title_change"></title>*@
 @using (Html.BeginForm("AddHouseDetails", "HouseMaster", FormMethod.Post, new { enctype = "multipart/form-data", data_toggle = "validator", role = "form" }))
@@ -54,7 +57,7 @@
                             @*@Html.Label("नाव / Name")*@
                             @Html.Label("Name")
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.TextBoxFor(model => model.houseOwner, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                            @Html.TextBoxFor(model => model.houseOwner, new { @class = "form-control capitalize", style = "font-family:Arial, FontAwesome" })
                             @Html.ValidationMessageFor(model => model.houseOwner, "", new { @class = "text-danger" })
                             <span class="text-danger" id="err_name"></span>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
