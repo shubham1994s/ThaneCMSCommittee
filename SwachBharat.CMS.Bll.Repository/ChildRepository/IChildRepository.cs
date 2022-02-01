@@ -129,7 +129,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         //Added By saurabh (04 June 2019)
 
-        List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype);
+        List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype);
 
         //Code Optimization (code)
         //SBALHouseLocationMapView1 GetAllHouseLocation(string date, int userid,int areaid,int wardNo, string SearchString, string start);

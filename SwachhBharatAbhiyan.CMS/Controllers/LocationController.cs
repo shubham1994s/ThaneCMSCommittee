@@ -297,7 +297,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         //        return Redirect("/Account/Login");
         //}
 
-        public ActionResult HouseLocationList(string date, string userid, string areaId, string wardNo, string SearchString,string garbageType,string filterType)
+        public ActionResult HouseLocationList(string date, string userid, string areaId, string wardNo, string SearchString,string garbageType,string filterType,string ctype)
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -348,7 +348,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 }
 
                 List<SBALHouseLocationMapView> obj = new List<SBALHouseLocationMapView>();
-                obj = childRepository.GetAllHouseLocation(date, user, area, ward, SearchString, GarbageType, FilterType,null);
+                obj = childRepository.GetAllHouseLocation(date, user, area, ward, SearchString, GarbageType, FilterType,null,ctype);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
