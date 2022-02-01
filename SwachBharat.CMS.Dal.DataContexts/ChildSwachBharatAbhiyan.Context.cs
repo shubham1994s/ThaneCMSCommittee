@@ -18,10 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
+               : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -91,11 +90,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_Dashboard_Details_Result2> SP_Dashboard_Details()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result2>("SP_Dashboard_Details");
-        }
-    
-        public virtual ObjectResult<HouseDetails_Result1> HouseDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HouseDetails_Result1>("HouseDetails");
         }
     
         public virtual ObjectResult<PointDetails_Result> PointDetails()
@@ -583,6 +577,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("Segid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GarbageCollection_Result>("SP_GarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
+        }
+    
+        public virtual ObjectResult<HouseDetails_Result1> HouseDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HouseDetails_Result1>("HouseDetails");
         }
     }
 }

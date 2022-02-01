@@ -162,6 +162,35 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
+                            @*@Html.Label("रक्त गट / Blood Group ")*@
+                            @Html.Label("Category ")
+                            @{ var ClistItems = new List<SelectListItem>();
+
+                                ClistItems.Add(new SelectListItem { Text = "Select House Category", Value = "0" });
+                                ClistItems.Add(new SelectListItem { Text = "Residential", Value = "RW" });
+                                ClistItems.Add(new SelectListItem { Text = "Residential Building Waste", Value = "RBW" });
+                                ClistItems.Add(new SelectListItem { Text = "Residential Slum Waste", Value = "RSW" });
+                                ClistItems.Add(new SelectListItem { Text = "Commercial Waste", Value = "CW" });
+
+                            }
+                            @Html.DropDownListFor(model => model.houseCategory, ClistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+
+
+                            <span class="text-danger" id="err_cat"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+
+
+
+                    </div>
+
+
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
                             @*<label for="Select_Image">क्यु आर  कोड  / QR-Code Image</label>*@
                             @*@Html.Label("स्कॅनिफाय कोड  / Scaniffy Code")*@
                             @Html.Label("Scaniffy Code")
@@ -199,14 +228,12 @@
 
                     </div>
 
-
                     @Html.HiddenFor(c => c.ReferanceId)
 
                     @Html.HiddenFor(model => model.houseLong, new { @class = "form-control", required = "required" })
 
                     @Html.HiddenFor(model => model.houseLat, new { @class = "form-control", required = "required" })
                 </div>
-
 
                 <center><span class="text-danger" id="err_generate"></span></center>
                 <div class="row">
@@ -799,6 +826,12 @@
 
         });
         function validation() {
+
+            if ($.trim($("#houseCategory").val()) == "-1" || $.trim($("#houseCategory").val()) == "0") {
+                $("#err_cat").html("Category is Required").delay(1500).show().fadeOut('slow');
+                $('#houseCategory').focus();
+                return false;
+            }
 
             //if ($.trim($("#houseOwner").val()) == '') {
             //    $("#err_name").html("नाव आवश्यक आहे / Name is Required").delay(1500).show().fadeOut('slow');

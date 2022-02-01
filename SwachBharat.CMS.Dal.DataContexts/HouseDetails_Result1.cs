@@ -16,6 +16,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public int houseId { get; set; }
         public string ReferanceId { get; set; }
         public string Name { get; set; }
+        public string NameMar { get; set; }
         public string Images { get; set; }
         public string Zone { get; set; }
         public string Ward { get; set; }
@@ -23,5 +24,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string HouseNumber { get; set; }
         public string MobileNumber { get; set; }
         public string Address { get; set; }
+        public string houseLat { get; set; }
+        public string houseLong { get; set; }
+        public string Category { get; set; }
     }
 }
