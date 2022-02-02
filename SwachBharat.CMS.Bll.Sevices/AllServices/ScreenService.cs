@@ -792,6 +792,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.houseLong = data.houseLong;
                             model.ZoneId = data.ZoneId;
                             model.lastModifiedEntry = DateTime.Now;
+                            model.CType = (data.houseCategory == "RW") ? null: data.houseCategory;
                             //if(data.WasteType== "DW")
                             //{ 
                             //model.WasteType = data.WasteType;
@@ -3107,6 +3108,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.ZoneId = data.ZoneId;
             model.ReferanceId = data.ReferanceId;
             model.modified = DateTime.Now;
+            model.CType = (data.houseCategory=="RW") ? null: data.houseCategory;
             //if (data.WasteType == "DW")
             //{
             //    model.WasteType = data.WasteType;
@@ -3510,6 +3512,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.houseLat = data.houseLat;
             model.houseLong = data.houseLong;
             model.ReferanceId = data.ReferanceId;
+            model.houseCategory = (data.CType is null)? "RW" : data.CType;
             using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
             {
                 if (data.AreaId > 0)

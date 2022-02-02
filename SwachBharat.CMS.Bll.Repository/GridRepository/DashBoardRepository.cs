@@ -541,7 +541,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Mobile = x.MobileNumber,
                     Name = x.Name,
                     QRCode = ThumbnaiUrlCMS + x.Images.Trim(),
-                    ReferanceId = x.ReferanceId
+                    ReferanceId = x.ReferanceId,
+                    Category = x.Category
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))
                 {
@@ -562,7 +563,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                         (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
                                         (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
                                         (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
-                                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode) + " " +
+                                        (string.IsNullOrEmpty(c.Category) ? " " : c.Category)).ToUpper().Contains(SearchString.ToUpper())).ToList();
 
 
                     data = model.ToList();
