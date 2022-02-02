@@ -673,7 +673,7 @@
                         if (gar_type != null) {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4>' + data[i].houseOwnerName + '</h4><p><b>House Id: </b>' + data[i].ReferanceId + '</p>';
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].houseOwnerName + '</h4><p><b>House Id: </b>' + data[i].ReferanceId + '</p>';
                                     if (data[i].houseOwnerMobile != '') {
                                         poptext = poptext + '<p><b>Mobile: </b>' + data[i].houseOwnerMobile + '</p>';
                                     }
@@ -689,7 +689,7 @@
 
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4>' + data[i].houseOwnerName + '</h4><p><b>Liquid Waste Id: </b>' + data[i].ReferanceId + '</p>'
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].houseOwnerName + '</h4><p><b>Liquid Waste Id: </b>' + data[i].ReferanceId + '</p>'
                                     if (data[i].houseOwnerMobile != '') {
                                         poptext = poptext + '<p><b>Mobile: </b>' + data[i].houseOwnerMobile + '</p>';
                                     }
@@ -705,7 +705,7 @@
 
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4>' + data[i].houseOwnerName + '</h4><p><b>Street Sweep Id: </b>' + data[i].ReferanceId + '</p>'
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].houseOwnerName + '</h4><p><b>Street Sweep Id: </b>' + data[i].ReferanceId + '</p>'
                                     if (data[i].houseOwnerMobile != '') {
                                         poptext = poptext + '<p><b>Mobile: </b>' + data[i].houseOwnerMobile + '</p>';
                                     }
@@ -721,7 +721,7 @@
                         else {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4>' + data[i].houseOwnerName + '</h4><p><b>House Id: </b>' + data[i].ReferanceId + '</p>'
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].houseOwnerName + '</h4><p><b>House Id: </b>' + data[i].ReferanceId + '</p>'
                                     if (data[i].houseOwnerMobile != '') {
                                         poptext = poptext + '<p><b>Mobile: </b>' + data[i].houseOwnerMobile + '</p>';
                                     }
