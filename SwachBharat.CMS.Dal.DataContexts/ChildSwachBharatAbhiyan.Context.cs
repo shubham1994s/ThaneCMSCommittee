@@ -92,11 +92,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result2>("SP_Dashboard_Details");
         }
     
-        public virtual ObjectResult<HouseDetails_Result1> HouseDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HouseDetails_Result1>("HouseDetails");
-        }
-    
         public virtual ObjectResult<PointDetails_Result> PointDetails()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PointDetails_Result>("PointDetails");
@@ -582,6 +577,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("FilterType", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseOnMapDetails_Result>("SP_HouseOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter);
+        }
+    
+        public virtual ObjectResult<HouseDetails_Result> HouseDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HouseDetails_Result>("HouseDetails");
         }
     }
 }
