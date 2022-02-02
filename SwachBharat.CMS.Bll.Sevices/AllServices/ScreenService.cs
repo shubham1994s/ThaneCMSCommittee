@@ -2485,10 +2485,16 @@ namespace SwachBharat.CMS.Bll.Services
                 {
                     houseLocation = houseLocation.ToList();
                 }
-                else
+               else if (ctype == "NULL")
                 {
+                    houseLocation = houseLocation.Where(c => c.Ctype == null).ToList();
+                }
+              else  if (ctype != "0" || ctype != "NULL")
+                {
+                    
                     houseLocation = houseLocation.Where(c => c.Ctype == ctype).ToList();
                 }
+             
             }
                 else if (Emptype == "L")
                 {
@@ -2573,72 +2579,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                 }
             }
-
-
-            else
-                {
-                    var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
-                    foreach (var x in data)
-                    {
-
-                        DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
-                        //string gcTime = x.gcDate.ToString();
-                        houseLocation.Add(new SBALHouseLocationMapView()
-                        {
-                            houseId = Convert.ToInt32(x.houseId),
-                            ReferanceId = x.ReferanceId,
-                            houseOwnerName = (x.houseOwner == null ? "" : x.houseOwner),
-                            houseOwnerMobile = (x.houseOwnerMobile == null ? "" : x.houseOwnerMobile),
-                            houseAddress = checkNull(x.houseAddress).Replace("Unnamed Road, ", ""),
-                            gcDate = dt.ToString("dd-MM-yyyy"),
-                            gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock
-                                                             //string gcTime = x.gcDate.ToString(),
-                                                             //gcTime = x.gcDate.ToString("hh:mm tt"),
-                                                             //myDateTime.ToString("HH:mm:ss")
-                            ///date = Convert.ToDateTime(x.datt).ToString("dd/MM/yyyy"),
-                            //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
-                            houseLat = x.houseLat,
-                            houseLong = x.houseLong,
-                            // address = x.houseAddress,
-                            //vehcileNumber = x.v,
-                            //userMobile = x.mobile,
-                            garbageType = x.garbageType,
-                            Ctype=x.CType
-                        });
-                    }
-                    if (!string.IsNullOrEmpty(SearchString))
-                    {
-                        // var abc = db.HouseMasters.ToList();
-                        var model = houseLocation.Where(c => c.houseOwnerName.Contains(SearchString) || c.ReferanceId.Contains(SearchString)
-                                                             || c.houseOwnerName.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString)).ToList();
-
-                        //var model = houseLocation.Where(c => ((string.IsNullOrEmpty(c.ReferanceId) ? " " : c.houseOwnerName) + " " +
-                        //                                     (string.IsNullOrEmpty(c.houseOwnerName) ? " " : c.houseOwnerName) + " " +
-                        //                                     (string.IsNullOrEmpty(c.houseOwnerMobile) ? " " : c.houseOwnerMobile) + " " +
-                        //                                     (string.IsNullOrEmpty(c.houseAddress) ? " " : c.houseAddress)).ToLower().Contains(SearchString)).ToList();
-                         
-                        if(ctype== "0")
-                    { 
-                        houseLocation = model.ToList();
-                    }
-                        else
-                    {
-                        houseLocation = model.Where(c=>c.Ctype==ctype).ToList();
-                    }
-
-                    //var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
-                    //                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
-                    //                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
-                    //                        (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
-                    //                        (string.IsNullOrEmpty(c.houseNo) ? " " : c.houseNo) + " " +
-                    //                        (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
-                    //                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
-                    //                        (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
-                    //                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode)).ToUpper().Contains(SearchString.ToUpper())).ToList();
-
-                }
-                }
-                return houseLocation;
+            return houseLocation;
             
         }
 

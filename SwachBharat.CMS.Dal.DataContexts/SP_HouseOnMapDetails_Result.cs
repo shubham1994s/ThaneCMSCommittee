@@ -23,7 +23,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string houseOwnerMobile { get; set; }
         public string houseAddress { get; set; }
         public Nullable<int> garbageType { get; set; }
-        public Nullable<int> gcDate { get; set; }
+        public Nullable<System.DateTime> gcDate { get; set; }
         public string houseLat { get; set; }
         public string houseLong { get; set; }
         public string CType { get; set; }
