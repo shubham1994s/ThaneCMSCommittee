@@ -486,12 +486,12 @@ $(document).ready(function () {
                 { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, color: '#fe9436' },
                 { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, color: '#0086c3' },
 
-                { y: res_TotalCDW_coll, label: "CDW", hover_number: TotalCDW_coll, color: '#63676e' },
-                { y: res_TotalHW_coll, label: "HW", hover_number: TotalHW_coll, color: '#1ad15c' },
+                { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, color: '#63676e' },
+                { y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, color: '#1ad15c' },
                 { y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, color: '#66a2d5' },
                 { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, color: '#186634' },
-                { y: res_TotalDHW_coll, label: "DHW", hover_number: TotalDHW_coll, color: '#8f8b28' },
-                { y: res_TotalSW_coll, label: "SW", hover_number: TotalSW_coll, color: '#c384d3' },
+                { y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, color: '#8f8b28' },
+                { y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, color: '#c384d3' },
             ],
         }]
     });

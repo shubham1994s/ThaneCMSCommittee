@@ -15,11 +15,21 @@ namespace SwachBharat.CMS.Dal.DataContexts
     {
         public Nullable<int> TotalHouseCount { get; set; }
         public Nullable<int> TotalHouseLatLongCount { get; set; }
+        public Nullable<int> TotalRWLatLongCount { get; set; }
+        public Nullable<int> TotalRBWLatLongCount { get; set; }
+        public Nullable<int> TotalRSWLatLongCount { get; set; }
+        public Nullable<int> TotalCWLatLongCount { get; set; }
         public Nullable<int> TotalScanHouseCount { get; set; }
         public Nullable<int> MixedCount { get; set; }
         public Nullable<int> BifurgatedCount { get; set; }
         public Nullable<int> NotCollected { get; set; }
         public Nullable<int> NotSpecified { get; set; }
+        public Nullable<int> ConstructionDemolition { get; set; }
+        public Nullable<int> Horticulture { get; set; }
+        public Nullable<int> WetWaste { get; set; }
+        public Nullable<int> DryWaste { get; set; }
+        public Nullable<int> DemosticHazardous { get; set; }
+        public Nullable<int> Sanitory { get; set; }
         public Nullable<int> TotalLiquidLatLongCount { get; set; }
         public Nullable<int> TotalStreetLatLongCount { get; set; }
     }
