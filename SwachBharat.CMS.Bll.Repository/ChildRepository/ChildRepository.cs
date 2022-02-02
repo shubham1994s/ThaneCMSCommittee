@@ -382,9 +382,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         #endregion
         // Addded By Saurabh (06 June 2019)
-        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype)
+        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype)
         {
-            return screenService.GetAllHouseLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype);
+            return screenService.GetAllHouseLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype);
         }
 
         //Code Optimization (code)

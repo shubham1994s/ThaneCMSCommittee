@@ -237,7 +237,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 }
 
                 List<SBALHouseLocationMapView> obj = new List<SBALHouseLocationMapView>();
-                obj = childRepository.GetAllHouseLocation(date, user, area, ward, SearchString, GarbageType, FilterType, "S");
+                obj = childRepository.GetAllHouseLocation(date, user, area, ward, SearchString, GarbageType, FilterType, "S",null);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{

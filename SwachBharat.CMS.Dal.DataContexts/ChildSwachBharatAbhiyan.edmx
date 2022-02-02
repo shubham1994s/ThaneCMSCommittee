@@ -885,15 +885,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="GarbageType" Mode="In" Type="Int32" />
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_HouseOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseOnMapDetails_Result)">
-            <Parameter Name="gcDate" Mode="In" Type="DateTime" />
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
-            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
-            <Parameter Name="AreaId" Mode="In" Type="Int32" />
-            <Parameter Name="WardNo" Mode="In" Type="Int32" />
-            <Parameter Name="GarbageType" Mode="In" Type="Int32" />
-            <Parameter Name="FilterType" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="Daily_Attendance" EntityType="DevSwachhBharatNagpurModel.Daily_Attendance" />
           <FunctionImport Name="SP_HouseScanifyDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanifyDetails_Result)" />
           <FunctionImport Name="SP_HouseScanify" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Result)">
@@ -914,6 +905,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="AreaId" Mode="In" Type="Int32" />
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
             <Parameter Name="Segid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HouseScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result)" />
+          <FunctionImport Name="SP_HouseOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseOnMapDetails_Result)">
+            <Parameter Name="gcDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
+            <Parameter Name="GarbageType" Mode="In" Type="Int32" />
+            <Parameter Name="FilterType" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="HouseDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.HouseDetails_Result1)" />
          
@@ -1856,21 +1857,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="SSLat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="SSLong" Nullable="true" MaxLength="500" />
         </ComplexType>
-        <ComplexType Name="SP_HouseOnMapDetails_Result">
-          <Property Type="Int32" Name="userId" Nullable="true" />
-          <Property Type="Int32" Name="houseId" Nullable="true" />
-          <Property Type="Int32" Name="LWId" Nullable="true" />
-          <Property Type="Int32" Name="SSId" Nullable="true" />
-          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="houseNumber" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="houseOwner" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="houseOwnerMobile" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="houseAddress" Nullable="true" />
-          <Property Type="Int32" Name="garbageType" Nullable="true" />
-          <Property Type="Int32" Name="gcDate" Nullable="true" />
-          <Property Type="String" Name="houseLat" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="houseLong" Nullable="true" MaxLength="500" />
-        </ComplexType>
         <EntityType Name="Daily_Attendance">
           <Key>
             <PropertyRef Name="daID" />
@@ -2032,6 +2018,22 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="houseLat" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="houseLong" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Category" Nullable="false" MaxLength="26" />
+        </ComplexType>
+        <ComplexType Name="SP_HouseOnMapDetails_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Int32" Name="houseId" Nullable="true" />
+          <Property Type="Int32" Name="LWId" Nullable="true" />
+          <Property Type="Int32" Name="SSId" Nullable="true" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="houseNumber" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="houseOwner" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="houseOwnerMobile" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="houseAddress" Nullable="true" />
+          <Property Type="Int32" Name="garbageType" Nullable="true" />
+          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="String" Name="houseLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="houseLong" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2983,25 +2985,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_HouseOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseOnMapDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseOnMapDetails_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="houseId" ColumnName="houseId" />
-                <ScalarProperty Name="LWId" ColumnName="LWId" />
-                <ScalarProperty Name="SSId" ColumnName="SSId" />
-                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
-                <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
-                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
-                <ScalarProperty Name="houseOwnerMobile" ColumnName="houseOwnerMobile" />
-                <ScalarProperty Name="houseAddress" ColumnName="houseAddress" />
-                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
-                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
-                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
-                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="Daily_Attendance">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.Daily_Attendance">
               <MappingFragment StoreEntitySet="Daily_Attendance">
@@ -3186,6 +3169,26 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="houseLat" ColumnName="houseLat" />
                 <ScalarProperty Name="houseLong" ColumnName="houseLong" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HouseOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseOnMapDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseOnMapDetails_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="LWId" ColumnName="LWId" />
+                <ScalarProperty Name="SSId" ColumnName="SSId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
+                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
+                <ScalarProperty Name="houseOwnerMobile" ColumnName="houseOwnerMobile" />
+                <ScalarProperty Name="houseAddress" ColumnName="houseAddress" />
+                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
+                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

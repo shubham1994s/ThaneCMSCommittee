@@ -2417,7 +2417,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Saurabh (06 June 2019)
 
-        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype)
+        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype,string ctype)
         {
            
                 List<SBALHouseLocationMapView> houseLocation = new List<SBALHouseLocationMapView>();
@@ -2453,6 +2453,7 @@ namespace SwachBharat.CMS.Bll.Services
                             //vehcileNumber = x.v,
                             //userMobile = x.mobile,
                             garbageType = x.garbageType,
+                            Ctype=x.CType
                         });
                     }
                     if (!string.IsNullOrEmpty(SearchString))
@@ -2468,18 +2469,28 @@ namespace SwachBharat.CMS.Bll.Services
 
                         houseLocation = model.ToList();
 
-                        //var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
-                        //                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
-                        //                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
-                        //                        (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
-                        //                        (string.IsNullOrEmpty(c.houseNo) ? " " : c.houseNo) + " " +
-                        //                        (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
-                        //                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
-                        //                        (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
-                        //                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                  
+                    //var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
+                    //                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
+                    //                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
+                    //                        (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                    //                        (string.IsNullOrEmpty(c.houseNo) ? " " : c.houseNo) + " " +
+                    //                        (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
+                    //                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                    //                        (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
+                    //                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode)).ToUpper().Contains(SearchString.ToUpper())).ToList();
 
-                    }
                 }
+
+                if (ctype == "0")
+                {
+                    houseLocation = houseLocation.ToList();
+                }
+                else
+                {
+                    houseLocation = houseLocation.Where(c => c.Ctype == ctype).ToList();
+                }
+            }
                 else if (Emptype == "L")
                 {
                     var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
@@ -2508,6 +2519,7 @@ namespace SwachBharat.CMS.Bll.Services
                             //vehcileNumber = x.v,
                             //userMobile = x.mobile,
                             garbageType = x.garbageType,
+                       
                         });
                     }
                     if (!string.IsNullOrEmpty(SearchString))
@@ -2549,6 +2561,7 @@ namespace SwachBharat.CMS.Bll.Services
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         garbageType = x.garbageType,
+                     
                     });
                 }
                 if (!string.IsNullOrEmpty(SearchString))
@@ -2591,6 +2604,7 @@ namespace SwachBharat.CMS.Bll.Services
                             //vehcileNumber = x.v,
                             //userMobile = x.mobile,
                             garbageType = x.garbageType,
+                            Ctype=x.CType
                         });
                     }
                     if (!string.IsNullOrEmpty(SearchString))
@@ -2603,20 +2617,27 @@ namespace SwachBharat.CMS.Bll.Services
                         //                                     (string.IsNullOrEmpty(c.houseOwnerName) ? " " : c.houseOwnerName) + " " +
                         //                                     (string.IsNullOrEmpty(c.houseOwnerMobile) ? " " : c.houseOwnerMobile) + " " +
                         //                                     (string.IsNullOrEmpty(c.houseAddress) ? " " : c.houseAddress)).ToLower().Contains(SearchString)).ToList();
-
+                         
+                        if(ctype== "0")
+                    { 
                         houseLocation = model.ToList();
-
-                        //var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
-                        //                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
-                        //                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
-                        //                        (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
-                        //                        (string.IsNullOrEmpty(c.houseNo) ? " " : c.houseNo) + " " +
-                        //                        (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
-                        //                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
-                        //                        (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
-                        //                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode)).ToUpper().Contains(SearchString.ToUpper())).ToList();
-
                     }
+                        else
+                    {
+                        houseLocation = model.Where(c=>c.Ctype==ctype).ToList();
+                    }
+
+                    //var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
+                    //                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
+                    //                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
+                    //                        (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                    //                        (string.IsNullOrEmpty(c.houseNo) ? " " : c.houseNo) + " " +
+                    //                        (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
+                    //                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                    //                        (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
+                    //                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+                }
                 }
                 return houseLocation;
             

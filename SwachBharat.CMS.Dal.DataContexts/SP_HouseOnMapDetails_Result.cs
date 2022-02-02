@@ -26,5 +26,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> gcDate { get; set; }
         public string houseLat { get; set; }
         public string houseLong { get; set; }
+        public string CType { get; set; }
     }
 }
