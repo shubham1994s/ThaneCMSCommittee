@@ -125,8 +125,9 @@
           <Property Name="MsgForNotReceived" Type="nvarchar" MaxLength="1000" />
           <Property Name="MsgForSegregated" Type="nvarchar" MaxLength="1000" />
           <Property Name="IsScanNear" Type="bit" />
-          <Property Name="LiquidQRCode" Type="varchar" MaxLength="10" />
-          <Property Name="StreetQRCode" Type="varchar" MaxLength="10" />
+          <Property Name="LiquidQRCode" Type="varchar" MaxLength="100" />
+          <Property Name="StreetQRCode" Type="varchar" MaxLength="100" />
+          <Property Name="Apikey" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
@@ -765,8 +766,9 @@
           <Property Name="MsgForNotReceived" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="MsgForSegregated" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="IsScanNear" Type="Boolean" />
-          <Property Name="LiquidQRCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="StreetQRCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LiquidQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StreetQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apikey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1044,6 +1046,7 @@
           <EntitySetMapping Name="AppDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatMainModel.AppDetail">
               <MappingFragment StoreEntitySet="AppDetails">
+                <ScalarProperty Name="Apikey" ColumnName="Apikey" />
                 <ScalarProperty Name="StreetQRCode" ColumnName="StreetQRCode" />
                 <ScalarProperty Name="LiquidQRCode" ColumnName="LiquidQRCode" />
                 <ScalarProperty Name="IsScanNear" ColumnName="IsScanNear" />
