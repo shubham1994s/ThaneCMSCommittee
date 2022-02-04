@@ -303,7 +303,7 @@
         </div>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
-        
+
         <script>
 
             function SearchPin() {
@@ -905,13 +905,13 @@
                                 const address = json.features[0].place_name;
                                 addressArray.push(address);
                             }
-                            
+
                             ajaxCount--;
 
                         }
                         function continueMap() {
 
-                            
+
                             var mapOptions = {
                                 center: new google.maps.LatLng(markers[0].lat, markers[0].log),
                                 zoom: 10,
@@ -1180,10 +1180,12 @@
                     }
 
                 });
-                
+
             }
         </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
+        @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>*@
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>
 
 
         @*<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>

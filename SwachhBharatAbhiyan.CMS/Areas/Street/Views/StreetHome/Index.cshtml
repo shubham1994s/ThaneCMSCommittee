@@ -210,9 +210,9 @@
     <input value="2" type="hidden" id="TotalStreet_Coll" />*@
 
 <input value="@Model.TotalStreetCount" type="hidden" id="TotalStreet_Count" />
-    <input value="@Model.TotalStreetPropertyCount" type="hidden" id="TotalStreetProperty_Count" />
+<input value="@Model.TotalStreetPropertyCount" type="hidden" id="TotalStreetProperty_Count" />
 @*<input value="2" type="hidden" id="TotalStreet_Count" />
-<input value="20" type="hidden" id="TotalStreetProperty_Count" />*@
+    <input value="20" type="hidden" id="TotalStreetProperty_Count" />*@
 
 
 @*dump data*@
@@ -622,8 +622,13 @@
     </div>
 </section>
 <section class="dashboard-counts no-padding-bottom"></section>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap3" type="text/javascript"></script>
+@*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap3" type="text/javascript"></script>*@
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ":@Session["Apikey"].ToString())&callback=myMap3" type="text/javascript"></script>
+
+
 <!-- Dashboard Header Section    -->
 @*<script src="~/Content/Custom/HomeIndex.js"></script>*@
 <script src="~/Areas/Street/Content/Custom/HomeIndex.js"></script>

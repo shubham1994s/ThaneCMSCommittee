@@ -162,6 +162,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                     SessionHandler.Current.GramPanchyatAppID = ApplicationDetails.GramPanchyatAppID;
                     SessionHandler.Current.YoccFeddbackLink = ApplicationDetails.YoccFeddbackLink;
                     SessionHandler.Current.YoccDndLink = ApplicationDetails.YoccDndLink;
+                    HttpContext.Session["Apikey"] = (string.IsNullOrEmpty(ApplicationDetails.Apikey)) ? "" : ApplicationDetails.Apikey;
+
                 }
                 else
                 {
@@ -173,6 +175,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                     SessionHandler.Current.AppName = null;
                     SessionHandler.Current.IsLoggedIn = false;
                     SessionHandler.Current.Type = null;
+                    HttpContext.Session["Apikey"] = "";
+
                 }
                 // if (SessionHandler.Current.Type.Trim() == "np")
                 // {

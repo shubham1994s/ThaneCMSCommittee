@@ -355,8 +355,6 @@
     <input type="hidden" value="@ViewBag.lang" id="deflang" />
     <input type="hidden" value="@ViewBag.username" id="deflang" />
 
-
-
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/0.0.124/turf.min.js" integrity="sha512-jpnZ8xGKbS7L9S6d5fk/zDVgF6OoVKLMoEliLxf24BRX+orWhxqJuUcoM+vGmOaozS9dD9ABjQZKAgjjcwTndA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
@@ -477,7 +475,7 @@
                     else if (data.WasteType == "2") {
                         data.WasteType = "Garbage not Received"
                     }
-             
+
                     if (data.gpBeforImage == null) {
                         data.gpBeforImage = "/Images/default_not_upload.png"
                     }
@@ -1147,7 +1145,7 @@
                         debugger;
                         ajaxCount++;
                         var url = `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?overview=full&steps=false&geometries=geojson&access_token=${mapboxgl.accessToken}`;
-                            
+
                         const query = await fetch(
                             `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?overview=full&steps=false&geometries=geojson&access_token=${mapboxgl.accessToken}`,
                             { method: 'GET' }
@@ -1927,8 +1925,12 @@
 
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM&callback=myMap" type="text/javascript"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM&callback=myMap3" type="text/javascript"></script>
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM&callback=myMap" type="text/javascript"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM&callback=myMap3" type="text/javascript"></script>*@
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM":@Session["Apikey"].ToString())&callback=myMap3" type="text/javascript"></script>
+
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -1989,24 +1991,24 @@
         });
     </script>
     <script>
-            //$(document).ready(function () {
-            //    $("input[name$='filter']").click(function () {
+                    //$(document).ready(function () {
+                    //    $("input[name$='filter']").click(function () {
 
-            //        var test = $(this).val();
+                    //        var test = $(this).val();
 
-            //        $("div.desc").hide();
-            //        $("#filter" + test).show();
-            //    });
-            //});
+                    //        $("div.desc").hide();
+                    //        $("#filter" + test).show();
+                    //    });
+                    //});
     </script>
     <script>
-            //$(document).ready(function () {
-            //    debugger;
+                    //$(document).ready(function () {
+                    //    debugger;
 
-            //    var x = document.getElementById("username").innerHTML;
-            //    var tem = x.charAt(0).toUpperCase() + x.slice(1);
-            //    document.getElementById("demo").innerHTML = tem;
-            //});
+                    //    var x = document.getElementById("username").innerHTML;
+                    //    var tem = x.charAt(0).toUpperCase() + x.slice(1);
+                    //    document.getElementById("demo").innerHTML = tem;
+                    //});
 
     </script>
 </fieldset>

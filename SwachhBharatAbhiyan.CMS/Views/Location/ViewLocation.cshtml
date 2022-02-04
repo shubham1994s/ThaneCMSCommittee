@@ -42,7 +42,7 @@
     <link href="~/Content/css/datepicker/css/datepicker.css" rel="stylesheet" />
     <link href="~/Content/css/index_style.css" rel="stylesheet" />
     <div id="floating-panel" style="display:inline-flex;width:auto;background:transparent;border:none">
-        <a  style="margin-left:5px" class="btn btn-sm btn-success" href="~/Location/ShowGrid">Back</a>
+        <a style="margin-left:5px" class="btn btn-sm btn-success" href="~/Location/ShowGrid">Back</a>
     </div>
 
 
@@ -70,5 +70,7 @@
             marker.setMap(map);
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>*@
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>
+
 </fieldset>
