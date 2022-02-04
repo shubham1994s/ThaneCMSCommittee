@@ -477,6 +477,7 @@
                     else if (data.WasteType == "2") {
                         data.WasteType = "Garbage not Received"
                     }
+             
                     if (data.gpBeforImage == null) {
                         data.gpBeforImage = "/Images/default_not_upload.png"
                     }
@@ -1503,6 +1504,25 @@
                                     else if (data.WasteType == "2") {
                                         col = '|fe9436|000000'
                                     }
+                                    else if (data.WasteType == "4") {
+                                        col = '|63676e|ffffff'
+                                    }
+                                    else if (data.WasteType == "5") {
+                                        col = '|1ad15c|000000'
+                                    }
+                                    else if (data.WasteType == "6") {
+                                        col = '|186634|ffffff'
+                                    }
+                                    else if (data.WasteType == "7") {
+                                        col = '|66a2d5|000000'
+                                    }
+                                    else if (data.WasteType == "8") {
+                                        col = '|8f8b28|ffffff'
+                                    }
+                                    else if (data.WasteType == "9") {
+                                        col = '|c384d3|ffffff'
+                                    }
+
                                 })(marker, data);
 
                                 if (data.DyId != null) {
@@ -1711,6 +1731,24 @@
                                     }
                                     else if (data.WasteType == "2") {
                                         data.WasteType = "Garbage not Received"
+                                    }
+                                    else if (data.WasteType == "4") {
+                                        data.WasteType = "Construction And Demolition Waste"
+                                    }
+                                    else if (data.WasteType == "5") {
+                                        data.WasteType = "Horticulture Waste"
+                                    }
+                                    else if (data.WasteType == "6") {
+                                        data.WasteType = "Wet Waste"
+                                    }
+                                    else if (data.WasteType == "7") {
+                                        data.WasteType = "Dry Waste"
+                                    }
+                                    else if (data.WasteType == "8") {
+                                        data.WasteType = "Domestic Hazardous Waste"
+                                    }
+                                    else if (data.WasteType == "9") {
+                                        data.WasteType = "Sanitary Waste"
                                     }
                                     if (data.gpBeforImage == null) {
                                         data.gpBeforImage = "/Images/default_not_upload.png"

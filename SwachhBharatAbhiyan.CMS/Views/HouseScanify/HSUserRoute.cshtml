@@ -36,6 +36,10 @@
     #play_id {
         left: 87%;
     }
+    .btn-success {
+        background-color: #189cdf !important;
+        border-color: #189cdf !important;
+    }
 
     @@media only screen and (max-width: 1240px) {
         #play_id {
@@ -105,7 +109,7 @@
     </div>
 
     <input type="hidden" value='@Request.QueryString["qrEmpDaId"]' id='HdnIndustries' />
-    <div class="container ">
+    <div class="container " style="padding-top:8%;">
         <div class="row">
 
             <div class="col-10 bg-white has-shadow" id="googleMap" style="width:auto; height:600px"></div>
