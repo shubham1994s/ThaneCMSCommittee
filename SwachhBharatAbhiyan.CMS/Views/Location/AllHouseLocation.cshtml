@@ -576,7 +576,7 @@
                 $('#txt_fdate').prop('disabled', 'disabled');
                 $('#selectnumber').prop('disabled', 'disabled');
                 $('#seg_type').prop('disabled', 'disabled');
-                
+
             } else {
                 $('#txt_fdate').prop('disabled', false);
                 $('#selectnumber').prop('disabled', false);
@@ -757,7 +757,9 @@
             myMap();
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>*@
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>
+
 </fieldset>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
 <script>

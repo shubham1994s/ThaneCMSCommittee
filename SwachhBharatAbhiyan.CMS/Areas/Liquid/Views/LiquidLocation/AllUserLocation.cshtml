@@ -53,7 +53,7 @@
                     <label>Select Date</label>
                     <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
                 </div>
-            </div>           
+            </div>
             <div class="col-sm-4">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Employee</label>
@@ -62,8 +62,8 @@
             <div class="col-sm-4">
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
-                    <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
-                    <a  id="filter" onclick="Search()" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style">Search</a>
+                        <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
+                    <a id="filter" onclick="Search()" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style">Search</a>
                     <a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
 
@@ -71,7 +71,7 @@
 
                 </div>
             </div>
-          
+
         </div>
 
     </div><br />
@@ -82,198 +82,198 @@
             </p>
             <div class="col-10 bg-white has-shadow" id="googleMap" style="width:auto; height:600px"></div>
             <div class="col-sm-2"></div>
-            </div>
+        </div>
     </div>
-  
-        <script>
-            $(document).ready(function () {
-                $.ajax({
-                    type: "post",
-                    url: "/Location/UserList?rn=L",
-                    data: { stateId: $('#ddlState').val() },
-                    datatype: "json",
-                    traditional: true,
-                    success: function (data) {
-                        district = '<option value="-1">Select Employee</option>';
-                        for (var i = 0; i < data.length; i++) {
-                            district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                        }
-                        //district = district + '</select>';
-                        $('#selectnumber').html(district);
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "post",
+                url: "/Location/UserList?rn=L",
+                data: { stateId: $('#ddlState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    district = '<option value="-1">Select Employee</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
                     }
-                });
+                    //district = district + '</select>';
+                    $('#selectnumber').html(district);
+                }
             });
-                //User Wise Location              
-            // All User On Map
-            function myMap() {
-                $("#wait").css("display", "block");
-                $("#googleMap").css("display", "none");
-                $.ajax({
-                    type: "post",
-                    url: "/LiquidLocation/LocatioList?date="+$('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() ,
-                    datatype: "json",
-                    traditional: true,
-                    success: function (data) {
-                        $("#wait").css("display", "none");
-                        $("#googleMap").css("display", "block");
-                        if (data.length == 0)
-                        {                           
-                            var map = new google.maps.Map(document.getElementById('googleMap'), {
-                                zoom: 10,
-                                center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
-                                mapTypeId: google.maps.MapTypeId.ROADMAP
-                            });
-
-                        }
+        });
+        //User Wise Location
+        // All User On Map
+        function myMap() {
+            $("#wait").css("display", "block");
+            $("#googleMap").css("display", "none");
+            $.ajax({
+                type: "post",
+                url: "/LiquidLocation/LocatioList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val(),
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    $("#wait").css("display", "none");
+                    $("#googleMap").css("display", "block");
+                    if (data.length == 0) {
                         var map = new google.maps.Map(document.getElementById('googleMap'), {
-
-                            center: new google.maps.LatLng(data[0].lat, data[0].log),
+                            zoom: 10,
+                            center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
                             mapTypeId: google.maps.MapTypeId.ROADMAP
                         });
 
-                        var infowindow = new google.maps.InfoWindow();
-                        bounds = new google.maps.LatLngBounds();
-                        var marker, i;
-                        // Get Addres
-                        for (i = 0; i < data.length; i++) {
-                            marker = new google.maps.Marker({
-                                position: new google.maps.LatLng(data[i].lat, data[i].log),
-                                map: map,
-                                
-                                icon: {
-                                    labelOrigin: new google.maps.Point(16, 65),                                    
-                                    url: "../../Areas/Liquid/Content/images/img/marker24.png"
-                                },
-                                label: {
-                                    text: data[i].userName,
-                                    color: "black",
-                                    fontWeight: "bold",
-                                    fontSize: "13px",                                  
-                                    margin:"55px"
-                                }
-                            });
+                    }
+                    var map = new google.maps.Map(document.getElementById('googleMap'), {
 
-                            loc = new google.maps.LatLng(data[i].lat, data[i].log),
+                        center: new google.maps.LatLng(data[0].lat, data[0].log),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+
+                    var infowindow = new google.maps.InfoWindow();
+                    bounds = new google.maps.LatLngBounds();
+                    var marker, i;
+                    // Get Addres
+                    for (i = 0; i < data.length; i++) {
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(data[i].lat, data[i].log),
+                            map: map,
+
+                            icon: {
+                                labelOrigin: new google.maps.Point(16, 65),
+                                url: "../../Areas/Liquid/Content/images/img/marker24.png"
+                            },
+                            label: {
+                                text: data[i].userName,
+                                color: "black",
+                                fontWeight: "bold",
+                                fontSize: "13px",
+                                margin: "55px"
+                            }
+                        });
+
+                        loc = new google.maps.LatLng(data[i].lat, data[i].log),
 
                             bounds.extend(loc);
 
-                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                                return function () {
-                                    infowindow.setContent('<div class=infowindow> <h3>' + data[i].userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data[i].date + '</p><p><b>Time:</b>' + data[i].time + '</p><p><b>Mobile:</b>' + data[i].userMobile + '<p><b>Vehicle No:</b>' + data[i].vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data[i].address + '</p></div></div>');
-                                    infowindow.open(map, marker);
-                                }
-                            })(marker, i));
-
-
-                        }
-                        map.fitBounds(bounds);
-                        map.panToBounds(bounds);
-
-                    }
-
-                });
-            }         
-
-            function userroute()
-            {
-
-                var geocoder = new google.maps.Geocoder();
-                $("#wait").css("display", "block");
-                $("#googleMap").css("display", "none");
-                $.ajax({
-                    type: "post",
-                    url: "/LiquidLocation/UserWiseLocatioList?userId=" + $("#selectnumber").val() + "&date=" + $('#txt_fdate').val(),
-                    datatype: "json",
-                    traditional: true,
-                    success: function (m) {
-                        $("#wait").css("display", "none");
-                        $("#googleMap").css("display", "block");
-                        if (m.length == 0) {
-                            var map = new google.maps.Map(document.getElementById('googleMap'), {
-                                zoom: 10,
-                                center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
-                                mapTypeId: google.maps.MapTypeId.ROADMAP
-                            });
-
-                        }
-
-                        markers = m;
-                        var mapOptions = {
-                            center: new google.maps.LatLng(markers[0].lat, markers[0].log),
-                            zoom: 10,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-                        var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
-                        var infoWindow = new google.maps.InfoWindow();
-                        var lat_lng = new Array();
-                        var latlngbounds = new google.maps.LatLngBounds();
-                        for (i = 0; i < markers.length; i++) {
-                            
-                            var data = markers[i]
-                            var a = i + 1;
-                            // Get Address from server                         
-                            var myLatlng = new google.maps.LatLng(data.lat, data.log);
-                            lat_lng.push(myLatlng);
-                            var marker = new google.maps.Marker({
-                                position: myLatlng,
-                                map: map,
-                                title: data.Username,
-                                icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + a + '|FF0000|000000'
-                            });
-                            latlngbounds.extend(marker.position);
-                            (function (marker, data) {
-                                google.maps.event.addListener(marker, "click", function (e) {
-                                    infoWindow.setContent('<div class=infowindow> <h3>' + data.userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Mobile:</b>' + data.userMobile + '<p><b>Vehicle No:</b>' + data.vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data.address + '</p></div></div>');
-                                    infoWindow.open(map, marker);
-                                });
-                            })(marker, data);
-                        }
-                        map.setCenter(latlngbounds.getCenter());
-                        map.fitBounds(latlngbounds);
-
-                        //***********ROUTING****************//
-
-                        //Initialize the Path Array
-                        var path = new google.maps.MVCArray();
-
-                        //Initialize the Direction Service
-                        var service = new google.maps.DirectionsService();
-
-                        //Set the Path Stroke Color
-                        var poly = new google.maps.Polyline({ map: map, strokeColor: '#4986E7' });
-
-                        //Loop and Draw Path Route between the Points on MAP
-                        for (var i = 0; i < lat_lng.length; i++) {
-                            if ((i + 1) <= lat_lng.length) {
-                                var src = lat_lng[i];
-                                var des = lat_lng[i + 1];
-                                path.push(src);
-                                poly.setPath(path);
-                                service.route({
-                                    origin: src,
-                                    destination: des,
-                                    travelMode: google.maps.DirectionsTravelMode.DRIVING
-                                }, function (result, status) {
-                                    if (status == google.maps.DirectionsStatus.OK) {
-                                        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-                                            path.push(result.routes[0].overview_path[i]);
-                                        }
-                                    }
-                                });
+                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                            return function () {
+                                infowindow.setContent('<div class=infowindow> <h3>' + data[i].userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data[i].date + '</p><p><b>Time:</b>' + data[i].time + '</p><p><b>Mobile:</b>' + data[i].userMobile + '<p><b>Vehicle No:</b>' + data[i].vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data[i].address + '</p></div></div>');
+                                infowindow.open(map, marker);
                             }
-                        }
+                        })(marker, i));
+
+
+                    }
+                    map.fitBounds(bounds);
+                    map.panToBounds(bounds);
+
+                }
+
+            });
+        }
+
+        function userroute() {
+
+            var geocoder = new google.maps.Geocoder();
+            $("#wait").css("display", "block");
+            $("#googleMap").css("display", "none");
+            $.ajax({
+                type: "post",
+                url: "/LiquidLocation/UserWiseLocatioList?userId=" + $("#selectnumber").val() + "&date=" + $('#txt_fdate').val(),
+                datatype: "json",
+                traditional: true,
+                success: function (m) {
+                    $("#wait").css("display", "none");
+                    $("#googleMap").css("display", "block");
+                    if (m.length == 0) {
+                        var map = new google.maps.Map(document.getElementById('googleMap'), {
+                            zoom: 10,
+                            center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+
                     }
 
-                });
+                    markers = m;
+                    var mapOptions = {
+                        center: new google.maps.LatLng(markers[0].lat, markers[0].log),
+                        zoom: 10,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+                    var infoWindow = new google.maps.InfoWindow();
+                    var lat_lng = new Array();
+                    var latlngbounds = new google.maps.LatLngBounds();
+                    for (i = 0; i < markers.length; i++) {
 
-            }
+                        var data = markers[i]
+                        var a = i + 1;
+                        // Get Address from server
+                        var myLatlng = new google.maps.LatLng(data.lat, data.log);
+                        lat_lng.push(myLatlng);
+                        var marker = new google.maps.Marker({
+                            position: myLatlng,
+                            map: map,
+                            title: data.Username,
+                            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + a + '|FF0000|000000'
+                        });
+                        latlngbounds.extend(marker.position);
+                        (function (marker, data) {
+                            google.maps.event.addListener(marker, "click", function (e) {
+                                infoWindow.setContent('<div class=infowindow> <h3>' + data.userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Mobile:</b>' + data.userMobile + '<p><b>Vehicle No:</b>' + data.vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data.address + '</p></div></div>');
+                                infoWindow.open(map, marker);
+                            });
+                        })(marker, data);
+                    }
+                    map.setCenter(latlngbounds.getCenter());
+                    map.fitBounds(latlngbounds);
+
+                    //***********ROUTING****************//
+
+                    //Initialize the Path Array
+                    var path = new google.maps.MVCArray();
+
+                    //Initialize the Direction Service
+                    var service = new google.maps.DirectionsService();
+
+                    //Set the Path Stroke Color
+                    var poly = new google.maps.Polyline({ map: map, strokeColor: '#4986E7' });
+
+                    //Loop and Draw Path Route between the Points on MAP
+                    for (var i = 0; i < lat_lng.length; i++) {
+                        if ((i + 1) <= lat_lng.length) {
+                            var src = lat_lng[i];
+                            var des = lat_lng[i + 1];
+                            path.push(src);
+                            poly.setPath(path);
+                            service.route({
+                                origin: src,
+                                destination: des,
+                                travelMode: google.maps.DirectionsTravelMode.DRIVING
+                            }, function (result, status) {
+                                if (status == google.maps.DirectionsStatus.OK) {
+                                    for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                                        path.push(result.routes[0].overview_path[i]);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+
+            });
+
+        }
 
 
-            function Search() {
-                myMap();
-            }
-        </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
+        function Search() {
+            myMap();
+        }
+    </script>
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>*@
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>
+
 </fieldset>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
 <script>

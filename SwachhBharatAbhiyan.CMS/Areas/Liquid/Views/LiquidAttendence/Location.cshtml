@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="~/Content/css/datepicker/css/datepicker.css" rel="stylesheet" />   
+    <link href="~/Content/css/datepicker/css/datepicker.css" rel="stylesheet" />
     <div id="floating-panel" style="display:inline-flex;width:auto;background:transparent;border:none">
         <a style="margin-left:5px" class="btn btn-sm btn-success" href="/Liquid/LiquidAttendence/Index">Back</a>
     </div>
@@ -52,11 +52,11 @@
             <div class="col-10 bg-white has-shadow" id="googleMap" style="width:auto; height:600px"></div>
             <div class="col-sm-2"></div>
         </div>
-    </div>  
+    </div>
     <script>
 
         function myMap() {
-            var industries = $("#HdnIndustries").val();          
+            var industries = $("#HdnIndustries").val();
             var geocoder = new google.maps.Geocoder();
             $.ajax({
                 type: "post",
@@ -70,24 +70,24 @@
                         zoom: 10,
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
-                    var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);                    
+                    var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
                     var infoWindow = new google.maps.InfoWindow();
                     var lat_lng = new Array();
                     var latlngbounds = new google.maps.LatLngBounds();
                     for (i = 0; i < markers.length; i++) {
-                       
+
                         var data = markers[i]
                         var a = "";
                         if (i == 0) {
                             a = "S"
-                        } else { a = "E" }                                                            
+                        } else { a = "E" }
                         var myLatlng = new google.maps.LatLng(data.lat, data.log);
                         lat_lng.push(myLatlng);
                         var marker = new google.maps.Marker({
                             position: myLatlng,
                             map: map,
                             title: data.Username,
-                            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+a+'|FF0000|000000'
+                            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + a + '|FF0000|000000'
                         });
                         latlngbounds.extend(marker.position);
                         (function (marker, data) {
@@ -138,7 +138,9 @@
         }
 
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>*@
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>
+
 </fieldset>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
 
