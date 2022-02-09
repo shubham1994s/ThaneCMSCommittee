@@ -82,24 +82,37 @@
                             <span class="help-block with-errors"></span>
                         </div>
                         @*<div class="form-group">
-                            @Html.Label("नाव मराठी / Name Marathi")
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.TextBoxFor(model => model.userNameMar, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
-                            @Html.ValidationMessageFor(model => model.userNameMar, "", new { @class = "text-danger" })
-                            <span class="text-danger" id="err_name_mar"></span>
-                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                            <span class="help-block with-errors"></span>
-                        </div>*@
+            @Html.Label("नाव मराठी / Name Marathi")
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(model => model.userNameMar, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+            @Html.ValidationMessageFor(model => model.userNameMar, "", new { @class = "text-danger" })
+            <span class="text-danger" id="err_name_mar"></span>
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            <span class="help-block with-errors"></span>
+        </div>*@
                         <div class="form-group">
                             @*@Html.Label("एम्प्लॉयमेंट आयडी / Employment ID ")*@
                             @Html.Label("Employment ID ")
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.TextBoxFor(model => model.userEmployeeNo, new { @class = "form-control", style = "font-family:Arial, FontAwesome"})
+                            @Html.TextBoxFor(model => model.userEmployeeNo, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
                             @Html.ValidationMessageFor(model => model.userEmployeeNo, "", new { @class = "text-danger" })
                             <span class="text-danger" id="err_empidd"></span>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                         </div>
+
+
+                       
+                            <div class="form-group">
+                                @*@Html.Label("आयएमईआय संख्या / Login Number ")*@
+                                @Html.Label("Employee Designation")
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.userDesignation, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                                <span class="text-danger" id="err_Designation"></span>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <span class="help-block with-errors"></span>
+                            </div>
+                  
                     </div>
                 </div>
                 <div class="row">
@@ -216,17 +229,7 @@
 
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            @*@Html.Label("आयएमईआय संख्या / Login Number ")*@
-                            @Html.Label("Employee Designation")
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.TextBoxFor(model => model.userDesignation, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
-                            <span class="text-danger" id="err_Designation"></span>
-                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                            <span class="help-block with-errors"></span>
-                        </div>
-                    </div>
+             
                     <div class="col-md-2">
                         <br />
                         <div class="form-group" style="margin-top:10px">
