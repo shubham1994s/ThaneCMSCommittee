@@ -51,7 +51,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.MainModel
 
         public string YoccFeddbackLink { get; set; }
         public string YoccDndLink { get; set; }
-        public string Apikey { get; set; }
+        //public string Apikey { get; set; }
 
     }
 }

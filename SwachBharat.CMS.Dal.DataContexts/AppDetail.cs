@@ -67,6 +67,5 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<bool> IsScanNear { get; set; }
         public string LiquidQRCode { get; set; }
         public string StreetQRCode { get; set; }
-        public string Apikey { get; set; }
     }
 }

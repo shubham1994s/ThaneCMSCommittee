@@ -1183,9 +1183,9 @@
 
             }
         </script>
-        @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>*@
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>
+        @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyD1OiSXnPhpoH9Wy28QRlyPilQu2Fr17BM":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>*@
 
 
         @*<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>

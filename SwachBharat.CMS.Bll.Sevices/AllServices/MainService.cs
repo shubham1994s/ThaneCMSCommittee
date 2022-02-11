@@ -427,7 +427,7 @@ namespace SwachBharat.CMS.Bll.Services
                 model.YoccDndLink = data.YoccDndLink;
                 model.LiquidQRCode = data.LiquidQRCode;
                 model.StreetQRCode = data.StreetQRCode;
-                model.Apikey = data.Apikey;
+                //model.Apikey = data.Apikey;
                return model;
         
         }
