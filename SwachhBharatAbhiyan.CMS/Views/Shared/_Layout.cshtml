@@ -143,7 +143,7 @@
                             </a>
                         </li>*@
 
-                    <li class="ctpt_reg" hidden="hidden">
+                    <li class="ctpt_reg" style="display:none" >
                         <a href="#exampledropdownDropdownCTPT" aria-expanded="false" data-toggle="collapse">
                             <i class="ctpt"> </i>
                             CT / PT
@@ -186,7 +186,7 @@
                             @*<li><a href="/GarbagePoint/MenuIndex">Garbage Point Registration </a></li>*@
                             <li><a href="/DumpYard/MenuIndex">Dump Yard Registration </a></li>
                             <li><a href="/Employee/MenuIndex">Employee Registration  </a></li>
-                            <li class="ctpt_reg" hidden="hidden"><a href="/Sauchalay/SauchalayRegistrationMenuIndex">CT / PT Registration  </a></li>
+                            <li class="ctpt_reg" style="display:none"><a href="/Sauchalay/SauchalayRegistrationMenuIndex">CT / PT Registration  </a></li>
                         </ul>
                     <li>
 
@@ -618,6 +618,16 @@
 
            
             if ($("#asdf").text() == "nagpur@ulb.com!") {
+                //$("#complaint_menu").css("display", "block");
+                $("#citizen_app").css("display", "block");
+                $(".ctpt_reg").css("display", "block");
+                $("#infotainment_menu").css("display", "block");
+                //$("#clns").css("display", "block");
+                $(".ss2020").css("display", "block");
+            }
+
+
+            if ($("#asdf").text() == "thanewaste@ulb.com!") {
                 //$("#complaint_menu").css("display", "block");
                 $("#citizen_app").css("display", "block");
                 $(".ctpt_reg").css("display", "block");
