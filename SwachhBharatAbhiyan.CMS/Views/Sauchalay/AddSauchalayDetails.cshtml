@@ -73,12 +73,12 @@
             </div>
 
             <div class="col-md-6">
-                    <div class="form-group">
-                        @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
-                        @Html.Label("CTPT Id")
-                        <input type="text" value="@Model.SauchalayID" id="n" readonly="readonly" />
-                    </div>
-    
+                <div class="form-group">
+                    @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
+                    @Html.Label("CTPT Id")
+                    <input type="text" value="@Model.SauchalayID" id="n" readonly="readonly" />
+                </div>
+
 
             </div>
 
@@ -95,7 +95,38 @@
                 </div>
             </div>
 
-       
+            <div class="col-md-6">
+                <div class="form-group">
+                    @*@Html.Label("नाव / Name")*@
+                    @Html.Label("Type Of Toilet")
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @{ var TlistItems = new List<SelectListItem>();
+
+                        TlistItems.Add(new SelectListItem { Text = "Select Type Of Toilet", Value = "0" });
+                        TlistItems.Add(new SelectListItem { Text = "Community Toilet", Value = "CT" });
+                        TlistItems.Add(new SelectListItem { Text = "Public Toilet", Value = "PT" });
+                        TlistItems.Add(new SelectListItem { Text = "Urinal", Value = "U" });
+
+                    }
+                    @Html.DropDownListFor(model => model.Tot, TlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+                    <span class="text-danger" id="err_tot"></span>
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                    <span class="help-block with-errors"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @*@Html.Label("नाव / Name")*@
+                    @Html.Label("Number Of Seats")
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.Tns, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                    @Html.ValidationMessageFor(model => model.Tns, "", new { @class = "text-danger" })
+                    <span class="text-danger" id="err_tns"></span>
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                    <span class="help-block with-errors"></span>
+                </div>
+            </div>
 
             <div class="col-md-6">
                 <div class="form-group">
@@ -142,7 +173,7 @@
                 </div><br />
             </div>
 
-            
+
 
         </div>
        
@@ -244,6 +275,15 @@
                                 //display error message
                                 //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
                                 $("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                                return false;
+                            }
+                        });
+                        $("#Tns").keypress(function (e) {
+                            //if the letter is not digit then display error and don't type anything
+                            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44) {
+                                //display error message
+                                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                                $("#err_tns").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
                                 return false;
                             }
                         });

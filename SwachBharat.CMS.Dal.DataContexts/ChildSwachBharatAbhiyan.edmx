@@ -268,8 +268,6 @@
           <Property Name="target" Type="varchar" MaxLength="250" />
           <Property Name="lastModifyDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SauchalayAddress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SauchalayAddress">
           <Key>
             <PropertyRef Name="Id" />
@@ -678,6 +676,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="Qr_Employee_Daily_Attendance" EntityType="Self.Qr_Employee_Daily_Attendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Qr_Location" EntityType="Self.Qr_Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QrEmployeeMaster" EntityType="Self.QrEmployeeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SauchalayAddress" EntityType="Self.SauchalayAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SS_1_4_ANSWER" EntityType="Self.SS_1_4_ANSWER" Schema="dbo" Table="SS_1.4_ANSWER" store:Type="Tables" />
           <EntitySet Name="SS_1_7_ANSWER" EntityType="Self.SS_1_7_ANSWER" Schema="dbo" Table="SS_1.7_ANSWER" store:Type="Tables" />
           <EntitySet Name="StreetSweepingDetails" EntityType="Self.StreetSweepingDetails" Schema="dbo" store:Type="Tables" />
@@ -693,22 +692,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="WM_GarbageCategory" EntityType="Self.WM_GarbageCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WM_GarbageSubCategory" EntityType="Self.WM_GarbageSubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SauchalayAddress" EntityType="Self.SauchalayAddress" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SauchalayAddress].[Id] AS [Id], 
-    [SauchalayAddress].[SauchalayID] AS [SauchalayID], 
-    [SauchalayAddress].[Address] AS [Address], 
-    [SauchalayAddress].[CreatedDate] AS [CreatedDate], 
-    [SauchalayAddress].[Lat] AS [Lat], 
-    [SauchalayAddress].[Long] AS [Long], 
-    [SauchalayAddress].[Name] AS [Name], 
-    [SauchalayAddress].[ImageUrl] AS [ImageUrl], 
-    [SauchalayAddress].[QrImageUrl] AS [QrImageUrl], 
-    [SauchalayAddress].[Mobile] AS [Mobile], 
-    [SauchalayAddress].[Tot] AS [Tot], 
-    [SauchalayAddress].[Tns] AS [Tns]
-    FROM [dbo].[SauchalayAddress] AS [SauchalayAddress]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="SS_1_4_QUESTION" EntityType="Self.SS_1_4_QUESTION" store:Type="Tables" store:Schema="dbo" store:Name="SS_1.4_QUESTION">
             <DefiningQuery>SELECT 
     [SS_1_4_QUESTION].[Q_ID] AS [Q_ID], 

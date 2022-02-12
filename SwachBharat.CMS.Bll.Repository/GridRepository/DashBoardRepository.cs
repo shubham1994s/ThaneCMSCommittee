@@ -4329,8 +4329,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Image = (string.IsNullOrEmpty(x.ImageUrl) ? "/Images/default_not_upload.png" : x.ImageUrl),
                     QrImage = (string.IsNullOrEmpty(x.QrImageUrl) ? "/Images/default_not_upload.png" : x.QrImageUrl),
                     Mobile = x.Mobile,
-                    CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt")
-
+                    CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
+                    Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : x.Tot,
+                    Tns = x.Tns.HasValue ? x.Tns.ToString() : ""
 
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))
