@@ -2455,8 +2455,8 @@ namespace SwachBharat.CMS.Bll.Services
                         //string gcTime = x.gcDate.ToString();
                         houseLocation.Add(new SBALHouseLocationMapView()
                         {
-                            //ssid = Convert.ToInt32(x.SSId),
-                            //lwid = Convert.ToInt32(x.LWId),
+                            ssid = Convert.ToInt32(x.SSId),
+                            lwid = Convert.ToInt32(x.LWId),
                             houseId = Convert.ToInt32(x.houseId),
                             ReferanceId = x.ReferanceId,
                             houseOwnerName = (x.houseOwner == null ? "" : x.houseOwner.ToUpper()),
@@ -2475,8 +2475,7 @@ namespace SwachBharat.CMS.Bll.Services
                             //vehcileNumber = x.v,
                             //userMobile = x.mobile,
                             garbageType = x.garbageType,
-                            ssid=x.SSId,
-                            lwid=x.LWId,
+                           
                             Ctype=x.CType
                         });
                     }
