@@ -121,7 +121,7 @@ function user_route(id) {
     debugger;
     var objIdle = JSON.stringify(date_str[id]);
     window.localStorage.setItem("mJson", objIdle);
-    window.location.href = "/Liquid/LiquidGarbage/IdleTime_Route";
+    window.location.href = "/Street/StreetGarbage/IdleTime_Route";
 };
 function showInventoriesGrid() {
     Search();
