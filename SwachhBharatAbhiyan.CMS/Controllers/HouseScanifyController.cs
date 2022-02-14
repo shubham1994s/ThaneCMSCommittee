@@ -88,8 +88,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 List<AppDetail> appName = new List<AppDetail>();
                 List<HSDashBoardVM> details = new List<HSDashBoardVM>();
                 //objDetail = objRep.GetActiveEmployee(AppId);
-                
-                foreach(var x in appName)
+                appName = mainRepository.GetAppName();
+                foreach (var x in appName)
                 {
                     var appId = x.AppId;
                     childRepository = new ChildRepository(appId);
