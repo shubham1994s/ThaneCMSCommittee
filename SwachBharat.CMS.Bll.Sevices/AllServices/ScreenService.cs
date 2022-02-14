@@ -3186,6 +3186,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.Long = data.Long;
             model.Mobile = data.Mobile;
             model.CreatedDate = DateTime.Now;
+            model.Tot = data.Tot;
+            model.Tns = data.Tns;
             // model.userId = data.userId;
             return model;
         }
@@ -3738,7 +3740,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.Image = data.ImageUrl;
             model.QrImage = data.QrImageUrl;
             model.CreatedDate = data.CreatedDate;
-
+            model.Tot = data.Tot;
+            model.Tns = data.Tns;
             return model;
         }
         #endregion
@@ -4970,6 +4973,8 @@ namespace SwachBharat.CMS.Bll.Services
                             model.Long = data.Long;
                             model.Mobile = data.Mobile;
                             model.CreatedDate = DateTime.Now;
+                            model.Tot = data.Tot;
+                            model.Tns = data.Tns;
                             //model.userId = data.userId;
                             db.SaveChanges();
                         }
