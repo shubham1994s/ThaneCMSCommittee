@@ -41,3 +41,4 @@ $(document).keydown(function (event) {
 });
 
 //document.addEventListener('contextmenu', event => event.preventDefault());
+
