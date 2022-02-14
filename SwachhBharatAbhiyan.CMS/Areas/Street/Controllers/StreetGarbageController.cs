@@ -109,6 +109,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                TempData.Keep();
                 return View();
             }
             else
@@ -119,6 +120,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                TempData.Keep();
                 return View();
             }
             else
