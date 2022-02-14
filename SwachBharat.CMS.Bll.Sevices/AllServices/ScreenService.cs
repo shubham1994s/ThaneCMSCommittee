@@ -4007,6 +4007,28 @@ namespace SwachBharat.CMS.Bll.Services
                             else
                             {
                                 StreetSweep.SSQRCode = ThumbnaiUrlCMS + StreetSweep.SSQRCode.Trim();
+
+
+                                int n = teamId;
+                                double refer1 = Convert.ToDouble((n + 1));
+                                double xyz = refer1 / 100;
+
+                                string s = xyz.ToString("0.00", CultureInfo.InvariantCulture);
+                                string[] parts = s.Split('.');
+                                int i1 = int.Parse(parts[0]);
+                                int i2 = int.Parse(parts[1]);
+
+                                if (i2 == 0)
+                                {
+                                    //i1 = i1 + 1;
+                                    s = "S" + i1.ToString();
+                                }
+                                else
+                                {
+                                    s = "S" + (i1 + 1);
+                                }
+
+                                StreetSweep.SerielNo = s;
                             }
                         }
                         catch (Exception e) { StreetSweep.SSQRCode = "/Images/default_not_upload.png"; }
@@ -4073,6 +4095,28 @@ namespace SwachBharat.CMS.Bll.Services
                             else
                             {
                                 LiquidWaste.LWQRCode = ThumbnaiUrlCMS + LiquidWaste.LWQRCode.Trim();
+
+
+                                int n = teamId;
+                                double refer1 = Convert.ToDouble((n + 1));
+                                double xyz = refer1 / 100;
+
+                                string s = xyz.ToString("0.00", CultureInfo.InvariantCulture);
+                                string[] parts = s.Split('.');
+                                int i1 = int.Parse(parts[0]);
+                                int i2 = int.Parse(parts[1]);
+
+                                if (i2 == 0)
+                                {
+                                    //i1 = i1 + 1;
+                                    s = "S" + i1.ToString();
+                                }
+                                else
+                                {
+                                    s = "S" + (i1 + 1);
+                                }
+
+                                LiquidWaste.SerielNo = s;
                             }
                         }
                         catch (Exception e) { LiquidWaste.LWQRCode = "/Images/default_not_upload.png"; }

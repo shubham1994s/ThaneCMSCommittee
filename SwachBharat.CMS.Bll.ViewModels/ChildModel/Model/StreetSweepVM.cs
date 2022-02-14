@@ -8,6 +8,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
   public  class StreetSweepVM : BaseVM
     {
+        public string SerielNo;
+
         public int SSId { get; set; }
         public string SSName { get; set; }
         public string SSNameMar { get; set; }
