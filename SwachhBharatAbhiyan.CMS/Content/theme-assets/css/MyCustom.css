@@ -79,6 +79,10 @@ section.dashboard-counts .icon {
     position: relative;
     margin-bottom: 15px !important;
 }
+#btnBack, #QRCOdeGenrate, #btnSubmit {
+    background-color: #479cdf !important;
+    border-color: #479cdf !important;
+}
 
 @media only screen and (max-width: 412px) {
     .login-card {
