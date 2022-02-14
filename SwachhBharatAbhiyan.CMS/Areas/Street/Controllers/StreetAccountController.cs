@@ -81,7 +81,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
             AddSession(null, null, null, null);
             RouteData.Values.Remove("ReturnUrl");
             return RedirectToAction("Login", "Account");
-            return View();
+            //return View();
         }
 
 
