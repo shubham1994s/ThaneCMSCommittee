@@ -2475,6 +2475,8 @@ namespace SwachBharat.CMS.Bll.Services
                             //vehcileNumber = x.v,
                             //userMobile = x.mobile,
                             garbageType = x.garbageType,
+                            ssid=x.SSId,
+                            lwid=x.LWId,
                             Ctype=x.CType
                         });
                     }
