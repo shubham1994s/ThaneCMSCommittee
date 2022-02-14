@@ -620,12 +620,47 @@
                                 if (data.address == null) {
                                     data.address = '';
                                 }
-                                google.maps.event.addListener(marker, "click", function (e) {
-                                    infoWindow.setContent('<div class=infowindow style="max-width:190px"> <h3>' + data.userName + '</h3><h5><b>Employee Details:</b></h5><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Mobile:</b>' + data.userMobile + '<p><b>Vehicle No:</b>' + data.vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data.address + '</p></div></div>');
-                                    infoWindow.open(map, marker);
 
-                                    //animateCircle(poly,9);
+
+                                //New Marker Click
+                                google.maps.event.addListener(marker, "click", function (e) {
+                                    debugger;
+                                    var latlng = new google.maps.LatLng(data.lat, data.log);
+                                    var geocoder = geocoder = new google.maps.Geocoder();
+                                    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                                        debugger;
+                                        if (status == google.maps.GeocoderStatus.OK) {
+                                            debugger;
+                                            if (results[1]) {
+                                                //alert("Location: " + results[1].formatted_address);
+                                                var address = results[1].formatted_address;
+                                                infoWindow.setContent('<div class=infowindow style="max-width:190px"> <h3>' + data.userName + '</h3><h5><b>Employee Details:</b></h5><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Mobile:</b>' + data.userMobile + '<p><b>Vehicle No:</b>' + data.vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + address + '</p></div></div>');
+                                                infoWindow.open(map, marker);
+                                            }
+                                            else {
+                                                var address = "Not Mention";
+                                                infoWindow.setContent('<div class=infowindow style="max-width:190px"> <h3>' + data.userName + '</h3><h5><b>Employee Details:</b></h5><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Mobile:</b>' + data.userMobile + '<p><b>Vehicle No:</b>' + data.vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + address + '</p></div></div>');
+                                                infoWindow.open(map, marker);
+                                            }
+
+                                        }
+                                        else {
+                                            var address = "Not Mention";
+                                            infoWindow.setContent('<div class=infowindow style="max-width:190px"> <h3>' + data.userName + '</h3><h5><b>Employee Details:</b></h5><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Mobile:</b>' + data.userMobile + '<p><b>Vehicle No:</b>' + data.vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data.address + '</p></div></div>');
+                                            infoWindow.open(map, marker);
+                                        }
+                                    });
+
                                 });
+
+
+                                //Old Marker Click
+                                //google.maps.event.addListener(marker, "click", function (e) {
+                                //    infoWindow.setContent('<div class=infowindow style="max-width:190px"> <h3>' + data.userName + '</h3><h5><b>Employee Details:</b></h5><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Mobile:</b>' + data.userMobile + '<p><b>Vehicle No:</b>' + data.vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data.address + '</p></div></div>');
+                                //    infoWindow.open(map, marker);
+
+                                //    //animateCircle(poly,9);
+                                //});
 
                             })(marker, data);
 
@@ -683,7 +718,7 @@
                     var path = new google.maps.MVCArray();
 
                     //Initialize the Direction Service
-                    var service = new google.maps.DirectionsService();
+                    //var service = new google.maps.DirectionsService();
 
                     //Set the Path Stroke Color
                     var poly = new google.maps.Polyline({
@@ -729,17 +764,17 @@
                             var des = lat_lng[i + 1];
                             path.push(src);
                             poly.setPath(path);
-                            service.route({
-                                origin: src,
-                                destination: des,
-                                travelMode: google.maps.DirectionsTravelMode.DRIVING
-                            }, function (result, status) {
-                                if (status == google.maps.DirectionsStatus.OK) {
-                                    for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-                                        path.push(result.routes[0].overview_path[i]);
-                                    }
-                                }
-                            });
+                            //service.route({
+                            //    origin: src,
+                            //    destination: des,
+                            //    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                            //}, function (result, status) {
+                            //    if (status == google.maps.DirectionsStatus.OK) {
+                            //        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                            //            path.push(result.routes[0].overview_path[i]);
+                            //        }
+                            //    }
+                            //});
                         }
                     }
                 }
@@ -751,7 +786,8 @@
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
 
-    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>*@
+    @*Paid API*@
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>*@
 
 
     @*<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>

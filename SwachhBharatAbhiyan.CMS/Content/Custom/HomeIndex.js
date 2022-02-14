@@ -85,12 +85,45 @@ function myMap2() {
 
                     bounds.extend(loc);
 
+
+                //New Marker Click
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
-                        infowindow.setContent('<div class=infowindow> <h3>' + data[i].userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data[i].date + '</p><p><b>Time:</b>' + data[i].time + '</p><p><b>Mobile:</b>' + data[i].userMobile + '<p><b>Vehicle No:</b>' + data[i].vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data[i].address + '</p></div></div>');
-                        infowindow.open(map, marker);
+                        debugger;
+                        var latlng = new google.maps.LatLng(data[i].lat, data[i].log);
+                        var geocoder = geocoder = new google.maps.Geocoder();
+                        geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                debugger;
+                                if (results[0]) {
+                                    //alert("Location: " + results[1].formatted_address);
+                                    var address = results[0].formatted_address;
+                                    infowindow.setContent('<div class=infowindow> <h3>' + data[i].userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data[i].date + '</p><p><b>Time:</b>' + data[i].time + '</p><p><b>Mobile:</b>' + data[i].userMobile + '<p><b>Vehicle No:</b>' + data[i].vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + address + '</p></div></div>');
+                                    infowindow.open(map, marker);
+                                }
+                                else {
+                                    var address = "Not Mention";
+                                    infowindow.setContent('<div class=infowindow> <h3>' + data[i].userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data[i].date + '</p><p><b>Time:</b>' + data[i].time + '</p><p><b>Mobile:</b>' + data[i].userMobile + '<p><b>Vehicle No:</b>' + data[i].vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + address + '</p></div></div>');
+                                    infowindow.open(map, marker);
+                                }
+                            }
+                            else {
+                                infowindow.setContent('<div class=infowindow> <h3>' + data[i].userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data[i].date + '</p><p><b>Time:</b>' + data[i].time + '</p><p><b>Mobile:</b>' + data[i].userMobile + '<p><b>Vehicle No:</b>' + data[i].vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data[i].address + '</p></div></div>');
+                                infowindow.open(map, marker);
+                            }
+                        });
+
+
                     }
                 })(marker, i));
+
+                //Old Marker Click
+                //google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                //    return function () {
+                //        infowindow.setContent('<div class=infowindow> <h3>' + data[i].userName + '</h3><h5><b>Details:</b></h5><p><b>Date:</b>' + data[i].date + '</p><p><b>Time:</b>' + data[i].time + '</p><p><b>Mobile:</b>' + data[i].userMobile + '<p><b>Vehicle No:</b>' + data[i].vehcileNumber + '</p><div style="height:auto; width:150px"><p><b>Address:</b>' + data[i].address + '</p></div></div>');
+                //        infowindow.open(map, marker);
+                //    }
+                //})(marker, i));
 
 
             }

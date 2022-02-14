@@ -235,7 +235,7 @@
                     var path = new google.maps.MVCArray();
 
                     //Initialize the Direction Service
-                    var service = new google.maps.DirectionsService();
+                    //var service = new google.maps.DirectionsService();
 
                     //Set the Path Stroke Color
                     var poly = new google.maps.Polyline({ map: map, strokeColor: '#4986E7' });
@@ -247,17 +247,17 @@
                             var des = lat_lng[i + 1];
                             path.push(src);
                             poly.setPath(path);
-                            service.route({
-                                origin: src,
-                                destination: des,
-                                travelMode: google.maps.DirectionsTravelMode.DRIVING
-                            }, function (result, status) {
-                                if (status == google.maps.DirectionsStatus.OK) {
-                                    for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-                                        path.push(result.routes[0].overview_path[i]);
-                                    }
-                                }
-                            });
+                            //service.route({
+                            //    origin: src,
+                            //    destination: des,
+                            //    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                            //}, function (result, status) {
+                            //    if (status == google.maps.DirectionsStatus.OK) {
+                            //        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                            //            path.push(result.routes[0].overview_path[i]);
+                            //        }
+                            //    }
+                            //});
                         }
                     }
                 }
@@ -272,7 +272,9 @@
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ&callback=myMap" type="text/javascript"></script>
-    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=@((string.IsNullOrEmpty((Session["Apikey"] ?? "").ToString()))?"AIzaSyDywSnWh8pKWPa5o5Ws8cI0_SgN6M27TjQ":@Session["Apikey"].ToString())&callback=myMap" type="text/javascript"></script>*@
+
+    @*Paid API*@
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>*@
 
 </fieldset>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
