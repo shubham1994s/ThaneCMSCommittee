@@ -135,7 +135,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.TextBoxFor(model => model.Lat, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
                     @Html.ValidationMessageFor(model => model.Lat, "", new { @class = "text-danger" })
-                    <span class="text-danger" id="err_name"></span>
+                    <span class="text-danger" id="err_lat"></span>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <span class="help-block with-errors"></span>
                 </div>
@@ -148,7 +148,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.TextBoxFor(model => model.Long, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
                     @Html.ValidationMessageFor(model => model.Long, "", new { @class = "text-danger" })
-                    <span class="text-danger" id="err_name"></span>
+                    <span class="text-danger" id="err_log"></span>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <span class="help-block with-errors"></span>
                 </div>
@@ -287,6 +287,25 @@
                                 return false;
                             }
                         });
+                        //$("#Lat").keyup(function (e) {
+                        //    var pattern = new RegExp('^-?([1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}');
+                        //    //if the letter is not digit then display error and don't type anything
+                        //    
+                        //    if (!(pattern.test($("#Lat").val()))) {
+                        //        //display error message
+                        //        //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                        //        $("#err_lat").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                        //        return false;
+                        //    }
+                        //}); $("#Long").keypress(function (e) {
+                        //    //if the letter is not digit then display error and don't type anything
+                        //    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44 && e.which != 189 && e.which != 171) {
+                        //        //display error message
+                        //        //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                        //        $("#err_log").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                        //        return false;
+                        //    }
+                        //});
     });
 
 
