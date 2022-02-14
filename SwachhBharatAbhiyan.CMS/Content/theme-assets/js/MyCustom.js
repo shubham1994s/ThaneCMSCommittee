@@ -35,9 +35,9 @@ $(document).keydown(function (event) {
     //if (event.keyCode == 123 || event.keyCode === 67 || event.keyCode === 86 || event.keyCode === 85 || event.keyCode === 117 || event.keyCode === 75) {
     //    return false;
     //}
-    if ((event.ctrlKey && event.keyCode == 73) || (event.ctrlKey && event.keyCode == 74) || (event.ctrlKey && event.keyCode == 123) || (event.ctrlKey && event.keyCode == 67) || (event.ctrlKey && event.keyCode == 86) || (event.ctrlKey && event.keyCode == 85) || (event.ctrlKey && event.keyCode == 117) || (event.ctrlKey && event.keyCode == 75)) {
-        return false;
-    }
+    //if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.keyCode == 74) || (event.ctrlKey && event.keyCode == 123) || (event.ctrlKey && event.keyCode == 67) || (event.ctrlKey && event.keyCode == 86) || (event.ctrlKey && event.keyCode == 85) || (event.ctrlKey && event.keyCode == 117) || (event.ctrlKey && event.keyCode == 75)) {
+    //    return false;
+    //}
 });
 
 document.addEventListener('contextmenu', event => event.preventDefault());
