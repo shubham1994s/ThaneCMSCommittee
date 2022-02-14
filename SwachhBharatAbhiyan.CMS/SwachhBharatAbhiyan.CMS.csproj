@@ -2545,6 +2545,7 @@
     <Content Include="Images\Nagpur\PointQRCode\bundel\GPSBA9040%28_24082019060844%29.pdf" />
     <Content Include="Images\NagpurPalika\HouseQRCode\Raj_25332021063339.pdf" />
     <Content Include="Images\NagpurPalika\HouseQRCode\Raj_25332021063345.pdf" />
+    <Content Include="Areas\Street\Views\StreetGarbage\IdleTime_Route.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
