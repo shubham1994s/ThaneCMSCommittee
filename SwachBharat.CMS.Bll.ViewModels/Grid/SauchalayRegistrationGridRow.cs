@@ -16,5 +16,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string Image { get; set; }
         public string QrImage { get; set; }
         public string Mobile { get; set; }
+        public string Tot { get; set; }
+        public string Tns { get; set; }
+
     }
 }

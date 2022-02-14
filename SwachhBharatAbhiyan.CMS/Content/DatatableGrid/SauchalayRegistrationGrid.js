@@ -21,7 +21,7 @@
             "searchable": false
         },
          {
-                 "targets": [4],
+                 "targets": [6],
                  "visible": true,
 
                  "render": function (data, type, full, meta) {
@@ -38,7 +38,7 @@
          },
 
           {
-              "targets": [5],
+              "targets": [7],
               "visible": true,
 
               "render": function (data, type, full, meta) {
@@ -57,14 +57,16 @@
         ],
 
         "columns": [
-              { "data": "Id", "name": "Id", "autoWidth": false },
-              { "data": "SauchalayID", "name": "SauchalayID", "autoWidth": false },
-              { "data": "Name", "name": "Name", "autoWidth": false },
-              { "data": "Mobile", "name": "Mobile", "autoWidth": false },
-              { "data": "Image", "Image": "Name", "autoWidth": false },
-              { "data": "QrImage", "QrImage": "Name", "autoWidth": false },
-              { "data": "Address", "name": "Address", "autoWidth": false },
-              { "data": "CreatedDate", "name": "CreatedDate", "autoWidth": false },
+              { "data": "Id", "name": "Id", "autoWidth": true },
+              { "data": "SauchalayID", "name": "SauchalayID", "autoWidth": true },
+              { "data": "Name", "name": "Name", "autoWidth": true },
+              { "data": "Mobile", "name": "Mobile", "autoWidth": true },
+              { "data": "Tot", "name": "Tot", "autoWidth": true },
+              { "data": "Tns", "name": "Tns", "autoWidth": true },
+              { "data": "Image", "Image": "Name", "autoWidth": true },
+              { "data": "QrImage", "QrImage": "Name", "autoWidth": true },
+              { "data": "Address", "name": "Address", "autoWidth": true },
+              { "data": "CreatedDate", "name": "CreatedDate", "autoWidth": true },
            
              
             //   { "render": function (data, type, full, meta) { return '<input class="btn btn-primary btn-sm" type="button" onclick="Edit(' + full["houseId"] + ')" value="Edit" /> <input style="margin-left:2px" class="btn btn-danger btn-sm" type="button" onclick="Delete(' + full["houseId"] + ',' + full["Name"] + ')" value="Delete" />'; } }

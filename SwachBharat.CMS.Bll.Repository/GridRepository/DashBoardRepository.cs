@@ -4329,8 +4329,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Image = (string.IsNullOrEmpty(x.ImageUrl) ? "/Images/default_not_upload.png" : x.ImageUrl),
                     QrImage = (string.IsNullOrEmpty(x.QrImageUrl) ? "/Images/default_not_upload.png" : x.QrImageUrl),
                     Mobile = x.Mobile,
-                    CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt")
-
+                    CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
+                    Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : GetTot(x.Tot),
+                    Tns = x.Tns.HasValue ? x.Tns.ToString() : ""
 
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))
@@ -4338,7 +4339,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
                     var model = data.Where(c => ((string.IsNullOrEmpty(c.SauchalayID) ? " " : c.SauchalayID) + " " +
-                                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                                        (string.IsNullOrEmpty(c.Tot) ? " " : c.Tot)).ToUpper().Contains(SearchString.ToUpper())).ToList();
 
 
                     data = model.ToList();
@@ -4347,6 +4349,23 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
+
+        public string GetTot(string tot)
+        {
+            if (!string.IsNullOrEmpty(tot))
+            {
+                if (tot.ToUpper() == "CT")
+                    return "Community Toilet";
+                else if (tot.ToUpper() == "PT")
+                    return "Public Toilet";
+                else if (tot.ToUpper() == "U")
+                    return "Urinal";
+                else
+                    return "";
+            }
+            else
+                return "";
+        }
         #endregion
         public IEnumerable<OnePointfourGridRow> GetOnepointfourEditData(long wildcard, string SearchString, int appId, string INSERT_ID)
         {
