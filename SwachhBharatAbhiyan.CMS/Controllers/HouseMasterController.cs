@@ -155,7 +155,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     }
                     if (ii.Length > 6)
                     {
-                        house.houseQRCode = ii[6];
+                        house.houseQRCode = ii[7];
                     }
                 }
                 HouseDetailsVM houseDetails = childRepository.SaveHouse(house);
