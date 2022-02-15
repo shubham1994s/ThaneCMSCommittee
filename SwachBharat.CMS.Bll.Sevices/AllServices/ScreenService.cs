@@ -2475,8 +2475,7 @@ namespace SwachBharat.CMS.Bll.Services
                             //vehcileNumber = x.v,
                             //userMobile = x.mobile,
                             garbageType = x.garbageType,
-                           
-                            Ctype=x.CType
+                            Ctype = x.CType
                         });
                     }
                     if (!string.IsNullOrEmpty(SearchString))
