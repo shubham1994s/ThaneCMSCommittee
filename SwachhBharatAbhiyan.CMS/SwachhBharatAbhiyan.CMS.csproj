@@ -274,6 +274,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AndroidController.cs" />
     <Compile Include="Controllers\AttendenceController.cs" />
+    <Compile Include="Controllers\CommercialMasterController.cs" />
     <Compile Include="Controllers\ComplaintController.cs" />
     <Compile Include="Controllers\DatableController.cs" />
     <Compile Include="Controllers\DumpYardController.cs" />
@@ -1686,6 +1687,7 @@
     <Content Include="Content\DatatableGrid\AriaGrid.js" />
     <Content Include="Content\DatatableGrid\AttendenceDetailGrid.js" />
     <Content Include="Content\DatatableGrid\AttendenceGrid.js" />
+    <Content Include="Content\DatatableGrid\CommercialDetailGrid.js" />
     <Content Include="Content\DatatableGrid\Complaint.js" />
     <Content Include="Content\DatatableGrid\District.js" />
     <Content Include="Content\DatatableGrid\DumpYardDetailGrid.js" />
@@ -2996,6 +2998,18 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\Account\Old_Login.cshtml" />
     <Content Include="Views\HouseScanify\Old_Login.cshtml" />
+    <Content Include="Views\CommercialMaster\AddHouseDetails.cshtml" />
+    <Content Include="Views\CommercialMaster\AreaMaster.cshtml" />
+    <Content Include="Views\CommercialMaster\Index.cshtml" />
+    <Content Include="Views\CommercialMaster\MenuIndex.cshtml" />
+    <Content Include="Views\CommercialMaster\MenuReportIndex.cshtml" />
+    <Content Include="Views\CommercialMaster\ReportIndex.cshtml" />
+    <Content Include="Views\CommercialMaster\SaveBundel.cshtml" />
+    <Content Include="Views\CommercialMaster\SaveBundelDryWaste.cshtml" />
+    <Content Include="Views\CommercialMaster\SaveBundelVisiting.cshtml" />
+    <Content Include="Views\CommercialMaster\SaveBundelVisitingDryWet.cshtml" />
+    <Content Include="Views\CommercialMaster\SaveBundelWetWaste.cshtml" />
+    <Content Include="Views\CommercialMaster\SaveDryWet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

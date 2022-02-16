@@ -41,10 +41,14 @@ namespace SwachBharat.CMS.Bll.Services
         void DeletWardNumberDetails(int teamId);
 
         HouseDetailsVM GetHouseDetails(int teamId);
+
+        CommercialDetailsVM GetCommercialDetails(int teamId);
         SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId);
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
         HouseDetailsVM SaveHouseDetails(HouseDetailsVM data);
-         void DeletHouseDetails(int teamId);
+
+        CommercialDetailsVM SaveCommercialDetails(CommercialDetailsVM data);
+        void DeletHouseDetails(int teamId);
 
         SBALUserLocationMapView GetLocationDetails(int teamId,string Emptype);
         List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype);

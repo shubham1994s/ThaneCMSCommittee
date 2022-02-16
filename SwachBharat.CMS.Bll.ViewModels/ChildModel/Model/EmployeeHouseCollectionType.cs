@@ -22,6 +22,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string inTime { get; set; }
         public Nullable<int> Count { get; set; }
 
+        public Nullable<int> Commercial{ get; set; }
+
         public int userId { get; set; }
         public string userName { get; set; }
         public string gcTarget { get; set; }

@@ -53,5 +53,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.MainModel
         public string YoccDndLink { get; set; }
         //public string Apikey { get; set; }
 
+        public string CommercialQRCode { get; set; }
     }
 }

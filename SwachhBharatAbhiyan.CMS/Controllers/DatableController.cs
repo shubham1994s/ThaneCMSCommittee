@@ -266,6 +266,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new HouseDetailsGridRepository(0, searchString, appId);
                     return gridRepository;
                     break;
+
+                case "CommercialDetail":
+                    gridRepository = new CommercialDetailsGridRepository(0, searchString, appId);
+                    return gridRepository;
+                    break; 
+
                 case "GarbageHouse":
                     gridRepository = new HGarbageCotectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3,param4);
                     return gridRepository;

@@ -572,6 +572,57 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 return data.OrderByDescending(c => c.houseId);
             }
         }
+
+        public IEnumerable<SBAHouseDetailsGridRow> GetCommercialDetailsData(long wildcard, string SearchString, int appId)
+        {
+            DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
+            var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
+
+            string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.CommercialQRCode + "/";
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                var data = db.CommercialDetails().Select(x => new SBAHouseDetailsGridRow
+                {
+                    houseId = x.commercialId,
+                    WardNo = x.Ward,
+                    Area = x.Area,
+                    zone = x.Zone,
+                    Address = x.Address,
+                    houseNo = x.HouseNumber,
+                    Mobile = x.MobileNumber,
+                    Name = x.Name,
+                    QRCode = ThumbnaiUrlCMS + x.Images.Trim(),
+                    ReferanceId = x.ReferanceId,
+                    Category = x.Category
+                }).ToList();
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    //var model = data.Where(c => c.WardNo.ToUpper().ToString().Contains(SearchString)
+                    //|| c.Area.ToUpper().ToString().Contains(SearchString) || c.Name.ToUpper().ToString().Contains(SearchString) || c.houseNo.ToUpper().ToString().Contains(SearchString) || c.Mobile.ToUpper().ToString().Contains(SearchString) || c.zone.ToString().ToUpper().ToString().Contains(SearchString)|| c.Address.ToUpper().ToString().Contains(SearchString) || c.ReferanceId.ToUpper().ToString().Contains(SearchString)
+                    // || c.WardNo.ToString().ToLower().ToString().Contains(SearchString) || c.zone.ToString().ToLower().ToString().Contains(SearchString)
+                    //|| c.Area.ToString().ToLower().ToString().Contains(SearchString) || c.Name.ToString().ToLower().ToString().Contains(SearchString) || c.houseNo.ToString().ToLower().ToString().Contains(SearchString) || c.Mobile.ToString().ToLower().ToString().Contains(SearchString) || c.Address.ToString().ToLower().ToString().Contains(SearchString) || c.ReferanceId.ToLower().ToString().Contains(SearchString)
+                    //|| c.WardNo.ToString().Contains(SearchString) || c.zone.ToString().Contains(SearchString) 
+                    //|| c.Area.ToString().Contains(SearchString) || c.Name.ToString().Contains(SearchString)
+                    //|| c.houseNo.ToString().Contains(SearchString) || c.Mobile.ToString().Contains(SearchString)
+                    //|| c.Address.ToString().Contains(SearchString) || c.ReferanceId.ToString().Contains(SearchString) || c.QRCode.ToString().Contains(SearchString)).ToList();
+
+                    var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
+                                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
+                                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
+                                        (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                                        (string.IsNullOrEmpty(c.houseNo) ? " " : c.houseNo) + " " +
+                                        (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
+                                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                                        (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
+                                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode) + " " +
+                                        (string.IsNullOrEmpty(c.Category) ? " " : c.Category)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+
+                    data = model.ToList();
+                }
+                return data.OrderByDescending(c => c.houseId);
+            }
+        }
         public IEnumerable<SBAEmployeeDetailsGridRow> GetEmployeeDetailsData(long wildcard, string SearchString, int appId, string isActive, string emptype)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
@@ -4452,7 +4503,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 var data = db.SP_EmployeeHouseCollectionType().ToList();
-                //var data = "1";
+               // var data = "1";
 
                 foreach (var x in data)
                 {
@@ -4473,9 +4524,27 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         WetWaste = x.WetWaste,
                         DryWaste = x.DryWaste,
                         DomesticHazardous = x.DHW,
-                        Sanitary = x.SW
+                        Sanitary = x.SW,
+                        Commercial = x.CW
 
-                      
+                        //inTime = "10.30 AM",
+                        //Count = 10,
+                        //ToDate = "2022-02-16",
+                        //MixedCount = 10,
+                        //Bifur = 10,
+                        //NotCollected = 0,
+                        //gcTarget = "90",
+                        //NotSpecidfied = 0,
+                        //userId = 1,
+                        //userName = "XYZ",
+                        //ConstructionAndDemolition = 10,
+                        //Horticulture = 10,
+                        //WetWaste = 10,
+                        //DryWaste = 10,
+                        //DomesticHazardous = 10,
+                        //Sanitary = 10,
+                        //Commercial = 10
+
 
                     });
                 }
