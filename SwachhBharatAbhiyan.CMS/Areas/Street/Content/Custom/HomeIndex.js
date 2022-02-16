@@ -362,7 +362,7 @@ $(document).ready(function () {
             }
             //console.log(ary);
             // console.log(ary2);
-            debugger;
+            //debugger;
             var chart = new CanvasJS.Chart("chartContainer", {
                 theme: "light1", // "light1", "ligh2", "dark1", "dark2"
                 animationEnabled: true,
