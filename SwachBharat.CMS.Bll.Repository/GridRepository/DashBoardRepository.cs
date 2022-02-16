@@ -4503,7 +4503,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 var data = db.SP_EmployeeHouseCollectionType().ToList();
-                //var data = "1";
+               // var data = "1";
 
                 foreach (var x in data)
                 {
@@ -4524,9 +4524,27 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         WetWaste = x.WetWaste,
                         DryWaste = x.DryWaste,
                         DomesticHazardous = x.DHW,
-                        Sanitary = x.SW
+                        Sanitary = x.SW,
+                        Commercial = x.CW
 
-                      
+                        //inTime = "10.30 AM",
+                        //Count = 10,
+                        //ToDate = "2022-02-16",
+                        //MixedCount = 10,
+                        //Bifur = 10,
+                        //NotCollected = 0,
+                        //gcTarget = "90",
+                        //NotSpecidfied = 0,
+                        //userId = 1,
+                        //userName = "XYZ",
+                        //ConstructionAndDemolition = 10,
+                        //Horticulture = 10,
+                        //WetWaste = 10,
+                        //DryWaste = 10,
+                        //DomesticHazardous = 10,
+                        //Sanitary = 10,
+                        //Commercial = 10
+
 
                     });
                 }
