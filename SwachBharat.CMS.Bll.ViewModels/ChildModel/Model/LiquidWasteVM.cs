@@ -8,6 +8,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
     public class LiquidWasteVM : BaseVM
     {
+        public string SerielNo;
+
         public int LWId { get; set; }
         public string LWName { get; set; }
         public string LWNameMar { get; set; }

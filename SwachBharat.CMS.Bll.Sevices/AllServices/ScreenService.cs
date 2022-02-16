@@ -552,6 +552,28 @@ namespace SwachBharat.CMS.Bll.Services
                             else
                             {
                                 house.houseQRCode = ThumbnaiUrlCMS + house.houseQRCode.Trim();
+
+
+                                int n = teamId;
+                                double refer1 = Convert.ToDouble((n + 1));
+                                double xyz = refer1 / 100;
+
+                                string s = xyz.ToString("0.00", CultureInfo.InvariantCulture);
+                                string[] parts = s.Split('.');
+                                int i1 = int.Parse(parts[0]);
+                                int i2 = int.Parse(parts[1]);
+
+                                if (i2 == 0)
+                                {
+                                    //i1 = i1 + 1;
+                                    s = "S" + i1.ToString();
+                                }
+                                else
+                                {
+                                    s = "S" + (i1 + 1);
+                                }
+
+                                house.SerielNo = s;
                             }
                         }
                         catch (Exception e) { house.houseQRCode = "/Images/default_not_upload.png"; }
@@ -2433,8 +2455,8 @@ namespace SwachBharat.CMS.Bll.Services
                         //string gcTime = x.gcDate.ToString();
                         houseLocation.Add(new SBALHouseLocationMapView()
                         {
-                            //ssid = Convert.ToInt32(x.SSId),
-                            //lwid = Convert.ToInt32(x.LWId),
+                            ssid = Convert.ToInt32(x.SSId),
+                            lwid = Convert.ToInt32(x.LWId),
                             houseId = Convert.ToInt32(x.houseId),
                             ReferanceId = x.ReferanceId,
                             houseOwnerName = (x.houseOwner == null ? "" : x.houseOwner.ToUpper()),
@@ -2453,7 +2475,7 @@ namespace SwachBharat.CMS.Bll.Services
                             //vehcileNumber = x.v,
                             //userMobile = x.mobile,
                             garbageType = x.garbageType,
-                            Ctype=x.CType
+                            Ctype = x.CType
                         });
                     }
                     if (!string.IsNullOrEmpty(SearchString))
@@ -3985,6 +4007,28 @@ namespace SwachBharat.CMS.Bll.Services
                             else
                             {
                                 StreetSweep.SSQRCode = ThumbnaiUrlCMS + StreetSweep.SSQRCode.Trim();
+
+
+                                int n = teamId;
+                                double refer1 = Convert.ToDouble((n + 1));
+                                double xyz = refer1 / 100;
+
+                                string s = xyz.ToString("0.00", CultureInfo.InvariantCulture);
+                                string[] parts = s.Split('.');
+                                int i1 = int.Parse(parts[0]);
+                                int i2 = int.Parse(parts[1]);
+
+                                if (i2 == 0)
+                                {
+                                    //i1 = i1 + 1;
+                                    s = "S" + i1.ToString();
+                                }
+                                else
+                                {
+                                    s = "S" + (i1 + 1);
+                                }
+
+                                StreetSweep.SerielNo = s;
                             }
                         }
                         catch (Exception e) { StreetSweep.SSQRCode = "/Images/default_not_upload.png"; }
@@ -4051,6 +4095,28 @@ namespace SwachBharat.CMS.Bll.Services
                             else
                             {
                                 LiquidWaste.LWQRCode = ThumbnaiUrlCMS + LiquidWaste.LWQRCode.Trim();
+
+
+                                int n = teamId;
+                                double refer1 = Convert.ToDouble((n + 1));
+                                double xyz = refer1 / 100;
+
+                                string s = xyz.ToString("0.00", CultureInfo.InvariantCulture);
+                                string[] parts = s.Split('.');
+                                int i1 = int.Parse(parts[0]);
+                                int i2 = int.Parse(parts[1]);
+
+                                if (i2 == 0)
+                                {
+                                    //i1 = i1 + 1;
+                                    s = "S" + i1.ToString();
+                                }
+                                else
+                                {
+                                    s = "S" + (i1 + 1);
+                                }
+
+                                LiquidWaste.SerielNo = s;
                             }
                         }
                         catch (Exception e) { LiquidWaste.LWQRCode = "/Images/default_not_upload.png"; }

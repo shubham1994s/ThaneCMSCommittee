@@ -8,7 +8,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
     public class SBALHouseLocationMapView : BaseVM
     {
-        public int ssid { get; set; }
+        public int  ssid { get; set; }
         public int lwid { get; set; }
         public int houseId { get; set; }
         public string ReferanceId { get; set; }
