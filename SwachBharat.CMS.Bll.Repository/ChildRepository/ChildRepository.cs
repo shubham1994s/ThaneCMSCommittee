@@ -142,6 +142,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHouseDetails(teamId);
         }
 
+        public CommercialDetailsVM GetCommercailById(int teamId)
+        {
+            return screenService.GetCommercialDetails(teamId);
+        }
+
         public SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId)
         {
             return screenService.GetHouseByIdforMap(teamId, daId);
@@ -161,6 +166,18 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             HouseDetailsVM dd =screenService.SaveHouseDetails(data);
             return dd;
         }
+
+
+        public CommercialDetailsVM SaveHouse(CommercialDetailsVM data)
+        {
+            if (data.houseId <= 0)
+            {
+                data.houseId = 0;
+            }
+            CommercialDetailsVM dd = screenService.SaveCommercialDetails(data);
+            return dd;
+        }
+
         public void DeletHouse(int teamId)
         {
             screenService.DeletHouseDetails(teamId);
