@@ -1688,6 +1688,7 @@
     <Content Include="Content\DatatableGrid\AttendenceDetailGrid.js" />
     <Content Include="Content\DatatableGrid\AttendenceGrid.js" />
     <Content Include="Content\DatatableGrid\CommercialDetailGrid.js" />
+    <Content Include="Content\DatatableGrid\CommercialGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\Complaint.js" />
     <Content Include="Content\DatatableGrid\District.js" />
     <Content Include="Content\DatatableGrid\DumpYardDetailGrid.js" />
@@ -3010,6 +3011,8 @@
     <Content Include="Views\CommercialMaster\SaveBundelVisitingDryWet.cshtml" />
     <Content Include="Views\CommercialMaster\SaveBundelWetWaste.cshtml" />
     <Content Include="Views\CommercialMaster\SaveDryWet.cshtml" />
+    <Content Include="Views\GarbageCollection\MenuCommercialGarbageIndex.cshtml" />
+    <Content Include="Views\GarbageCollection\CommercialGarbageIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

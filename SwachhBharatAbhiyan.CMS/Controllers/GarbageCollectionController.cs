@@ -47,6 +47,26 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
+
+        public ActionResult MenuCommercialGarbageIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        public ActionResult CommercialGarbageIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
         public ActionResult PointGarbageIndex()
         {
             if (SessionHandler.Current.AppId != 0)
