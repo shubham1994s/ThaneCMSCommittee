@@ -49,6 +49,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<double> TotalDHWCount { get; set; }
         public Nullable<double> TotalSWCount { get; set; }
 
+        public Nullable<double> TotalCWCount { get; set; }
+
 
         public int userId { get; set; }
         public string userName { get; set; }
