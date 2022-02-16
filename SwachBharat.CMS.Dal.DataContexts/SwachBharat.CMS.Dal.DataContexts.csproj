@@ -101,6 +101,12 @@
     <Compile Include="CollecctionArea_Result.cs">
       <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
+    <Compile Include="CommercialDetails_Result.cs">
+      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommercialMaster.cs">
+      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+    </Compile>
     <Compile Include="country_states.cs">
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
@@ -132,7 +138,7 @@
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="GamePlayerDetail.cs">
-      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+      <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="Game_AnswerType.cs">
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
