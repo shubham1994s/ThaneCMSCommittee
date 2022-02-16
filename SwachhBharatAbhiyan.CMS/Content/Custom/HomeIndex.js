@@ -646,7 +646,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    debugger;
+   // debugger;
     var dry_count = $('#dry_count').val();
     var wet_count = $('#wet_count').val();
     var tot_dump_null_check = $('#tot_dump_count').val();
@@ -741,7 +741,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    debugger;
+    //debugger;
     var TotalCDW_coll = $('#GcCDW_Weight_coll').val();
     var TotalHW_coll = $('#GcHW_Weight_coll').val();
 

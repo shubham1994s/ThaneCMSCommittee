@@ -37,24 +37,31 @@
                     <a href="/GarbageCollection/MenuIdealtime" id="snackbar"></a>
                     <div class="navbar-holder d-flex align-items-center justify-content-between">
                         <!-- Navbar Header-->
-            <div class="navbar-header">
+                        <div class="navbar-header">
                             <!-- Navbar Brand --><a href="/Street/StreetHome/Index" class="navbar-brand">
                                 <div class="brand-text brand-big">
                                     <span>
                                         <img style="height:40px;width:50px;" src="~/Content/images/img/street_icon.svg" />
                                     </span><strong style="vertical-align:middle">Street Sweeping Monitoring System</strong>
                                     @*</span><strong> घंटा गाडी</strong>*@
-            </div>
+                                </div>
                                 <div class="brand-text brand-small"><strong><img style="height:40px;width:50px;" src="~/Content/images/img/action_icon.svg" /> </strong></div>
                             </a>
                             <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
-            </div>
+
+
+
+                        </div>
+                        <span>
+                            <img style="height:40px;width:37px;" src="~/Content/images/img/Thane_Municipal_Corporation.png" />
+                            <span style="vertical-align:middle;font-size:15px">Thane Mahanagar Palika</span>
+                        </span>
                         <!-- Navbar Menu -->
                         <!-- Logout    -->
                         @*<li class="nav-item"><a href="/Account/login" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>*@
                         @Html.Partial("_LoginPartial")
-                    
-        </div>
+
+                    </div>
     </div>
             </nav>
         </header>
@@ -634,6 +641,31 @@
                 });
             }
         });
+
+        var idleTime = 0;
+        $(document).ready(function () {
+            //Increment the idle time counter every minute.
+            var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+            //Zero the idle timer on mouse movement.
+            $(this).mousemove(function (e) {
+                idleTime = 0;
+            });
+            $(this).keypress(function (e) {
+                idleTime = 0;
+            });
+        });
+
+        function timerIncrement() {
+            idleTime = idleTime + 1;
+            if (idleTime > 30) { // 15 minutes
+                // window.location = "/Account/login"
+                alert('Session TimeOut');
+                document.getElementById('logoutFormStreet').submit()
+            }
+        }
+
+
 
     </script>
 
