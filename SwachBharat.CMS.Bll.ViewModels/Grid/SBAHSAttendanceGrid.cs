@@ -30,5 +30,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string daDateTIme { get; set; }
 
         public int DumpYardCount { get; set; }
+
+        public int CommercialCount { get; set; }
     }
 }

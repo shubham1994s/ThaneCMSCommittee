@@ -826,7 +826,7 @@ $(document).ready(function () {
     showDefaultText(chart, "No Data available");
     chart.render();
     function showDefaultText(chart, text) {
-        var isEmpty = !(tot_dump_count && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+        var isEmpty = !(TotalCommercialCount && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
 
 
 
