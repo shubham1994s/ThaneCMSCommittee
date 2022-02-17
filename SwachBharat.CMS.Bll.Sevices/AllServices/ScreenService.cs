@@ -3418,6 +3418,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.CreatedDate = DateTime.Now;
             model.Tot = data.Tot;
             model.Tns = data.Tns;
+            model.SauchalayQRCode = data.SauchalayQRCode;
+            model.ReferanceId = data.ReferanceId;
             // model.userId = data.userId;
             return model;
         }
@@ -4019,6 +4021,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.CreatedDate = data.CreatedDate;
             model.Tot = data.Tot;
             model.Tns = data.Tns;
+            model.SauchalayQRCode = data.SauchalayQRCode;
+            model.ReferanceId = data.ReferanceId;
             return model;
         }
         #endregion
@@ -5296,6 +5300,8 @@ namespace SwachBharat.CMS.Bll.Services
                             model.CreatedDate = DateTime.Now;
                             model.Tot = data.Tot;
                             model.Tns = data.Tns;
+                            model.SauchalayQRCode = data.SauchalayQRCode;
+                            model.ReferanceId = data.ReferanceId;
                             //model.userId = data.userId;
                             db.SaveChanges();
                         }

@@ -26,5 +26,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string Mobile { get; set; }
         public string Tot { get; set; }
         public Nullable<int> Tns { get; set; }
+        public string SauchalayQRCode { get; set; }
+        public string ReferanceId { get; set; }
     }
 }
