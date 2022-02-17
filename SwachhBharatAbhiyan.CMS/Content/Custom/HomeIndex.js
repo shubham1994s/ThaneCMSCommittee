@@ -747,6 +747,110 @@ $(document).ready(function () {
 
 });
 
+// Commercial Pie Chart
+
+$(document).ready(function () {
+    // debugger;
+    var CommercialMixCount = $('#tot_CommercialMixCount').val();
+    var CommercialWetCount = $('#tot_CommercialWetCount').val();
+    var CommercialDryCount = $('#tot_CommercialDryCount').val();
+    var TotalCommercialCount_check = $('#tot_TotalCommercialCount').val();
+
+    //var CommercialMixCount = 10;
+    //var CommercialWetCount = 10;
+    //var CommercialDryCount = 10;
+    //var TotalCommercialCount_check = 100;
+
+    var TotalCommercialCount;
+    if (TotalCommercialCount_check == 0) {
+        TotalCommercialCount = null;
+    } else {
+        TotalCommercialCount = $('#tot_TotalCommercialCount').val();
+         //TotalCommercialCount = 100;
+    }
+
+    var res_mix_count = parseFloat(CommercialMixCount) * 100 / parseFloat(TotalCommercialCount);
+    var res_wet_count = parseFloat(CommercialWetCount) * 100 / parseFloat(TotalCommercialCount);
+    var res_dry_count = parseFloat(CommercialDryCount) * 100 / parseFloat(TotalCommercialCount);
+
+    var ary3 = []
+    ary3.push({ v: CommercialMixCount });
+    ary3.push({ v: CommercialDryCount });
+    ary3.push({ v: CommercialWetCount });
+
+
+    //console.log(ary3);
+    var chart = new CanvasJS.Chart("chartContainerPieCommercial", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            //text: "विलगिकरण प्रकार ",
+            fontSize: 24,
+            padding: 10
+        },
+        subtitles: [{
+            //text: "United Kingdom, 2016",
+            //fontSize: 16
+        }],
+        toolTip: {
+            content: "In Numbers {hover_number} ",
+        },
+        legend: {
+            maxWidth: 180,
+            itemWidth: 75,
+            fontSize: 12,
+            // horizontalAlign: "right", // left, center ,right 
+            //verticalAlign: "center",
+        },
+        data: [{
+            type: "pie",
+            indexLabelFontSize: 12,
+            showInLegend: true,
+            legendText: "{hover_number}",
+            radius: 60,
+            indexLabel: "{label} - {y}",
+            yValueFormatString: "###0.0\"%\"",
+            click: explodePie,
+            dataPoints: [
+                //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
+                //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
+
+                { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, color: '#dc3545' },
+                { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, color: '#0086c3' },
+                { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, color: '#01ad35' },
+
+
+            ],
+        }]
+    });
+    showDefaultText(chart, "No Data available");
+    chart.render();
+    function showDefaultText(chart, text) {
+        var isEmpty = !(TotalCommercialCount && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+
+        if (isEmpty) {
+            chart.options.subtitles.push({
+                text: text,
+                verticalAlign: 'center',
+            });
+            (chart.options.data[0].dataPoints = []);
+        }
+
+
+
+    }
+    function explodePie(e) {
+        for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+            if (i !== e.dataPointIndex)
+                e.dataSeries.dataPoints[i].exploded = false;
+        }
+    }
+
+});
+
+// Horiculture , Construction Pie Chart
 $(document).ready(function () {
     //debugger;
     var TotalCDW_coll = $('#GcCDW_Weight_coll').val();

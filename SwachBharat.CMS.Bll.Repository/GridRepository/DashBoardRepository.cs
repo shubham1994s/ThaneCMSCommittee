@@ -4202,6 +4202,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     var liquidCount = db.LiquidWasteDetails.Where(c => c.lastModifiedDate >= startDate && c.lastModifiedDate <= endDate && c.userId == x.qrEmpId).Count();
                     var streetCount = db.StreetSweepingDetails.Where(c => c.lastModifiedDate >= startDate && c.lastModifiedDate <= endDate && c.userId == x.qrEmpId).Count();
                     var dumpyardcount = db.DumpYardDetails.Where(c => c.lastModifiedDate >= startDate && c.lastModifiedDate <= endDate && c.userId == x.qrEmpId).Count();
+                    var commercialCount = db.CommercialMasters.Where(c => c.modified >= startDate && c.modified <= endDate && c.userId == x.qrEmpId).Count();
                     ///x.daDate = checkNull(x.daDate.tp);
                     //x.endLat = checkNull(x.endLat);
                     //x.endLong = checkNull(x.endLong);
@@ -4241,6 +4242,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         LiquidCount=liquidCount,
                         StreetCount= streetCount,
                         DumpYardCount=dumpyardcount,
+                        CommercialCount= commercialCount,
                         daDateTIme = (displayTime1 + " " + sTime)
 
 
@@ -4570,7 +4572,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 var data = db.SP_EmployeeHouseCollectionType().ToList();
-               // var data = "1";
+                //var data = "1";
 
                 foreach (var x in data)
                 {

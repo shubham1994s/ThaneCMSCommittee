@@ -51,5 +51,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> TotalDumpPropertyCount { get; set; }
         public decimal GcHWWeightCount { get; set; }
         public decimal GcCDWWeightCount { get; set; }
+        public int TotalCommercialCount { get; set; }
+        public int TotalCommercialMixCount { get; set; }
+        public int TotalCommercialDryCount { get; set; }
+        public int TotalCommercialWetCount { get; set; }
     }
 }
