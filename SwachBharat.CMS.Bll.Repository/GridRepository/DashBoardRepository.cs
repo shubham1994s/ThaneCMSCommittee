@@ -4434,14 +4434,14 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
 
-            string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.HouseQRCode + "/";
+            string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.CTPTQRCode + "/";
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
                 var data = db.SauchalayAddresses.AsEnumerable().Select(x => new SauchalayRegistrationGridRow
                 {
                     Id = x.Id,
-                    SauchalayID = x.SauchalayID,
+                    SauchalayID = x.ReferanceId,
                     Name = x.Name,
                     Address = x.Address,
                     Image = (string.IsNullOrEmpty(x.ImageUrl) ? "/Images/default_not_upload.png" : x.ImageUrl),
@@ -4449,7 +4449,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Mobile = x.Mobile,
                     CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
                     Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : GetTot(x.Tot),
-                    Tns = x.Tns.HasValue ? x.Tns.ToString() : ""
+                    Tns = x.Tns.HasValue ? x.Tns.ToString() : "",
+                    QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode
 
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))

@@ -21,8 +21,8 @@
             "searchable": false
         },
          {
-                 "targets": [6],
-                 "visible": true,
+                 "targets": [8],
+                 "visible": false,
 
                  "render": function (data, type, full, meta) {
                      if (full["Image"] != "/Images/default_not_upload.png") {
@@ -38,8 +38,8 @@
          },
 
           {
-              "targets": [7],
-              "visible": true,
+              "targets": [9],
+              "visible": false,
 
               "render": function (data, type, full, meta) {
                   if (full["QrImage"] != "/Images/default_not_upload.png") {
@@ -52,7 +52,12 @@
                       return "<img alt='Photo Not Found' onclick='noImageNotification()' src='/Images/default_not_upload.png' style='height:35px;width:35px;cursor:pointer;'></img>";
                   }
               },
-          }
+                },
+                {
+                    "targets": [4],
+                    "visible": false,
+                    "searchable": false
+                }
 
         ],
 
@@ -60,6 +65,13 @@
               { "data": "Id", "name": "Id", "autoWidth": true },
               { "data": "SauchalayID", "name": "SauchalayID", "autoWidth": true },
               { "data": "Name", "name": "Name", "autoWidth": true },
+              {
+                "data": "QRCode", "name": "QRCode", "render": function (data, type, full, meta) {
+                      return "<img src=\"" + data + "\" height=\"50\"/>";
+                }
+              },
+            { "render": function (data, type, full, meta) { return '<input  class="btn btn-link" type="button" onclick="DownloadQRCode(' + full["SauchalayID"] + ')" value="Download" />'; } },
+
               { "data": "Mobile", "name": "Mobile", "autoWidth": true },
               { "data": "Tot", "name": "Tot", "autoWidth": true },
               { "data": "Tns", "name": "Tns", "autoWidth": true },
@@ -106,6 +118,37 @@ function Edit(Id) {
         window.location.href = url;
     }
 };
+
+function DownloadQRCode(Id) {
+    window.location.href = "/HouseMaster/Export?Id=" + Id;
+};
+    
+function SaveQRCode(Id) {
+
+    var UserId = $('#AreaId').val();
+    $('#sendlink_pop').modal('toggle');
+    $("#send_msg").css('color', 'red');
+    //$('#send_msg').html('कृपया थांबा / Please Wait...');
+    $('#send_msg').html('Please Wait...');
+
+    $.ajax({
+        type: "post",
+        url: "/HouseMaster/Save?id=" + Id,
+        data: { userId: UserId },
+        datatype: "json",
+        traditional: true,
+        success: function (data) {
+
+            //alert("Send Successfully");
+            //$('#send_msg').html('आपला संदेश पाठवला गेला आहे / Your message has been sent...');
+            $('#send_msg').html('Your message has been sent...');
+            $("#send_msg").css('color', 'green');
+        }
+    });
+
+
+};
+
 
 //function Delete(Id) {
 //    if (Id != null && Id != '') {

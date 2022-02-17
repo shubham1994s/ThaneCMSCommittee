@@ -5187,7 +5187,7 @@ namespace SwachBharat.CMS.Bll.Services
         #endregion
 
         #region Sauchalay
-        public SauchalayDetailsVM GetSauchalayDetails(int teamId)
+        public SauchalayDetailsVM GetSauchalayDetailsOld(int teamId)
         {
             try
             {
@@ -5217,6 +5217,7 @@ namespace SwachBharat.CMS.Bll.Services
                     {
                         data.QrImage = "/Images/default_not_upload.png";
                     }
+
                     return data;
                 }
                 else if (teamId == -2)
@@ -5261,6 +5262,156 @@ namespace SwachBharat.CMS.Bll.Services
                         string appName = (appDetails.AppName).Split(' ').First();
                         string name = Convert.ToInt32(sId) < 9 ? appName + '_' + 'S' + '_' + ("0" + (Convert.ToInt32(sId) + 1)) : appName + '_' + 'S' + '_' + ((Convert.ToInt32(sId)) + (1));
                         data.Id = Convert.ToInt32(sId);
+                    }
+                    return data;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public SauchalayDetailsVM GetSauchalayDetails(int teamId)
+        {
+            try
+            {
+                DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
+                var appDetails = dbMain.AppDetails.Where(x => x.AppId == AppID).FirstOrDefault();
+
+                string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.CTPTQRCode + "/";
+                SauchalayDetailsVM data = new SauchalayDetailsVM();
+
+                var Details = db.SauchalayAddresses.Where(x => x.Id == teamId).FirstOrDefault();
+                if (Details != null)
+                {
+                    data = FillSauchalayDetailsViewModel(Details);
+                    if (data.Image != null && data.Image != "")
+                    {
+                        data.Image = data.Image.Trim(); //ThumbnaiUrlCMS + type.Image.Trim();
+                    }
+                    else
+                    {
+                        data.Image = "/Images/default_not_upload.png";
+                    }
+                    if (data.QrImage != null && data.QrImage != "")
+                    {
+                        data.QrImage = data.QrImage.Trim(); //ThumbnaiUrlCMS + type.Image.Trim();
+                    }
+                    else
+                    {
+                        data.QrImage = "/Images/default_not_upload.png";
+                    }
+
+                    if (data.SauchalayQRCode != null && data.SauchalayQRCode != "")
+                    {
+                        HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create(ThumbnaiUrlCMS + data.SauchalayQRCode.Trim());
+                        HttpWebResponse httpRes = null;
+                        try
+                        {
+                            httpRes = (HttpWebResponse)httpReq.GetResponse(); // Error 404 right here,
+                            if (httpRes.StatusCode == HttpStatusCode.NotFound)
+                            {
+                                data.SauchalayQRCode = "/Images/default_not_upload.png";
+                            }
+                            else
+                            {
+                                data.SauchalayQRCode = ThumbnaiUrlCMS + data.SauchalayQRCode.Trim();
+
+
+                                
+                            }
+                        }
+                        catch (Exception e) { data.SauchalayQRCode = "/Images/default_not_upload.png"; }
+
+                    }
+                    else
+                    {
+                        data.SauchalayQRCode = "/Images/default_not_upload.png";
+                    }
+                    if (data.ReferanceId == null || data.ReferanceId == "")
+                    {
+                        var id = db.SauchalayAddresses.OrderByDescending(x => x.SauchalayID).Select(x => x.SauchalayID).FirstOrDefault();
+                        if (id == null)
+                        {
+                            int number = 1000;
+                            string refer = "CTPTSBA" + (number + 1);
+                            data.ReferanceId = refer;
+                        }
+                        else
+                        {
+                            int number = 1000;
+                            var sId = id.Split('_').Last();
+                            string refer = "CTPTSBA" + (number + (Convert.ToInt32(sId)) + 1);
+                            data.ReferanceId = refer;
+                        }
+                    }
+                    return data;
+                }
+                else if (teamId == -2)
+                {
+                    var id = db.SauchalayAddresses.OrderByDescending(x => x.SauchalayID).Select(x => x.SauchalayID).FirstOrDefault();
+                    if (id == null)
+                    {
+                        string appName = (appDetails.AppName).Split(' ').First();
+                        string name = appName + '_' + 'S' + '_' + ("0" + 1);
+                        data.SauchalayID = name;
+                        data.Image = "/Images/add_image_square.png";
+                        data.QrImage = "/Images/add_image_square.png";
+                        data.Id = 0;
+                        int number = 1000;
+                        string refer = "CTPTSBA" + (number + 1);
+                        data.ReferanceId = refer;
+                        data.SauchalayQRCode = "/Images/QRcode.png";
+                    }
+                    else
+                    {
+                        var sId = id.Split('_').Last();
+                        string appName = (appDetails.AppName).Split(' ').First();
+                        string name = Convert.ToInt32(sId) < 9 ? appName + '_' + 'S' + '_' + ("0" + (Convert.ToInt32(sId) + 1)) : appName + '_' + 'S' + '_' + ((Convert.ToInt32(sId)) + (1));
+                        data.SauchalayID = name;
+                        data.Id = 0;
+                        int number = 1000;
+                        data.Image = "/Images/add_image_square.png";
+                        data.QrImage = "/Images/add_image_square.png";
+                        string refer = "CTPTSBA" + (number + (Convert.ToInt32(sId)) + 1);
+                        data.ReferanceId = refer;
+                        data.SauchalayQRCode = "/Images/QRcode.png";
+
+                    }
+                    return data;
+                }
+                else
+                {
+                    var id = db.SauchalayAddresses.OrderByDescending(x => x.SauchalayID).Select(x => x.SauchalayID).FirstOrDefault();
+
+                    if (id == null)
+                    {
+                        string appName = (appDetails.AppName).Split(' ').First();
+                        string name = appName + '_' + 'S' + '_' + ("0" + 1);
+                        data.SauchalayID = name;
+                        
+                        data.Image = "/Images/add_image_square.png";
+                        data.QrImage = "/Images/add_image_square.png";
+                        data.Id = 0;
+                        int number = 1000;
+                        string refer = "CTPTSBA" + (number + 1);
+                        data.ReferanceId = refer;
+                        data.SauchalayQRCode = "/Images/QRcode.png";
+                    }
+                    else
+                    {
+                        var sId = id.Split('_').Last();
+                        string appName = (appDetails.AppName).Split(' ').First();
+                        string name = Convert.ToInt32(sId) < 9 ? appName + '_' + 'S' + '_' + ("0" + (Convert.ToInt32(sId) + 1)) : appName + '_' + 'S' + '_' + ((Convert.ToInt32(sId)) + (1));
+                        data.Id = Convert.ToInt32(sId);
+                        data.Image = "/Images/add_image_square.png";
+                        data.QrImage = "/Images/add_image_square.png";
+                        data.Id = 0;
+                        int number = 1000;
+                        string refer = "CTPTSBA" + (number + (Convert.ToInt32(sId)) + 1);
+                        data.ReferanceId = refer;
+                        data.SauchalayQRCode = "/Images/QRcode.png";
                     }
                     return data;
                 }

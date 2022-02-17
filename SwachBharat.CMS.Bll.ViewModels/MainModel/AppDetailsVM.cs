@@ -54,5 +54,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.MainModel
         //public string Apikey { get; set; }
 
         public string CommercialQRCode { get; set; }
+
+        public string CTPTQRCode { get; set; }
     }
 }

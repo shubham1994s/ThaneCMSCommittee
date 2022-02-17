@@ -68,5 +68,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string LiquidQRCode { get; set; }
         public string StreetQRCode { get; set; }
         public string CommercialQRCode { get; set; }
+        public string CTPTQRCode { get; set; }
     }
 }
