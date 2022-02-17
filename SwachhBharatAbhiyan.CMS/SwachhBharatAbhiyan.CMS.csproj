@@ -1796,6 +1796,7 @@
     <Content Include="Content\images\img\action_icon.svg" />
     <Content Include="Content\images\img\app_icon_cms.png" />
     <Content Include="Content\images\img\ctpt_marker.png" />
+    <Content Include="Content\images\img\Final_New.png" />
     <Content Include="Content\images\img\house_icon.png" />
     <Content Include="Content\images\img\house_icon.svg" />
     <Content Include="Content\images\img\icn_not_avialable.png" />
@@ -1835,6 +1836,7 @@
     <Content Include="Content\images\LoginLogo.PNG" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logos.png" />
+    <Content Include="Content\images\New_Img\Final_New.png" />
     <Content Include="Content\images\New_Img\login_page_design.png" />
     <Content Include="Content\images\New_Img\WCMT-Logo.png" />
     <Content Include="Content\images\progressbar.gif" />
