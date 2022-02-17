@@ -33,44 +33,44 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-groups">
-                    <div style="width: auto;padding:0px;text-align: center;height:auto;margin-top:25px">
-                        @Html.Label("CTPT Image")
-                        <div id="FileUpload_Preview">
-                            <a><img src="@Model.Image" class="add-image" style="width:150px;height:130px;padding:2px;overflow:hidden" /></a>
-                        </div>
+            @*<div class="col-md-6">
+            <div class="form-groups">
+                <div style="width: auto;padding:0px;text-align: center;height:auto;margin-top:25px">
+                    @Html.Label("CTPT Image")
+                    <div id="FileUpload_Preview">
+                        <a><img src="@Model.Image" class="add-image" style="width:150px;height:130px;padding:2px;overflow:hidden" /></a>
                     </div>
                 </div>
-                <div class="" style="">
-                    <div class="input-group1">
-                        <span class="btn btn-file">
-                            <span class="glyphicon glyphicon-picture"></span>
-                            Browse &hellip;    <input type="file" accept="image/*" name="filesUpload" class="fileUplode" id="filesUpload" onchange="ValidateSize(this)">
-                        </span>
-                    </div>
-                </div>
-
             </div>
-            <div class="col-md-6">
-                <div class="form-groups">
-                    <div style="width: auto;padding:0px;text-align: center;height:auto;margin-top:25px">
-                        @Html.Label("CTPT QR Image")
-                        <div id="FileUpload_Preview1">
-                            <a><img src="@Model.QrImage" class="add-image" style="width:150px;height:130px;padding:2px;overflow:hidden" /></a>
-                        </div>
-                    </div>
+            <div class="" style="">
+                <div class="input-group1">
+                    <span class="btn btn-file">
+                        <span class="glyphicon glyphicon-picture"></span>
+                        Browse &hellip;    <input type="file" accept="image/*" name="filesUpload" class="fileUplode" id="filesUpload" onchange="ValidateSize(this)">
+                    </span>
                 </div>
-                <div class="" style="">
-                    <div class="input-group1">
-                        <span class="btn btn-file">
-                            <span class="glyphicon glyphicon-picture"></span>
-                            Browse &hellip;    <input type="file" accept="image/*" name="filesUpload1" class="fileUplode" id="filesUpload1" onchange="ValidateSize(this)">
-                        </span>
-                    </div>
-                </div>
-
             </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-groups">
+                <div style="width: auto;padding:0px;text-align: center;height:auto;margin-top:25px">
+                    @Html.Label("CTPT QR Image")
+                    <div id="FileUpload_Preview1">
+                        <a><img src="@Model.QrImage" class="add-image" style="width:150px;height:130px;padding:2px;overflow:hidden" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="" style="">
+                <div class="input-group1">
+                    <span class="btn btn-file">
+                        <span class="glyphicon glyphicon-picture"></span>
+                        Browse &hellip;    <input type="file" accept="image/*" name="filesUpload1" class="fileUplode" id="filesUpload1" onchange="ValidateSize(this)">
+                    </span>
+                </div>
+            </div>
+
+        </div>*@
 
             <div class="col-md-6">
                 <div class="form-group">
@@ -172,7 +172,44 @@
                     <span class="text-danger" id="err_address"></span>
                 </div><br />
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<label for="Select_Image">क्यु आर  कोड  / QR-Code Image</label>*@
+                    @*@Html.Label("स्कॅनिफाय कोड  / Scaniffy Code")*@
+                    @Html.Label("Scaniffy Code")
+                    <div class="form-group textarea">
+                        <div style="width: auto;padding: 6px;margin: 0px 10px;height: auto;">
+                            <div id="FileUpload_Preview" style="display:inline-flex">
+                                <a href="JavaScript:Void(0);" data-lightbox="example-1"><img src="@Model.QrImage" class="add-image" style="width:120px;height:auto;padding:2px;overflow:hidden" /></a>
+                                <span>
+                                    <input class="btn-link" type="button" id="Download1" value="Download" style="display:none;margin:20px 0px 0px 20px;text-decoration:underline;" /><br />
+                                    <input class="btn-link" type="button" id="send_link" value="Send link" style="display:none;margin:7px 0px 0px 20px;text-decoration:underline;" />
 
+                                </span>
+                                @*<a href="~/Images/add_image_square.png" data-lightbox="example-1"><img src="~/Images/add_image_square.png" class="add-image" style="width:auto;height:100%;padding:2px;overflow:hidden"></a>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group" style="margin-top:-25px;">
+
+                            <input class="btn" type="button" id="QRCOdeGenrate" value="Generate Scaniffy Code" />
+
+                            <div class="progress" id="prog_bar" style="margin-top:10px;width: 57%;background-color:#dd8680; display:none;">
+                                <div id="myBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="background-color:#349B98;width:50%">
+                                    50%
+                                </div>
+                            </div>
+
+
+                            <span class="text-danger" id="err_img"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
 
 
         </div>
