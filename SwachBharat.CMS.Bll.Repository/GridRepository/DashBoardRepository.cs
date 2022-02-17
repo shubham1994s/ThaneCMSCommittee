@@ -4570,7 +4570,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 var data = db.SP_EmployeeHouseCollectionType().ToList();
-               // var data = "1";
+                //var data = "1";
 
                 foreach (var x in data)
                 {
