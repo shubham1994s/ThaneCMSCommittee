@@ -122,7 +122,7 @@ namespace SwachBharat.CMS.Bll.Services
                         model.TotalDHWCount = Convert.ToInt32(houseCount.TotalDHW);
                         model.TotalSWCount = Convert.ToInt32(houseCount.TotalSW);
 
-                        model.TotalCWCount= Convert.ToInt32(houseCount.TotalCW);
+                        model.TotalCWCount = Convert.ToInt32(houseCount.TotalCW);
 
                         //For Liquid Waste
 
@@ -144,6 +144,14 @@ namespace SwachBharat.CMS.Bll.Services
                         //for Horticulture waste & Construction demolation waste
                         model.GcHWWeightCount = Convert.ToDouble(houseCount.GcHWWeightCount);
                         model.GcCDWWeightCount = Convert.ToDouble(houseCount.GcCDWWeightCount);
+
+                        //For Commercial
+                        model.TotalCommercialCount = Convert.ToDouble(houseCount.TotalCommercialCount);
+                        model.CommercialMixCount = Convert.ToDouble(houseCount.TotalCommercialMixCount);
+                        model.CommercialWetCount = Convert.ToDouble(houseCount.TotalCommercialWetCount);
+                        model.CommercialDryCount = Convert.ToDouble(houseCount.TotalCommercialDryCount);
+
+
 
                         return model;
                     }
@@ -747,7 +755,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId)
+        public SBALUserLocationMapView GetHouseByIdforMap(int teamId, int daId)
         {
             try
             {
@@ -795,8 +803,8 @@ namespace SwachBharat.CMS.Bll.Services
                     house.ZoneList = ListZone();
                     return house;
                 }
-               
-            
+
+
                 else
                 {
                     Daily_Attendance Daily_Attendanceuser = new Daily_Attendance();
@@ -817,7 +825,7 @@ namespace SwachBharat.CMS.Bll.Services
                     return house;
                 }
 
-             
+
             }
             catch (Exception ex)
             {
@@ -825,7 +833,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType)
+        public SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId, string EmpType)
         {
             try
             {
@@ -838,10 +846,10 @@ namespace SwachBharat.CMS.Bll.Services
                 var Details = db.HouseMasters.Where(x => x.houseId == teamId).FirstOrDefault();
                 if (Details != null)
                 {
-                   
+
                     house = FillHouseDetailsViewModelforMap(Details);
                     Daily_Attendance Daily_Attendanceuser = new Daily_Attendance();
-                    Daily_Attendanceuser = db.Daily_Attendance.Where(x => x.daID == daId & x.EmployeeType== EmpType).FirstOrDefault();
+                    Daily_Attendanceuser = db.Daily_Attendance.Where(x => x.daID == daId & x.EmployeeType == EmpType).FirstOrDefault();
                     UserMaster user = new UserMaster();
                     user = db.UserMasters.Where(x => x.userId == Daily_Attendanceuser.userId & x.EmployeeType == EmpType).FirstOrDefault();
                     house.userName = user.userName;
@@ -926,7 +934,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.houseLong = data.houseLong;
                             model.ZoneId = data.ZoneId;
                             model.lastModifiedEntry = DateTime.Now;
-                            model.CType = (data.houseCategory == "RW") ? null: data.houseCategory;
+                            model.CType = (data.houseCategory == "RW") ? null : data.houseCategory;
                             //if(data.WasteType== "DW")
                             //{ 
                             //model.WasteType = data.WasteType;
@@ -1391,7 +1399,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                         if (teamId > 0)
                         {
-                           // Details = db.Locations.Where(c => c.locId == teamId && c.EmployeeType == Emptype).FirstOrDefault();
+                            // Details = db.Locations.Where(c => c.locId == teamId && c.EmployeeType == Emptype).FirstOrDefault();
                             Details = db.Locations.Where(c => c.locId == teamId).FirstOrDefault();
                         }
 
@@ -1602,7 +1610,7 @@ namespace SwachBharat.CMS.Bll.Services
                 var data = db.StreetCurrentAllUserLocationTest1().ToList();
                 foreach (var x in data)
                 {
-                    
+
                     userLocation.Add(new SBALUserLocationMapView()
                     {
                         userId = Convert.ToInt32(x.userid),
@@ -1622,7 +1630,7 @@ namespace SwachBharat.CMS.Bll.Services
                 var data = db.CurrentAllUserLocationTest1().ToList();
                 foreach (var x in data)
                 {
-                  
+
                     userLocation.Add(new SBALUserLocationMapView()
                     {
                         userId = Convert.ToInt32(x.userid),
@@ -2031,7 +2039,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
         // Added By Saurabh (11 July 2019)
-        public List<SBALUserLocationMapView> GetHouseAttenRoute(int daId,int areaid)
+        public List<SBALUserLocationMapView> GetHouseAttenRoute(int daId, int areaid)
         {
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             DateTime newdate = DateTime.Now.Date;
@@ -2077,11 +2085,11 @@ namespace SwachBharat.CMS.Bll.Services
                         //DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
                         string dat = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy");
                         string tim = Convert.ToDateTime(d.gcDate).ToString("hh:mm tt");
-                        if(d.houseId != null)
+                        if (d.houseId != null)
                         {
                             if (areaid != 0)
                             {
-                                var house = db.HouseMasters.Where(c => c.houseId == d.houseId & c.AreaId==areaid).FirstOrDefault();
+                                var house = db.HouseMasters.Where(c => c.houseId == d.houseId & c.AreaId == areaid).FirstOrDefault();
                                 if (house != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
@@ -2108,7 +2116,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                                     });
                                 }
-                               
+
                             }
                             else
                             {
@@ -2138,13 +2146,13 @@ namespace SwachBharat.CMS.Bll.Services
                                 });
                             }
 
-                            
+
                         }
-                       if (d.dyId != null)
+                        if (d.dyId != null)
                         {
                             if (areaid != 0)
                             {
-                                var dump = db.DumpYardDetails.Where(c => c.dyId == d.dyId & c.areaId==areaid).FirstOrDefault();
+                                var dump = db.DumpYardDetails.Where(c => c.dyId == d.dyId & c.areaId == areaid).FirstOrDefault();
                                 if (dump != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
@@ -2174,7 +2182,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                                     });
                                 }
-                                
+
                             }
                             else
                             {
@@ -2207,21 +2215,21 @@ namespace SwachBharat.CMS.Bll.Services
                                 });
                             }
 
-                           
+
                         }
 
 
-                      
 
 
-                     
+
+
 
                     }
                     break;
                 }
 
             }
-          
+
 
 
 
@@ -2609,59 +2617,59 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Saurabh (06 June 2019)
 
-        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype,string ctype)
+        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype)
         {
-           
-                List<SBALHouseLocationMapView> houseLocation = new List<SBALHouseLocationMapView>();
-                var zoneId = 0;
-                DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
-                if (Emptype == null)
+
+            List<SBALHouseLocationMapView> houseLocation = new List<SBALHouseLocationMapView>();
+            var zoneId = 0;
+            DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
+            if (Emptype == null)
+            {
+                var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
+                foreach (var x in data)
                 {
-                    var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
-                    foreach (var x in data)
+
+                    DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
+                    //string gcTime = x.gcDate.ToString();
+                    houseLocation.Add(new SBALHouseLocationMapView()
                     {
+                        ssid = Convert.ToInt32(x.SSId),
+                        lwid = Convert.ToInt32(x.LWId),
+                        houseId = Convert.ToInt32(x.houseId),
+                        ReferanceId = x.ReferanceId,
+                        houseOwnerName = (x.houseOwner == null ? "" : x.houseOwner.ToUpper()),
+                        houseOwnerMobile = (x.houseOwnerMobile == null ? "" : x.houseOwnerMobile),
+                        houseAddress = checkNull(x.houseAddress).Replace("Unnamed Road, ", ""),
+                        gcDate = dt.ToString("dd-MM-yyyy"),
+                        gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock
+                                                         //string gcTime = x.gcDate.ToString(),
+                                                         //gcTime = x.gcDate.ToString("hh:mm tt"),
+                                                         //myDateTime.ToString("HH:mm:ss")
+                        ///date = Convert.ToDateTime(x.datt).ToString("dd/MM/yyyy"),
+                        //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
+                        houseLat = x.houseLat,
+                        houseLong = x.houseLong,
+                        // address = x.houseAddress,
+                        //vehcileNumber = x.v,
+                        //userMobile = x.mobile,
+                        garbageType = x.garbageType,
+                        Ctype = x.CType
+                    });
+                }
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    // var abc = db.HouseMasters.ToList();
+                    var model = houseLocation.Where(c => c.houseOwnerName.Contains(SearchString) || c.ReferanceId.Contains(SearchString)
+                                                         || c.houseOwnerName.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString)).ToList();
 
-                        DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
-                        //string gcTime = x.gcDate.ToString();
-                        houseLocation.Add(new SBALHouseLocationMapView()
-                        {
-                            ssid = Convert.ToInt32(x.SSId),
-                            lwid = Convert.ToInt32(x.LWId),
-                            houseId = Convert.ToInt32(x.houseId),
-                            ReferanceId = x.ReferanceId,
-                            houseOwnerName = (x.houseOwner == null ? "" : x.houseOwner.ToUpper()),
-                            houseOwnerMobile = (x.houseOwnerMobile == null ? "" : x.houseOwnerMobile),
-                            houseAddress = checkNull(x.houseAddress).Replace("Unnamed Road, ", ""),
-                            gcDate = dt.ToString("dd-MM-yyyy"),
-                            gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock
-                                                             //string gcTime = x.gcDate.ToString(),
-                                                             //gcTime = x.gcDate.ToString("hh:mm tt"),
-                                                             //myDateTime.ToString("HH:mm:ss")
-                            ///date = Convert.ToDateTime(x.datt).ToString("dd/MM/yyyy"),
-                            //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
-                            houseLat = x.houseLat,
-                            houseLong = x.houseLong,
-                            // address = x.houseAddress,
-                            //vehcileNumber = x.v,
-                            //userMobile = x.mobile,
-                            garbageType = x.garbageType,
-                            Ctype = x.CType
-                        });
-                    }
-                    if (!string.IsNullOrEmpty(SearchString))
-                    {
-                        // var abc = db.HouseMasters.ToList();
-                        var model = houseLocation.Where(c => c.houseOwnerName.Contains(SearchString) || c.ReferanceId.Contains(SearchString)
-                                                             || c.houseOwnerName.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString)).ToList();
+                    //var model = houseLocation.Where(c => ((string.IsNullOrEmpty(c.ReferanceId) ? " " : c.houseOwnerName) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseOwnerName) ? " " : c.houseOwnerName) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseOwnerMobile) ? " " : c.houseOwnerMobile) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseAddress) ? " " : c.houseAddress)).ToLower().Contains(SearchString)).ToList();
 
-                        //var model = houseLocation.Where(c => ((string.IsNullOrEmpty(c.ReferanceId) ? " " : c.houseOwnerName) + " " +
-                        //                                     (string.IsNullOrEmpty(c.houseOwnerName) ? " " : c.houseOwnerName) + " " +
-                        //                                     (string.IsNullOrEmpty(c.houseOwnerMobile) ? " " : c.houseOwnerMobile) + " " +
-                        //                                     (string.IsNullOrEmpty(c.houseAddress) ? " " : c.houseAddress)).ToLower().Contains(SearchString)).ToList();
+                    houseLocation = model.ToList();
 
-                        houseLocation = model.ToList();
 
-                  
                     //var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
                     //                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
                     //                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
@@ -2678,58 +2686,58 @@ namespace SwachBharat.CMS.Bll.Services
                 {
                     houseLocation = houseLocation.ToList();
                 }
-               else if (ctype == "NULL")
+                else if (ctype == "NULL")
                 {
                     houseLocation = houseLocation.Where(c => c.Ctype == null).ToList();
                 }
-              else  if (ctype != "0" || ctype != "NULL")
+                else if (ctype != "0" || ctype != "NULL")
                 {
-                    
+
                     houseLocation = houseLocation.Where(c => c.Ctype == ctype).ToList();
                 }
-             
+
             }
-                else if (Emptype == "L")
+            else if (Emptype == "L")
+            {
+                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
+                foreach (var x in data)
                 {
-                    var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
-                    foreach (var x in data)
+
+                    DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
+                    //string gcTime = x.gcDate.ToString();
+                    houseLocation.Add(new SBALHouseLocationMapView()
                     {
+                        houseId = Convert.ToInt32(x.LWId),
+                        ReferanceId = x.ReferanceId,
+                        houseOwnerName = (x.LWName == null ? "" : x.LWName),
+                        //houseOwnerMobile = (x.houseOwnerMobile == null ? "" : x.houseOwnerMobile),
+                        houseAddress = checkNull(x.LWAddreLW).Replace("Unnamed Road, ", ""),
+                        gcDate = dt.ToString("dd-MM-yyyy"),
+                        gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock
+                                                         //string gcTime = x.gcDate.ToString(),
+                                                         //gcTime = x.gcDate.ToString("hh:mm tt"),
+                                                         //myDateTime.ToString("HH:mm:ss")
+                        ///date = Convert.ToDateTime(x.datt).ToString("dd/MM/yyyy"),
+                        //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
+                        houseLat = x.LWLat,
+                        houseLong = x.LWLong,
+                        // address = x.houseAddress,
+                        //vehcileNumber = x.v,
+                        //userMobile = x.mobile,
+                        garbageType = x.garbageType,
 
-                        DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
-                        //string gcTime = x.gcDate.ToString();
-                        houseLocation.Add(new SBALHouseLocationMapView()
-                        {
-                            houseId = Convert.ToInt32(x.LWId),
-                            ReferanceId = x.ReferanceId,
-                            houseOwnerName = (x.LWName == null ? "" : x.LWName),
-                            //houseOwnerMobile = (x.houseOwnerMobile == null ? "" : x.houseOwnerMobile),
-                            houseAddress = checkNull(x.LWAddreLW).Replace("Unnamed Road, ", ""),
-                            gcDate = dt.ToString("dd-MM-yyyy"),
-                            gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock
-                                                             //string gcTime = x.gcDate.ToString(),
-                                                             //gcTime = x.gcDate.ToString("hh:mm tt"),
-                                                             //myDateTime.ToString("HH:mm:ss")
-                            ///date = Convert.ToDateTime(x.datt).ToString("dd/MM/yyyy"),
-                            //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
-                            houseLat = x.LWLat,
-                            houseLong = x.LWLong,
-                            // address = x.houseAddress,
-                            //vehcileNumber = x.v,
-                            //userMobile = x.mobile,
-                            garbageType = x.garbageType,
-                       
-                        });
-                    }
-                    if (!string.IsNullOrEmpty(SearchString))
-                    {
-                        // var abc = db.HouseMasters.ToList();
-                        var model = houseLocation.Where(c => c.houseOwnerName.Contains(SearchString) || c.ReferanceId.Contains(SearchString)
-                                                             || c.houseOwnerName.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString)).ToList();
-
-                        houseLocation = model.ToList();
-
-                    }
+                    });
                 }
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    // var abc = db.HouseMasters.ToList();
+                    var model = houseLocation.Where(c => c.houseOwnerName.Contains(SearchString) || c.ReferanceId.Contains(SearchString)
+                                                         || c.houseOwnerName.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString)).ToList();
+
+                    houseLocation = model.ToList();
+
+                }
+            }
 
             else if (Emptype == "S")
             {
@@ -2759,7 +2767,7 @@ namespace SwachBharat.CMS.Bll.Services
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         garbageType = x.garbageType,
-                     
+
                     });
                 }
                 if (!string.IsNullOrEmpty(SearchString))
@@ -2773,7 +2781,7 @@ namespace SwachBharat.CMS.Bll.Services
                 }
             }
             return houseLocation;
-            
+
         }
 
         // Code Optimization(code)
@@ -2894,7 +2902,7 @@ namespace SwachBharat.CMS.Bll.Services
         //}
         // Added By Saurabh (02 July 2019)
         public DashBoardVM GetHouseOnMapDetails()
-        
+
         {
             DashBoardVM model = new DashBoardVM();
             try
@@ -3241,7 +3249,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.ZoneId = data.ZoneId;
             model.ReferanceId = data.ReferanceId;
             model.modified = DateTime.Now;
-            model.CType = (data.houseCategory=="RW") ? null: data.houseCategory;
+            model.CType = (data.houseCategory == "RW") ? null : data.houseCategory;
             //if (data.WasteType == "DW")
             //{
             //    model.WasteType = data.WasteType;
@@ -3322,7 +3330,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Saurabh
 
-        private DumpYardDetail FillDumpYardDetailsDataModel(DumpYardDetailsVM data,string Emptype)
+        private DumpYardDetail FillDumpYardDetailsDataModel(DumpYardDetailsVM data, string Emptype)
         {
             DumpYardDetail model = new DumpYardDetail();
             model.areaId = data.areaId;
@@ -3677,7 +3685,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.houseLat = data.houseLat;
             model.houseLong = data.houseLong;
             model.ReferanceId = data.ReferanceId;
-            model.houseCategory = (data.CType is null)? "RW" : data.CType;
+            model.houseCategory = (data.CType is null) ? "RW" : data.CType;
             using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
             {
                 if (data.AreaId > 0)
@@ -4402,7 +4410,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public DumpYardDetailsVM SaveDumpYardtDetails(DumpYardDetailsVM data,string Emptype)
+        public DumpYardDetailsVM SaveDumpYardtDetails(DumpYardDetailsVM data, string Emptype)
         {
             try
             {
@@ -5823,7 +5831,7 @@ namespace SwachBharat.CMS.Bll.Services
                                          CultureInfo.InvariantCulture);
 
             var firstDateString = firstdate.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
-           
+
             string ft = Convert.ToDateTime(fTime).ToString("HH:mm:ss");
             string tt = Convert.ToDateTime(tTime).ToString("HH:mm:ss");
             DateTime fdate = Convert.ToDateTime(firstDateString + " " + ft);
@@ -5837,7 +5845,7 @@ namespace SwachBharat.CMS.Bll.Services
                 string dat = Convert.ToDateTime(x.gcDate).ToString("dd/MM/yyyy");
                 string tim = Convert.ToDateTime(x.gcDate).ToString("hh:mm tt");
                 var userName = db.UserMasters.Where(c => c.userId == userId).FirstOrDefault();
-                var house=db.HouseMasters.Where(h=>h.houseId == x.houseId).FirstOrDefault();
+                var house = db.HouseMasters.Where(h => h.houseId == x.houseId).FirstOrDefault();
                 var d = db.GarbageCollectionDetails.Where(a => a.houseId == house.houseId).FirstOrDefault();
                 userLocation.Add(new SBALUserLocationMapView()
                 {
@@ -5865,8 +5873,8 @@ namespace SwachBharat.CMS.Bll.Services
                     HouseOwnerName = house.houseOwner,
                     OwnerMobileNo = house.houseOwnerMobile,
                     WasteType = d.garbageType.ToString(),
-                   gpBeforImage = d.gpBeforImage,
-                   gpAfterImage = d.gpAfterImage,
+                    gpBeforImage = d.gpBeforImage,
+                    gpAfterImage = d.gpAfterImage,
                     ZoneList = ListZone(),
 
                 });
