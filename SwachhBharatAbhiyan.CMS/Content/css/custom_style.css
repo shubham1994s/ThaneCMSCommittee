@@ -24,30 +24,28 @@ div.pp_default .pp_description {
 	display: none !important;
 }
 .roww{text-align:center;}
-#btnSubmit{    padding: 6px 11px 6px 15px;
-    /*color: #000;
+#btnSubmit {
+	padding: 6px 11px 6px 15px;
+	/*color: #000;
     display: inline-block;
     background-color: #f3951b;
     border: 0px solid rgba(0,0,0,0.2);
     border-radius: 6px;
    margin-top: 4%;
 margin-left: 17px;*/
-
-  color: #fff;
-    margin-left:10px;
-   background-color:#3ab59e;
-    border-color:#3ab59e;
-
-
-
+	font-weight: 600 !important;
+	color: #fff;
+	margin-left: 10px;
+	background-color: #189cdf;
+	border-color: #189cdf;
 }
-    #btnSubmit:hover {
-        /*border: 0px solid #fff;
+	#btnSubmit:hover {
+		/*border: 0px solid #fff;
         background: rgba(0,0,0,0.65);
         color: #fff;*/
-         background-color:#4ad3b9;
-       border-color:#3ab59e;
-    }
+		background-color: #0c7bed;
+		border-color: #189cdf;
+	}
 #btnAddCategory {
 	padding: 10px 18px 10px 18px;
 	border: 1px solid rgba(0, 0, 0, 0.65);
@@ -340,21 +338,20 @@ border-radius:5px
 }
 
 .btn {
-    color: #fff;
-    display: inline-block;
-    font-weight: 600;
-    font-size:12px;
-    padding:3px 10px 3px 10px;
-     background-color:#3ab59e;
-    border-color:#3ab59e;
-    border-radius:0.4rem;
+	color: #fff;
+	display: inline-block;
+	font-weight: 600;
+	font-size: 12px;
+	padding: 3px 10px 3px 10px;
+	background-color: #189cdf;
+	border-color: #189cdf;
+	border-radius: 0.4rem;
 }
-.btn:hover {
-        color: #fff;
-      background-color:#4ad3b9;
-    border-color:#3ab59e;
-
-}
+	.btn:hover {
+		color: #fff;
+		background-color: #0c7bed;
+		border-color: #189cdf;
+	}
 
 
 
@@ -443,8 +440,8 @@ width: 25%;
 	font-weight: 400;
 	text-transform: capitalize;
 }
- .form-control:focus {
-	border: 1px solid #388e3c !important;
+.form-control:focus {
+	border: 1px solid #189cdf !important;
 }
 
  /*.form-control:focus {
@@ -1365,19 +1362,18 @@ margin-bottom: 0%;
   transform: scale(1.1) rotate(0deg);
 }
 /* for buttons */
-#btnBack{
-     color: #fff;
-    margin-left:10px;
-    background-color:#3ab59e;
-    border-color:#3ab59e;
-    border-radius:0.4rem;
-    padding:6px 11px 6px 15px;
+#btnBack {
+	color: #fff;
+	margin-left: 10px;
+	background-color: #189cdf;
+	border-color: #189cdf;
+	border-radius: 0.4rem;
+	padding: 6px 11px 6px 15px;
 }
-#btnBack:hover{
-           background-color:#4ad3b9;
-       border-color:#3ab59e;
- 
-}
+	#btnBack:hover {
+		background-color: #0c7bed;
+		border-color: #189cdf;
+	}
 #btnAdd, #btnEdit,#btnDel, #otherBtn,#refreshButton,#filterButton{
     color: #fff;
     margin-left:2px;
