@@ -18,6 +18,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string Mobile { get; set; }
         public string Tot { get; set; }
         public string Tns { get; set; }
+        public string QRCode { get; set; }
+
 
     }
 }

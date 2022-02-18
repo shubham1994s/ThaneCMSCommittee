@@ -427,7 +427,7 @@ $(document).ready(function () {
     var TotalDHW_coll = $('#TotalDHW_coll').val();
     var TotalSW_coll = $('#TotalSW_coll').val();
     var tot_house_null_check = $('#tot_house_coll').val();
-    var TotalCW_coll = $('#TotalCW_coll').val();
+   // var TotalCW_coll = $('#TotalCW_coll').val();
 
     //var not_coll = 10;
     //var mixed_coll = 10;
@@ -463,7 +463,7 @@ $(document).ready(function () {
     var res_TotalDHW_coll = TotalDHW_coll * 100 / tot_house_coll;
     var res_TotalSW_coll = TotalSW_coll * 100 / tot_house_coll;
 
-    var res_TotalCW_coll = TotalCW_coll * 100 / tot_house_coll;
+   // var res_TotalCW_coll = TotalCW_coll * 100 / tot_house_coll;
 
 
     var ary3 = []
@@ -479,7 +479,7 @@ $(document).ready(function () {
     ary3.push({ v: TotalDHW_coll });
     ary3.push({ v: TotalSW_coll });
 
-    ary3.push({ v: TotalCW_coll });
+    //ary3.push({ v: TotalCW_coll });
 
 
     //console.log(ary3);
@@ -531,7 +531,7 @@ $(document).ready(function () {
                 { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, color: '#186634' },
                 { y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, color: '#8f8b28' },
                 { y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, color: '#c384d3' },
-                { y: res_TotalCW_coll, label: "Commercial Waste", hover_number: TotalCW_coll, color: '#63676e' },
+               // { y: res_TotalCW_coll, label: "Commercial Waste", hover_number: TotalCW_coll, color: '#63676e' },
             ],
         }]
     });
@@ -747,6 +747,110 @@ $(document).ready(function () {
 
 });
 
+// Commercial Pie Chart
+
+$(document).ready(function () {
+    // debugger;
+    var CommercialMixCount = $('#tot_CommercialMixCount').val();
+    var CommercialWetCount = $('#tot_CommercialWetCount').val();
+    var CommercialDryCount = $('#tot_CommercialDryCount').val();
+    var TotalCommercialCount_check = $('#tot_TotalCommercialCount').val();
+
+    //var CommercialMixCount = 10;
+    //var CommercialWetCount = 10;
+    //var CommercialDryCount = 10;
+    //var TotalCommercialCount_check = 100;
+
+    var TotalCommercialCount;
+    if (TotalCommercialCount_check == 0) {
+        TotalCommercialCount = null;
+    } else {
+        TotalCommercialCount = $('#tot_TotalCommercialCount').val();
+         //TotalCommercialCount = 100;
+    }
+
+    var res_mix_count = parseFloat(CommercialMixCount) * 100 / parseFloat(TotalCommercialCount);
+    var res_wet_count = parseFloat(CommercialWetCount) * 100 / parseFloat(TotalCommercialCount);
+    var res_dry_count = parseFloat(CommercialDryCount) * 100 / parseFloat(TotalCommercialCount);
+
+    var ary3 = []
+    ary3.push({ v: CommercialMixCount });
+    ary3.push({ v: CommercialDryCount });
+    ary3.push({ v: CommercialWetCount });
+
+
+    //console.log(ary3);
+    var chart = new CanvasJS.Chart("chartContainerPieCommercial", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            //text: "विलगिकरण प्रकार ",
+            fontSize: 24,
+            padding: 10
+        },
+        subtitles: [{
+            //text: "United Kingdom, 2016",
+            //fontSize: 16
+        }],
+        toolTip: {
+            content: "In Numbers {hover_number} ",
+        },
+        legend: {
+            maxWidth: 180,
+            itemWidth: 75,
+            fontSize: 12,
+            // horizontalAlign: "right", // left, center ,right 
+            //verticalAlign: "center",
+        },
+        data: [{
+            type: "pie",
+            indexLabelFontSize: 12,
+            showInLegend: true,
+            legendText: "{hover_number}",
+            radius: 60,
+            indexLabel: "{label} - {y}",
+            yValueFormatString: "###0.0\"%\"",
+            click: explodePie,
+            dataPoints: [
+                //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
+                //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
+
+                { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, color: '#dc3545' },
+                { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, color: '#0086c3' },
+                { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, color: '#01ad35' },
+
+
+            ],
+        }]
+    });
+    showDefaultText(chart, "No Data available");
+    chart.render();
+    function showDefaultText(chart, text) {
+        var isEmpty = !(TotalCommercialCount && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+
+        if (isEmpty) {
+            chart.options.subtitles.push({
+                text: text,
+                verticalAlign: 'center',
+            });
+            (chart.options.data[0].dataPoints = []);
+        }
+
+
+
+    }
+    function explodePie(e) {
+        for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+            if (i !== e.dataPointIndex)
+                e.dataSeries.dataPoints[i].exploded = false;
+        }
+    }
+
+});
+
+// Horiculture , Construction Pie Chart
 $(document).ready(function () {
     //debugger;
     var TotalCDW_coll = $('#GcCDW_Weight_coll').val();
@@ -903,7 +1007,7 @@ $(document).ready(function () {
             var dhw = [];
             var sw = [];
             var emp_tar = [];
-            var cw = [];
+           // var cw = [];
             debugger;
             for (var i = 0; i < data.length; i++) {
                 // alert(data[i].inTime);
@@ -932,7 +1036,7 @@ $(document).ready(function () {
                 dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
                 dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
                 sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
-                cw.push({ y: data[i].Commercial, label: 'Commercial Waste', color: '#63676e', intime: data[i].inTime });
+                //cw.push({ y: data[i].Commercial, label: 'Commercial Waste', color: '#63676e', intime: data[i].inTime });
                 emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar, z: data[i].Count, intime: data[i].inTime });
                 // ary2.push({ y: parseInt(data[i].gcTarget), label: data[i].userName });
 
@@ -1063,16 +1167,16 @@ $(document).ready(function () {
                             dataPoints: sw
                         },
 
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Commercial",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#63676e",
-                            dataPoints: cw
-                        },
+                        //{
+                        //    //indexLabel: "#total",
+                        //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    showInLegend: true,
+                        //    legendText: "Commercial",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#63676e",
+                        //    dataPoints: cw
+                        //},
 
                         {
                             type: "line",

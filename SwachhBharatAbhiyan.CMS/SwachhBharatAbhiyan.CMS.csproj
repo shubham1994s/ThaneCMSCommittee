@@ -294,6 +294,7 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RfidController.cs" />
     <Compile Include="Controllers\SauchalayController.cs" />
+    <Compile Include="Controllers\SWMMasterController.cs" />
     <Compile Include="Controllers\WasteManagementController.cs" />
     <Compile Include="DisplayReports.aspx.cs">
       <DependentUpon>DisplayReports.aspx</DependentUpon>
@@ -1723,6 +1724,7 @@
     <Content Include="Content\DatatableGrid\scanifyDT.js" />
     <Content Include="Content\DatatableGrid\StateGrid.js" />
     <Content Include="Content\DatatableGrid\StreetSweepGrid.js" />
+    <Content Include="Content\DatatableGrid\SWMDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\TalukaGrid.js" />
     <Content Include="Content\DatatableGrid\VehicleTypeGrid.js" />
     <Content Include="Content\DatatableGrid\WardNumberGrid.js" />
@@ -1796,6 +1798,7 @@
     <Content Include="Content\images\img\action_icon.svg" />
     <Content Include="Content\images\img\app_icon_cms.png" />
     <Content Include="Content\images\img\ctpt_marker.png" />
+    <Content Include="Content\images\img\Final_New.png" />
     <Content Include="Content\images\img\house_icon.png" />
     <Content Include="Content\images\img\house_icon.svg" />
     <Content Include="Content\images\img\icn_not_avialable.png" />
@@ -1823,6 +1826,7 @@
     <Content Include="Content\images\img\send.png" />
     <Content Include="Content\images\img\street_icon.png" />
     <Content Include="Content\images\img\street_icon.svg" />
+    <Content Include="Content\images\img\Thane_Municipal_Corporation.png" />
     <Content Include="Content\images\iphone.png" />
     <Content Include="Content\images\item-1.png" />
     <Content Include="Content\images\item-2.png" />
@@ -1835,6 +1839,7 @@
     <Content Include="Content\images\LoginLogo.PNG" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logos.png" />
+    <Content Include="Content\images\New_Img\Final_New.png" />
     <Content Include="Content\images\New_Img\login_page_design.png" />
     <Content Include="Content\images\New_Img\WCMT-Logo.png" />
     <Content Include="Content\images\progressbar.gif" />
@@ -3013,6 +3018,12 @@
     <Content Include="Views\CommercialMaster\SaveDryWet.cshtml" />
     <Content Include="Views\GarbageCollection\MenuCommercialGarbageIndex.cshtml" />
     <Content Include="Views\GarbageCollection\CommercialGarbageIndex.cshtml" />
+    <Content Include="Views\SWMMaster\AddSWMDetails.cshtml" />
+    <Content Include="Views\SWMMaster\AreaMaster.cshtml" />
+    <Content Include="Views\SWMMaster\Index.cshtml" />
+    <Content Include="Views\SWMMaster\MenuIndex.cshtml" />
+    <Content Include="Views\SWMMaster\MenuReportIndex.cshtml" />
+    <Content Include="Views\SWMMaster\ReportIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

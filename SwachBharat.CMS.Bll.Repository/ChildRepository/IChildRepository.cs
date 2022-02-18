@@ -48,12 +48,16 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         HouseDetailsVM GetHouseById(int teamId);
 
+        SWMDetailsVM GetSWMById(int teamId);
+
         CommercialDetailsVM GetCommercailById(int teamId);
 
         SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId);
 
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
         HouseDetailsVM SaveHouse(HouseDetailsVM data);
+
+        SWMDetailsVM SaveSWM(SWMDetailsVM data);
 
         CommercialDetailsVM SaveHouse(CommercialDetailsVM data);
         void DeletHouse(int teamId);

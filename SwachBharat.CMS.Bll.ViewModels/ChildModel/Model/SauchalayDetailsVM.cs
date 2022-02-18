@@ -20,6 +20,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string Mobile { get; set; }
         public string Tot { get; set; }
         public int? Tns { get; set; }
-
+        public string SauchalayQRCode { get; set; }
+        public string ReferanceId { get; set; }
     }
 }
