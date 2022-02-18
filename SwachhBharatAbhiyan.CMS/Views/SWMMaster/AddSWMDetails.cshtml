@@ -848,7 +848,7 @@
         });
         function validation() {
 
-            if ($.trim($("#swmType").val()) == "-1" || $.trim($("#swmType").val()) == "0") {
+            if ($.trim($("#swm1Type").val()) == "-1" || $.trim($("#swm1Type").val()) == "0") {
                 $("#err_cat").html("Type is Required").delay(1500).show().fadeOut('slow');
                 $('#houseCategory').focus();
                 return false;
@@ -936,7 +936,7 @@
                     $('#btnSubmit').prop('disabled', false);
                     //   $('#QRCOdeGenrate').css('display', 'none');
                     $('#Download1').show();
-                    $('#send_link').show();
+                   // $('#send_link').show();
                     move();
                 }
             }
