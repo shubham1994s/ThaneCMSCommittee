@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
+
 namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
     public class DashBoardVM : BaseVM
@@ -12,6 +13,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> TodayAttandence { get; set; }
         public Nullable<int> TotalAttandence { get; set; }
         public Nullable<int> HouseCollection { get; set; }
+        public Nullable<int> commercialCollection { get; set; }
         public Nullable<int> LiquidCollection { get; set; }
 
         public Nullable<int> StreetCollection { get; set; }
@@ -20,12 +22,14 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> DumpYardCount { get; set; }
 
         public Nullable<int> TotalHouseCount { get; set; }
+        public Nullable<int> TotalcommercialCount { get; set; }
         public Nullable<int> TotalLiquidCount { get; set; }
         public Nullable<int> TotalStreetCount { get; set; }
         public Nullable<int> TotalStreetPropertyCount { get; set; }
         public Nullable<int> TotalLiquidPropertyCount { get; set; }
 
         public Nullable<int> TotalHousePropertyCount { get; set; }
+        public Nullable<int> TotalcommercialPropertyCount { get; set; }
         public Nullable<int> TotalDumpPropertyCount { get; set; }
         public Nullable<int> MixedCount { get; set; }
         public Nullable<int> BifurgatedCount { get; set; }
@@ -73,7 +77,9 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         //public Nullable<int> TotalHouseCount { get; set; }
         public Nullable<int> TotalHouseLatLongCount { get; set; }
+        public Nullable<int> TotalcommercialLatLongCount { get; set; }
         public Nullable<int> TotalScanHouseCount { get; set; }
+        public Nullable<int> TotalScancommercialCount { get; set; }
 
 
         public string areaName { get; set; }
