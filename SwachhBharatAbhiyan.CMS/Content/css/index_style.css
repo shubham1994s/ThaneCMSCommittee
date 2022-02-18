@@ -66,15 +66,15 @@ thead{
 
 }
 
-.btn-success{
-    background-color:#3ab59e;
-    border-color:#3ab59e;
+.btn-success {
+    background-color: #189cdf;
+    border-color: #189cdf;
 }
 
-.btn-success:hover{
-    background-color:#4ad3b9;
-       border-color:#3ab59e;
-}
+    .btn-success:hover {
+        background-color: #0c7bed;
+        border-color: #189cdf;
+    }
 
 .btn-success:active:not(:disabled):not(.disabled), .btn-success.active:not(:disabled):not(.disabled), .show > .btn-success.dropdown-toggle{
         background-color:#3ab59e;
