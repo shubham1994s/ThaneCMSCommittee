@@ -651,7 +651,7 @@ namespace SwachBharat.CMS.Bll.Services
                 DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
                 var appDetails = dbMain.AppDetails.Where(x => x.AppId == AppID).FirstOrDefault();
 
-                string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.HouseQRCode + "/";
+                string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.SWMQRCode + "/";
                 SWMDetailsVM house = new SWMDetailsVM();
 
                 var Details = db.SWMMasters.Where(x => x.swmId == teamId).FirstOrDefault();
