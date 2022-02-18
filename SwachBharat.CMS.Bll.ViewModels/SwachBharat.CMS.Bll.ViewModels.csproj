@@ -79,6 +79,7 @@
     <Compile Include="ChildModel\Model\SBALUserLocationMapView.cs" />
     <Compile Include="ChildModel\Model\StreetSweepingVM.cs" />
     <Compile Include="ChildModel\Model\StreetSweepVM.cs" />
+    <Compile Include="ChildModel\Model\SWMDetailsVM.cs" />
     <Compile Include="ChildModel\Model\UserMasterVM.cs" />
     <Compile Include="ChildModel\Model\VehicleTypeVM.cs" />
     <Compile Include="ChildModel\Model\WardNumberVM.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Grid\SBALocationGridRow.cs" />
     <Compile Include="Grid\SBASauchalayDetailsGridRow.cs" />
     <Compile Include="Grid\SBAStreeSweepDetailsGridRow.cs" />
+    <Compile Include="Grid\SBASWMDetailsGridRow.cs" />
     <Compile Include="Grid\SBAVehicleTypeGridRow.cs" />
     <Compile Include="Grid\GPBussniessDetailsGridRow.cs" />
     <Compile Include="Grid\SBAWardNumberGridRow.cs" />

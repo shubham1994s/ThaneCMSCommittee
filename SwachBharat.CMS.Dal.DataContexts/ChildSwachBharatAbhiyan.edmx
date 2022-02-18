@@ -365,6 +365,32 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="lastModifiedDate" Type="datetime" />
           <Property Name="userId" Type="int" />
         </EntityType>
+        <EntityType Name="SWMMaster">
+          <Key>
+            <PropertyRef Name="swmId" />
+          </Key>
+          <Property Name="swmId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="swmNumber" Type="nvarchar" MaxLength="500" />
+          <Property Name="swmName" Type="varchar" MaxLength="200" />
+          <Property Name="swmManager" Type="varchar" MaxLength="200" />
+          <Property Name="swmOwnerMar" Type="nvarchar" MaxLength="200" />
+          <Property Name="swmOwnerMobile" Type="nvarchar" MaxLength="200" />
+          <Property Name="swmAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="swmLat" Type="nvarchar" MaxLength="500" />
+          <Property Name="swmLong" Type="nvarchar" MaxLength="500" />
+          <Property Name="swmQRCode" Type="nvarchar(max)" />
+          <Property Name="ZoneId" Type="int" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="WardNo" Type="int" />
+          <Property Name="ReferanceId" Type="nvarchar" MaxLength="350" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="userId" Type="int" />
+          <Property Name="FCMID" Type="varchar" MaxLength="500" />
+          <Property Name="lastModifiedEntry" Type="datetime" />
+          <Property Name="RFIDTagId" Type="nvarchar" MaxLength="255" />
+          <Property Name="WasteType" Type="varchar" MaxLength="10" />
+          <Property Name="swmType" Type="varchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="TeritoryMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -702,6 +728,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="gcdate" Type="date" Mode="In" />
         </Function>
         <Function Name="StreetCurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SWMDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DevSwachhBharatNagpurModelStoreContainer">
           <EntitySet Name="CommercialMaster" EntityType="Self.CommercialMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" Schema="dbo" store:Type="Tables" />
@@ -720,6 +747,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="SS_1_4_ANSWER" EntityType="Self.SS_1_4_ANSWER" Schema="dbo" Table="SS_1.4_ANSWER" store:Type="Tables" />
           <EntitySet Name="SS_1_7_ANSWER" EntityType="Self.SS_1_7_ANSWER" Schema="dbo" Table="SS_1.7_ANSWER" store:Type="Tables" />
           <EntitySet Name="StreetSweepingDetails" EntityType="Self.StreetSweepingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SWMMaster" EntityType="Self.SWMMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeritoryMaster" EntityType="Self.TeritoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster_Liquid" EntityType="Self.UserMaster_Liquid" Schema="dbo" store:Type="Tables" />
@@ -956,6 +984,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="gcdate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="SauchalayAddresses" EntityType="DevSwachhBharatNagpurModel.SauchalayAddress" />
+          <EntitySet Name="SWMMasters" EntityType="DevSwachhBharatNagpurModel.SWMMaster" />
+          <FunctionImport Name="SWMDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SWMDetails_Result)" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2156,6 +2186,49 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="SauchalayQRCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReferanceId" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="SWMMaster">
+          <Key>
+            <PropertyRef Name="swmId" />
+          </Key>
+          <Property Name="swmId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="swmNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="swmName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="swmManager" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="swmOwnerMar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="swmOwnerMobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="swmAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="swmLat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="swmLong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="swmQRCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ZoneId" Type="Int32" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="WardNo" Type="Int32" />
+          <Property Name="ReferanceId" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="FCMID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="lastModifiedEntry" Type="DateTime" Precision="3" />
+          <Property Name="RFIDTagId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WasteType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="swmType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="SWMDetails_Result">
+          <Property Type="Int32" Name="swmId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="ManagerName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Images" Nullable="false" />
+          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="swmNumber" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MobileNumber" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="swmLat" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="swmLong" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="swmType" Nullable="false" MaxLength="64" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3419,6 +3492,54 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SWMMasters">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SWMMaster">
+              <MappingFragment StoreEntitySet="SWMMaster">
+                <ScalarProperty Name="swmType" ColumnName="swmType" />
+                <ScalarProperty Name="WasteType" ColumnName="WasteType" />
+                <ScalarProperty Name="RFIDTagId" ColumnName="RFIDTagId" />
+                <ScalarProperty Name="lastModifiedEntry" ColumnName="lastModifiedEntry" />
+                <ScalarProperty Name="FCMID" ColumnName="FCMID" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="swmQRCode" ColumnName="swmQRCode" />
+                <ScalarProperty Name="swmLong" ColumnName="swmLong" />
+                <ScalarProperty Name="swmLat" ColumnName="swmLat" />
+                <ScalarProperty Name="swmAddress" ColumnName="swmAddress" />
+                <ScalarProperty Name="swmOwnerMobile" ColumnName="swmOwnerMobile" />
+                <ScalarProperty Name="swmOwnerMar" ColumnName="swmOwnerMar" />
+                <ScalarProperty Name="swmManager" ColumnName="swmManager" />
+                <ScalarProperty Name="swmName" ColumnName="swmName" />
+                <ScalarProperty Name="swmNumber" ColumnName="swmNumber" />
+                <ScalarProperty Name="swmId" ColumnName="swmId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SWMDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SWMDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SWMDetails_Result">
+                <ScalarProperty Name="swmId" ColumnName="swmId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="swmNumber" ColumnName="swmNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="swmLat" ColumnName="swmLat" />
+                <ScalarProperty Name="swmLong" ColumnName="swmLong" />
+                <ScalarProperty Name="swmType" ColumnName="swmType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
          
         </EntityContainerMapping>
       </Mapping>

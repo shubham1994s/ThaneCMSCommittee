@@ -129,6 +129,7 @@
           <Property Name="StreetQRCode" Type="varchar" MaxLength="100" />
           <Property Name="CommercialQRCode" Type="nvarchar" MaxLength="220" />
           <Property Name="CTPTQRCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="SWMQRCode" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
@@ -771,6 +772,7 @@
           <Property Name="StreetQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CommercialQRCode" Type="String" MaxLength="220" FixedLength="false" Unicode="true" />
           <Property Name="CTPTQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SWMQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1048,6 +1050,7 @@
           <EntitySetMapping Name="AppDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatMainModel.AppDetail">
               <MappingFragment StoreEntitySet="AppDetails">
+                <ScalarProperty Name="SWMQRCode" ColumnName="SWMQRCode" />
                 <ScalarProperty Name="CTPTQRCode" ColumnName="CTPTQRCode" />
                 <ScalarProperty Name="CommercialQRCode" ColumnName="CommercialQRCode" />
                 <ScalarProperty Name="StreetQRCode" ColumnName="StreetQRCode" />

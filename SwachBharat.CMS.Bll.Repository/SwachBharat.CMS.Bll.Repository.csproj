@@ -116,6 +116,7 @@
     <Compile Include="GridRepository\Grid\StreetDumpYardCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\StreetIdelGridRepository.cs" />
     <Compile Include="GridRepository\Grid\StreetSweepGrid.cs" />
+    <Compile Include="GridRepository\Grid\SWMDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\VehicleTypeGridRepository.cs" />
     <Compile Include="GridRepository\Grid\StateGridRepository.cs" />
     <Compile Include="GridRepository\Grid\TalukaGridRepository.cs" />
