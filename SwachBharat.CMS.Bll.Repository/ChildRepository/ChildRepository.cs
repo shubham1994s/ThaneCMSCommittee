@@ -142,6 +142,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHouseDetails(teamId);
         }
 
+        public SWMDetailsVM GetSWMById(int teamId)
+        {
+            return screenService.GetSWMDetails(teamId);
+        }
+
         public CommercialDetailsVM GetCommercailById(int teamId)
         {
             return screenService.GetCommercialDetails(teamId);
@@ -178,6 +183,15 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return dd;
         }
 
+        public SWMDetailsVM SaveSWM(SWMDetailsVM data)
+        {
+            if (data.swmId <= 0)
+            {
+                data.swmId = 0;
+            }
+            SWMDetailsVM dd = screenService.SaveSWMDetails(data);
+            return dd;
+        }
         public void DeletHouse(int teamId)
         {
             screenService.DeletHouseDetails(teamId);

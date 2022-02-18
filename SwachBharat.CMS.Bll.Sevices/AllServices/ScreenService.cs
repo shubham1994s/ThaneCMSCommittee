@@ -3023,16 +3023,11 @@ namespace SwachBharat.CMS.Bll.Services
                 {
                     houseLocation = houseLocation.ToList();
                 }
-                else if (ctype == "NULL")
+              
+                else
                 {
-                    houseLocation = houseLocation.Where(c => c.Ctype == null).ToList();
+                    houseLocation = houseLocation.ToList();
                 }
-                else if (ctype != "0" || ctype != "NULL")
-                {
-
-                    houseLocation = houseLocation.Where(c => c.Ctype == ctype).ToList();
-                }
-
             }
             else if (Emptype == "L")
             {

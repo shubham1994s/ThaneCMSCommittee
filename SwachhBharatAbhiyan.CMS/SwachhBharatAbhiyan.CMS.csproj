@@ -1819,6 +1819,7 @@
     <Content Include="Content\images\img\segregationImg\icn_mixed_garbage.png" />
     <Content Include="Content\images\img\segregationImg\icn_not_specified.png" />
     <Content Include="Content\images\img\segregationImg\icn_segregated_garbage.png" />
+    <Content Include="Content\images\img\segregationImg\icon_commercial.png" />
     <Content Include="Content\images\img\segregationImg\Liquidwaste_Marker.png" />
     <Content Include="Content\images\img\segregationImg\Start-Point.png" />
     <Content Include="Content\images\img\segregationImg\Street_Sweep.png" />
