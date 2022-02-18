@@ -644,6 +644,117 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
+        public SWMDetailsVM GetSWMDetails(int teamId)
+        {
+            try
+            {
+                DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
+                var appDetails = dbMain.AppDetails.Where(x => x.AppId == AppID).FirstOrDefault();
+
+                string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.HouseQRCode + "/";
+                SWMDetailsVM house = new SWMDetailsVM();
+
+                var Details = db.SWMMasters.Where(x => x.swmId == teamId).FirstOrDefault();
+                if (Details != null)
+                {
+                    house = FillSWMDetailsViewModel(Details);
+                    if (house.swmQRCode != null && house.swmQRCode != "")
+                    {
+                        HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create(ThumbnaiUrlCMS + house.swmQRCode.Trim());
+                        HttpWebResponse httpRes = null;
+                        try
+                        {
+                            httpRes = (HttpWebResponse)httpReq.GetResponse(); // Error 404 right here,
+                            if (httpRes.StatusCode == HttpStatusCode.NotFound)
+                            {
+                                house.swmQRCode = "/Images/default_not_upload.png";
+                            }
+                            else
+                            {
+                                house.swmQRCode = ThumbnaiUrlCMS + house.swmQRCode.Trim();
+
+
+                                int n = teamId;
+                                double refer1 = Convert.ToDouble((n + 1));
+                                double xyz = refer1 / 100;
+
+                                string s = xyz.ToString("0.00", CultureInfo.InvariantCulture);
+                                string[] parts = s.Split('.');
+                                int i1 = int.Parse(parts[0]);
+                                int i2 = int.Parse(parts[1]);
+
+                                if (i2 == 0)
+                                {
+                                    //i1 = i1 + 1;
+                                    s = "S" + i1.ToString();
+                                }
+                                else
+                                {
+                                    s = "S" + (i1 + 1);
+                                }
+
+                                house.SerielNo = s;
+                            }
+                        }
+                        catch (Exception e) { house.swmQRCode = "/Images/default_not_upload.png"; }
+
+                    }
+                    else
+                    {
+                        house.swmQRCode = "/Images/default_not_upload.png";
+                    }
+
+                    house.WardList = LoadListWardNo(Convert.ToInt32(house.ZoneId)); //ListWardNo();
+                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo)); //ListArea();
+                    house.ZoneList = ListZone();
+                    return house;
+                }
+                else if (teamId == -2)
+                {
+                    var id = db.SWMMasters.OrderByDescending(x => x.swmId).Select(x => x.swmId).FirstOrDefault();
+                    int number = 1000;
+                    string refer = "SWMSBA" + (number + id + 1);
+                    house.ReferanceId = refer;
+                    house.swmQRCode = "/Images/QRcode.png";
+                    //house.WardList = ListWardNo();
+                    //house.AreaList = ListArea();
+
+                    var WWWW = new List<SelectListItem>();
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward / Prabhag", Value = "0" };
+                    WWWW.Insert(0, itemAdd);
+
+                    var ARRR = new List<SelectListItem>();
+                    SelectListItem itemAddARR = new SelectListItem() { Text = "Select Area", Value = "0" };
+                    ARRR.Insert(0, itemAddARR);
+
+
+                    house.WardList = WWWW;
+                    house.AreaList = ARRR;
+                    house.ZoneList = ListZone();
+                    house.swmId = 0;
+                    return house;
+                }
+                else
+                {
+                    var id = db.SWMMasters.OrderByDescending(x => x.swmId).Select(x => x.swmId).FirstOrDefault();
+                    int number = 1000;
+                    string refer = "HPSBA" + (number + id + 1);
+                    house.ReferanceId = refer;
+                    house.swmQRCode = "/Images/QRcode.png";
+                    house.WardList = ListWardNo();
+                    house.AreaList = ListArea();
+                    house.ZoneList = ListZone();
+                    house.swmId = id;
+                    return house;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public CommercialDetailsVM GetCommercialDetails(int teamId)
         {
             try
@@ -960,6 +1071,64 @@ namespace SwachBharat.CMS.Bll.Services
                 }
                 var houseid = db.HouseMasters.OrderByDescending(x => x.houseId).Select(x => x.houseId).FirstOrDefault();
                 HouseDetailsVM vv = GetHouseDetails(houseid);
+                return vv;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public SWMDetailsVM SaveSWMDetails(SWMDetailsVM data)
+        {
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (data.swmId > 0)
+                    {
+                        var model = db.SWMMasters.Where(x => x.swmId == data.swmId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.WardNo = data.WardNo;
+                            model.AreaId = data.AreaId;
+                            model.swmName = data.swmName;
+                            model.swmManager = data.swmManager;
+                            model.swmOwnerMar = data.swmOwnerMar;
+                            model.swmAddress = data.swmAddress;
+                            model.swmOwnerMobile = data.swmMobile;
+                            model.swmNumber = data.swmNumber;
+                            model.swmQRCode = data.swmQRCode;
+                            model.swmLat = data.swmLat;
+                            model.swmLong = data.swmLong;
+                            model.ZoneId = data.ZoneId;
+                            model.lastModifiedEntry = DateTime.Now;
+                            model.swmType = (data.swmType == "RW") ? null : data.swmType;
+                            //if(data.WasteType== "DW")
+                            //{ 
+                            //model.WasteType = data.WasteType;
+                            //}
+                            //if (data.WasteType == "WW")
+                            //{
+                            //    model.WasteType = data.WasteType;
+                            //}
+                            //model.userId = data.userId;
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        //var id = db.HouseMasters.OrderByDescending(x => x.houseId).Select(x => x.houseId).FirstOrDefault();
+                        //int number = 1000;
+                        //string refer = "SBA" + (number + id + 1);
+                        // data.ReferanceId = refer;
+                        var type = FillSWMDetailsDataModel(data);
+                        db.SWMMasters.Add(type);
+                        db.SaveChanges();
+                    }
+                }
+                var swmid = db.SWMMasters.OrderByDescending(x => x.swmId).Select(x => x.swmId).FirstOrDefault();
+                SWMDetailsVM vv = GetSWMDetails(swmid);
                 return vv;
             }
             catch (Exception ex)
@@ -3262,6 +3431,29 @@ namespace SwachBharat.CMS.Bll.Services
             return model;
         }
 
+        private SWMMaster FillSWMDetailsDataModel(SWMDetailsVM data)
+        {
+            SWMMaster model = new SWMMaster();
+            model.swmId = data.swmId;
+            model.WardNo = data.WardNo;
+            model.AreaId = data.AreaId;
+            model.swmName = data.swmName;
+            model.swmManager = data.swmManager;
+            model.swmOwnerMar = data.swmOwnerMar;
+            model.swmAddress = data.swmAddress;
+            model.swmOwnerMobile = data.swmMobile;
+            model.swmNumber = data.swmNumber;
+            model.swmQRCode = data.swmQRCode;
+            model.swmLat = data.swmLat;
+            model.swmLong = data.swmLong;
+            model.ZoneId = data.ZoneId;
+            model.ReferanceId = data.ReferanceId;
+            model.modified = DateTime.Now;
+            model.swmType = (data.swmType == "RW") ? null : data.swmType;
+           
+            return model;
+        }
+
         private CommercialMaster FillCommercialDetailsDataModel(CommercialDetailsVM data)
         {
             CommercialMaster model = new CommercialMaster();
@@ -3711,6 +3903,51 @@ namespace SwachBharat.CMS.Bll.Services
 
 
 
+
+            }
+
+            return model;
+        }
+
+        private SWMDetailsVM FillSWMDetailsViewModel(SWMMaster data)
+        {
+
+            SWMDetailsVM model = new SWMDetailsVM();
+            model.swmId = data.swmId;
+            model.WardNo = data.WardNo;
+            model.AreaId = data.AreaId;
+            model.ZoneId = data.ZoneId;
+            model.swmName = data.swmName;
+            model.swmManager = data.swmManager;
+            model.swmOwnerMar = data.swmOwnerMar;
+            model.swmAddress = data.swmAddress;
+            model.swmMobile = data.swmOwnerMobile;
+            model.swmNumber = data.swmNumber;
+            model.swmQRCode = data.swmQRCode;
+            model.swmLat = data.swmLat;
+            model.swmLong = data.swmLong;
+            model.ReferanceId = data.ReferanceId;
+            model.swmType = (data.swmType is null) ? "RW" : data.swmType;
+            using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+            {
+                if (data.AreaId > 0)
+                {
+                    model.areaName = db.TeritoryMasters.Where(c => c.Id == data.AreaId).FirstOrDefault().Area;
+                }
+                else
+                {
+                    model.areaName = "";
+                }
+
+
+                if (data.WardNo > 0)
+                {
+                    model.wardName = db.WardNumbers.Where(c => c.Id == data.WardNo).FirstOrDefault().WardNo;
+                }
+                else
+                {
+                    model.wardName = "";
+                }
 
             }
 

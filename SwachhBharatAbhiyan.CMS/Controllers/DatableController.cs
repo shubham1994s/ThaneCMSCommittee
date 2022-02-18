@@ -267,6 +267,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
 
+                case "SWMDetail":
+                    gridRepository = new SWMDetailsGridRepository(0, searchString, appId);
+                    return gridRepository;
+                    break;
+
                 case "CommercialDetail":
                     gridRepository = new CommercialDetailsGridRepository(0, searchString, appId);
                     return gridRepository;

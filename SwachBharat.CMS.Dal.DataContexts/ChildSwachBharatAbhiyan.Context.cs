@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -56,6 +56,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
         public virtual DbSet<CommercialMaster> CommercialMasters { get; set; }
         public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
+        public virtual DbSet<SWMMaster> SWMMasters { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -625,6 +626,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("gcdate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
+        }
+    
+        public virtual ObjectResult<SWMDetails_Result> SWMDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SWMDetails_Result>("SWMDetails");
         }
     }
 }

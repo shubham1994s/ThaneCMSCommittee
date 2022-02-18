@@ -138,7 +138,7 @@
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="GamePlayerDetail.cs">
-      <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
+      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="Game_AnswerType.cs">
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
@@ -385,6 +385,12 @@
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="SwachBharatAppConnection.cs" />
+    <Compile Include="SWMDetails_Result.cs">
+      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SWMMaster.cs">
+      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+    </Compile>
     <Compile Include="tehsil.cs">
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>

@@ -182,15 +182,15 @@ namespace SwachBharat.CMS.Bll.Services
         #endregion
 
         #region Taluka Service
-        public AppTalukaVM GetTalukaById(int teamId,string name)
+        public AppTalukaVM GetTalukaById(int teamId, string name)
         {
             try
             {
                 AppTalukaVM details = new AppTalukaVM();
-               
+
                 using (var db = new DevSwachhBharatMainEntities())
                 {
-                    var talukaDetails = db.tehsils.Where(x => x.id == teamId ||x.name==name).FirstOrDefault();
+                    var talukaDetails = db.tehsils.Where(x => x.id == teamId || x.name == name).FirstOrDefault();
                     if (talukaDetails != null)
                     {
                         details = FillTalukaViewModel(talukaDetails);
@@ -285,7 +285,7 @@ namespace SwachBharat.CMS.Bll.Services
                 return null;
             }
 
-       }
+        }
         public string GetDatabaseFromAppID(int AppId)
         {
             var DB_Name = dbMain.AppConnections.Where(x => x.AppId == AppId).FirstOrDefault().InitialCatalog;
@@ -322,10 +322,10 @@ namespace SwachBharat.CMS.Bll.Services
         public List<AppDetail> GetAppName()
         {
             List<AppDetail> appNames = new List<AppDetail>();
-            appNames = dbMain.AppDetails.Where(x => x.IsActive == true && x.AppName== "Thane Mahanagar Palika").OrderBy(x => x.AppName).ToList();
+            appNames = dbMain.AppDetails.Where(x => x.IsActive == true && x.AppName == "Thane Mahanagar Palika").OrderBy(x => x.AppName).ToList();
             //appNames = dbMain.AppDetails.ToList();
-              //var appNames= dbMain.AppDetails.Where(row => row.)
-            return appNames.OrderBy(x =>x.AppName).ToList();
+            //var appNames= dbMain.AppDetails.Where(row => row.)
+            return appNames.OrderBy(x => x.AppName).ToList();
         }
 
 
@@ -390,48 +390,49 @@ namespace SwachBharat.CMS.Bll.Services
         #region ViewModel 
         private AppDetailsVM FillAppDetailsVMViewModel(AppDetail data)
         {
-          
-                AppDetailsVM model = new AppDetailsVM();
-                model.AboutAppynity = data.AboutAppynity;
-                model.AboutTeamDetail = data.AboutTeamDetail;
-                model.AboutThumbnailURL = data.AboutThumbnailURL;
-                model.Android_GCM_pushNotification_Key = data.Android_GCM_pushNotification_Key;
-                model.AppId = data.AppId;
-                model.AppName = data.AppName;
-                model.AppName_mar = data.AppName_mar;
-                model.baseImageUrl = data.baseImageUrl;
-                model.baseImageUrlCMS = data.baseImageUrlCMS;
-                model.ContactUsTeamMember = data.ContactUsTeamMember;
-                model.EmailId = data.EmailId;
-                model.ContactUs = data.ContactUs;
-                model.website = data.website;
-                model.basePath = data.basePath;
-                model.Type = data.Type;
-                model.Logo = data.Logo;
-                model.Logitude = data.Logitude;
-                model.Latitude = data.Latitude;
-                model.Collection = data.Collection;
-                model.UserProfile = data.UserProfile;
-                model.HousePDF = data.HousePDF;
-                model.HouseQRCode = data.HouseQRCode;
-                model.PointPDF = data.PointPDF;
-                model.PointQRCode = data.PointQRCode;
-                model.Grampanchayat_Pro = data.Grampanchayat_Pro;
-                model.DumpYardQRCode = data.DumpYardQRCode;
-                model.DumpYardPDF = data.DumpYardPDF;
-                model.ReportEnable = data.ReportEnable;
-                model.YoccClientID = data.YoccClientID;
-                model.yoccContact = data.yoccContact;
-                model.GramPanchyatAppID = data.GramPanchyatAppID;
-                model.YoccFeddbackLink = data.YoccFeddbackLink;
-                model.YoccDndLink = data.YoccDndLink;
-                model.LiquidQRCode = data.LiquidQRCode;
-                model.StreetQRCode = data.StreetQRCode;
-                model.CommercialQRCode = data.CommercialQRCode;
-                model.CTPTQRCode = data.CTPTQRCode;
-                //model.Apikey = data.Apikey;
-               return model;
-        
+
+            AppDetailsVM model = new AppDetailsVM();
+            model.AboutAppynity = data.AboutAppynity;
+            model.AboutTeamDetail = data.AboutTeamDetail;
+            model.AboutThumbnailURL = data.AboutThumbnailURL;
+            model.Android_GCM_pushNotification_Key = data.Android_GCM_pushNotification_Key;
+            model.AppId = data.AppId;
+            model.AppName = data.AppName;
+            model.AppName_mar = data.AppName_mar;
+            model.baseImageUrl = data.baseImageUrl;
+            model.baseImageUrlCMS = data.baseImageUrlCMS;
+            model.ContactUsTeamMember = data.ContactUsTeamMember;
+            model.EmailId = data.EmailId;
+            model.ContactUs = data.ContactUs;
+            model.website = data.website;
+            model.basePath = data.basePath;
+            model.Type = data.Type;
+            model.Logo = data.Logo;
+            model.Logitude = data.Logitude;
+            model.Latitude = data.Latitude;
+            model.Collection = data.Collection;
+            model.UserProfile = data.UserProfile;
+            model.HousePDF = data.HousePDF;
+            model.HouseQRCode = data.HouseQRCode;
+            model.PointPDF = data.PointPDF;
+            model.PointQRCode = data.PointQRCode;
+            model.Grampanchayat_Pro = data.Grampanchayat_Pro;
+            model.DumpYardQRCode = data.DumpYardQRCode;
+            model.DumpYardPDF = data.DumpYardPDF;
+            model.ReportEnable = data.ReportEnable;
+            model.YoccClientID = data.YoccClientID;
+            model.yoccContact = data.yoccContact;
+            model.GramPanchyatAppID = data.GramPanchyatAppID;
+            model.YoccFeddbackLink = data.YoccFeddbackLink;
+            model.YoccDndLink = data.YoccDndLink;
+            model.LiquidQRCode = data.LiquidQRCode;
+            model.StreetQRCode = data.StreetQRCode;
+            model.CommercialQRCode = data.CommercialQRCode;
+            model.CTPTQRCode = data.CTPTQRCode;
+            model.SWMQRCode = data.SWMQRCode;
+            //model.Apikey = data.Apikey;
+            return model;
+
         }
         private AppStateVM FillStatesViewModel(country_states data)
         {
@@ -448,7 +449,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.districtName = data.district_name;
             model.districtNameMmar = data.district_name_mar;
             model.districtId = data.id;
-            model.stateId = data.state_id; 
+            model.stateId = data.state_id;
             return model;
         }
 
@@ -668,7 +669,7 @@ namespace SwachBharat.CMS.Bll.Services
                     type.Image = "/Images/add_image_square.png";
                     return type;
                 }
-               
+
             }
             catch (Exception)
             {
