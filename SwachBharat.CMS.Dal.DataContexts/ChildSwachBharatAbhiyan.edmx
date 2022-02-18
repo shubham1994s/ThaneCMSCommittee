@@ -621,6 +621,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="WardNo" Type="int" Mode="In" />
           <Parameter Name="Segid" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_CommercialOnMapDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gcDate" Type="datetime" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="ZoneId" Type="int" Mode="In" />
+          <Parameter Name="AreaId" Type="int" Mode="In" />
+          <Parameter Name="WardNo" Type="int" Mode="In" />
+          <Parameter Name="GarbageType" Type="int" Mode="In" />
+          <Parameter Name="FilterType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_CommercialScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_Dashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_DumpYardDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_EmployeeHouseCollectionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -986,6 +996,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="SauchalayAddresses" EntityType="DevSwachhBharatNagpurModel.SauchalayAddress" />
           <EntitySet Name="SWMMasters" EntityType="DevSwachhBharatNagpurModel.SWMMaster" />
           <FunctionImport Name="SWMDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SWMDetails_Result)" />
+          <FunctionImport Name="SP_CommercialScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CommercialScanify_Count_Result)" />
+          <FunctionImport Name="SP_CommercialOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CommercialOnMapDetails_Result)">
+            <Parameter Name="gcDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
+            <Parameter Name="GarbageType" Mode="In" Type="Int32" />
+            <Parameter Name="FilterType" Mode="In" Type="Int32" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2228,6 +2248,43 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="swmLat" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="swmLong" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="swmType" Nullable="false" MaxLength="64" />
+        </ComplexType>
+        <ComplexType Name="SP_CommercialScanify_Count_Result">
+          <Property Type="Int32" Name="TotalcommercialCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalcommercialLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalRWLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalRBWLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalRSWLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCWLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalScancommercialCount" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
+          <Property Type="Int32" Name="ConstructionDemolition" Nullable="true" />
+          <Property Type="Int32" Name="Horticulture" Nullable="true" />
+          <Property Type="Int32" Name="WetWaste" Nullable="true" />
+          <Property Type="Int32" Name="DryWaste" Nullable="true" />
+          <Property Type="Int32" Name="DemosticHazardous" Nullable="true" />
+          <Property Type="Int32" Name="Sanitory" Nullable="true" />
+          <Property Type="Int32" Name="TotalLiquidLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreetLatLongCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_CommercialOnMapDetails_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Int32" Name="commercialId" Nullable="true" />
+          <Property Type="Int32" Name="LWId" Nullable="true" />
+          <Property Type="Int32" Name="SSId" Nullable="true" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="commercialNumber" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="commercialOwner" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="commercialOwnerMobile" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="commercialAddress" Nullable="true" />
+          <Property Type="Int32" Name="garbageType" Nullable="true" />
+          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="String" Name="commercialLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="commercialLong" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3537,6 +3594,51 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="swmLat" ColumnName="swmLat" />
                 <ScalarProperty Name="swmLong" ColumnName="swmLong" />
                 <ScalarProperty Name="swmType" ColumnName="swmType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CommercialScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CommercialScanify_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CommercialScanify_Count_Result">
+                <ScalarProperty Name="TotalcommercialCount" ColumnName="TotalcommercialCount" />
+                <ScalarProperty Name="TotalcommercialLatLongCount" ColumnName="TotalcommercialLatLongCount" />
+                <ScalarProperty Name="TotalRWLatLongCount" ColumnName="TotalRWLatLongCount" />
+                <ScalarProperty Name="TotalRBWLatLongCount" ColumnName="TotalRBWLatLongCount" />
+                <ScalarProperty Name="TotalRSWLatLongCount" ColumnName="TotalRSWLatLongCount" />
+                <ScalarProperty Name="TotalCWLatLongCount" ColumnName="TotalCWLatLongCount" />
+                <ScalarProperty Name="TotalScancommercialCount" ColumnName="TotalScancommercialCount" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
+                <ScalarProperty Name="ConstructionDemolition" ColumnName="ConstructionDemolition" />
+                <ScalarProperty Name="Horticulture" ColumnName="Horticulture" />
+                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
+                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
+                <ScalarProperty Name="DemosticHazardous" ColumnName="DemosticHazardous" />
+                <ScalarProperty Name="Sanitory" ColumnName="Sanitory" />
+                <ScalarProperty Name="TotalLiquidLatLongCount" ColumnName="TotalLiquidLatLongCount" />
+                <ScalarProperty Name="TotalStreetLatLongCount" ColumnName="TotalStreetLatLongCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CommercialOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CommercialOnMapDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CommercialOnMapDetails_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="commercialId" ColumnName="commercialId" />
+                <ScalarProperty Name="LWId" ColumnName="LWId" />
+                <ScalarProperty Name="SSId" ColumnName="SSId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="commercialNumber" ColumnName="commercialNumber" />
+                <ScalarProperty Name="commercialOwner" ColumnName="commercialOwner" />
+                <ScalarProperty Name="commercialOwnerMobile" ColumnName="commercialOwnerMobile" />
+                <ScalarProperty Name="commercialAddress" ColumnName="commercialAddress" />
+                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="commercialLat" ColumnName="commercialLat" />
+                <ScalarProperty Name="commercialLong" ColumnName="commercialLong" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

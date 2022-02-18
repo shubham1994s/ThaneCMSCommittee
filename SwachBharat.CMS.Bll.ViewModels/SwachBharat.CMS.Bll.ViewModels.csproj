@@ -74,6 +74,7 @@
     <Compile Include="ChildModel\Model\LogVM.cs" />
     <Compile Include="ChildModel\Model\Result.cs" />
     <Compile Include="ChildModel\Model\SauchalayDetailsVM.cs" />
+    <Compile Include="ChildModel\Model\SBALCommercialLocationMapView.cs" />
     <Compile Include="ChildModel\Model\SBALHouseLocationMapView.cs" />
     <Compile Include="ChildModel\Model\SBALHSUserLocationMapView.cs" />
     <Compile Include="ChildModel\Model\SBALUserLocationMapView.cs" />
