@@ -268,7 +268,7 @@
                 // cpde end
                 $('#btnSubmit').prop('disabled', false);
                 //   $('#QRCOdeGenrate').css('display', 'none');
-                //$('#Download1').show();
+                $('#Download1').show();
                 //$('#send_link').show();
                 move();
             }
@@ -291,6 +291,21 @@
             }
         }
     }
+</script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#Download1').click(function () {
+                var name = $("#Name").val();
+                var SauchalayID = $("#n").val();
+                var Refid = $("#refId").val();
+                var Id = $("#Id").val();
+                window.location.href = "/Sauchalay/GenratePDF?name=" + name + "&SauchalayID=" + SauchalayID + "&ReferanceId=" + Refid + "&Id=" + Id;
+           
+        })
+
+    });
 </script>
 @*<script type="text/javascript">
     $(document).ready(function () {
@@ -350,7 +365,7 @@
                         // alert($('#SauchalayID').val());
                         var id = $('#Id').val();
         if (id > 0) {
-            //$('#Download1').show();
+            $('#Download1').show();
             //$('#send_link').show();
             $('#buttonName').text("Save Changes");
             $('.title_change').text("Edit CT / PT Details");

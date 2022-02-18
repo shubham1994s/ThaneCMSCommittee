@@ -22,5 +22,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public int? Tns { get; set; }
         public string SauchalayQRCode { get; set; }
         public string ReferanceId { get; set; }
+        public string SerielNo { get; set; }
     }
 }

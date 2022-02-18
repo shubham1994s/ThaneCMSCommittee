@@ -55,7 +55,7 @@
                 },
                 {
                     "targets": [4],
-                    "visible": false,
+                    "visible": true,
                     "searchable": false
                 }
 
@@ -65,12 +65,12 @@
               { "data": "Id", "name": "Id", "autoWidth": true },
               { "data": "SauchalayID", "name": "SauchalayID", "autoWidth": true },
               { "data": "Name", "name": "Name", "autoWidth": true },
-              {
+            {
                 "data": "QRCode", "name": "QRCode", "render": function (data, type, full, meta) {
-                      return "<img src=\"" + data + "\" height=\"50\"/>";
+                    return "<img src=\"" + data + "\" height=\"50\"/><span><input class=\"btn btn-link\" type=\"button\" onclick='SaveQRCode(" + full["Id"] + ")'  value=\"Send Link\"/></span>";
                 }
               },
-            { "render": function (data, type, full, meta) { return '<input  class="btn btn-link" type="button" onclick="DownloadQRCode(' + full["SauchalayID"] + ')" value="Download" />'; } },
+            { "render": function (data, type, full, meta) { return '<input  class="btn btn-link" type="button" onclick="DownloadQRCode(' + full["Id"] + ')" value="Download" />'; } },
 
               { "data": "Mobile", "name": "Mobile", "autoWidth": true },
               { "data": "Tot", "name": "Tot", "autoWidth": true },
@@ -120,7 +120,7 @@ function Edit(Id) {
 };
 
 function DownloadQRCode(Id) {
-    window.location.href = "/HouseMaster/Export?Id=" + Id;
+    window.location.href = "/Sauchalay/Export?Id=" + Id;
 };
     
 function SaveQRCode(Id) {
