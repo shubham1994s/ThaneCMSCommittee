@@ -67,7 +67,7 @@
               { "data": "Name", "name": "Name", "autoWidth": true },
             {
                 "data": "QRCode", "name": "QRCode", "render": function (data, type, full, meta) {
-                    return "<img src=\"" + data + "\" height=\"50\"/><span><input class=\"btn btn-link\" type=\"button\" onclick='SaveQRCode(" + full["Id"] + ")'  value=\"Send Link\"/></span>";
+                    return "<img src=\"" + data + "\" height=\"50\"/><span><input hidden class=\"btn btn-link\" type=\"button\" onclick='SaveQRCode(" + full["Id"] + ")'  value=\"Send Link\"/></span>";
                 }
               },
             { "render": function (data, type, full, meta) { return '<input  class="btn btn-link" type="button" onclick="DownloadQRCode(' + full["Id"] + ')" value="Download" />'; } },
