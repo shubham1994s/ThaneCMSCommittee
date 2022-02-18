@@ -142,11 +142,6 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHouseDetails(teamId);
         }
 
-        public SWMDetailsVM GetSWMById(int teamId)
-        {
-            return screenService.GetSWMDetails(teamId);
-        }
-
         public CommercialDetailsVM GetCommercailById(int teamId)
         {
             return screenService.GetCommercialDetails(teamId);
@@ -169,16 +164,6 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
                 data.houseId = 0;
             }
             HouseDetailsVM dd =screenService.SaveHouseDetails(data);
-            return dd;
-        }
-
-        public SWMDetailsVM SaveSWM(SWMDetailsVM data)
-        {
-            if (data.swmId <= 0)
-            {
-                data.swmId = 0;
-            }
-            SWMDetailsVM dd = screenService.SaveSWMDetails(data);
             return dd;
         }
 
@@ -419,6 +404,10 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetAllHouseLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype);
         }
 
+        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype)
+        {
+            return screenService.GetAllCommercialLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype);
+        }
         //Code Optimization (code)
         //public SBALHouseLocationMapView1 GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, string start)
         //{
@@ -436,7 +425,13 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHouseOnMapDetails();
 
         }
-        
+
+        public DashBoardVM GetCommercialOnMapDetails()
+        {
+            return screenService.GetCommercialOnMapDetails();
+
+        }
+
         public DashBoardVM GetLiquidWasteDetails()
         {
             return screenService.GetLiquidWasteDetails();

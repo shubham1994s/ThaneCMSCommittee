@@ -3024,6 +3024,7 @@
     <Content Include="Views\SWMMaster\MenuIndex.cshtml" />
     <Content Include="Views\SWMMaster\MenuReportIndex.cshtml" />
     <Content Include="Views\SWMMaster\ReportIndex.cshtml" />
+    <Content Include="Views\Location\AllCommercialLocation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -124,6 +124,8 @@ namespace SwachBharat.CMS.Bll.Services
         //Added By Saurabh (06 June 2019)
         List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype);
 
+
+        List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype);
         //Code Optimization (code)
         //SBALHouseLocationMapView1 GetAllHouseLocation(string date, int userid,int areaid, int wardNo, string SearchString, string start);
 
@@ -132,6 +134,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         //Added By Saurabh (2 July 2019)
         DashBoardVM GetHouseOnMapDetails();
+        DashBoardVM GetCommercialOnMapDetails();
         DashBoardVM GetLiquidWasteDetails();
 
         DashBoardVM GetStreetSweepingDetails();
