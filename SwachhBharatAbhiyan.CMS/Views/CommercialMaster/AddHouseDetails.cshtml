@@ -509,7 +509,8 @@
                 var id = $('#houseId').val();
                 if (id > 0) {
                     $('#Download1').show();
-                    $('#send_link').show();
+                    //$('#send_link').show();
+
                     // by nazim 02Jan2018
                     //$("#houseOwner").change(function () {
                     //    //alert("Sdsadsa");
@@ -830,7 +831,7 @@
         });
         function validation() {
 
-            if ($.trim($("#houseCategory").val()) == "-1" || $.trim($("#houseCategory").val()) == "0") {
+            if ($.trim($("#house1Category").val()) == "-1" || $.trim($("#house1Category").val()) == "0") {
                 $("#err_cat").html("Category is Required").delay(1500).show().fadeOut('slow');
                 $('#houseCategory').focus();
                 return false;
@@ -918,7 +919,7 @@
                     $('#btnSubmit').prop('disabled', false);
                     //   $('#QRCOdeGenrate').css('display', 'none');
                     $('#Download1').show();
-                    $('#send_link').show();
+                    //$('#send_link').show();
                     move();
                 }
             }

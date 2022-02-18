@@ -55,7 +55,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             @*@Html.Label("नाव / Name")*@
-                            @Html.Label("Facilities Name")
+                            @Html.Label("Facility Name")
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.TextBoxFor(model => model.swmName, new { @class = "form-control capitalize", style = "font-family:Arial, FontAwesome" })
                             @Html.ValidationMessageFor(model => model.swmName, "", new { @class = "text-danger" })
@@ -524,10 +524,10 @@
 
                 //});
 
-                var id = $('#houseId').val();
+                var id = $('#swmId').val();
                 if (id > 0) {
                     $('#Download1').show();
-                    $('#send_link').show();
+                   // $('#send_link').show();
                     // by nazim 02Jan2018
                     //$("#houseOwner").change(function () {
                     //    //alert("Sdsadsa");
@@ -551,11 +551,11 @@
                     //});
                     $('#buttonName').text("Save Changes");
                     //$('.title_change').text("घर तपशील सादर बदला / Edit House Details");
-                    $('.title_change').text("Edit SWM Facilities Details");
+                    $('.title_change').text("Edit SWM Facility Details");
                 } else {
                     $('#buttonName').text("Save");
                     //$('.title_change').text("घर तपशील सादर करा / Add House Details");
-                    $('.title_change').text("Add SWM Facilities Details");
+                    $('.title_change').text("Add SWM Facility Details");
                 }
             });
 
@@ -759,7 +759,7 @@
         //    }
         //});
 
-            $("#houseMobile").keypress(function (e) {
+            $("#swmMobile").keypress(function (e) {
                 //if the letter is not digit then display error and don't type anything
                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44) {
                     //display error message
@@ -768,7 +768,7 @@
                     return false;
                 }
             });
-            $("#houseOwner").keypress(function (e) {
+            $("#swmName").keypress(function (e) {
                 //if the letter is not digit then display error and don't type anything
                 if (!(e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44)) {
                     //display error message
@@ -800,7 +800,7 @@
                 return false;
             } else {
              //   alert($("#FileUpload_Preview img").attr('src'));
-                $("#houseOwner").change(function () {
+                $("#swmName").change(function () {
               //      alert("Sdsadsa");
                     //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
                     $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
@@ -848,8 +848,8 @@
         });
         function validation() {
 
-            if ($.trim($("#houseCategory").val()) == "-1" || $.trim($("#houseCategory").val()) == "0") {
-                $("#err_cat").html("Category is Required").delay(1500).show().fadeOut('slow');
+            if ($.trim($("#swm1Type").val()) == "-1" || $.trim($("#swm1Type").val()) == "0") {
+                $("#err_cat").html("Type is Required").delay(1500).show().fadeOut('slow');
                 $('#houseCategory').focus();
                 return false;
             }
@@ -936,12 +936,12 @@
                     $('#btnSubmit').prop('disabled', false);
                     //   $('#QRCOdeGenrate').css('display', 'none');
                     $('#Download1').show();
-                    $('#send_link').show();
+                   // $('#send_link').show();
                     move();
                 }
             }
 
-            $("#houseOwner").change(function () {
+            $("#swmName").change(function () {
              //   alert("Sdsadsa");
                 //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
                 $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
@@ -1179,22 +1179,22 @@
         $('#Download1').click(function () {
 
             //alert("ff");
-            if ($.trim($("#houseOwner").val()) != '' && $.trim($("#houseNumber").val()) != '') {
+            if ($.trim($("#swmName").val()) != '' && $.trim($("#houseNumber").val()) != '') {
                 var area= $("#AreaId").val();
                 var ward = $("#WardNo").val();
-                var name = $("#houseOwner").val();
+                var name = $("#swmName").val();
                 var Refid = $("#n").val();
                 var Number = $("#houseNumber").val();
-                window.location.href = "/HouseMaster/GenratePDF?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid +   "&Area=" + area + "&Ward=" + ward;
+                window.location.href = "/SWMMaster/GenratePDF?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid +   "&Area=" + area + "&Ward=" + ward;
                 }
             else {
                 var area = $("#AreaId").val();
                 var ward = $("#WardNo").val();
-                var name = $("#houseOwner").val();
+                var name = $("#swmName").val();
                 var Refid = $("#n").val();
                 var Number = $("#houseNumber").val();
              //   alert(Number);
-                window.location.href = "/HouseMaster/GenratePDF?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid + "&Area=" + area + "&Ward=" + ward;
+                window.location.href = "/SWMMaster/GenratePDF?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid + "&Area=" + area + "&Ward=" + ward;
             }
         })
 

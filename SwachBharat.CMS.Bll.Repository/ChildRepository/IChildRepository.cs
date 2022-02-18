@@ -37,6 +37,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         void SaveVehicleType(VehicleTypeVM type);
 
 
+
         WardNumberVM GetWardNumber(int teamId,string name);
         void DeleteWardNumber(int teamId);
         void SaveWardNumber(WardNumberVM type);

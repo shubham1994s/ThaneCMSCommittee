@@ -217,17 +217,17 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 string Filename = "", owner = "";
 
-                var details = childRepository.GetHouseById(id);
+                var details = childRepository.GetSWMById(id);
                 string cdatetime = DateTime.Now.ToString("_ddmmyyyyhhmmss");
 
-                if (details.houseOwner != null)
+                if (details.swmName != null)
                 {
-                    Filename = Regex.Replace(details.houseOwner, @"\s+", "") + cdatetime + ".pdf";
-                    owner = details.houseOwner;
+                    Filename = Regex.Replace(details.swmName, @"\s+", "") + cdatetime + ".pdf";
+                    owner = details.swmName;
                 }
                 else
                 {
-                    Filename = Regex.Replace(details.houseId.ToString(), @"\s+", "") + cdatetime + ".pdf";
+                    Filename = Regex.Replace(details.swmId.ToString(), @"\s+", "") + cdatetime + ".pdf";
                     owner = "_ _ _ _ _ _ _ _ _ _ _ _";
 
                 }
@@ -240,7 +240,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 {
                     string src = AppDetails.baseImageUrlCMS + "/Content/images/icons/Nagpur_logo.png";
                     //For Satana Only
-                    GridHtml = "<div style='width:100%;height: 100%;text-align: center;background: #fff;border : 2px solid black;'><div style='text-align:center;padding-top: 5px;background: #abd037;'> <img style='width:250px;height:86px;' src='" + src + "'/> </div> <div style='font-size: 14px;background: #abd037;'><b> House Id: " + details.ReferanceId + "</b> </div> <div style='height:10px;background: #fff;'></div><div style='background: #fff;'> <img style='width:245px;height:245px;' src='" + details.houseQRCode + "'/></div></div>";
+                    GridHtml = "<div style='width:100%;height: 100%;text-align: center;background: #fff;border : 2px solid black;'><div style='text-align:center;padding-top: 5px;background: #abd037;'> <img style='width:250px;height:86px;' src='" + src + "'/> </div> <div style='font-size: 14px;background: #abd037;'><b> House Id: " + details.ReferanceId + "</b> </div> <div style='height:10px;background: #fff;'></div><div style='background: #fff;'> <img style='width:245px;height:245px;' src='" + details.swmQRCode + "'/></div></div>";
                 }
                 else
                 {
@@ -257,7 +257,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     //string slogan_new = "http://localhost:34557/" + AppDetails.basePath + "Content/icons/slogan.png";
                     //string round = "http://localhost:34557/" + AppDetails.basePath + "Content/icons/round.png";
 
-                    GridHtml = "<div style='width:100%;height: 100%;background:#ffffff;border : 2px solid #4fa30a;'><div style='float:left;width:7%;padding-top:110px;padding-left:8px;'><img src='" + round + "' style = 'width:20px;height:20px;margin-left:5px;'/></div><div style='float:left;width:58%;padding-left:16px;padding-top:7px;'><img src='" + details.houseQRCode + "' style = 'width:20px;height:20px;'/></div><div style='float:left;width:83%;padding-left:5px;padding-top:10px;padding-bottom:6px;'><div style='padding-left:5px;'><img style='width:150px;height:95px;' src='" + top_img_new + "'/></div><div style='text-align: center;font-weight: 900;padding-bottom:3px;'>&nbsp;&nbsp;&nbsp;<span style='color:#000000;text-align: center;font-size: 16px'>House Id</span><br/><span style='color:#000000;text-align: center;font-size: 21px'>" + details.ReferanceId + "</span></div><div style='padding-left:5px;'><img src='" + slogan_new + "' style='width: 150px; height:49px;'/><br/><div style='float:right;'><b style='font-size:9px;'>" + details.SerielNo + "</b></div></div></div><div style='float:left;width:3%;padding-top:110px;padding-left:22px;text-align:center;'><img src='" + round + "' style = 'width:20px;height:20px;'/></div></div>";
+                    GridHtml = "<div style='width:100%;height: 100%;background:#ffffff;border : 2px solid #4fa30a;'><div style='float:left;width:7%;padding-top:110px;padding-left:8px;'><img src='" + round + "' style = 'width:20px;height:20px;margin-left:5px;'/></div><div style='float:left;width:58%;padding-left:16px;padding-top:7px;'><img src='" + details.swmQRCode + "' style = 'width:20px;height:20px;'/></div><div style='float:left;width:83%;padding-left:5px;padding-top:10px;padding-bottom:6px;'><div style='padding-left:5px;'><img style='width:150px;height:95px;' src='" + top_img_new + "'/></div><div style='text-align: center;font-weight: 900;padding-bottom:3px;'>&nbsp;&nbsp;&nbsp;<span style='color:#000000;text-align: center;font-size: 16px'>SWM Id</span><br/><span style='color:#000000;text-align: center;font-size: 15px'>" + details.ReferanceId + "</span></div><div style='padding-left:5px;'><img src='" + slogan_new + "' style='width: 150px; height:49px;'/><br/><div style='float:right;'><b style='font-size:9px;'>" + details.SerielNo + "</b></div></div></div><div style='float:left;width:3%;padding-top:110px;padding-left:22px;text-align:center;'><img src='" + round + "' style = 'width:20px;height:20px;'/></div></div>";
                 }
 
 
@@ -544,11 +544,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 //Creating Path to save image in folder
                 System.Drawing.Image img = System.Drawing.Image.FromStream(remoteStream);
-                string imgpath = Path.Combine(Server.MapPath(AppDetails.basePath + AppDetails.HouseQRCode), image_Guid);
-                var exists = System.IO.Directory.Exists(Server.MapPath(AppDetails.basePath + AppDetails.HouseQRCode));
+                string imgpath = Path.Combine(Server.MapPath(AppDetails.basePath + AppDetails.SWMQRCode), image_Guid);
+                var exists = System.IO.Directory.Exists(Server.MapPath(AppDetails.basePath + AppDetails.SWMQRCode));
                 if (!exists)
                 {
-                    System.IO.Directory.CreateDirectory(Server.MapPath(AppDetails.basePath + AppDetails.HouseQRCode));
+                    System.IO.Directory.CreateDirectory(Server.MapPath(AppDetails.basePath + AppDetails.SWMQRCode));
                 }
                 img.Save(imgpath);
                 response.Close();
@@ -579,7 +579,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     //string slogan_new = "http://localhost:34557/" + AppDetails.basePath + "Content/icons/slogan.png";
                     //string round = "http://localhost:34557/" + AppDetails.basePath + "Content/icons/round.png";
 
-                    GridHtml = "<div style='width:100%;height: 100%;background:#ffffff;border : 2px solid #4fa30a;'><div style='float:left;width:7%;padding-top:110px;padding-left:8px;'><img src='" + round + "' style = 'width:20px;height:20px;margin-left:5px;'/></div><div style='float:left;width:58%;padding-left:16px;padding-top:7px;'><img src='" + imgpath + "' style = 'width:20px;height:20px;'/></div><div style='float:left;width:83%;padding-left:5px;padding-top:10px;padding-bottom:6px;'><div style='padding-left:5px;'><img style='width:150px;height:95px;' src='" + top_img_new + "'/></div><div style='text-align: center;font-weight: 900;padding-bottom:3px;'>&nbsp;&nbsp;&nbsp;<span style='color:#000000;text-align: center;font-size: 16px'>House Id</span><br/><span style='color:#000000;text-align: center;font-size: 21px'>" + ReferanceId + "</span></div><div style='padding-left:5px;'><img src='" + slogan_new + "' style='width: 150px; height:49px;'/><br/></div></div><div style='float:left;width:3%;padding-top:110px;padding-left:22px;text-align:center;'><img src='" + round + "' style = 'width:20px;height:20px;'/></div></div>";
+                    GridHtml = "<div style='width:100%;height: 100%;background:#ffffff;border : 2px solid #4fa30a;'><div style='float:left;width:7%;padding-top:110px;padding-left:8px;'><img src='" + round + "' style = 'width:20px;height:20px;margin-left:5px;'/></div><div style='float:left;width:58%;padding-left:16px;padding-top:7px;'><img src='" + imgpath + "' style = 'width:20px;height:20px;'/></div><div style='float:left;width:83%;padding-left:5px;padding-top:10px;padding-bottom:6px;'><div style='padding-left:5px;'><img style='width:150px;height:95px;' src='" + top_img_new + "'/></div><div style='text-align: center;font-weight: 900;padding-bottom:3px;'>&nbsp;&nbsp;&nbsp;<span style='color:#000000;text-align: center;font-size: 16px'>SWM Id</span><br/><span style='color:#000000;text-align: center;font-size: 15px'>" + ReferanceId + "</span></div><div style='padding-left:5px;'><img src='" + slogan_new + "' style='width: 150px; height:49px;'/><br/></div></div><div style='float:left;width:3%;padding-top:110px;padding-left:22px;text-align:center;'><img src='" + round + "' style = 'width:20px;height:20px;'/></div></div>";
                 }
 
                 //string GridHtml = "<div style='width:100%;height: 100%;text-align: center;background: #fff;border : 2px solid black;'><div style='text-align:center;margin-top: 8px;font-size:22px;background: #abd037;'> O </div> <div style='background: #abd037;;font-weight: bold;font-size: 18px;'> " + AppDetails.AppName + "</div><div style='font-size: 15px;background: #abd037;'> House Id: " + ReferanceId + " </div><div style='height:10px;background: #abd037;'></div> <div style='height:10px;background: #fff;'></div><div style='background: #fff;'> <img style='width:250px;height:250px;' src='" + string.Format("https://api.qrserver.com/v1/create-qr-code/?data=" + ReferanceId) + "'/>  </div></div>";
