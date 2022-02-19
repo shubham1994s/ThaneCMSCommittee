@@ -39,12 +39,12 @@
             "searchable": false
         },
         {
-            "targets": [10],
+            "targets": [11],
             "visible": false,
             "searchable": false
         },
         {
-            "targets": [11],
+            "targets": [12],
             "visible": false,
             "searchable": false
         },
@@ -56,12 +56,15 @@
               { "data": "StartTime", "name": "startTime", "autoWidth": true },
               { "data": "DaEndDate", "name": "daEndDate", "autoWidth": true },
               { "data": "EndTime", "name": "endTime", "autoWidth": true },
-              { "data": "Totalhousecollection", "name": "Totalhousecollection", "autoWidth": true },
+            { "data": "Totalhousecollection", "name": "Totalhousecollection", "autoWidth": true },
+            { "data": "Totalcommercial", "name": "Totalcommercial", "autoWidth": true },
               { "data": "Totaldumpyard", "name": "totaldumpyard", "autoWidth": true },
               { "data": "InBatteryStatus", "name": "InBatteryStatus", "autoWidth": true },
-              { "data": "OutBatteryStatus", "name": "OutBatteryStatus", "autoWidth": true },
+            { "data": "OutBatteryStatus", "name": "OutBatteryStatus", "autoWidth": true },
+          
               { "data": "Totaldistance", "name": "Totaldistance", "autoWidth": true },       
               { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
+
         ],
         //Sort: "locId DESC"
     });
