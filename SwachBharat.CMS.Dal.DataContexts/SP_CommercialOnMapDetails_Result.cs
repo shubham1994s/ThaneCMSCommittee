@@ -23,7 +23,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string commercialOwnerMobile { get; set; }
         public string commercialAddress { get; set; }
         public Nullable<int> garbageType { get; set; }
-        public Nullable<int> gcDate { get; set; }
+        public Nullable<System.DateTime> gcDate { get; set; }
         public string commercialLat { get; set; }
         public string commercialLong { get; set; }
         public string CType { get; set; }
