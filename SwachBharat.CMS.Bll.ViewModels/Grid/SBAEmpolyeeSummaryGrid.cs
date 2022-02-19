@@ -18,6 +18,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string Totalhousecollection { get; set; }
         public string Totaldistance { get; set; }
         public string Totaldumpyard { get; set; }
+
+        public string Totalcommercial { get; set; }
         public int userId { get; set; }
 
         public string daDateTIme { get; set; }

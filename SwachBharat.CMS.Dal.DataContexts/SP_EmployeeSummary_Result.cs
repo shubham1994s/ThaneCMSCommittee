@@ -13,8 +13,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     
     public partial class SP_EmployeeSummary_Result
     {
-        public string userName { get; set; }
+        public Nullable<int> daID { get; set; }
         public int userId { get; set; }
+        public string userName { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public Nullable<System.DateTime> Startdate { get; set; }
@@ -24,5 +25,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> Totalhousecollection { get; set; }
         public Nullable<decimal> Totaldistance { get; set; }
         public Nullable<int> Totaldumpyard { get; set; }
+        public Nullable<int> TotalCommercial { get; set; }
+        public Nullable<long> rownum { get; set; }
     }
 }

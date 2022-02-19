@@ -1054,12 +1054,12 @@ $(document).ready(function () {
                         labelFontColor: "dimGrey",
                         interval: 1
                     },
-                    axisY2: {
-                        lableAngle:-10,
-                        labelFontSize: 10,
-                        labelFontColor: "black",
-                        interval: 1
-                    },
+                    //axisY2: {
+                    //    lableAngle:-10,
+                    //    labelFontSize: 10,
+                    //    labelFontColor: "black",
+                    //    interval: 1
+                    //},
                    
                     axisX: {
                         labelAngle: -10,
@@ -1179,7 +1179,7 @@ $(document).ready(function () {
                             //indexLabel: "#total",
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
-                            axisYType: "secondary",
+                            //axisYType: "secondary",
                             showInLegend: true,
                             legendText: "Commercial",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
