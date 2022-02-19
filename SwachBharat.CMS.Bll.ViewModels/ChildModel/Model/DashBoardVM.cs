@@ -61,6 +61,12 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         public Nullable<double> TotalCommercialCount { get; set; }
 
+        public Nullable<double> TotalCommercial { get; set; }
+
+        public Nullable<double> TotalCommercialCurrent { get; set; }
+
+
+
 
         public int userId { get; set; }
         public string userName { get; set; }
