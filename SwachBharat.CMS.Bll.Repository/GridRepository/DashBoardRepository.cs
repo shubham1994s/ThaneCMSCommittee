@@ -3481,6 +3481,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             EndTime = x.EndTime,
                             Totalhousecollection = (x.Totalhousecollection).ToString(),
                             Totaldumpyard = (x.Totaldumpyard).ToString(),
+                            Totalcommercial=(x.TotalCommercial).ToString(),
                             Totaldistance = string.Format("{0:0.0}", (x.Totaldistance)).ToString(),
                             InBatteryStatus = x.InBatteryStatus,
                             OutBatteryStatus = x.OutBatteryStatus,
@@ -4664,7 +4665,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         //DryWaste = 10,
                         //DomesticHazardous = 10,
                         //Sanitary = 10,
-                        //Commercial = 10
+                        //Commercial = 1
 
 
                     });

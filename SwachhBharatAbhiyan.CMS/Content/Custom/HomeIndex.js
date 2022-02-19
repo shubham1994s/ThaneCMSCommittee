@@ -1007,7 +1007,7 @@ $(document).ready(function () {
             var dhw = [];
             var sw = [];
             var emp_tar = [];
-           // var cw = [];
+            var cw = [];
             debugger;
             for (var i = 0; i < data.length; i++) {
                 // alert(data[i].inTime);
@@ -1036,7 +1036,7 @@ $(document).ready(function () {
                 dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
                 dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
                 sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
-                //cw.push({ y: data[i].Commercial, label: 'Commercial Waste', color: '#63676e', intime: data[i].inTime });
+                cw.push({ y: data[i].Commercial, label: 'Commercial Waste', color: '#63676e', intime: data[i].inTime });
                 emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar, z: data[i].Count, intime: data[i].inTime });
                 // ary2.push({ y: parseInt(data[i].gcTarget), label: data[i].userName });
 
@@ -1054,6 +1054,13 @@ $(document).ready(function () {
                         labelFontColor: "dimGrey",
                         interval: 1
                     },
+                    //axisY2: {
+                    //    lableAngle:-10,
+                    //    labelFontSize: 10,
+                    //    labelFontColor: "black",
+                    //    interval: 1
+                    //},
+                   
                     axisX: {
                         labelAngle: -10,
                         labelFontSize: 10,
@@ -1062,6 +1069,7 @@ $(document).ready(function () {
                     axisY: {
                         title: "House Collection",
                     },
+
 
                     data: [
 
@@ -1167,16 +1175,17 @@ $(document).ready(function () {
                             dataPoints: sw
                         },
 
-                        //{
-                        //    //indexLabel: "#total",
-                        //    //indexLabelPlacement: "outside",
-                        //    type: "stackedColumn",
-                        //    showInLegend: true,
-                        //    legendText: "Commercial",
-                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                        //    color: "#63676e",
-                        //    dataPoints: cw
-                        //},
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            //axisYType: "secondary",
+                            showInLegend: true,
+                            legendText: "Commercial",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#63676e",
+                            dataPoints: cw
+                        },
 
                         {
                             type: "line",
