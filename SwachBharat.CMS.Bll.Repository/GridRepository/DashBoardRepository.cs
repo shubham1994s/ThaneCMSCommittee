@@ -3481,6 +3481,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             EndTime = x.EndTime,
                             Totalhousecollection = (x.Totalhousecollection).ToString(),
                             Totaldumpyard = (x.Totaldumpyard).ToString(),
+                            Totalcommercial=(x.TotalCommercial).ToString(),
                             Totaldistance = string.Format("{0:0.0}", (x.Totaldistance)).ToString(),
                             InBatteryStatus = x.InBatteryStatus,
                             OutBatteryStatus = x.OutBatteryStatus,
@@ -4623,48 +4624,48 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             List<EmployeeHouseCollectionType> obj = new List<EmployeeHouseCollectionType>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                //var data = db.SP_EmployeeHouseCollectionType().ToList();
-                var data = "1";
+                var data = db.SP_EmployeeHouseCollectionType().ToList();
+                //var data = "1";
 
                 foreach (var x in data)
                 {
                     obj.Add(new EmployeeHouseCollectionType()
                     {
-                        //inTime = x.inTime,
-                        //Count = x.Count,
-                        //ToDate = x.TodayDate.ToString(),
-                        //MixedCount = x.MixedCount,
-                        //Bifur = x.Bifur,
-                        //NotCollected = x.NotCollected,
-                        //gcTarget = x.gcTarget,
-                        //NotSpecidfied = x.NotSpecidfied,
-                        //userId = x.userId,
-                        //userName = x.userName,
-                        //ConstructionAndDemolition = x.CDW,
-                        //Horticulture = x.HW,
-                        //WetWaste = x.WetWaste,
-                        //DryWaste = x.DryWaste,
-                        //DomesticHazardous = x.DHW,
-                        //Sanitary = x.SW,
-                        //Commercial = x.CW
+                        inTime = x.inTime,
+                        Count = x.Count,
+                        ToDate = x.TodayDate.ToString(),
+                        MixedCount = x.MixedCount,
+                        Bifur = x.Bifur,
+                        NotCollected = x.NotCollected,
+                        gcTarget = x.gcTarget,
+                        NotSpecidfied = x.NotSpecidfied,
+                        userId = x.userId,
+                        userName = x.userName,
+                        ConstructionAndDemolition = x.CDW,
+                        Horticulture = x.HW,
+                        WetWaste = x.WetWaste,
+                        DryWaste = x.DryWaste,
+                        DomesticHazardous = x.DHW,
+                        Sanitary = x.SW,
+                        Commercial = x.CW
 
-                        inTime = "10.30 AM",
-                        Count = 10,
-                        ToDate = "2022-02-16",
-                        MixedCount = 10,
-                        Bifur = 10,
-                        NotCollected = 0,
-                        gcTarget = "90",
-                        NotSpecidfied = 0,
-                        userId = 1,
-                        userName = "XYZ",
-                        ConstructionAndDemolition = 10,
-                        Horticulture = 10,
-                        WetWaste = 10,
-                        DryWaste = 10,
-                        DomesticHazardous = 10,
-                        Sanitary = 10,
-                        Commercial = 1
+                        //inTime = "10.30 AM",
+                        //Count = 10,
+                        //ToDate = "2022-02-16",
+                        //MixedCount = 10,
+                        //Bifur = 10,
+                        //NotCollected = 0,
+                        //gcTarget = "90",
+                        //NotSpecidfied = 0,
+                        //userId = 1,
+                        //userName = "XYZ",
+                        //ConstructionAndDemolition = 10,
+                        //Horticulture = 10,
+                        //WetWaste = 10,
+                        //DryWaste = 10,
+                        //DomesticHazardous = 10,
+                        //Sanitary = 10,
+                        //Commercial = 1
 
 
                     });
