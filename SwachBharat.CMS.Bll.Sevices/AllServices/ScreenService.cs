@@ -151,8 +151,8 @@ namespace SwachBharat.CMS.Bll.Services
                         model.CommercialWetCount = Convert.ToDouble(houseCount.TotalCommercialWetCount);
                         model.CommercialDryCount = Convert.ToDouble(houseCount.TotalCommercialDryCount);
 
-
-
+                        model.TotalCommercialCurrent = data.TotalCommercialCurrent;
+                        model.TotalCommercial = Convert.ToDouble(houseCount.TotalCommercial);
                         return model;
                     }
 
