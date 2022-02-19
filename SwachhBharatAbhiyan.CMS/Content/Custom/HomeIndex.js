@@ -1044,6 +1044,7 @@ $(document).ready(function () {
 
             var chart = new CanvasJS.Chart("chartContainerTarget2",
                 {
+
                     //title: {
                     //    text: "Grouped Stacked Chart"
                     //},
@@ -1054,12 +1055,7 @@ $(document).ready(function () {
                         labelFontColor: "dimGrey",
                         interval: 1
                     },
-                    axisY2: {
-                        lableAngle:-10,
-                        labelFontSize: 10,
-                        labelFontColor: "black",
-                        interval: 1
-                    },
+                
                    
                     axisX: {
                         labelAngle: -10,
@@ -1069,7 +1065,7 @@ $(document).ready(function () {
                     axisY: {
                         title: "House Collection",
                     },
-
+                 
 
                     data: [
 
@@ -1180,6 +1176,7 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             axisYType: "secondary",
+                            axisYIndex: 1,
                             showInLegend: true,
                             legendText: "Commercial",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
@@ -1190,6 +1187,15 @@ $(document).ready(function () {
                         {
                             type: "line",
                             color: "#c0504d",
+                            dataPoints: emp_tar,
+                            // indexLabel: "{y}",
+                            showInLegend: true,
+                            name: "Target",
+                        },
+                        {
+                            type: "line",
+                            color: "#c0504d",
+                            axisYType: "secondary",
                             dataPoints: emp_tar,
                             // indexLabel: "{y}",
                             showInLegend: true,
