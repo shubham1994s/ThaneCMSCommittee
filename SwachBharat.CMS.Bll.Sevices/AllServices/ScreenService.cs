@@ -3099,7 +3099,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
