@@ -1331,6 +1331,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.isActive = data.isActive;
                             model.bloodGroup = data.bloodGroup;
                             model.gcTarget = data.gcTarget;
+                            model.ComgcTarget = data.ComgcTarget;
                             model.userDesignation = data.userDesignation;
                             //model.EmployeeType = Emptype;
                             db.SaveChanges();
@@ -2893,7 +2894,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.houseAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -2935,7 +2936,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.houseAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -3056,7 +3057,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -3098,7 +3099,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -3742,6 +3743,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.bloodGroup = data.bloodGroup;
             model.isActive = data.isActive;
             model.gcTarget = data.gcTarget;
+            model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = Emptype;
             model.userDesignation = data.userDesignation;
             return model;
@@ -4307,6 +4309,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.isActive = data.isActive;
             model.bloodGroup = data.bloodGroup;
             model.gcTarget = data.gcTarget;
+            model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = data.EmployeeType;
             model.userDesignation = data.userDesignation;
             return model;
@@ -5206,6 +5209,12 @@ namespace SwachBharat.CMS.Bll.Services
 
                         model.TotalCommercialUpdated = data.TotalCommercial;
                         model.TotalCommercialUpdated_CurrentDay = data.TotalCommercialUpdated_CurrentDay;
+
+                        model.TotalSWMUpdated = data.TotalSWM;
+                        model.TotalSWMUpdated_CurrentDay = data.TotalSWMUpdated_CurrentDay;
+
+                        model.TotalCTPTUpdated = data.TotalCTPT;
+                        model.TotalCTPTUpdated_CurrentDay = data.TotalCTPTUpdated_CurrentDay;
 
 
 

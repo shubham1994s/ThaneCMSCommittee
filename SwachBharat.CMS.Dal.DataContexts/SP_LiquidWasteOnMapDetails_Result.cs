@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string ReferanceId { get; set; }
         public string LWName { get; set; }
         public string LWAddreLW { get; set; }
-        public Nullable<int> garbageType { get; set; }
+        public Nullable<int> gcType { get; set; }
         public Nullable<System.DateTime> gcDate { get; set; }
         public string LWLat { get; set; }
         public string LWLong { get; set; }

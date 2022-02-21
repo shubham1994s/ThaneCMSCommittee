@@ -397,7 +397,11 @@
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\icn_mixed_garbage.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\icn_not_specified.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\icn_segregated_garbage.png" />
+    <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquid.png" />
+    <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquidwaste.png" />
+    <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquidwaste_Green.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquidwaste_Marker.png" />
+    <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquid_Green.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquid_Waste_marker.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\Start-Point.png" />
     <Content Include="Areas\Liquid\Content\images\img\street_icon.png" />
@@ -953,8 +957,11 @@
     <Content Include="Areas\Street\Content\images\img\segregationImg\icn_not_specified.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\icn_segregated_garbage.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Start-Point.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Green.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweep.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweepper_marker.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweep_Green.png" />
     <Content Include="Areas\Street\Content\images\img\street_icon.png" />
     <Content Include="Areas\Street\Content\images\img\street_icon.svg" />
     <Content Include="Areas\Street\Content\images\iphone.png" />
@@ -1811,6 +1818,10 @@
     <Content Include="Content\images\img\marker24.png" />
     <Content Include="Content\images\img\sba.png" />
     <Content Include="Content\images\img\segregationImg\CMS_AppLink.png" />
+    <Content Include="Content\images\img\segregationImg\commercial.png" />
+    <Content Include="Content\images\img\segregationImg\commercial_dry.png" />
+    <Content Include="Content\images\img\segregationImg\commercial_mixed.png" />
+    <Content Include="Content\images\img\segregationImg\commercial_wet.png" />
     <Content Include="Content\images\img\segregationImg\Dumpyard_marker.png" />
     <Content Include="Content\images\img\segregationImg\Dump_Yard_marker.png" />
     <Content Include="Content\images\img\segregationImg\End_Point.png" />
