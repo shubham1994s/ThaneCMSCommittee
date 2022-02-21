@@ -79,6 +79,7 @@
     <Compile Include="GridRepository\Grid\CommercialDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\CommGarbageCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\ComplaintGridRepository.cs" />
+    <Compile Include="GridRepository\Grid\CTPTGarbageCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\DumpYardCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\DumpYardGridRepository.cs" />
     <Compile Include="GridRepository\Grid\EmloyeeGridRepository.cs" />
