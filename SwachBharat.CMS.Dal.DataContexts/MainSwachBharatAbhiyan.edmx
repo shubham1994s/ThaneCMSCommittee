@@ -402,17 +402,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DevSwachhBharatMainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AppConnection">
-          <Key>
-            <PropertyRef Name="AppConnectionId" />
-          </Key>
-          <Property Name="AppConnectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AppId" Type="Int32" Nullable="false" />
-          <Property Name="DataSource" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="InitialCatalog" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -544,7 +533,6 @@
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
         <EntityContainer Name="DevSwachhBharatMainEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AppConnections" EntityType="Self.AppConnection" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
@@ -577,6 +565,7 @@
           <EntitySet Name="AD_USER_MST_LIQUID" EntityType="DevSwachhBharatMainModel.AD_USER_MST_LIQUID" />
           <EntitySet Name="AD_USER_MST_STREET" EntityType="DevSwachhBharatMainModel.AD_USER_MST_STREET" />
           <EntitySet Name="AppDetails" EntityType="DevSwachhBharatMainModel.AppDetail" />
+          <EntitySet Name="AppConnections" EntityType="DevSwachhBharatMainModel.AppConnection" />
         </EntityContainer>
         <ComplexType Name="SP_Admin2_Result">
           <Property Type="String" Name="appName" Nullable="true" MaxLength="500" />
@@ -774,24 +763,23 @@
           <Property Name="CTPTQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SWMQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="AppConnection">
+          <Key>
+            <PropertyRef Name="AppConnectionId" />
+          </Key>
+          <Property Name="AppConnectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppId" Type="Int32" Nullable="false" />
+          <Property Name="DataSource" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InitialCatalog" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DevSwachhBharatMainModelStoreContainer" CdmEntityContainer="DevSwachhBharatMainEntities">
-          <EntitySetMapping Name="AppConnections">
-            <EntityTypeMapping TypeName="DevSwachhBharatMainModel.AppConnection">
-              <MappingFragment StoreEntitySet="AppConnection">
-                <ScalarProperty Name="AppConnectionId" ColumnName="AppConnectionId" />
-                <ScalarProperty Name="AppId" ColumnName="AppId" />
-                <ScalarProperty Name="DataSource" ColumnName="DataSource" />
-                <ScalarProperty Name="InitialCatalog" ColumnName="InitialCatalog" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="DevSwachhBharatMainModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -1106,6 +1094,18 @@
                 <ScalarProperty Name="AppName_mar" ColumnName="AppName_mar" />
                 <ScalarProperty Name="AppName" ColumnName="AppName" />
                 <ScalarProperty Name="AppId" ColumnName="AppId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppConnections">
+            <EntityTypeMapping TypeName="DevSwachhBharatMainModel.AppConnection">
+              <MappingFragment StoreEntitySet="AppConnection">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="InitialCatalog" ColumnName="InitialCatalog" />
+                <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="AppConnectionId" ColumnName="AppConnectionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
