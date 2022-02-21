@@ -1007,7 +1007,12 @@ $(document).ready(function () {
             var dhw = [];
             var sw = [];
             var emp_tar = [];
-            var cw = [];
+            var emp_tar2 = [];
+            var cwns = [];
+            var cwnr = [];
+            var cwm = [];
+            var cww = [];
+            var cwd = [];
             debugger;
             for (var i = 0; i < data.length; i++) {
                 // alert(data[i].inTime);
@@ -1036,8 +1041,13 @@ $(document).ready(function () {
                 dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
                 dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
                 sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
-                cw.push({ y: data[i].Commercial, label: 'Commercial Waste', color: '#63676e', intime: data[i].inTime });
+                cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Specified', color: '#0086c3', intime: data[i].inTime });
+                cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not received', color: '#fe9436', intime: data[i].inTime });
+                cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
+                cww.push({ y: data[i].CommercialWet, label: 'Commercial Waste Wet', color: '#186634', intime: data[i].inTime });
+                cwd.push({ y: data[i].CommercialDry, label: 'Commercial Waste Dry', color: '#66a2d5', intime: data[i].inTime });
                 emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar, z: data[i].Count, intime: data[i].inTime });
+                emp_tar2.push({ y: parseInt(data[i].gcTarget2), label: fname + lastname_firstchar, z: data[i].Count, intime: data[i].inTime });
                 // ary2.push({ y: parseInt(data[i].gcTarget), label: data[i].userName });
 
             }
@@ -1065,7 +1075,12 @@ $(document).ready(function () {
                     axisY: {
                         title: "House Collection",
                     },
-                 
+                    axisY2: {
+                        labelFontSize: 10,
+                        labelFontColor: "dimGrey",
+                        title: "Commercial Collection",
+                        interval: 4
+                    },
 
                     data: [
 
@@ -1178,10 +1193,58 @@ $(document).ready(function () {
                             axisYType: "secondary",
                             axisYIndex: 1,
                             showInLegend: true,
-                            legendText: "Commercial",
+                            legendText: "Commercial Not Specified",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#63676e",
-                            dataPoints: cw
+                            color: "#0086c3",
+                            dataPoints: cwns
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
+                            showInLegend: true,
+                            legendText: "Commercial Not received",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#fe9436",
+                            dataPoints: cwnr
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
+                            showInLegend: true,
+                            legendText: "Commercial Mixed",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#f44336",
+                            dataPoints: cwm
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
+                            showInLegend: true,
+                            legendText: "Commercial Wet",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#186634",
+                            dataPoints: cww
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
+                            showInLegend: true,
+                            legendText: "Commercial Dry",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#66a2d5",
+                            dataPoints: cwd
                         },
 
                         {
@@ -1191,15 +1254,17 @@ $(document).ready(function () {
                             // indexLabel: "{y}",
                             showInLegend: true,
                             name: "Target",
-                        },
+                        }
+                        ,
                         {
                             type: "line",
-                            color: "#c0504d",
+                            color: "#000000",
+                            axisYIndex:1,
                             axisYType: "secondary",
-                            dataPoints: emp_tar,
-                            // indexLabel: "{y}",
+                            dataPoints2: emp_tar2,
+                            // indexLabel: "{y2}",
                             showInLegend: true,
-                            name: "Target",
+                            name: "Target2",
                         }
                         //{
                         //    type: "stackedColumn",
@@ -1220,6 +1285,7 @@ $(document).ready(function () {
             showDefaultText(chart, "No Data available");
             chart.render();
             function showDefaultText(chart, text) {
+                debugger;
                 var isEmpty = !(chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
 
                 if (!chart.options.subtitles)
@@ -1228,7 +1294,7 @@ $(document).ready(function () {
                 if (isEmpty)
                     chart.options.subtitles.push({
                         text: text,
-                        verticalAlign: 'center',
+                        verticalAlign: 'left',
                     });
                 else
                     (chart.options.subtitles = []);

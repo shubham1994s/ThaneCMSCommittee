@@ -555,11 +555,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CommercialDetails_Result>("CommercialDetails");
         }
     
-        public virtual ObjectResult<SP_EmployeeHouseCollectionType_Result> SP_EmployeeHouseCollectionType()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeHouseCollectionType_Result>("SP_EmployeeHouseCollectionType");
-        }
-    
         public virtual ObjectResult<SP_CommercialGarbageCollection_Result> SP_CommercialGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
         {
             var appIdParameter = appId.HasValue ?
@@ -669,6 +664,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("userid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeSummary_Result>("SP_EmployeeSummary", fromParameter, toParameter, useridParameter);
+        }
+    
+        public virtual ObjectResult<SP_EmployeeHouseCollectionType_Result> SP_EmployeeHouseCollectionType()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeHouseCollectionType_Result>("SP_EmployeeHouseCollectionType");
         }
     }
 }

@@ -30,6 +30,8 @@
           <Property Name="WasteType" Type="varchar" MaxLength="10" />
           <Property Name="CType" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Daily_Attendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Daily_Attendance">
           <Key>
             <PropertyRef Name="daID" />
@@ -54,6 +56,8 @@
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="CType" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.DumpYardDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DumpYardDetails">
           <Key>
             <PropertyRef Name="dyId" />
@@ -73,6 +77,8 @@
           <Property Name="userId" Type="int" />
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GamePlayerDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GamePlayerDetails">
           <Key>
             <PropertyRef Name="ID" />
@@ -86,6 +92,8 @@
           <Property Name="Created" Type="datetime" />
           <Property Name="GameId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GarbageCollectionDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GarbageCollectionDetails">
           <Key>
             <PropertyRef Name="gcId" />
@@ -125,6 +133,8 @@
           <Property Name="LOS" Type="nvarchar" MaxLength="50" />
           <Property Name="commercialId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GarbagePointDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GarbagePointDetails">
           <Key>
             <PropertyRef Name="gpId" />
@@ -143,9 +153,12 @@
           <Property Name="modified" Type="datetime" />
           <Property Name="userId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GramCleaningComplient' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GramCleaningComplient">
           <Key>
             <PropertyRef Name="CleaningComplientId" />
+            
           </Key>
           <Property Name="CleaningComplientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Place" Type="nvarchar" MaxLength="50" />
@@ -170,6 +183,8 @@
           <Property Name="ref_id" Type="nvarchar" MaxLength="200" />
           <Property Name="Type" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.HouseMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HouseMaster">
           <Key>
             <PropertyRef Name="houseId" />
@@ -195,6 +210,8 @@
           <Property Name="WasteType" Type="varchar" MaxLength="10" />
           <Property Name="CType" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.LiquidWasteDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="LiquidWasteDetails">
           <Key>
             <PropertyRef Name="LWId" />
@@ -213,6 +230,8 @@
           <Property Name="lastModifiedDate" Type="datetime" />
           <Property Name="userId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Location' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Location">
           <Key>
             <PropertyRef Name="locId" />
@@ -236,6 +255,8 @@
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="CType" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Qr_Employee_Daily_Attendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Qr_Employee_Daily_Attendance">
           <Key>
             <PropertyRef Name="qrEmpDaId" />
@@ -254,6 +275,8 @@
           <Property Name="endNote" Type="nvarchar(max)" />
           <Property Name="batteryStatus" Type="varchar" MaxLength="20" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Qr_Location' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Qr_Location">
           <Key>
             <PropertyRef Name="locId" />
@@ -273,6 +296,8 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CType" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.QrEmployeeMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="QrEmployeeMaster">
           <Key>
             <PropertyRef Name="qrEmpId" />
@@ -313,40 +338,8 @@
           <Property Name="SauchalayQRCode" Type="nvarchar(max)" />
           <Property Name="ReferanceId" Type="nvarchar" MaxLength="350" />
         </EntityType>
-        <EntityType Name="SS_1_4_ANSWER">
-          <Key>
-            <PropertyRef Name="ANS_ID" />
-          </Key>
-          <Property Name="ANS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Q_ID" Type="int" Nullable="false" />
-          <Property Name="TOTAL_COUNT" Type="varchar" MaxLength="200" />
-          <Property Name="INSERT_DATE" Type="datetime" />
-          <Property Name="INSERT_ID" Type="int" />
-        </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="SS_1_4_QUESTION">
-          <Key>
-            <PropertyRef Name="Q_ID" />
-          </Key>
-          <Property Name="Q_ID" Type="int" Nullable="false" />
-          <Property Name="QUESTIOND" Type="varchar" MaxLength="200" />
-          <Property Name="Q_NO" Type="varchar" MaxLength="20" />
-          <Property Name="NOTE" Type="varchar" MaxLength="199" />
-        </EntityType>
-        <EntityType Name="SS_1_7_ANSWER">
-          <Key>
-            <PropertyRef Name="Trno" />
-          </Key>
-          <Property Name="Trno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="No_water_bodies" Type="int" />
-          <Property Name="No_drain_nallas" Type="int" />
-          <Property Name="No_locations" Type="int" />
-          <Property Name="No_outlets" Type="int" />
-          <Property Name="INSERT_ID" Type="int" />
-          <Property Name="INSERT_DATE" Type="datetime" />
-        </EntityType>
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.StreetSweepingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="StreetSweepingDetails">
           <Key>
             <PropertyRef Name="SSId" />
@@ -391,6 +384,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="WasteType" Type="varchar" MaxLength="10" />
           <Property Name="swmType" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.TeritoryMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TeritoryMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -400,6 +395,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="AreaMar" Type="nvarchar" MaxLength="50" />
           <Property Name="wardId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.UserMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="UserMaster">
           <Key>
             <PropertyRef Name="userId" />
@@ -422,6 +419,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="imoNo2" Type="nvarchar(max)" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.UserMaster_Liquid' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="UserMaster_Liquid">
           <Key>
             <PropertyRef Name="userId" />
@@ -444,6 +443,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="imoNo2" Type="nvarchar(max)" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.UserMaster_Street' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="UserMaster_Street">
           <Key>
             <PropertyRef Name="userId" />
@@ -466,6 +467,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="imoNo2" Type="nvarchar(max)" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.VehicleType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VehicleType">
           <Key>
             <PropertyRef Name="vtId" />
@@ -477,6 +480,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="RegNo" Type="nvarchar" MaxLength="300" />
           <Property Name="VechileNo" Type="nvarchar" MaxLength="300" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.WardNumber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="WardNumber">
           <Key>
             <PropertyRef Name="Id" />
@@ -485,6 +490,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="WardNo" Type="nvarchar" MaxLength="50" />
           <Property Name="zoneId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.WM_Garbage_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="WM_Garbage_Details">
           <Key>
             <PropertyRef Name="GarbageDetailsID" />
@@ -497,6 +504,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="gdDate" Type="datetime" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.WM_Garbage_Sales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="WM_Garbage_Sales">
           <Key>
             <PropertyRef Name="ID" />
@@ -508,6 +517,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="Amount" Type="decimal" Precision="18" Scale="4" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.WM_Garbage_Summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="WM_Garbage_Summary">
           <Key>
             <PropertyRef Name="ID" />
@@ -518,6 +529,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="Price" Type="decimal" Precision="18" Scale="4" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.WM_GarbageCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="WM_GarbageCategory">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -525,6 +538,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Category" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.WM_GarbageSubCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="WM_GarbageSubCategory">
           <Key>
             <PropertyRef Name="SubCategoryID" />
@@ -533,6 +548,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="SubCategory" Type="nvarchar" MaxLength="50" />
           <Property Name="CategoryID" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.ZoneMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ZoneMaster">
           <Key>
             <PropertyRef Name="zoneId" />
@@ -564,18 +581,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="imoNo2" Type="nvarchar(max)" />
         </EntityType>
-        <Association Name="FK_SS_1_4_ANSWER_SS_1_4_ANSWER">
-          <End Role="SS_1_4_ANSWER" Type="Self.SS_1_4_ANSWER" Multiplicity="1" />
-          <End Role="SS_1_4_ANSWER1" Type="Self.SS_1_4_ANSWER" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="SS_1_4_ANSWER">
-              <PropertyRef Name="ANS_ID" />
-            </Principal>
-            <Dependent Role="SS_1_4_ANSWER1">
-              <PropertyRef Name="ANS_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="CollecctionArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="type" Type="int" Mode="In" />
         </Function>
@@ -741,42 +746,413 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
         <Function Name="SWMDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DevSwachhBharatNagpurModelStoreContainer">
           <EntitySet Name="CommercialMaster" EntityType="Self.CommercialMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DumpYardDetails" EntityType="Self.DumpYardDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GamePlayerDetails" EntityType="Self.GamePlayerDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GarbageCollectionDetails" EntityType="Self.GarbageCollectionDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GarbagePointDetails" EntityType="Self.GarbagePointDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GramCleaningComplient" EntityType="Self.GramCleaningComplient" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LiquidWasteDetails" EntityType="Self.LiquidWasteDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Qr_Employee_Daily_Attendance" EntityType="Self.Qr_Employee_Daily_Attendance" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Qr_Location" EntityType="Self.Qr_Location" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="QrEmployeeMaster" EntityType="Self.QrEmployeeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SauchalayAddress" EntityType="Self.SauchalayAddress" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SS_1_4_ANSWER" EntityType="Self.SS_1_4_ANSWER" Schema="dbo" Table="SS_1.4_ANSWER" store:Type="Tables" />
-          <EntitySet Name="SS_1_7_ANSWER" EntityType="Self.SS_1_7_ANSWER" Schema="dbo" Table="SS_1.7_ANSWER" store:Type="Tables" />
-          <EntitySet Name="StreetSweepingDetails" EntityType="Self.StreetSweepingDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SWMMaster" EntityType="Self.SWMMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TeritoryMaster" EntityType="Self.TeritoryMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserMaster_Liquid" EntityType="Self.UserMaster_Liquid" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserMaster_Street" EntityType="Self.UserMaster_Street" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WardNumber" EntityType="Self.WardNumber" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WM_Garbage_Details" EntityType="Self.WM_Garbage_Details" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WM_Garbage_Sales" EntityType="Self.WM_Garbage_Sales" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WM_Garbage_Summary" EntityType="Self.WM_Garbage_Summary" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WM_GarbageCategory" EntityType="Self.WM_GarbageCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WM_GarbageSubCategory" EntityType="Self.WM_GarbageSubCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SS_1_4_QUESTION" EntityType="Self.SS_1_4_QUESTION" store:Type="Tables" store:Schema="dbo" store:Name="SS_1.4_QUESTION">
+          <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [SS_1_4_QUESTION].[Q_ID] AS [Q_ID], 
-    [SS_1_4_QUESTION].[QUESTIOND] AS [QUESTIOND], 
-    [SS_1_4_QUESTION].[Q_NO] AS [Q_NO], 
-    [SS_1_4_QUESTION].[NOTE] AS [NOTE]
-    FROM [dbo].[SS_1.4_QUESTION] AS [SS_1_4_QUESTION]</DefiningQuery>
+    [Daily_Attendance].[daID] AS [daID], 
+    [Daily_Attendance].[userId] AS [userId], 
+    [Daily_Attendance].[startLat] AS [startLat], 
+    [Daily_Attendance].[startLong] AS [startLong], 
+    [Daily_Attendance].[endLat] AS [endLat], 
+    [Daily_Attendance].[endLong] AS [endLong], 
+    [Daily_Attendance].[startTime] AS [startTime], 
+    [Daily_Attendance].[endTime] AS [endTime], 
+    [Daily_Attendance].[daDate] AS [daDate], 
+    [Daily_Attendance].[daEndDate] AS [daEndDate], 
+    [Daily_Attendance].[vtId] AS [vtId], 
+    [Daily_Attendance].[daStartNote] AS [daStartNote], 
+    [Daily_Attendance].[daEndNote] AS [daEndNote], 
+    [Daily_Attendance].[vehicleNumber] AS [vehicleNumber], 
+    [Daily_Attendance].[batteryStatus] AS [batteryStatus], 
+    [Daily_Attendance].[totalKm] AS [totalKm], 
+    [Daily_Attendance].[OutbatteryStatus] AS [OutbatteryStatus], 
+    [Daily_Attendance].[EmployeeType] AS [EmployeeType], 
+    [Daily_Attendance].[CType] AS [CType]
+    FROM [dbo].[Daily_Attendance] AS [Daily_Attendance]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DumpYardDetails" EntityType="Self.DumpYardDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DumpYardDetails].[dyId] AS [dyId], 
+    [DumpYardDetails].[dyName] AS [dyName], 
+    [DumpYardDetails].[dyNameMar] AS [dyNameMar], 
+    [DumpYardDetails].[dyLat] AS [dyLat], 
+    [DumpYardDetails].[dyLong] AS [dyLong], 
+    [DumpYardDetails].[dyQRCode] AS [dyQRCode], 
+    [DumpYardDetails].[zoneId] AS [zoneId], 
+    [DumpYardDetails].[wardId] AS [wardId], 
+    [DumpYardDetails].[areaId] AS [areaId], 
+    [DumpYardDetails].[ReferanceId] AS [ReferanceId], 
+    [DumpYardDetails].[dyAddress] AS [dyAddress], 
+    [DumpYardDetails].[lastModifiedDate] AS [lastModifiedDate], 
+    [DumpYardDetails].[userId] AS [userId], 
+    [DumpYardDetails].[EmployeeType] AS [EmployeeType]
+    FROM [dbo].[DumpYardDetails] AS [DumpYardDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GamePlayerDetails" EntityType="Self.GamePlayerDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GamePlayerDetails].[ID] AS [ID], 
+    [GamePlayerDetails].[PlayerId] AS [PlayerId], 
+    [GamePlayerDetails].[Name] AS [Name], 
+    [GamePlayerDetails].[Mobile] AS [Mobile], 
+    [GamePlayerDetails].[Score] AS [Score], 
+    [GamePlayerDetails].[DeviceId] AS [DeviceId], 
+    [GamePlayerDetails].[Created] AS [Created], 
+    [GamePlayerDetails].[GameId] AS [GameId]
+    FROM [dbo].[GamePlayerDetails] AS [GamePlayerDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GarbageCollectionDetails" EntityType="Self.GarbageCollectionDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GarbageCollectionDetails].[gcId] AS [gcId], 
+    [GarbageCollectionDetails].[userId] AS [userId], 
+    [GarbageCollectionDetails].[houseId] AS [houseId], 
+    [GarbageCollectionDetails].[gpId] AS [gpId], 
+    [GarbageCollectionDetails].[gcDate] AS [gcDate], 
+    [GarbageCollectionDetails].[Lat] AS [Lat], 
+    [GarbageCollectionDetails].[Long] AS [Long], 
+    [GarbageCollectionDetails].[gcImage] AS [gcImage], 
+    [GarbageCollectionDetails].[gcQRcode] AS [gcQRcode], 
+    [GarbageCollectionDetails].[gpBeforImage] AS [gpBeforImage], 
+    [GarbageCollectionDetails].[gpAfterImage] AS [gpAfterImage], 
+    [GarbageCollectionDetails].[gcType] AS [gcType], 
+    [GarbageCollectionDetails].[vehicleNumber] AS [vehicleNumber], 
+    [GarbageCollectionDetails].[note] AS [note], 
+    [GarbageCollectionDetails].[locAddresss] AS [locAddresss], 
+    [GarbageCollectionDetails].[garbageType] AS [garbageType], 
+    [GarbageCollectionDetails].[modified] AS [modified], 
+    [GarbageCollectionDetails].[dyId] AS [dyId], 
+    [GarbageCollectionDetails].[totalGcWeight] AS [totalGcWeight], 
+    [GarbageCollectionDetails].[totalDryWeight] AS [totalDryWeight], 
+    [GarbageCollectionDetails].[totalWetWeight] AS [totalWetWeight], 
+    [GarbageCollectionDetails].[batteryStatus] AS [batteryStatus], 
+    [GarbageCollectionDetails].[Distance] AS [Distance], 
+    [GarbageCollectionDetails].[CreatedDate] AS [CreatedDate], 
+    [GarbageCollectionDetails].[RFIDTagId] AS [RFIDTagId], 
+    [GarbageCollectionDetails].[RFIDReaderId] AS [RFIDReaderId], 
+    [GarbageCollectionDetails].[SourceId] AS [SourceId], 
+    [GarbageCollectionDetails].[OutbatteryStatus] AS [OutbatteryStatus], 
+    [GarbageCollectionDetails].[WasteType] AS [WasteType], 
+    [GarbageCollectionDetails].[EmployeeType] AS [EmployeeType], 
+    [GarbageCollectionDetails].[LWId] AS [LWId], 
+    [GarbageCollectionDetails].[SSId] AS [SSId], 
+    [GarbageCollectionDetails].[LOS] AS [LOS], 
+    [GarbageCollectionDetails].[commercialId] AS [commercialId]
+    FROM [dbo].[GarbageCollectionDetails] AS [GarbageCollectionDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GarbagePointDetails" EntityType="Self.GarbagePointDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GarbagePointDetails].[gpId] AS [gpId], 
+    [GarbagePointDetails].[gpName] AS [gpName], 
+    [GarbagePointDetails].[gpNameMar] AS [gpNameMar], 
+    [GarbagePointDetails].[gpLat] AS [gpLat], 
+    [GarbagePointDetails].[gpLong] AS [gpLong], 
+    [GarbagePointDetails].[qrCode] AS [qrCode], 
+    [GarbagePointDetails].[zoneId] AS [zoneId], 
+    [GarbagePointDetails].[wardId] AS [wardId], 
+    [GarbagePointDetails].[areaId] AS [areaId], 
+    [GarbagePointDetails].[ReferanceId] AS [ReferanceId], 
+    [GarbagePointDetails].[gpAddress] AS [gpAddress], 
+    [GarbagePointDetails].[modified] AS [modified], 
+    [GarbagePointDetails].[userId] AS [userId]
+    FROM [dbo].[GarbagePointDetails] AS [GarbagePointDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GramCleaningComplient" EntityType="Self.GramCleaningComplient" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GramCleaningComplient].[CleaningComplientId] AS [CleaningComplientId], 
+    [GramCleaningComplient].[Place] AS [Place], 
+    [GramCleaningComplient].[Ward_No.] AS [Ward_No.], 
+    [GramCleaningComplient].[Details] AS [Details], 
+    [GramCleaningComplient].[Name] AS [Name], 
+    [GramCleaningComplient].[Number] AS [Number], 
+    [GramCleaningComplient].[Email] AS [Email], 
+    [GramCleaningComplient].[Address] AS [Address], 
+    [GramCleaningComplient].[Tip] AS [Tip], 
+    [GramCleaningComplient].[Image] AS [Image], 
+    [GramCleaningComplient].[Lat_Log] AS [Lat_Log], 
+    [GramCleaningComplient].[CreatedDate] AS [CreatedDate], 
+    [GramCleaningComplient].[CreatedBy] AS [CreatedBy], 
+    [GramCleaningComplient].[ModifiedDate] AS [ModifiedDate], 
+    [GramCleaningComplient].[ModifiedBy] AS [ModifiedBy], 
+    [GramCleaningComplient].[languageId] AS [languageId], 
+    [GramCleaningComplient].[status] AS [status], 
+    [GramCleaningComplient].[userId] AS [userId], 
+    [GramCleaningComplient].[status_description] AS [status_description], 
+    [GramCleaningComplient].[status_image_url] AS [status_image_url], 
+    [GramCleaningComplient].[ref_id] AS [ref_id], 
+    [GramCleaningComplient].[Type] AS [Type]
+    FROM [dbo].[GramCleaningComplient] AS [GramCleaningComplient]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HouseMaster].[houseId] AS [houseId], 
+    [HouseMaster].[houseNumber] AS [houseNumber], 
+    [HouseMaster].[houseOwner] AS [houseOwner], 
+    [HouseMaster].[houseOwnerMar] AS [houseOwnerMar], 
+    [HouseMaster].[houseOwnerMobile] AS [houseOwnerMobile], 
+    [HouseMaster].[houseAddress] AS [houseAddress], 
+    [HouseMaster].[houseLat] AS [houseLat], 
+    [HouseMaster].[houseLong] AS [houseLong], 
+    [HouseMaster].[houseQRCode] AS [houseQRCode], 
+    [HouseMaster].[ZoneId] AS [ZoneId], 
+    [HouseMaster].[AreaId] AS [AreaId], 
+    [HouseMaster].[WardNo] AS [WardNo], 
+    [HouseMaster].[ReferanceId] AS [ReferanceId], 
+    [HouseMaster].[modified] AS [modified], 
+    [HouseMaster].[userId] AS [userId], 
+    [HouseMaster].[FCMID] AS [FCMID], 
+    [HouseMaster].[lastModifiedEntry] AS [lastModifiedEntry], 
+    [HouseMaster].[RFIDTagId] AS [RFIDTagId], 
+    [HouseMaster].[WasteType] AS [WasteType], 
+    [HouseMaster].[CType] AS [CType]
+    FROM [dbo].[HouseMaster] AS [HouseMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LiquidWasteDetails" EntityType="Self.LiquidWasteDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LiquidWasteDetails].[LWId] AS [LWId], 
+    [LiquidWasteDetails].[LWName] AS [LWName], 
+    [LiquidWasteDetails].[LWNameMar] AS [LWNameMar], 
+    [LiquidWasteDetails].[LWLat] AS [LWLat], 
+    [LiquidWasteDetails].[LWLong] AS [LWLong], 
+    [LiquidWasteDetails].[LWQRCode] AS [LWQRCode], 
+    [LiquidWasteDetails].[zoneId] AS [zoneId], 
+    [LiquidWasteDetails].[wardId] AS [wardId], 
+    [LiquidWasteDetails].[areaId] AS [areaId], 
+    [LiquidWasteDetails].[ReferanceId] AS [ReferanceId], 
+    [LiquidWasteDetails].[LWAddreLW] AS [LWAddreLW], 
+    [LiquidWasteDetails].[lastModifiedDate] AS [lastModifiedDate], 
+    [LiquidWasteDetails].[userId] AS [userId]
+    FROM [dbo].[LiquidWasteDetails] AS [LiquidWasteDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Location" EntityType="Self.Location" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Location].[locId] AS [locId], 
+    [Location].[userId] AS [userId], 
+    [Location].[datetime] AS [datetime], 
+    [Location].[lat] AS [lat], 
+    [Location].[long] AS [long], 
+    [Location].[address] AS [address], 
+    [Location].[area] AS [area], 
+    [Location].[type] AS [type], 
+    [Location].[batteryStatus] AS [batteryStatus], 
+    [Location].[Distnace] AS [Distnace], 
+    [Location].[IsOffline] AS [IsOffline], 
+    [Location].[ReferanceID] AS [ReferanceID], 
+    [Location].[CreatedDate] AS [CreatedDate], 
+    [Location].[RFIDTagId] AS [RFIDTagId], 
+    [Location].[RFIDReaderId] AS [RFIDReaderId], 
+    [Location].[SourceId] AS [SourceId], 
+    [Location].[EmployeeType] AS [EmployeeType], 
+    [Location].[CType] AS [CType]
+    FROM [dbo].[Location] AS [Location]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Qr_Employee_Daily_Attendance" EntityType="Self.Qr_Employee_Daily_Attendance" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Qr_Employee_Daily_Attendance].[qrEmpDaId] AS [qrEmpDaId], 
+    [Qr_Employee_Daily_Attendance].[qrEmpId] AS [qrEmpId], 
+    [Qr_Employee_Daily_Attendance].[startLat] AS [startLat], 
+    [Qr_Employee_Daily_Attendance].[startLong] AS [startLong], 
+    [Qr_Employee_Daily_Attendance].[endLat] AS [endLat], 
+    [Qr_Employee_Daily_Attendance].[endLong] AS [endLong], 
+    [Qr_Employee_Daily_Attendance].[startTime] AS [startTime], 
+    [Qr_Employee_Daily_Attendance].[endTime] AS [endTime], 
+    [Qr_Employee_Daily_Attendance].[startDate] AS [startDate], 
+    [Qr_Employee_Daily_Attendance].[endDate] AS [endDate], 
+    [Qr_Employee_Daily_Attendance].[startNote] AS [startNote], 
+    [Qr_Employee_Daily_Attendance].[endNote] AS [endNote], 
+    [Qr_Employee_Daily_Attendance].[batteryStatus] AS [batteryStatus]
+    FROM [dbo].[Qr_Employee_Daily_Attendance] AS [Qr_Employee_Daily_Attendance]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Qr_Location" EntityType="Self.Qr_Location" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Qr_Location].[locId] AS [locId], 
+    [Qr_Location].[empId] AS [empId], 
+    [Qr_Location].[datetime] AS [datetime], 
+    [Qr_Location].[lat] AS [lat], 
+    [Qr_Location].[long] AS [long], 
+    [Qr_Location].[address] AS [address], 
+    [Qr_Location].[area] AS [area], 
+    [Qr_Location].[type] AS [type], 
+    [Qr_Location].[batteryStatus] AS [batteryStatus], 
+    [Qr_Location].[Distnace] AS [Distnace], 
+    [Qr_Location].[IsOffline] AS [IsOffline], 
+    [Qr_Location].[ReferanceID] AS [ReferanceID], 
+    [Qr_Location].[CreatedDate] AS [CreatedDate], 
+    [Qr_Location].[CType] AS [CType]
+    FROM [dbo].[Qr_Location] AS [Qr_Location]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QrEmployeeMaster" EntityType="Self.QrEmployeeMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [QrEmployeeMaster].[qrEmpId] AS [qrEmpId], 
+    [QrEmployeeMaster].[appId] AS [appId], 
+    [QrEmployeeMaster].[qrEmpName] AS [qrEmpName], 
+    [QrEmployeeMaster].[qrEmpNameMar] AS [qrEmpNameMar], 
+    [QrEmployeeMaster].[qrEmpLoginId] AS [qrEmpLoginId], 
+    [QrEmployeeMaster].[qrEmpPassword] AS [qrEmpPassword], 
+    [QrEmployeeMaster].[qrEmpMobileNumber] AS [qrEmpMobileNumber], 
+    [QrEmployeeMaster].[qrEmpAddress] AS [qrEmpAddress], 
+    [QrEmployeeMaster].[type] AS [type], 
+    [QrEmployeeMaster].[typeId] AS [typeId], 
+    [QrEmployeeMaster].[userEmployeeNo] AS [userEmployeeNo], 
+    [QrEmployeeMaster].[imoNo] AS [imoNo], 
+    [QrEmployeeMaster].[bloodGroup] AS [bloodGroup], 
+    [QrEmployeeMaster].[isActive] AS [isActive], 
+    [QrEmployeeMaster].[target] AS [target], 
+    [QrEmployeeMaster].[lastModifyDate] AS [lastModifyDate]
+    FROM [dbo].[QrEmployeeMaster] AS [QrEmployeeMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StreetSweepingDetails" EntityType="Self.StreetSweepingDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StreetSweepingDetails].[SSId] AS [SSId], 
+    [StreetSweepingDetails].[SSName] AS [SSName], 
+    [StreetSweepingDetails].[SSNameMar] AS [SSNameMar], 
+    [StreetSweepingDetails].[SSLat] AS [SSLat], 
+    [StreetSweepingDetails].[SSLong] AS [SSLong], 
+    [StreetSweepingDetails].[SSQRCode] AS [SSQRCode], 
+    [StreetSweepingDetails].[zoneId] AS [zoneId], 
+    [StreetSweepingDetails].[wardId] AS [wardId], 
+    [StreetSweepingDetails].[areaId] AS [areaId], 
+    [StreetSweepingDetails].[ReferanceId] AS [ReferanceId], 
+    [StreetSweepingDetails].[SSAddress] AS [SSAddress], 
+    [StreetSweepingDetails].[lastModifiedDate] AS [lastModifiedDate], 
+    [StreetSweepingDetails].[userId] AS [userId]
+    FROM [dbo].[StreetSweepingDetails] AS [StreetSweepingDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TeritoryMaster" EntityType="Self.TeritoryMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TeritoryMaster].[Id] AS [Id], 
+    [TeritoryMaster].[Area] AS [Area], 
+    [TeritoryMaster].[AreaMar] AS [AreaMar], 
+    [TeritoryMaster].[wardId] AS [wardId]
+    FROM [dbo].[TeritoryMaster] AS [TeritoryMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserMaster].[userId] AS [userId], 
+    [UserMaster].[userName] AS [userName], 
+    [UserMaster].[userNameMar] AS [userNameMar], 
+    [UserMaster].[userLoginId] AS [userLoginId], 
+    [UserMaster].[userPassword] AS [userPassword], 
+    [UserMaster].[userMobileNumber] AS [userMobileNumber], 
+    [UserMaster].[userAddress] AS [userAddress], 
+    [UserMaster].[userProfileImage] AS [userProfileImage], 
+    [UserMaster].[Type] AS [Type], 
+    [UserMaster].[userEmployeeNo] AS [userEmployeeNo], 
+    [UserMaster].[userDesignation] AS [userDesignation], 
+    [UserMaster].[imoNo] AS [imoNo], 
+    [UserMaster].[bloodGroup] AS [bloodGroup], 
+    [UserMaster].[isActive] AS [isActive], 
+    [UserMaster].[gcTarget] AS [gcTarget], 
+    [UserMaster].[EmployeeType] AS [EmployeeType], 
+    [UserMaster].[imoNo2] AS [imoNo2]
+    FROM [dbo].[UserMaster] AS [UserMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserMaster_Liquid" EntityType="Self.UserMaster_Liquid" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserMaster_Liquid].[userId] AS [userId], 
+    [UserMaster_Liquid].[userName] AS [userName], 
+    [UserMaster_Liquid].[userNameMar] AS [userNameMar], 
+    [UserMaster_Liquid].[userLoginId] AS [userLoginId], 
+    [UserMaster_Liquid].[userPassword] AS [userPassword], 
+    [UserMaster_Liquid].[userMobileNumber] AS [userMobileNumber], 
+    [UserMaster_Liquid].[userAddress] AS [userAddress], 
+    [UserMaster_Liquid].[userProfileImage] AS [userProfileImage], 
+    [UserMaster_Liquid].[Type] AS [Type], 
+    [UserMaster_Liquid].[userEmployeeNo] AS [userEmployeeNo], 
+    [UserMaster_Liquid].[userDesignation] AS [userDesignation], 
+    [UserMaster_Liquid].[imoNo] AS [imoNo], 
+    [UserMaster_Liquid].[bloodGroup] AS [bloodGroup], 
+    [UserMaster_Liquid].[isActive] AS [isActive], 
+    [UserMaster_Liquid].[gcTarget] AS [gcTarget], 
+    [UserMaster_Liquid].[EmployeeType] AS [EmployeeType], 
+    [UserMaster_Liquid].[imoNo2] AS [imoNo2]
+    FROM [dbo].[UserMaster_Liquid] AS [UserMaster_Liquid]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserMaster_Street" EntityType="Self.UserMaster_Street" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserMaster_Street].[userId] AS [userId], 
+    [UserMaster_Street].[userName] AS [userName], 
+    [UserMaster_Street].[userNameMar] AS [userNameMar], 
+    [UserMaster_Street].[userLoginId] AS [userLoginId], 
+    [UserMaster_Street].[userPassword] AS [userPassword], 
+    [UserMaster_Street].[userMobileNumber] AS [userMobileNumber], 
+    [UserMaster_Street].[userAddress] AS [userAddress], 
+    [UserMaster_Street].[userProfileImage] AS [userProfileImage], 
+    [UserMaster_Street].[Type] AS [Type], 
+    [UserMaster_Street].[userEmployeeNo] AS [userEmployeeNo], 
+    [UserMaster_Street].[userDesignation] AS [userDesignation], 
+    [UserMaster_Street].[imoNo] AS [imoNo], 
+    [UserMaster_Street].[bloodGroup] AS [bloodGroup], 
+    [UserMaster_Street].[isActive] AS [isActive], 
+    [UserMaster_Street].[gcTarget] AS [gcTarget], 
+    [UserMaster_Street].[EmployeeType] AS [EmployeeType], 
+    [UserMaster_Street].[imoNo2] AS [imoNo2]
+    FROM [dbo].[UserMaster_Street] AS [UserMaster_Street]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VehicleType" EntityType="Self.VehicleType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VehicleType].[vtId] AS [vtId], 
+    [VehicleType].[description] AS [description], 
+    [VehicleType].[descriptionMar] AS [descriptionMar], 
+    [VehicleType].[isActive] AS [isActive], 
+    [VehicleType].[RegNo] AS [RegNo], 
+    [VehicleType].[VechileNo] AS [VechileNo]
+    FROM [dbo].[VehicleType] AS [VehicleType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WardNumber" EntityType="Self.WardNumber" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WardNumber].[Id] AS [Id], 
+    [WardNumber].[WardNo] AS [WardNo], 
+    [WardNumber].[zoneId] AS [zoneId]
+    FROM [dbo].[WardNumber] AS [WardNumber]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WM_Garbage_Details" EntityType="Self.WM_Garbage_Details" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WM_Garbage_Details].[GarbageDetailsID] AS [GarbageDetailsID], 
+    [WM_Garbage_Details].[SubCategoryID] AS [SubCategoryID], 
+    [WM_Garbage_Details].[Weight] AS [Weight], 
+    [WM_Garbage_Details].[UserId] AS [UserId], 
+    [WM_Garbage_Details].[Source] AS [Source], 
+    [WM_Garbage_Details].[gdDate] AS [gdDate], 
+    [WM_Garbage_Details].[CreatedDate] AS [CreatedDate]
+    FROM [dbo].[WM_Garbage_Details] AS [WM_Garbage_Details]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WM_Garbage_Sales" EntityType="Self.WM_Garbage_Sales" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WM_Garbage_Sales].[ID] AS [ID], 
+    [WM_Garbage_Sales].[SubCategoryID] AS [SubCategoryID], 
+    [WM_Garbage_Sales].[PartyName] AS [PartyName], 
+    [WM_Garbage_Sales].[SalesWeight] AS [SalesWeight], 
+    [WM_Garbage_Sales].[Amount] AS [Amount], 
+    [WM_Garbage_Sales].[CreatedDate] AS [CreatedDate]
+    FROM [dbo].[WM_Garbage_Sales] AS [WM_Garbage_Sales]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WM_Garbage_Summary" EntityType="Self.WM_Garbage_Summary" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WM_Garbage_Summary].[ID] AS [ID], 
+    [WM_Garbage_Summary].[SubCategoryID] AS [SubCategoryID], 
+    [WM_Garbage_Summary].[TotalWeight] AS [TotalWeight], 
+    [WM_Garbage_Summary].[Price] AS [Price], 
+    [WM_Garbage_Summary].[CreatedDate] AS [CreatedDate]
+    FROM [dbo].[WM_Garbage_Summary] AS [WM_Garbage_Summary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WM_GarbageCategory" EntityType="Self.WM_GarbageCategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WM_GarbageCategory].[CategoryID] AS [CategoryID], 
+    [WM_GarbageCategory].[Category] AS [Category]
+    FROM [dbo].[WM_GarbageCategory] AS [WM_GarbageCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WM_GarbageSubCategory" EntityType="Self.WM_GarbageSubCategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WM_GarbageSubCategory].[SubCategoryID] AS [SubCategoryID], 
+    [WM_GarbageSubCategory].[SubCategory] AS [SubCategory], 
+    [WM_GarbageSubCategory].[CategoryID] AS [CategoryID]
+    FROM [dbo].[WM_GarbageSubCategory] AS [WM_GarbageSubCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ZoneMaster].[zoneId] AS [zoneId], 
+    [ZoneMaster].[name] AS [name]
+    FROM [dbo].[ZoneMaster] AS [ZoneMaster]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vw_MsgNotification" EntityType="Self.Vw_MsgNotification" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -799,10 +1175,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [Vw_MsgNotification].[imoNo2] AS [imoNo2]
     FROM [dbo].[Vw_MsgNotification] AS [Vw_MsgNotification]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_SS_1_4_ANSWER_SS_1_4_ANSWER" Association="Self.FK_SS_1_4_ANSWER_SS_1_4_ANSWER">
-            <End Role="SS_1_4_ANSWER" EntitySet="SS_1_4_ANSWER" />
-            <End Role="SS_1_4_ANSWER1" EntitySet="SS_1_4_ANSWER" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -973,7 +1345,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <FunctionImport Name="HouseDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.HouseDetails_Result)" />
           <EntitySet Name="CommercialMasters" EntityType="DevSwachhBharatNagpurModel.CommercialMaster" />
           <FunctionImport Name="CommercialDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.CommercialDetails_Result)" />
-          <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)" />
           <FunctionImport Name="SP_CommercialGarbageCollection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CommercialGarbageCollection_Result)">
             <Parameter Name="appId" Mode="In" Type="Int32" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
@@ -1006,6 +1377,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="to" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2074,25 +2446,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="houseLong" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Category" Nullable="false" MaxLength="26" />
         </ComplexType>
-        <ComplexType Name="SP_EmployeeHouseCollectionType_Result">
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="inTime" Nullable="true" MaxLength="200" />
-          <Property Type="Int32" Name="Count" Nullable="true" />
-          <Property Type="Int32" Name="MixedCount" Nullable="true" />
-          <Property Type="Int32" Name="Bifur" Nullable="true" />
-          <Property Type="Int32" Name="NotCollected" Nullable="true" />
-          <Property Type="Int32" Name="NotSpecidfied" Nullable="true" />
-          <Property Type="Int32" Name="CDW" Nullable="true" />
-          <Property Type="Int32" Name="CW" Nullable="true" />
-          <Property Type="Int32" Name="HW" Nullable="true" />
-          <Property Type="Int32" Name="WetWaste" Nullable="true" />
-          <Property Type="Int32" Name="DryWaste" Nullable="true" />
-          <Property Type="Int32" Name="DHW" Nullable="true" />
-          <Property Type="Int32" Name="SW" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="SP_CommercialGarbageCollection_Result">
           <Property Type="Int32" Name="gcId" Nullable="false" />
           <Property Type="DateTime" Name="gcDate" Nullable="true" Precision="23" />
@@ -2280,6 +2633,25 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="Totaldumpyard" Nullable="true" />
           <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
           <Property Type="Int64" Name="rownum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_EmployeeHouseCollectionType_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="inTime" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="Bifur" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecidfied" Nullable="true" />
+          <Property Type="Int32" Name="CDW" Nullable="true" />
+          <Property Type="Int32" Name="CW" Nullable="true" />
+          <Property Type="Int32" Name="HW" Nullable="true" />
+          <Property Type="Int32" Name="WetWaste" Nullable="true" />
+          <Property Type="Int32" Name="DryWaste" Nullable="true" />
+          <Property Type="Int32" Name="DHW" Nullable="true" />
+          <Property Type="Int32" Name="SW" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2635,27 +3007,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SS_1_4_ANSWER">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_4_ANSWER">
-              <MappingFragment StoreEntitySet="SS_1_4_ANSWER">
-                <ScalarProperty Name="INSERT_ID" ColumnName="INSERT_ID" />
-                <ScalarProperty Name="INSERT_DATE" ColumnName="INSERT_DATE" />
-                <ScalarProperty Name="TOTAL_COUNT" ColumnName="TOTAL_COUNT" />
-                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
-                <ScalarProperty Name="ANS_ID" ColumnName="ANS_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SS_1_4_QUESTION">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_4_QUESTION">
-              <MappingFragment StoreEntitySet="SS_1_4_QUESTION">
-                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
-                <ScalarProperty Name="Q_NO" ColumnName="Q_NO" />
-                <ScalarProperty Name="QUESTIOND" ColumnName="QUESTIOND" />
-                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GramCleaningComplients">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.GramCleaningComplient">
               <MappingFragment StoreEntitySet="GramCleaningComplient">
@@ -2681,20 +3032,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="Ward_No_" ColumnName="Ward_No." />
                 <ScalarProperty Name="Place" ColumnName="Place" />
                 <ScalarProperty Name="CleaningComplientId" ColumnName="CleaningComplientId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SS_1_7_ANSWER">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_7_ANSWER">
-              <MappingFragment StoreEntitySet="SS_1_7_ANSWER">
-                <ScalarProperty Name="INSERT_DATE" ColumnName="INSERT_DATE" />
-                <ScalarProperty Name="INSERT_ID" ColumnName="INSERT_ID" />
-                <ScalarProperty Name="No_outlets" ColumnName="No_outlets" />
-                <ScalarProperty Name="No_locations" ColumnName="No_locations" />
-                <ScalarProperty Name="No_drain_nallas" ColumnName="No_drain_nallas" />
-                <ScalarProperty Name="No_water_bodies" ColumnName="No_water_bodies" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Trno" ColumnName="Trno" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3401,29 +3738,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_EmployeeHouseCollectionType" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeHouseCollectionType">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
-                <ScalarProperty Name="inTime" ColumnName="inTime" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
-                <ScalarProperty Name="Bifur" ColumnName="Bifur" />
-                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
-                <ScalarProperty Name="NotSpecidfied" ColumnName="NotSpecidfied" />
-                <ScalarProperty Name="CDW" ColumnName="CDW" />
-                <ScalarProperty Name="CW" ColumnName="CW" />
-                <ScalarProperty Name="HW" ColumnName="HW" />
-                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
-                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
-                <ScalarProperty Name="DHW" ColumnName="DHW" />
-                <ScalarProperty Name="SW" ColumnName="SW" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_CommercialGarbageCollection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CommercialGarbageCollection">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CommercialGarbageCollection_Result">
@@ -3639,6 +3953,29 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="Totaldumpyard" ColumnName="Totaldumpyard" />
                 <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
                 <ScalarProperty Name="rownum" ColumnName="rownum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EmployeeHouseCollectionType" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeHouseCollectionType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
+                <ScalarProperty Name="inTime" ColumnName="inTime" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="Bifur" ColumnName="Bifur" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecidfied" ColumnName="NotSpecidfied" />
+                <ScalarProperty Name="CDW" ColumnName="CDW" />
+                <ScalarProperty Name="CW" ColumnName="CW" />
+                <ScalarProperty Name="HW" ColumnName="HW" />
+                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
+                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
+                <ScalarProperty Name="DHW" ColumnName="DHW" />
+                <ScalarProperty Name="SW" ColumnName="SW" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
