@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
-    public class SauchalayDetailsVM
+    public class SauchalayDetailsVM : BaseVM
     {
         public int Id { get; set; }
         public string SauchalayID { get; set; }
+        public Nullable<int> AreaId { get; set; }
+        public Nullable<int> WardNo { get; set; }
+        public Nullable<int> ZoneId { get; set; }
         public string Address { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string Lat { get; set; }

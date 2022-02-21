@@ -1,5 +1,4 @@
 ﻿@model SwachBharat.CMS.Bll.ViewModels.ChildModel.Model.SauchalayDetailsVM
-
 @{
     Layout = "";
 }
@@ -10,8 +9,8 @@
 
 @using (Html.BeginForm("AddSauchalayDetails", "Sauchalay", FormMethod.Post, new { enctype = "multipart/form-data", data_toggle = "validator", role = "form" }))
 {
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.Id);
+@Html.AntiForgeryToken()
+@Html.HiddenFor(model => model.Id);
 
 <div class="container">
 
@@ -72,7 +71,7 @@
 
             </div>*@
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
                 @Html.Label("CTPT Id")
@@ -82,7 +81,7 @@
 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("नाव / Name")*@
                 @Html.Label("Name")
@@ -95,7 +94,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("नाव / Name")*@
                 @Html.Label("Type Of Toilet")
@@ -115,7 +114,9 @@
                 <span class="help-block with-errors"></span>
             </div>
         </div>
-        <div class="col-md-6">
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("नाव / Name")*@
                 @Html.Label("Number Of Seats")
@@ -128,7 +129,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("नाव / Name")*@
                 @Html.Label("Lattitude")
@@ -141,7 +142,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("नाव / Name")*@
                 @Html.Label("Longitude")
@@ -153,7 +154,48 @@
                 <span class="help-block with-errors"></span>
             </div>
         </div>
-        <div class="col-md-6">
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @*@Html.Label("झोन / Zone")*@
+                @Html.Label("Zone")
+                @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                @Html.DropDownListFor(model => model.ZoneId, Model.ZoneList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                <span class="text-danger" id="err_zone"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="form-group">
+                @*@Html.Label("वार्ड क्रमांक / Ward No")*@
+                @Html.Label("Ward / Prabhag")
+                @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopWard()"> + Add Ward </a>*@
+
+                @Html.DropDownListFor(model => model.WardNo, Model.WardList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                @Html.ValidationMessageFor(model => model.WardNo, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_ward"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @*@Html.Label("क्षेत्र / Area")*@
+                @Html.Label("Area")
+                @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopArea()"> + Add Area </a>*@
+
+                @Html.DropDownListFor(model => model.AreaId, Model.AreaList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                @Html.ValidationMessageFor(model => model.AreaId, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_area"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("मोबाइल नंबर / Mobile Number")*@
                 @Html.Label("Mobile Number")
@@ -163,23 +205,25 @@
             </div>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group extra-height-for-textarea">
                 @Html.Label("Address")
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", style = "font-family:Arial, FontAwesome;min-height: 35px;padding: 6px 10px!important;height:35px!important;font-size: 16px!important;overflow: auto;resize: vertical;overflow: hidden;" })
+                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                 <span class="text-danger" id="err_address"></span>
             </div><br />
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
                 @Html.Label("Reference Id")
                 <input type="text" value="@Model.ReferanceId" id="refId" readonly="readonly" />
             </div>
         </div>
-        <div class="col-md-6">
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <div class="form-group">
                 @*<label for="Select_Image">क्यु आर  कोड  / QR-Code Image</label>*@
                 @*@Html.Label("स्कॅनिफाय कोड  / Scaniffy Code")*@
@@ -218,22 +262,21 @@
 
         </div>
 
-
     </div>
+</div>
 
 
-    @Html.HiddenFor(c => c.SauchalayID)
-    @Html.HiddenFor(c => c.ReferanceId)
+@Html.HiddenFor(c => c.SauchalayID)
+@Html.HiddenFor(c => c.ReferanceId)
 
 
-    <div class="row">
-        <center><span class="text-danger" id="err_generate"></span></center>
-        <div class="form-group1">
-            <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
-                <span class="glyphicon glyphicon-saved"></span>
-                <span id="buttonName">Save Changes</span>
-            </button>
-        </div>
+<div class="row">
+    <center><span class="text-danger" id="err_generate"></span></center>
+    <div class="form-group1">
+        <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
+            <span class="glyphicon glyphicon-saved"></span>
+            <span id="buttonName">Save Changes</span>
+        </button>
     </div>
 </div>
 
@@ -273,7 +316,7 @@
                 move();
             }
         }
-        
+
 
     });
 
@@ -297,131 +340,131 @@
     $(document).ready(function () {
 
         $('#Download1').click(function () {
-                var name = $("#Name").val();
-                var SauchalayID = $("#n").val();
-                var Refid = $("#refId").val();
-                var Id = $("#Id").val();
-                window.location.href = "/Sauchalay/GenratePDF?name=" + name + "&SauchalayID=" + SauchalayID + "&ReferanceId=" + Refid + "&Id=" + Id;
-           
+            var name = $("#Name").val();
+            var SauchalayID = $("#n").val();
+            var Refid = $("#refId").val();
+            var Id = $("#Id").val();
+            window.location.href = "/Sauchalay/GenratePDF?name=" + name + "&SauchalayID=" + SauchalayID + "&ReferanceId=" + Refid + "&Id=" + Id;
+
         })
 
     });
 </script>
 @*<script type="text/javascript">
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        $('#trash_badge').click(function () {
-            $("#FileUpload_Preview").html("");
-        });
-        $('#filesUpload').change(function () {
-            $("#FileUpload_Preview").html("");
-            $("#FileUpload_Preview").show();
-            $("#FileUpload_Preview").append("<img />");
+            $('#trash_badge').click(function () {
+                $("#FileUpload_Preview").html("");
+            });
+            $('#filesUpload').change(function () {
+                $("#FileUpload_Preview").html("");
+                $("#FileUpload_Preview").show();
+                $("#FileUpload_Preview").append("<img />");
 
-            if (typeof (FileReader) != "undefined") {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    //-----------------------------------
-                    // Preview image
-                    //-----------------------------------
-                    $("#FileUpload_Preview img").attr("src", e.target.result);
-                    $("#FileUpload_Preview img").attr("width", "200px");
-                    $("#FileUpload_Preview img").attr("height", "150px");
+                if (typeof (FileReader) != "undefined") {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        //-----------------------------------
+                        // Preview image
+                        //-----------------------------------
+                        $("#FileUpload_Preview img").attr("src", e.target.result);
+                        $("#FileUpload_Preview img").attr("width", "200px");
+                        $("#FileUpload_Preview img").attr("height", "150px");
+                    }
+                    reader.readAsDataURL($(this)[0].files[0]);
                 }
-                reader.readAsDataURL($(this)[0].files[0]);
-            }
-        });
+            });
 
 
 
 
-        $('#trash_badge').click(function () {
-            $("#FileUpload_Preview1").html("");
-        });
-        $('#filesUpload1').change(function () {
-            $("#FileUpload_Preview1").html("");
-            $("#FileUpload_Preview1").show();
-            $("#FileUpload_Preview1").append("<img />");
+            $('#trash_badge').click(function () {
+                $("#FileUpload_Preview1").html("");
+            });
+            $('#filesUpload1').change(function () {
+                $("#FileUpload_Preview1").html("");
+                $("#FileUpload_Preview1").show();
+                $("#FileUpload_Preview1").append("<img />");
 
-            if (typeof (FileReader) != "undefined") {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    //-----------------------------------
-                    // Preview image
-                    //-----------------------------------
-                    $("#FileUpload_Preview1 img").attr("src", e.target.result);
-                    $("#FileUpload_Preview1 img").attr("width", "200px");
-                    $("#FileUpload_Preview1 img").attr("height", "150px");
+                if (typeof (FileReader) != "undefined") {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        //-----------------------------------
+                        // Preview image
+                        //-----------------------------------
+                        $("#FileUpload_Preview1 img").attr("src", e.target.result);
+                        $("#FileUpload_Preview1 img").attr("width", "200px");
+                        $("#FileUpload_Preview1 img").attr("height", "150px");
+                    }
+                    reader.readAsDataURL($(this)[0].files[0]);
                 }
-                reader.readAsDataURL($(this)[0].files[0]);
-            }
+            });
         });
-    });
-</script>*@
+    </script>*@
 <script type="text/javascript">
     $(document).ready(function () {
 
         $('#SauchalayID').val($('#n').val());
-                        // alert($('#SauchalayID').val());
-                        var id = $('#Id').val();
+        // alert($('#SauchalayID').val());
+        var id = $('#Id').val();
         if (id > 0) {
             $('#Download1').show();
             //$('#send_link').show();
             $('#buttonName').text("Save Changes");
             $('.title_change').text("Edit CT / PT Details");
-                        } else {
+        } else {
             $('#buttonName').text("Save");
             $('.title_change').text("Add CT / PT Details");
-                        }
+        }
 
 
-                        $("#Name").keypress(function (e) {
-                            //if the letter is not digit then display error and don't type anything
-                            if (!(e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44)) {
-                                //display error message
-                                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                                $("#err_name").html("Alphabates only").show().delay(1500).show().fadeOut('slow');
-                                return false;
-                            }
-                        });
+        $("#Name").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (!(e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44)) {
+                //display error message
+                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                $("#err_name").html("Alphabates only").show().delay(1500).show().fadeOut('slow');
+                return false;
+            }
+        });
 
-                        $("#Mobile").keypress(function (e) {
-                            //if the letter is not digit then display error and don't type anything
-                            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44) {
-                                //display error message
-                                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                                $("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                                return false;
-                            }
-                        });
-                        $("#Tns").keypress(function (e) {
-                            //if the letter is not digit then display error and don't type anything
-                            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44) {
-                                //display error message
-                                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                                $("#err_tns").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                                return false;
-                            }
-                        });
-                        //$("#Lat").keyup(function (e) {
-                        //    var pattern = new RegExp('^-?([1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}');
-                        //    //if the letter is not digit then display error and don't type anything
-                        //    
-                        //    if (!(pattern.test($("#Lat").val()))) {
-                        //        //display error message
-                        //        //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                        //        $("#err_lat").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                        //        return false;
-                        //    }
-                        //}); $("#Long").keypress(function (e) {
-                        //    //if the letter is not digit then display error and don't type anything
-                        //    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44 && e.which != 189 && e.which != 171) {
-                        //        //display error message
-                        //        //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                        //        $("#err_log").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                        //        return false;
-                        //    }
-                        //});
+        $("#Mobile").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44) {
+                //display error message
+                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                $("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                return false;
+            }
+        });
+        $("#Tns").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44) {
+                //display error message
+                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                $("#err_tns").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                return false;
+            }
+        });
+        //$("#Lat").keyup(function (e) {
+        //    var pattern = new RegExp('^-?([1-8]?[1-9]|[1-9]0)\\.{1}\\d{1,6}');
+        //    //if the letter is not digit then display error and don't type anything
+        //
+        //    if (!(pattern.test($("#Lat").val()))) {
+        //        //display error message
+        //        //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+        //        $("#err_lat").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+        //        return false;
+        //    }
+        //}); $("#Long").keypress(function (e) {
+        //    //if the letter is not digit then display error and don't type anything
+        //    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44 && e.which != 189 && e.which != 171) {
+        //        //display error message
+        //        //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+        //        $("#err_log").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+        //        return false;
+        //    }
+        //});
     });
 
 
@@ -429,31 +472,31 @@
 </script>
 @*<script type="text/javascript">
 
-        $("#btnSubmit").click(function () {
-            if ($('#GameMasterId').val() == 0) {
-                $("#err_name").html("Game Name is Required").delay(1500).show().fadeOut('slow');
-                $('#GameMasterId').focus();
-                return false;
-            }
-            if ($('#SloganId').val() == 0) {
-                $("#err_slogan").html("Slogan is Required").delay(1500).show().fadeOut('slow');
-                $('#SloganId').focus();
-                return false;
-            }
+            $("#btnSubmit").click(function () {
+                if ($('#GameMasterId').val() == 0) {
+                    $("#err_name").html("Game Name is Required").delay(1500).show().fadeOut('slow');
+                    $('#GameMasterId').focus();
+                    return false;
+                }
+                if ($('#SloganId').val() == 0) {
+                    $("#err_slogan").html("Slogan is Required").delay(1500).show().fadeOut('slow');
+                    $('#SloganId').focus();
+                    return false;
+                }
 
-            if ($('#AnswerTypeId').val() == 0) {
-                $("#err_answertype").html("Correct Answer is Required").delay(1500).show().fadeOut('slow');
-                $('#AnswerTypeId').focus();
-                return false;
-            }
+                if ($('#AnswerTypeId').val() == 0) {
+                    $("#err_answertype").html("Correct Answer is Required").delay(1500).show().fadeOut('slow');
+                    $('#AnswerTypeId').focus();
+                    return false;
+                }
 
-            if ($.trim($("#Points").val()) == '0') {
-                $("#err_point").html("Point is Required").delay(1500).show().fadeOut('slow');
-                $('#Points').focus();
-                return false;
-            }
+                if ($.trim($("#Points").val()) == '0') {
+                    $("#err_point").html("Point is Required").delay(1500).show().fadeOut('slow');
+                    $('#Points').focus();
+                    return false;
+                }
 
-            return true;
-        });
+                return true;
+            });
 
-</script>*@
+    </script>*@
