@@ -3116,6 +3116,50 @@ namespace SwachBharat.CMS.Bll.Services
             return houseLocation;
 
         }
+
+        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype)
+        {
+
+            List<SBALCTPTLocationMapView> houseLocation = new List<SBALCTPTLocationMapView>();
+            var zoneId = 0;
+            DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
+            if (Emptype == null)
+            {
+                var data = db.SP_CTPTOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo,  FilterType).ToList();
+                foreach (var x in data)
+                {
+
+                    DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
+                    //string gcTime = x.gcDate.ToString();
+                    houseLocation.Add(new SBALCTPTLocationMapView()
+                    {
+                       
+                        CTPTId = Convert.ToInt32(x.Id),
+                        ReferanceId = x.ReferanceId,
+                        CTPTAddress = checkNull(x.Address).Replace("Unnamed Road, ", ""),
+                        gcDate = dt.ToString("dd-MM-yyyy"),
+                        gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock
+                                                         //string gcTime = x.gcDate.ToString(),
+                                                         //gcTime = x.gcDate.ToString("hh:mm tt"),
+                                                         //myDateTime.ToString("HH:mm:ss")
+                        ///date = Convert.ToDateTime(x.datt).ToString("dd/MM/yyyy"),
+                        //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
+                        CTPTLat = x.Lat,
+                        CTPTLong = x.Long,
+                        // address = x.commercialAddress,
+                        //vehcileNumber = x.v,
+                        //userMobile = x.mobile,
+                        //garbageType = x.garbageType
+                    });
+                }
+               
+
+                houseLocation = houseLocation.ToList();
+            }
+          
+            return houseLocation;
+
+        }
         // Code Optimization(code)
         //public SBALHouseLocationMapView1 GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, string start)
         //{
@@ -3363,6 +3407,55 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
+
+        public DashBoardVM GetCTPTOnMapDetails()
+
+        {
+            DashBoardVM model = new DashBoardVM();
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+
+                    DevSwachhBharatMainEntities dbm = new DevSwachhBharatMainEntities();
+                    //var appdetails = dbm.AppDetails.Where(c => c.AppId == AppID).FirstOrDefault();
+                    //List<ComplaintVM> obj = new List<ComplaintVM>();
+                    //if (AppID == 1)
+                    //{
+                    //    string json = new WebClient().DownloadString(appdetails.Grampanchayat_Pro + "/api/Get/Complaint?appId=1");
+                    //    obj = JsonConvert.DeserializeObject<List<ComplaintVM>>(json).Where(c => Convert.ToDateTime(c.createdDate2).ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")).ToList();
+                    //}
+
+
+                    var data = db.SP_CTPTScanify_Count().First();
+
+                    //var date = DateTime.Today;
+                    //var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();
+                    if (data != null)
+                    {
+
+                        model.TotalCTPTCount = data.TotalCTPTCount;
+                        model.TotalCTPTScanCount = data.TotalCTPTScanCount;
+                        model.TotalPTCount = data.TotalPTCount;
+                        model.TotalCTCount = data.TotalCTCount;
+                        model.TotalUCount = data.TotalUCount;
+
+                        return model;
+                    }
+
+                    // String.Format("{0:0.00}", 123.4567); 
+
+                    else
+                    {
+                        return model;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return model;
+            }
+        }
 
         public DashBoardVM GetLiquidWasteDetails()
         {

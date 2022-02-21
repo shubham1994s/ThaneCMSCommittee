@@ -128,6 +128,7 @@
           <Property Name="SWMId" Type="int" />
           <Property Name="TNS" Type="int" />
           <Property Name="TOT" Type="varchar" MaxLength="10" />
+          <Property Name="CGarbageType" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GarbagePointDetails">
           <Key>
@@ -648,7 +649,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="ZoneId" Type="int" Mode="In" />
           <Parameter Name="AreaId" Type="int" Mode="In" />
           <Parameter Name="WardNo" Type="int" Mode="In" />
-          <Parameter Name="GarbageType" Type="int" Mode="In" />
           <Parameter Name="FilterType" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_CTPTScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1053,7 +1053,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="ZoneId" Mode="In" Type="Int32" />
             <Parameter Name="AreaId" Mode="In" Type="Int32" />
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
-            <Parameter Name="GarbageType" Mode="In" Type="Int32" />
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_CTPTScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPTScanify_Count_Result)" />
@@ -1786,6 +1785,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="SWMId" Type="Int32" />
           <Property Name="TNS" Type="Int32" />
           <Property Name="TOT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CGarbageType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="SP_LiquidEmployeeTarget_Result">
           <Property Type="Int32" Name="userId" Nullable="true" />
@@ -2381,14 +2381,13 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="SSId" Nullable="true" />
           <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
-          <Property Type="Int32" Name="garbageType" Nullable="true" />
           <Property Type="Int32" Name="gcDate" Nullable="true" />
           <Property Type="String" Name="Lat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Long" Nullable="true" MaxLength="500" />
         </ComplexType>
         <ComplexType Name="SP_CTPTScanify_Count_Result">
-          <Property Type="Int32" Name="TotalcommercialCount" Nullable="true" />
           <Property Type="Int32" Name="TotalCTPTCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTScanCount" Nullable="true" />
           <Property Type="Int32" Name="TotalPTCount" Nullable="true" />
           <Property Type="Int32" Name="TotalCTCount" Nullable="true" />
           <Property Type="Int32" Name="TotalUCount" Nullable="true" />
@@ -3077,6 +3076,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="GarbageCollectionDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.GarbageCollectionDetail">
               <MappingFragment StoreEntitySet="GarbageCollectionDetails">
+                <ScalarProperty Name="CGarbageType" ColumnName="CGarbageType" />
                 <ScalarProperty Name="TOT" ColumnName="TOT" />
                 <ScalarProperty Name="TNS" ColumnName="TNS" />
                 <ScalarProperty Name="SWMId" ColumnName="SWMId" />
@@ -3809,7 +3809,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="SSId" ColumnName="SSId" />
                 <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
                 <ScalarProperty Name="gcDate" ColumnName="gcDate" />
                 <ScalarProperty Name="Lat" ColumnName="Lat" />
                 <ScalarProperty Name="Long" ColumnName="Long" />
@@ -3819,8 +3818,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <FunctionImportMapping FunctionImportName="SP_CTPTScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPTScanify_Count">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPTScanify_Count_Result">
-                <ScalarProperty Name="TotalcommercialCount" ColumnName="TotalcommercialCount" />
                 <ScalarProperty Name="TotalCTPTCount" ColumnName="TotalCTPTCount" />
+                <ScalarProperty Name="TotalCTPTScanCount" ColumnName="TotalCTPTScanCount" />
                 <ScalarProperty Name="TotalPTCount" ColumnName="TotalPTCount" />
                 <ScalarProperty Name="TotalCTCount" ColumnName="TotalCTCount" />
                 <ScalarProperty Name="TotalUCount" ColumnName="TotalUCount" />
