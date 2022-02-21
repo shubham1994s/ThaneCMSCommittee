@@ -5210,6 +5210,12 @@ namespace SwachBharat.CMS.Bll.Services
                         model.TotalCommercialUpdated = data.TotalCommercial;
                         model.TotalCommercialUpdated_CurrentDay = data.TotalCommercialUpdated_CurrentDay;
 
+                        model.TotalSWMUpdated = data.TotalSWM;
+                        model.TotalSWMUpdated_CurrentDay = data.TotalSWMUpdated_CurrentDay;
+
+                        model.TotalCTPTUpdated = data.TotalCTPT;
+                        model.TotalCTPTUpdated_CurrentDay = data.TotalCTPTUpdated_CurrentDay;
+
 
 
 
