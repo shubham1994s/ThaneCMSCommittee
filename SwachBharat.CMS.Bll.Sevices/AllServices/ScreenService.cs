@@ -1331,6 +1331,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.isActive = data.isActive;
                             model.bloodGroup = data.bloodGroup;
                             model.gcTarget = data.gcTarget;
+                            model.ComgcTarget = data.ComgcTarget;
                             model.userDesignation = data.userDesignation;
                             //model.EmployeeType = Emptype;
                             db.SaveChanges();
@@ -3742,6 +3743,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.bloodGroup = data.bloodGroup;
             model.isActive = data.isActive;
             model.gcTarget = data.gcTarget;
+            model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = Emptype;
             model.userDesignation = data.userDesignation;
             return model;
