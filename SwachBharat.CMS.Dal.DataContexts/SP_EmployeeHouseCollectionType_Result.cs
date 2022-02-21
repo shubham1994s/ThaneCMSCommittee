@@ -17,6 +17,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<System.DateTime> TodayDate { get; set; }
         public string userName { get; set; }
         public string gcTarget { get; set; }
+        public string ComgcTarget { get; set; }
         public string inTime { get; set; }
         public Nullable<int> Count { get; set; }
         public Nullable<int> MixedCount { get; set; }
@@ -24,7 +25,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> NotCollected { get; set; }
         public Nullable<int> NotSpecidfied { get; set; }
         public Nullable<int> CDW { get; set; }
-        public Nullable<int> CW { get; set; }
+        public Nullable<int> CWNS { get; set; }
+        public Nullable<int> CWM { get; set; }
+        public Nullable<int> CWNR { get; set; }
+        public Nullable<int> CWW { get; set; }
+        public Nullable<int> CWD { get; set; }
         public Nullable<int> HW { get; set; }
         public Nullable<int> WetWaste { get; set; }
         public Nullable<int> DryWaste { get; set; }

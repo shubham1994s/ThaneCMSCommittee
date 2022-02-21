@@ -31,5 +31,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> BuildingCount { get; set; }
         public Nullable<int> SlumCount { get; set; }
         public Nullable<int> CommercialCount { get; set; }
+        public Nullable<int> SWMCount { get; set; }
+        public Nullable<int> CTPTCount { get; set; }
     }
 }

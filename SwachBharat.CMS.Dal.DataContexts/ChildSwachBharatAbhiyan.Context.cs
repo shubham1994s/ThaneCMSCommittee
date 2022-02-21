@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -36,7 +36,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<WM_Garbage_Details> WM_Garbage_Details { get; set; }
         public virtual DbSet<WM_Garbage_Summary> WM_Garbage_Summary { get; set; }
         public virtual DbSet<ZoneMaster> ZoneMasters { get; set; }
-        public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<TeritoryMaster> TeritoryMasters { get; set; }
         public virtual DbSet<WardNumber> WardNumbers { get; set; }
         public virtual DbSet<QrEmployeeMaster> QrEmployeeMasters { get; set; }
@@ -57,6 +56,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<SS_1_4_ANSWER> SS_1_4_ANSWER { get; set; }
         public virtual DbSet<SS_1_4_QUESTION> SS_1_4_QUESTION { get; set; }
         public virtual DbSet<SS_1_7_ANSWER> SS_1_7_ANSWER { get; set; }
+        public virtual DbSet<VehicleType> VehicleTypes { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -382,28 +382,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetCurrentAllUserLocationTest1_Result>("StreetCurrentAllUserLocationTest1");
         }
     
-        public virtual ObjectResult<SP_HouseScanifyDetails_Result> SP_HouseScanifyDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanifyDetails_Result>("SP_HouseScanifyDetails");
-        }
-    
-        public virtual ObjectResult<SP_HouseScanify_Result> SP_HouseScanify(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
-        {
-            var fdateParameter = fdate.HasValue ?
-                new ObjectParameter("fdate", fdate) :
-                new ObjectParameter("fdate", typeof(System.DateTime));
-    
-            var tdateParameter = tdate.HasValue ?
-                new ObjectParameter("tdate", tdate) :
-                new ObjectParameter("tdate", typeof(System.DateTime));
-    
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Result>("SP_HouseScanify", fdateParameter, tdateParameter, useridParameter);
-        }
-    
         public virtual ObjectResult<SP_GarbageCollection_Result> SP_GarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
         {
             var appIdParameter = appId.HasValue ?
@@ -600,11 +578,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeSummary_Result>("SP_EmployeeSummary", fromParameter, toParameter, useridParameter);
         }
     
-        public virtual ObjectResult<SP_EmployeeHouseCollectionType_Result> SP_EmployeeHouseCollectionType()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeHouseCollectionType_Result>("SP_EmployeeHouseCollectionType");
-        }
-    
         public virtual ObjectResult<SP_LiquidWasteOnMapDetails_Result> SP_LiquidWasteOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType)
         {
             var gcDateParameter = gcDate.HasValue ?
@@ -669,6 +642,33 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("FilterType", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter);
+        }
+    
+        public virtual ObjectResult<SP_EmployeeHouseCollectionType_Result> SP_EmployeeHouseCollectionType()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeHouseCollectionType_Result>("SP_EmployeeHouseCollectionType");
+        }
+    
+        public virtual ObjectResult<SP_HouseScanifyDetails_Result> SP_HouseScanifyDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanifyDetails_Result>("SP_HouseScanifyDetails");
+        }
+    
+        public virtual ObjectResult<SP_HouseScanify_Result> SP_HouseScanify(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
+        {
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Result>("SP_HouseScanify", fdateParameter, tdateParameter, useridParameter);
         }
     }
 }

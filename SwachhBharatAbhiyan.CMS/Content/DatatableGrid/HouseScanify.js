@@ -117,6 +117,8 @@ $(document).ready(function () {
             { "data": "BuildingCount", "name": "BuildingCount", "autoWidth": true },
             { "data": "SlumCount", "name": "SlumCount", "autoWidth": true },
             { "data": "CommercialCount", "name": "CommercialCount", "autoWidth": true },
+            { "data": "SWMCount", "name": "SWMCount", "autoWidth": true },
+            { "data": "CTPTCount", "name": "CTPTCount", "autoWidth": true },
               { "data": "qrEmpAddress", "name": "qrEmpAddress", "autoWidth": true },
               { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"   onclick="Edit(' + full["qrEmpId"] + ')"  ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
 
