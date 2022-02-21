@@ -7,7 +7,7 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
 @Scripts.Render("~/Scripts/IndexScript")
-<script src="~/Content/DatatableGrid/SWMGarbageCommercial.js"></script>
+<script src="~/Content/DatatableGrid/SWMGarbageGrid.js"></script>
 <script src="~/Content/Custom/LoadZoneWardArea.js"></script>
 <body>
     <div class="container" style="padding-top:8px">
@@ -46,14 +46,20 @@
                 <label>Select Area</label>
                 <select id="AreaId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Segregation Type</label>
+                <label>Select SWM Facility Type</label>
                 <select id="Segid" class="form-control form-control form-control-sm">
-                    <option value="">Select Segregation Type</option>
-                    <option value="0">Mixed Garbage</option>
-                    <option value="6">Wet Waste</option>
-                    <option value="7"> Dry Waste</option>
+                    <option value="0">Select SWM Type</option>
+                    <option value="TS">Transfer Station</option>
+                    <option value="WWPF">Wet Waste Processing Facility</option>
+                    <option value="DWPF">Dry Waste Processing Facility</option>
+                    <option value="CDWPF">C&D Waste Processing Facility</option>
+                    <option value="IF">Incineration Facility For Domestic and Sanitary Waste Processing</option>
+                    <option value="SLF">Sanitary Landfill Facility</option>
+                    <option value="LWBF">Legacy Waste Bioremediation Facility</option>
+                    <option value="STP">Sewage Treatment Plant</option>
+                    <option value="BWG">Bulk Waste Generators For Onsite Wet Waste Processing</option>
                 </select>
             </div>
         </div>
@@ -90,7 +96,7 @@
                         <th>ID</th>
                         <th> Date</th>
                         <th> Employee</th>
-                        <th> Segregation Type </th>
+                        <th> Facility Type </th>
                         <th> SWM Nme </th>
                         <th> Collection Address</th>
                         <th> Vehicle Number</th>

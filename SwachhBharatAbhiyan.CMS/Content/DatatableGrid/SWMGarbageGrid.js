@@ -30,7 +30,7 @@
         "pageLength": 10,
 
         "ajax": {
-            "url": "/Datable/GetJqGridJson?rn=GarbageCommercial",
+            "url": "/Datable/GetJqGridJson?rn=GarbageSWM",
             "type": "POST",
             "datatype": "json"
         },
