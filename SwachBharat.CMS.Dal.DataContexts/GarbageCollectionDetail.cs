@@ -48,5 +48,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> SSId { get; set; }
         public string LOS { get; set; }
         public Nullable<int> commercialId { get; set; }
+        public Nullable<int> CTPTId { get; set; }
+        public Nullable<int> SWMId { get; set; }
+        public Nullable<int> TNS { get; set; }
+        public string TOT { get; set; }
     }
 }
