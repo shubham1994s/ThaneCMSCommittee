@@ -465,14 +465,13 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult CTPTLocationList(string date, string userid, string areaId, string wardNo, string SearchString, string garbageType, string filterType, string ctype)
+        public ActionResult CTPTLocationList(string date, string userid, string areaId, string wardNo, string SearchString,  string filterType, string ctype)
         {
             if (SessionHandler.Current.AppId != 0)
             {
                 int user;
                 int area;
                 int ward;
-                int? GarbageType;
                 int FilterType;
                 if (userid == "-1" || userid == "0" || userid == "null")
                 {
@@ -499,14 +498,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 {
                     ward = Convert.ToInt32(wardNo);
                 }
-                if (garbageType == "-1" || garbageType == null)
-                {
-                    GarbageType = null;
-                }
-                else
-                {
-                    GarbageType = Convert.ToInt32(garbageType);
-                }
+               
                 if (filterType == "-1" || filterType == "0" || filterType == "null")
                 {
                     FilterType = 0;
@@ -520,8 +512,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     date = DateTime.Now.ToShortDateString();
                 }
 
-                List<SBALCommercialLocationMapView> obj = new List<SBALCommercialLocationMapView>();
-                obj = childRepository.GetAllCTPTLocation(date, user, area, ward, SearchString, GarbageType, FilterType, null, ctype);
+                List<SBALCTPTLocationMapView> obj = new List<SBALCTPTLocationMapView>();
+                obj = childRepository.GetAllCTPTLocation(date, user, area, ward, SearchString,  FilterType, null);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{

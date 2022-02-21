@@ -13,8 +13,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
     
     public partial class SP_CTPTScanify_Count_Result
     {
-        public Nullable<int> TotalcommercialCount { get; set; }
         public Nullable<int> TotalCTPTCount { get; set; }
+        public Nullable<int> TotalCTPTScanCount { get; set; }
         public Nullable<int> TotalPTCount { get; set; }
         public Nullable<int> TotalCTCount { get; set; }
         public Nullable<int> TotalUCount { get; set; }

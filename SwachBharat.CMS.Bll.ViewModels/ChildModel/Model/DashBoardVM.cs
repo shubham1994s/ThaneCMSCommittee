@@ -135,6 +135,11 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> DryWasteCount { get; set; }
         public Nullable<int> DemosticHazardousCount { get; set; }
         public Nullable<int> SanitaryCount { get; set; }
+        public Nullable<int> TotalCTPTCount { get; set; }
+        public Nullable<int> TotalCTPTScanCount { get; set; }
+        public Nullable<int> TotalCTCount { get; set; }
+        public Nullable<int> TotalPTCount { get; set; }
+        public Nullable<int> TotalUCount { get; set; }
 
     }
 }

@@ -3069,6 +3069,7 @@
     <Content Include="Views\Location\AllCommercialLocation.cshtml" />
     <Content Include="Views\GarbageCollection\MenuSWMGarbageIndex.cshtml" />
     <Content Include="Views\GarbageCollection\SWMGarbageIndex.cshtml" />
+    <Content Include="Views\Location\AllCTPTLocation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
