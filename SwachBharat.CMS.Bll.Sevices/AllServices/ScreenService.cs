@@ -3845,7 +3845,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.AreaId = data.AreaId;
             model.ZoneId = data.ZoneId;
             model.WardNo = data.WardNo;
-            model.userId = data.userId;
+            //model.userId = data.userId;
             return model;
         }
         #endregion
@@ -5980,7 +5980,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.AreaId = data.AreaId;
                             model.ZoneId = data.ZoneId;
                             model.WardNo = data.WardNo;
-                            model.userId = data.userId;
+                            //model.userId = data.userId;
                             db.SaveChanges();
                         }
                     }
