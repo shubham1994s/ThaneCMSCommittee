@@ -957,8 +957,11 @@
     <Content Include="Areas\Street\Content\images\img\segregationImg\icn_not_specified.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\icn_segregated_garbage.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Start-Point.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Green.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweep.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweepper_marker.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweep_Green.png" />
     <Content Include="Areas\Street\Content\images\img\street_icon.png" />
     <Content Include="Areas\Street\Content\images\img\street_icon.svg" />
     <Content Include="Areas\Street\Content\images\iphone.png" />
