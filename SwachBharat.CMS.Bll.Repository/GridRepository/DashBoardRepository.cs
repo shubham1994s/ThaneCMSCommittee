@@ -2875,9 +2875,6 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
             using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-
-
-
                 var data = db.SP_SWMGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
