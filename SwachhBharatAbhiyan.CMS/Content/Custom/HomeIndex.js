@@ -1046,8 +1046,8 @@ $(document).ready(function () {
                 cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
                 cww.push({ y: data[i].CommercialWet, label: 'Commercial Waste Wet', color: '#186634', intime: data[i].inTime });
                 cwd.push({ y: data[i].CommercialDry, label: 'Commercial Waste Dry', color: '#66a2d5', intime: data[i].inTime });
-                emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar + ' House Target', z: data[i].Count, intime: data[i].inTime });
-                emp_tar2.push({ y: parseInt(data[i].gcTarget2), label: fname + lastname_firstchar + ' Commercial Target', z: data[i].Count, intime: data[i].inTime });
+                emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar + ' Target', z: data[i].Count, intime: data[i].inTime });
+                emp_tar2.push({ y: parseInt(data[i].gcTarget2), label: fname + lastname_firstchar + ' Target', z: data[i].Count, intime: data[i].inTime });
                 // ary2.push({ y: parseInt(data[i].gcTarget), label: data[i].userName });
 
             }
@@ -1253,7 +1253,7 @@ $(document).ready(function () {
                             dataPoints: emp_tar,
                             // indexLabel: "{y}",
                             showInLegend: true,
-                            name: "Target",
+                            name: "House Target",
                         }
                         ,
                         {
@@ -1264,7 +1264,7 @@ $(document).ready(function () {
                             dataPoints: emp_tar2,
                             // indexLabel: "{y2}",
                             showInLegend: true,
-                            name: "Target2",
+                            name: "Commercial Target",
                         }
                         //{
                         //    type: "stackedColumn",
