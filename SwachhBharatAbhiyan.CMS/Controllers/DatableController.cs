@@ -287,6 +287,15 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
 
+                case "GarbageSWM":
+                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
+                    return gridRepository;
+                    break;
+
+                case "GarbageCTPT":
+                    gridRepository = new CTPTGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
+                    return gridRepository;
+                    break;
                 case "GarbagePoint":
                     gridRepository = new PGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3);
                     return gridRepository;

@@ -7,7 +7,7 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
 @Scripts.Render("~/Scripts/IndexScript")
-<script src="~/Content/DatatableGrid/CommercialGarbageGrid.js"></script>
+<script src="~/Content/DatatableGrid/CTPTGarbageGrid.js"></script>
 <script src="~/Content/Custom/LoadZoneWardArea.js"></script>
 <body>
     <div class="container" style="padding-top:8px">
@@ -46,16 +46,16 @@
                 <label>Select Area</label>
                 <select id="AreaId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4">
+            <!--<div class="col-sm-4">-->
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Segregation Type</label>
+                <!--<label>Select Segregation Type</label>
                 <select id="Segid" class="form-control form-control form-control-sm">
-                    <option value="">Select Segregation Type</option>               
-                    <option value="0">Mixed Garbage</option>              
+                    <option value="">Select Segregation Type</option>
+                    <option value="0">Mixed Garbage</option>
                     <option value="6">Wet Waste</option>
-                    <option value="7"> Dry Waste</option>             
+                    <option value="7"> Dry Waste</option>
                 </select>
-            </div>
+            </div>-->
         </div>
         <div class="row">
             <div class="col-sm-2  offset-md-10" style="text-align:right">
@@ -90,14 +90,14 @@
                         <th>ID</th>
                         <th> Date</th>
                         <th> Employee</th>
-                        <th> Segregation Type </th>
-                        <th> Commercial Owner</th>
+                        @*<th> Segregation Type </th>*@
+                        <th> Name</th>
                         <th> Collection Address</th>
                         <th> Vehicle Number</th>
                         <th> Comment </th>
                         <th> Before Image </th>
                         <th> After Image </th>
-                        <th> Commercial ID</th>
+                        <th> House ID</th>
                         <th> Battery Status </th>
                         <th> gcDate </th>
                         <th> Level Of Segregation </th>
@@ -137,7 +137,7 @@
 
     <div id="snackbar">Image not uploaded...</div>
 </body>
-</html>
+
 
 <script>
         var date = new Date();
