@@ -4141,6 +4141,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     BuildingCount=x.BuildingCount,
                     SlumCount=x.SlumCount,
                     CommercialCount=x.CommercialCount,
+                    SWMCount = x.SWMCount,
+                    CTPTCount = x.CTPTCount,
                     //StartDate = (string.IsNullOrEmpty(x.StartDate.ToString()) ? "" : Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy")) + " " + x.StartTime,
                     //StartDate = (x.StartDate == null ? "" : Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy")) + " " + x.StartTime,
                     // EndDate = (x.EndDate == null ? " " : Convert.ToDateTime(x.EndDate).ToString("dd/MM/yyyy")) + " " +  x.EndTime,

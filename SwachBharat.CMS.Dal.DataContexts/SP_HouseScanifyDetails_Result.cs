@@ -36,5 +36,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> TotalCommercialUpdated_CurrentDay { get; set; }
         public Nullable<int> TotalResidential { get; set; }
         public Nullable<int> TotalResidentialUpdated_CurrentDay { get; set; }
+        public Nullable<int> TotalSWM { get; set; }
+        public Nullable<int> TotalSWMUpdated_CurrentDay { get; set; }
+        public Nullable<int> TotalCTPT { get; set; }
+        public Nullable<int> TotalCTPTUpdated_CurrentDay { get; set; }
     }
 }
