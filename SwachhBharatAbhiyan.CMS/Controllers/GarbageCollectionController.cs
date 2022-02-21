@@ -68,7 +68,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult MenuCTPTGarbageIndex()
+        public ActionResult MenuSWMGarbageIndex()
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -78,7 +78,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult CTPTGarbageIndex()
+        public ActionResult SWMGarbageIndex()
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -87,6 +87,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
+
         public ActionResult PointGarbageIndex()
         {
             if (SessionHandler.Current.AppId != 0)

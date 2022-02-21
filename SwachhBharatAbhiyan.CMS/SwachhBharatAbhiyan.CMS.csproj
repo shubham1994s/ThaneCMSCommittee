@@ -1733,6 +1733,7 @@
     <Content Include="Content\DatatableGrid\StateGrid.js" />
     <Content Include="Content\DatatableGrid\StreetSweepGrid.js" />
     <Content Include="Content\DatatableGrid\SWMDetailsGrid.js" />
+    <Content Include="Content\DatatableGrid\SWMGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\TalukaGrid.js" />
     <Content Include="Content\DatatableGrid\VehicleTypeGrid.js" />
     <Content Include="Content\DatatableGrid\WardNumberGrid.js" />
@@ -3066,8 +3067,8 @@
     <Content Include="Views\SWMMaster\MenuReportIndex.cshtml" />
     <Content Include="Views\SWMMaster\ReportIndex.cshtml" />
     <Content Include="Views\Location\AllCommercialLocation.cshtml" />
-    <Content Include="Views\GarbageCollection\MenuCTPTGarbageIndex.cshtml" />
-    <Content Include="Views\GarbageCollection\CTPTGarbageIndex.cshtml" />
+    <Content Include="Views\GarbageCollection\MenuSWMGarbageIndex.cshtml" />
+    <Content Include="Views\GarbageCollection\SWMGarbageIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
