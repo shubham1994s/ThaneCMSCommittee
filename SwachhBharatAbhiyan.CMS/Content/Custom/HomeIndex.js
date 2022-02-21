@@ -1068,7 +1068,7 @@ $(document).ready(function () {
                 
                    
                     axisX: {
-                        labelAngle: -10,
+                        labelAngle: 0,
                         labelFontSize: 10,
                         interval: 1
                     },
@@ -1287,6 +1287,7 @@ $(document).ready(function () {
             function showDefaultText(chart, text) {
                 debugger;
                 var isEmpty = !(chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+               
 
                 if (!chart.options.subtitles)
                     (chart.options.subtitles = []);
@@ -1295,13 +1296,15 @@ $(document).ready(function () {
                 if (isEmpty)
                     chart.options.subtitles.push({
                         text: text,
-                        verticalAlign: 'left',
+                        verticalAlign: 'center',
                     });
                 
                 else
                     (chart.options.subtitles = []);
                    
             }
+
+        
         }
     });
     chart.render();

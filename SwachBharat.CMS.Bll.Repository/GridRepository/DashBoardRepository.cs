@@ -4702,7 +4702,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 var data = db.SP_EmployeeHouseCollectionType().ToList();
-                //var data = "1";
+               // var data = "1";
 
                 foreach (var x in data)
                 {
@@ -4715,6 +4715,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         Bifur = x.Bifur,
                         NotCollected = x.NotCollected,
                         gcTarget = x.gcTarget,
+                        gcTarget2 = x.ComgcTarget,
                         NotSpecidfied = x.NotSpecidfied,
                         userId = x.userId,
                         userName = x.userName,
@@ -4729,6 +4730,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         CommercialNotReceived = x.CWNR,
                         CommercialWet = x.CWW,
                         CommercialDry = x.CWD
+
+                        //Static
 
                         //inTime = "10.30 AM",
                         //Count = 10,
