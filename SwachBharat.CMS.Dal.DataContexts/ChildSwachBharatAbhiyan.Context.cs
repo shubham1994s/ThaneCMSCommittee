@@ -14,7 +14,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.Collections.Generic;
+
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
@@ -56,7 +57,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<SS_1_4_ANSWER> SS_1_4_ANSWER { get; set; }
         public virtual DbSet<SS_1_4_QUESTION> SS_1_4_QUESTION { get; set; }
         public virtual DbSet<SS_1_7_ANSWER> SS_1_7_ANSWER { get; set; }
-    
+      
+        public virtual DbSet<UserMaster> UserMasters { get; set; }
+
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
             var userIdParameter = userId.HasValue ?
