@@ -2894,7 +2894,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.houseAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -2936,7 +2936,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.houseAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -3057,7 +3057,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -3841,7 +3841,11 @@ namespace SwachBharat.CMS.Bll.Services
             model.Tns = data.Tns;
             model.SauchalayQRCode = data.SauchalayQRCode;
             model.ReferanceId = data.ReferanceId;
-            // model.userId = data.userId;
+            model.lastModifiedDateEntry = DateTime.Now;
+            model.AreaId = data.AreaId;
+            model.ZoneId = data.ZoneId;
+            model.WardNo = data.WardNo;
+            model.userId = data.userId;
             return model;
         }
         #endregion
@@ -4490,6 +4494,11 @@ namespace SwachBharat.CMS.Bll.Services
             model.Tns = data.Tns;
             model.SauchalayQRCode = data.SauchalayQRCode;
             model.ReferanceId = data.ReferanceId;
+            model.lastModifiedDateEntry = data.lastModifiedDateEntry;
+            model.AreaId = data.AreaId;
+            model.ZoneId = data.ZoneId;
+            model.WardNo = data.WardNo;
+            model.userId = data.userId;
             return model;
         }
         #endregion
@@ -5962,12 +5971,16 @@ namespace SwachBharat.CMS.Bll.Services
                             model.Lat = data.Lat;
                             model.Long = data.Long;
                             model.Mobile = data.Mobile;
-                            model.CreatedDate = DateTime.Now;
+                            //model.CreatedDate = DateTime.Now;
                             model.Tot = data.Tot;
                             model.Tns = data.Tns;
                             model.SauchalayQRCode = data.SauchalayQRCode;
                             model.ReferanceId = data.ReferanceId;
-                            //model.userId = data.userId;
+                            model.lastModifiedDateEntry = DateTime.Now;
+                            model.AreaId = data.AreaId;
+                            model.ZoneId = data.ZoneId;
+                            model.WardNo = data.WardNo;
+                            model.userId = data.userId;
                             db.SaveChanges();
                         }
                     }
