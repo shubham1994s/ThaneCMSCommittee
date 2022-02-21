@@ -2857,6 +2857,71 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
+        public IEnumerable<SBAGrabageCollectionGridRow> GetCTPTGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4)
+        {
+            DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
+            var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
+            string ThumbnaiUrlAPI = appDetails.baseImageUrl + appDetails.basePath + appDetails.Collection + "/";
+
+            using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+
+
+
+                var data = db.SP_CommercialGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
+                {
+                    Id = x.gcId,
+                    userId = x.userId,
+                    houseId = x.houseId,
+                    UserName = x.commercialOwner,
+                    HouseNumber = x.commercialOwner,
+                    gcDate = x.gcDate,
+                    // gcType = 1,
+
+                    type1 = x.garbageType.ToString(),
+                    Ctype = x.gcType.ToString(),
+                    Address = (x.locAddresss).Replace("Unnamed Road,", ""),
+                    gpBeforImage = x.gpBeforImage,
+                    gpAfterImage = x.gpAfterImage,
+                    VehicleNumber = x.vehicleNumber,
+                    Note = x.note,
+                    ReferanceId = x.ReferanceId,
+                    Employee = x.userName,
+                    attandDate = Convert.ToDateTime(x.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
+                    gpIdfk = x.gcId,
+                    gpIdpk = x.gcId,
+                    batteryStatus = x.batteryStatus,
+                    los = x.los,
+                    ctype = x.CType,
+
+
+                }).OrderByDescending(c => c.gcDate).ToList().ToList();
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    //var model = data.Where(c => c.UserName.Contains(SearchString) || c.HouseNumber.Contains(SearchString) || c.VehicleNumber.Contains(SearchString) || c.ReferanceId.Contains(SearchString) || c.Address.Contains(SearchString) || c.Employee.Contains(SearchString) || c.attandDate.Contains(SearchString) || c.Note.Contains(SearchString)
+
+                    //   || c.UserName.ToLower().Contains(SearchString) || c.HouseNumber.ToLower().Contains(SearchString) || c.VehicleNumber.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString) || c.Address.ToLower().Contains(SearchString) || c.Employee.ToLower().Contains(SearchString) || c.attandDate.ToLower().Contains(SearchString) || c.Note.ToLower().Contains(SearchString)
+
+                    //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
+                    //   ).ToList();
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                       ).ToList();
+
+
+                    data = model.OrderByDescending(c => c.gcDate).ToList().ToList();
+                }
+
+                if (userId > 0)
+                {
+                    var model = data.Where(c => c.userId == userId).ToList();
+
+                    data = model.ToList();
+                }
+                return data.OrderByDescending(c => c.gcDate).ToList().ToList(); ;
+
+            }
+        }
 
         public IEnumerable<SBAAttendenceGrid> GetAttendeceData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string Emptype)
         {

@@ -1691,6 +1691,7 @@
     <Content Include="Content\DatatableGrid\CommercialDetailGrid.js" />
     <Content Include="Content\DatatableGrid\CommercialGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\Complaint.js" />
+    <Content Include="Content\DatatableGrid\CTPTGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\District.js" />
     <Content Include="Content\DatatableGrid\DumpYardDetailGrid.js" />
     <Content Include="Content\DatatableGrid\DumpYardGrid.js" />
@@ -3030,6 +3031,8 @@
     <Content Include="Views\SWMMaster\MenuReportIndex.cshtml" />
     <Content Include="Views\SWMMaster\ReportIndex.cshtml" />
     <Content Include="Views\Location\AllCommercialLocation.cshtml" />
+    <Content Include="Views\GarbageCollection\MenuCTPTGarbageIndex.cshtml" />
+    <Content Include="Views\GarbageCollection\CTPTGarbageIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
