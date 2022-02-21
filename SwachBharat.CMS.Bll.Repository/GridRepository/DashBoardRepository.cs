@@ -647,6 +647,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -733,6 +734,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
                         
@@ -812,6 +814,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -889,6 +892,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -967,6 +971,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1044,6 +1049,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1122,6 +1128,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1200,6 +1207,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1278,6 +1286,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1355,6 +1364,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 

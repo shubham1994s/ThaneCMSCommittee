@@ -24,6 +24,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public string bloodGroup { get; set; }
 
         public string gcTarget { get; set; }
+        public string ComgcTarget { get; set; }
 
         public string EmployeeType { get; set; }
     }

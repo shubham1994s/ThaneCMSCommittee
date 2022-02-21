@@ -418,6 +418,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.UserMaster' do
           <Property Name="gcTarget" Type="varchar" MaxLength="250" />
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="imoNo2" Type="nvarchar(max)" />
+          <Property Name="ComgcTarget" Type="varchar" MaxLength="250" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.UserMaster_Liquid' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -706,7 +707,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="ZoneId" Type="int" Mode="In" />
           <Parameter Name="AreaId" Type="int" Mode="In" />
           <Parameter Name="WardNo" Type="int" Mode="In" />
-          <Parameter Name="GarbageType" Type="int" Mode="In" />
+          <Parameter Name="gcType" Type="int" Mode="In" />
           <Parameter Name="FilterType" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_LSEmployeeSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -736,7 +737,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="ZoneId" Type="int" Mode="In" />
           <Parameter Name="AreaId" Type="int" Mode="In" />
           <Parameter Name="WardNo" Type="int" Mode="In" />
-          <Parameter Name="GarbageType" Type="int" Mode="In" />
+          <Parameter Name="gcType" Type="int" Mode="In" />
           <Parameter Name="FilterType" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_TotalHouseCollection_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1043,7 +1044,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [UserMaster].[isActive] AS [isActive], 
     [UserMaster].[gcTarget] AS [gcTarget], 
     [UserMaster].[EmployeeType] AS [EmployeeType], 
-    [UserMaster].[imoNo2] AS [imoNo2]
+    [UserMaster].[imoNo2] AS [imoNo2], 
+    [UserMaster].[ComgcTarget] AS [ComgcTarget]
     FROM [dbo].[UserMaster] AS [UserMaster]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="UserMaster_Liquid" EntityType="Self.UserMaster_Liquid" store:Type="Tables" store:Schema="dbo">
@@ -1273,10 +1275,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="ZoneId" Mode="In" Type="Int32" />
             <Parameter Name="AreaId" Mode="In" Type="Int32" />
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
-            <Parameter Name="GarbageType" Mode="In" Type="Int32" />
+            <Parameter Name="gcType" Mode="In" Type="Int32" />
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="UserMasters" EntityType="DevSwachhBharatNagpurModel.UserMaster" />
           <FunctionImport Name="SP_SSEmployeeSummary" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SSEmployeeSummary_Result)">
             <Parameter Name="from" Mode="In" Type="DateTime" />
             <Parameter Name="to" Mode="In" Type="DateTime" />
@@ -1312,7 +1313,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="ZoneId" Mode="In" Type="Int32" />
             <Parameter Name="AreaId" Mode="In" Type="Int32" />
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
-            <Parameter Name="GarbageType" Mode="In" Type="Int32" />
+            <Parameter Name="gcType" Mode="In" Type="Int32" />
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Daily_Attendance" EntityType="DevSwachhBharatNagpurModel.Daily_Attendance" />
@@ -1377,6 +1378,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="to" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="UserMasters" EntityType="DevSwachhBharatNagpurModel.UserMaster" />
           <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)" />
          
         </EntityContainer>
@@ -2073,28 +2075,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="LWLat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="LWLong" Nullable="true" MaxLength="500" />
         </ComplexType>
-        <EntityType Name="UserMaster">
-          <Key>
-            <PropertyRef Name="userId" />
-          </Key>
-          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="userNameMar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="userLoginId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="userPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="userMobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="userAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="userProfileImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="userEmployeeNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="userDesignation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="imoNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="bloodGroup" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="gcTarget" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="imoNo2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <ComplexType Name="SP_SSEmployeeSummary_Result">
           <Property Type="Int32" Name="daID" Nullable="true" />
           <Property Type="Int32" Name="userId" Nullable="false" />
@@ -2634,6 +2614,29 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
           <Property Type="Int64" Name="rownum" Nullable="true" />
         </ComplexType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="userNameMar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="userLoginId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="userPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="userMobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="userAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="userProfileImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userEmployeeNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="userDesignation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="imoNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bloodGroup" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="gcTarget" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="imoNo2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComgcTarget" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
         <ComplexType Name="SP_EmployeeHouseCollectionType_Result">
           <Property Type="Int32" Name="userId" Nullable="false" />
           <Property Type="DateTime" Name="TodayDate" Nullable="true" />
@@ -2646,7 +2649,11 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="NotCollected" Nullable="true" />
           <Property Type="Int32" Name="NotSpecidfied" Nullable="true" />
           <Property Type="Int32" Name="CDW" Nullable="true" />
-          <Property Type="Int32" Name="CW" Nullable="true" />
+          <Property Type="Int32" Name="CWNS" Nullable="true" />
+          <Property Type="Int32" Name="CWM" Nullable="true" />
+          <Property Type="Int32" Name="CWNR" Nullable="true" />
+          <Property Type="Int32" Name="CWW" Nullable="true" />
+          <Property Type="Int32" Name="CWD" Nullable="true" />
           <Property Type="Int32" Name="HW" Nullable="true" />
           <Property Type="Int32" Name="WetWaste" Nullable="true" />
           <Property Type="Int32" Name="DryWaste" Nullable="true" />
@@ -3288,29 +3295,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="UserMasters">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.UserMaster">
-              <MappingFragment StoreEntitySet="UserMaster">
-                <ScalarProperty Name="imoNo2" ColumnName="imoNo2" />
-                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
-                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
-                <ScalarProperty Name="imoNo" ColumnName="imoNo" />
-                <ScalarProperty Name="userDesignation" ColumnName="userDesignation" />
-                <ScalarProperty Name="userEmployeeNo" ColumnName="userEmployeeNo" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="userProfileImage" ColumnName="userProfileImage" />
-                <ScalarProperty Name="userAddress" ColumnName="userAddress" />
-                <ScalarProperty Name="userMobileNumber" ColumnName="userMobileNumber" />
-                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
-                <ScalarProperty Name="userLoginId" ColumnName="userLoginId" />
-                <ScalarProperty Name="userNameMar" ColumnName="userNameMar" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_SSEmployeeSummary" FunctionName="DevSwachhBharatNagpurModel.Store.SP_SSEmployeeSummary">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_SSEmployeeSummary_Result">
@@ -3956,6 +3940,30 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="UserMasters">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="ComgcTarget" ColumnName="ComgcTarget" />
+                <ScalarProperty Name="imoNo2" ColumnName="imoNo2" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+                <ScalarProperty Name="imoNo" ColumnName="imoNo" />
+                <ScalarProperty Name="userDesignation" ColumnName="userDesignation" />
+                <ScalarProperty Name="userEmployeeNo" ColumnName="userEmployeeNo" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="userProfileImage" ColumnName="userProfileImage" />
+                <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+                <ScalarProperty Name="userMobileNumber" ColumnName="userMobileNumber" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="userLoginId" ColumnName="userLoginId" />
+                <ScalarProperty Name="userNameMar" ColumnName="userNameMar" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_EmployeeHouseCollectionType" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeHouseCollectionType">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result">
@@ -3970,7 +3978,11 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
                 <ScalarProperty Name="NotSpecidfied" ColumnName="NotSpecidfied" />
                 <ScalarProperty Name="CDW" ColumnName="CDW" />
-                <ScalarProperty Name="CW" ColumnName="CW" />
+                <ScalarProperty Name="CWNS" ColumnName="CWNS" />
+                <ScalarProperty Name="CWM" ColumnName="CWM" />
+                <ScalarProperty Name="CWNR" ColumnName="CWNR" />
+                <ScalarProperty Name="CWW" ColumnName="CWW" />
+                <ScalarProperty Name="CWD" ColumnName="CWD" />
                 <ScalarProperty Name="HW" ColumnName="HW" />
                 <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
                 <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />

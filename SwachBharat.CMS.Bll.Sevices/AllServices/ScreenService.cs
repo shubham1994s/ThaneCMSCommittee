@@ -4307,6 +4307,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.isActive = data.isActive;
             model.bloodGroup = data.bloodGroup;
             model.gcTarget = data.gcTarget;
+            model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = data.EmployeeType;
             model.userDesignation = data.userDesignation;
             return model;

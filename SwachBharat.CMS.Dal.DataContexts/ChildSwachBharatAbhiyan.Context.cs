@@ -50,13 +50,13 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<LiquidWasteDetail> LiquidWasteDetails { get; set; }
         public virtual DbSet<StreetSweepingDetail> StreetSweepingDetails { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<GarbageCollectionDetail> GarbageCollectionDetails { get; set; }
         public virtual DbSet<DumpYardDetail> DumpYardDetails { get; set; }
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
         public virtual DbSet<CommercialMaster> CommercialMasters { get; set; }
         public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
         public virtual DbSet<SWMMaster> SWMMasters { get; set; }
+        public virtual DbSet<UserMaster> UserMasters { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -280,7 +280,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LWaste_Count_Result>("SP_LWaste_Count");
         }
     
-        public virtual ObjectResult<SP_LiquidWasteOnMapDetails_Result> SP_LiquidWasteOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> garbageType, Nullable<int> filterType)
+        public virtual ObjectResult<SP_LiquidWasteOnMapDetails_Result> SP_LiquidWasteOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType)
         {
             var gcDateParameter = gcDate.HasValue ?
                 new ObjectParameter("gcDate", gcDate) :
@@ -302,15 +302,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("WardNo", wardNo) :
                 new ObjectParameter("WardNo", typeof(int));
     
-            var garbageTypeParameter = garbageType.HasValue ?
-                new ObjectParameter("GarbageType", garbageType) :
-                new ObjectParameter("GarbageType", typeof(int));
+            var gcTypeParameter = gcType.HasValue ?
+                new ObjectParameter("gcType", gcType) :
+                new ObjectParameter("gcType", typeof(int));
     
             var filterTypeParameter = filterType.HasValue ?
                 new ObjectParameter("FilterType", filterType) :
                 new ObjectParameter("FilterType", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidWasteOnMapDetails_Result>("SP_LiquidWasteOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidWasteOnMapDetails_Result>("SP_LiquidWasteOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter);
         }
     
         public virtual ObjectResult<SP_SSEmployeeSummary_Result> SP_SSEmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid, string emptype)
@@ -415,7 +415,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetCurrentAllUserLocationTest1_Result>("StreetCurrentAllUserLocationTest1");
         }
     
-        public virtual ObjectResult<SP_StreetSweepingOnMapDetails_Result> SP_StreetSweepingOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> garbageType, Nullable<int> filterType)
+        public virtual ObjectResult<SP_StreetSweepingOnMapDetails_Result> SP_StreetSweepingOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType)
         {
             var gcDateParameter = gcDate.HasValue ?
                 new ObjectParameter("gcDate", gcDate) :
@@ -437,15 +437,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("WardNo", wardNo) :
                 new ObjectParameter("WardNo", typeof(int));
     
-            var garbageTypeParameter = garbageType.HasValue ?
-                new ObjectParameter("GarbageType", garbageType) :
-                new ObjectParameter("GarbageType", typeof(int));
+            var gcTypeParameter = gcType.HasValue ?
+                new ObjectParameter("gcType", gcType) :
+                new ObjectParameter("gcType", typeof(int));
     
             var filterTypeParameter = filterType.HasValue ?
                 new ObjectParameter("FilterType", filterType) :
                 new ObjectParameter("FilterType", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter);
         }
     
         public virtual ObjectResult<SP_HouseScanifyDetails_Result> SP_HouseScanifyDetails()

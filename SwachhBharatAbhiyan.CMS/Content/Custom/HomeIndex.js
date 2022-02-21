@@ -1046,8 +1046,8 @@ $(document).ready(function () {
                 cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
                 cww.push({ y: data[i].CommercialWet, label: 'Commercial Waste Wet', color: '#186634', intime: data[i].inTime });
                 cwd.push({ y: data[i].CommercialDry, label: 'Commercial Waste Dry', color: '#66a2d5', intime: data[i].inTime });
-                emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar, z: data[i].Count, intime: data[i].inTime });
-                emp_tar2.push({ y: parseInt(data[i].gcTarget2), label: fname + lastname_firstchar, z: data[i].Count, intime: data[i].inTime });
+                emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar + ' House Target', z: data[i].Count, intime: data[i].inTime });
+                emp_tar2.push({ y: parseInt(data[i].gcTarget2), label: fname + lastname_firstchar + ' Commercial Target', z: data[i].Count, intime: data[i].inTime });
                 // ary2.push({ y: parseInt(data[i].gcTarget), label: data[i].userName });
 
             }
@@ -1079,7 +1079,7 @@ $(document).ready(function () {
                         labelFontSize: 10,
                         labelFontColor: "dimGrey",
                         title: "Commercial Collection",
-                        interval: 4
+                       // interval: 1
                     },
 
                     data: [
@@ -1261,7 +1261,7 @@ $(document).ready(function () {
                             color: "#000000",
                             axisYIndex:1,
                             axisYType: "secondary",
-                            dataPoints2: emp_tar2,
+                            dataPoints: emp_tar2,
                             // indexLabel: "{y2}",
                             showInLegend: true,
                             name: "Target2",
@@ -1290,14 +1290,17 @@ $(document).ready(function () {
 
                 if (!chart.options.subtitles)
                     (chart.options.subtitles = []);
+              
 
                 if (isEmpty)
                     chart.options.subtitles.push({
                         text: text,
                         verticalAlign: 'left',
                     });
+                
                 else
                     (chart.options.subtitles = []);
+                   
             }
         }
     });
