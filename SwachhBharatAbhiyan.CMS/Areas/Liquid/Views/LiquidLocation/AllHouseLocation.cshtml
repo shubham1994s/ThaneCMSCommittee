@@ -128,7 +128,8 @@
 
                 <div class="media" style="border:1px solid #8532fc;padding:5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
+                        <img src="/Areas/Liquid/Content/images/img/segregationImg/Liquid.png" class="media-object" />
+                       
                     </div>
                     <div class="media-body">
                         <p class="media-heading" style="font-weight:600">Liquid Count</p>
@@ -141,7 +142,7 @@
 
                 <div class="media" style="border:1px solid #6fa570;padding:5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/icn_segregated_garbage.png" class="media-object" />
+                        <img src="/Areas/Liquid/Content/images/img/segregationImg/Liquid_Green.png" class="media-object" />
                     </div>
                     <div class="media-body">
                         <p class="media-heading" style="font-weight:600">Scanned Count</p>
@@ -460,20 +461,23 @@
                         gar_type = data[i].garbageType
 
                         /*var mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_house.png";*/
-                        var mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png";
+                        var mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste.png";
                         switch (gar_type) {
 
-                            case 0:
-                                mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_mixed_garbage.png"
-                                break;
-                            case 1:
-                                mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_segregated_garbage.png"
-                                break;
-                            case 2:
-                                mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_garbage_not_recevied.png"
-                                break;
-                            case 3:
-                                mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_not_specified.png"
+                            //case 0:
+                            //    mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_mixed_garbage.png"
+                            //    break;
+                            //case 1:
+                            //    mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_segregated_garbage.png"
+                            //    break;
+                            //case 2:
+                            //    mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_garbage_not_recevied.png"
+                            //    break;
+                            //case 3:
+                            //    mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/icn_not_specified.png"
+                            //    break;
+                            case 4:
+                                mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Green.png"
                                 break;
                         }
 

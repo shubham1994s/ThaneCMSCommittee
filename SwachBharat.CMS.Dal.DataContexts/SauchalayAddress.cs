@@ -28,5 +28,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> Tns { get; set; }
         public string SauchalayQRCode { get; set; }
         public string ReferanceId { get; set; }
+        public Nullable<System.DateTime> lastModifiedDate { get; set; }
     }
 }
