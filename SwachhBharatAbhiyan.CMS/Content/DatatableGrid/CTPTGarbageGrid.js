@@ -30,7 +30,7 @@
         "pageLength": 10,
 
         "ajax": {
-            "url": "/Datable/GetJqGridJson?rn=GarbageCommercial",
+            "url": "/Datable/GetJqGridJson?rn=GarbageCTPT",
             "type": "POST",
             "datatype": "json"
         },
@@ -43,6 +43,11 @@
             },
             {
                 "targets": [12],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [14],
                 "visible": false,
                 "searchable": false
             },
@@ -83,23 +88,22 @@
             {
                 "targets": [3],
 
-                "visible": false,
+                "visible": true,
 
                 "render": function (data, type, full, meta) {
 
 
 
-                    if (full["type1"] == "0") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #f44336;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Mixed Garbage)";
+                    if (full["type1"] == "CT") {
+                        return "CT";
                     }
 
-                    else if (full["type1"] == "6") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #186634;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Wet Waste)";
+                    else if (full["type1"] == "PT") {
+                        return "PT";
 
                     }
-                    else if (full["type1"] == "7") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #66a2d5;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Dry Waste)";
-
+                    else if (full["type1"] == "U") {
+                        return "Urinal";
                     }
 
                 },
@@ -132,25 +136,25 @@
                 }
             },
             // { "data": "ctype", "name": "ctype", "autoWidth": false },
-            {
-                "data": "ctype", "render": function (data, type, full, meta) {
-                    if (full["ctype"] == null) {
-                        return 'Residential';
-                    }
-                    else if (full["ctype"] == 'RBW') {
-                        return 'Residential Building Waste';
-                    }
-                    else if (full["ctype"] == 'RSW') {
-                        return 'Residential Slum Waste';
-                    }
-                    else if (full["ctype"] == 'CW') {
-                        return 'Commercial Waste';
-                    }
-                    else {
-                        return 'Not Available';
-                    }
-                }
-            },
+            //{
+            //    "data": "ctype", "render": function (data, type, full, meta) {
+            //        if (full["ctype"] == null) {
+            //            return 'Residential';
+            //        }
+            //        else if (full["ctype"] == 'RBW') {
+            //            return 'Residential Building Waste';
+            //        }
+            //        else if (full["ctype"] == 'RSW') {
+            //            return 'Residential Slum Waste';
+            //        }
+            //        else if (full["ctype"] == 'CW') {
+            //            return 'Commercial Waste';
+            //        }
+            //        else {
+            //            return 'Not Available';
+            //        }
+            //    }
+            //},
 
         ]
     });
