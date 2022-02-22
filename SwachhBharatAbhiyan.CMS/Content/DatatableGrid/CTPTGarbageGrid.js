@@ -94,17 +94,16 @@
 
 
 
-                    if (full["type1"] == "0") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #f44336;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Mixed Garbage)";
+                    if (full["type1"] == "CT") {
+                        return "CT";
                     }
 
-                    else if (full["type1"] == "6") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #186634;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Wet Waste)";
+                    else if (full["type1"] == "PT") {
+                        return "PT";
 
                     }
-                    else if (full["type1"] == "7") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #66a2d5;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Dry Waste)";
-
+                    else if (full["type1"] == "U") {
+                        return "Urinal";
                     }
 
                 },

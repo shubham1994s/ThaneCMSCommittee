@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    debugger;
     var UserId = $('#selectnumber').val();
 
 
@@ -89,19 +90,59 @@
 
 
 
-                    if (full["type1"] == "0") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #f44336;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Mixed Garbage)";
+                    //if (full["type1"] == "0") {
+                    //    return "<div class='circle' style='height: 20px;width: 20px;background-color: #f44336;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Mixed Garbage)";
+                    //}
+
+                    //else if (full["type1"] == "6") {
+                    //    return "<div class='circle' style='height: 20px;width: 20px;background-color: #186634;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Wet Waste)";
+
+                    //}
+                    //else if (full["type1"] == "7") {
+                    //    return "<div class='circle' style='height: 20px;width: 20px;background-color: #66a2d5;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Dry Waste)";
+
+                    //}
+                    //else if (full["type1"] == "2") {
+                    //    return "<div class='circle' style='height: 20px;width: 20px;background-color: #66a2d5;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Not Received)";
+
+                    //}
+
+                    if (full["ctype"] == "WWPF") {
+                        return "Wet Waste Processing Facility";
                     }
 
-                    else if (full["type1"] == "6") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #186634;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Wet Waste)";
+                    else if (full["ctype"] == "TS") {
+                        return "Transfer Station";
 
                     }
-                    else if (full["type1"] == "7") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #66a2d5;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Dry Waste)";
+                    else if (full["ctype"] == "DWPF") {
+                        return "Dry Waste Processing Facility";
 
                     }
+                    else if (full["ctype"] == "CDWPF") {
+                        return "C&D Waste Processing Facility";
 
+                    }
+                    else if (full["ctype"] == "HSWPF") {
+                        return "Hazardous & Sanitory Waste Processing Facility";
+
+                    }
+                    else if (full["ctype"] == "SLF") {
+                        return "Sanitory Landfill Facility";
+
+                    }
+                    else if (full["ctype"] == "LWBF") {
+                        return "Lagacy Bioremediation Facility";
+
+                    }
+                    else if (full["ctype"] == "STP") {
+                        return "Sevage Treatement Plant";
+
+                    }
+                    else if (full["ctype"] == "BWWP") {
+                        return "Bulk Waste Generation For Onsite Wet Waste Processing";
+
+                    }
                 },
             },
             ],
@@ -133,18 +174,9 @@
             },
             // { "data": "ctype", "name": "ctype", "autoWidth": false },
             {
-                "data": "ctype", "render": function (data, type, full, meta) {
-                    if (full["ctype"] == null) {
-                        return 'Residential';
-                    }
-                    else if (full["ctype"] == 'RBW') {
-                        return 'Residential Building Waste';
-                    }
-                    else if (full["ctype"] == 'RSW') {
-                        return 'Residential Slum Waste';
-                    }
-                    else if (full["ctype"] == 'CW') {
-                        return 'Commercial Waste';
+                "data": "wastetype", "render": function (data, type, full, meta) {
+                    if (full["wastetype"] != null) {
+                        return '<p> ' + (full["wastetype"])
                     }
                     else {
                         return 'Not Available';
@@ -205,6 +237,7 @@ function Search() {
     WardId = $('#WardNo').val();
     AreaId = $('#AreaId').val();
     Segid = $('#Segid').val();
+    S = $('#s').val();
     Client = " ";
     NesEvent = " ";
     var Product = "";
@@ -214,5 +247,5 @@ function Search() {
     oTable = $('#demoGrid').DataTable();
     oTable.search(value).draw();
     oTable.search("");
-    document.getElementById('USER_ID_FK').value = -1;
+    //document.getElementById('USER_ID_FK').value = -1;
 }

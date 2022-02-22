@@ -2900,6 +2900,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     batteryStatus = x.batteryStatus,
                     los = x.los,
                     ctype = x.CType,
+                    wastetype = x.WasteType,
 
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
@@ -2950,7 +2951,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     gcDate = x.gcDate,
                     // gcType = 1,
 
-                    type1 = x.garbageType.ToString(),
+                    type1 = x.TOT.ToString(),
                     Ctype = x.gcType.ToString(),
                     Address = (x.locAddresss).Replace("Unnamed Road,", ""),
                     gpBeforImage = x.gpBeforImage,
@@ -2964,6 +2965,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     gpIdpk = x.gcId,
                     batteryStatus = x.batteryStatus,
                     los = x.los,
+
                     //ctype = x.CType,
 
 
