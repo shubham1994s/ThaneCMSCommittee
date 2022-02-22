@@ -30,7 +30,7 @@
         "pageLength": 10,
 
         "ajax": {
-            "url": "/Datable/GetJqGridJson?rn=GarbageCommercial",
+            "url": "/Datable/GetJqGridJson?rn=GarbageCTPT",
             "type": "POST",
             "datatype": "json"
         },
@@ -83,7 +83,7 @@
             {
                 "targets": [3],
 
-                "visible": false,
+                "visible": true,
 
                 "render": function (data, type, full, meta) {
 
