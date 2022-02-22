@@ -2965,7 +2965,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     gpIdpk = x.gcId,
                     batteryStatus = x.batteryStatus,
                     los = x.los,
-
+                    tns=x.TNS
                     //ctype = x.CType,
 
 

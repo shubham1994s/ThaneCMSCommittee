@@ -75,7 +75,8 @@
 
     /* When the radio button is checked, add a blue background */
     .check-container input:checked ~ .checkmark {
-        background-color: #3ab59e;
+      /*  background-color: #3ab59e;*/
+        background-color: #189cdf;
     }
 
     /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -103,6 +104,15 @@
         border-radius: 50%;
         background: white;
     }
+
+    table, th, td,tr {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align:center !important;
+        font-size:14px;
+       
+    }
+    table img{width:14px;}
 </style>
 
 <link rel="shortcut icon" href="~/Content/images/img/ictsbm2.png" />
@@ -119,7 +129,7 @@
 
     <div class="container">
         <h3 style="text-align : center; font-weight : bold">@ViewBag.AppName</h3>
-        <div class="row" style="display:flex">
+        @*<div class="row" style="display:flex">
 
             <div class="col" style="width:20%;padding-right: 5px;">
 
@@ -330,7 +340,131 @@
                     </div>
                 </div>
             </div>
+        </div>*@
+
+        <div class="row w-100">
+            <div class="col-lg-4">
+                <table style="width:100%">
+                    <tr>
+                        <th>Mark</th>
+                        <th>Name</th>
+                        <th>Total Count</th>
+                    </tr>
+                    <tr>
+                        <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Total Property Scan</td>
+                        <td>@Model.HouseCollection</td>
+                    </tr>
+                    <tr>
+                        <td> <img src="/Content/images/img/segregationImg/icn_house.png"/></td>
+                        <td>Residential</td>
+                        <td>@Model.ResidentialCollection</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Building Count</td>
+                        <td>@Model.ResidentialBuildingCollection</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Slum Count</td>
+                        <td> @Model.ResidentialSlumCollection</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /> </td>
+                        <td>Commercial Count</td>
+                        <td>@Model.CommercialCollection</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Construction Demolition</td>
+                        <td> @Model.ConstructionDemolitionCount</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <table style="width:100%">
+                    <tr>
+                        <th>Mark</th>
+                        <th>Name</th>
+                        <th>Today Scan</th>
+                    </tr>
+                    <tr>
+                        <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Horticulture</td>
+                        <td>@Model.HorticultureCount</td>
+                    </tr>
+                   
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Domestic Hazardous</td>
+                        <td> @Model.DemosticHazardousCount</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Sanitary Waste</td>
+                        <td> @Model.SanitaryCount</td>
+                    </tr>
+                    <tr>
+                        <td>   <img src="../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png" /></td>
+                        <td>Liquid Count</td>
+                        <td>@Model.LiquidCollection</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../../Areas/Street/Content/images/img/segregationImg/Street_Sweep.png" /></td>
+                        <td>Street Count</td>
+                        <td>@Model.StreetCollection</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <table style="width:100%">
+                    <tr>
+                        <th>Mark</th>
+                        <th>Name</th>
+                        <th>Today Scan</th>
+                    </tr>
+                    @*<tr>
+            <td> <img src="/Content/images/img/segregationImg/icn_segregated_garbage.png" /></td>
+            <td>Segregated Count</td>
+            <td> @Model.BifurgatedCount</td>
+        </tr>
+        <tr>
+            <td> <img src="/Content/images/img/segregationImg/icn_mixed_garbage.png" /></td>
+            <td>Mixed Count</td>
+            <td> @Model.MixedCount</td>
+        </tr>*@
+                    <tr>
+                        <td> <img src="/Content/images/img/segregationImg/icn_garbage_not_recevied.png" /></td>
+                        <td>Not Received Count</td>
+                        <td> @Model.NotCollected</td>
+                    </tr>
+                    <tr>
+                        <td> <img src="/Content/images/img/segregationImg/icn_not_specified.png" /></td>
+                        <td>Not Specified Count</td>
+                        <td>@Model.NotSpecified</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Dry Waste</td>
+                        <td> @Model.DryWasteCount</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Wet Waste</td>
+                        <td> @Model.WetWasteCount</td>
+                    </tr>
+                    <tr>
+                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                        <td>Dump Yard</td>
+                        <td> @Model.WetWasteCount</td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
+
+
         <br />
         <div class="row form" style="text-align:center;display:inline-flex">
             <label class="check-container">
