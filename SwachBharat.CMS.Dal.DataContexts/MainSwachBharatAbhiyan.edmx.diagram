@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="eac0f015deaa45fa934390bc659b6ce1" Name="Diagram1">
-        <EntityTypeShape EntityType="DevSwachhBharatMainModel.AppConnection" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
@@ -27,6 +26,7 @@
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AD_USER_MST_LIQUID" Width="2.5" PointX="11.375" PointY="7.75" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AD_USER_MST_STREET" Width="2.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AppDetail" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DevSwachhBharatMainModel.AppConnection" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

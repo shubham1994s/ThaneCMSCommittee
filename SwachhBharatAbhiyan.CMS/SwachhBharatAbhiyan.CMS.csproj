@@ -397,7 +397,11 @@
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\icn_mixed_garbage.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\icn_not_specified.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\icn_segregated_garbage.png" />
+    <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquid.png" />
+    <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquidwaste.png" />
+    <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquidwaste_Green.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquidwaste_Marker.png" />
+    <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquid_Green.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\Liquid_Waste_marker.png" />
     <Content Include="Areas\Liquid\Content\images\img\segregationImg\Start-Point.png" />
     <Content Include="Areas\Liquid\Content\images\img\street_icon.png" />
@@ -953,8 +957,11 @@
     <Content Include="Areas\Street\Content\images\img\segregationImg\icn_not_specified.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\icn_segregated_garbage.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Start-Point.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Green.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweep.png" />
     <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweepper_marker.png" />
+    <Content Include="Areas\Street\Content\images\img\segregationImg\Street_Sweep_Green.png" />
     <Content Include="Areas\Street\Content\images\img\street_icon.png" />
     <Content Include="Areas\Street\Content\images\img\street_icon.svg" />
     <Content Include="Areas\Street\Content\images\iphone.png" />
@@ -1691,6 +1698,7 @@
     <Content Include="Content\DatatableGrid\CommercialDetailGrid.js" />
     <Content Include="Content\DatatableGrid\CommercialGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\Complaint.js" />
+    <Content Include="Content\DatatableGrid\CTPTGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\District.js" />
     <Content Include="Content\DatatableGrid\DumpYardDetailGrid.js" />
     <Content Include="Content\DatatableGrid\DumpYardGrid.js" />
@@ -1725,6 +1733,7 @@
     <Content Include="Content\DatatableGrid\StateGrid.js" />
     <Content Include="Content\DatatableGrid\StreetSweepGrid.js" />
     <Content Include="Content\DatatableGrid\SWMDetailsGrid.js" />
+    <Content Include="Content\DatatableGrid\SWMGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\TalukaGrid.js" />
     <Content Include="Content\DatatableGrid\VehicleTypeGrid.js" />
     <Content Include="Content\DatatableGrid\WardNumberGrid.js" />
@@ -1811,6 +1820,10 @@
     <Content Include="Content\images\img\marker24.png" />
     <Content Include="Content\images\img\sba.png" />
     <Content Include="Content\images\img\segregationImg\CMS_AppLink.png" />
+    <Content Include="Content\images\img\segregationImg\commercial.png" />
+    <Content Include="Content\images\img\segregationImg\commercial_dry.png" />
+    <Content Include="Content\images\img\segregationImg\commercial_mixed.png" />
+    <Content Include="Content\images\img\segregationImg\commercial_wet.png" />
     <Content Include="Content\images\img\segregationImg\Dumpyard_marker.png" />
     <Content Include="Content\images\img\segregationImg\Dump_Yard_marker.png" />
     <Content Include="Content\images\img\segregationImg\End_Point.png" />
@@ -2483,6 +2496,10 @@
     <Content Include="Images\Nagpur\UserProfile\110520181902_091c.jpg" />
     <Content Include="Images\Nagpur\UserProfile\112720182919_9309.jpg" />
     <Content Include="Images\QRcode.png" />
+    <Content Include="Images\Thane\CommercialQRCode\021620220854_7128.jpg" />
+    <Content Include="Images\Thane\CommercialQRCode\021620220925_d277.jpg" />
+    <Content Include="Images\Thane\CommercialQRCode\021620220941_f02e.jpg" />
+    <Content Include="Images\Thane\CommercialQRCode\021620223334_f686.jpg" />
     <Content Include="Images\Thane\Content\icons\Blue_bottom.png" />
     <Content Include="Images\Thane\Content\icons\Blue_top.png" />
     <Content Include="Images\Thane\Content\icons\Green_bottom.png" />
@@ -2490,6 +2507,17 @@
     <Content Include="Images\Thane\Content\icons\round.png" />
     <Content Include="Images\Thane\Content\icons\slogan.png" />
     <Content Include="Images\Thane\Content\icons\Top_image.png" />
+    <Content Include="Images\Thane\CTPTQRCode\021720222602_47ee.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021720223628_c5c8.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021720223806_cb0d.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021720223858_9f03.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021720223946_47d3.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021720224743_0c26.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021820221546_f745.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021820223522_2276.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021820223544_ac1a.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021820224304_f4d8.jpg" />
+    <Content Include="Images\Thane\CTPTQRCode\021820225724_d595.jpg" />
     <Content Include="Images\Thane\HouseQRCode\013120223518_e76c.jpg" />
     <Content Include="Images\Thane\HouseQRCode\013120223849_4b0b.jpg" />
     <Content Include="Images\Thane\HouseQRCode\013120223918_4655.jpg" />
@@ -2512,6 +2540,19 @@
     <Content Include="Images\Thane\HouseQRCode\021420221902_a814.jpg" />
     <Content Include="Images\Thane\HouseQRCode\021420222030_02eb.jpg" />
     <Content Include="Images\Thane\HouseQRCode\021420225340_329d.jpg" />
+    <Content Include="Images\Thane\LiquidWasteQRCode\021420224153_d36d.jpg" />
+    <Content Include="Images\Thane\StreetSweepingQRCode\021420221719_49e2.jpg" />
+    <Content Include="Images\Thane\StreetSweepingQRCode\021420225322_554e.jpg" />
+    <Content Include="Images\Thane\StreetSweepingQRCode\021420225341_5f19.jpg" />
+    <Content Include="Images\Thane\StreetSweepingQRCode\021420225353_e74c.jpg" />
+    <Content Include="Images\Thane\SWMQRCode\021820221412_7597.jpg" />
+    <Content Include="Images\Thane\SWMQRCode\021820221827_0ccb.jpg" />
+    <Content Include="Images\Thane\SWMQRCode\021820221852_82d1.jpg" />
+    <Content Include="Images\Thane\SWMQRCode\021820222023_600a.jpg" />
+    <Content Include="Images\Thane\SWMQRCode\021820222032_d062.jpg" />
+    <Content Include="Images\Thane\SWMQRCode\021820223704_adfd.jpg" />
+    <Content Include="Images\Thane\SWMQRCode\021820224355_dac8.jpg" />
+    <Content Include="Images\Thane\SWMQRCode\021820224649_aeb3.jpg" />
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -3026,6 +3067,9 @@
     <Content Include="Views\SWMMaster\MenuReportIndex.cshtml" />
     <Content Include="Views\SWMMaster\ReportIndex.cshtml" />
     <Content Include="Views\Location\AllCommercialLocation.cshtml" />
+    <Content Include="Views\GarbageCollection\MenuSWMGarbageIndex.cshtml" />
+    <Content Include="Views\GarbageCollection\SWMGarbageIndex.cshtml" />
+    <Content Include="Views\Location\AllCTPTLocation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

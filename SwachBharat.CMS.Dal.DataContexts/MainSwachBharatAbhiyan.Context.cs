@@ -27,7 +27,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AppConnection> AppConnections { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
@@ -46,6 +45,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<AD_USER_MST_LIQUID> AD_USER_MST_LIQUID { get; set; }
         public virtual DbSet<AD_USER_MST_STREET> AD_USER_MST_STREET { get; set; }
         public virtual DbSet<AppDetail> AppDetails { get; set; }
+        public virtual DbSet<AppConnection> AppConnections { get; set; }
     
         public virtual int SP_Admin_table()
         {

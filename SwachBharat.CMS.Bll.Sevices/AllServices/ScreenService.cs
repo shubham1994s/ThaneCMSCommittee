@@ -1331,6 +1331,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.isActive = data.isActive;
                             model.bloodGroup = data.bloodGroup;
                             model.gcTarget = data.gcTarget;
+                            model.ComgcTarget = data.ComgcTarget;
                             model.userDesignation = data.userDesignation;
                             //model.EmployeeType = Emptype;
                             db.SaveChanges();
@@ -2893,7 +2894,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.houseAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -2935,7 +2936,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.houseAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -3056,7 +3057,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -3098,7 +3099,7 @@ namespace SwachBharat.CMS.Bll.Services
                         // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
-                        garbageType = x.garbageType,
+                        garbageType = x.gcType,
 
                     });
                 }
@@ -3112,6 +3113,50 @@ namespace SwachBharat.CMS.Bll.Services
 
                 }
             }
+            return houseLocation;
+
+        }
+
+        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype)
+        {
+
+            List<SBALCTPTLocationMapView> houseLocation = new List<SBALCTPTLocationMapView>();
+            var zoneId = 0;
+            DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
+            if (Emptype == null)
+            {
+                var data = db.SP_CTPTOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo,  FilterType).ToList();
+                foreach (var x in data)
+                {
+
+                    DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
+                    //string gcTime = x.gcDate.ToString();
+                    houseLocation.Add(new SBALCTPTLocationMapView()
+                    {
+                       
+                        CTPTId = Convert.ToInt32(x.Id),
+                        ReferanceId = x.ReferanceId,
+                        CTPTAddress = checkNull(x.Address).Replace("Unnamed Road, ", ""),
+                        gcDate = dt.ToString("dd-MM-yyyy"),
+                        gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock
+                                                         //string gcTime = x.gcDate.ToString(),
+                                                         //gcTime = x.gcDate.ToString("hh:mm tt"),
+                                                         //myDateTime.ToString("HH:mm:ss")
+                        ///date = Convert.ToDateTime(x.datt).ToString("dd/MM/yyyy"),
+                        //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
+                        CTPTLat = x.Lat,
+                        CTPTLong = x.Long,
+                        // address = x.commercialAddress,
+                        //vehcileNumber = x.v,
+                        //userMobile = x.mobile,
+                        //garbageType = x.garbageType
+                    });
+                }
+               
+
+                houseLocation = houseLocation.ToList();
+            }
+          
             return houseLocation;
 
         }
@@ -3362,6 +3407,55 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
+
+        public DashBoardVM GetCTPTOnMapDetails()
+
+        {
+            DashBoardVM model = new DashBoardVM();
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+
+                    DevSwachhBharatMainEntities dbm = new DevSwachhBharatMainEntities();
+                    //var appdetails = dbm.AppDetails.Where(c => c.AppId == AppID).FirstOrDefault();
+                    //List<ComplaintVM> obj = new List<ComplaintVM>();
+                    //if (AppID == 1)
+                    //{
+                    //    string json = new WebClient().DownloadString(appdetails.Grampanchayat_Pro + "/api/Get/Complaint?appId=1");
+                    //    obj = JsonConvert.DeserializeObject<List<ComplaintVM>>(json).Where(c => Convert.ToDateTime(c.createdDate2).ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")).ToList();
+                    //}
+
+
+                    var data = db.SP_CTPTScanify_Count().First();
+
+                    //var date = DateTime.Today;
+                    //var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();
+                    if (data != null)
+                    {
+
+                        model.TotalCTPTCount = data.TotalCTPTCount;
+                        model.TotalCTPTScanCount = data.TotalCTPTScanCount;
+                        model.TotalPTCount = data.TotalPTCount;
+                        model.TotalCTCount = data.TotalCTCount;
+                        model.TotalUCount = data.TotalUCount;
+
+                        return model;
+                    }
+
+                    // String.Format("{0:0.00}", 123.4567); 
+
+                    else
+                    {
+                        return model;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return model;
+            }
+        }
 
         public DashBoardVM GetLiquidWasteDetails()
         {
@@ -3742,6 +3836,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.bloodGroup = data.bloodGroup;
             model.isActive = data.isActive;
             model.gcTarget = data.gcTarget;
+            model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = Emptype;
             model.userDesignation = data.userDesignation;
             return model;
@@ -3839,7 +3934,11 @@ namespace SwachBharat.CMS.Bll.Services
             model.Tns = data.Tns;
             model.SauchalayQRCode = data.SauchalayQRCode;
             model.ReferanceId = data.ReferanceId;
-            // model.userId = data.userId;
+            model.lastModifiedDateEntry = DateTime.Now;
+            model.AreaId = data.AreaId;
+            model.ZoneId = data.ZoneId;
+            model.WardNo = data.WardNo;
+            //model.userId = data.userId;
             return model;
         }
         #endregion
@@ -4307,6 +4406,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.isActive = data.isActive;
             model.bloodGroup = data.bloodGroup;
             model.gcTarget = data.gcTarget;
+            model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = data.EmployeeType;
             model.userDesignation = data.userDesignation;
             return model;
@@ -4487,6 +4587,11 @@ namespace SwachBharat.CMS.Bll.Services
             model.Tns = data.Tns;
             model.SauchalayQRCode = data.SauchalayQRCode;
             model.ReferanceId = data.ReferanceId;
+            model.lastModifiedDateEntry = data.lastModifiedDateEntry;
+            model.AreaId = data.AreaId;
+            model.ZoneId = data.ZoneId;
+            model.WardNo = data.WardNo;
+            model.userId = data.userId;
             return model;
         }
         #endregion
@@ -5207,6 +5312,12 @@ namespace SwachBharat.CMS.Bll.Services
                         model.TotalCommercialUpdated = data.TotalCommercial;
                         model.TotalCommercialUpdated_CurrentDay = data.TotalCommercialUpdated_CurrentDay;
 
+                        model.TotalSWMUpdated = data.TotalSWM;
+                        model.TotalSWMUpdated_CurrentDay = data.TotalSWMUpdated_CurrentDay;
+
+                        model.TotalCTPTUpdated = data.TotalCTPT;
+                        model.TotalCTPTUpdated_CurrentDay = data.TotalCTPTUpdated_CurrentDay;
+
 
 
 
@@ -5829,6 +5940,9 @@ namespace SwachBharat.CMS.Bll.Services
                             data.ReferanceId = refer;
                         }
                     }
+                    data.WardList = LoadListWardNo(Convert.ToInt32(data.ZoneId)); //ListWardNo();
+                    data.AreaList = LoadListArea(Convert.ToInt32(data.WardNo)); //ListArea();
+                    data.ZoneList = ListZone();
                     return data;
                 }
                 else if (teamId == -2)
@@ -5862,6 +5976,18 @@ namespace SwachBharat.CMS.Bll.Services
                         data.SauchalayQRCode = "/Images/QRcode.png";
 
                     }
+                    var WWWW = new List<SelectListItem>();
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward / Prabhag", Value = "0" };
+                    WWWW.Insert(0, itemAdd);
+
+                    var ARRR = new List<SelectListItem>();
+                    SelectListItem itemAddARR = new SelectListItem() { Text = "Select Area", Value = "0" };
+                    ARRR.Insert(0, itemAddARR);
+
+
+                    data.WardList = WWWW;
+                    data.AreaList = ARRR;
+                    data.ZoneList = ListZone();
                     return data;
                 }
                 else
@@ -5881,20 +6007,27 @@ namespace SwachBharat.CMS.Bll.Services
                         string refer = "CTPTSBA" + (number + 1);
                         data.ReferanceId = refer;
                         data.SauchalayQRCode = "/Images/QRcode.png";
+                        data.WardList = ListWardNo();
+                        data.AreaList = ListArea();
+                        data.ZoneList = ListZone();
                     }
                     else
                     {
                         var sId = id.Split('_').Last();
                         string appName = (appDetails.AppName).Split(' ').First();
                         string name = Convert.ToInt32(sId) < 9 ? appName + '_' + 'S' + '_' + ("0" + (Convert.ToInt32(sId) + 1)) : appName + '_' + 'S' + '_' + ((Convert.ToInt32(sId)) + (1));
-                        data.Id = Convert.ToInt32(sId);
+                        data.SauchalayID = name;
+                        data.Id = 0;
                         data.Image = "/Images/add_image_square.png";
                         data.QrImage = "/Images/add_image_square.png";
-                        data.Id = 0;
+                        
                         int number = 1000;
                         string refer = "CTPTSBA" + (number + (Convert.ToInt32(sId)) + 1);
                         data.ReferanceId = refer;
                         data.SauchalayQRCode = "/Images/QRcode.png";
+                        data.WardList = ListWardNo();
+                        data.AreaList = ListArea();
+                        data.ZoneList = ListZone();
                     }
                     return data;
                 }
@@ -5931,11 +6064,15 @@ namespace SwachBharat.CMS.Bll.Services
                             model.Lat = data.Lat;
                             model.Long = data.Long;
                             model.Mobile = data.Mobile;
-                            model.CreatedDate = DateTime.Now;
+                            //model.CreatedDate = DateTime.Now;
                             model.Tot = data.Tot;
                             model.Tns = data.Tns;
                             model.SauchalayQRCode = data.SauchalayQRCode;
                             model.ReferanceId = data.ReferanceId;
+                            model.lastModifiedDateEntry = DateTime.Now;
+                            model.AreaId = data.AreaId;
+                            model.ZoneId = data.ZoneId;
+                            model.WardNo = data.WardNo;
                             //model.userId = data.userId;
                             db.SaveChanges();
                         }

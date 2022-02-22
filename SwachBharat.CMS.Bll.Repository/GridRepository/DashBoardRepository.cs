@@ -647,6 +647,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -733,6 +734,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
                         
@@ -812,6 +814,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -889,6 +892,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -967,6 +971,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1044,6 +1049,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1122,6 +1128,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1200,6 +1207,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1278,6 +1286,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -1355,6 +1364,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         isActive = x.isActive.ToString(),
                         bloodGroup = x.bloodGroup,
                         gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
 
@@ -2857,6 +2867,133 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
+        public IEnumerable<SBAGrabageCollectionGridRow> GetSWMGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4)
+        {
+            DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
+            var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
+            string ThumbnaiUrlAPI = appDetails.baseImageUrl + appDetails.basePath + appDetails.Collection + "/";
+
+            using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                var data = db.SP_SWMGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
+                {
+                    Id = x.gcId,
+                    userId = x.userId,
+                    houseId = x.SWMId,
+                    UserName = x.swmName,
+                    HouseNumber = x.swmName,
+                    gcDate = x.gcDate,
+                    // gcType = 1,
+
+                    type1 = x.garbageType.ToString(),
+                    Ctype = x.gcType.ToString(),
+                    Address = (x.locAddresss).Replace("Unnamed Road,", ""),
+                    gpBeforImage = x.gpBeforImage,
+                    gpAfterImage = x.gpAfterImage,
+                    VehicleNumber = x.vehicleNumber,
+                    Note = x.note,
+                    ReferanceId = x.ReferanceId,
+                    Employee = x.userName,
+                    attandDate = Convert.ToDateTime(x.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
+                    gpIdfk = x.gcId,
+                    gpIdpk = x.gcId,
+                    batteryStatus = x.batteryStatus,
+                    los = x.los,
+                    ctype = x.CType,
+
+
+                }).OrderByDescending(c => c.gcDate).ToList().ToList();
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    //var model = data.Where(c => c.UserName.Contains(SearchString) || c.HouseNumber.Contains(SearchString) || c.VehicleNumber.Contains(SearchString) || c.ReferanceId.Contains(SearchString) || c.Address.Contains(SearchString) || c.Employee.Contains(SearchString) || c.attandDate.Contains(SearchString) || c.Note.Contains(SearchString)
+
+                    //   || c.UserName.ToLower().Contains(SearchString) || c.HouseNumber.ToLower().Contains(SearchString) || c.VehicleNumber.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString) || c.Address.ToLower().Contains(SearchString) || c.Employee.ToLower().Contains(SearchString) || c.attandDate.ToLower().Contains(SearchString) || c.Note.ToLower().Contains(SearchString)
+
+                    //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
+                    //   ).ToList();
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                       ).ToList();
+
+
+                    data = model.OrderByDescending(c => c.gcDate).ToList().ToList();
+                }
+
+                if (userId > 0)
+                {
+                    var model = data.Where(c => c.userId == userId).ToList();
+
+                    data = model.ToList();
+                }
+                return data.OrderByDescending(c => c.gcDate).ToList().ToList(); ;
+
+            }
+        }
+        public IEnumerable<SBAGrabageCollectionGridRow> GetCTPTGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4)
+        {
+            DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
+            var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
+            string ThumbnaiUrlAPI = appDetails.baseImageUrl + appDetails.basePath + appDetails.Collection + "/";
+
+            using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+
+
+
+                var data = db.SP_CommercialGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
+                {
+                    Id = x.gcId,
+                    userId = x.userId,
+                    houseId = x.houseId,
+                    UserName = x.commercialOwner,
+                    HouseNumber = x.commercialOwner,
+                    gcDate = x.gcDate,
+                    // gcType = 1,
+
+                    type1 = x.garbageType.ToString(),
+                    Ctype = x.gcType.ToString(),
+                    Address = (x.locAddresss).Replace("Unnamed Road,", ""),
+                    gpBeforImage = x.gpBeforImage,
+                    gpAfterImage = x.gpAfterImage,
+                    VehicleNumber = x.vehicleNumber,
+                    Note = x.note,
+                    ReferanceId = x.ReferanceId,
+                    Employee = x.userName,
+                    attandDate = Convert.ToDateTime(x.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
+                    gpIdfk = x.gcId,
+                    gpIdpk = x.gcId,
+                    batteryStatus = x.batteryStatus,
+                    los = x.los,
+                    ctype = x.CType,
+
+
+                }).OrderByDescending(c => c.gcDate).ToList().ToList();
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    //var model = data.Where(c => c.UserName.Contains(SearchString) || c.HouseNumber.Contains(SearchString) || c.VehicleNumber.Contains(SearchString) || c.ReferanceId.Contains(SearchString) || c.Address.Contains(SearchString) || c.Employee.Contains(SearchString) || c.attandDate.Contains(SearchString) || c.Note.Contains(SearchString)
+
+                    //   || c.UserName.ToLower().Contains(SearchString) || c.HouseNumber.ToLower().Contains(SearchString) || c.VehicleNumber.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString) || c.Address.ToLower().Contains(SearchString) || c.Employee.ToLower().Contains(SearchString) || c.attandDate.ToLower().Contains(SearchString) || c.Note.ToLower().Contains(SearchString)
+
+                    //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
+                    //   ).ToList();
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                       ).ToList();
+
+
+                    data = model.OrderByDescending(c => c.gcDate).ToList().ToList();
+                }
+
+                if (userId > 0)
+                {
+                    var model = data.Where(c => c.userId == userId).ToList();
+
+                    data = model.ToList();
+                }
+                return data.OrderByDescending(c => c.gcDate).ToList().ToList(); ;
+
+            }
+        }
 
         public IEnumerable<SBAAttendenceGrid> GetAttendeceData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string Emptype)
         {
@@ -4131,6 +4268,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     BuildingCount=x.BuildingCount,
                     SlumCount=x.SlumCount,
                     CommercialCount=x.CommercialCount,
+                    SWMCount = x.SWMCount,
+                    CTPTCount = x.CTPTCount,
                     //StartDate = (string.IsNullOrEmpty(x.StartDate.ToString()) ? "" : Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy")) + " " + x.StartTime,
                     //StartDate = (x.StartDate == null ? "" : Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy")) + " " + x.StartTime,
                     // EndDate = (x.EndDate == null ? " " : Convert.ToDateTime(x.EndDate).ToString("dd/MM/yyyy")) + " " +  x.EndTime,
@@ -4625,7 +4764,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 var data = db.SP_EmployeeHouseCollectionType().ToList();
-                //var data = "1";
+               // var data = "1";
 
                 foreach (var x in data)
                 {
@@ -4638,6 +4777,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         Bifur = x.Bifur,
                         NotCollected = x.NotCollected,
                         gcTarget = x.gcTarget,
+                        gcTarget2 = x.ComgcTarget,
                         NotSpecidfied = x.NotSpecidfied,
                         userId = x.userId,
                         userName = x.userName,
@@ -4647,15 +4787,22 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         DryWaste = x.DryWaste,
                         DomesticHazardous = x.DHW,
                         Sanitary = x.SW,
-                        Commercial = x.CW
+                        CommercialWasteNotSpecified = x.CWNS,
+                        CommercialMixed = x.CWM,
+                        CommercialNotReceived = x.CWNR,
+                        CommercialWet = x.CWW,
+                        CommercialDry = x.CWD
+
+                        //Static
 
                         //inTime = "10.30 AM",
                         //Count = 10,
-                        //ToDate = "2022-02-16",
+                        //ToDate = "2022-02-21",
                         //MixedCount = 10,
                         //Bifur = 10,
                         //NotCollected = 0,
                         //gcTarget = "90",
+                        //gcTarget2 = "50",
                         //NotSpecidfied = 0,
                         //userId = 1,
                         //userName = "XYZ",
@@ -4665,7 +4812,11 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         //DryWaste = 10,
                         //DomesticHazardous = 10,
                         //Sanitary = 10,
-                        //Commercial = 1
+                        //CommercialWasteNotSpecified = 2,
+                        //CommercialMixed = 2,
+                        //CommercialNotReceived = 2,
+                        //CommercialWet = 1,
+                        //CommercialDry = 4
 
 
                     });

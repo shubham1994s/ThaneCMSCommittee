@@ -237,6 +237,20 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
+        public ActionResult AllCTPTLocation()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                ViewBag.lat = SessionHandler.Current.Latitude;
+                ViewBag.lang = SessionHandler.Current.Logitude;
+                ViewBag.AppName = SessionHandler.Current.AppName;
+
+                var details = childRepository.GetCTPTOnMapDetails();
+                return View(details);
+            }
+            else
+                return Redirect("/Account/Login");
+        }
         //Code Optimization (code)
         //public ActionResult LocatioList(string date, string userid)
         //{
@@ -436,6 +450,70 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 List<SBALCommercialLocationMapView> obj = new List<SBALCommercialLocationMapView>();
                 obj = childRepository.GetAllCommercialLocation(date, user, area, ward, SearchString, GarbageType, FilterType, null, ctype);
+                // return Json(obj);
+                //if (houseid != null && houseid != "null" && houseid != "-1")
+                //{
+                //    obj = obj.Where(c => c.houseId == Convert.ToInt32(houseid)).ToList();
+                //}
+                // return Json(obj, JsonRequestBehavior.AllowGet);
+
+                var jsonResult = Json(obj, JsonRequestBehavior.AllowGet);
+                jsonResult.MaxJsonLength = int.MaxValue;
+                return jsonResult;
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        public ActionResult CTPTLocationList(string date, string userid, string areaId, string wardNo, string SearchString,  string filterType, string ctype)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int user;
+                int area;
+                int ward;
+                int FilterType;
+                if (userid == "-1" || userid == "0" || userid == "null")
+                {
+                    user = 0;
+                }
+                else
+                {
+                    user = Convert.ToInt32(userid);
+                }
+
+                if (areaId == "-1" || areaId == "0" || areaId == "null")
+                {
+                    area = 0;
+                }
+                else
+                {
+                    area = Convert.ToInt32(areaId);
+                }
+                if (wardNo == "-1" || wardNo == "0" || wardNo == "null")
+                {
+                    ward = 0;
+                }
+                else
+                {
+                    ward = Convert.ToInt32(wardNo);
+                }
+               
+                if (filterType == "-1" || filterType == "0" || filterType == "null")
+                {
+                    FilterType = 0;
+                }
+                else
+                {
+                    FilterType = Convert.ToInt32(filterType);
+                }
+                if (date == null || date == "")
+                {
+                    date = DateTime.Now.ToShortDateString();
+                }
+
+                List<SBALCTPTLocationMapView> obj = new List<SBALCTPTLocationMapView>();
+                obj = childRepository.GetAllCTPTLocation(date, user, area, ward, SearchString,  FilterType, null);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
