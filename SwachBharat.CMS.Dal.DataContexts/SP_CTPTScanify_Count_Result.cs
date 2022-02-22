@@ -18,5 +18,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> TotalPTCount { get; set; }
         public Nullable<int> TotalCTCount { get; set; }
         public Nullable<int> TotalUCount { get; set; }
+        public Nullable<int> TodayScanCTPTCount { get; set; }
     }
 }

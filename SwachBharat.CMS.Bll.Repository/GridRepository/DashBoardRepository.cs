@@ -2900,6 +2900,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     batteryStatus = x.batteryStatus,
                     los = x.los,
                     ctype = x.CType,
+                    wastetype = x.WasteType,
 
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
@@ -2940,17 +2941,17 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                var data = db.SP_CommercialGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_CTPTGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
-                    houseId = x.houseId,
-                    UserName = x.commercialOwner,
-                    HouseNumber = x.commercialOwner,
+                    houseId = x.CTPTId,
+                    UserName = x.Name,
+                    HouseNumber = x.Name,
                     gcDate = x.gcDate,
                     // gcType = 1,
 
-                    type1 = x.garbageType.ToString(),
+                    type1 = x.TOT.ToString(),
                     Ctype = x.gcType.ToString(),
                     Address = (x.locAddresss).Replace("Unnamed Road,", ""),
                     gpBeforImage = x.gpBeforImage,
@@ -2964,7 +2965,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     gpIdpk = x.gcId,
                     batteryStatus = x.batteryStatus,
                     los = x.los,
-                    ctype = x.CType,
+
+                    //ctype = x.CType,
 
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
