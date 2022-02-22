@@ -3436,6 +3436,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                         model.TotalCTPTCount = data.TotalCTPTCount;
                         model.TotalCTPTScanCount = data.TotalCTPTScanCount;
+                        model.TodayCTPTScanCount = data.TodayScanCTPTCount;
                         model.TotalPTCount = data.TotalPTCount;
                         model.TotalCTCount = data.TotalCTCount;
                         model.TotalUCount = data.TotalUCount;
