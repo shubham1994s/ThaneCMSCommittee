@@ -205,6 +205,7 @@ function Search() {
     WardId = $('#WardNo').val();
     AreaId = $('#AreaId').val();
     Segid = $('#Segid').val();
+    S = $('#s').val();
     Client = " ";
     NesEvent = " ";
     var Product = "";
