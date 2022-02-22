@@ -46,11 +46,7 @@
                 "visible": false,
                 "searchable": false
             },
-            {
-                "targets": [14],
-                "visible": false,
-                "searchable": false
-            },
+          
             {
                 "targets": [8],
                 "visible": true,
@@ -95,11 +91,11 @@
 
 
                     if (full["type1"] == "CT") {
-                        return "CT";
+                        return "Community Toilet";
                     }
 
                     else if (full["type1"] == "PT") {
-                        return "PT";
+                        return "Public Toilet";
 
                     }
                     else if (full["type1"] == "U") {
@@ -124,37 +120,8 @@
             { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": false },
             { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
             { "data": "gcDate", "name": "gcDate", "autoWidth": false },
-            //  { "data": "los", "name": "los", "autoWidth": false },
-            {
-                "data": "los", "render": function (data, type, full, meta) {
-                    if (full["los"] != null) {
-                        return '<p> ' + (full["los"])
-                    }
-                    else {
-                        return 'Not Available';
-                    }
-                }
-            },
-            // { "data": "ctype", "name": "ctype", "autoWidth": false },
-            //{
-            //    "data": "ctype", "render": function (data, type, full, meta) {
-            //        if (full["ctype"] == null) {
-            //            return 'Residential';
-            //        }
-            //        else if (full["ctype"] == 'RBW') {
-            //            return 'Residential Building Waste';
-            //        }
-            //        else if (full["ctype"] == 'RSW') {
-            //            return 'Residential Slum Waste';
-            //        }
-            //        else if (full["ctype"] == 'CW') {
-            //            return 'Commercial Waste';
-            //        }
-            //        else {
-            //            return 'Not Available';
-            //        }
-            //    }
-            //},
+            { "data": "tns", "name": "tns", "autoWidth": false },
+            
 
         ]
     });

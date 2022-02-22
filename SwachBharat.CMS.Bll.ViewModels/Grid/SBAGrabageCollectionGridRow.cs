@@ -50,6 +50,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
 
         public string los { get; set; }
 
+        public Nullable<int> tns { get; set; }
+
         public string ctype { get; set; }
       
 
