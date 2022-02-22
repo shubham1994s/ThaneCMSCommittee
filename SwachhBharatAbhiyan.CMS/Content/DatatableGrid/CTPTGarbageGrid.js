@@ -47,6 +47,11 @@
                 "searchable": false
             },
             {
+                "targets": [14],
+                "visible": false,
+                "searchable": false
+            },
+            {
                 "targets": [8],
                 "visible": true,
 
@@ -132,25 +137,25 @@
                 }
             },
             // { "data": "ctype", "name": "ctype", "autoWidth": false },
-            {
-                "data": "ctype", "render": function (data, type, full, meta) {
-                    if (full["ctype"] == null) {
-                        return 'Residential';
-                    }
-                    else if (full["ctype"] == 'RBW') {
-                        return 'Residential Building Waste';
-                    }
-                    else if (full["ctype"] == 'RSW') {
-                        return 'Residential Slum Waste';
-                    }
-                    else if (full["ctype"] == 'CW') {
-                        return 'Commercial Waste';
-                    }
-                    else {
-                        return 'Not Available';
-                    }
-                }
-            },
+            //{
+            //    "data": "ctype", "render": function (data, type, full, meta) {
+            //        if (full["ctype"] == null) {
+            //            return 'Residential';
+            //        }
+            //        else if (full["ctype"] == 'RBW') {
+            //            return 'Residential Building Waste';
+            //        }
+            //        else if (full["ctype"] == 'RSW') {
+            //            return 'Residential Slum Waste';
+            //        }
+            //        else if (full["ctype"] == 'CW') {
+            //            return 'Commercial Waste';
+            //        }
+            //        else {
+            //            return 'Not Available';
+            //        }
+            //    }
+            //},
 
         ]
     });
