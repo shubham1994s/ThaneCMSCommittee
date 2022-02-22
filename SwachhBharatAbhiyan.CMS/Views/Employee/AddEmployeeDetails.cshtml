@@ -422,7 +422,7 @@
             $('#userName').focus();
             return false;
         }
-        if ($.trim($("#userLoginId").val()).length < 5) {
+        if ($.trim($("#userLoginId").val()).length < 4) {
             //$("#err_name").html("नाव आवश्यक आहे / Name is Required").delay(1500).show().fadeOut('slow');
             $("#err_login").html("Login Id length should be greater than three characters").delay(1500).show().fadeOut('slow');
             $('#userName').focus();
@@ -440,7 +440,7 @@
             $('#userPassword').focus();
             return false;
         }
-        if ($.trim($("#userPassword").val()).length < 5) {
+        if ($.trim($("#userPassword").val()).length < 4) {
             //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
             $("#err_pw").html("Password length should be greater than three characters").delay(1500).show().fadeOut('slow');
             $('#userPassword').focus();
