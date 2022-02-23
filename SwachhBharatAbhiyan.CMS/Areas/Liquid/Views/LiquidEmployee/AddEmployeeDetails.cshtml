@@ -389,14 +389,36 @@
             $('#userLoginId').focus();
             return false;
         }
-
+        if (!(/^\S*$/.test($.trim($("#userLoginId").val())))) {
+            //$("#err_login").html("लॉगिन आईडी आवश्यक आहे / Login ID is Required").delay(1500).show().fadeOut('slow');
+            $("#err_login").html("Login Id is not Valid").delay(1500).show().fadeOut('slow');
+            $('#userLoginId').focus();
+            return false;
+        }
+        if ($.trim($("#userLoginId").val()).length < 4) {
+            //$("#err_login").html("लॉगिन आईडी आवश्यक आहे / Login ID is Required").delay(1500).show().fadeOut('slow');
+            $("#err_login").html("Login Id length should be greater than three characters").delay(1500).show().fadeOut('slow');
+            $('#userLoginId').focus();
+            return false;
+        }
         if ($.trim($("#userPassword").val()) == '') {
             //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
             $("#err_pw").html("Password is Required").delay(1500).show().fadeOut('slow');
             $('#userPassword').focus();
             return false;
         }
-
+        if (!(/^\S*$/.test($.trim($("#userPassword").val())))) {
+            //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
+            $("#err_pw").html("Password is not Valid").delay(1500).show().fadeOut('slow');
+            $('#userPassword').focus();
+            return false;
+        }
+        if ($.trim($("#userPassword").val()).length < 4) {
+            //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
+            $("#err_pw").html("Password length should be greater than three characters").delay(1500).show().fadeOut('slow');
+            $('#userPassword').focus();
+            return false;
+        }
 
 
         return true;
