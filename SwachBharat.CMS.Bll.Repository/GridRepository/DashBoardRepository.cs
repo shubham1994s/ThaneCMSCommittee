@@ -712,7 +712,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         data = model.ToList();
 
                     }
-                    return data.OrderByDescending(c => c.userId);
+                    return data.OrderByDescending(c => c.userId );
 
                 }
             }
