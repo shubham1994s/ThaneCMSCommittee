@@ -3152,9 +3152,35 @@ namespace SwachBharat.CMS.Bll.Services
                         //garbageType = x.garbageType
                     });
                 }
-               
 
-                houseLocation = houseLocation.ToList();
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    // var abc = db.HouseMasters.ToList();
+                    var model = houseLocation.Where(c => c.ReferanceId.Contains(SearchString) || c.ReferanceId.Contains(SearchString)
+                                                         || c.ReferanceId.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString)).ToList();
+
+                    //var model = houseLocation.Where(c => ((string.IsNullOrEmpty(c.ReferanceId) ? " " : c.houseOwnerName) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseOwnerName) ? " " : c.houseOwnerName) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseOwnerMobile) ? " " : c.houseOwnerMobile) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseAddress) ? " " : c.houseAddress)).ToLower().Contains(SearchString)).ToList();
+
+                    houseLocation = model.ToList();
+
+
+                    //var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
+                    //                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
+                    //                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
+                    //                        (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                    //                        (string.IsNullOrEmpty(c.houseNo) ? " " : c.houseNo) + " " +
+                    //                        (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
+                    //                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                    //                        (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
+                    //                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+                }
+                    houseLocation = houseLocation.ToList();
+                
             }
           
             return houseLocation;
