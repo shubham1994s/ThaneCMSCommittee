@@ -26,6 +26,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<decimal> Totaldistance { get; set; }
         public Nullable<int> Totaldumpyard { get; set; }
         public Nullable<int> TotalCommercial { get; set; }
+        public Nullable<int> TotalConstructionAndDemolation { get; set; }
+        public Nullable<int> TotalHorticulture { get; set; }
+        public Nullable<int> TotalSLWM { get; set; }
+        public Nullable<int> TotalCTPT { get; set; }
         public Nullable<long> rownum { get; set; }
     }
 }

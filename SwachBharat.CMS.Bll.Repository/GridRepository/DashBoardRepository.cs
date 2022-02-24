@@ -3620,11 +3620,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             EndTime = x.EndTime,
                             Totalhousecollection = (x.Totalhousecollection).ToString(),
                             Totaldumpyard = (x.Totaldumpyard).ToString(),
-                            Totalcommercial=(x.TotalCommercial).ToString(),
+                            Totalcommercial = (x.TotalCommercial).ToString(),
                             Totaldistance = string.Format("{0:0.0}", (x.Totaldistance)).ToString(),
                             InBatteryStatus = x.InBatteryStatus,
                             OutBatteryStatus = x.OutBatteryStatus,
-                            daDateTIme = (displayTime + " " + time)
+                            daDateTIme = (displayTime + " " + time),
+                            TotalConstructionAndDemolation = x.TotalConstructionAndDemolation.ToString(),
+                            TotalHorticulture = x.TotalHorticulture.ToString(),
+                            TotalSLWM = x.TotalSLWM.ToString(),
+                            TotalCTPT = x.TotalCTPT.ToString(),
 
                             //daDateTIme = Convert.ToDateTime(x.Startdate + x.StartTime).ToString("dd/MM/yyyy hh:mm tt"),
                             //DateTime startDate = Convert.ToDateTime(a + " " + Time1);
@@ -3632,7 +3636,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             //String.Format("{0:0.00}", 123.4567);
                             //IdelTime = workHours
                             //AnsDate = Convert.ToDateTime(x.AnsDate).ToString("dd/MM/yyyy hh:mm tt"),
-                        });
+                        }) ;
                     }
 
 

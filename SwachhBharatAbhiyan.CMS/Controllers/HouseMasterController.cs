@@ -151,11 +151,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     var ii = bb.Split('/');
                     if(ii.Length==6)
                     { 
-                    house.houseQRCode = ii[6];
+                    house.houseQRCode = ii[ii.Length - 1];
                     }
                     if (ii.Length > 6)
                     {
-                        house.houseQRCode = ii[6];
+                        house.houseQRCode = ii[ii.Length - 1];
                     }
                 }
                 HouseDetailsVM houseDetails = childRepository.SaveHouse(house);

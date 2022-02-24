@@ -26,5 +26,9 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string InBatteryStatus { get; set; }
 
         public string OutBatteryStatus { get; set; }
+        public string TotalConstructionAndDemolation { get; set; }
+        public string TotalHorticulture { get; set; }
+        public string TotalSLWM { get; set; }
+        public string TotalCTPT { get; set; }
     }
 }
