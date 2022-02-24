@@ -15,9 +15,9 @@
             $('#selectnumber').html(district);
         }
     });
-   
+
     $("#demoGrid").DataTable({
-     
+
         "sDom": "ltipr",
         //"order": [[10, "desc"]],
         "processing": true, // for show progress bar
@@ -33,47 +33,51 @@
         },
 
         "columnDefs":
-        [{
-            "targets": [0],
-            "visible": false,
-            "searchable": false
-        },
-        {
-            "targets": [11],
-            "visible": false,
-            "searchable": false
-        },
-        {
-            "targets": [12],
-            "visible": false,
-            "searchable": false
-        },
-      ],
+            [{
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [15],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [16],
+                "visible": false,
+                "searchable": false
+            },
+            ],
         "columns": [
-              { "data": "daID", "name": "daID", "autoWidth": true },
-              { "data": "UserName", "name": "userName", "autoWidth": true },
-              { "data": "daDate", "name": "daDate", "autoWidth": true },
-              { "data": "StartTime", "name": "startTime", "autoWidth": true },
-              { "data": "DaEndDate", "name": "daEndDate", "autoWidth": true },
-              { "data": "EndTime", "name": "endTime", "autoWidth": true },
+            { "data": "daID", "name": "daID", "autoWidth": true },
+            { "data": "UserName", "name": "userName", "autoWidth": true },
+            { "data": "daDate", "name": "daDate", "autoWidth": true },
+            { "data": "StartTime", "name": "startTime", "autoWidth": true },
+            { "data": "DaEndDate", "name": "daEndDate", "autoWidth": true },
+            { "data": "EndTime", "name": "endTime", "autoWidth": true },
             { "data": "Totalhousecollection", "name": "Totalhousecollection", "autoWidth": true },
             { "data": "Totalcommercial", "name": "Totalcommercial", "autoWidth": true },
-              { "data": "Totaldumpyard", "name": "totaldumpyard", "autoWidth": true },
-              { "data": "InBatteryStatus", "name": "InBatteryStatus", "autoWidth": true },
+            { "data": "TotalConstructionAndDemolation", "name": "TotalConstructionAndDemolation", "autoWidth": true },
+            { "data": "TotalHorticulture", "name": "TotalHorticulture", "autoWidth": true },
+            { "data": "TotalSLWM", "name": "TotalSLWM", "autoWidth": true },
+            { "data": "TotalCTPT", "name": "TotalCTPT", "autoWidth": true },
+            { "data": "Totaldumpyard", "name": "totaldumpyard", "autoWidth": true },
+            { "data": "InBatteryStatus", "name": "InBatteryStatus", "autoWidth": true },
             { "data": "OutBatteryStatus", "name": "OutBatteryStatus", "autoWidth": true },
-          
-              { "data": "Totaldistance", "name": "Totaldistance", "autoWidth": true },       
-              { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
+
+            { "data": "Totaldistance", "name": "Totaldistance", "autoWidth": true },
+            { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
 
         ],
         //Sort: "locId DESC"
     });
 
- 
+
 });
 
 function test(id) {
-    window.location.href = "/Attendence/Location?daId="+id;
+    window.location.href = "/Attendence/Location?daId=" + id;
 };
 
 function user_route(id) {
@@ -84,10 +88,10 @@ function map(a) {
 
 };
 //////////////////////////////////////////////////////////////////////////////
-function showInventoriesGrid() { 
-    Search(); 
+function showInventoriesGrid() {
+    Search();
 }
- 
+
 function Search() {
     var txt_fdate, txt_tdate, Client, UserId;
     var name = [];

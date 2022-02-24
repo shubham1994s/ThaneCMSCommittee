@@ -63,7 +63,7 @@
                             @Html.DropDownListFor(model => model.bloodGroup, RlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
 
 
-                            <span class="text-danger" id="err_pw"></span>
+                            <span class="text-danger" id="err_bg"></span>
                             <span class="help-block with-errors"></span>
                         </div>
 
@@ -132,7 +132,7 @@
                             @Html.Label("Login Number ")
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.TextBoxFor(model => model.imoNo, new { @readonly = "readonly", @class = "form-control", style = "font-family:Arial, FontAwesome;color:#999;" })
-                            <span class="text-danger" id="err_pw"></span>
+                            <span class="text-danger" id="err_ln"></span>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                         </div>
@@ -250,14 +250,38 @@
 
             if ($.trim($("#qrEmpLoginId").val()) == '') {
                 //$("#err_login").html("लॉगिन आईडी आवश्यक आहे / Login ID is Required").delay(1500).show().fadeOut('slow');
-                $("#err_login").html("ogin ID is Required").delay(1500).show().fadeOut('slow');
+                $("#err_login").html("Login ID is Required").delay(1500).show().fadeOut('slow');
                 $('#qrEmpLoginId').focus();
                 return false;
             }
-
+            
+            if (!(/^\S*$/.test($.trim($("#qrEmpLoginId").val())))) {
+                //$("#err_login").html("लॉगिन आईडी आवश्यक आहे / Login ID is Required").delay(1500).show().fadeOut('slow');
+                $("#err_login").html("Login Id is not Valid").delay(1500).show().fadeOut('slow');
+                $('#qrEmpLoginId').focus();
+                return false;
+            }
+            if ($.trim($("#qrEmpLoginId").val()).length < 4) {
+                //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
+                $("#err_login").html("Login Id length should be greater than three characters").delay(1500).show().fadeOut('slow');
+                $('#qrEmpLoginId').focus();
+                return false;
+            }
             if ($.trim($("#qrEmpPassword").val()) == '') {
                 //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
                 $("#err_pw").html("Password is Required").delay(1500).show().fadeOut('slow');
+                $('#qrEmpPassword').focus();
+                return false;
+            }
+            if (!(/^\S*$/.test($.trim($("#qrEmpPassword").val())))) {
+                //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
+                $("#err_pw").html("Password is not Valid").delay(1500).show().fadeOut('slow');
+                $('#qrEmpPassword').focus();
+                return false;
+            }
+            if ($.trim($("#qrEmpPassword").val()).length < 4) {
+                //$("#err_pw").html("पासवर्डआवश्यक आहे / Password is Required").delay(1500).show().fadeOut('slow');
+                $("#err_pw").html("Password length should be greater than three characters").delay(1500).show().fadeOut('slow');
                 $('#qrEmpPassword').focus();
                 return false;
             }

@@ -20,6 +20,7 @@
         top: -1px;
         right: 5px;
     }
+
     .capitalize {
         text-transform: capitalize;
     }
@@ -189,7 +190,7 @@
                     </div>
 
 
-                    
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -276,12 +277,12 @@
                     <div class="form-group">
                         @*@Html.Label("झोन / Zone")*@
                         @Html.Label("Zone")
-                        <input type="text" class="form-control" id="txtZName" required / >
+                        <input type="text" class="form-control" id="txtZName" required />
                         <span class="text-danger" id="err_zname_pop"></span>
 
                         <br /><br />
                         <button type="button" class="btn pull-right" data-dismiss="modal">Close</button>
-                        <input type="button" style="margin-right:5px" class="btn pull-right" id="btnZone" value="Save" / >
+                        <input type="button" style="margin-right:5px" class="btn pull-right" id="btnZone" value="Save" />
                     </div>
 
                 </div>
@@ -318,7 +319,7 @@
                         <select id="selectward" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select><span class="text-danger" id="err_pop_ward"></span><br /><br />
                         @*@Html.Label("नाव / Name")*@
                         @Html.Label("Name")
-                        <input type="text" class="form-control" id="txtName" required / >
+                        <input type="text" class="form-control" id="txtName" required />
                         <span class="text-danger" id="err_name_pop"></span>
                         <br /><br />
                         @*@Html.Label("नाव मराठी / Name Marathi")*@
@@ -329,7 +330,7 @@
 
                         <br /><br />
                         <button type="button" class="btn pull-right" data-dismiss="modal">Close</button>
-                        <input type="button" style="margin-right:5px" class="btn pull-right" id="btnPost" value="Save" / >
+                        <input type="button" style="margin-right:5px" class="btn pull-right" id="btnPost" value="Save" />
 
 
 
@@ -372,11 +373,11 @@
 
                         @*@Html.Label("वार्ड क्रमांक / Ward Number")*@
                         @Html.Label("Ward Number")
-                        <input type="text" class="form-control" id="txtWard" / >
+                        <input type="text" class="form-control" id="txtWard" />
                         <span class="text-danger" id="err_ward_pop"></span>
                         <br /><br />
                         <button type="button" class="btn pull-right" data-dismiss="modal">Close</button>
-                        <input type="button" style="margin-right:5px" class="btn pull-right" id="btnWard" value="Save" / >
+                        <input type="button" style="margin-right:5px" class="btn pull-right" id="btnWard" value="Save" />
                     </div>
 
                 </div>
@@ -417,218 +418,218 @@
 <script type="text/javascript">
     $(document).ready(function () {
         debugger;
-                $('form').each(function () { this.reset() });
-       
-
-                $('#ZoneId').change(function () {
-                    var selectedText = $(this).find("option:selected").text();
-                    var selectedValue = $(this).val();
-
-                    $.ajax({
-                        type: "post",
-                        url: "/HouseMaster/LoadWardNoList?",
-                        data: { ZoneId: $('#ZoneId').val() },
-                        datatype: "json",
-                        traditional: true,
-                        success: function (data) {
-                            var ward;
-                            for (var i = 0; i < data.length; i++) {
-                                ward = ward + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                            }
-
-                            $('#WardNo').html(ward);
-                           
-                            $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
-                        }
-                    });
-
-                });
-
-                $('#WardNo').change(function () {
-                    var selectedText = $(this).find("option:selected").text();
-                    var selectedValue = $(this).val();
-
-                    $.ajax({
-                        type: "post",
-                        url: "/HouseMaster/LoadAreaList?",
-                        data: { WardNo: $('#WardNo').val() },
-                        datatype: "json",
-                        traditional: true,
-                        success: function (data) {
-                            var area;
-                            for (var i = 0; i < data.length; i++) {
-                                area = area + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                            }
-                            $('#AreaId').html(area);
-                        }
-                    });
-
-                });
-
-                //$('#houseAddress').change(function () {
-                //    var Addr = $("#houseAddress").val();
-                //    numberOfLineBreaks = (Addr.match(/\n/g) || []).length;
-
-                //    var regex = /<br\s*[\/]?>/gi;
-                //    Addr = Addr.replace(regex, "\n");
-                //    Addr = Addr.replace(/[^ -~]/g, '');
-                //    Addr = Addr.replace('<br>', '');
-                //    Addr = Addr.replace('</br>', '');
-                //    Addr = Addr.replace('&nbsp;', '');
-                //    Addr = Addr.replace('\"', '');
-                //    Addr = Addr.replace('\r\n', '');
-                //    Addr = Addr.replace('\n', '');
-                //    Addr = Addr.replace('\r', '');
-                //    Addr = Addr.replace(/^(\r\n)|(\n)/, '');
-                //    numberOfLineBreaks = (Addr.match(/\n/g) || []).length;
-                //    if ($.trim(Addr) != '') {
-                //        $.ajax({
-                //            url: "/HouseMaster/Address?location=" + Addr,
-                //            method: "POST",
-                //            datatype: "json",
-                //            success: function (data) {
-                //                // alert(data);
-                //                var obj = jQuery.parseJSON(data);
-                //                var lat = obj.CLIENT_LAT;
-                //                var log = obj.CLIENT_LOG;
-                //                //alert(obj.CLIENT_LAT + ' ' + obj.CLIENT_LOG);
-                //                document.getElementById('houseLat').value = obj.houseLat;
-                //                document.getElementById('houseLong').value = obj.houseLong;
-                //            },
-                //            error: function () {
-                //                document.getElementById('houseAddress').value = "";
-                //                swal('Please provide proper address with city.');
-                //            }
-                //        });
-                //    } else {
-                //        swal('Please type address to get latitude and longitude.');
-                //    }
-
-                //});
-
-                var id = $('#houseId').val();
-                if (id > 0) {
-                    $('#Download1').show();
-                    $('#send_link').show();
-                    // by nazim 02Jan2018
-                    //$("#houseOwner").change(function () {
-                    //    //alert("Sdsadsa");
-                    //    //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
+        $('form').each(function () { this.reset() });
 
 
-                    //    $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
-                    //    $("input #filesUpload").attr("src", "/Images/QRcode.png");
-                    //    $('#Download1').hide();
-                    //    $('#send_link').hide();
-                    //    return false;
-                    //});
+        $('#ZoneId').change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
 
-                    //$("#houseNumber").change(function () {
-                    //    //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
-                    //    $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
-                    //    $("input #filesUpload").attr("src", "/Images/QRcode.png");
-                    //    $('#Download1').hide();
-                    //    $('#send_link').hide();
-                    //    return false;
-                    //});
-                    $('#buttonName').text("Save Changes");
-                    //$('.title_change').text("घर तपशील सादर बदला / Edit House Details");
-                    $('.title_change').text("Edit House Details");
-                } else {
-                    $('#buttonName').text("Save");
-                    //$('.title_change').text("घर तपशील सादर करा / Add House Details");
-                    $('.title_change').text("Add House Details");
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/LoadWardNoList?",
+                data: { ZoneId: $('#ZoneId').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var ward;
+                    for (var i = 0; i < data.length; i++) {
+                        ward = ward + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+
+                    $('#WardNo').html(ward);
+
+                    $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
                 }
             });
 
+        });
+
+        $('#WardNo').change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/LoadAreaList?",
+                data: { WardNo: $('#WardNo').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var area;
+                    for (var i = 0; i < data.length; i++) {
+                        area = area + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    $('#AreaId').html(area);
+                }
+            });
+
+        });
+
+        //$('#houseAddress').change(function () {
+        //    var Addr = $("#houseAddress").val();
+        //    numberOfLineBreaks = (Addr.match(/\n/g) || []).length;
+
+        //    var regex = /<br\s*[\/]?>/gi;
+        //    Addr = Addr.replace(regex, "\n");
+        //    Addr = Addr.replace(/[^ -~]/g, '');
+        //    Addr = Addr.replace('<br>', '');
+        //    Addr = Addr.replace('</br>', '');
+        //    Addr = Addr.replace('&nbsp;', '');
+        //    Addr = Addr.replace('\"', '');
+        //    Addr = Addr.replace('\r\n', '');
+        //    Addr = Addr.replace('\n', '');
+        //    Addr = Addr.replace('\r', '');
+        //    Addr = Addr.replace(/^(\r\n)|(\n)/, '');
+        //    numberOfLineBreaks = (Addr.match(/\n/g) || []).length;
+        //    if ($.trim(Addr) != '') {
+        //        $.ajax({
+        //            url: "/HouseMaster/Address?location=" + Addr,
+        //            method: "POST",
+        //            datatype: "json",
+        //            success: function (data) {
+        //                // alert(data);
+        //                var obj = jQuery.parseJSON(data);
+        //                var lat = obj.CLIENT_LAT;
+        //                var log = obj.CLIENT_LOG;
+        //                //alert(obj.CLIENT_LAT + ' ' + obj.CLIENT_LOG);
+        //                document.getElementById('houseLat').value = obj.houseLat;
+        //                document.getElementById('houseLong').value = obj.houseLong;
+        //            },
+        //            error: function () {
+        //                document.getElementById('houseAddress').value = "";
+        //                swal('Please provide proper address with city.');
+        //            }
+        //        });
+        //    } else {
+        //        swal('Please type address to get latitude and longitude.');
+        //    }
+
+        //});
+
+        var id = $('#houseId').val();
+        if (id > 0) {
+            $('#Download1').show();
+            $('#send_link').show();
+            // by nazim 02Jan2018
+            //$("#houseOwner").change(function () {
+            //    //alert("Sdsadsa");
+            //    //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
+
+
+            //    $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
+            //    $("input #filesUpload").attr("src", "/Images/QRcode.png");
+            //    $('#Download1').hide();
+            //    $('#send_link').hide();
+            //    return false;
+            //});
+
+            //$("#houseNumber").change(function () {
+            //    //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
+            //    $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
+            //    $("input #filesUpload").attr("src", "/Images/QRcode.png");
+            //    $('#Download1').hide();
+            //    $('#send_link').hide();
+            //    return false;
+            //});
+            $('#buttonName').text("Save Changes");
+            //$('.title_change').text("घर तपशील सादर बदला / Edit House Details");
+            $('.title_change').text("Edit House Details");
+        } else {
+            $('#buttonName').text("Save");
+            //$('.title_change').text("घर तपशील सादर करा / Add House Details");
+            $('.title_change').text("Add House Details");
+        }
+    });
+
 </script>
 <script>
-            function PopZone(cel) {
+    function PopZone(cel) {
 
-                $('#zoneModal').modal('toggle');
-                //window.location.href = "MainMaster/AddAreaDetails";
-                //   $('#searchResults').load('/HouseMaster/AreaMaster');
+        $('#zoneModal').modal('toggle');
+        //window.location.href = "MainMaster/AddAreaDetails";
+        //   $('#searchResults').load('/HouseMaster/AreaMaster');
 
-            }
-            function PopArea(cel) {
+    }
+    function PopArea(cel) {
 
-                $('#myModal').modal('toggle');
-                //window.location.href = "MainMaster/AddAreaDetails";
-             //   $('#searchResults').load('/HouseMaster/AreaMaster');
+        $('#myModal').modal('toggle');
+        //window.location.href = "MainMaster/AddAreaDetails";
+        //   $('#searchResults').load('/HouseMaster/AreaMaster');
 
-            }
+    }
 
 
-            function PopWard(cel) {
+    function PopWard(cel) {
 
-                $('#wardModal').modal('toggle');
-                //window.location.href = "MainMaster/AddAreaDetails";
-                //   $('#searchResults').load('/HouseMaster/AreaMaster');
+        $('#wardModal').modal('toggle');
+        //window.location.href = "MainMaster/AddAreaDetails";
+        //   $('#searchResults').load('/HouseMaster/AreaMaster');
 
-            }
+    }
 
 </script>
 <script type="text/javascript">
 
 
-            $(document).ready(function () {
-                $.ajax({
-                    type: "post",
-                    url: "/HouseMaster/ZoneList",
-                    data: { stateId: $('#ddlState').val() },
-                    datatype: "json",
-                    traditional: true,
-                    success: function (data) {
-                        var district;
-                        for (var i = 0; i < data.length; i++) {
-                            district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                        }
-                        //district = district + '</select>';
-                        $('#selectzone').html(district);
-                    }
-                });
+    $(document).ready(function () {
+        $.ajax({
+            type: "post",
+            url: "/HouseMaster/ZoneList",
+            data: { stateId: $('#ddlState').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                var district;
+                for (var i = 0; i < data.length; i++) {
+                    district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                }
+                //district = district + '</select>';
+                $('#selectzone').html(district);
+            }
+        });
 
-                $.ajax({
-                    type: "post",
-                    url: "/HouseMaster/WardList",
-                    data: { stateId: $('#ddlState').val() },
-                    datatype: "json",
-                    traditional: true,
-                    success: function (data) {
-                        var district;
-                        for (var i = 0; i < data.length; i++) {
-                            district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                        }
-                        //district = district + '</select>';
-                        $('#selectward').html(district);
-                    }
-                });
+        $.ajax({
+            type: "post",
+            url: "/HouseMaster/WardList",
+            data: { stateId: $('#ddlState').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                var district;
+                for (var i = 0; i < data.length; i++) {
+                    district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                }
+                //district = district + '</select>';
+                $('#selectward').html(district);
+            }
+        });
 
-                $('#trash_badge').click(function () {
-                    $("#FileUpload_Preview").html("");
-                });
-                $('#filesUpload').change(function () {
-                    $("#FileUpload_Preview").html("");
-                    $("#FileUpload_Preview").show();
-                    $("#FileUpload_Preview").append("<img />");
+        $('#trash_badge').click(function () {
+            $("#FileUpload_Preview").html("");
+        });
+        $('#filesUpload').change(function () {
+            $("#FileUpload_Preview").html("");
+            $("#FileUpload_Preview").show();
+            $("#FileUpload_Preview").append("<img />");
 
-                    if (typeof (FileReader) != "undefined") {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            //-----------------------------------
-                            // Preview image
-                            //-----------------------------------
-                            $("#FileUpload_Preview img").attr("src", e.target.result);
-    debugger
-                            $("#FileUpload_Preview img").attr("width", "auto");
-                            $("#FileUpload_Preview img").attr("height", "100%");
-                        }
-                        reader.readAsDataURL($(this)[0].files[0]);
-                    }
-                });
+            if (typeof (FileReader) != "undefined") {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    //-----------------------------------
+                    // Preview image
+                    //-----------------------------------
+                    $("#FileUpload_Preview img").attr("src", e.target.result);
+                    debugger
+                    $("#FileUpload_Preview img").attr("width", "auto");
+                    $("#FileUpload_Preview img").attr("height", "100%");
+                }
+                reader.readAsDataURL($(this)[0].files[0]);
+            }
+        });
 
 
-            });
+    });
 
 
 
@@ -637,83 +638,81 @@
 <script type="text/javascript">
     $(document).ready(function () {
         debugger;
-            zone();
-            ward();
-            area();
+        zone();
+        ward();
+        area();
 
-            function zone() {
+        function zone() {
 
-                var UserId = $('#ZoneId').val();
-                $.ajax({
-                    type: "post",
-                    url: "/HouseMaster/ZoneList",
-                    data: { userId: UserId },
-                    datatype: "json",
-                    traditional: true,
-                    success: function (data) {
-                        var district;
-                        for (var i = 0; i < data.length; i++) {
+            var UserId = $('#ZoneId').val();
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/ZoneList",
+                data: { userId: UserId },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district;
+                    for (var i = 0; i < data.length; i++) {
 
-                            if (data[i].Value == $('#ZoneId').val()) {
-                                district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
-                            } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+                        if (data[i].Value == $('#ZoneId').val()) {
+                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
 
-                        }
-                        //district = district + '</select>';
-                        $('#ZoneId').html(district);
                     }
-                });
+                    //district = district + '</select>';
+                    $('#ZoneId').html(district);
+                }
+            });
 
-            }
+        }
 
-            function area()
-            {
+        function area() {
 
-                var UserId = $('#AreaId').val();
-                $.ajax({
-                    type: "post",
-                    url: "/HouseMaster/AreaList",
-                    data: { userId: UserId },
-                    datatype: "json",
-                    traditional: true,
-                    success: function (data) {
-                        var district;
-                        for (var i = 0; i < data.length; i++) {
+            var UserId = $('#AreaId').val();
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/AreaList",
+                data: { userId: UserId },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district;
+                    for (var i = 0; i < data.length; i++) {
 
-                            if (data[i].Value == $('#AreaId').val()) {
-                                district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
-                            } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+                        if (data[i].Value == $('#AreaId').val()) {
+                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
 
-                        }
-                        //district = district + '</select>';
-                        $('#AreaId').html(district);
                     }
-                });
+                    //district = district + '</select>';
+                    $('#AreaId').html(district);
+                }
+            });
 
-            }
+        }
 
-            function ward()
-            {
+        function ward() {
 
-                var UserId = $('#WardNo').val();
-                    $.ajax({
-                        type: "post",
-                        url: "/HouseMaster/WardList",
-                        data: { userId: UserId },
-                        datatype: "json",
-                        traditional: true,
-                        success: function (data) {
-                            var district;
-                            for (var i = 0; i < data.length; i++) {
+            var UserId = $('#WardNo').val();
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/WardList",
+                data: { userId: UserId },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district;
+                    for (var i = 0; i < data.length; i++) {
 
-                                if (data[i].Value == $('#WardNo').val()) {
-                                    district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
-                                } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
-                            }
-                            //district = district + '</select>';
-                            $('#WardNo').html(district);
-                        }
-                    });
+                        if (data[i].Value == $('#WardNo').val()) {
+                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+                    }
+                    //district = district + '</select>';
+                    $('#WardNo').html(district);
+                }
+            });
 
 
         }
@@ -737,194 +736,53 @@
         //            } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
         //        }
         //        $('#AreaId').html(district);
-              
+
         //    }
         //});
 
-            $("#houseMobile").keypress(function (e) {
-                //if the letter is not digit then display error and don't type anything
-                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44) {
-                    //display error message
-                    //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                    $("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                    return false;
-                }
-            });
-            $("#houseOwner").keypress(function (e) {
-                //if the letter is not digit then display error and don't type anything
-                if (!(e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44)) {
-                    //display error message
-                    //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
-                    $("#err_name").html("Alphabates only").show().delay(1500).show().fadeOut('slow');
-                    return false;
-                }
-            });
-            //alert("aa");
-            //$("#QRCOdeGenrate").click(function () {
-            //    //alert($("#n").val());
-            //    //alert($("#ReferanceId").val());
-            //    var a = $('#n').val();
-            //    if (a != null && a != "") {
-            //        var src_qr = 'https://api.qrserver.com/v1/create-qr-code/?data=' + a + '.jpg'
-            //        $("#FileUpload_Preview img").attr("src", src_qr);
-            //        $("input #filesUpload").attr("src", src_qr);
-
-            //        //$("#map").prepend('<img  title="Map Image" src="https://api.qrserver.com/v1/create-qr-code/?data=' + a + '&size=150x150" style="width:180px; height:130px" />');
-            //    }
-            //});
-        });
-
-        $("#btnSubmit").click(function () {
-
-            var bool = validation();
-
-            if (bool == false) {
-                return false;
-            } else {
-             //   alert($("#FileUpload_Preview img").attr('src'));
-                $("#houseOwner").change(function () {
-              //      alert("Sdsadsa");
-                    //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
-                    $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
-                    $("input #filesUpload").attr("src", "/Images/QRcode.png");
-                    $('#Download1').hide();
-                    $('#send_link').hide();
-                    return false;
-                });
-
-                $("#houseNumber").change(function () {
-                    //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
-                    $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
-                    $("input #filesUpload").attr("src", "/Images/QRcode.png");
-                    $('#Download1').hide();
-                    return false;
-                });
-                if ($("#FileUpload_Preview img").attr('src') == "/Images/QRcode.png") {
-                    //$("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").delay(1500).show().fadeOut('slow');
-                    $("#err_generate").html("Generate Scaniffy code then save").delay(1500).show().fadeOut('slow');
-                    return false;
-                }
-                if ($(".add-image").attr("src") == "/Images/default_not_upload.png") {
-                    //$("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").delay(1500).show().fadeOut('slow');
-                    $("#err_generate").html("Generate Scaniffy code then save").delay(1500).show().fadeOut('slow');
-                    return false;
-                }
-                return true;
-            }
-            //if ($('#QRCOdeGenrate').css('display') === 'none') {
-            //    //alert($(".add-image").attr("src"));"Save Changes"
-            //    if ($(".add-image").attr("src") == "/Images/QRcode.png" && $('#buttonName').text() == "Save") {
-            //        $('#QRCOdeGenrate').css("display", "block");
-            //        $("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").show();
-            //        $('#btnSubmit').prop('disabled', true);
-            //        return false;
-            //    }
-            //    else if ($(".add-image").attr("src") == "/Images/default_not_upload.png"
-            //        && $('#buttonName').text() == "Save Changes") {
-            //        $('#QRCOdeGenrate').css("display", "block");
-            //        $("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").show();
-            //        $('#btnSubmit').prop('disabled', true);
-            //        return false;
-            //    } else {
-
-        });
-        function validation() {
-
-            if ($.trim($("#houseCategory").val()) == "-1" || $.trim($("#houseCategory").val()) == "0") {
-                $("#err_cat").html("Category is Required").delay(1500).show().fadeOut('slow');
-                $('#houseCategory').focus();
+        $("#houseMobile").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44) {
+                //display error message
+                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                $("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
                 return false;
             }
-
-            //if ($.trim($("#houseOwner").val()) == '') {
-            //    $("#err_name").html("नाव आवश्यक आहे / Name is Required").delay(1500).show().fadeOut('slow');
-            //    $('#houseOwner').focus();
-            //    return false;
-            //}
-            //if ($.trim($("#houseOwnerMar").val()) == '') {
-            //    $("#err_name_mar").html("नाव मराठी आवश्यक आहे / Name Marathi is Required").delay(1500).show().fadeOut('slow');
-            //    $('#houseOwnerMar').focus();
-            //    return false;
-            //}
-            //if ($.trim($("#houseNumber").val()) == '') {
-            //    $("#err_house_num").html("घर क्रमांक आवश्यक आहे / House number is Required").delay(1500).show().fadeOut('slow');
-            //    $('#houseNumber').focus();
-            //    return false;
-            //}
-            //if ($.trim($("#ZoneId").val()) == "-1" || $.trim($("#ZoneId").val()) == "0") {
-            //    $("#err_zone").html("झोन आवश्यक आहे / Zone is Required").delay(1500).show().fadeOut('slow');
-            //    $('#ZoneId').focus();
-            //    return false;
-            //}
-
-            //if ($.trim($("#WardNo").val()) == "-1" || $.trim($("#WardNo").val()) == "0") {
-            //    $("#err_ward").html("वार्ड क्रमांक आवश्यक आहे / Ward No. is Required").delay(1500).show().fadeOut('slow');
-            //    $('#WardNo').focus();
-            //    return false;
-            //}
-            //if ($.trim($("#AreaId").val()) == "-1" || $.trim($("#AreaId").val()) == "0") {
-            //    $("#err_area").html("क्षेत्र आवश्यक आहे / Area is Required").delay(1500).show().fadeOut('slow');
-            //    $('#AreaId').focus();
-            //    return false;
-            //}
-            //if ($.trim($("#houseMobile").val()) == '') {
-            //    $("#err_phone").html("मोबाइल नंबर आवश्यक आहे / Mobile Number is Required").delay(1500).show().fadeOut('slow');
-            //    $('#houseMobile').focus();
-            //    return false;
-            //}
-
-            //if ($.trim($("#houseAddress").val()) == '') {
-            //    $("#err_address").html("पत्ता आवश्यक आहे / Address is Required").delay(1500).show().fadeOut('slow');
-            //    $('#houseAddress').focus();
-            //    return false;
-            //}
-
-            // by nazim
-
-
-            //$("#AreaId").val() == $("#selectArea").val()
-            // $("#AreaId").val() == $("#selectArea").val()
-            //alert($("#AreaId").val());
-            //alert($("#selectWard").val());
-            //$('#AreaId').val($("#AreaId").val());
-            //$('#WardNo').val($("#selectWard").val());
-
-            return true;
-
-        }
-        $("#QRCOdeGenrate").click(function () {
-            debugger;
-            var bool = validation();
-
-            if (bool == true) {
-                //$("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").delay(1).show().fadeOut('slow');
-                $("#err_generate").html("Generate Scaniffy code then save").delay(1).show().fadeOut('slow');
-                $('#prog_bar').css("display", "block");
-                $("#prog_bar").delay(3000).show().fadeOut('slow');
-
-                //genrate QRCode image
-                var a = $('#n').val();
-                if (a != null && a != "") {
-                   /* var src_qr = 'https://api.qrserver.com/v1/create-qr-code/?data=' + a*/
-                    var src_qr = 'https://chart.googleapis.com/chart?cht=qr&chl=' + a + "&chs=160x160&chld=L|0"
-                   
-
-                    $("#FileUpload_Preview img").attr("src", src_qr);
-                    $("input #filesUpload").attr("src", src_qr);
-                 // alert($("#FileUpload_Preview img").attr('src'));
-
-
-                    // cpde end
-                    $('#btnSubmit').prop('disabled', false);
-                    //   $('#QRCOdeGenrate').css('display', 'none');
-                    $('#Download1').show();
-                    $('#send_link').show();
-                    move();
-                }
+        });
+        $("#houseOwner").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (!(e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && e.which != 44)) {
+                //display error message
+                //$("#err_phone").html("केवल अंक | Digits Only").show().delay(1500).show().fadeOut('slow');
+                $("#err_name").html("Alphabates only").show().delay(1500).show().fadeOut('slow');
+                return false;
             }
+        });
+        //alert("aa");
+        //$("#QRCOdeGenrate").click(function () {
+        //    //alert($("#n").val());
+        //    //alert($("#ReferanceId").val());
+        //    var a = $('#n').val();
+        //    if (a != null && a != "") {
+        //        var src_qr = 'https://api.qrserver.com/v1/create-qr-code/?data=' + a + '.jpg'
+        //        $("#FileUpload_Preview img").attr("src", src_qr);
+        //        $("input #filesUpload").attr("src", src_qr);
 
+        //        //$("#map").prepend('<img  title="Map Image" src="https://api.qrserver.com/v1/create-qr-code/?data=' + a + '&size=150x150" style="width:180px; height:130px" />');
+        //    }
+        //});
+    });
+
+    $("#btnSubmit").click(function () {
+
+        var bool = validation();
+
+        if (bool == false) {
+            return false;
+        } else {
+            //   alert($("#FileUpload_Preview img").attr('src'));
             $("#houseOwner").change(function () {
-             //   alert("Sdsadsa");
+                //      alert("Sdsadsa");
                 //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
                 $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
                 $("input #filesUpload").attr("src", "/Images/QRcode.png");
@@ -938,249 +796,390 @@
                 $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
                 $("input #filesUpload").attr("src", "/Images/QRcode.png");
                 $('#Download1').hide();
-                $('#send_link').hide();
                 return false;
             });
+            if ($("#FileUpload_Preview img").attr('src') == "/Images/QRcode.png") {
+                //$("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").delay(1500).show().fadeOut('slow');
+                $("#err_generate").html("Generate Scaniffy code then save").delay(1500).show().fadeOut('slow');
+                return false;
+            }
+            if ($(".add-image").attr("src") == "/Images/default_not_upload.png") {
+                //$("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").delay(1500).show().fadeOut('slow');
+                $("#err_generate").html("Generate Scaniffy code then save").delay(1500).show().fadeOut('slow');
+                return false;
+            }
+            return true;
+        }
+        //if ($('#QRCOdeGenrate').css('display') === 'none') {
+        //    //alert($(".add-image").attr("src"));"Save Changes"
+        //    if ($(".add-image").attr("src") == "/Images/QRcode.png" && $('#buttonName').text() == "Save") {
+        //        $('#QRCOdeGenrate').css("display", "block");
+        //        $("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").show();
+        //        $('#btnSubmit').prop('disabled', true);
+        //        return false;
+        //    }
+        //    else if ($(".add-image").attr("src") == "/Images/default_not_upload.png"
+        //        && $('#buttonName').text() == "Save Changes") {
+        //        $('#QRCOdeGenrate').css("display", "block");
+        //        $("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").show();
+        //        $('#btnSubmit').prop('disabled', true);
+        //        return false;
+        //    } else {
 
-        });
+    });
+    function validation() {
 
-        function move() {
-            var elem = document.getElementById("myBar");
-            var width = 40;
-            var id = setInterval(frame, 10);
-            function frame() {
-                if (width >= 100) {
-                    clearInterval(id);
-                } else {
-                    width++;
-                    elem.style.width = width + '%';
-                    elem.innerHTML = width * 1 + '%';
-                }
+        if ($.trim($("#houseCategory").val()) == "-1" || $.trim($("#houseCategory").val()) == "0") {
+            $("#err_cat").html("Category is Required").delay(1500).show().fadeOut('slow');
+            $('#houseCategory').focus();
+            return false;
+        }
+
+        //if ($.trim($("#houseOwner").val()) == '') {
+        //    $("#err_name").html("नाव आवश्यक आहे / Name is Required").delay(1500).show().fadeOut('slow');
+        //    $('#houseOwner').focus();
+        //    return false;
+        //}
+        //if ($.trim($("#houseOwnerMar").val()) == '') {
+        //    $("#err_name_mar").html("नाव मराठी आवश्यक आहे / Name Marathi is Required").delay(1500).show().fadeOut('slow');
+        //    $('#houseOwnerMar').focus();
+        //    return false;
+        //}
+        //if ($.trim($("#houseNumber").val()) == '') {
+        //    $("#err_house_num").html("घर क्रमांक आवश्यक आहे / House number is Required").delay(1500).show().fadeOut('slow');
+        //    $('#houseNumber').focus();
+        //    return false;
+        //}
+        //if ($.trim($("#ZoneId").val()) == "-1" || $.trim($("#ZoneId").val()) == "0") {
+        //    $("#err_zone").html("झोन आवश्यक आहे / Zone is Required").delay(1500).show().fadeOut('slow');
+        //    $('#ZoneId').focus();
+        //    return false;
+        //}
+
+        //if ($.trim($("#WardNo").val()) == "-1" || $.trim($("#WardNo").val()) == "0") {
+        //    $("#err_ward").html("वार्ड क्रमांक आवश्यक आहे / Ward No. is Required").delay(1500).show().fadeOut('slow');
+        //    $('#WardNo').focus();
+        //    return false;
+        //}
+        //if ($.trim($("#AreaId").val()) == "-1" || $.trim($("#AreaId").val()) == "0") {
+        //    $("#err_area").html("क्षेत्र आवश्यक आहे / Area is Required").delay(1500).show().fadeOut('slow');
+        //    $('#AreaId').focus();
+        //    return false;
+        //}
+        //if ($.trim($("#houseMobile").val()) == '') {
+        //    $("#err_phone").html("मोबाइल नंबर आवश्यक आहे / Mobile Number is Required").delay(1500).show().fadeOut('slow');
+        //    $('#houseMobile').focus();
+        //    return false;
+        //}
+
+        //if ($.trim($("#houseAddress").val()) == '') {
+        //    $("#err_address").html("पत्ता आवश्यक आहे / Address is Required").delay(1500).show().fadeOut('slow');
+        //    $('#houseAddress').focus();
+        //    return false;
+        //}
+
+        // by nazim
+
+
+        //$("#AreaId").val() == $("#selectArea").val()
+        // $("#AreaId").val() == $("#selectArea").val()
+        //alert($("#AreaId").val());
+        //alert($("#selectWard").val());
+        //$('#AreaId').val($("#AreaId").val());
+        //$('#WardNo').val($("#selectWard").val());
+
+        return true;
+
+    }
+    $("#QRCOdeGenrate").click(function () {
+        debugger;
+        var bool = validation();
+
+        if (bool == true) {
+            //$("#err_generate").html("स्कॅनिफाय कोड व्युत्पन्न करा नंतर सेव करा / Generate Scaniffy code then save").delay(1).show().fadeOut('slow');
+            $("#err_generate").html("Generate Scaniffy code then save").delay(1).show().fadeOut('slow');
+            $('#prog_bar').css("display", "block");
+            $("#prog_bar").delay(3000).show().fadeOut('slow');
+
+            //genrate QRCode image
+            var a = $('#n').val();
+            if (a != null && a != "") {
+                /* var src_qr = 'https://api.qrserver.com/v1/create-qr-code/?data=' + a*/
+                var src_qr = 'https://chart.googleapis.com/chart?cht=qr&chl=' + a + "&chs=160x160&chld=L|0"
+
+
+                $("#FileUpload_Preview img").attr("src", src_qr);
+                $("input #filesUpload").attr("src", src_qr);
+                // alert($("#FileUpload_Preview img").attr('src'));
+
+
+                // cpde end
+                $('#btnSubmit').prop('disabled', false);
+                //   $('#QRCOdeGenrate').css('display', 'none');
+                $('#Download1').show();
+                $('#send_link').show();
+                move();
             }
         }
 
-        $(".add_popup_clear").click(function () {
+        $("#houseOwner").change(function () {
+            //   alert("Sdsadsa");
+            //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
+            $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
+            $("input #filesUpload").attr("src", "/Images/QRcode.png");
+            $('#Download1').hide();
+            $('#send_link').hide();
+            return false;
+        });
+
+        $("#houseNumber").change(function () {
+            //$("#FileUpload_Preview img").attr('src') === "/Images/QRcode.png";
+            $("#FileUpload_Preview img").attr("src", "/Images/QRcode.png");
+            $("input #filesUpload").attr("src", "/Images/QRcode.png");
+            $('#Download1').hide();
+            $('#send_link').hide();
+            return false;
+        });
+
+    });
+
+    function move() {
+        var elem = document.getElementById("myBar");
+        var width = 40;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                elem.style.width = width + '%';
+                elem.innerHTML = width * 1 + '%';
+            }
+        }
+    }
+
+    $(".add_popup_clear").click(function () {
+        $.ajax({
+            type: "post",
+            url: "/HouseMaster/ZoneList",
+            data: { stateId: $('#ddlState').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                var district;
+                for (var i = 0; i < data.length; i++) {
+                    district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                }
+                //district = district + '</select>';
+                $('#selectzone').html(district);
+            }
+        });
+
+        $.ajax({
+            type: "post",
+            url: "/HouseMaster/WardList",
+            data: { stateId: $('#ddlState').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                var district;
+                for (var i = 0; i < data.length; i++) {
+                    district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                }
+                //district = district + '</select>';
+                $('#selectward').html(district);
+            }
+        });
+
+        $('#myModal').find('input:text').val('');
+        // $('#myModal').find('select').val();
+        $('#myModal option').prop('selected', function () {
+            return this.defaultSelected;
+        });
+
+        $('#wardModal').find('input:text').val('');
+        $('#wardModal option').prop('selected', function () {
+            return this.defaultSelected;
+        });
+
+        $('#zoneModal').find('input:text').val('');
+        // $('#wardModal').find('select').val('');
+    });
+    $("#btnPost").click(function () {
+        if ($.trim($("#selectward").val()) == "-1" || $.trim($("#selectward").val()) == "0") {
+            //$("#err_pop_ward").html("वार्ड आवश्यक आहे / Ward is Required").delay(1500).show().fadeOut('slow');
+            $("#err_pop_ward").html("Ward is Required").delay(1500).show().fadeOut('slow');
+            $('#selectward').focus();
+            return false;
+        }
+
+        if ($.trim($("#txtName").val()) == '') {
+            //$("#err_name_pop").html("नाव आवश्यक आहे / Name is Required").delay(1500).show().fadeOut('slow');
+            $("#err_name_pop").html("Name is Required").delay(1500).show().fadeOut('slow');
+            $('#txtName').focus();
+            return false;
+        }
+        if ($.trim($("#txtDesignation").val()) == '') {
+            //$("#err_name_mar_pop").html("नाव मराठी आवश्यक आहे / Name Marathi is Required").delay(1500).show().fadeOut('slow');
+            $("#err_name_mar_pop").html("Name Marathi is Required").delay(1500).show().fadeOut('slow');
+            $('#txtDesignation').focus();
+            return false;
+        }
+        var employee = new Object();
+        employee.Name = $('#txtName').val();
+        employee.NameMar = $('#txtDesignation').val();
+        employee.wardId = $('#selectward').val();
+        if (employee != null) {
             $.ajax({
-                type: "post",
-                url: "/HouseMaster/ZoneList",
-                data: { stateId: $('#ddlState').val() },
-                datatype: "json",
-                traditional: true,
-                success: function (data) {
-                    var district;
-                    for (var i = 0; i < data.length; i++) {
-                        district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                    }
-                    //district = district + '</select>';
-                    $('#selectzone').html(district);
+                type: "POST",
+                url: "/HouseMaster/AreaMaster",
+                data: JSON.stringify(employee),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var UserId = $('#AreaId').val();
+                    $.ajax({
+                        type: "post",
+                        url: "/HouseMaster/AreaList",
+                        data: { userId: UserId },
+                        datatype: "json",
+                        traditional: true,
+                        success: function (data) {
+                            var district;
+                            for (var i = 0; i < data.length; i++) {
+                                district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                            }
+                            //district = district + '</select>';
+                            $('#AreaId').html(district);
+                            $('#myModal').modal('hide');
+                        }
+                    });
+
                 }
             });
+        }
+    });
 
+    $("#btnZone").click(function () {
+
+        if ($.trim($("#txtZName").val()) == '') {
+            //$("#err_zname_pop").html(" झोन आवश्यक आहे / Zone is Required ").delay(1500).show().fadeOut('slow');
+            $("#err_zname_pop").html("Zone is Required ").delay(1500).show().fadeOut('slow');
+            $('#txtZName').focus();
+            return false;
+        }
+
+        var employee = new Object();
+        employee.name = $('#txtZName').val();
+
+        if (employee != null) {
             $.ajax({
-                type: "post",
-                url: "/HouseMaster/WardList",
-                data: { stateId: $('#ddlState').val() },
-                datatype: "json",
-                traditional: true,
-                success: function (data) {
-                    var district;
-                    for (var i = 0; i < data.length; i++) {
-                        district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                    }
-                    //district = district + '</select>';
-                    $('#selectward').html(district);
+                type: "POST",
+                url: "/HouseMaster/ZoneMaster",
+                data: JSON.stringify(employee),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var UserId = $('#ZoneId').val();
+                    $.ajax({
+                        type: "post",
+                        url: "/HouseMaster/ZoneList",
+                        data: { userId: UserId },
+                        datatype: "json",
+                        traditional: true,
+                        success: function (data) {
+                            var district;
+                            for (var i = 0; i < data.length; i++) {
+                                if (data[i].Value == $('#ZoneId').val()) {
+                                    district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                                } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+                            }
+                            //district = district + '</select>';
+                            $('#ZoneId').html(district);
+                            $('#zoneModal').modal('hide');
+                        }
+                    });
+
                 }
             });
+        }
+    });
 
-            $('#myModal').find('input:text').val('');
-            // $('#myModal').find('select').val();
-            $('#myModal option').prop('selected', function () {
-                return this.defaultSelected;
+    $("#btnWard").click(function () {
+        if ($.trim($("#selectzone").val()) == "-1" || $.trim($("#selectzone").val()) == "0") {
+            //$("#err_pop_zone").html("झोन आवश्यक आहे / Zone is Required").delay(1500).show().fadeOut('slow');
+            $("#err_pop_zone").html("Zone is Required").delay(1500).show().fadeOut('slow');
+            $('#selectzone').focus();
+            return false;
+        }
+        if ($.trim($("#txtWard").val()) == '') {
+            //$("#err_ward_pop").html(" वार्ड क्रमांक आवश्यक आहे / Ward number is Required ").delay(1500).show().fadeOut('slow');
+            $("#err_ward_pop").html("Ward number is Required ").delay(1500).show().fadeOut('slow');
+            $('#txtName').focus();
+            return false;
+        }
+
+        var employee = new Object();
+        employee.WardNo = $('#txtWard').val();
+        employee.zoneId = $('#selectzone').val();
+        if (employee != null) {
+            $.ajax({
+                type: "POST",
+                url: "/HouseMaster/WardMaster",
+                data: JSON.stringify(employee),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var UserId = $('#WardNo').val();
+                    $.ajax({
+                        type: "post",
+                        url: "/HouseMaster/WardList",
+                        data: { userId: UserId },
+                        datatype: "json",
+                        traditional: true,
+                        success: function (data) {
+                            var district;
+                            for (var i = 0; i < data.length; i++) {
+                                if (data[i].Value == $('#WardNo').val()) {
+                                    district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                                } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+                            }
+                            //district = district + '</select>';
+                            $('#WardNo').html(district);
+                            $('#wardModal').modal('hide');
+                        }
+                    });
+
+                }
             });
-
-            $('#wardModal').find('input:text').val('');
-            $('#wardModal option').prop('selected', function () {
-                return this.defaultSelected;
-            });
-
-            $('#zoneModal').find('input:text').val('');
-           // $('#wardModal').find('select').val('');
-        });
-        $("#btnPost").click(function () {
-            if ($.trim($("#selectward").val()) == "-1" || $.trim($("#selectward").val()) == "0") {
-                //$("#err_pop_ward").html("वार्ड आवश्यक आहे / Ward is Required").delay(1500).show().fadeOut('slow');
-                $("#err_pop_ward").html("Ward is Required").delay(1500).show().fadeOut('slow');
-                $('#selectward').focus();
-                return false;
-            }
-
-            if ($.trim($("#txtName").val()) == '') {
-                //$("#err_name_pop").html("नाव आवश्यक आहे / Name is Required").delay(1500).show().fadeOut('slow');
-                $("#err_name_pop").html("Name is Required").delay(1500).show().fadeOut('slow');
-                $('#txtName').focus();
-                return false;
-            }
-            if ($.trim($("#txtDesignation").val()) == '') {
-                //$("#err_name_mar_pop").html("नाव मराठी आवश्यक आहे / Name Marathi is Required").delay(1500).show().fadeOut('slow');
-                $("#err_name_mar_pop").html("Name Marathi is Required").delay(1500).show().fadeOut('slow');
-                $('#txtDesignation').focus();
-                return false;
-            }
-            var employee = new Object();
-            employee.Name = $('#txtName').val();
-            employee.NameMar = $('#txtDesignation').val();
-            employee.wardId = $('#selectward').val();
-            if (employee != null) {
-                $.ajax({
-                    type: "POST",
-                    url: "/HouseMaster/AreaMaster",
-                    data: JSON.stringify(employee),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        var UserId = $('#AreaId').val();
-                        $.ajax({
-                            type: "post",
-                            url: "/HouseMaster/AreaList",
-                            data: { userId: UserId },
-                            datatype: "json",
-                            traditional: true,
-                            success: function (data) {
-                                var district;
-                                for (var i = 0; i < data.length; i++) {
-                                    district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                                }
-                                //district = district + '</select>';
-                                $('#AreaId').html(district);
-                                $('#myModal').modal('hide');
-                            }
-                        });
-
-                    }
-                });
-            }
-        });
-
-        $("#btnZone").click(function () {
-
-            if ($.trim($("#txtZName").val()) == '') {
-                //$("#err_zname_pop").html(" झोन आवश्यक आहे / Zone is Required ").delay(1500).show().fadeOut('slow');
-                $("#err_zname_pop").html("Zone is Required ").delay(1500).show().fadeOut('slow');
-                $('#txtZName').focus();
-                return false;
-            }
-
-            var employee = new Object();
-            employee.name = $('#txtZName').val();
-
-            if (employee != null) {
-                $.ajax({
-                    type: "POST",
-                    url: "/HouseMaster/ZoneMaster",
-                    data: JSON.stringify(employee),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        var UserId = $('#ZoneId').val();
-                        $.ajax({
-                            type: "post",
-                            url: "/HouseMaster/ZoneList",
-                            data: { userId: UserId },
-                            datatype: "json",
-                            traditional: true,
-                            success: function (data) {
-                                var district;
-                                for (var i = 0; i < data.length; i++) {
-                                    if (data[i].Value == $('#ZoneId').val()) {
-                                        district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
-                                    } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
-                                }
-                                //district = district + '</select>';
-                                $('#ZoneId').html(district);
-                                $('#zoneModal').modal('hide');
-                            }
-                        });
-
-                    }
-                });
-            }
-        });
-
-        $("#btnWard").click(function () {
-            if ($.trim($("#selectzone").val()) == "-1" || $.trim($("#selectzone").val()) == "0") {
-                //$("#err_pop_zone").html("झोन आवश्यक आहे / Zone is Required").delay(1500).show().fadeOut('slow');
-                $("#err_pop_zone").html("Zone is Required").delay(1500).show().fadeOut('slow');
-                $('#selectzone').focus();
-                return false;
-            }
-            if ($.trim($("#txtWard").val()) == '') {
-                //$("#err_ward_pop").html(" वार्ड क्रमांक आवश्यक आहे / Ward number is Required ").delay(1500).show().fadeOut('slow');
-                $("#err_ward_pop").html("Ward number is Required ").delay(1500).show().fadeOut('slow');
-                $('#txtName').focus();
-                return false;
-            }
-
-            var employee = new Object();
-            employee.WardNo = $('#txtWard').val();
-            employee.zoneId = $('#selectzone').val();
-            if (employee != null) {
-                $.ajax({
-                    type: "POST",
-                    url: "/HouseMaster/WardMaster",
-                    data: JSON.stringify(employee),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        var UserId = $('#WardNo').val();
-                        $.ajax({
-                            type: "post",
-                            url: "/HouseMaster/WardList",
-                            data: { userId: UserId },
-                            datatype: "json",
-                            traditional: true,
-                            success: function (data) {
-                                var district;
-                                for (var i = 0; i < data.length; i++) {
-                                    if (data[i].Value == $('#WardNo').val()) {
-                                        district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
-                                    } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
-                                }
-                                //district = district + '</select>';
-                                $('#WardNo').html(district);
-                                $('#wardModal').modal('hide');
-                            }
-                        });
-
-                    }
-                });
-            }
-        });
-    </script>
+        }
+    });
+</script>
 <script>
     $(document).ready(function () {
         $('#Download1').click(function () {
 
             //alert("ff");
             if ($.trim($("#houseOwner").val()) != '' && $.trim($("#houseNumber").val()) != '') {
-                var area= $("#AreaId").val();
+                var area = $("#AreaId").val();
                 var ward = $("#WardNo").val();
                 var name = $("#houseOwner").val();
                 var Refid = $("#n").val();
                 var Number = $("#houseNumber").val();
-                window.location.href = "/HouseMaster/GenratePDF?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid +   "&Area=" + area + "&Ward=" + ward;
-                }
+                window.location.href = "/HouseMaster/GenratePDF?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid + "&Area=" + area + "&Ward=" + ward;
+            }
             else {
                 var area = $("#AreaId").val();
                 var ward = $("#WardNo").val();
                 var name = $("#houseOwner").val();
                 var Refid = $("#n").val();
                 var Number = $("#houseNumber").val();
-             //   alert(Number);
+                //   alert(Number);
                 window.location.href = "/HouseMaster/GenratePDF?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid + "&Area=" + area + "&Ward=" + ward;
             }
         })
 
-        
+
 
 
 
@@ -1199,10 +1198,10 @@
             $('#send_msg').html('Please Wait...');
 
 
-                        var UserId = $('#AreaId').val();
+            var UserId = $('#AreaId').val();
             $.ajax({
                 type: "post",
-                url: "/HouseMaster/Save2?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid + "&mobile=" + mob+ "&Area=" + area + "&Ward=" + ward,
+                url: "/HouseMaster/Save2?name=" + name + "&number=" + Number + "&ReferanceId=" + Refid + "&mobile=" + mob + "&Area=" + area + "&Ward=" + ward,
                 data: { userId: UserId },
                 datatype: "json",
                 traditional: true,
