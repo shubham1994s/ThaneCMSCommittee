@@ -198,11 +198,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     var ii = bb.Split('/');
                     if (ii.Length == 6)
                     {
-                        data.SauchalayQRCode = ii[6];
+                        data.SauchalayQRCode = ii[ii.Length - 1];
                     }
                     if (ii.Length > 6)
                     {
-                        data.SauchalayQRCode = ii[7];
+                        data.SauchalayQRCode = ii[ii.Length - 1];
                     }
                 }
 
