@@ -2365,7 +2365,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="SSId" Nullable="true" />
           <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
-          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" />
           <Property Type="String" Name="Lat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Long" Nullable="true" MaxLength="500" />
         </ComplexType>
