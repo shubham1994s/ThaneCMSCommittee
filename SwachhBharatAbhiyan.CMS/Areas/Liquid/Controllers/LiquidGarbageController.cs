@@ -1,5 +1,6 @@
 ﻿using SwachBharat.CMS.Bll.Repository.ChildRepository;
 using SwachBharat.CMS.Bll.Repository.MainRepository;
+using SwachBharat.CMS.Bll.ViewModels.Grid;
 using SwachhBharatAbhiyan.CMS.Models.SessionHelper;
 using System;
 using System.Collections.Generic;
@@ -180,25 +181,25 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         //        return Redirect("/Account/Login");
         //}
 
-        //public ActionResult IdelTimeNotification()
-        //{
-        //    if (SessionHandler.Current.AppId != 0)
+        public ActionResult IdelTimeNotification()
+        {
+            if (SessionHandler.Current.AppId != 0)
 
-        //    {
-        //        List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
-        //        obj = childRepository.GetIdelTimeNotification();
+            {
+                List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
+                obj = childRepository.GetLiquidIdelTimeNotification();
 
-        //        //List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>()
-        //        //{
-        //        //     new SBAEmplyeeIdelGrid() { UserName = " sad", StartTime = "50", EndTime = "1", IdelTime = "00:22" },
-        //        //       new SBAEmplyeeIdelGrid() { UserName = " gfhfh", StartTime = "50", EndTime = "1", IdelTime = "00:22" },
-        //        //   //........................ and so on
-        //        //};
-        //        return Json(obj, JsonRequestBehavior.AllowGet);
-        //    }
-        //    else
-        //        return Redirect("/Account/Login");
-        //}
+                //List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>()
+                //{
+                //     new SBAEmplyeeIdelGrid() { UserName = " sad", StartTime = "50", EndTime = "1", IdelTime = "00:22" },
+                //       new SBAEmplyeeIdelGrid() { UserName = " gfhfh", StartTime = "50", EndTime = "1", IdelTime = "00:22" },
+                //   //........................ and so on
+                //};
+                return Json(obj, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+        }
 
     }
 }
