@@ -153,6 +153,12 @@ namespace SwachBharat.CMS.Bll.Services
 
                         model.TotalCommercialCurrent = data.TotalCommercialCurrent;
                         model.TotalCommercial = Convert.ToDouble(houseCount.TotalCommercial);
+
+                        model.TotalCTPT = houseCount.TotalCTPT;
+                        model.TotalCTPTCurrent = Convert.ToDouble(data.TotalCTPTCurrent);
+
+                        model.TotalSWM = houseCount.TotalSWM;
+                        model.TotalSWMCurrent = Convert.ToDouble(data.TotalSWMCurrent);
                         return model;
                     }
 
@@ -3152,9 +3158,35 @@ namespace SwachBharat.CMS.Bll.Services
                         //garbageType = x.garbageType
                     });
                 }
-               
 
-                houseLocation = houseLocation.ToList();
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    // var abc = db.HouseMasters.ToList();
+                    var model = houseLocation.Where(c => c.ReferanceId.Contains(SearchString) || c.ReferanceId.Contains(SearchString)
+                                                         || c.ReferanceId.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString)).ToList();
+
+                    //var model = houseLocation.Where(c => ((string.IsNullOrEmpty(c.ReferanceId) ? " " : c.houseOwnerName) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseOwnerName) ? " " : c.houseOwnerName) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseOwnerMobile) ? " " : c.houseOwnerMobile) + " " +
+                    //                                     (string.IsNullOrEmpty(c.houseAddress) ? " " : c.houseAddress)).ToLower().Contains(SearchString)).ToList();
+
+                    houseLocation = model.ToList();
+
+
+                    //var model = data.Where(c => ((string.IsNullOrEmpty(c.WardNo) ? " " : c.WardNo) + " " +
+                    //                        (string.IsNullOrEmpty(c.zone) ? " " : c.zone) + " " +
+                    //                        (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
+                    //                        (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                    //                        (string.IsNullOrEmpty(c.houseNo) ? " " : c.houseNo) + " " +
+                    //                        (string.IsNullOrEmpty(c.Mobile) ? " " : c.Mobile) + " " +
+                    //                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                    //                        (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
+                    //                        (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+                }
+                    houseLocation = houseLocation.ToList();
+                
             }
           
             return houseLocation;
@@ -6480,6 +6512,84 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
 
             var data = db.SP_IdelTime(0, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+            //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
+            foreach (var x in data)
+            {
+                TimeSpan spWorkMin = TimeSpan.FromMinutes(Convert.ToDouble(x.IdelTime));
+                string workHours = spWorkMin.ToString(@"hh\:mm");
+
+                string displayTime = Convert.ToDateTime(x.date).ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
+                string time = Convert.ToDateTime(x.StartTime).ToString("HH:mm:ss");
+
+                obj.Add(new SBAEmplyeeIdelGrid()
+                {
+                    UserName = x.userName,
+                    Date = Convert.ToDateTime(x.date).ToString("dd/MM/yyyy"),
+                    StartTime = x.StartTime,
+                    EndTime = x.LastTime,
+                    StartAddress = checkNull(x.StartAddress).Replace("Unnamed Road, ", ""),
+                    EndAddress = checkNull(x.address).Replace("Unnamed Road, ", ""),
+                    IdelTime = workHours,
+                    userId = x.userId,
+                    startLat = x.StarLat,
+                    startLong = x.StartLog,
+                    EndLat = x.lat,
+                    EndLong = x.@long,
+                    daDateTIme = (displayTime + " " + time)
+
+                });
+            }
+            return obj;
+        }
+
+        public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification()
+        {
+            List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
+            // DateTime? fdate = null
+            string dt = DateTime.Now.ToString("MM/dd/yyyy");
+            DateTime fdate = Convert.ToDateTime(dt + " " + "00:00:00");
+            DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
+
+            var data = db.SP_IdelTimeLiquid(0, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+            //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
+            foreach (var x in data)
+            {
+                TimeSpan spWorkMin = TimeSpan.FromMinutes(Convert.ToDouble(x.IdelTime));
+                string workHours = spWorkMin.ToString(@"hh\:mm");
+
+                string displayTime = Convert.ToDateTime(x.date).ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
+                string time = Convert.ToDateTime(x.StartTime).ToString("HH:mm:ss");
+
+                obj.Add(new SBAEmplyeeIdelGrid()
+                {
+                    UserName = x.userName,
+                    Date = Convert.ToDateTime(x.date).ToString("dd/MM/yyyy"),
+                    StartTime = x.StartTime,
+                    EndTime = x.LastTime,
+                    StartAddress = checkNull(x.StartAddress).Replace("Unnamed Road, ", ""),
+                    EndAddress = checkNull(x.address).Replace("Unnamed Road, ", ""),
+                    IdelTime = workHours,
+                    userId = x.userId,
+                    startLat = x.StarLat,
+                    startLong = x.StartLog,
+                    EndLat = x.lat,
+                    EndLong = x.@long,
+                    daDateTIme = (displayTime + " " + time)
+
+                });
+            }
+            return obj;
+        }
+
+        public List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification()
+        {
+            List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
+            // DateTime? fdate = null
+            string dt = DateTime.Now.ToString("MM/dd/yyyy");
+            DateTime fdate = Convert.ToDateTime(dt + " " + "00:00:00");
+            DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
+
+            var data = db.SP_IdelTimestreet(0, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
             //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {

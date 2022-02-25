@@ -614,7 +614,7 @@
 
                 $.ajax({
                     type: "post",
-                    url: "/GarbageCollection/IdelTimeNotification",
+                    url: "/Street/StreetGarbage/IdelTimeNotification",
                     // data: { userId: UserId, },
                     datatype: "json",
                     traditional: true,
@@ -623,11 +623,11 @@
                         //  alert(data.length);
                         // alert($('#notif_count').text());
                         if (func_count == 1) {
-                            $('#notif_count').text(data.length);
+                            $('#street_notif_count').text(data.length);
                         }
-                        if (data.length > $('#notif_count').text()) {
+                        if (data.length > $('#street_notif_count').text()) {
 
-                            $('#notif_count').text(data.length);
+                            $('#street_notif_count').text(data.length);
                             //   alert("sdf");
                             document.getElementById("snackbar").innerHTML = data[0].UserName + "<br>Not active since " + data[0].IdelTime + " min ";
                             var x = document.getElementById("snackbar");
@@ -635,7 +635,7 @@
                             setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
                         }
 
-                        $('#notif_count').text(data.length);
+                        $('#street_notif_count').text(data.length);
                         func_count++;
                     }
                 });

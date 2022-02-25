@@ -184,10 +184,10 @@
 .datepicker td.active.black:hover p{
   background-color: #4a4a4a;  
 }
-.datepicker td.active.red p,
-.datepicker td.active.red:hover p{
-  background-color: #2F9491;  
-}
+    .datepicker td.active.red p,
+    .datepicker td.active.red:hover p {
+        background-color: #189cdf;
+    }
 
 .datepicker td.active:hover,
 .datepicker td.active:hover:hover,

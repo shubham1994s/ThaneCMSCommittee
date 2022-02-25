@@ -199,7 +199,7 @@
                             @*<li><a href="/GarbagePoint/MenuIndex">Garbage Point Registration </a></li>*@
                             <li><a href="/DumpYard/MenuIndex">Dump Yard Registration </a></li>
                             <li><a href="/Employee/MenuIndex">Employee Registration  </a></li>
-                            <li class="ctpt_reg" style="display:none"><a href="/Sauchalay/SauchalayRegistrationMenuIndex">CT / PT Registration  </a></li>
+                            <li class="ctpt_reg"><a href="/Sauchalay/SauchalayRegistrationMenuIndex">CT / PT Registration  </a></li>
                         </ul>
                     <li>
 
@@ -233,6 +233,7 @@
                             <li><a href="/Report/Dashboard1">Garbage Collection Dashboard</a></li>
                             <li><a href="/Report/DumpYardSummary">Dumpyard Details</a></li>
                             <li><a href="/Report/Housewise">Garbage Collection Summary (House-wise)</a></li>
+                            <li><a href="/Report/Commercialwise">Garbage Collection Summary (Commercial-wise)</a></li>
                             <li><a href="/Report/Daywise">Day-wise Collection Summary </a></li>
                             <li><a href="/Report/EmployeeCollectionAverage">Employee Collection Average</a></li>
                         </ul>
@@ -374,26 +375,26 @@
                 $("#clns").css("display", "none");
                 $("#complaint_menu").css("display", "none");
             }
-            if ($("#asdf").text() == "thanewaste@ulb.com!") {
-                $("#clns").css("display", "none");
-               // $("#complaint_menu").css("display", "block");
-                var worker = document.getElementById("worker");
-                worker.classList.remove("col-lg-4");
-                worker.classList.add("col-lg-3");
-                var house = document.getElementById("house");
-                house.classList.remove("col-lg-4");
-                house.classList.add("col-lg-3");
-                var dump = document.getElementById("dump");
-                dump.classList.remove("col-lg-4");
-                dump.classList.add("col-lg-3");
-                var clns = document.getElementById("Commer");
-                clns.classList.remove("col-lg-4");
-                clns.classList.add("col-lg-3");
-            }
-            else {
-                $("#Commer").css("display", "none");
-               // $("#complaint_menu").css("display", "none");
-            }
+            //if ($("#asdf").text() == "thanewaste@ulb.com!") {
+            //    $("#clns").css("display", "none");
+            //   // $("#complaint_menu").css("display", "block");
+            //    var worker = document.getElementById("worker");
+            //    worker.classList.remove("col-lg-4");
+            //    worker.classList.add("col-lg-3");
+            //    var house = document.getElementById("house");
+            //    house.classList.remove("col-lg-4");
+            //    house.classList.add("col-lg-3");
+            //    var dump = document.getElementById("dump");
+            //    dump.classList.remove("col-lg-4");
+            //    dump.classList.add("col-lg-3");
+            //    var clns = document.getElementById("Commer");
+            //    clns.classList.remove("col-lg-4");
+            //    clns.classList.add("col-lg-3");
+            //}
+            //else {
+            //    $("#Commer").css("display", "none");
+            //   // $("#complaint_menu").css("display", "none");
+            //}
             if ($("#asdf").text() == "namratas@appynitty.com!") {
                 //$("#complaint_menu").css("display", "block");
                 $("#citizen_app").css("display", "none");
@@ -663,7 +664,7 @@
             if ($("#asdf").text() == "thanewaste@ulb.com!") {
                 //$("#complaint_menu").css("display", "block");
                 $("#citizen_app").css("display", "block");
-                $(".ctpt_reg").css("display", "block");
+                //$(".ctpt_reg").css("display", "block");
                 $("#infotainment_menu").css("display", "block");
                 //$("#clns").css("display", "block");
                 $(".ss2020").css("display", "block");
