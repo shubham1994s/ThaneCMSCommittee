@@ -56,5 +56,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public int TotalCommercialMixCount { get; set; }
         public int TotalCommercialDryCount { get; set; }
         public int TotalCommercialWetCount { get; set; }
+        public Nullable<int> TotalCTPT { get; set; }
+        public Nullable<int> TotalSWM { get; set; }
     }
 }

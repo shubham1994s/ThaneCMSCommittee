@@ -1005,10 +1005,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="GarbageType" Mode="In" Type="Int32" />
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)" />
-          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
-          <Parameter Name="gcdate" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="SP_LiquidWasteOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidWasteOnMapDetails_Result)">
             <Parameter Name="gcDate" Mode="In" Type="DateTime" />
             <Parameter Name="UserId" Mode="In" Type="Int32" />
@@ -1075,6 +1071,10 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="from" Mode="In" Type="DateTime" />
             <Parameter Name="to" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)" />
+          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
+            <Parameter Name="gcdate" Mode="In" Type="DateTime" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2151,59 +2151,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="commercialLong" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
         </ComplexType>
-        <ComplexType Name="SP_Dashboard_Details_Result">
-          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
-          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
-          <Property Type="Int32" Name="TotalDump" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercialCurrent" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_TotalHouseCollection_Count_Result">
-          <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
-          <Property Type="Int32" Name="MixedCount" Nullable="true" />
-          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
-          <Property Type="Int32" Name="NotCollected" Nullable="true" />
-          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
-          <Property Type="Int32" Name="TotalCDW" Nullable="true" />
-          <Property Type="Int32" Name="TotalHW" Nullable="true" />
-          <Property Type="Int32" Name="TotalDryWaste" Nullable="true" />
-          <Property Type="Int32" Name="TotalWetWaste" Nullable="true" />
-          <Property Type="Int32" Name="TotalDHW" Nullable="true" />
-          <Property Type="Int32" Name="TotalSW" Nullable="true" />
-          <Property Type="Int32" Name="TotalCW" Nullable="true" />
-          <Property Type="Decimal" Name="GcWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="DryWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="WetWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="TotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="TotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="TotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="LWGcWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="LWDryWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="LWWetWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="LWTotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="LWTotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="LWTotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="SSGcWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="SSDryWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="SSWetWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="SSTotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="SSTotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="SSTotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Int32" Name="TotalLiquidCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreetCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalLiquidPropertyCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreetPropertyCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalHousePropertyCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalDumpPropertyCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
-          <Property Type="Decimal" Name="GcHWWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="GcCDWWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Int32" Name="TotalCommercialCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialMixCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialDryCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialWetCount" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="SP_LiquidWasteOnMapDetails_Result">
           <Property Type="Int32" Name="userId" Nullable="true" />
           <Property Type="Int32" Name="LWId" Nullable="false" />
@@ -2436,6 +2383,63 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalSLWM" Nullable="true" />
           <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
           <Property Type="Int64" Name="rownum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_Dashboard_Details_Result">
+          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
+          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
+          <Property Type="Int32" Name="TotalDump" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercialCurrent" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTCurrent" Nullable="true" />
+          <Property Type="Int32" Name="TotalSWMCurrent" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_TotalHouseCollection_Count_Result">
+          <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
+          <Property Type="Int32" Name="TotalCDW" Nullable="true" />
+          <Property Type="Int32" Name="TotalHW" Nullable="true" />
+          <Property Type="Int32" Name="TotalDryWaste" Nullable="true" />
+          <Property Type="Int32" Name="TotalWetWaste" Nullable="true" />
+          <Property Type="Int32" Name="TotalDHW" Nullable="true" />
+          <Property Type="Int32" Name="TotalSW" Nullable="true" />
+          <Property Type="Int32" Name="TotalCW" Nullable="true" />
+          <Property Type="Decimal" Name="GcWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="DryWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="WetWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="LWGcWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="LWDryWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="LWWetWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="LWTotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="LWTotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="LWTotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SSGcWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SSDryWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SSWetWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SSTotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SSTotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SSTotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="TotalLiquidCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreetCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalLiquidPropertyCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreetPropertyCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalHousePropertyCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalDumpPropertyCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
+          <Property Type="Decimal" Name="GcHWWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="GcCDWWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Int32" Name="TotalCommercialCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialMixCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialDryCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialWetCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
+          <Property Type="Int32" Name="TotalSWM" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3576,67 +3580,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_Dashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_Dashboard_Details">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result">
-                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
-                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
-                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
-                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
-                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
-                <ScalarProperty Name="TotalCommercialCurrent" ColumnName="TotalCommercialCurrent" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_TotalHouseCollection_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_TotalHouseCollection_Count">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result">
-                <ScalarProperty Name="TotalHouseCount" ColumnName="TotalHouseCount" />
-                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
-                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
-                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
-                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
-                <ScalarProperty Name="TotalCDW" ColumnName="TotalCDW" />
-                <ScalarProperty Name="TotalHW" ColumnName="TotalHW" />
-                <ScalarProperty Name="TotalDryWaste" ColumnName="TotalDryWaste" />
-                <ScalarProperty Name="TotalWetWaste" ColumnName="TotalWetWaste" />
-                <ScalarProperty Name="TotalDHW" ColumnName="TotalDHW" />
-                <ScalarProperty Name="TotalSW" ColumnName="TotalSW" />
-                <ScalarProperty Name="TotalCW" ColumnName="TotalCW" />
-                <ScalarProperty Name="GcWeightCount" ColumnName="GcWeightCount" />
-                <ScalarProperty Name="DryWeightCount" ColumnName="DryWeightCount" />
-                <ScalarProperty Name="WetWeightCount" ColumnName="WetWeightCount" />
-                <ScalarProperty Name="TotalGcWeightCount" ColumnName="TotalGcWeightCount" />
-                <ScalarProperty Name="TotalDryWeightCount" ColumnName="TotalDryWeightCount" />
-                <ScalarProperty Name="TotalWetWeightCount" ColumnName="TotalWetWeightCount" />
-                <ScalarProperty Name="LWGcWeightCount" ColumnName="LWGcWeightCount" />
-                <ScalarProperty Name="LWDryWeightCount" ColumnName="LWDryWeightCount" />
-                <ScalarProperty Name="LWWetWeightCount" ColumnName="LWWetWeightCount" />
-                <ScalarProperty Name="LWTotalGcWeightCount" ColumnName="LWTotalGcWeightCount" />
-                <ScalarProperty Name="LWTotalDryWeightCount" ColumnName="LWTotalDryWeightCount" />
-                <ScalarProperty Name="LWTotalWetWeightCount" ColumnName="LWTotalWetWeightCount" />
-                <ScalarProperty Name="SSGcWeightCount" ColumnName="SSGcWeightCount" />
-                <ScalarProperty Name="SSDryWeightCount" ColumnName="SSDryWeightCount" />
-                <ScalarProperty Name="SSWetWeightCount" ColumnName="SSWetWeightCount" />
-                <ScalarProperty Name="SSTotalGcWeightCount" ColumnName="SSTotalGcWeightCount" />
-                <ScalarProperty Name="SSTotalDryWeightCount" ColumnName="SSTotalDryWeightCount" />
-                <ScalarProperty Name="SSTotalWetWeightCount" ColumnName="SSTotalWetWeightCount" />
-                <ScalarProperty Name="TotalLiquidCount" ColumnName="TotalLiquidCount" />
-                <ScalarProperty Name="TotalStreetCount" ColumnName="TotalStreetCount" />
-                <ScalarProperty Name="TotalLiquidPropertyCount" ColumnName="TotalLiquidPropertyCount" />
-                <ScalarProperty Name="TotalStreetPropertyCount" ColumnName="TotalStreetPropertyCount" />
-                <ScalarProperty Name="TotalHousePropertyCount" ColumnName="TotalHousePropertyCount" />
-                <ScalarProperty Name="TotalDumpPropertyCount" ColumnName="TotalDumpPropertyCount" />
-                <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
-                <ScalarProperty Name="GcHWWeightCount" ColumnName="GcHWWeightCount" />
-                <ScalarProperty Name="GcCDWWeightCount" ColumnName="GcCDWWeightCount" />
-                <ScalarProperty Name="TotalCommercialCount" ColumnName="TotalCommercialCount" />
-                <ScalarProperty Name="TotalCommercialMixCount" ColumnName="TotalCommercialMixCount" />
-                <ScalarProperty Name="TotalCommercialDryCount" ColumnName="TotalCommercialDryCount" />
-                <ScalarProperty Name="TotalCommercialWetCount" ColumnName="TotalCommercialWetCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_LiquidWasteOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_LiquidWasteOnMapDetails">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_LiquidWasteOnMapDetails_Result">
@@ -3897,6 +3840,71 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalSLWM" ColumnName="TotalSLWM" />
                 <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
                 <ScalarProperty Name="rownum" ColumnName="rownum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Dashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_Dashboard_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result">
+                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
+                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
+                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
+                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
+                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
+                <ScalarProperty Name="TotalCommercialCurrent" ColumnName="TotalCommercialCurrent" />
+                <ScalarProperty Name="TotalCTPTCurrent" ColumnName="TotalCTPTCurrent" />
+                <ScalarProperty Name="TotalSWMCurrent" ColumnName="TotalSWMCurrent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TotalHouseCollection_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_TotalHouseCollection_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result">
+                <ScalarProperty Name="TotalHouseCount" ColumnName="TotalHouseCount" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
+                <ScalarProperty Name="TotalCDW" ColumnName="TotalCDW" />
+                <ScalarProperty Name="TotalHW" ColumnName="TotalHW" />
+                <ScalarProperty Name="TotalDryWaste" ColumnName="TotalDryWaste" />
+                <ScalarProperty Name="TotalWetWaste" ColumnName="TotalWetWaste" />
+                <ScalarProperty Name="TotalDHW" ColumnName="TotalDHW" />
+                <ScalarProperty Name="TotalSW" ColumnName="TotalSW" />
+                <ScalarProperty Name="TotalCW" ColumnName="TotalCW" />
+                <ScalarProperty Name="GcWeightCount" ColumnName="GcWeightCount" />
+                <ScalarProperty Name="DryWeightCount" ColumnName="DryWeightCount" />
+                <ScalarProperty Name="WetWeightCount" ColumnName="WetWeightCount" />
+                <ScalarProperty Name="TotalGcWeightCount" ColumnName="TotalGcWeightCount" />
+                <ScalarProperty Name="TotalDryWeightCount" ColumnName="TotalDryWeightCount" />
+                <ScalarProperty Name="TotalWetWeightCount" ColumnName="TotalWetWeightCount" />
+                <ScalarProperty Name="LWGcWeightCount" ColumnName="LWGcWeightCount" />
+                <ScalarProperty Name="LWDryWeightCount" ColumnName="LWDryWeightCount" />
+                <ScalarProperty Name="LWWetWeightCount" ColumnName="LWWetWeightCount" />
+                <ScalarProperty Name="LWTotalGcWeightCount" ColumnName="LWTotalGcWeightCount" />
+                <ScalarProperty Name="LWTotalDryWeightCount" ColumnName="LWTotalDryWeightCount" />
+                <ScalarProperty Name="LWTotalWetWeightCount" ColumnName="LWTotalWetWeightCount" />
+                <ScalarProperty Name="SSGcWeightCount" ColumnName="SSGcWeightCount" />
+                <ScalarProperty Name="SSDryWeightCount" ColumnName="SSDryWeightCount" />
+                <ScalarProperty Name="SSWetWeightCount" ColumnName="SSWetWeightCount" />
+                <ScalarProperty Name="SSTotalGcWeightCount" ColumnName="SSTotalGcWeightCount" />
+                <ScalarProperty Name="SSTotalDryWeightCount" ColumnName="SSTotalDryWeightCount" />
+                <ScalarProperty Name="SSTotalWetWeightCount" ColumnName="SSTotalWetWeightCount" />
+                <ScalarProperty Name="TotalLiquidCount" ColumnName="TotalLiquidCount" />
+                <ScalarProperty Name="TotalStreetCount" ColumnName="TotalStreetCount" />
+                <ScalarProperty Name="TotalLiquidPropertyCount" ColumnName="TotalLiquidPropertyCount" />
+                <ScalarProperty Name="TotalStreetPropertyCount" ColumnName="TotalStreetPropertyCount" />
+                <ScalarProperty Name="TotalHousePropertyCount" ColumnName="TotalHousePropertyCount" />
+                <ScalarProperty Name="TotalDumpPropertyCount" ColumnName="TotalDumpPropertyCount" />
+                <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
+                <ScalarProperty Name="GcHWWeightCount" ColumnName="GcHWWeightCount" />
+                <ScalarProperty Name="GcCDWWeightCount" ColumnName="GcCDWWeightCount" />
+                <ScalarProperty Name="TotalCommercialCount" ColumnName="TotalCommercialCount" />
+                <ScalarProperty Name="TotalCommercialMixCount" ColumnName="TotalCommercialMixCount" />
+                <ScalarProperty Name="TotalCommercialDryCount" ColumnName="TotalCommercialDryCount" />
+                <ScalarProperty Name="TotalCommercialWetCount" ColumnName="TotalCommercialWetCount" />
+                <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
+                <ScalarProperty Name="TotalSWM" ColumnName="TotalSWM" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

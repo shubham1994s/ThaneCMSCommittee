@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                : base(SwachBharatAppConnection.GetConnectionString(AppId))
+              : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -547,20 +547,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialOnMapDetails_Result>("SP_CommercialOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter);
         }
     
-        public virtual ObjectResult<SP_Dashboard_Details_Result> SP_Dashboard_Details()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result>("SP_Dashboard_Details");
-        }
-    
-        public virtual ObjectResult<SP_TotalHouseCollection_Count_Result> SP_TotalHouseCollection_Count(Nullable<System.DateTime> gcdate)
-        {
-            var gcdateParameter = gcdate.HasValue ?
-                new ObjectParameter("gcdate", gcdate) :
-                new ObjectParameter("gcdate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
-        }
-    
         public virtual ObjectResult<SP_LiquidWasteOnMapDetails_Result> SP_LiquidWasteOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType)
         {
             var gcDateParameter = gcDate.HasValue ?
@@ -777,6 +763,20 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("userid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeSummary_Result>("SP_EmployeeSummary", fromParameter, toParameter, useridParameter);
+        }
+    
+        public virtual ObjectResult<SP_Dashboard_Details_Result> SP_Dashboard_Details()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result>("SP_Dashboard_Details");
+        }
+    
+        public virtual ObjectResult<SP_TotalHouseCollection_Count_Result> SP_TotalHouseCollection_Count(Nullable<System.DateTime> gcdate)
+        {
+            var gcdateParameter = gcdate.HasValue ?
+                new ObjectParameter("gcdate", gcdate) :
+                new ObjectParameter("gcdate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
         }
     }
 }
