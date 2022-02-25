@@ -153,6 +153,12 @@ namespace SwachBharat.CMS.Bll.Services
 
                         model.TotalCommercialCurrent = data.TotalCommercialCurrent;
                         model.TotalCommercial = Convert.ToDouble(houseCount.TotalCommercial);
+
+                        model.TotalCTPT = houseCount.TotalCTPT;
+                        model.TotalCTPTCurrent = Convert.ToDouble(data.TotalCTPTCurrent);
+
+                        model.TotalSWM = houseCount.TotalSWM;
+                        model.TotalSWMCurrent = Convert.ToDouble(data.TotalSWMCurrent);
                         return model;
                     }
 
