@@ -46,7 +46,7 @@
                 "visible": false,
                 "searchable": false
             },
-          
+
             {
                 "targets": [8],
                 "visible": true,
@@ -101,6 +101,10 @@
                     else if (full["type1"] == "U") {
                         return "Urinal";
                     }
+                    else
+                    {
+                        return "Not Available";
+                    }
 
                 },
             },
@@ -121,7 +125,7 @@
             { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
             { "data": "gcDate", "name": "gcDate", "autoWidth": false },
             { "data": "tns", "name": "tns", "autoWidth": false },
-            
+
 
         ]
     });
