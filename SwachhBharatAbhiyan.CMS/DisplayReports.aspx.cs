@@ -59,7 +59,7 @@ namespace SwachhBharatAbhiyan.CMS
                     rptViewer.ProcessingMode = ProcessingMode.Remote;
 
                     rptViewer.ServerReport.ReportServerUrl = new Uri(urlReportServer);
-                    rptViewer.ServerReport.ReportPath = "/Appynity BI Reports/" + ReportName;
+                    rptViewer.ServerReport.ReportPath = "/Thane_ICTSBM/" + ReportName;
                     rptViewer.ShowToolBar = true;
                     rptViewer.BackColor = System.Drawing.Color.White;
                     //rptViewer.Parent.ResolveClientUrl.
@@ -180,6 +180,17 @@ namespace SwachhBharatAbhiyan.CMS
 
                           
                     else if (ReportName == "Housewise Garbage Collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+
+                    else if (ReportName == "Commercialwise Garbage Collection")
                     {
                         ReportParameter[] param = new ReportParameter[4];
                         param[0] = new ReportParameter("appid", AppID);
