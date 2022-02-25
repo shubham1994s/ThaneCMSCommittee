@@ -618,6 +618,16 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.GetIdelTimeNotification();
         }
+        public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification()
+        {
+            return screenService.GetLiquidIdelTimeNotification();
+        }
+
+        public List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification()
+        {
+            return screenService.GetStreetIdelTimeNotification();
+        }
+
         public List<SBALUserLocationMapView> GetUserTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null)
         {
             return screenService.GetUserTimeWiseRoute(date,fTime, tTime, userId);
