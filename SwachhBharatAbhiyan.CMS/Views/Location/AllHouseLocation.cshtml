@@ -105,12 +105,15 @@
         background: white;
     }
 
-    table, th, td,tr {
-        border: 1px solid black;
+    table, th, td, tr {
+        border: 1px solid #b3cbe5;
         border-collapse: collapse;
-        text-align:center !important;
-        font-size:14px;
-       
+        text-align: center !important;
+        font-size: 14px;
+    }
+    .bg-b {
+        background: #189cdf;
+        color: #fff;
     }
     table img{width:14px;}
 </style>
@@ -129,65 +132,65 @@
 
     <div class="container">
         <h3 style="text-align : center; font-weight : bold">@ViewBag.AppName</h3>
-        @*<div class="row" style="display:flex">
+        <!--<div class="row" style="display:flex">
 
-            <div class="col" style="width:20%;padding-right: 5px;">
+            <div class="col" style="width:28%;padding-right: 5px;">
 
-                <div class="media" style="border:1px solid #8532fc;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #8532fc;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Total Property Scan Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.HouseCollection</p>
+                        <p class="media-heading" style="font-weight:600">Total Property Scan Count <b>Total :</b> @Model.HouseCollection</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
+                </div>
+            </div>
+            <div class="col" style="width:23%;padding-right: 5px;">
+
+                <div class="media" style="border:1px solid #8532fc;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
+                        <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
+                    <div class="media-body">
+                        <p class="media-heading" style="font-weight:600">Residential Count <b>Total :</b> @Model.ResidentialCollection</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
             <div class="col" style="width:20%;padding-right: 5px;">
 
-                <div class="media" style="border:1px solid #8532fc;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #8532fc;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Residential Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.ResidentialCollection</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Building Count <b>Total :</b> @Model.ResidentialBuildingCollection</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
             <div class="col" style="width:20%;padding-right: 5px;">
 
-                <div class="media" style="border:1px solid #8532fc;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #8532fc;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Building Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.ResidentialBuildingCollection</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Slum Count <b>Total :</b> @Model.ResidentialSlumCollection</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
-            <div class="col" style="width:20%;padding-right: 5px;">
+            <div class="col" style="width:22%;padding-right: 5px;">
 
-                <div class="media" style="border:1px solid #8532fc;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #8532fc;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Slum Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.ResidentialSlumCollection</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col" style="width:20%;padding-right: 5px;">
-
-                <div class="media" style="border:1px solid #8532fc;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
-                    </div>
-                    <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Commercial Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.CommercialCollection</p>
+                        <p class="media-heading" style="font-weight:600">Commercial Count <b>Total :</b> @Model.CommercialCollection</p>
+                        <p style="font-size:14px;margin:0px"></p>
                     </div>
                 </div>
             </div>
@@ -195,59 +198,59 @@
 
         <div class="row" style="display:flex">
 
-            <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border: 1px solid #63676e; padding: 5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+            <div class="col" style="width:25%;padding-right: 5px;">
+                <div class="media" style="border: 1px solid #63676e;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Construction Demolition</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.ConstructionDemolitionCount</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Construction Demolition <b>Total :</b> @Model.ConstructionDemolitionCount</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
             <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border: 1px solid #1ad15c; padding: 5px; ">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border: 1px solid #1ad15c;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Horticulture</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.HorticultureCount</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Horticulture <b>Total :</b> @Model.HorticultureCount</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
             <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #66a2d5; padding: 5px; ">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #66a2d5; ">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Dry Waste</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.DryWasteCount</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Dry Waste <b>Total :</b> @Model.DryWasteCount</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
             <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #186634; padding: 5px; ">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #186634;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Wet Waste</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.WetWasteCount</p>
+                        <p class="media-heading" style="font-weight:600">Wet Waste <b>Total :</b> @Model.WetWasteCount</p>
+                        <p style="font-size:14px;margin:0px"></p>
                     </div>
                 </div>
             </div>
-            <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #8f8b28; padding: 5px; ">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+            <div class="col" style="width:22%;padding-right: 5px;">
+                <div class="media" style="border:1px solid #8f8b28; ">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Domestic Hazardous</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.DemosticHazardousCount</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Domestic Hazardous <b>Total :</b> @Model.DemosticHazardousCount</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
 
@@ -255,61 +258,61 @@
 
         <div class="row" style="display:flex">
             <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #c384d3; padding: 5px; ">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #c384d3;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_house.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Sanitary Waste</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.SanitaryCount</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Sanitary Waste <b>Total :</b> @Model.SanitaryCount</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
 
             <div class="col" style="width:20%;padding-right: 5px;">
 
 
-                <div class="media" style="border:1px solid #6fa570;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #6fa570;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_segregated_garbage.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Segregated Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.BifurgatedCount</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Segregated Count <b>Total :</b> @Model.BifurgatedCount</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
             <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #d1655e;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #d1655e;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_mixed_garbage.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Mixed Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.MixedCount</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Mixed Count <b>Total :</b> @Model.MixedCount</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
             <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #e89f5f;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #e89f5f;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_garbage_not_recevied.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Not Received Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.NotCollected</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Not Received Count <b>Total :</b> @Model.NotCollected</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
             <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #0086c3;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #0086c3;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="/Content/images/img/segregationImg/icn_not_specified.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Not Specified Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.NotSpecified</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Not Specified Count <b>Total :</b> @Model.NotSpecified</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
 
@@ -317,114 +320,114 @@
         <div class="row" style="display:flex">
             <div class="col" style="width:20%;padding-right: 5px;">
 
-                <div class="media" style="border:1px solid #8532fc;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #8532fc;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Liquid Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.LiquidCollection</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Liquid Count <b>Total :</b> @Model.LiquidCollection</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
 
             <div class="col" style="width:20%;padding-right: 5px;">
 
-                <div class="media" style="border:1px solid #8532fc;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                <div class="media" style="border:1px solid #8532fc;">
+                    <div class="media-left media-middle" style="padding: 0px 3px;">
                         <img src="../../Areas/Street/Content/images/img/segregationImg/Street_Sweep.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Street Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.StreetCollection</p>
-                    </div>
+                        <p class="media-heading" style="font-weight:600">Street Count <b>Total :</b> @Model.StreetCollection</p>-->
+                        @*<p style="font-size:14px;margin:0px"></p>*@
+                    <!--</div>
                 </div>
             </div>
-        </div>*@
+        </div>-->
 
         <div class="row w-100">
-            <div class="col-lg-4">
-                <table style="width:100%">
-                    <tr>
-                        <th>Mark</th>
-                        <th>Name</th>
-                        <th>Total Count</th>
-                    </tr>
-                    <tr>
-                        <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Total Property Scan</td>
-                        <td>@Model.HouseCollection</td>
-                    </tr>
-                    <tr>
-                        <td> <img src="/Content/images/img/segregationImg/icn_house.png"/></td>
-                        <td>Residential</td>
-                        <td>@Model.ResidentialCollection</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Building Count</td>
-                        <td>@Model.ResidentialBuildingCollection</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Slum Count</td>
-                        <td> @Model.ResidentialSlumCollection</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /> </td>
-                        <td>Commercial Count</td>
-                        <td>@Model.CommercialCollection</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Construction Demolition</td>
-                        <td> @Model.ConstructionDemolitionCount</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-lg-4">
-                <table style="width:100%">
-                    <tr>
-                        <th>Mark</th>
-                        <th>Name</th>
-                        <th>Today Scan</th>
-                    </tr>
-                    <tr>
-                        <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Horticulture</td>
-                        <td>@Model.HorticultureCount</td>
-                    </tr>
-                   
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Domestic Hazardous</td>
-                        <td> @Model.DemosticHazardousCount</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Sanitary Waste</td>
-                        <td> @Model.SanitaryCount</td>
-                    </tr>
-                    <tr>
-                        <td>   <img src="../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png" /></td>
-                        <td>Liquid Count</td>
-                        <td>@Model.LiquidCollection</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../../Areas/Street/Content/images/img/segregationImg/Street_Sweep.png" /></td>
-                        <td>Street Count</td>
-                        <td>@Model.StreetCollection</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-lg-4">
-                <table style="width:100%">
-                    <tr>
-                        <th>Mark</th>
-                        <th>Name</th>
-                        <th>Today Scan</th>
-                    </tr>
-                    @*<tr>
+    <div class="col-lg-4">
+        <table style="width:100%">
+            <tr>
+                <th class="bg-b">Mark</th>
+                <th class="bg-b">Name</th>
+                <th class="bg-b">Total Count</th>
+            </tr>
+            <tr>
+                <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Total Property Scan</td>
+                <td>@Model.HouseCollection</td>
+            </tr>
+            <tr>
+                <td> <img src="/Content/images/img/segregationImg/icn_house.png"/></td>
+                <td>Residential</td>
+                <td>@Model.ResidentialCollection</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Building Count</td>
+                <td>@Model.ResidentialBuildingCollection</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Slum Count</td>
+                <td> @Model.ResidentialSlumCollection</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /> </td>
+                <td>Commercial Count</td>
+                <td>@Model.CommercialCollection</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Construction Demolition</td>
+                <td> @Model.ConstructionDemolitionCount</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-4">
+        <table style="width:100%">
+            <tr>
+                <th  class="bg-b">Mark</th>
+                <th class="bg-b">Name</th>
+                <th class="bg-b">Today Scan</th>
+            </tr>
+            <tr>
+                <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Horticulture</td>
+                <td>@Model.HorticultureCount</td>
+            </tr>
+
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Domestic Hazardous</td>
+                <td> @Model.DemosticHazardousCount</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Sanitary Waste</td>
+                <td> @Model.SanitaryCount</td>
+            </tr>
+            <tr>
+                <td>   <img src="../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png" /></td>
+                <td>Liquid Count</td>
+                <td>@Model.LiquidCollection</td>
+            </tr>
+            <tr>
+                <td><img src="../../Areas/Street/Content/images/img/segregationImg/Street_Sweep.png" /></td>
+                <td>Street Count</td>
+                <td>@Model.StreetCollection</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-4">
+        <table style="width:100%">
+            <tr>
+                <th class="bg-b">Mark</th>
+                <th class="bg-b">Name</th>
+                <th class="bg-b">Today Scan</th>
+            </tr>
+        <tr>
             <td> <img src="/Content/images/img/segregationImg/icn_segregated_garbage.png" /></td>
             <td>Segregated Count</td>
             <td> @Model.BifurgatedCount</td>
@@ -433,36 +436,36 @@
             <td> <img src="/Content/images/img/segregationImg/icn_mixed_garbage.png" /></td>
             <td>Mixed Count</td>
             <td> @Model.MixedCount</td>
-        </tr>*@
-                    <tr>
-                        <td> <img src="/Content/images/img/segregationImg/icn_garbage_not_recevied.png" /></td>
-                        <td>Not Received Count</td>
-                        <td> @Model.NotCollected</td>
-                    </tr>
-                    <tr>
-                        <td> <img src="/Content/images/img/segregationImg/icn_not_specified.png" /></td>
-                        <td>Not Specified Count</td>
-                        <td>@Model.NotSpecified</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Dry Waste</td>
-                        <td> @Model.DryWasteCount</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Wet Waste</td>
-                        <td> @Model.WetWasteCount</td>
-                    </tr>
-                    <tr>
-                        <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                        <td>Dump Yard</td>
-                        <td> @Model.WetWasteCount</td>
-                    </tr>
-                </table>
-            </div>
+        </tr>
+        <tr>
+                <td> <img src="/Content/images/img/segregationImg/icn_garbage_not_recevied.png" /></td>
+                <td>Not Received Count</td>
+                <td> @Model.NotCollected</td>
+            </tr>
+            <tr>
+                <td> <img src="/Content/images/img/segregationImg/icn_not_specified.png" /></td>
+                <td>Not Specified Count</td>
+                <td>@Model.NotSpecified</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Dry Waste</td>
+                <td> @Model.DryWasteCount</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Wet Waste</td>
+                <td> @Model.WetWasteCount</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Dump Yard</td>
+                <td> @Model.WetWasteCount</td>
+            </tr>
+        </table>
+    </div>
 
-        </div>
+    </div>
 
 
         <br />
@@ -553,7 +556,7 @@
                 <label>&nbsp;</label>
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
-                        <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
+                    <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
                     <a id="filter" onclick="Search()" style="margin-top: 5px; margin-left: 61%;" class="btn btn-sm btn-success filter-button-style">Search</a>
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>*@
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
