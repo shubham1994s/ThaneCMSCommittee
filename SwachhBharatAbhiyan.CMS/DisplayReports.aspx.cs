@@ -277,6 +277,98 @@ namespace SwachhBharatAbhiyan.CMS
                        
                         rptViewer.ServerReport.SetParameters(param);
                     }
+
+                    // Liquid Report Start
+                    else if (ReportName == "Liquid single Employee collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[5];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("userid", UserId);
+                        //param[4] = new ReportParameter("gartype", garbageType);
+                        param[4] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Liquid Citywise Garbage Report")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+                    else if (ReportName == "Liquid Areawise Garbage Collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Liquid Areawise Garbage Type Collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+                    else if (ReportName == "Liquid Garbase Collection Percentage")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Liquid Employee Garbage Collection Count")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Liquid Dashboard_1")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+                    else if (ReportName == "Liquid Daywise Collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+
+                    else if (ReportName == "Liquid Employee_Performance_Report")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("DBName", DB_Name);
+                        param[2] = new ReportParameter("from", FromDate);
+                        param[3] = new ReportParameter("to", ToDate);
+
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+
                     rptViewer.ServerReport.Refresh();
 
 

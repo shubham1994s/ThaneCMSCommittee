@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
-    
+
     @Styles.Render("~/Liquid/Content/ThemeCss")
     @*@Scripts.Render("~/bundles/modernizr")*@
     @RenderSection("styles", required: false)
@@ -61,7 +61,7 @@
                         @Html.Partial("_LoginPartial")
 
                     </div>
-    </div>
+                </div>
             </nav>
         </header>
         <div class="page-content d-flex align-items-stretch">
@@ -101,8 +101,8 @@
                         </a>
                         <ul id="exampledropdownDropdown1" class="collapse list-unstyled ">
                             @*<li><a href="/GarbageCollection/MenuHouseGarbageIndex">घर संकलन</a></li>
-        <li><a href="/GarbageCollection/MenuPointGarbageIndex">कचरा पॉईंट संकलन </a></li>
-        <li><a href="/GarbageCollection/MenuDumpYardIndex">डंप यार्ड तपशील</a></li>*@
+                                <li><a href="/GarbageCollection/MenuPointGarbageIndex">कचरा पॉईंट संकलन </a></li>
+                                <li><a href="/GarbageCollection/MenuDumpYardIndex">डंप यार्ड तपशील</a></li>*@
 
                             <li><a href="/Liquid/LiquidGarbage/MenuLiquidGarbageIndex">Liquid Waste Cleaning Point</a></li>
                             @*<li><a href="/GarbageCollection/MenuPointGarbageIndex">Garbage Point Collection</a></li>*@
@@ -185,9 +185,9 @@
                         </a>
                         <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                             @*<li><a href="/HouseMaster/MenuIndex">घर नोंदणी</a></li>
-        <li><a href="/GarbagePoint/MenuIndex">कचरा पॉइंट नोंदणी</a></li>
-        <li><a href="/DumpYard/MenuIndex">डंप यार्ड नोंदणी</a></li>
-        <li><a href="/Employee/MenuIndex"> कर्मचारी नोंदणी</a></li>*@
+                                <li><a href="/GarbagePoint/MenuIndex">कचरा पॉइंट नोंदणी</a></li>
+                                <li><a href="/DumpYard/MenuIndex">डंप यार्ड नोंदणी</a></li>
+                                <li><a href="/Employee/MenuIndex"> कर्मचारी नोंदणी</a></li>*@
 
                             <li><a href="/Liquid/LiquidWaste/MenuIndex">Liquid Waste Cleaning Point Registration </a></li>
                             @*<li><a href="/Liquid/LiquidDumpYard/MenuIndex">Dump Yard Registration </a></li>*@
@@ -196,38 +196,40 @@
                         </ul>
                     <li>
 
-                    <li id="report_menu" hidden="hidden">
+                    <li id="report_menu">
                         <a href="#exampledropdownDropdown4" aria-expanded="false" data-toggle="collapse">
                             <i class="svg_report"> </i>
                             @*रिपोर्ट*@ Reports
                         </a>
                         <ul id="exampledropdownDropdown4" class="collapse list-unstyled ">
                             @*<li><a href="/HouseMaster/ReportIndex">घर संकलन रिपोर्ट (कचरा पॅटर्न नुसार) </a></li>
-                                <li><a href="/Report/SingleEmployeeCollection"> घनकचरा संकलन (कर्मचारीनिहाय)</a></li>
-                                <li><a href="/Report/GarbageCollectionPercentage"> घनकचरा संकलन (टक्केवारीनुसार)</a></li>
-                                <li><a href="/Report/EmployeeCollectionCount"> कर्मचारीनिहाय कचरा संकलन </a></li>
-                                <li><a href="/Report/EmployeeCollectionSummary"> घनकचरा संकलन (तारीखानुसार)</a></li>
-                                <li><a href="/Report/AreawiseGarbageCollection"> घनकचरा संकलन (वार्डनिहाय)</a></li>
-                                <li><a href="/Report/CitywiseGarbageReport">शहरानुसार घनकचरा रिपोर्ट</a></li>
-                                <li><a href="/Report/AreawiseGarbageTypeCollection">क्षेत्रानुसार घनकचरा प्रकार रिपोर्ट</a></li>
-                                <li><a href="/Report/Dashboard1">घनकचरा डैशबोर्ड</a></li>
-                                <li><a href="/Report/DumpYardSummary">डंप यार्ड तपशील</a></li>
-                                <li><a href="/Report/Housewise">घरनिहाय तपशील</a></li>
-                                <li><a href="/Report/Daywise">दिवासनुसार तपशील</a></li>*@
+        <li><a href="/Report/SingleEmployeeCollection"> घनकचरा संकलन (कर्मचारीनिहाय)</a></li>
+        <li><a href="/Report/GarbageCollectionPercentage"> घनकचरा संकलन (टक्केवारीनुसार)</a></li>
+        <li><a href="/Report/EmployeeCollectionCount"> कर्मचारीनिहाय कचरा संकलन </a></li>
+        <li><a href="/Report/EmployeeCollectionSummary"> घनकचरा संकलन (तारीखानुसार)</a></li>
+        <li><a href="/Report/AreawiseGarbageCollection"> घनकचरा संकलन (वार्डनिहाय)</a></li>
+        <li><a href="/Report/CitywiseGarbageReport">शहरानुसार घनकचरा रिपोर्ट</a></li>
+        <li><a href="/Report/AreawiseGarbageTypeCollection">क्षेत्रानुसार घनकचरा प्रकार रिपोर्ट</a></li>
+        <li><a href="/Report/Dashboard1">घनकचरा डैशबोर्ड</a></li>
+        <li><a href="/Report/DumpYardSummary">डंप यार्ड तपशील</a></li>
+        <li><a href="/Report/Housewise">घरनिहाय तपशील</a></li>
+        <li><a href="/Report/Daywise">दिवासनुसार तपशील</a></li>*@
 
-                            <li><a href="/HouseMaster/ReportIndex">Household Collection Report (Pattern-wise)</a></li>
-                            <li><a href="/Report/SingleEmployeeCollection">Garbage Collection (Employee-wise)</a></li>
-                            <li><a href="/Report/GarbageCollectionPercentage"> Garbage Collection (Percentage-Wise)</a></li>
-                            <li><a href="/Report/EmployeeCollectionCount"> Employee Wise Collection (Chart-Pattern) </a></li>
-                            <li><a href="/Report/EmployeeCollectionSummary"> Garbage Collection (Date-wise) </a></li>
-                            <li><a href="/Report/AreawiseGarbageCollection"> Garbage Collection (Ward-Wise)</a></li>
-                            <li><a href="/Report/CitywiseGarbageReport">Garbage Collection (Entire City)</a></li>
-                            <li><a href="/Report/AreawiseGarbageTypeCollection">Garbage Pattern (Area-wise)</a></li>
-                            <li><a href="/Report/Dashboard1">Garbage Collection Dashboard</a></li>
-                            <li><a href="/Report/DumpYardSummary">Dumpyard Details</a></li>
-                            <li><a href="/Report/Housewise">Garbage Collection Summary (House-wise)</a></li>
-                            <li><a href="/Report/Daywise">Day-wise Collection Summary </a></li>
-                            <li><a href="/Report/EmployeeCollectionAverage">Employee Collection Average</a></li>
+                            @*<li><a href="/Liquid/LiquidWaste/ReportIndex">iquid Waste Cleaning Report (Pattern-wise)</a></li>*@
+                            <li><a href="/Liquid/LiquidReport/SingleEmployeeCollection">Liquid Waste Cleaning (Employee-wise)</a></li>
+                            <li><a href="/Liquid/LiquidReport/CitywiseGarbageReport">Liquid Waste Cleaning (Entire City)</a></li>
+                            <li><a href="/Liquid/LiquidReport/AreawiseGarbageCollection">Liquid Waste Cleaning (Ward-Wise)</a></li>
+                            <li><a href="/Liquid/LiquidReport/AreawiseGarbageTypeCollection">Liquid Waste Cleaning (Area-wise)</a></li>
+                            <li><a href="/Liquid/LiquidReport/GarbageCollectionPercentage">Liquid Waste Cleaning (Percentage-Wise)</a></li>
+                            <li><a href="/Liquid/LiquidReport/EmployeeCollectionCount">Employee Wise Liquid Waste Cleaning (Chart-Pattern) </a></li>
+                            <li><a href="/Liquid/LiquidReport/EmployeeCollectionSummary">Liquid Waste Cleaning (Date-wise) </a></li>
+                            <li><a href="/Liquid/LiquidReport/Dashboard1">Liquid Waste Cleaning Dashboard</a></li>
+                            <li><a href="/Liquid/LiquidReport/Daywise">Day-wise Liquid Waste Cleaning Summary </a></li>
+                            <li><a href="/Liquid/LiquidReport/EmployeeCollectionAverage">Average Wise Employee Liquid Waste Cleaning </a></li>
+                            @*
+        <li><a href="/Report/DumpYardSummary">Dumpyard Details</a></li>
+        <li><a href="/Report/Housewise">Garbage Collection Summary (House-wise)</a></li>
+                            *@
                         </ul>
                     <li>
                     <li>
@@ -287,9 +289,9 @@
                         </ul>
                     </li>
                     @*<li>
-                        <a href="/Android/AndroidAPKMenu">
-                        <img src="~/Areas/Liquid/Content/theme-assets/img/android.svg" style=" margin-right: 5%;"/>Android App</a>
-                    </li>*@
+                            <a href="/Android/AndroidAPKMenu">
+                            <img src="~/Areas/Liquid/Content/theme-assets/img/android.svg" style=" margin-right: 5%;"/>Android App</a>
+                        </li>*@
                     @*<li class="" id="waste_mgmt">
                             <a href="#exampledropdownDropdown11" aria-expanded="false" data-toggle="collapse">
                                 <i class="i_waste"> </i>
@@ -317,7 +319,7 @@
             </nav>
             <div class="content-inner">
 
-        @RenderBody()
+                @RenderBody()
 
                 <footer class="main-footer">
                     <div class="container-fluid">
@@ -332,8 +334,8 @@
                             </div>
                         </div>
                     </div>
-        </footer>
-    </div>
+                </footer>
+            </div>
         </div>
     </div>
 
