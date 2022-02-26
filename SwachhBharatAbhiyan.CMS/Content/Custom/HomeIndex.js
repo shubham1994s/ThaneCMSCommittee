@@ -414,7 +414,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    //   debugger;
+       debugger;
     var not_coll = $('#not_coll').val();
     var mixed_coll = $('#mixed_coll').val();
     var bif_coll = $('#bif_coll').val();
@@ -520,7 +520,7 @@ $(document).ready(function () {
                 //{ y: res_not_coll, label: "कचरा मिळाला नाही", hover_number: not_coll, color: '#fe9436' },
                 //{ y: res_not_spec_coll, label: "वर्णन उपलब्ध नाही", hover_number: not_spec_coll, color: '#0086c3' },
 
-                { y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, color: '#388e3c' },
+                //{ y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, color: '#388e3c' },
                 { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, color: '#f44336' },
                 { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, color: '#fe9436' },
                 { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, color: '#0086c3' },
@@ -1034,7 +1034,7 @@ $(document).ready(function () {
                 not_spec.push({ y: data[i].NotSpecidfied, label: 'Not Specified', color: '#0086c3', intime: data[i].inTime });
                 not_coll.push({ y: data[i].NotCollected, label: 'Not Collected', color: '#fe9436', intime: data[i].inTime });
                 mixed.push({ y: data[i].MixedCount, label: 'Mixed', color: '#f44336', intime: data[i].inTime });
-                seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });
+               /* seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });*/
                 cdw.push({ y: data[i].ConstructionAndDemolition, label: 'Construction & Demolition', color: '#63676e', intime: data[i].inTime });
                 hw.push({ y: data[i].Horticulture, label: 'Horticulture', color: '#1ad15c', intime: data[i].inTime });
                 wet.push({ y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
@@ -1084,17 +1084,17 @@ $(document).ready(function () {
 
                     data: [
 
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Segregated",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#388e3c",
-                            dataPoints: seg
-                        },
+                        //{
+                        //    //indexLabel: "#total",
+                        //    //indexLabelPlacement: "outside",
+                        //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    showInLegend: true,
+                        //    legendText: "Segregated",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#388e3c",
+                        //    dataPoints: seg
+                        //},
                         {
                             //indexLabel: "#total",
                             //indexLabelPlacement: "outside",

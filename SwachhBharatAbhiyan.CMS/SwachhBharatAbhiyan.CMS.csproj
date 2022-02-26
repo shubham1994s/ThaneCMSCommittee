@@ -1825,6 +1825,7 @@
     <Content Include="Content\images\img\segregationImg\commercial_dry.png" />
     <Content Include="Content\images\img\segregationImg\commercial_mixed.png" />
     <Content Include="Content\images\img\segregationImg\commercial_wet.png" />
+    <Content Include="Content\images\img\segregationImg\CTPT_icn.png" />
     <Content Include="Content\images\img\segregationImg\Dumpyard_marker.png" />
     <Content Include="Content\images\img\segregationImg\Dump_Yard_marker.png" />
     <Content Include="Content\images\img\segregationImg\End_Point.png" />
