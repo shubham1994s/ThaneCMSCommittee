@@ -1,7 +1,7 @@
 ﻿
 @{
-    //ViewBag.Title = "दिवासाप्रमाणे";
-    ViewBag.Title = "Employee Collection Average";
+    //ViewBag.Title = "डंप यार्ड तपशील";
+    ViewBag.Title = "Dumpyard Details";
 }
 
 @Styles.Render("~/Content/IndexCSS")
@@ -9,12 +9,11 @@
 <link href="~/Content/css/report_style.css" rel="stylesheet" />
 @Scripts.Render("~/Scripts/IndexScript")
 
-
 @*<header class="page-header">
-        <div class="container-fluid">
-            <h2 class="no-margin-bottom">Day-wise Collection Summary</h2>
-        </div>
-    </header>*@
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom">Dumpyard Details</h2>
+    </div>
+</header>*@
 <body>
     <br />
 
@@ -53,7 +52,7 @@
                 @if (ViewBag.IframeUrl != null)
             {
                     @*<iframe name="iframemc" id="iframemc" frameborder="0" style="width:11.37465in;height:600px;background-color: white; float:none; margin-left:5px; overflow:hidden"></iframe>*@
-                    <iframe name="iframemc" id="iframemc" scrolling="yes" frameborder="0" style="background-color: white; float:none;  overflow:hidden" width="1150" height="1000"></iframe>
+                    <iframe name="iframemc" id="iframemc" scrolling="yes" frameborder="0" style="background-color: white; float:none;  overflow:hidden" width="1150" height="820"></iframe>
                 }
             </div>
 
@@ -102,12 +101,13 @@
             }
         });
 
-        debugger;
+
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Employee_Performance_Report";
+        var Report_Name = "DumpYard_Summary";
         var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
+
 
         $('#iframemc').on('load', function () {
             $('#loader1').hide();
@@ -119,7 +119,7 @@
     {
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Employee_Performance_Report";
+        var Report_Name = "DumpYard_Summary";
         $('#loader1').show();
         var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;

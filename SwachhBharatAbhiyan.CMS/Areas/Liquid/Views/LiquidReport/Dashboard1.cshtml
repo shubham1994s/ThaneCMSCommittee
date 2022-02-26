@@ -1,7 +1,7 @@
 ﻿
 @{
-    //ViewBag.Title = "दिवासाप्रमाणे";
-    ViewBag.Title = "Employee Collection Average";
+    //ViewBag.Title = "घनकचरा डैशबोर्ड";
+    ViewBag.Title = "Liquid Waste Cleaning Dashboard";
 }
 
 @Styles.Render("~/Content/IndexCSS")
@@ -10,11 +10,12 @@
 @Scripts.Render("~/Scripts/IndexScript")
 
 
+
 @*<header class="page-header">
-        <div class="container-fluid">
-            <h2 class="no-margin-bottom">Day-wise Collection Summary</h2>
-        </div>
-    </header>*@
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom">Garbage Collection Dashboard</h2>
+    </div>
+</header>*@
 <body>
     <br />
 
@@ -42,7 +43,7 @@
 
             <div class="col-sm-1">
                 <div class="controls">
-                    <input data-background-color="filter-button-box-color" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                    <input data-background-color="filter-button-box-color"  class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
                 </div>
             </div>
         </div><br />
@@ -53,7 +54,7 @@
                 @if (ViewBag.IframeUrl != null)
             {
                     @*<iframe name="iframemc" id="iframemc" frameborder="0" style="width:11.37465in;height:600px;background-color: white; float:none; margin-left:5px; overflow:hidden"></iframe>*@
-                    <iframe name="iframemc" id="iframemc" scrolling="yes" frameborder="0" style="background-color: white; float:none;  overflow:hidden" width="1150" height="1000"></iframe>
+                    <iframe name="iframemc" id="iframemc" scrolling="yes" frameborder="0" style="background-color: white; float:none;  overflow:hidden" width="1150" height="1100"></iframe>
                 }
             </div>
 
@@ -88,7 +89,7 @@
         var UserId = $('#selectnumber').val();
         $.ajax({
             type: "post",
-            url: "/Location/UserList",
+            url: "/Location/UserList?rn=L",
             data: { userId: UserId },
             datatype: "json",
             traditional: true,
@@ -102,12 +103,14 @@
             }
         });
 
-        debugger;
+
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Employee_Performance_Report";
-        var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
+        var Report_Name = "Liquid Dashboard_1";
+        debugger;
+        var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
+
 
         $('#iframemc').on('load', function () {
             $('#loader1').hide();
@@ -119,9 +122,9 @@
     {
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Employee_Performance_Report";
+        var Report_Name = "Liquid Dashboard_1";
         $('#loader1').show();
-        var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
+        var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
 
         $('#iframemc').on('load', function () {

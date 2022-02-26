@@ -1,7 +1,6 @@
 ﻿
 @{
-    //ViewBag.Title = "दिवासाप्रमाणे";
-    ViewBag.Title = "Employee Collection Average";
+    ViewBag.Title = "Dumpyardidwise";
 }
 
 @Styles.Render("~/Content/IndexCSS")
@@ -9,12 +8,29 @@
 <link href="~/Content/css/report_style.css" rel="stylesheet" />
 @Scripts.Render("~/Scripts/IndexScript")
 
-
 @*<header class="page-header">
         <div class="container-fluid">
-            <h2 class="no-margin-bottom">Day-wise Collection Summary</h2>
+            <h2 class="no-margin-bottom">Dumpyard Details</h2>
         </div>
     </header>*@
+<style>
+    #select_Dumpyard {
+        border-radius: 5px;
+        position: absolute;
+        top: 25%;
+        left: 45%;
+        width: 200px;
+        margin-left: -100px;
+        margin-top: -26px;
+        text-align: center;
+        padding: 1em 0;
+        border: 1px solid #0086c3;
+        background: #ffffff;
+        box-shadow: 0px 0px 10px #0086c3;
+        color: #111;
+    }
+</style>
+
 <body>
     <br />
 
@@ -35,10 +51,10 @@
                     <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
                 </div>
             </div>
-            @*<div class="col-sm-3">
-                    <label>कर्मचारी निवडा / Select Employee</label>
-                    <select id="selectnumber" class="form-control form-control form-control-sm"></select>
-                </div>*@
+            <div class="col-sm-3">
+                <label>Select Dumpyard</label>
+                <select id="selectnumber" class="form-control form-control form-control-sm"></select>
+            </div>
 
             <div class="col-sm-1">
                 <div class="controls">
@@ -46,14 +62,16 @@
                 </div>
             </div>
         </div><br />
-        <div class="row">
+        <div class="row" style="margin-top:20px">
             <div id="frameWrap">
                 @*<img id="loader1" src="~/Images/add_image_square.png" width="36" height="36" alt="loading gif" />*@
+                @*<p id="loader1">Generating Report ...</p>*@
                 <p id="loader1">Generating Report<span> .</span><span> .</span><span> .</span></p>
+                <p id="select_Dumpyard"><i>Please Select Dumpyard First</i></p>
                 @if (ViewBag.IframeUrl != null)
             {
                     @*<iframe name="iframemc" id="iframemc" frameborder="0" style="width:11.37465in;height:600px;background-color: white; float:none; margin-left:5px; overflow:hidden"></iframe>*@
-                    <iframe name="iframemc" id="iframemc" scrolling="yes" frameborder="0" style="background-color: white; float:none;  overflow:hidden" width="1150" height="1000"></iframe>
+                    <iframe name="iframemc" id="iframemc" scrolling="yes" frameborder="0" style="background-color: white; float:none;  overflow:hidden" width="1180" height="820"></iframe>
                 }
             </div>
 
@@ -63,6 +81,9 @@
 </body>
 
 <script>
+   
+      
+  
         var date = new Date();
 
         var day = date.getDate();
@@ -84,20 +105,29 @@
 <script type="text/javascript">
     var type;
     $(document).ready(function () {
-
-        var UserId = $('#selectnumber').val();
+        debugger;
+        var DyId = $('#selectnumber').val();
         $.ajax({
+
             type: "post",
-            url: "/Location/UserList",
-            data: { userId: UserId },
+            url: "/Location/DumpYardList",
+            data: { dyId: DyId },
             datatype: "json",
             traditional: true,
             success: function (data) {
-                district = '<option value="-1">Select Employee</option>';
-                for (var i = 0; i < data.length; i++) {
-                    district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                district = '<option value="-1">Select Dumpyard</option>';
+                for (var i = 0; i < data.length; i++)
+                {
+                    if (data[i].dyName != null)
+                    {
+                        
+                        district = district + '<option value=' + data[i].dyId + '>' + (capitalize_Words(data[i].dyName)); + '</option>';
+                        function capitalize_Words(str) {
+                            return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+                        }
+                    }                
                 }
-                //district = district + '</select>';
+             
                 $('#selectnumber').html(district);
             }
         });
@@ -105,9 +135,10 @@
         debugger;
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Employee_Performance_Report";
+        var Report_Name = "Dumpyard_Employeeswise";
         var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
+
 
         $('#iframemc').on('load', function () {
             $('#loader1').hide();
@@ -115,13 +146,22 @@
 
     })
 
-    function Search()
-    {
+    function Search() {
+        debugger;
+        if ($('#selectnumber').val() != -1) {
+            $('#select_Dumpyard').hide();
+        }
+        if ($('#selectnumber').val() == -1) {
+            $('#select_Dumpyard').show();
+        }
+
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Employee_Performance_Report";
+        var z = $('#selectnumber').val();
+        var Report_Name = "Dumpyard_Employeeswise";
+        //alert(z);
         $('#loader1').show();
-        var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
+        var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&DyId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
 
         $('#iframemc').on('load', function () {
@@ -156,3 +196,4 @@
 </script>
 <input type="hidden" value="@Session["NewAppID"]" id="myHiddenVar" />
 <input type="hidden" value="@Session["DB_Name"]" id="myHiddenVar2" />
+

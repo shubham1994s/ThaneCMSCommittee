@@ -1,7 +1,7 @@
 ﻿
 @{
-    //ViewBag.Title = "दिवासाप्रमाणे";
-    ViewBag.Title = "Employee Collection Average";
+    //ViewBag.Title = "घनकचरा संकलन (तारीखानुसार)";
+    ViewBag.Title = "Garbage Collection (Date-wise)";
 }
 
 @Styles.Render("~/Content/IndexCSS")
@@ -10,11 +10,12 @@
 @Scripts.Render("~/Scripts/IndexScript")
 
 
+
 @*<header class="page-header">
-        <div class="container-fluid">
-            <h2 class="no-margin-bottom">Day-wise Collection Summary</h2>
-        </div>
-    </header>*@
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom"> Garbage Collection (Date-wise)</h2>
+    </div>
+</header>*@
 <body>
     <br />
 
@@ -36,9 +37,9 @@
                 </div>
             </div>
             @*<div class="col-sm-3">
-                    <label>कर्मचारी निवडा / Select Employee</label>
-                    <select id="selectnumber" class="form-control form-control form-control-sm"></select>
-                </div>*@
+                <label>कर्मचारी निवडा / Select Employee</label>
+                <select id="selectnumber" class="form-control form-control form-control-sm"></select>
+            </div>*@
 
             <div class="col-sm-1">
                 <div class="controls">
@@ -52,8 +53,8 @@
                 <p id="loader1">Generating Report<span> .</span><span> .</span><span> .</span></p>
                 @if (ViewBag.IframeUrl != null)
             {
-                    @*<iframe name="iframemc" id="iframemc" frameborder="0" style="width:11.37465in;height:600px;background-color: white; float:none; margin-left:5px; overflow:hidden"></iframe>*@
-                    <iframe name="iframemc" id="iframemc" scrolling="yes" frameborder="0" style="background-color: white; float:none;  overflow:hidden" width="1150" height="1000"></iframe>
+                    @*<iframe name="iframemc" id="iframemc" frameborder="0" style="width:11.37465in;height:600px;background-color: white; float:none; margin-left:5px; overflow:hidden" ></iframe>*@
+                    <iframe name="iframemc" id="iframemc" scrolling="yes" frameborder="0" style="background-color: white; float:none;  overflow:hidden" width="1150" height="820"></iframe>
                 }
             </div>
 
@@ -84,6 +85,7 @@
 <script type="text/javascript">
     var type;
     $(document).ready(function () {
+      
 
         var UserId = $('#selectnumber').val();
         $.ajax({
@@ -102,13 +104,20 @@
             }
         });
 
-        debugger;
+
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Employee_Performance_Report";
+        var Report_Name = "Employee Collection Summary";
+       
+       
         var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
 
+        var f = $('#txt_fdate').val();
+        var t = $('#txt_tdate').val();
+
+       // alert(f);
+       // alert(t);
         $('#iframemc').on('load', function () {
             $('#loader1').hide();
         });
@@ -117,9 +126,15 @@
 
     function Search()
     {
+
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Employee_Performance_Report";
+        var Report_Name = "Employee Collection Summary";
+        var f = $('#txt_fdate').val();
+        var t = $('#txt_tdate').val();
+
+        //alert(f);
+        //alert(t);
         $('#loader1').show();
         var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
@@ -151,7 +166,6 @@
   $('#txt_tdate').focus(function () {
       $('.dtpk_drpdwn').eq(0).hide();
   });
-
 
 </script>
 <input type="hidden" value="@Session["NewAppID"]" id="myHiddenVar" />

@@ -12,11 +12,11 @@ using SwachhBharatAbhiyan.CMS.Models;
 using SwachBharat.CMS.Bll.ViewModels.MainModel;
 using SwachBharat.CMS.Bll.ViewModels.SS2020Reports;
 
-namespace SwachhBharatAbhiyan.CMS.Controllers
+namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
 {
-
-    public class ReportController : Controller
+    public class LiquidReportController : Controller
     {
+        // GET: Liquid/LiquidReport
         // GET: Report
         IMainRepository mainRepository;
         IChildRepository childRepository;
@@ -25,7 +25,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             return View();
         }
 
-
         public ActionResult ReportEnable(string date, string userid)
         {
 
@@ -33,8 +32,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             AppDetailsVM obj = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
-
         public ActionResult SingleEmployeeCollection()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -51,7 +48,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         public ActionResult Dumpyardidwise()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -67,8 +63,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
-
         public ActionResult GarbageCollectionPercentage()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -85,8 +79,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
-
         public ActionResult EmployeeCollectionCount()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -102,8 +94,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
-
         public ActionResult EmployeeCollectionSummary()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -120,7 +110,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         public ActionResult AreawiseGarbageCollection()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -142,7 +131,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             {
                 Session["NewAppID"] = SessionHandler.Current.AppId;
                 Session["DB_Name"] = SessionHandler.Current.DB_Name;
-                string Reportname = "ss";
+                
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
 
@@ -181,7 +170,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         public ActionResult DumpYardSummary()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -197,9 +185,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-       
-      
-
         public ActionResult Housewise()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -230,7 +215,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         public ActionResult CommercialWise()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -246,9 +230,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         // Pointwise Reports
-
         #region 1.1
         public ActionResult OnePointOne2020()
         {
@@ -321,10 +303,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         #endregion
         #region 1.4
-
         public ActionResult Show1point4Report()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -345,7 +325,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         public ActionResult OnePointfour2020(int INSERT_ID)
         {
             if (SessionHandler.Current.AppId != 0)
@@ -410,7 +389,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         public ActionResult onepointfourIndex()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -475,7 +453,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
 
         public ActionResult OnePointFourEditIndex(int INSERT_ID)
         {
@@ -557,7 +534,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
 
         }
-      
+
         public ActionResult OnePointfive20201(int INSERT_ID)
         {
             if (SessionHandler.Current.AppId != 0)
@@ -584,7 +561,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         public ActionResult OnePointFiveEditIndex(int INSERT_ID)
         {
             TempData["INSERT_ID"] = INSERT_ID;
@@ -595,7 +571,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
         public ActionResult MenuOnePointFiveEdit(int ANS_ID)
         {
             childRepository = new ChildRepository(SessionHandler.Current.AppId);
@@ -1061,5 +1036,3 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         #endregion
     }
 }
-
-    
