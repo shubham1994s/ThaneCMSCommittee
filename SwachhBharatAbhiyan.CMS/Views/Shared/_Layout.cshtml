@@ -676,33 +676,6 @@
             );
             // Returns path only
 
-            //layout  Active code
-            $(document).on('click', '.nav', function (e) {
-                if (!$(e.target).is('a')) {
-                    $('.collapse').collapse('hide');
-                }
-            });
-
-            var pathname = window.location.pathname;
-            //alert(pathname);
-            if (pathname == "/GarbageCollection/MenuHouseGarbageIndex" || pathname == "/GarbageCollection/MenuPointGarbageIndex" || pathname == "/Location/MenuIndex" || pathname == "/Location/MenuMapIndex" || pathname == "/HouseMaster/MenuIndex" || pathname == "/GarbagePoint/MenuIndex" || pathname == "/Employee/MenuIndex" || pathname == "/MainMaster/MenuStateIndex" || pathname == "/MainMaster/MenuTalukaIndex" || pathname == "/MainMaster/MenuDistrictIndex" || pathname == "/MainMaster/MenuZoneIndex" || pathname == "/MainMaster/MenuWardIndex" || pathname == "/MainMaster/MenuAreaIndex" || pathname == "/MainMaster/MenuVehicleIndex" || pathname == "/HouseMaster/ReportIndex" || pathname == "/GarbageCollection/MenuIdealtime" || pathname == "/GarbageCollection/MenuDumpYardIndex" || pathname == "/DumpYard/MenuIndex" || pathname == "/Report/SingleEmployeeCollection" || pathname == "/Report/GarbageCollectionPercentage" || pathname == "/Report/EmployeeCollectionCount" || pathname == "/Report/EmployeeCollectionSummary" || pathname == "/Report/AreawiseGarbageCollection" || pathname == "/Employee/MenuEmployeeSummaryIndex" || pathname == "/Location/MenuHouseMapIndex" || pathname == "/Report/AreawiseGarbageTypeCollection" || pathname == "/Report/CitywiseGarbageReport" || pathname == "/Report/Dashboard1" || pathname == "/Report/DumpYardSummary" || pathname == "/Report/Housewise" || pathname == "/Report/Daywise" || pathname == "/League/MenuIndex" || pathname == "/Report/OnePointOne2020" || pathname == "/Report/OnePointTwo2020" || pathname == "/Report/OnePointThree2020" || pathname == "/Report/Onepoint4Index" || pathname == "/Report/Onepoint5Index" || pathname == "/Report/Onepoint6Index" || pathname == "/Infotainment/MenuIndex") {
-
-                $('.collapse a').filter(function () {
-                    {
-                        return $(this).attr('href') == pathname
-                    }
-                }).addClass('active').closest('ul li a').parents().addClass('active show');
-                if (!$(e.target).is('a')) {
-                    $('.collapse').collapse('hide');
-                }
-            }
-            else {
-                $('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');
-            }
-            //layout  Active code End
-
-
-
             $('#toggle-btn').on('click', function (e) {
                 e.preventDefault();
                 $(this).toggleClass('active');
