@@ -147,7 +147,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     }
                     if (ii.Length > 6)
                     {
-                        house.swmQRCode = ii[7];
+                        house.swmQRCode = ii[6];
                     }
                 }
                 SWMDetailsVM swmDetails = childRepository.SaveSWM(house);

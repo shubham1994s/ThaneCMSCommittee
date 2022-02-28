@@ -97,7 +97,7 @@
 
                     }
                     else if (full["type1"] == "2") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage not Received)";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage Not Collected)";
 
                     }
                     else if (full["type1"] == "4") {
@@ -125,12 +125,12 @@
 
                     }
                     else if (full["type1"] == "-1") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage Not Received)";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #0086c3;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage Type Not Specified)";
 
                     }
 
                     else {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #0086c3;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage type not specified)";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #0086c3;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage Type Not Specified)";
 
                     }
 
