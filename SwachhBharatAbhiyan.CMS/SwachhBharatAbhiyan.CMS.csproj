@@ -1827,6 +1827,7 @@
     <Content Include="Content\images\img\segregationImg\commercial_mixed.png" />
     <Content Include="Content\images\img\segregationImg\commercial_wet.png" />
     <Content Include="Content\images\img\segregationImg\CTPT_icn.png" />
+    <Content Include="Content\images\img\segregationImg\cumulative_toilet.png" />
     <Content Include="Content\images\img\segregationImg\Dumpyard_marker.png" />
     <Content Include="Content\images\img\segregationImg\Dump_Yard_marker.png" />
     <Content Include="Content\images\img\segregationImg\End_Point.png" />
@@ -1837,9 +1838,11 @@
     <Content Include="Content\images\img\segregationImg\icn_segregated_garbage.png" />
     <Content Include="Content\images\img\segregationImg\icon_commercial.png" />
     <Content Include="Content\images\img\segregationImg\Liquidwaste_Marker.png" />
+    <Content Include="Content\images\img\segregationImg\Public-Toilet.png" />
     <Content Include="Content\images\img\segregationImg\Start-Point.png" />
     <Content Include="Content\images\img\segregationImg\Street_Sweep.png" />
     <Content Include="Content\images\img\segregationImg\Thumbs.db" />
+    <Content Include="Content\images\img\segregationImg\Urinal-Toilet.png" />
     <Content Include="Content\images\img\send.png" />
     <Content Include="Content\images\img\street_icon.png" />
     <Content Include="Content\images\img\street_icon.svg" />
