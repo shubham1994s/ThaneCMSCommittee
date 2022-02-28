@@ -486,6 +486,7 @@ $(document).ready(function () {
     var chart = new CanvasJS.Chart("chartContainerPie", {
         theme: "light2",
         animationEnabled: true,
+       // exportEnabled: true,
         title: {
             //text: "विलगिकरण प्रकार ",
             fontSize: 24,
@@ -498,22 +499,26 @@ $(document).ready(function () {
         toolTip: {
             content: "In Numbers {hover_number}",
         },
-        legend: {
-            maxWidth: 300,
-            itemWidth: 60,
-            fontSize: 14,
-            // horizontalAlign: "right", // left, center ,right 
-            //verticalAlign: "center",
-        },
+        //legend: {
+        //    maxWidth: 300,
+        //    itemWidth: 300,
+        //    fontSize: 14,
+        //     horizontalAlign: "left", // left, center ,right 
+        //    verticalAlign: "top",
+        //},
         data: [{
             type: "pie",
             indexLabelFontSize: 12,
             showInLegend: true,
-            legendText: "{hover_number}",
+            legendText: "{name}:{hover_number}",
             radius: 60,
             indexLabel: "{label} - {y}",
             yValueFormatString: "###0.0\"%\"",
             click: explodePie,
+            legend: {
+                itemMaxWidth: 250,
+                itemWrap: false,// Comment itemWidth to see the difference
+            },
             dataPoints: [
                 //{ y: res_bif_coll, label: "वर्गीकृत कचरा", hover_number: bif_coll, color: '#388e3c' },
                 //{ y: res_mixed_coll, label: "मिश्र कचरा", hover_number: mixed_coll, color: '#f44336' },
@@ -521,16 +526,16 @@ $(document).ready(function () {
                 //{ y: res_not_spec_coll, label: "वर्णन उपलब्ध नाही", hover_number: not_spec_coll, color: '#0086c3' },
 
                 //{ y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, color: '#388e3c' },
-                { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, legendText: "Mixed Garbage", color: '#f44336' },
-                { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, legendText: "Garbage not received", color: '#fe9436' },
-                { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, legendText: "Garbage type not specified", color: '#0086c3' },
+                { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, name:'Mixed Garbage', color: '#f44336' },
+                { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, name: 'Garbage not received',  color: '#fe9436' },
+                { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, name: 'Garbage type not specified',  color: '#0086c3' },
 
-                { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, legendText: "Construction And Demolition Waste", color: '#63676e' },
-                { y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, legendText: "Horticulture Waste", color: '#1ad15c' },
-                { y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, legendText: "Dry Waste", color: '#66a2d5' },
-                { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, legendText: "Wet Waste", color: '#186634' },
-                { y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, legendText: "Domestic Hazardous Waste", color: '#8f8b28' },
-                { y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, legendText: "Sanitary Waste", color: '#c384d3' },
+                { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, name: 'Construction And Demolition Waste',  color: '#63676e' },
+                { y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, name: 'Horticulture Waste', color: '#1ad15c' },
+                { y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, name: 'Dry Waste',  color: '#66a2d5' },
+                { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, name: 'Wet Waste',  color: '#186634' },
+                { y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, name: 'Domestic Hazardous Waste', color: '#8f8b28' },
+                { y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, name: 'Sanitary Waste', color: '#c384d3' },
                // { y: res_TotalCW_coll, label: "Commercial Waste", hover_number: TotalCW_coll, color: '#63676e' },
             ],
         }]

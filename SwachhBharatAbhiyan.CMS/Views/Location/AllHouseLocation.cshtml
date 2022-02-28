@@ -349,44 +349,43 @@
     <div class="col-lg-4">
         <table style="width:100%">
             <tr>
-                <th colspan="3" class="bg-b">Total Property :- @Model.HouseCollection</th>
+                <th colspan="2" class="bg-b">Total Property :- @Model.HouseCollection</th>
                 @*<th class="bg-b">Name</th>
             <th class="bg-b">Total Count</th>*@
             </tr>
 
             <tr>
-                <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+               
                 <td>Residential</td>
                 <td>@Model.ResidentialCollection</td>
             </tr>
             <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+              
                 <td>Building Count</td>
                 <td>@Model.ResidentialBuildingCollection</td>
             </tr>
-            <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+            <tr> 
                 <td>Slum Count</td>
                 <td> @Model.ResidentialSlumCollection</td>
             </tr>
             <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /> </td>
+                
                 <td>Commercial Count</td>
                 <td>@Model.CommercialCollection</td>
             </tr>
             <tr>
-                <td>   <img src="../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png" /></td>
+                
                 <td>Liquid Count</td>
                 <td>@Model.LiquidCollection</td>
             </tr>
             <tr>
-                <td><img src="../../Areas/Street/Content/images/img/segregationImg/Street_Sweep.png" /></td>
+              
                 <td>Street Count</td>
                 <td>@Model.StreetCollection</td>
             </tr>
         </table>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <table style="width:100%">
             <tr>
                 <th colspan="6" class="bg-b"><b>Today's Total Scaned :</b> @Model.TotalScanHouseCount</th>
@@ -399,10 +398,10 @@
             <tr>
                 <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
                 <td>Dry Waste</td>
-                <td> @Model.DryWasteCount</td>
+                <td style="width:5%"> @Model.DryWasteCount</td>
                 <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
                 <td>Dump Yard</td>
-                <td> @Model.WetWasteCount</td>
+                <td style="width:5%"> @Model.WetWasteCount</td>
             </tr>
             <tr>
                 <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
