@@ -1,7 +1,7 @@
 ﻿
 @{
     //ViewBag.Title = "घनकचरा संकलन (तारीखानुसार)";
-    ViewBag.Title = "Liquid Waste (Date-wise)";
+    ViewBag.Title = "Street Sweeping Collection (Date-wise)";
 }
 
 @Styles.Render("~/Content/IndexCSS")
@@ -90,7 +90,7 @@
         var UserId = $('#selectnumber').val();
         $.ajax({
             type: "post",
-            url: "/Location/UserList?rn=L",
+            url: "/Location/UserList?rn=S",
             data: { userId: UserId },
             datatype: "json",
             traditional: true,
@@ -107,7 +107,7 @@
 
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Liquid Employee Collection Summary";
+        var Report_Name = "Street Employee Collection Summary";
        
        
         var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
@@ -129,7 +129,7 @@
 
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Liquid Employee Collection Summary";
+        var Report_Name = "Street Employee Collection Summary";
         var f = $('#txt_fdate').val();
         var t = $('#txt_tdate').val();
 
