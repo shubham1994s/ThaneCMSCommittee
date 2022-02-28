@@ -1,6 +1,6 @@
-﻿.form-control  { 
-
-min-height:35px;
+﻿.form-control {
+    min-height: 35px;
+    appearance: auto !important;
 }
 .btn{
     padding:6px 10px 6px 10px;

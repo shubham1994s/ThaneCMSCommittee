@@ -521,8 +521,8 @@ $(document).ready(function () {
                 //{ y: res_not_spec_coll, label: "वर्णन उपलब्ध नाही", hover_number: not_spec_coll, color: '#0086c3' },
 
                 //{ y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, color: '#388e3c' },
-                { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, color: '#f44336' },
-                { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, color: '#fe9436' },
+                { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, legendText: "Mixed Garbage", color: '#f44336' },
+                { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, legendText: "Garbage not received", color: '#fe9436' },
                 { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, color: '#0086c3' },
 
                 { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, color: '#63676e' },

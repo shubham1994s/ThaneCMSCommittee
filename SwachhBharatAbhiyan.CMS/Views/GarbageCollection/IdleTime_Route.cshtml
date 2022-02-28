@@ -33,7 +33,11 @@
     #play_id {
         left: 87%;
     }
-
+    .btn-b {
+        color: #fff;
+        background-color: #189cdf;
+        border-color: #189cdf;
+    }
     @@media only screen and (max-width: 1240px) {
         #play_id {
             left: 74%;
@@ -98,7 +102,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="~/Content/css/datepicker/css/datepicker.css" rel="stylesheet" />
     <div id="floating-panel" style="display:inline-flex;width:auto;background:transparent;border:none">
-        <a style="margin-left:5px" class="btn btn-sm btn-success" href="/GarbageCollection/Idealtime">Back</a>
+        <a style="margin-left:5px" class="btn btn-sm btn-b" href="/GarbageCollection/Idealtime">Back</a>
     </div>
     <div class="container ">
         <div class="row">
@@ -129,7 +133,7 @@
                 controlText.style.color = '#fff';
                 controlText.innerHTML = 'Play';
                 controlText.id = "play";
-                controlText.className = 'test btn btn-sm btn-success';
+                controlText.className = 'test btn btn-sm btn-b';
                 controlUI.appendChild(controlText);
 
                 // Setup the click event listeners: simply set the map to Chicago.
@@ -152,7 +156,7 @@
                 controlTextPause.style.color = '#fff';
                 controlTextPause.innerHTML = 'Pause';
                 controlTextPause.id = "pause";
-                controlTextPause.className = 'test btn btn-sm btn-success';
+                controlTextPause.className = 'test btn btn-sm btn-b';
                 controlUIPause.appendChild(controlTextPause);
 
                 // Setup the click event listeners: simply set the map to Chicago.
