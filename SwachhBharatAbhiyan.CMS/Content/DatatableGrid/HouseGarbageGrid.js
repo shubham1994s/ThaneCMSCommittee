@@ -124,7 +124,10 @@
                         return "<div class='circle' style='height: 20px;width: 20px;background-color: #c384d3;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Sanitary Waste)";
 
                     }
+                    else if (full["type1"] == "-1") {
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage Not Received)";
 
+                    }
 
                     else {
                         return "<div class='circle' style='height: 20px;width: 20px;background-color: #0086c3;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage type not specified)";
