@@ -186,76 +186,7 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-md-center" style="margin-top:12px">
-
-            <div class="col-md-auto">
-
-                @* <label class="radio-inline"><input type="radio" name="optradio" checked></label>
-
-                    <label class="radio-inline"><input type="radio" name="optradio"></label>
-
-
-                    <label class="radio-inline"><input type="radio" name="optradio"></label>
-                *@
-
-
-                <label class="container_radio radio-inline" style="">
-
-                    <input type="radio" checked="checked" name="radio" value="4">
-                    @*<span style="vertical-align:middle"> सर्व रेकॉर्ड <br /> All Records </span>*@
-                    <span style="vertical-align:middle"> All Records </span>
-                    <span class="checkmark1">
-                        <div class="checkmark_stem"></div>
-                        <div class="checkmark_kick"></div>
-                    </span>
-                </label>
-
-                <label class="container_radio radio-inline" style="">
-
-                    <input type="radio" name="radio" value="1">
-                    @*<span style="vertical-align:middle">वर्गीकृत कचरा <br />Segregated Garbage</span>*@
-                    <span style="vertical-align:middle"> Segregated Garbage</span>
-                    <span class="checkmark1">
-                        <div class="checkmark_stem"></div>
-                        <div class="checkmark_kick"></div>
-                    </span>
-                </label>
-
-                <label class="container_radio radio-inline" style="">
-
-                    <input type="radio" name="radio" value="0">
-                    @*<span style="vertical-align:middle">मिश्र कचरा <br /> Mixed Garbage  </span>*@
-                    <span style="vertical-align:middle"> Mixed Garbage  </span>
-                    <span class="checkmark1">
-                        <div class="checkmark_stem"></div>
-                        <div class="checkmark_kick"></div>
-                    </span>
-                </label>
-                <label class="container_radio radio-inline" style="">
-
-                    <input type="radio" name="radio" value="2">
-                    @*<span style="vertical-align:middle"> कचरा मिळाला नाही <br /> Garbage not Received  </span>*@
-                    <span style="vertical-align:middle"> Garbage not Received  </span>
-                    <span class="checkmark1">
-                        <div class="checkmark_stem"></div>
-                        <div class="checkmark_kick"></div>
-                    </span>
-                </label>
-
-                <label class="container_radio radio-inline" style="">
-
-                    <input type="radio" name="radio" value="3">
-                    @*<span style="vertical-align:middle"> वर्णन उपलब्ध नाही <br /> Not Specified  </span>*@
-                    <span style="vertical-align:middle"> Not Specified  </span>
-                    <span class="checkmark1">
-                        <div class="checkmark_stem"></div>
-                        <div class="checkmark_kick"></div>
-                    </span>
-                </label>
-            </div>
-
-
-        </div>
+     
 
         <br />
         <div class="row">
@@ -328,12 +259,12 @@
 
 
         //var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val();
-
+        debugger;
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Ghar Sankalan Tapashil";
+        var Report_Name = "Liquid Ghar Sankalan Tapashil";
       
-        var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
+        var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
 
 
@@ -349,9 +280,9 @@
         var y = $('#myHiddenVar2').val();
         //var z = $('#myHiddenVar2').val();
         $('#loader1').show();
-        var Report_Name = "Ghar Sankalan Tapashil";
+        var Report_Name = "Liquid Ghar Sankalan Tapashil";
         //var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type;
-        var site = '/DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
+        var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
 
         $('#iframemc').on('load', function () {

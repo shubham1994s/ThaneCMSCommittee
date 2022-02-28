@@ -122,7 +122,7 @@
     {
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Street Dashboard_1";
+        var Report_Name = "StreetDashboard_1";
         $('#loader1').show();
         var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
