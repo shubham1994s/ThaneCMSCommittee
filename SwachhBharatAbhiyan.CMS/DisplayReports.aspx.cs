@@ -23,6 +23,7 @@ namespace SwachhBharatAbhiyan.CMS
                     var SelectDate = Request.QueryString["SelectDate"];
                     var FromDate = Request.QueryString["FromDate"];
                     var ToDate = Request.QueryString["ToDate"];
+                    var Date = Request.QueryString["Date"];
                     var INSERT_ID = Request.QueryString["INSERT_ID"];
 
                     //DateTime fdate = Convert.ToDateTime(Request.QueryString["FromDate"]);
