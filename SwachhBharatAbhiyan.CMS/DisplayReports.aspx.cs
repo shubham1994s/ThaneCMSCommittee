@@ -358,8 +358,97 @@ namespace SwachhBharatAbhiyan.CMS
                         rptViewer.ServerReport.SetParameters(param);
 
                     }
-
                     else if (ReportName == "Liquid Employee_Performance_Report")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("DBName", DB_Name);
+                        param[2] = new ReportParameter("from", FromDate);
+                        param[3] = new ReportParameter("to", ToDate);
+
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+
+                    // Street Report Start
+                    else if (ReportName == "Street single Employee collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[5];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("userid", UserId);
+                        //param[4] = new ReportParameter("gartype", garbageType);
+                        param[4] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Street Citywise Garbage Report")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+                    else if (ReportName == "Street Areawise Garbage Collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Street Areawise Garbage Type Collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+                    else if (ReportName == "Street Garbase Collection Percentage")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Street Employee Garbage Collection Count")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Street Dashboard_1")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+                    else if (ReportName == "Street Daywise Collection")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                    }
+                    else if (ReportName == "Street Employee_Performance_Report")
                     {
                         ReportParameter[] param = new ReportParameter[4];
                         param[0] = new ReportParameter("appid", AppID);

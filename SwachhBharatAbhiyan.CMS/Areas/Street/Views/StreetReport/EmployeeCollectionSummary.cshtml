@@ -1,7 +1,7 @@
 ﻿
 @{
     //ViewBag.Title = "घनकचरा संकलन (तारीखानुसार)";
-    ViewBag.Title = "Liquid Waste (Date-wise)";
+    ViewBag.Title = "Street Sweeping Collection (Date-wise)";
 }
 
 @Styles.Render("~/Content/IndexCSS")
@@ -36,17 +36,10 @@
                     <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="controls">
-                    @*<label>तारीख पर्यंत / To Date</label>*@
-                    <label> Date</label>
-                    <input id="date" class="datepicker form-control form-control-sm" type="text" />
-                </div>
-            </div>
             @*<div class="col-sm-3">
-            <label>कर्मचारी निवडा / Select Employee</label>
-            <select id="selectnumber" class="form-control form-control form-control-sm"></select>
-        </div>*@
+                <label>कर्मचारी निवडा / Select Employee</label>
+                <select id="selectnumber" class="form-control form-control form-control-sm"></select>
+            </div>*@
 
             <div class="col-sm-1">
                 <div class="controls">
@@ -84,7 +77,6 @@
 
         document.getElementById('txt_fdate').value = today;
         document.getElementById('txt_tdate').value = today;
-        document.getElementById('date').value = today;
 
 
 </script>
@@ -98,7 +90,7 @@
         var UserId = $('#selectnumber').val();
         $.ajax({
             type: "post",
-            url: "/Location/UserList?rn=L",
+            url: "/Location/UserList?rn=S",
             data: { userId: UserId },
             datatype: "json",
             traditional: true,
@@ -115,15 +107,14 @@
 
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Liquid Employee Collection Summary";
+        var Report_Name = "Street Employee Collection Summary";
        
        
-        var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&Date=' + $('#date').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
+        var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
 
         var f = $('#txt_fdate').val();
         var t = $('#txt_tdate').val();
-        var d = $('#date').val();
 
        // alert(f);
        // alert(t);
@@ -138,15 +129,14 @@
 
         var x = $('#myHiddenVar').val();
         var y = $('#myHiddenVar2').val();
-        var Report_Name = "Liquid Employee Collection Summary";
+        var Report_Name = "Street Employee Collection Summary";
         var f = $('#txt_fdate').val();
         var t = $('#txt_tdate').val();
-        var d = $('#date').val();
 
         //alert(f);
         //alert(t);
         $('#loader1').show();
-        var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&Date=' + $('#date').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
+        var site = '../../DisplayReports.aspx?FromDate=' + $('#txt_fdate').val() + '&ToDate=' + $('#txt_tdate').val() + '&UserId=' + $('#selectnumber').val() + '&Type=' + type + '&AppID=' + x + '&DB_Name=' + y + '&ReportName=' + Report_Name;
         document.getElementById('iframemc').src = site;
 
         $('#iframemc').on('load', function () {
