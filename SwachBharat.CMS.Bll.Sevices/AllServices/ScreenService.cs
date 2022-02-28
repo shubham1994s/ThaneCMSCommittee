@@ -744,7 +744,7 @@ namespace SwachBharat.CMS.Bll.Services
                 {
                     var id = db.SWMMasters.OrderByDescending(x => x.swmId).Select(x => x.swmId).FirstOrDefault();
                     int number = 1000;
-                    string refer = "HPSBA" + (number + id + 1);
+                    string refer = "SWMSBA" + (number + id + 1);
                     house.ReferanceId = refer;
                     house.swmQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo();
