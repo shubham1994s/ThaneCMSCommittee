@@ -67,13 +67,13 @@ namespace SwachhBharatAbhiyan.CMS
 
                     if (ReportName == "Ghar Sankalan Tapashil")
                     {
-                        ReportParameter[] param = new ReportParameter[6];
-                        param[0] = new ReportParameter("appid", AppID);
-                        param[1] = new ReportParameter("from", FromDate);
-                        param[2] = new ReportParameter("to", ToDate);
-                        param[3] = new ReportParameter("userid", UserId);
-                        param[4] = new ReportParameter("gartype", garbageType);
-                        param[5] = new ReportParameter("DBName", DB_Name);
+                        ReportParameter[] param = new ReportParameter[5];
+                        //param[0] = new ReportParameter("Appid", AppID);
+                        param[0] = new ReportParameter("from", FromDate);
+                        param[1] = new ReportParameter("to", ToDate);
+                        param[2] = new ReportParameter("userid", UserId);
+                        param[3] = new ReportParameter("gartype", garbageType);
+                        param[4] = new ReportParameter("DBName", DB_Name);
                         rptViewer.ServerReport.SetParameters(param);
 
                         // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
@@ -280,6 +280,18 @@ namespace SwachhBharatAbhiyan.CMS
                     }
 
                     // Liquid Report Start
+                   else if (ReportName == "Liquid Ghar Sankalan Tapashil")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                       // param[0] = new ReportParameter("Appid", AppID);
+                        param[0] = new ReportParameter("from", FromDate);
+                        param[1] = new ReportParameter("to", ToDate);
+                        param[2] = new ReportParameter("userid", UserId);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                        // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
+                    }
                     else if (ReportName == "Liquid single Employee Collection")
                     {
                         ReportParameter[] param = new ReportParameter[5];
@@ -368,9 +380,19 @@ namespace SwachhBharatAbhiyan.CMS
 
                         rptViewer.ServerReport.SetParameters(param);
                     }
+                    else if (ReportName == "Liquid Employee Collection Summary")
+                    {
+                        ReportParameter[] param = new ReportParameter[5];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        param[4] = new ReportParameter("fromd", Date);
+                        rptViewer.ServerReport.SetParameters(param);
+                    }
 
                     // Street Report Start
-                    else if (ReportName == "Street single Employee collection")
+                    else if (ReportName == "Street single Employee Collection")
                     {
                         ReportParameter[] param = new ReportParameter[5];
                         param[0] = new ReportParameter("appid", AppID);
@@ -428,7 +450,7 @@ namespace SwachhBharatAbhiyan.CMS
                         param[3] = new ReportParameter("DBName", DB_Name);
                         rptViewer.ServerReport.SetParameters(param);
                     }
-                    else if (ReportName == "Street Dashboard_1")
+                    else if (ReportName == "StreetDashboard_1")
                     {
                         ReportParameter[] param = new ReportParameter[4];
                         param[0] = new ReportParameter("appid", AppID);
@@ -459,7 +481,7 @@ namespace SwachhBharatAbhiyan.CMS
                         rptViewer.ServerReport.SetParameters(param);
                     }
 
-                    else if (ReportName == "Liquid Garbase Collection Percentage")
+                    else if (ReportName == "Street Garbase Collection Percentage")
                     {
                         ReportParameter[] param = new ReportParameter[4];
                         param[0] = new ReportParameter("appid", AppID);
@@ -468,7 +490,8 @@ namespace SwachhBharatAbhiyan.CMS
                         param[3] = new ReportParameter("DBName", DB_Name);
                         rptViewer.ServerReport.SetParameters(param);
                     }
-                    else if (ReportName == "Liquid Employee Collection Summary")
+
+                    else if (ReportName == "Street Employee Collection Summary")
                     {
                         ReportParameter[] param = new ReportParameter[5];
                         param[0] = new ReportParameter("appid", AppID);
@@ -477,6 +500,18 @@ namespace SwachhBharatAbhiyan.CMS
                         param[3] = new ReportParameter("DBName", DB_Name);
                         param[4] = new ReportParameter("fromd", Date);
                         rptViewer.ServerReport.SetParameters(param);
+                    }
+                    else if (ReportName == "Street Ghar Sankalan Tapashil")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        // param[0] = new ReportParameter("Appid", AppID);
+                        param[0] = new ReportParameter("from", FromDate);
+                        param[1] = new ReportParameter("to", ToDate);
+                        param[2] = new ReportParameter("userid", UserId);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                        // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
                     }
 
                     rptViewer.ServerReport.Refresh();
