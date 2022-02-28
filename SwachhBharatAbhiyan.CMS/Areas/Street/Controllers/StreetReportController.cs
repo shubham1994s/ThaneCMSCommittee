@@ -40,7 +40,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -55,7 +55,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -71,7 +71,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -86,7 +86,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -102,7 +102,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -117,7 +117,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -132,7 +132,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
 
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -147,7 +147,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -162,7 +162,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -177,7 +177,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -192,7 +192,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -207,7 +207,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else
@@ -222,7 +222,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 string Reportname = "ss";
 
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
-
+                TempData.Keep();
                 return View();
             }
             else

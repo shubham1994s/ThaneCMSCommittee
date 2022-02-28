@@ -349,17 +349,13 @@
     <div class="col-lg-4">
         <table style="width:100%">
             <tr>
-                <th class="bg-b">Mark</th>
-                <th class="bg-b">Name</th>
-                <th class="bg-b">Total Count</th>
+                <th colspan="3" class="bg-b">Total Property :- @Model.HouseCollection</th>
+                @*<th class="bg-b">Name</th>
+            <th class="bg-b">Total Count</th>*@
             </tr>
+
             <tr>
                 <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                <td>Total Property Scan</td>
-                <td>@Model.HouseCollection</td>
-            </tr>
-            <tr>
-                <td> <img src="/Content/images/img/segregationImg/icn_house.png"/></td>
                 <td>Residential</td>
                 <td>@Model.ResidentialCollection</td>
             </tr>
@@ -379,36 +375,6 @@
                 <td>@Model.CommercialCollection</td>
             </tr>
             <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                <td>Construction Demolition</td>
-                <td> @Model.ConstructionDemolitionCount</td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-lg-4">
-        <table style="width:100%">
-            <tr>
-                <th  class="bg-b">Mark</th>
-                <th class="bg-b">Name</th>
-                <th class="bg-b">Today Scan</th>
-            </tr>
-            <tr>
-                <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                <td>Horticulture</td>
-                <td>@Model.HorticultureCount</td>
-            </tr>
-
-            <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                <td>Domestic Hazardous</td>
-                <td> @Model.DemosticHazardousCount</td>
-            </tr>
-            <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                <td>Sanitary Waste</td>
-                <td> @Model.SanitaryCount</td>
-            </tr>
-            <tr>
                 <td>   <img src="../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png" /></td>
                 <td>Liquid Count</td>
                 <td>@Model.LiquidCollection</td>
@@ -420,24 +386,88 @@
             </tr>
         </table>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-6">
+        <table style="width:100%">
+            <tr>
+                <th colspan="6" class="bg-b"><b>Today's Total Scaned :</b> @Model.TotalScanHouseCount</th>
+                @*<th class="bg-b">Name</th>
+                <th class="bg-b">Today Scan</th>
+                <th class="bg-b">Mark</th>
+                <th class="bg-b">Name</th>
+                <th class="bg-b">Today Scan</th>*@
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Dry Waste</td>
+                <td> @Model.DryWasteCount</td>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Dump Yard</td>
+                <td> @Model.WetWasteCount</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Wet Waste</td>
+                <td> @Model.WetWasteCount</td>
+                <td> <img src="/Content/images/img/segregationImg/icn_segregated_garbage.png" /></td>
+                <td>Segregated Count</td>
+                <td> @Model.BifurgatedCount</td>
+            </tr>
+            <tr>
+                <td> <img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Horticulture</td>
+                <td>@Model.HorticultureCount</td>
+                <td> <img src="/Content/images/img/segregationImg/icn_mixed_garbage.png" /></td>
+                <td>Mixed Count</td>
+                <td> @Model.MixedCount</td>
+            </tr>
+
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Domestic Hazardous</td>
+                <td> @Model.DemosticHazardousCount</td>
+                <td> <img src="/Content/images/img/segregationImg/icn_garbage_not_recevied.png" /></td>
+                <td>Not Received Count</td>
+                <td> @Model.NotCollected</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Sanitary Waste</td>
+                <td> @Model.SanitaryCount</td>
+                <td> <img src="/Content/images/img/segregationImg/icn_not_specified.png" /></td>
+                <td>Not Specified Count</td>
+                <td>@Model.NotSpecified</td>
+            </tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Construction Demolition</td>
+                <td> @Model.ConstructionDemolitionCount</td>
+            </tr>
+
+        </table>
+    </div>
+    @*<div class="col-lg-4">
         <table style="width:100%">
             <tr>
                 <th class="bg-b">Mark</th>
                 <th class="bg-b">Name</th>
                 <th class="bg-b">Today Scan</th>
             </tr>
-        <tr>
-            <td> <img src="/Content/images/img/segregationImg/icn_segregated_garbage.png" /></td>
-            <td>Segregated Count</td>
-            <td> @Model.BifurgatedCount</td>
-        </tr>
-        <tr>
-            <td> <img src="/Content/images/img/segregationImg/icn_mixed_garbage.png" /></td>
-            <td>Mixed Count</td>
-            <td> @Model.MixedCount</td>
-        </tr>
-        <tr>
+            <tr>
+                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
+                <td>Dump Yard</td>
+                <td> @Model.WetWasteCount</td>
+            </tr>
+            <tr>
+                <td> <img src="/Content/images/img/segregationImg/icn_segregated_garbage.png" /></td>
+                <td>Segregated Count</td>
+                <td> @Model.BifurgatedCount</td>
+            </tr>
+            <tr>
+                <td> <img src="/Content/images/img/segregationImg/icn_mixed_garbage.png" /></td>
+                <td>Mixed Count</td>
+                <td> @Model.MixedCount</td>
+            </tr>
+            <tr>
                 <td> <img src="/Content/images/img/segregationImg/icn_garbage_not_recevied.png" /></td>
                 <td>Not Received Count</td>
                 <td> @Model.NotCollected</td>
@@ -447,23 +477,10 @@
                 <td>Not Specified Count</td>
                 <td>@Model.NotSpecified</td>
             </tr>
-            <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                <td>Dry Waste</td>
-                <td> @Model.DryWasteCount</td>
-            </tr>
-            <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                <td>Wet Waste</td>
-                <td> @Model.WetWasteCount</td>
-            </tr>
-            <tr>
-                <td><img src="/Content/images/img/segregationImg/icn_house.png" /></td>
-                <td>Dump Yard</td>
-                <td> @Model.WetWasteCount</td>
-            </tr>
+
+
         </table>
-    </div>
+    </div>*@
 
     </div>
 
