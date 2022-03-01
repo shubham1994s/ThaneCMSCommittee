@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
-  public  class SBALCTPTLocationMapView : BaseVM
+  public  class SBALSWMLocationMapView : BaseVM
     {
-        public int CTPTId { get; set; }
 
-        public string CTPTName { get; set; }
+        public int SWMId { get; set; }
         public string ReferanceId { get; set; }
-        public string CTPTAddress { get; set; }
-        public string CTPTLat { get; set; }
-        public string CTPTLong { get; set; }
+
+        public string swmname { get; set; }
+        public string swmOwnerMobile { get; set; }
+        public string SWMAddress { get; set; }
+        public string SWMLat { get; set; }
+        public string SWMLong { get; set; }
         public string gcDate { get; set; }
         public string gcTime { get; set; }
         public Nullable<int> garbageType { get; set; }
 
-        public string TOT { get; set; }
+        public string SWMType { get; set; }
     }
 }

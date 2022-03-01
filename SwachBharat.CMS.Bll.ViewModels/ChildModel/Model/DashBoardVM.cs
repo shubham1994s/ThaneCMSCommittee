@@ -148,5 +148,10 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> TotalPTCount { get; set; }
         public Nullable<int> TotalUCount { get; set; }
 
+
+        public Nullable<int> TotalSWMCount { get; set; }
+        public Nullable<int> TotalSWMScanCount { get; set; }
+        public Nullable<int> TodayScanSWMCount { get; set; }
+
     }
 }

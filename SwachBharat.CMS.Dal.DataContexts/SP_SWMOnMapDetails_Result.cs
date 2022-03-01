@@ -11,18 +11,17 @@ namespace SwachBharat.CMS.Dal.DataContexts
 {
     using System;
     
-    public partial class SP_CTPTOnMapDetails_Result
+    public partial class SP_SWMOnMapDetails_Result
     {
         public Nullable<int> userId { get; set; }
-        public int Id { get; set; }
-        public Nullable<int> LWId { get; set; }
-        public Nullable<int> SSId { get; set; }
+        public int swmId { get; set; }
+        public string swmname { get; set; }
+        public string swmOwnerMobile { get; set; }
         public string ReferanceId { get; set; }
-        public string Address { get; set; }
+        public string swmAddress { get; set; }
         public Nullable<System.DateTime> gcDate { get; set; }
-        public string Lat { get; set; }
-        public string Long { get; set; }
-        public string tot { get; set; }
-        public string Name { get; set; }
+        public string swmLat { get; set; }
+        public string swmLong { get; set; }
+        public string swmType { get; set; }
     }
 }
