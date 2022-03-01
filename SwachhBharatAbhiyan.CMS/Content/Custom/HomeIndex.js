@@ -699,8 +699,8 @@ $(document).ready(function () {
             content: "In Numbers {hover_number} Ton",
         },
         legend: {
-            maxWidth: 180,
-            itemWidth: 75,
+            //maxWidth: 180,
+            //itemWidth: 75,
             fontSize: 12,
             // horizontalAlign: "right", // left, center ,right 
             //verticalAlign: "center",
@@ -709,7 +709,7 @@ $(document).ready(function () {
             type: "pie",
             indexLabelFontSize: 12,
             showInLegend: true,
-            legendText: "{hover_number}",
+            legendText: "{name}:{hover_number}",
             radius: 60,
             indexLabel: "{label} - {y}",
             yValueFormatString: "###0.0\"%\"",
@@ -718,8 +718,8 @@ $(document).ready(function () {
                 //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
                 //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
 
-                { y: res_dry_count, label: "Total Weight (Dry Waste)", hover_number: dry_count, color: '#0086c3' },
-                { y: res_wet_count, label: "Total Weight (Wet Waste)", hover_number: wet_count, color: '#01ad35' },
+                { y: res_dry_count, label: "Total Weight (Dry Waste)", hover_number: dry_count, name:'Total Weight (Dry Waste)', color: '#0086c3' },
+                { y: res_wet_count, label: "Total Weight (Wet Waste)", hover_number: wet_count, name: 'Total Weight (Wet Waste)', color: '#01ad35' },
 
 
             ],
@@ -801,8 +801,8 @@ $(document).ready(function () {
             content: "In Numbers {hover_number} ",
         },
         legend: {
-            maxWidth: 180,
-            itemWidth: 75,
+            //maxWidth: 180,
+            //itemWidth: 75,
             fontSize: 12,
             // horizontalAlign: "right", // left, center ,right 
             //verticalAlign: "center",
@@ -811,7 +811,7 @@ $(document).ready(function () {
             type: "pie",
             indexLabelFontSize: 12,
             showInLegend: true,
-            legendText: "{hover_number}",
+            legendText: "{name}:{hover_number}",
             radius: 60,
             indexLabel: "{label} - {y}",
             yValueFormatString: "###0.0\"%\"",
@@ -820,9 +820,9 @@ $(document).ready(function () {
                 //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
                 //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
 
-                { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, color: '#dc3545' },
-                { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, color: '#0086c3' },
-                { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, color: '#01ad35' },
+                { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name:'Total (Mix Waste)', color: '#dc3545' },
+                { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, name: 'Total (Dry Waste)', color: '#0086c3' },
+                { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, name: 'Total (Wet Waste)', color: '#01ad35' },
 
 
             ],
