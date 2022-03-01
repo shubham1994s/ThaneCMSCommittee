@@ -105,7 +105,7 @@
 </style>
 
 <link rel="shortcut icon" href="~/Content/images/img/ictsbm2.png" />
-<title>Commercial on Map</title>
+<title>SWM on Map</title>
 <fieldset>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -124,66 +124,30 @@
 
                 <div class="media" style="border:1px solid #8532fc;padding:5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/commercial.png" class="media-object" />
+                        <img src="/Content/images/img/segregationImg/CTPT_icn.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Total Property Scan Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.commercialCollection</p>
+                        <p class="media-heading" style="font-weight:600">SWM Count</p>
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalSWMCount</p>
                     </div>
                 </div>
             </div>
-
-
             <div class="col" style="width:20%;padding-right: 5px;">
 
                 <div class="media" style="border:1px solid #8532fc;padding:5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/commercial.png" class="media-object" />
+                        <img src="/Content/images/img/segregationImg/CTPT_icn.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Commercial Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.CommercialCollection</p>
+                        <p class="media-heading" style="font-weight:600">Total SWM Scan Count</p>
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalSWMScanCount</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #66a2d5; padding: 5px; ">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/commercial_dry.png" class="media-object" />
-                    </div>
-                    <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Dry Waste</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.DryWasteCount</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #186634; padding: 5px; ">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/commercial_wet.png" class="media-object" />
-                    </div>
-                    <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Wet Waste</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.WetWasteCount</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col" style="width:20%;padding-right: 5px;">
-                <div class="media" style="border:1px solid #d1655e;padding:5px;">
-                    <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/commercial_mixed.png" class="media-object" />
-                    </div>
-                    <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Mixed Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.MixedCount</p>
-                    </div>
-                </div>
-            </div>
+            </div>     
         </div><br />
 
-     
-       
+
+
         <br />
         <div class="row form" style="text-align:center;display:inline-flex">
             <label class="check-container">
@@ -193,18 +157,18 @@
                 <span class="checkmark"></span>
             </label>
             <label class="check-container">
-                All with Scanned Commercial
+                All with Scanned SWM
                 <input type="radio" value="1" name="radio">
                 <span class="checkmark"></span>
             </label>
             <label class="check-container">
-                Only Scanned CommercialLocationList
+                Only Scanned SWM LocationList
                 <input type="radio" value="2" name="radio">
                 <span class="checkmark"></span>
             </label>
 
             <label class="check-container">
-                Only Without Scanned CommercialLocationList
+                Only Without Scanned SWM LocationList
                 <input type="radio" value="3" name="radio">
                 <span class="checkmark"></span>
             </label>
@@ -224,16 +188,7 @@
                 <label>Select Employee</label>
                 <select id="selectnumber" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
             </div>
-            <div class="col-sm-2">
-                @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Segregation </label>
-                <select id="seg_type" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
-                    <option value="-1"> All Records</option>
-                    <option value="0"> Mixed Garbage</option>
-                    <option value="6">Wet Waste</option>
-                    <option value="7"> Dry Waste</option>
-                </select>
-            </div>
+
 
 
             <div class="col-sm-2">
@@ -268,7 +223,7 @@
                 <label>&nbsp;</label>
                 <div class="card" style="width: auto; border:1px solid #ff7676;margin-top:3px">
                     <div class="card-body" style="padding:8px">
-                        <p class="text-center" style="font-size:14px;margin:0px"><b>Today's Total Scaned :</b> @Model.TotalScancommercialCount</p>
+                        <p class="text-center" style="font-size:14px;margin:0px"><b>Today's Total Scaned :</b> @Model.TodayScanSWMCount</p>
                     </div>
                 </div>
             </div>
@@ -278,7 +233,7 @@
             <div class="col-sm-3">
                 <div class="controls">
 
-                    <label style="margin-top:7px">Commercial  Id / Commercial Owner Filter</label>
+                    <label style="margin-top:7px">SWM  Id </label>
                     <input id="houseId_filter" class="form-control form-control-sm" type="text" />
                 </div>
             </div>
@@ -422,7 +377,7 @@
             $.ajax({
 
                 type: "post",
-                url: "/Location/CommercialLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue + "&ctype=" + $("#c_type").val(),
+                url: "/Location/SWMLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue ,
                 //url: "/Location/HouseLocationList",
                 datatype: "json",
                 traditional: true,
@@ -442,7 +397,7 @@
                     }
                     var map = new google.maps.Map(document.getElementById('googleMap'), {
 
-                        center: new google.maps.LatLng(data[0].commercialLat, data[0].commercialLong),
+                        center: new google.maps.LatLng(data[0].SWMLat, data[0].SWMLong),
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     });
 
@@ -453,52 +408,24 @@
                     // Get Addres
                     var gar_type;
                     for (i = 0; i < data.length; i++) {
-                        if (data[i].commercialOwnerName == null) {
-                            data[i].commercialOwnerName = 'Not Available';
+
+                        if (data[i].SWMAddress == null) {
+                            data[i].SWMAddress = '';
                         }
-                        if (data[i].commercialOwnerMobile == null) {
-                            data[i].commercialOwnerMobile = '';
-                        }
-                        if (data[i].commercialAddress == null) {
-                            data[i].commercialAddress = '';
-                        }
-                        gar_type = data[i].garbageType
+
 
                         /* var mUrl = "../Content/images/img/segregationImg/icon_commercial.png";*/
-                        var mUrl = "../Content/images/img/segregationImg/commercial.png";
-                        if (data[i].commercialid != 0) {
+                        //var mUrl = "../Content/images/img/segregationImg/commercial.png";
+                        if (data[i].SWMId != 0) {
                             debugger;
-                            var mUrl = "../Content/images/img/segregationImg/commercial.png";
+                            var mUrl = "../Content/images/img/segregationImg/CTPT_icn.png";
                         }
-                        if (data[i].lwid != 0) {
-                            debugger;
-                            var mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png";
-                        }
-                        if (data[i].ssid != 0) {
-                            debugger;
-                            var mUrl = "../../Areas/Street/Content/images/img/segregationImg/Street_Sweep.png";
-                        }
+                       
 
-
-                        switch (gar_type) {
-
-                            case 0:
-                                mUrl = "../Content/images/img/segregationImg/commercial_mixed.png"
-                                break;
-                            case 6:
-                                mUrl = "../Content/images/img/segregationImg/commercial_wet.png"
-                                break;
-                            case 7:
-                                mUrl = "../Content/images/img/segregationImg/commercial_dry.png"
-                                break;
-                            case 3:
-                                mUrl = "../Content/images/img/segregationImg/icn_not_specified.png"
-                                break;
-                        }
-
+                      
 
                         marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(data[i].commercialLat, data[i].commercialLong),
+                            position: new google.maps.LatLng(data[i].SWMLat, data[i].SWMLong),
                             map: map,
 
                             icon: {
@@ -516,60 +443,30 @@
                         if (gar_type != null) {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].commercialOwnerName + '</h4><p><b>commercial Id: </b>' + data[i].ReferanceId + '</p>';
-                                    if (data[i].commercialOwnerMobile != '') {
-                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].swmname + '</h4><p><b>SWM Id: </b>' + data[i].ReferanceId + '</p>';
+                                    if (data[i].swmOwnerMobile != '') {
+                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].swmOwnerMobile + '</p>';
                                     }
-                                    if (data[i].commercialAddress != '') {
-                                        poptext = poptext + '<p><b>Address: </b>' + data[i].commercialAddress + '<p>';
+                                    if (data[i].SWMAddress != '') {
+                                        poptext = poptext + '<p><b>Address: </b>' + data[i].SWMAddress + '<p>';
                                     }
                                     poptext = poptext + '<b>Date: </b>' + data[i].gcDate + '</p><div style="height:auto; width:150px"><p><b>Time: </b>' + data[i].gcTime + '</p></div></div>';
                                     infowindow.setContent(poptext);
                                     infowindow.open(map, marker);
                                 }
                             })(marker, i));
-                        } else if (data[i].lwid != 0) {
-
-                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                                return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].commercialOwnerName + '</h4><p><b>Liquid Waste Id: </b>' + data[i].ReferanceId + '</p>'
-                                    if (data[i].commercialOwnerMobile != '') {
-                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
-                                    }
-                                    if (data[i].commercialAddress != '') {
-                                        poptext = poptext + '<p><b>Address: </b>' + data[i].commercialAddress + '</p>';
-                                    }
-                                    poptext = poptext + '</div>';
-                                    infowindow.setContent(poptext);
-                                    infowindow.open(map, marker);
-                                }
-                            })(marker, i));
-                        } else if (data[i].ssid != 0) {
-
-                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                                return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].commercialOwnerName + '</h4><p><b>Street Sweep Id: </b>' + data[i].ReferanceId + '</p>'
-                                    if (data[i].commercialOwnerMobile != '') {
-                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
-                                    }
-                                    if (data[i].commercialAddress != '') {
-                                        poptext = poptext + '<p><b>Address: </b>' + data[i].commercialAddress + '</p>';
-                                    }
-                                    poptext = poptext + '</div>';
-                                    infowindow.setContent(poptext);
-                                    infowindow.open(map, marker);
-                                }
-                            })(marker, i));
                         }
+
+
                         else {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].commercialOwnerName + '</h4><p><b>commercial Id: </b>' + data[i].ReferanceId + '</p>'
-                                    if (data[i].commercialOwnerMobile != '') {
-                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].swmname + '</h4><p><b>SWM Id: </b>' + data[i].ReferanceId + '</p>'
+                                    if (data[i].swmOwnerMobile != '') {
+                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].swmOwnerMobile + '</p>';
                                     }
-                                    if (data[i].commercialAddress != '') {
-                                        poptext = poptext + '<p><b>Address: </b>' + data[i].commercialAddress + '</p>';
+                                    if (data[i].SWMAddress != '') {
+                                        poptext = poptext + '<p><b>Address: </b>' + data[i].SWMAddress + '</p>';
                                     }
                                     poptext = poptext + '</div>';
                                     infowindow.setContent(poptext);

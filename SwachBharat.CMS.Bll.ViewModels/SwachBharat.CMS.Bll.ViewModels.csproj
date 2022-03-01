@@ -78,6 +78,7 @@
     <Compile Include="ChildModel\Model\SBALCTPTLocationMapView.cs" />
     <Compile Include="ChildModel\Model\SBALHouseLocationMapView.cs" />
     <Compile Include="ChildModel\Model\SBALHSUserLocationMapView.cs" />
+    <Compile Include="ChildModel\Model\SBALSWMLocationMapView.cs" />
     <Compile Include="ChildModel\Model\SBALUserLocationMapView.cs" />
     <Compile Include="ChildModel\Model\StreetSweepingVM.cs" />
     <Compile Include="ChildModel\Model\StreetSweepVM.cs" />
