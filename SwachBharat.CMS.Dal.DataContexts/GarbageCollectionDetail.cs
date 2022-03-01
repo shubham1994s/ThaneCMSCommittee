@@ -53,5 +53,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> TNS { get; set; }
         public string TOT { get; set; }
         public string CGarbageType { get; set; }
+        public Nullable<int> AreaId { get; set; }
     }
 }

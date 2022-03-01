@@ -3357,6 +3357,7 @@ namespace SwachBharat.CMS.Bll.Services
                         model.DryWasteCount = data.DryWaste;
                         model.DemosticHazardousCount = data.DemosticHazardous;
                         model.SanitaryCount = data.Sanitory;
+                        model.DumpYardCount = data.TotalDumpScanCount;
 
                         return model;
                     }
