@@ -2825,7 +2825,7 @@ namespace SwachBharat.CMS.Bll.Services
                         //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
                         houseLat = x.houseLat,
                         houseLong = x.houseLong,
-                        // address = x.houseAddress,
+                        address = x.houseAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         garbageType = x.garbageType,
@@ -2993,7 +2993,7 @@ namespace SwachBharat.CMS.Bll.Services
                         //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
                         commercialLat = x.commercialLat,
                         commercialLong = x.commercialLong,
-                        // address = x.commercialAddress,
+                        address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         garbageType = x.garbageType,
@@ -3141,6 +3141,7 @@ namespace SwachBharat.CMS.Bll.Services
                     {
                        
                         CTPTId = Convert.ToInt32(x.Id),
+                        CTPTName=x.Name,
                         ReferanceId = x.ReferanceId,
                         CTPTAddress = checkNull(x.Address).Replace("Unnamed Road, ", ""),
                         gcDate = dt.ToString("dd-MM-yyyy"),
@@ -3153,7 +3154,7 @@ namespace SwachBharat.CMS.Bll.Services
                         CTPTLat = x.Lat,
                         CTPTLong = x.Long,
                         TOT=x.tot,
-                        // address = x.commercialAddress,
+                       // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         //garbageType = x.garbageType

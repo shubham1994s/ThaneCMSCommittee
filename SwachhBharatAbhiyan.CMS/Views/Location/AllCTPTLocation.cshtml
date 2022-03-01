@@ -517,10 +517,10 @@
                         if (gar_type != null) {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].commercialOwnerName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>';
-                                    if (data[i].commercialOwnerMobile != '') {
-                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
-                                    }
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].CTPTName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>';
+                                    //if (data[i].commercialOwnerMobile != '') {
+                                    //    poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
+                                    //}
                                     if (data[i].CTPTAddress != '') {
                                         poptext = poptext + '<p><b>Address: </b>' + data[i].CTPTAddress + '<p>';
                                     }
@@ -535,10 +535,10 @@
                         else {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].commercialOwnerName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>'
-                                    if (data[i].commercialOwnerMobile != '') {
-                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
-                                    }
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].CTPTName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>'
+                                    //if (data[i].commercialOwnerMobile != '') {
+                                    //    poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
+                                    //}
                                     if (data[i].CTPTAddress != '') {
                                         poptext = poptext + '<p><b>Address: </b>' + data[i].CTPTAddress + '</p>';
                                     }

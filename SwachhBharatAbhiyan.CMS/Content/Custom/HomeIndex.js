@@ -526,16 +526,19 @@ $(document).ready(function () {
                 //{ y: res_not_spec_coll, label: "वर्णन उपलब्ध नाही", hover_number: not_spec_coll, color: '#0086c3' },
 
                 //{ y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, color: '#388e3c' },
-                { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, name:'Mixed Garbage', color: '#f44336' },
+                { y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, name: 'Dry Waste', color: '#66a2d5' },
+                { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, name: 'Wet Waste', color: '#186634' },
+                { y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, name: 'Domestic Hazardous Waste', color: '#8f8b28' },
+                { y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, name: 'Sanitary Waste', color: '#c384d3' },
+                { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, name: 'Mixed Garbage', color: '#f44336' },
+                { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, name: 'Construction And Demolition Waste', color: '#63676e' },
+                { y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, name: 'Horticulture Waste', color: '#1ad15c' },
                 { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, name: 'Garbage not received',  color: '#fe9436' },
                 { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, name: 'Garbage type not specified',  color: '#0086c3' },
 
-                { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, name: 'Construction And Demolition Waste',  color: '#63676e' },
-                { y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, name: 'Horticulture Waste', color: '#1ad15c' },
-                { y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, name: 'Dry Waste',  color: '#66a2d5' },
-                { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, name: 'Wet Waste',  color: '#186634' },
-                { y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, name: 'Domestic Hazardous Waste', color: '#8f8b28' },
-                { y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, name: 'Sanitary Waste', color: '#c384d3' },
+               
+               
+               
                // { y: res_TotalCW_coll, label: "Commercial Waste", hover_number: TotalCW_coll, color: '#63676e' },
             ],
         }]
@@ -819,10 +822,10 @@ $(document).ready(function () {
             dataPoints: [
                 //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
                 //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
-
-                { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name:'Total (Mix Waste)', color: '#dc3545' },
                 { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, name: 'Total (Dry Waste)', color: '#0086c3' },
                 { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, name: 'Total (Wet Waste)', color: '#01ad35' },
+                { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name:'Total (Mix Waste)', color: '#dc3545' },
+               
 
 
             ],
@@ -1046,7 +1049,7 @@ $(document).ready(function () {
                 dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
                 dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
                 sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
-                cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Specified', color: '#0086c3', intime: data[i].inTime });
+                cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Collected', color: '#0086c3', intime: data[i].inTime });
                 cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not received', color: '#fe9436', intime: data[i].inTime });
                 cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
                 cww.push({ y: data[i].CommercialWet, label: 'Commercial Waste Wet', color: '#186634', intime: data[i].inTime });
@@ -1105,30 +1108,50 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
+                            legendText: "Drywaste",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#66a2d5",
+                            dataPoints: dry
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Wetwaste",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#186634",
+                            dataPoints: wet
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "domestic Hazardous",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#8f8b28",
+                            dataPoints: dhw
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Sanitary",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#c384d3",
+                            dataPoints: sw
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
                             legendText: "Mixed",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#f44336",
                             dataPoints: mixed
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "NotCollected",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#fe9436",
-                            dataPoints: not_coll
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "NotSpecified",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#0086c3",
-                            dataPoints: not_spec
                         },
                         {
                             //indexLabel: "#total",
@@ -1150,45 +1173,65 @@ $(document).ready(function () {
                             color: "#1ad15c",
                             dataPoints: hw
                         },
-                         {
-                             //indexLabel: "#total",
-                             //indexLabelPlacement: "outside",
-                             type: "stackedColumn",
-                             showInLegend: true,
-                             legendText: "Wetwaste",
-                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                             color: "#186634",
-                             dataPoints: wet
-                        },
                         {
                             //indexLabel: "#total",
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
-                            legendText: "drywaste",
+                            legendText: "NotSpecified",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#0086c3",
+                            dataPoints: not_spec
+                        },
+
+
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "NotCollected",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#fe9436",
+                            dataPoints: not_coll
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
+                            showInLegend: true,
+                            legendText: "Commercial Dry",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#66a2d5",
-                            dataPoints: dry
-                        },
-                         {
-                             //indexLabel: "#total",
-                             //indexLabelPlacement: "outside",
-                             type: "stackedColumn",
-                             showInLegend: true,
-                             legendText: "domestic",
-                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                             color: "#8f8b28",
-                             dataPoints: dhw
+                            dataPoints: cwd
                         },
                         {
                             //indexLabel: "#total",
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
                             showInLegend: true,
-                            legendText: "Sanitary",
+                            legendText: "Commercial Wet",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#c384d3",
-                            dataPoints: sw
+                            color: "#186634",
+                            dataPoints: cww
+                        },
+
+                       
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
+                            showInLegend: true,
+                            legendText: "Commercial Mixed",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#f44336",
+                            dataPoints: cwm
                         },
 
                         {
@@ -1210,47 +1253,13 @@ $(document).ready(function () {
                             axisYType: "secondary",
                             axisYIndex: 1,
                             showInLegend: true,
-                            legendText: "Commercial Not received",
+                            legendText: "Commercial Not Collected",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#fe9436",
                             dataPoints: cwnr
                         },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            axisYType: "secondary",
-                            axisYIndex: 1,
-                            showInLegend: true,
-                            legendText: "Commercial Mixed",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#f44336",
-                            dataPoints: cwm
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            axisYType: "secondary",
-                            axisYIndex: 1,
-                            showInLegend: true,
-                            legendText: "Commercial Wet",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#186634",
-                            dataPoints: cww
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            axisYType: "secondary",
-                            axisYIndex: 1,
-                            showInLegend: true,
-                            legendText: "Commercial Dry",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#66a2d5",
-                            dataPoints: cwd
-                        },
+                     
+                       
 
                         {
                             type: "line",

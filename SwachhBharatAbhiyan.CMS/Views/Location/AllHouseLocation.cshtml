@@ -555,7 +555,7 @@
                     <option value="8"> Domestic Hazardous Waste</option>
                     <option value="9"> Sanitary Waste</option>
                     <option value="2"> Garbage not Received</option>
-                    <option value="3"> Not Specified</option>
+                    <option value="-1"> Not Specified</option>
                 </select>
             </div>
 
@@ -811,17 +811,32 @@
 
                         switch (gar_type) {
 
+                            case 7:
+                                mUrl = "../Content/images/New_Img/icon/icn_dry_waste.png"
+                                break;
+                            case 6:
+                                mUrl = "../Content/images/New_Img/icon/icn_wet_waste.png"
+                                break;
+                            case 8:
+                                mUrl = "../Content/images/New_Img/icon/icn_Domestic-Hazardous.png"
+                                break;
+                            case 9:
+                                mUrl = "../Content/images/New_Img/icon/icn_sanitary.png"
+                                break;
                             case 0:
                                 mUrl = "../Content/images/img/segregationImg/icn_mixed_garbage.png"
                                 break;
-                            case 1:
-                                mUrl = "../Content/images/img/segregationImg/icn_segregated_garbage.png"
+                            case 4:
+                                mUrl = "../Content/images/New_Img/icon/icn_Construction-&-Demolition.png"
+                                break;
+                            case 5:
+                                mUrl = "../Content/images/New_Img/icon/icn_horticulture.png"
+                                break;
+                            case -1:
+                                mUrl = "../Content/images/New_Img/icon/icn_not_specified.png"
                                 break;
                             case 2:
-                                mUrl = "../Content/images/img/segregationImg/icn_garbage_not_recevied.png"
-                                break;
-                            case 3:
-                                mUrl = "../Content/images/img/segregationImg/icn_not_specified.png"
+                                mUrl = "../Content/images/New_Img/icon/icn_garbage_not_recevied.png"
                                 break;
                         }
 
