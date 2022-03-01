@@ -372,7 +372,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 else {
                     ward = Convert.ToInt32(wardNo);
                 }
-                if (garbageType == "-1" || garbageType == null)
+                if (garbageType == "-2" || garbageType == null)
                 {
                     GarbageType = null;
                 }

@@ -545,7 +545,7 @@
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Segregation </label>
                 <select id="seg_type" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
-                    <option value="-1"> All Records</option>
+                    <option value="-2"> All Records</option>
                     @*<option value="1"> Segregated Garbage</option>*@
                     <option value="7"> Dry Waste</option>
                     <option value="6"> Wet Waste</option>
@@ -554,8 +554,8 @@
                     <option value="5"> Horticulture Waste</option>
                     <option value="8"> Domestic Hazardous Waste</option>
                     <option value="9"> Sanitary Waste</option>
-                    <option value="2"> Garbage not Received</option>
-                    <option value="-1"> Not Specified</option>
+                    <option value="2"> Garbage Not Collected</option>
+                    <option value="-1">Garbage Type Not Specified</option>
                 </select>
             </div>
 
@@ -742,7 +742,7 @@
             if (RadioValue == 0) {
                 document.getElementById('txt_fdate').value = today;
                 $('#selectnumber').val(-1);
-                $('#seg_type').val(-1);
+                $('#seg_type').val(-2);
                 $('#txt_fdate').prop('disabled', 'disabled');
                 $('#selectnumber').prop('disabled', 'disabled');
                 $('#seg_type').prop('disabled', 'disabled');
@@ -833,7 +833,7 @@
                                 mUrl = "../Content/images/New_Img/icon/icn_horticulture.png"
                                 break;
                             case -1:
-                                mUrl = "../Content/images/New_Img/icon/icn_not_specified.png"
+                                mUrl = "../Content/images/img/segregationImg/icn_not_specified.png"
                                 break;
                             case 2:
                                 mUrl = "../Content/images/New_Img/icon/icn_garbage_not_recevied.png"
