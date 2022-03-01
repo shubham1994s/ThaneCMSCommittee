@@ -418,9 +418,13 @@
                         //var mUrl = "../Content/images/img/segregationImg/commercial.png";
                         if (data[i].SWMId != 0) {
                             debugger;
-                            var mUrl = "../Content/images/img/segregationImg/CTPT_icn.png";
+                            var mUrl = "../Content/images/img/segregationImg/SWM_Blue.png";
                         }
-                       
+
+                        if (data[i].gcDate != null) {
+                            debugger;
+                            var mUrl = "../Content/images/img/segregationImg/SWM_Green.png";
+                        }
 
                       
 
@@ -444,7 +448,7 @@
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
                                     var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].swmname + '</h4><p><b>SWM Id: </b>' + data[i].ReferanceId + '</p>';
-                                    if (data[i].swmOwnerMobile != '') {
+                                    if (data[i].swmOwnerMobile != '' ) {
                                         poptext = poptext + '<p><b>Mobile: </b>' + data[i].swmOwnerMobile + '</p>';
                                     }
                                     if (data[i].SWMAddress != '') {
