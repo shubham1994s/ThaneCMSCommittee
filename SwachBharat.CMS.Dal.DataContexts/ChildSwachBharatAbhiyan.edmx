@@ -1038,14 +1038,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_CTPTOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPTOnMapDetails_Result)">
-            <Parameter Name="gcDate" Mode="In" Type="DateTime" />
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
-            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
-            <Parameter Name="AreaId" Mode="In" Type="Int32" />
-            <Parameter Name="WardNo" Mode="In" Type="Int32" />
-            <Parameter Name="FilterType" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_CTPTScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPTScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMGarbageCollection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMGarbageCollection_Result)">
             <Parameter Name="appId" Mode="In" Type="Int32" />
@@ -1074,7 +1066,15 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)" />
           <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
-            <Parameter Name="gcdate" Mode="In" Type="DateTime" />
+          <Parameter Name="gcdate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CTPTOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPTOnMapDetails_Result)">
+            <Parameter Name="gcDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
+            <Parameter Name="FilterType" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2305,17 +2305,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="SWMCount" Nullable="true" />
           <Property Type="Int32" Name="CTPTCount" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="SP_CTPTOnMapDetails_Result">
-          <Property Type="Int32" Name="userId" Nullable="true" />
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="LWId" Nullable="true" />
-          <Property Type="Int32" Name="SSId" Nullable="true" />
-          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
-          <Property Type="DateTime" Name="gcDate" Nullable="true" />
-          <Property Type="String" Name="Lat" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Long" Nullable="true" MaxLength="500" />
-        </ComplexType>
         <ComplexType Name="SP_CTPTScanify_Count_Result">
           <Property Type="Int32" Name="TotalCTPTCount" Nullable="true" />
           <Property Type="Int32" Name="TotalCTPTScanCount" Nullable="true" />
@@ -2440,6 +2429,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalCommercialWetCount" Nullable="false" />
           <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
           <Property Type="Int32" Name="TotalSWM" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_CTPTOnMapDetails_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="LWId" Nullable="true" />
+          <Property Type="Int32" Name="SSId" Nullable="true" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" />
+          <Property Type="String" Name="Lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Long" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tot" Nullable="false" MaxLength="1" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3744,21 +3745,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_CTPTOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPTOnMapDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPTOnMapDetails_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="LWId" ColumnName="LWId" />
-                <ScalarProperty Name="SSId" ColumnName="SSId" />
-                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
-                <ScalarProperty Name="Lat" ColumnName="Lat" />
-                <ScalarProperty Name="Long" ColumnName="Long" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_CTPTScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPTScanify_Count">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPTScanify_Count_Result">
@@ -3905,6 +3891,22 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalCommercialWetCount" ColumnName="TotalCommercialWetCount" />
                 <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
                 <ScalarProperty Name="TotalSWM" ColumnName="TotalSWM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CTPTOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPTOnMapDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPTOnMapDetails_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LWId" ColumnName="LWId" />
+                <ScalarProperty Name="SSId" ColumnName="SSId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="tot" ColumnName="tot" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

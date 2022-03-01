@@ -3152,6 +3152,7 @@ namespace SwachBharat.CMS.Bll.Services
                         //time = Convert.ToDateTime(x.datt).ToString("hh:mm:ss tt"),
                         CTPTLat = x.Lat,
                         CTPTLong = x.Long,
+                        TOT=x.tot,
                         // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,

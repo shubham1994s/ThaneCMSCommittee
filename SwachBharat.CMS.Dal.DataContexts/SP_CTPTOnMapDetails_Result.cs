@@ -22,5 +22,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<System.DateTime> gcDate { get; set; }
         public string Lat { get; set; }
         public string Long { get; set; }
+        public string tot { get; set; }
     }
 }

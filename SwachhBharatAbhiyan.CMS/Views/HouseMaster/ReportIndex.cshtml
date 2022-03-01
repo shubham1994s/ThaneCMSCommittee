@@ -3,7 +3,7 @@
     //ViewBag.Title = "घर संकलन रिपोर्ट (कचरा पॅटर्न नुसार) ";
     ViewBag.Title = "Household Collection Report (Pattern-wise)";
 }
-
+<link href="~/Content/css/datepicker/css/datepicker.css" rel="stylesheet" />
 @*@Styles.Render("~/Content/IndexCSS")*@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 <link href="~/Content/css/report_style.css" rel="stylesheet" />
@@ -49,7 +49,7 @@
     .checkmark1 {
         position: absolute;
         border-radius: 50%;
-        top: 2px;
+        top: -3px;
         left: 4px;
         width: 18px;
         height: 18px;
@@ -86,39 +86,83 @@
         border: 2px solid #999;
     }
 
-    .container_radio:nth-child(2) input ~ .checkmark1 {
-        border: 2px solid #6fa570;
-    }
+  
 
-    .container_radio:nth-child(3) input ~ .checkmark1 {
+    .container_radio:nth-child(2) input ~ .checkmark1 {
         border: 2px solid #d1655e;
     }
 
-    .container_radio:nth-child(4) input ~ .checkmark1 {
+    .container_radio:nth-child(3) input ~ .checkmark1 {
         border: 2px solid #e89f5f;
     }
 
-    .container_radio:nth-child(5) input ~ .checkmark1 {
+    .container_radio:nth-child(4) input ~ .checkmark1 {
         border: 2px solid #0086c3;
+    }
+    .container_radio:nth-child(5) input ~ .checkmark1 {
+        border: 2px solid #63676e;
+    }
+    .container_radio:nth-child(6) input ~ .checkmark1 {
+        border: 2px solid #1ad15c;
+    }
+    .container_radio:nth-child(7) input ~ .checkmark1 {
+        border: 2px solid #186634;
+    }
+    .container_radio:nth-child(8) input ~ .checkmark1 {
+        border: 2px solid #66a2d5;
+    }
+    .container_radio:nth-child(9) input ~ .checkmark1 {
+        border: 2px solid #186634;
+    }
+    .container_radio:nth-child(10) input ~ .checkmark1 {
+        border: 2px solid #66a2d5;
+    }
+    .container_radio:nth-child(11) input ~ .checkmark1 {
+        border: 2px solid #8f8b28;
+    }
+    .container_radio:nth-child(12) input ~ .checkmark1 {
+        border: 2px solid #c384d3;
     }
     .container_radio:nth-child(1) input:checked ~ .checkmark1 {
         background-color: #999;
     }
 
-    .container_radio:nth-child(2) input:checked ~ .checkmark1 {
-        background-color: #6fa570;
-    }
+   
 
-    .container_radio:nth-child(3) input:checked ~ .checkmark1 {
+    .container_radio:nth-child(2) input:checked ~ .checkmark1 {
         background-color: #d1655e;
     }
 
-    .container_radio:nth-child(4) input:checked ~ .checkmark1 {
+    .container_radio:nth-child(3) input:checked ~ .checkmark1 {
         background-color: #e89f5f;
     }
 
-    .container_radio:nth-child(5) input:checked ~ .checkmark1 {
+    .container_radio:nth-child(4) input:checked ~ .checkmark1 {
         background-color: #0086c3;
+    }
+    .container_radio:nth-child(5) input:checked ~ .checkmark1 {
+        background-color: #63676e;
+    }
+    .container_radio:nth-child(6) input:checked ~ .checkmark1 {
+        background-color: #1ad15c;
+    }
+    .container_radio:nth-child(7) input:checked ~ .checkmark1 {
+        background-color: #186634;
+    }
+    .container_radio:nth-child(8) input:checked ~ .checkmark1 {
+        background-color: #66a2d5;
+    }
+    .container_radio:nth-child(9) input:checked ~ .checkmark1 {
+        background-color: #186634;
+    }
+    .container_radio:nth-child(10) input:checked ~ .checkmark1 {
+        background-color: #66a2d5;
+    }
+    .container_radio:nth-child(11) input:checked ~ .checkmark1 {
+        background-color: #8f8b28;
+    }
+    .container_radio:nth-child(12) input:checked ~ .checkmark1 {
+        background-color: #c384d3;
     }
     /* Create the indicator (the dot/circle - hidden when not checked) */
     .checkmark:after {
@@ -192,10 +236,10 @@
 
                 @* <label class="radio-inline"><input type="radio" name="optradio" checked></label>
 
-                    <label class="radio-inline"><input type="radio" name="optradio"></label>
+        <label class="radio-inline"><input type="radio" name="optradio"></label>
 
 
-                    <label class="radio-inline"><input type="radio" name="optradio"></label>
+        <label class="radio-inline"><input type="radio" name="optradio"></label>
                 *@
 
 
@@ -210,16 +254,16 @@
                     </span>
                 </label>
 
-                <label class="container_radio radio-inline" style="">
+                <!--<label class="container_radio radio-inline" style="">
 
-                    <input type="radio" name="radio" value="1">
+                    <input type="radio" name="radio" value="1">-->
                     @*<span style="vertical-align:middle">वर्गीकृत कचरा <br />Segregated Garbage</span>*@
-                    <span style="vertical-align:middle"> Segregated Garbage</span>
+                    <!--<span style="vertical-align:middle"> Segregated Garbage</span>
                     <span class="checkmark1">
                         <div class="checkmark_stem"></div>
                         <div class="checkmark_kick"></div>
                     </span>
-                </label>
+                </label>-->
 
                 <label class="container_radio radio-inline" style="">
 
@@ -244,9 +288,71 @@
 
                 <label class="container_radio radio-inline" style="">
 
-                    <input type="radio" name="radio" value="3">
+                    <input type="radio" name="radio" value="-1">
                     @*<span style="vertical-align:middle"> वर्णन उपलब्ध नाही <br /> Not Specified  </span>*@
                     <span style="vertical-align:middle"> Not Specified  </span>
+                    <span class="checkmark1">
+                        <div class="checkmark_stem"></div>
+                        <div class="checkmark_kick"></div>
+                    </span>
+                </label>
+                <label class="container_radio radio-inline" style="">
+
+                    <input type="radio" name="radio" value="4">
+                    @*<span style="vertical-align:middle"> वर्णन उपलब्ध नाही <br /> Not Specified  </span>*@
+                    <span style="vertical-align:middle"> Construction And Demolition  </span>
+                    <span class="checkmark1">
+                        <div class="checkmark_stem"></div>
+                        <div class="checkmark_kick"></div>
+                    </span>
+                </label>
+                
+                <label class="container_radio radio-inline" style="">
+
+                    <input type="radio" name="radio" value="5">
+                    @*<span style="vertical-align:middle"> वर्णन उपलब्ध नाही <br /> Not Specified  </span>*@
+                    <span style="vertical-align:middle"> Horticulture  </span>
+                    <span class="checkmark1">
+                        <div class="checkmark_stem"></div>
+                        <div class="checkmark_kick"></div>
+                    </span>
+                </label> 
+                <br/><br/>
+                <label class="container_radio radio-inline" style="">
+
+                    <input type="radio" name="radio" value="">
+                    @*<span style="vertical-align:middle"> वर्णन उपलब्ध नाही <br /> Not Specified  </span>*@
+                    <span style="vertical-align:middle"> Wet  </span>
+                    <span class="checkmark1">
+                        <div class="checkmark_stem"></div>
+                        <div class="checkmark_kick"></div>
+                    </span>
+                </label>
+                <label class="container_radio radio-inline" style="">
+
+                    <input type="radio" name="radio" value="7">
+                    @*<span style="vertical-align:middle"> वर्णन उपलब्ध नाही <br /> Not Specified  </span>*@
+                    <span style="vertical-align:middle"> Dry  </span>
+                    <span class="checkmark1">
+                        <div class="checkmark_stem"></div>
+                        <div class="checkmark_kick"></div>
+                    </span>
+                </label>
+                <label class="container_radio radio-inline" style="">
+
+                    <input type="radio" name="radio" value="8">
+                    @*<span style="vertical-align:middle"> वर्णन उपलब्ध नाही <br /> Not Specified  </span>*@
+                    <span style="vertical-align:middle"> Domestic  </span>
+                    <span class="checkmark1">
+                        <div class="checkmark_stem"></div>
+                        <div class="checkmark_kick"></div>
+                    </span>
+                </label>
+                <label class="container_radio radio-inline" style="">
+
+                    <input type="radio" name="radio" value="9">
+                    @*<span style="vertical-align:middle"> वर्णन उपलब्ध नाही <br /> Not Specified  </span>*@
+                    <span style="vertical-align:middle">Sanitary </span>
                     <span class="checkmark1">
                         <div class="checkmark_stem"></div>
                         <div class="checkmark_kick"></div>

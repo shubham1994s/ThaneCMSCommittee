@@ -16,5 +16,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string gcDate { get; set; }
         public string gcTime { get; set; }
         public Nullable<int> garbageType { get; set; }
+
+        public string TOT { get; set; }
     }
 }

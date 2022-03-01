@@ -159,7 +159,7 @@
   cursor: pointer;
 }
 .datepicker td.day.disabled {
-  color: #eeeeee;
+  color: #000000;
 }
 .datepicker td.old,
 .datepicker td.new {
