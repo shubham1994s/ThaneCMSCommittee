@@ -1841,6 +1841,8 @@
     <Content Include="Content\images\img\segregationImg\Public-Toilet.png" />
     <Content Include="Content\images\img\segregationImg\Start-Point.png" />
     <Content Include="Content\images\img\segregationImg\Street_Sweep.png" />
+    <Content Include="Content\images\img\segregationImg\SWM_Blue.png" />
+    <Content Include="Content\images\img\segregationImg\SWM_Green.png" />
     <Content Include="Content\images\img\segregationImg\Thumbs.db" />
     <Content Include="Content\images\img\segregationImg\Urinal-Toilet.png" />
     <Content Include="Content\images\img\send.png" />
