@@ -427,6 +427,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.GetAllCTPTLocation(date, userid, areaid, wardNo, SearchString, FilterType, Emptype);
         }
+
+        public List<SBALCTPTLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype)
+        {
+            return screenService.GetAllSWMLocation(date, userid, areaid, wardNo, SearchString, FilterType, Emptype);
+        }
         //Code Optimization (code)
         //public SBALHouseLocationMapView1 GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, string start)
         //{
@@ -453,6 +458,12 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         public DashBoardVM GetCTPTOnMapDetails()
         {
             return screenService.GetCTPTOnMapDetails();
+
+        }
+
+        public DashBoardVM GetSWMOnMapDetails()
+        {
+            return screenService.GetSWMOnMapDetails();
 
         }
 

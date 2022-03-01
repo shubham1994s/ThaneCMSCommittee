@@ -3205,6 +3205,7 @@
     <Content Include="Views\GarbageCollection\CTPTGarbageIndex.cshtml" />
     <Content Include="Views\GarbageCollection\MenuCTPTGarbageIndex.cshtml" />
     <Content Include="Views\Report\CommercialWise.cshtml" />
+    <Content Include="Views\Location\AllSWMLocation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
