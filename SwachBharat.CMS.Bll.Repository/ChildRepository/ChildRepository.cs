@@ -428,7 +428,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetAllCTPTLocation(date, userid, areaid, wardNo, SearchString, FilterType, Emptype);
         }
 
-        public List<SBALCTPTLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype)
+        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype)
         {
             return screenService.GetAllSWMLocation(date, userid, areaid, wardNo, SearchString, FilterType, Emptype);
         }

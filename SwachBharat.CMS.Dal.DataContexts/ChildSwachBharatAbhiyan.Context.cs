@@ -21,7 +21,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -777,6 +776,40 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_HouseScanify_Count_Result> SP_HouseScanify_Count()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Count_Result>("SP_HouseScanify_Count");
+        }
+    
+        public virtual ObjectResult<SP_SWMScanify_Count_Result> SP_SWMScanify_Count()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMScanify_Count_Result>("SP_SWMScanify_Count");
+        }
+    
+        public virtual ObjectResult<SP_SWMOnMapDetails_Result> SP_SWMOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> filterType)
+        {
+            var gcDateParameter = gcDate.HasValue ?
+                new ObjectParameter("gcDate", gcDate) :
+                new ObjectParameter("gcDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var filterTypeParameter = filterType.HasValue ?
+                new ObjectParameter("FilterType", filterType) :
+                new ObjectParameter("FilterType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMOnMapDetails_Result>("SP_SWMOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, filterTypeParameter);
         }
     }
 }

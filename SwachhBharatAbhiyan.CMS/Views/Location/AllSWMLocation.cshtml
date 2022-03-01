@@ -128,7 +128,7 @@
                     </div>
                     <div class="media-body">
                         <p class="media-heading" style="font-weight:600">SWM Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalCTPTCount</p>
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalSWMCount</p>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                     </div>
                     <div class="media-body">
                         <p class="media-heading" style="font-weight:600">Total SWM Scan Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalCTPTScanCount</p>
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalSWMScanCount</p>
                     </div>
                 </div>
             </div>     
@@ -223,7 +223,7 @@
                 <label>&nbsp;</label>
                 <div class="card" style="width: auto; border:1px solid #ff7676;margin-top:3px">
                     <div class="card-body" style="padding:8px">
-                        <p class="text-center" style="font-size:14px;margin:0px"><b>Today's Total Scaned :</b> @Model.TodayCTPTScanCount</p>
+                        <p class="text-center" style="font-size:14px;margin:0px"><b>Today's Total Scaned :</b> @Model.TodayScanSWMCount</p>
                     </div>
                 </div>
             </div>
@@ -233,7 +233,7 @@
             <div class="col-sm-3">
                 <div class="controls">
 
-                    <label style="margin-top:7px">CTPT  Id </label>
+                    <label style="margin-top:7px">SWM  Id </label>
                     <input id="houseId_filter" class="form-control form-control-sm" type="text" />
                 </div>
             </div>
@@ -397,7 +397,7 @@
                     }
                     var map = new google.maps.Map(document.getElementById('googleMap'), {
 
-                        center: new google.maps.LatLng(data[0].CTPTLat, data[0].CTPTLong),
+                        center: new google.maps.LatLng(data[0].SWMLat, data[0].SWMLong),
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     });
 
@@ -409,64 +409,23 @@
                     var gar_type;
                     for (i = 0; i < data.length; i++) {
 
-                        if (data[i].CTPTAddress == null) {
-                            data[i].CTPTAddress = '';
+                        if (data[i].SWMAddress == null) {
+                            data[i].SWMAddress = '';
                         }
 
 
                         /* var mUrl = "../Content/images/img/segregationImg/icon_commercial.png";*/
                         //var mUrl = "../Content/images/img/segregationImg/commercial.png";
-                        if (data[i].CTPTId != 0) {
+                        if (data[i].SWMId != 0) {
                             debugger;
                             var mUrl = "../Content/images/img/segregationImg/CTPT_icn.png";
                         }
-                        if (data[i].TOT == 'CT') {
-                            debugger;
-                            var mUrl = "../Content/images/img/segregationImg/cumulative_toilet.png";
-                        }
+                       
 
-                        if (data[i].TOT == 'PT') {
-                            debugger;
-                            var mUrl = "../Content/images/img/segregationImg/Public-Toilet.png";
-                        }
-                        if (data[i].TOT == 'U') {
-                            debugger;
-                            var mUrl = "../Content/images/img/segregationImg/Urinal-Toilet.png";
-                        }
-                        if (data[i].TOT == '') {
-                            debugger;
-                            var mUrl = "../Content/images/img/segregationImg/CTPT_icn.png";
-                        }
-
-                        //if (data[i].lwid != 0) {
-                        //    debugger;
-                        //    var mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png";
-                        //}
-                        //if (data[i].ssid != 0) {
-                        //    debugger;
-                        //    var mUrl = "../../Areas/Street/Content/images/img/segregationImg/Street_Sweep.png";
-                        //}
-
-
-                        //switch (gar_type) {
-
-                        //    case 0:
-                        //        mUrl = "../Content/images/img/segregationImg/commercial_mixed.png"
-                        //        break;
-                        //    case 6:
-                        //        mUrl = "../Content/images/img/segregationImg/commercial_wet.png"
-                        //        break;
-                        //    case 7:
-                        //        mUrl = "../Content/images/img/segregationImg/commercial_dry.png"
-                        //        break;
-                        //    case 3:
-                        //        mUrl = "../Content/images/img/segregationImg/icn_not_specified.png"
-                        //        break;
-                        //}
-
+                      
 
                         marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(data[i].CTPTLat, data[i].CTPTLong),
+                            position: new google.maps.LatLng(data[i].SWMLat, data[i].SWMLong),
                             map: map,
 
                             icon: {
@@ -484,12 +443,12 @@
                         if (gar_type != null) {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].commercialOwnerName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>';
-                                    if (data[i].commercialOwnerMobile != '') {
-                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].swmname + '</h4><p><b>SWM Id: </b>' + data[i].ReferanceId + '</p>';
+                                    if (data[i].swmOwnerMobile != '') {
+                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].swmOwnerMobile + '</p>';
                                     }
-                                    if (data[i].CTPTAddress != '') {
-                                        poptext = poptext + '<p><b>Address: </b>' + data[i].CTPTAddress + '<p>';
+                                    if (data[i].SWMAddress != '') {
+                                        poptext = poptext + '<p><b>Address: </b>' + data[i].SWMAddress + '<p>';
                                     }
                                     poptext = poptext + '<b>Date: </b>' + data[i].gcDate + '</p><div style="height:auto; width:150px"><p><b>Time: </b>' + data[i].gcTime + '</p></div></div>';
                                     infowindow.setContent(poptext);
@@ -502,12 +461,12 @@
                         else {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].commercialOwnerName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>'
-                                    if (data[i].commercialOwnerMobile != '') {
-                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].swmname + '</h4><p><b>SWM Id: </b>' + data[i].ReferanceId + '</p>'
+                                    if (data[i].swmOwnerMobile != '') {
+                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].swmOwnerMobile + '</p>';
                                     }
-                                    if (data[i].CTPTAddress != '') {
-                                        poptext = poptext + '<p><b>Address: </b>' + data[i].CTPTAddress + '</p>';
+                                    if (data[i].SWMAddress != '') {
+                                        poptext = poptext + '<p><b>Address: </b>' + data[i].SWMAddress + '</p>';
                                     }
                                     poptext = poptext + '</div>';
                                     infowindow.setContent(poptext);

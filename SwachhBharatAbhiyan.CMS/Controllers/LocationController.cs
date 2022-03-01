@@ -593,7 +593,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     date = DateTime.Now.ToShortDateString();
                 }
 
-                List<SBALCTPTLocationMapView> obj = new List<SBALCTPTLocationMapView>();
+                List<SBALSWMLocationMapView> obj = new List<SBALSWMLocationMapView>();
                 obj = childRepository.GetAllSWMLocation(date, user, area, ward, SearchString, FilterType, null);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")

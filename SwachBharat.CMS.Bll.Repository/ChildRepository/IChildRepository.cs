@@ -143,7 +143,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype);
         List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype);
 
-        List<SBALCTPTLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype);
+        List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype);
         //Code Optimization (code)
         //SBALHouseLocationMapView1 GetAllHouseLocation(string date, int userid,int areaid,int wardNo, string SearchString, string start);
 
