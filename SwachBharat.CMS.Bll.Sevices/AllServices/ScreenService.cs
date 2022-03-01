@@ -3141,6 +3141,7 @@ namespace SwachBharat.CMS.Bll.Services
                     {
                        
                         CTPTId = Convert.ToInt32(x.Id),
+                        CTPTName=x.Name,
                         ReferanceId = x.ReferanceId,
                         CTPTAddress = checkNull(x.Address).Replace("Unnamed Road, ", ""),
                         gcDate = dt.ToString("dd-MM-yyyy"),

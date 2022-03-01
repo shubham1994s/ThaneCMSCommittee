@@ -23,5 +23,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string Lat { get; set; }
         public string Long { get; set; }
         public string tot { get; set; }
+        public string Name { get; set; }
     }
 }

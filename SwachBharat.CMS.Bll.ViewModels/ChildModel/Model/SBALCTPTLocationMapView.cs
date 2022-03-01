@@ -9,6 +9,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
   public  class SBALCTPTLocationMapView : BaseVM
     {
         public int CTPTId { get; set; }
+
+        public string CTPTName { get; set; }
         public string ReferanceId { get; set; }
         public string CTPTAddress { get; set; }
         public string CTPTLat { get; set; }
