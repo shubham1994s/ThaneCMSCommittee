@@ -869,6 +869,113 @@ $(document).ready(function () {
 
 });
 
+// SWM Pie Chart
+$(document).ready(function () {
+    // debugger;
+    
+    var TotalSWMCurrent = $('#tot_TotalSWMCurrent').val();
+    var TotalSWM = $('#tot_TotalSWM').val();
+
+    //var TotalSWMCurrent = 2;
+    //var TotalSWM = 10;
+    var remSWMCount = TotalSWM - TotalSWMCurrent
+    
+
+
+
+    var TotalSWM_check = $('#tot_TotalSWM').val();
+   // var TotalSWM_check = 10;
+
+    var TotalSWMCount;
+    if (TotalSWM_check == 0) {
+        TotalSWMCount = null;
+    } else {
+        TotalSWMCount = $('#tot_TotalSWM').val();
+        //TotalSWMCount = 10;
+    }
+
+    var res_swmcurrent_count = (TotalSWMCurrent) * 100 / (TotalSWMCount);
+    var res_swm_count1 = (TotalSWM) - (TotalSWMCurrent);
+    var res_swm_count = (res_swm_count1) * 100 / (TotalSWMCount);
+
+
+  
+
+    var ary3 = []
+    ary3.push({ v: res_swmcurrent_count });
+    ary3.push({ v: res_swm_count });
+ 
+
+
+
+    //console.log(ary3);
+    var chart = new CanvasJS.Chart("chartContainerPieSWM", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            //text: "विलगिकरण प्रकार ",
+            fontSize: 24,
+            padding: 10
+        },
+        subtitles: [{
+            //text: "United Kingdom, 2016",
+            //fontSize: 16
+        }],
+        toolTip: {
+            content: "In Numbers {hover_number} ",
+        },
+        legend: {
+            //maxWidth: 180,
+            //itemWidth: 75,
+            fontSize: 12,
+            // horizontalAlign: "right", // left, center ,right 
+            //verticalAlign: "center",
+        },
+        data: [{
+            type: "pie",
+            indexLabelFontSize: 12,
+            showInLegend: true,
+            legendText: "{name}:{hover_number}",
+            radius: 60,
+            indexLabel: "{label} - {y}",
+            yValueFormatString: "###0.0\"%\"",
+            click: explodePie,
+            dataPoints: [
+
+                { y: res_swmcurrent_count, label: "Total (SWM Scan)", hover_number: TotalSWMCurrent, name: 'Total (SWM Scan)', color: '#186634' },
+                { y: res_swm_count, label: "Total (Not Scan)", hover_number: remSWMCount, name: 'Total (Not Scan)', color: '#f44336' },
+
+            ],
+        }]
+    });
+    showDefaultText(chart, "No Data available");
+    chart.render();
+    function showDefaultText(chart, text) {
+        var isEmpty = !(TotalSWMCount && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+
+        if (isEmpty) {
+            chart.options.subtitles.push({
+                text: text,
+                verticalAlign: 'center',
+            });
+            (chart.options.data[0].dataPoints = []);
+        }
+
+
+
+    }
+    function explodePie(e) {
+        for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+            if (i !== e.dataPointIndex)
+                e.dataSeries.dataPoints[i].exploded = false;
+        }
+    }
+
+});
+
+
 // Horiculture , Construction Pie Chart
 $(document).ready(function () {
     //debugger;
