@@ -218,6 +218,8 @@
 <input value="@Model.CommercialMixCount" type="hidden" id="tot_CommercialMixCount" />
 <input value="@Model.CommercialWetCount" type="hidden" id="tot_CommercialWetCount" />
 <input value="@Model.CommercialDryCount" type="hidden" id="tot_CommercialDryCount" />
+<input value="@Model.CommercialNotCollectedCount" type="hidden" id="tot_CommercialNotCollectedCount" />
+<input value="@Model.CommercialNotSpecifiedCount" type="hidden" id="tot_CommercialNotSpecifiedCount" />
 <input value="@Model.TotalCommercialCount" type="hidden" id="tot_TotalCommercialCount" />
 
 
@@ -792,7 +794,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
+
+            <div class="col-lg-6">
                 <div class="bar-chart-example card">
                     <div class="card-header d-flex align-items-center">
                         @*<h3 class="h4" style="width:50%">डंप यार्ड तपशील</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण वजन: @Model.TotalGcWeightCount Ton</span>*@
@@ -816,7 +819,7 @@
             </div>
 
             <!--Commercial Graph-->
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="bar-chart-example card">
                     <div class="card-header d-flex align-items-center">
                         @*<h3 class="h4" style="width:50%">डंप यार्ड तपशील</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण वजन: @Model.TotalGcWeightCount Ton</span>*@

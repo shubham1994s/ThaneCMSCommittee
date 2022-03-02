@@ -762,6 +762,10 @@ $(document).ready(function () {
     var CommercialMixCount = $('#tot_CommercialMixCount').val();
     var CommercialWetCount = $('#tot_CommercialWetCount').val();
     var CommercialDryCount = $('#tot_CommercialDryCount').val();
+
+    var CommercialNotCollectedCount = $('#tot_CommercialNotCollectedCount').val();
+    var CommercialNotSpecifiedCount = $('#tot_CommercialNotSpecifiedCount').val();
+
     var TotalCommercialCount_check = $('#tot_TotalCommercialCount').val();
 
     //var CommercialMixCount = 10;
@@ -781,10 +785,15 @@ $(document).ready(function () {
     var res_wet_count = parseFloat(CommercialWetCount) * 100 / parseFloat(TotalCommercialCount);
     var res_dry_count = parseFloat(CommercialDryCount) * 100 / parseFloat(TotalCommercialCount);
 
+    var res_notcollected_count = parseFloat(CommercialNotCollectedCount) * 100 / parseFloat(TotalCommercialCount);
+    var res_notspecified_count = parseFloat(CommercialNotSpecifiedCount) * 100 / parseFloat(TotalCommercialCount);
+
     var ary3 = []
     ary3.push({ v: CommercialMixCount });
     ary3.push({ v: CommercialDryCount });
     ary3.push({ v: CommercialWetCount });
+    ary3.push({ v: CommercialNotCollectedCount });
+    ary3.push({ v: CommercialNotSpecifiedCount });
 
 
     //console.log(ary3);
@@ -822,9 +831,11 @@ $(document).ready(function () {
             dataPoints: [
                 //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
                 //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
-                { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, name: 'Total (Dry Waste)', color: '#0086c3' },
+                { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, name: 'Total (Dry Waste)', color: '#66a2d5' },
                 { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, name: 'Total (Wet Waste)', color: '#01ad35' },
-                { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name:'Total (Mix Waste)', color: '#dc3545' },
+                { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name: 'Total (Mix Waste)', color: '#dc3545' },
+                { y: res_notcollected_count, label: "Total (Not Collected)", hover_number: CommercialNotCollectedCount, name: 'Total (Not Collected)', color: '#fe9436' },
+                { y: res_notspecified_count, label: "Total (Not Specified)", hover_number: CommercialNotSpecifiedCount, name: 'Total (Not Specified)', color: '#0086c3' },
                
 
 
@@ -1049,8 +1060,8 @@ $(document).ready(function () {
                 dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
                 dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
                 sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
-                cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Collected', color: '#0086c3', intime: data[i].inTime });
-                cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not received', color: '#fe9436', intime: data[i].inTime });
+                cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Specified', color: '#0086c3', intime: data[i].inTime });
+                cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not Collected', color: '#fe9436', intime: data[i].inTime });
                 cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
                 cww.push({ y: data[i].CommercialWet, label: 'Commercial Waste Wet', color: '#186634', intime: data[i].inTime });
                 cwd.push({ y: data[i].CommercialDry, label: 'Commercial Waste Dry', color: '#66a2d5', intime: data[i].inTime });
