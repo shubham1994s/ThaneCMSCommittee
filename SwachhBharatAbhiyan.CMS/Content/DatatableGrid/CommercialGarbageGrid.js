@@ -96,7 +96,7 @@
                         return "<div class='circle' style='height: 20px;width: 20px;background-color: #0086c3;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Not Specified)";
                     }
                     else if (full["type1"] == "2") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Not Collected)";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Not Received)";
                     }
                                  
                     else if (full["type1"] == "6") {

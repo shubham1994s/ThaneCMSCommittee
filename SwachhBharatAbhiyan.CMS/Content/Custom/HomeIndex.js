@@ -533,8 +533,8 @@ $(document).ready(function () {
                 { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, name: 'Mixed Garbage', color: '#f44336' },
                 { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, name: 'Construction And Demolition Waste', color: '#63676e' },
                 { y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, name: 'Horticulture Waste', color: '#1ad15c' },
-                { y: res_not_coll, label: "Garbage not Collected", hover_number: not_coll, name: 'Garbage not Collected',  color: '#fe9436' },
-                { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, name: 'Garbage type not specified',  color: '#0086c3' },
+                { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, name: 'Garbage Not Received',  color: '#fe9436' },
+                { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, name: 'Garbage Type Not Specified',  color: '#0086c3' },
 
                
                
@@ -834,7 +834,7 @@ $(document).ready(function () {
                 { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, name: 'Total (Dry Waste)', color: '#66a2d5' },
                 { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, name: 'Total (Wet Waste)', color: '#01ad35' },
                 { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name: 'Total (Mix Waste)', color: '#dc3545' },
-                { y: res_notcollected_count, label: "Total (Not Collected)", hover_number: CommercialNotCollectedCount, name: 'Total (Not Collected)', color: '#fe9436' },
+                { y: res_notcollected_count, label: "Total (Not Received)", hover_number: CommercialNotCollectedCount, name: 'Total (Not Received)', color: '#fe9436' },
                 { y: res_notspecified_count, label: "Total (Not Specified)", hover_number: CommercialNotSpecifiedCount, name: 'Total (Not Specified)', color: '#0086c3' },
                
 
@@ -868,6 +868,113 @@ $(document).ready(function () {
     }
 
 });
+
+// SWM Pie Chart
+$(document).ready(function () {
+    // debugger;
+    
+    var TotalSWMCurrent = $('#tot_TotalSWMCurrent').val();
+    var TotalSWM = $('#tot_TotalSWM').val();
+
+    //var TotalSWMCurrent = 2;
+    //var TotalSWM = 10;
+    var remSWMCount = TotalSWM - TotalSWMCurrent
+    
+
+
+
+    var TotalSWM_check = $('#tot_TotalSWM').val();
+   // var TotalSWM_check = 10;
+
+    var TotalSWMCount;
+    if (TotalSWM_check == 0) {
+        TotalSWMCount = null;
+    } else {
+        TotalSWMCount = $('#tot_TotalSWM').val();
+        //TotalSWMCount = 10;
+    }
+
+    var res_swmcurrent_count = (TotalSWMCurrent) * 100 / (TotalSWMCount);
+    var res_swm_count1 = (TotalSWM) - (TotalSWMCurrent);
+    var res_swm_count = (res_swm_count1) * 100 / (TotalSWMCount);
+
+
+  
+
+    var ary3 = []
+    ary3.push({ v: res_swmcurrent_count });
+    ary3.push({ v: res_swm_count });
+ 
+
+
+
+    //console.log(ary3);
+    var chart = new CanvasJS.Chart("chartContainerPieSWM", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            //text: "विलगिकरण प्रकार ",
+            fontSize: 24,
+            padding: 10
+        },
+        subtitles: [{
+            //text: "United Kingdom, 2016",
+            //fontSize: 16
+        }],
+        toolTip: {
+            content: "In Numbers {hover_number} ",
+        },
+        legend: {
+            //maxWidth: 180,
+            //itemWidth: 75,
+            fontSize: 12,
+            // horizontalAlign: "right", // left, center ,right 
+            //verticalAlign: "center",
+        },
+        data: [{
+            type: "pie",
+            indexLabelFontSize: 12,
+            showInLegend: true,
+            legendText: "{name}:{hover_number}",
+            radius: 60,
+            indexLabel: "{label} - {y}",
+            yValueFormatString: "###0.0\"%\"",
+            click: explodePie,
+            dataPoints: [
+
+                { y: res_swmcurrent_count, label: "Total (SWM Scan)", hover_number: TotalSWMCurrent, name: 'Total (SWM Scan)', color: '#186634' },
+                { y: res_swm_count, label: "Total (Not Scan)", hover_number: remSWMCount, name: 'Total (Not Scan)', color: '#f44336' },
+
+            ],
+        }]
+    });
+    showDefaultText(chart, "No Data available");
+    chart.render();
+    function showDefaultText(chart, text) {
+        var isEmpty = !(TotalSWMCount && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+
+        if (isEmpty) {
+            chart.options.subtitles.push({
+                text: text,
+                verticalAlign: 'center',
+            });
+            (chart.options.data[0].dataPoints = []);
+        }
+
+
+
+    }
+    function explodePie(e) {
+        for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+            if (i !== e.dataPointIndex)
+                e.dataSeries.dataPoints[i].exploded = false;
+        }
+    }
+
+});
+
 
 // Horiculture , Construction Pie Chart
 $(document).ready(function () {
@@ -1061,7 +1168,7 @@ $(document).ready(function () {
                 dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
                 sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
                 cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Specified', color: '#0086c3', intime: data[i].inTime });
-                cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not Collected', color: '#fe9436', intime: data[i].inTime });
+                cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not Received', color: '#fe9436', intime: data[i].inTime });
                 cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
                 cww.push({ y: data[i].CommercialWet, label: 'Commercial Waste Wet', color: '#186634', intime: data[i].inTime });
                 cwd.push({ y: data[i].CommercialDry, label: 'Commercial Waste Dry', color: '#66a2d5', intime: data[i].inTime });
@@ -1264,7 +1371,7 @@ $(document).ready(function () {
                             axisYType: "secondary",
                             axisYIndex: 1,
                             showInLegend: true,
-                            legendText: "Commercial Not Collected",
+                            legendText: "Commercial Not Received",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#fe9436",
                             dataPoints: cwnr

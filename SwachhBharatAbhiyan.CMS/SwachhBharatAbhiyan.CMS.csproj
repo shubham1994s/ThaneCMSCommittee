@@ -1822,6 +1822,8 @@
     <Content Include="Content\images\img\marker24.png" />
     <Content Include="Content\images\img\sba.png" />
     <Content Include="Content\images\img\segregationImg\CMS_AppLink.png" />
+    <Content Include="Content\images\img\segregationImg\Commercial-Not-Collected.png" />
+    <Content Include="Content\images\img\segregationImg\Commercial-Not-Specified.png" />
     <Content Include="Content\images\img\segregationImg\commercial.png" />
     <Content Include="Content\images\img\segregationImg\commercial_dry.png" />
     <Content Include="Content\images\img\segregationImg\commercial_mixed.png" />
