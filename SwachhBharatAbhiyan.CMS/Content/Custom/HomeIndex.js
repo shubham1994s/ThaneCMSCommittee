@@ -1128,7 +1128,7 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
-                            legendText: "domestic Hazardous",
+                            legendText: "Domestic Hazardous",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#8f8b28",
                             dataPoints: dhw
