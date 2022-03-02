@@ -533,7 +533,7 @@ $(document).ready(function () {
                 { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, name: 'Mixed Garbage', color: '#f44336' },
                 { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, name: 'Construction And Demolition Waste', color: '#63676e' },
                 { y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, name: 'Horticulture Waste', color: '#1ad15c' },
-                { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, name: 'Garbage not received',  color: '#fe9436' },
+                { y: res_not_coll, label: "Garbage not Collected", hover_number: not_coll, name: 'Garbage not Collected',  color: '#fe9436' },
                 { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, name: 'Garbage type not specified',  color: '#0086c3' },
 
                
