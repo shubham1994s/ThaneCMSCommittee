@@ -975,6 +975,103 @@ $(document).ready(function () {
 
 });
 
+//CTPT Pie Chart
+$(document).ready(function () {
+    // debugger;
+
+    var TotalCTCount = $('#tot_TotalCTCount').val();
+    var TotalPTCount = $('#tot_TotalPTCount').val();
+    var TotalUCount = $('#tot_TotalUCount').val();
+    var TodayCTPTScanCount_check = $('#tot_TodayCTPTScanCount').val();
+
+   
+
+    var TotalTodayCTPTScanCount;
+    if (TodayCTPTScanCount_check == 0) {
+        TotalTodayCTPTScanCount = null;
+    } else {
+        TotalTodayCTPTScanCount = $('#tot_TodayCTPTScanCount').val();
+       
+    }
+
+    var res_ct_count = parseFloat(TotalCTCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
+    var res_pt_count = parseFloat(TotalPTCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
+    var res_u_count = parseFloat(TotalUCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
+
+   
+
+    var ary3 = []
+    ary3.push({ v: TotalCTCount });
+    ary3.push({ v: TotalPTCount });
+    ary3.push({ v: TotalUCount });
+  
+
+
+    //console.log(ary3);
+    var chart = new CanvasJS.Chart("chartContainerPieCTPT", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            //text: "विलगिकरण प्रकार ",
+            fontSize: 24,
+            padding: 10
+        },
+        subtitles: [{
+            //text: "United Kingdom, 2016",
+            //fontSize: 16
+        }],
+        toolTip: {
+            content: "In Numbers {hover_number} ",
+        },
+        legend: {
+            //maxWidth: 180,
+            //itemWidth: 75,
+            fontSize: 12,
+            // horizontalAlign: "right", // left, center ,right 
+            //verticalAlign: "center",
+        },
+        data: [{
+            type: "pie",
+            indexLabelFontSize: 12,
+            showInLegend: true,
+            legendText: "{name}:{hover_number}",
+            radius: 60,
+            indexLabel: "{label} - {y}",
+            yValueFormatString: "###0.0\"%\"",
+            click: explodePie,
+            dataPoints: [
+                { y: res_ct_count, label: "Total (CT)", hover_number: TotalCTCount, name: 'Total (Community Toilets)', color: '#917b0f' },
+                { y: res_pt_count, label: "Total (PT)", hover_number: TotalPTCount, name: 'Total (Public Toilets)', color: '#a0a004' },
+                { y: res_u_count, label: "Total (U)", hover_number: TotalUCount, name: 'Total (Urinal Toilets)', color: '#835787' },
+            ],
+        }]
+    });
+    showDefaultText(chart, "No Data available");
+    chart.render();
+    function showDefaultText(chart, text) {
+        var isEmpty = !(TotalTodayCTPTScanCount && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+
+        if (isEmpty) {
+            chart.options.subtitles.push({
+                text: text,
+                verticalAlign: 'center',
+            });
+            (chart.options.data[0].dataPoints = []);
+        }
+
+
+
+    }
+    function explodePie(e) {
+        for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+            if (i !== e.dataPointIndex)
+                e.dataSeries.dataPoints[i].exploded = false;
+        }
+    }
+
+});
 
 // Horiculture , Construction Pie Chart
 $(document).ready(function () {

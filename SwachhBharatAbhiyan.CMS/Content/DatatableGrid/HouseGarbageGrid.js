@@ -97,7 +97,7 @@
 
                     }
                     else if (full["type1"] == "2") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage Not Collected)";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Garbage Not Received)";
 
                     }
                     else if (full["type1"] == "4") {
