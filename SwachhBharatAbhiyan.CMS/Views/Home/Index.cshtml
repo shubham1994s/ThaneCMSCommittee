@@ -230,6 +230,13 @@
 <input value="@Model.TotalSWM" type="hidden" id="tot_TotalSWM" />
 <input value="@Model.TotalSWMCurrent" type="hidden" id="tot_TotalSWMCurrent" />
 
+@*CTPT data For Graph*@
+<input value="@Model.TodayCTPTScanCount" type="hidden" id="tot_TodayCTPTScanCount" />
+<input value="@Model.TotalPTCount" type="hidden" id="tot_TotalPTCount" />
+<input value="@Model.TotalCTCount" type="hidden" id="tot_TotalCTCount" />
+<input value="@Model.TotalUCount" type="hidden" id="tot_TotalUCount" />
+
+
 @*for Horticulture waste & Construction demolation waste*@
 <input value="@Model.GcHWWeightCount" type="hidden" id="GcHW_Weight_coll" />
 <input value="@Model.GcCDWWeightCount" type="hidden" id="GcCDW_Weight_coll" />
@@ -780,7 +787,7 @@
                 <div class="bar-chart-example card">
                     <div class="card-header d-flex align-items-center">
                         @*<h3 class="h4" style="width:50%">वर्गीकरणाचे प्रकार</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण घर संकलन
-                            : @Model.TotalHouseCount</span>*@
+                    : @Model.TotalHouseCount</span>*@
                         <h3 class="h4" style="width:35%"> Segregation Types</h3><span style="font-size:14px;font-weight:700;width:65%;text-align:right">
                             Total Household Collection
                             : @Model.TotalHouseCount
@@ -792,8 +799,8 @@
 
                             </div>
                             @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
-                                    <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
-                                </div>*@
+                            <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                        </div>*@
                             <div id="chartContainerPie" style="height: 200px; width: 100%;position:absolute">
                             </div>
 
@@ -814,8 +821,8 @@
 
                             </div>
                             @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
-                                    <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
-                                </div>*@
+                            <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                        </div>*@
                             @*style="color:#fff;background-color: #3ab59e;"*@
                             <div id="chartContainerPieDump" style="height: 200px; width: 100%;position:absolute">
                             </div>
@@ -838,8 +845,8 @@
 
                             </div>
                             @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
-                                    <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
-                                </div>*@
+                            <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                        </div>*@
                             @*style="color:#fff;background-color: #3ab59e;"*@
                             <div id="chartContainerPieCommercial" style="height: 200px; width: 100%;position:absolute">
                             </div>
@@ -862,8 +869,8 @@
 
                             </div>
                             @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
-                                    <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
-                                </div>*@
+                            <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                        </div>*@
                             @*style="color:#fff;background-color: #3ab59e;"*@
                             <div id="chartContainerPieSWM" style="height: 200px; width: 100%;position:absolute">
                             </div>
@@ -873,6 +880,29 @@
                 </div>
             </div>
 
+            <!--CTPT Graph-->
+            <div class="col-lg-6">
+                <div class="bar-chart-example card">
+                    <div class="card-header d-flex align-items-center">
+                        @*<h3 class="h4" style="width:50%">डंप यार्ड तपशील</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण वजन: @Model.TotalGcWeightCount Ton</span>*@
+                        <h3 class="h4" style="width:35%">CTPT Details</h3><span style="font-size:14px;font-weight:700;width:65%;text-align:right">Total : @Model.TotalCTPTScanCount </span>
+                    </div>
+                    <div class="card-body">
+                        <div style="position:relative ;height: 200px; width: 100%;">
+                            <div style="position: absolute; top: -2%; left: 0%; z-index: 1; background-color: #fff; height: 12px; width: 61px; padding-top: 10px">
+
+                            </div>
+                            @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
+                            <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                        </div>*@
+                            @*style="color:#fff;background-color: #3ab59e;"*@
+                            <div id="chartContainerPieCTPT" style="height: 200px; width: 100%;position:absolute">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
