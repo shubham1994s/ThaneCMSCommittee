@@ -856,30 +856,6 @@
                 </div>
             </div>
 
-            <!--SWM Graph-->
-            <div class="col-lg-6">
-                <div class="bar-chart-example card">
-                    <div class="card-header d-flex align-items-center">
-                        @*<h3 class="h4" style="width:50%">डंप यार्ड तपशील</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण वजन: @Model.TotalGcWeightCount Ton</span>*@
-                        <h3 class="h4" style="width:35%">SWM Details</h3><span style="font-size:14px;font-weight:700;width:65%;text-align:right">Total : @Model.TotalSWMCurrent </span>
-                    </div>
-                    <div class="card-body">
-                        <div style="position:relative ;height: 200px; width: 100%;">
-                            <div style="position: absolute; top: -2%; left: 0%; z-index: 1; background-color: #fff; height: 12px; width: 61px; padding-top: 10px">
-
-                            </div>
-                            @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
-                            <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
-                        </div>*@
-                            @*style="color:#fff;background-color: #3ab59e;"*@
-                            <div id="chartContainerPieSWM" style="height: 200px; width: 100%;position:absolute">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!--CTPT Graph-->
             <div class="col-lg-6">
                 <div class="bar-chart-example card">
@@ -897,6 +873,30 @@
                         </div>*@
                             @*style="color:#fff;background-color: #3ab59e;"*@
                             <div id="chartContainerPieCTPT" style="height: 200px; width: 100%;position:absolute">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--SWM Graph-->
+            <div class="col-lg-6">
+                <div class="bar-chart-example card">
+                    <div class="card-header d-flex align-items-center">
+                        @*<h3 class="h4" style="width:50%">डंप यार्ड तपशील</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण वजन: @Model.TotalGcWeightCount Ton</span>*@
+                        <h3 class="h4" style="width:35%">SWM Details</h3><span style="font-size:14px;font-weight:700;width:65%;text-align:right">Total : @Model.TotalSWMCurrent </span>
+                    </div>
+                    <div class="card-body">
+                        <div style="position:relative ;height: 200px; width: 100%;">
+                            <div style="position: absolute; top: -2%; left: 0%; z-index: 1; background-color: #fff; height: 12px; width: 61px; padding-top: 10px">
+
+                            </div>
+                            @*<div id ="tot_pie" style="position:absolute;top: 94%;z-index: 1; background-color:#fff;height:12px;width:75px;padding-top:10px">
+                            <pre style="font-size:12px;font-weight:700">Total: @Model.TotalHouseCount</pre>
+                        </div>*@
+                            @*style="color:#fff;background-color: #3ab59e;"*@
+                            <div id="chartContainerPieSWM" style="height: 200px; width: 100%;position:absolute">
                             </div>
 
                         </div>
