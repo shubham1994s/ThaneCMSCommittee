@@ -185,7 +185,29 @@
                     }
                 }
             },
+          /*  { "data": "SegregationType", "name": "SegregationType", "autoWidth": false },*/
 
+            {
+               
+                render: function (data, type, row) {
+
+                    //if (data.wet == 1) {
+                    //    var details = 'Wet'  + ", ";
+                    //    return details
+                    //} else {
+                    //    var details = '';
+                    //    return details
+                    //}
+                    //if (data.wet == 1) {
+                    //    var details = 'Wet' + ", ";
+                    //    return details
+                    //} else {
+                    //    var details = '';
+                    //    return details
+                    //}
+                    var details = row.service_detail + " " + row.mp_detail + " " + row.special_detail;
+                    return details;
+                }
         ]
     });
 

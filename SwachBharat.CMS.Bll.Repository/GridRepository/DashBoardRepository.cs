@@ -2675,7 +2675,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAGrabageCollectionGridRow> GetHouseGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4)
+        public IEnumerable<SBAGrabageCollectionGridRow> GetHouseGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4, int? param5)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -2746,7 +2746,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 //                }
 
 
-                var data = db.SP_GarbageCollection(appId, userId, fdate, tdate, param1, param2, param3,param4).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_GarbageCollection(appId, userId, fdate, tdate, param1, param2, param3,param4,param5).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -2771,7 +2771,11 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     batteryStatus = x.batteryStatus,
                     los=x.los,
                     ctype=x.CType,
-
+                    wet=x.Wet,
+                    dry=x.Dry,
+                    domestic=x.Domestic,
+                    sanitary=x.Sanitary,
+                    SegregationType=(x.Wet+","+x.Dry+","+x.Domestic+","+x.Sanitary).ToString(),
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
 

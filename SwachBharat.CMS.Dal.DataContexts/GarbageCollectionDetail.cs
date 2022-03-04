@@ -54,5 +54,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string TOT { get; set; }
         public string CGarbageType { get; set; }
         public Nullable<int> AreaId { get; set; }
+        public Nullable<int> Wet { get; set; }
+        public Nullable<int> Dry { get; set; }
+        public Nullable<int> Sanitary { get; set; }
+        public Nullable<int> Domestic { get; set; }
     }
 }

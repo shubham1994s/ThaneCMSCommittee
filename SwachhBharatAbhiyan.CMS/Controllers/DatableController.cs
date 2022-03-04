@@ -88,7 +88,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             return FiltersDictionary;
         }
 
-        private IDataTableRepository GetRepository(string INSERT_ID, string RepositoryName, string searchString = "", DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientId = null, int? param1 = null, int? param2 = null, int? param3 = null, int? param4 = null)
+        private IDataTableRepository GetRepository(string INSERT_ID, string RepositoryName, string searchString = "", DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientId = null, int? param1 = null, int? param2 = null, int? param3 = null, int? param4 = null, int? param5 = null)
         {
             int product = 0, category = 0;
             //string[] arr = new string[6];
@@ -280,7 +280,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "GarbageHouse":
-                    gridRepository = new HGarbageCotectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
+                    gridRepository = new HGarbageCotectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4,param5);
                     return gridRepository;
                     break;
 
