@@ -219,15 +219,13 @@
                     if (Wet.length > 0 && Dry.length > 0) {
                         var Wet = "Wet |"
                     }
-                    if (Wet.length > 0 && Dry.length > 0 && Sanitary.length > 0) {
+                    if (Dry.length > 0 && Sanitary.length > 0) {
                         var Dry = "Dry |"
                     }
-                    if (Wet.length > 0 && Dry.length > 0 && Sanitary.length > 0 && Domestic.length > 0) {
+                    if (Sanitary.length > 0 && Domestic.length > 0) {
                         var Sanitary = "Sanitary |"
                     }
-                    if (Wet.length > 0 && Dry.length > 0 && Sanitary.length > 0 && Domestic.length > 0) {
-                        var Domestic = "Domestic"
-                    }
+                    
                     var details = Wet + " " + Dry + " " + Sanitary + " " + Domestic;
                     return details;
                 }
