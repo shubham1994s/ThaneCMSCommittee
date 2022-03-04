@@ -61,10 +61,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
 
         public string SegregationType { get; set; }
 
-        public string wetType { get; set; }
-        public string dryType { get; set; }
-        public string domesticType { get; set; }
-        public string sanitaryType { get; set; }
 
 
     }
