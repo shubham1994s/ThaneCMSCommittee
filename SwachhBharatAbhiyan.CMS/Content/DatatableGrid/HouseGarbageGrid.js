@@ -193,19 +193,19 @@
 
                 render: function (data, type, full, meta) {
                     if (full["wet"] == 1) {
-                        var Wet = "Wet | "
+                        var Wet = "Wet"
                     }
                     else {
                         var Wet = ""
                     }
                     if (full["dry"] == 1) {
-                        var Dry = "Dry | "
+                        var Dry = "Dry"
                     }
                     else {
                         var Dry = ""
                     }
                     if (full["sanitary"] == 1) {
-                        var Sanitary = "Sanitary |"
+                        var Sanitary = "Sanitary"
                     }
                     else {
                         var Sanitary = ""
@@ -215,6 +215,18 @@
                     }
                     else {
                         var Domestic = ""
+                    }
+                    if (Wet.length > 0 && Dry.length > 0) {
+                        var Wet = "Wet |"
+                    }
+                    if (Wet.length > 0 && Dry.length > 0 && Sanitary.length > 0) {
+                        var Dry = "Dry |"
+                    }
+                    if (Wet.length > 0 && Dry.length > 0 && Sanitary.length > 0 && Domestic.length > 0) {
+                        var Sanitary = "Sanitary |"
+                    }
+                    if (Wet.length > 0 && Dry.length > 0 && Sanitary.length > 0 && Domestic.length > 0) {
+                        var Domestic = "Domestic"
                     }
                     var details = Wet + " " + Dry + " " + Sanitary + " " + Domestic;
                     return details;
