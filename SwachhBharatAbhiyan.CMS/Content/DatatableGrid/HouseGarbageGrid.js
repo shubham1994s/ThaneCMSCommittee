@@ -216,10 +216,10 @@
                     else {
                         var Domestic = ""
                     }
-                    if (Wet.length > 0 && Dry.length > 0) {
+                    if (Wet.length > 0 && (Dry.length > 0 || Sanitary.length > 0 || Domestic.length > 0 )) {
                         var Wet = "Wet |"
                     }
-                    if (Dry.length > 0 && Sanitary.length > 0) {
+                    if (Dry.length > 0 && (Sanitary.length > 0 || Domestic.length > 0)) {
                         var Dry = "Dry |"
                     }
                     if (Sanitary.length > 0 && Domestic.length > 0) {
