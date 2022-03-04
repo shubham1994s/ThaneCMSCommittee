@@ -185,29 +185,41 @@
                     }
                 }
             },
-          /*  { "data": "SegregationType", "name": "SegregationType", "autoWidth": false },*/
-
+          
             {
-               
-                render: function (data, type, row) {
+                "targets": [14],
 
-                    //if (data.wet == 1) {
-                    //    var details = 'Wet'  + ", ";
-                    //    return details
-                    //} else {
-                    //    var details = '';
-                    //    return details
-                    //}
-                    //if (data.wet == 1) {
-                    //    var details = 'Wet' + ", ";
-                    //    return details
-                    //} else {
-                    //    var details = '';
-                    //    return details
-                    //}
-                    var details = row.service_detail + " " + row.mp_detail + " " + row.special_detail;
+                "visible": true,
+
+                render: function (data, type, full, meta) {
+                    if (full["wet"] == 1) {
+                        var Wet = "Wet | "
+                    }
+                    else {
+                        var Wet = ""
+                    }
+                    if (full["dry"] == 1) {
+                        var Dry = "Dry | "
+                    }
+                    else {
+                        var Dry = ""
+                    }
+                    if (full["sanitary"] == 1) {
+                        var Sanitary = "Sanitary |"
+                    }
+                    else {
+                        var Sanitary = ""
+                    }
+                    if (full["domestic"] == 1) {
+                        var Domestic = "Domestic"
+                    }
+                    else {
+                        var Domestic = ""
+                    }
+                    var details = Wet + " " + Dry + " " + Sanitary + " " + Domestic;
                     return details;
                 }
+            }
         ]
     });
 
