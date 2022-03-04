@@ -1122,10 +1122,11 @@ margin-bottom: 7%;
 	
 	line-height: 27px;
 	
-}.form-group1 {
-	width: 30%;
-	
-}    .ui-jqgrid .ui-jqgrid-view {
+}
+	.form-group1 {
+		width: 30%;
+		margin-top: 10%;
+	}    .ui-jqgrid .ui-jqgrid-view {
 	
 	width: auto !important;
 }

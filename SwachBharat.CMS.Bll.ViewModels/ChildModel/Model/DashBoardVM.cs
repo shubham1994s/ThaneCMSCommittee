@@ -59,6 +59,9 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<double> CommercialWetCount { get; set; }
         public Nullable<double> CommercialDryCount { get; set; }
 
+        public Nullable<double>  CommercialNotCollectedCount { get; set; }
+        public Nullable<double>  CommercialNotSpecifiedCount { get; set; }
+
         public Nullable<double> TotalCommercialCount { get; set; }
 
         public Nullable<double> TotalCommercial { get; set; }

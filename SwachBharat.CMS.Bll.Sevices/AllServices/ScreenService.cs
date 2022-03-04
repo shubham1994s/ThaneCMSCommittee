@@ -84,6 +84,7 @@ namespace SwachBharat.CMS.Bll.Services
                         obj = JsonConvert.DeserializeObject<List<ComplaintVM>>(json).Where(c => Convert.ToDateTime(c.createdDate2).ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")).ToList();
                     }
                     var data = db.SP_Dashboard_Details().First();
+                    var data1 = db.SP_CTPTScanify_Count().First();
 
                     var date = DateTime.Today;
                     var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();
@@ -150,12 +151,21 @@ namespace SwachBharat.CMS.Bll.Services
                         model.CommercialMixCount = Convert.ToDouble(houseCount.TotalCommercialMixCount);
                         model.CommercialWetCount = Convert.ToDouble(houseCount.TotalCommercialWetCount);
                         model.CommercialDryCount = Convert.ToDouble(houseCount.TotalCommercialDryCount);
+                        model.CommercialNotCollectedCount = Convert.ToDouble(houseCount.TotalCommercialNotCollectedCount);
+                        model.CommercialNotSpecifiedCount= Convert.ToDouble(houseCount.TotalCommercialNotSpecifiedCount);
 
                         model.TotalCommercialCurrent = data.TotalCommercialCurrent;
                         model.TotalCommercial = Convert.ToDouble(houseCount.TotalCommercial);
 
                         model.TotalCTPT = houseCount.TotalCTPT;
                         model.TotalCTPTCurrent = Convert.ToDouble(data.TotalCTPTCurrent);
+
+                        model.TotalCTPTCount = data1.TotalCTPTCount;
+                        model.TotalCTPTScanCount = data1.TotalCTPTScanCount;
+                        model.TodayCTPTScanCount = data1.TodayScanCTPTCount;
+                        model.TotalPTCount = data1.TotalPTCount;
+                        model.TotalCTCount = data1.TotalCTCount;
+                        model.TotalUCount = data1.TotalUCount;
 
                         model.TotalSWM = houseCount.TotalSWM;
                         model.TotalSWMCurrent = Convert.ToDouble(data.TotalSWMCurrent);

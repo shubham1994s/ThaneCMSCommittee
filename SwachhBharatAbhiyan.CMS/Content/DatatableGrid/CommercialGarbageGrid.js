@@ -93,10 +93,10 @@
                         return "<div class='circle' style='height: 20px;width: 20px;background-color: #f44336;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Mixed Garbage)";
                     }
                    else if (full["type1"] == "-1") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #0086c3;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Not specified)";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #0086c3;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Not Specified)";
                     }
                     else if (full["type1"] == "2") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Not received)";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Not Received)";
                     }
                                  
                     else if (full["type1"] == "6") {

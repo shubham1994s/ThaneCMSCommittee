@@ -74,7 +74,7 @@
 
     /* When the radio button is checked, add a blue background */
     .check-container input:checked ~ .checkmark {
-        background-color: #3ab59e;
+        background-color: #189cdf;
     }
 
     /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -124,11 +124,12 @@
 
                 <div class="media" style="border:1px solid #8532fc;padding:5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/CTPT_icn.png" class="media-object" />
+                        <img src="/Content/images/img/segregationImg/SWM_Blue.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">SWM Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalSWMCount</p>
+                        <p class="media-heading" style="font-weight:600">Total SWM Count</p>
+                        @*<p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalSWMCount</p>*@
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalSWMScanCount</p>
                     </div>
                 </div>
             </div>
@@ -136,11 +137,11 @@
 
                 <div class="media" style="border:1px solid #8532fc;padding:5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/CTPT_icn.png" class="media-object" />
+                        <img src="/Content/images/img/segregationImg/SWM_Blue.png" class="media-object" />
                     </div>
                     <div class="media-body">
-                        <p class="media-heading" style="font-weight:600">Total SWM Scan Count</p>
-                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TotalSWMScanCount</p>
+                        <p class="media-heading" style="font-weight:600"> SWM Count</p>
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.TodayScanSWMCount</p>
                     </div>
                 </div>
             </div>     
