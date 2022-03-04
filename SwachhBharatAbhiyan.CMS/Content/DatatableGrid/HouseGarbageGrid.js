@@ -1,7 +1,15 @@
 ﻿$(document).ready(function () {
     var UserId = $('#selectnumber').val();
 
-
+    $('#Segid').change(function () {
+        debugger;
+        Segid = $('#Segid').val();
+        if (Segid == 1) {
+            $('#stype').show();
+        } else {
+            $('#stype').hide();
+        }
+    });
 
 
 
@@ -265,6 +273,9 @@ function PopImages(cel) {
     jQuery("#header_data").html(head);
 }
 
+
+
+
 function Search() {
     debugger;
     var txt_fdate, txt_tdate, Client, UserId;
@@ -283,6 +294,7 @@ function Search() {
     WardId = $('#WardNo').val();
     AreaId = $('#AreaId').val();
     Segid = $('#Segid').val();
+    
     SegidSub = $('#SegidSub').val();
     Client = " ";
     NesEvent = " ";
