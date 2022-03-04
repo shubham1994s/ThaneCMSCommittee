@@ -30,7 +30,7 @@
     });
     $("#demoGrid").DataTable({
         "sDom": "ltipr",
-        "order": [[12, "desc"]],
+        "order": [[13, "desc"]],
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
         "filter": true, // this is for disable filter (search box)
@@ -50,12 +50,12 @@
                 "searchable": false
             },
             {
-                "targets": [12],
+                "targets": [13],
                 "visible": false,
                 "searchable": false
             },
             {
-                "targets": [8],
+                "targets": [9],
                 "visible": true,
 
                 "render": function (data, type, full, meta) {
@@ -71,7 +71,7 @@
                 },
             },
             {
-                "targets": [9],
+                "targets": [10],
                 "visible": true,
 
                 "render": function (data, type, full, meta) {
@@ -89,7 +89,7 @@
 
 
             {
-                "targets": [3],
+                "targets": [4],
 
                 "visible": true,
 
@@ -151,6 +151,50 @@
             { "data": "attandDate", "name": "attandDate", "autoWidth": false },
             { "data": "Employee", "name": "Employee", "autoWidth": false },
             { "data": "type1", "name": "type1", "autoWidth": false },
+            {
+                "targets": [3],
+
+                "visible": true,
+
+                render: function (data, type, full, meta) {
+                    if (full["wet"] == 1) {
+                        var Wet = "Wet"
+                    }
+                    else {
+                        var Wet = ""
+                    }
+                    if (full["dry"] == 1) {
+                        var Dry = "Dry"
+                    }
+                    else {
+                        var Dry = ""
+                    }
+                    if (full["sanitary"] == 1) {
+                        var Sanitary = "Sanitary"
+                    }
+                    else {
+                        var Sanitary = ""
+                    }
+                    if (full["domestic"] == 1) {
+                        var Domestic = "Domestic"
+                    }
+                    else {
+                        var Domestic = ""
+                    }
+                    if (Wet.length > 0 && (Dry.length > 0 || Sanitary.length > 0 || Domestic.length > 0)) {
+                        var Wet = "Wet |"
+                    }
+                    if (Dry.length > 0 && (Sanitary.length > 0 || Domestic.length > 0)) {
+                        var Dry = "Dry |"
+                    }
+                    if (Sanitary.length > 0 && Domestic.length > 0) {
+                        var Sanitary = "Sanitary |"
+                    }
+
+                    var details = Wet + " " + Dry + " " + Sanitary + " " + Domestic;
+                    return details;
+                }
+            },
             { "data": "UserName", "name": "UserName", "autoWidth": false },
             { "data": "Address", "name": "Address", "autoWidth": false },
             { "data": "VehicleNumber", "autoWidth": false },
@@ -194,50 +238,7 @@
                 }
             },
           
-            {
-                "targets": [14],
-
-                "visible": true,
-
-                render: function (data, type, full, meta) {
-                    if (full["wet"] == 1) {
-                        var Wet = "Wet"
-                    }
-                    else {
-                        var Wet = ""
-                    }
-                    if (full["dry"] == 1) {
-                        var Dry = "Dry"
-                    }
-                    else {
-                        var Dry = ""
-                    }
-                    if (full["sanitary"] == 1) {
-                        var Sanitary = "Sanitary"
-                    }
-                    else {
-                        var Sanitary = ""
-                    }
-                    if (full["domestic"] == 1) {
-                        var Domestic = "Domestic"
-                    }
-                    else {
-                        var Domestic = ""
-                    }
-                    if (Wet.length > 0 && (Dry.length > 0 || Sanitary.length > 0 || Domestic.length > 0 )) {
-                        var Wet = "Wet |"
-                    }
-                    if (Dry.length > 0 && (Sanitary.length > 0 || Domestic.length > 0)) {
-                        var Dry = "Dry |"
-                    }
-                    if (Sanitary.length > 0 && Domestic.length > 0) {
-                        var Sanitary = "Sanitary |"
-                    }
-                    
-                    var details = Wet + " " + Dry + " " + Sanitary + " " + Domestic;
-                    return details;
-                }
-            }
+        
         ]
     });
 
