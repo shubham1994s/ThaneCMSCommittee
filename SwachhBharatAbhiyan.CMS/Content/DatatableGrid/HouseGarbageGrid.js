@@ -185,7 +185,41 @@
                     }
                 }
             },
+          
+            {
+                "targets": [14],
 
+                "visible": true,
+
+                render: function (data, type, full, meta) {
+                    if (full["wet"] == 1) {
+                        var Wet = "Wet | "
+                    }
+                    else {
+                        var Wet = ""
+                    }
+                    if (full["dry"] == 1) {
+                        var Dry = "Dry | "
+                    }
+                    else {
+                        var Dry = ""
+                    }
+                    if (full["sanitary"] == 1) {
+                        var Sanitary = "Sanitary |"
+                    }
+                    else {
+                        var Sanitary = ""
+                    }
+                    if (full["domestic"] == 1) {
+                        var Domestic = "Domestic"
+                    }
+                    else {
+                        var Domestic = ""
+                    }
+                    var details = Wet + " " + Dry + " " + Sanitary + " " + Domestic;
+                    return details;
+                }
+            }
         ]
     });
 
