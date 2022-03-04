@@ -48,15 +48,16 @@
             </div>
             <div class="col-sm-4">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Segregation Type</label>
+                <label>Select Garbage Type</label>
                 <select id="Segid" class="form-control form-control form-control-sm">
-                    <option value="">Select Segregation Type</option>
+                    <option value="">Select All Garbage Type</option>
                     @*<option value="-1">Garbage Type Not Specified</option>*@
-                    <option value="6">Wet Waste</option>
-                    <option value="7"> Dry Waste</option>
+                    @*<option value="6">Wet Waste</option>
+                    <option value="7"> Dry Waste</option>*@
+                    <option value="1">Segregated Garbage</option>
                     <option value="0">Mixed Garbage</option>
-                    <option value="8">Domestic Hazardous Waste</option>
-                    <option value="9">Sanitary Waste</option>
+                    @*<option value="8">Domestic Hazardous Waste</option>
+                    <option value="9">Sanitary Waste</option>*@
                     <option value="4">Construction And Demolition Waste</option>
                     <option value="5">Horticulture Waste</option>
                     <option value="-1">Garbage Type Not Specified</option>
@@ -101,7 +102,7 @@
                         <th>ID</th>
                         <th> Date</th>
                         <th> Employee</th>
-                        <th> Segregation Type </th>
+                        <th> Garbage Type </th>
                         <th> House Owner</th>
                         <th> Collection Address</th>
                         <th> Vehicle Number</th>
