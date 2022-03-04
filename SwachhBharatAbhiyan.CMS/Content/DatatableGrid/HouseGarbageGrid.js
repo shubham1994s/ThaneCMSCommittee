@@ -89,7 +89,7 @@
 
 
             {
-                "targets": [4],
+                "targets": [3],
 
                 "visible": true,
 
@@ -152,7 +152,7 @@
             { "data": "Employee", "name": "Employee", "autoWidth": false },
             { "data": "type1", "name": "type1", "autoWidth": false },
             {
-                "targets": [3],
+                "targets": [4],
 
                 "visible": true,
 
