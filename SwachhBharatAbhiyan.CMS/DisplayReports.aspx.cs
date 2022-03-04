@@ -41,7 +41,7 @@ namespace SwachhBharatAbhiyan.CMS
                         UserId = null;
                     }
 
-                    if (garbageType == "4" || garbageType == "undefined")
+                    if (garbageType == "-2" || garbageType == "undefined")
                     {
                         garbageType = null;
                     }
