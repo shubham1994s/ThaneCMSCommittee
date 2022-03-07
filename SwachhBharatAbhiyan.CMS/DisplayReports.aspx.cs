@@ -35,6 +35,7 @@ namespace SwachhBharatAbhiyan.CMS
                     var UserId = Request.QueryString["UserId"];
                     var DyId = Request.QueryString["DyId"];
                     var garbageType = Request.QueryString["Type"];
+                    var wastetype = Request.QueryString["Type"];
 
                     if (UserId == "-1")
                     {
@@ -44,15 +45,37 @@ namespace SwachhBharatAbhiyan.CMS
                     if (garbageType == "-2" || garbageType == "undefined")
                     {
                         garbageType = null;
+                        wastetype = null;
                     }
 
+                    if (garbageType == "6")
+                    {
+                        garbageType = "1";
+                        wastetype = "1";
+                    }
 
-                    //string urlReportServer = "http://TESTYOCC-1:80/reportServer";
-                    //  string urlReportServer = "http://YOCC-2:82/reportServer";
-                    //string urlReportServer = "http://192.168.100.123/ReportServer";
-                    //string urlReportServer = "http://192.168.100.123/ReportServer";
+                    if (garbageType == "7")
+                    {
+                        garbageType = "1";
+                        wastetype = "2";
+                    }
+                    if (garbageType == "8")
+                    {
+                        garbageType = "1";
+                        wastetype = "3";
 
-                    string urlReportServer = "http://202.65.157.253:85/ReportServer";
+                        if (garbageType == "9")
+                        {
+                            garbageType = "1";
+                            wastetype = "4";
+                        }
+
+                        //string urlReportServer = "http://TESTYOCC-1:80/reportServer";
+                        //  string urlReportServer = "http://YOCC-2:82/reportServer";
+                        //string urlReportServer = "http://192.168.100.123/ReportServer";
+                        //string urlReportServer = "http://192.168.100.123/ReportServer";
+
+                        string urlReportServer = "http://202.65.157.253:85/ReportServer";
                     //string urlReportServer = "http://COMP-7/ReportServer";
                     //rptViewer.ServerReport.ReportServerCredentials = new ReportServerCredentials("Administrator", "Pass@123", "192.168.100.7");
                     rptViewer.ServerReport.ReportServerCredentials = new ReportServerCredentials("Administrator", "Telec0m#B!9V", "202.65.157.253");
@@ -67,13 +90,14 @@ namespace SwachhBharatAbhiyan.CMS
 
                     if (ReportName == "Ghar Sankalan Tapashil")
                     {
-                        ReportParameter[] param = new ReportParameter[5];
+                        ReportParameter[] param = new ReportParameter[6];
                         //param[0] = new ReportParameter("Appid", AppID);
                         param[0] = new ReportParameter("from", FromDate);
                         param[1] = new ReportParameter("to", ToDate);
                         param[2] = new ReportParameter("userid", UserId);
                         param[3] = new ReportParameter("gartype", garbageType);
                         param[4] = new ReportParameter("DBName", DB_Name);
+                        param[5] = new ReportParameter("wastetype", wastetype);
                         rptViewer.ServerReport.SetParameters(param);
 
                         // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
