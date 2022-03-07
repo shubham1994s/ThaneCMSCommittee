@@ -35,6 +35,11 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         public string Ctype { get; set; }
 
+        public Nullable<int> wet { get; set; }
+        public Nullable<int> dry { get; set; }
+        public Nullable<int> domestic { get; set; }
+        public Nullable<int> sanitary { get; set; }
+
     }
     public class SBALHouseLocationMapView1
     {

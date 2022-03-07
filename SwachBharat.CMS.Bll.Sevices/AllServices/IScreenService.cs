@@ -122,7 +122,7 @@ namespace SwachBharat.CMS.Bll.Services
         List<SBALHSUserLocationMapView> GetHSUserAttenRoute(int qrEmpDaId);
 
         //Added By Saurabh (06 June 2019)
-        List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype);
+        List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype,int SegType);
 
 
         List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype);

@@ -27,5 +27,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string houseLat { get; set; }
         public string houseLong { get; set; }
         public string CType { get; set; }
+        public Nullable<int> Wet { get; set; }
+        public Nullable<int> Dry { get; set; }
+        public Nullable<int> Domestic { get; set; }
+        public Nullable<int> Sanitary { get; set; }
     }
 }
