@@ -63,7 +63,7 @@ namespace SwachhBharatAbhiyan.CMS
                     {
                         garbageType = "1";
                         wastetype = "3";
-
+                    }
                         if (garbageType == "9")
                         {
                             garbageType = "1";
