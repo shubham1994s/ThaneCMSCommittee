@@ -25,7 +25,7 @@ div.pp_default .pp_description {
 }
 .roww{text-align:center;}
 #btnSubmit {
-	padding: 6px 11px 6px 15px;
+	padding: 6px 11px 6px 11px;
 	/*color: #000;
     display: inline-block;
     background-color: #f3951b;
@@ -43,7 +43,7 @@ margin-left: 17px;*/
 		/*border: 0px solid #fff;
         background: rgba(0,0,0,0.65);
         color: #fff;*/
-		background-color: #0c7bed;
+		background-color: #0c7bed !important;
 		border-color: #189cdf;
 	}
 #btnAddCategory {
@@ -1369,10 +1369,10 @@ margin-bottom: 0%;
 	background-color: #189cdf;
 	border-color: #189cdf;
 	border-radius: 0.4rem;
-	padding: 6px 11px 6px 15px;
+	padding: 6px 11px 6px 11px;
 }
 	#btnBack:hover {
-		background-color: #0c7bed;
+		background-color: #0c7bed !important;
 		border-color: #189cdf;
 	}
 #btnAdd, #btnEdit,#btnDel, #otherBtn,#refreshButton,#filterButton{
