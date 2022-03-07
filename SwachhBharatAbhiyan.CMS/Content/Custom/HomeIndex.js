@@ -1424,15 +1424,15 @@ $(document).ready(function () {
                 var fname = name.replace(/ .*/, ' ');
                 // alert(data[i]._Count)
                 not_spec.push({ y: data[i].NotSpecidfied, label: 'Not Specified', color: '#0086c3', intime: data[i].inTime });
-                not_coll.push({ y: data[i].NotCollected, label: 'Not Collected', color: '#fe9436', intime: data[i].inTime });
+                not_coll.push({ y: data[i].NotCollected, label: 'Not Received', color: '#fe9436', intime: data[i].inTime });
                 mixed.push({ y: data[i].MixedCount, label: 'Mixed', color: '#f44336', intime: data[i].inTime });
-               /* seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });*/
+                seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });
                 cdw.push({ y: data[i].ConstructionAndDemolition, label: 'Construction & Demolition', color: '#63676e', intime: data[i].inTime });
                 hw.push({ y: data[i].Horticulture, label: 'Horticulture', color: '#1ad15c', intime: data[i].inTime });
-                wet.push({ y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
-                dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
-                dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
-                sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
+                //wet.push({ y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
+               // dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
+               // dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
+                //sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
                 cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Specified', color: '#0086c3', intime: data[i].inTime });
                 cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not Received', color: '#fe9436', intime: data[i].inTime });
                 cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
@@ -1476,57 +1476,57 @@ $(document).ready(function () {
 
                     data: [
 
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Segregated",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#388e3c",
+                            dataPoints: seg
+                        },
                         //{
                         //    //indexLabel: "#total",
                         //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    showInLegend: true,
+                        //    legendText: "Drywaste",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#66a2d5",
+                        //    dataPoints: dry
+                        //},
+                        //{
+                        //    //indexLabel: "#total",
                         //    //indexLabelPlacement: "outside",
                         //    type: "stackedColumn",
                         //    showInLegend: true,
-                        //    legendText: "Segregated",
+                        //    legendText: "Wetwaste",
                         //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                        //    color: "#388e3c",
-                        //    dataPoints: seg
+                        //    color: "#186634",
+                        //    dataPoints: wet
                         //},
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Drywaste",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#66a2d5",
-                            dataPoints: dry
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Wetwaste",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#186634",
-                            dataPoints: wet
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Domestic Hazardous",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#8f8b28",
-                            dataPoints: dhw
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Sanitary",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#c384d3",
-                            dataPoints: sw
-                        },
+                        //{
+                        //    //indexLabel: "#total",
+                        //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    showInLegend: true,
+                        //    legendText: "Domestic Hazardous",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#8f8b28",
+                        //    dataPoints: dhw
+                        //},
+                        //{
+                        //    //indexLabel: "#total",
+                        //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    showInLegend: true,
+                        //    legendText: "Sanitary",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#c384d3",
+                        //    dataPoints: sw
+                        //},
                         {
                             //indexLabel: "#total",
                             //indexLabelPlacement: "outside",
@@ -1542,7 +1542,7 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
-                            legendText: "ConstructionAndDemolition",
+                            legendText: "Construction And Demolition",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#63676e",
                             dataPoints: cdw
@@ -1562,7 +1562,7 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
-                            legendText: "NotSpecified",
+                            legendText: "Not Specified",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#0086c3",
                             dataPoints: not_spec
@@ -1574,7 +1574,7 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
-                            legendText: "NotCollected",
+                            legendText: "Not Received",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#fe9436",
                             dataPoints: not_coll
