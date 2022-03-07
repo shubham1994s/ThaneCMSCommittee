@@ -409,24 +409,27 @@ $(document).ready(function () {
 
 });
 
-//Bifurcation Pie Chart
 
 
-
+//House Collection Pie chart
 $(document).ready(function () {
-       debugger;
-    var not_coll = $('#not_coll').val();
-    var mixed_coll = $('#mixed_coll').val();
-    var bif_coll = $('#bif_coll').val();
-    var not_spec_coll = $('#not_spec_coll').val();
+    debugger;
 
+    var bif_coll = $('#bif_coll').val();
+    var mixed_coll = $('#mixed_coll').val();
     var TotalCDW_coll = $('#TotalCDW_coll').val();
     var TotalHW_coll = $('#TotalHW_coll').val();
-    var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
-    var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
-    var TotalDHW_coll = $('#TotalDHW_coll').val();
-    var TotalSW_coll = $('#TotalSW_coll').val();
+    var not_coll = $('#not_coll').val();
+    var not_spec_coll = $('#not_spec_coll').val();
+
+  
+    //var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
+    //var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
+    //var TotalDHW_coll = $('#TotalDHW_coll').val();
+    //var TotalSW_coll = $('#TotalSW_coll').val();
+
     var tot_house_null_check = $('#tot_house_coll').val();
+
    // var TotalCW_coll = $('#TotalCW_coll').val();
 
     //var not_coll = 10;
@@ -451,17 +454,20 @@ $(document).ready(function () {
         //tot_house_coll = 100;
     }
 
-    var res_mixed_coll = mixed_coll * 100 / tot_house_coll;
+    
     var res_bif_coll = bif_coll * 100 / tot_house_coll;
-    var res_not_coll = not_coll * 100 / tot_house_coll;
-    var res_not_spec_coll = not_spec_coll * 100 / tot_house_coll;
-
+    var res_mixed_coll = mixed_coll * 100 / tot_house_coll;
     var res_TotalCDW_coll = TotalCDW_coll * 100 / tot_house_coll;
     var res_TotalHW_coll = TotalHW_coll * 100 / tot_house_coll;
-    var res_TotalDryWaste_coll = TotalDryWaste_coll * 100 / tot_house_coll;
-    var res_TotalWetWaste_coll = TotalWetWaste_coll * 100 / tot_house_coll;
-    var res_TotalDHW_coll = TotalDHW_coll * 100 / tot_house_coll;
-    var res_TotalSW_coll = TotalSW_coll * 100 / tot_house_coll;
+    var res_not_coll = not_coll * 100 / tot_house_coll;
+    var res_not_spec_coll = not_spec_coll * 100 / tot_house_coll;
+   
+
+    
+    //var res_TotalDryWaste_coll = TotalDryWaste_coll * 100 / tot_house_coll;
+    //var res_TotalWetWaste_coll = TotalWetWaste_coll * 100 / tot_house_coll;
+    //var res_TotalDHW_coll = TotalDHW_coll * 100 / tot_house_coll;
+    //var res_TotalSW_coll = TotalSW_coll * 100 / tot_house_coll;
 
    // var res_TotalCW_coll = TotalCW_coll * 100 / tot_house_coll;
 
@@ -469,15 +475,16 @@ $(document).ready(function () {
     var ary3 = []
     ary3.push({ v: bif_coll });
     ary3.push({ v: mixed_coll });
+    ary3.push({ v: TotalCDW_coll });
+    ary3.push({ v: TotalHW_coll });
     ary3.push({ v: not_coll });
     ary3.push({ v: not_spec_coll });
 
-    ary3.push({ v: TotalCDW_coll });
-    ary3.push({ v: TotalHW_coll });
-    ary3.push({ v: TotalDryWaste_coll });
-    ary3.push({ v: TotalWetWaste_coll });
-    ary3.push({ v: TotalDHW_coll });
-    ary3.push({ v: TotalSW_coll });
+
+    //ary3.push({ v: TotalDryWaste_coll });
+    //ary3.push({ v: TotalWetWaste_coll });
+    //ary3.push({ v: TotalDHW_coll });
+    //ary3.push({ v: TotalSW_coll });
 
     //ary3.push({ v: TotalCW_coll });
 
@@ -525,21 +532,183 @@ $(document).ready(function () {
                 //{ y: res_not_coll, label: "कचरा मिळाला नाही", hover_number: not_coll, color: '#fe9436' },
                 //{ y: res_not_spec_coll, label: "वर्णन उपलब्ध नाही", hover_number: not_spec_coll, color: '#0086c3' },
 
-                //{ y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, color: '#388e3c' },
-                { y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, name: 'Dry Waste', color: '#66a2d5' },
-                { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, name: 'Wet Waste', color: '#186634' },
-                { y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, name: 'Domestic Hazardous Waste', color: '#8f8b28' },
-                { y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, name: 'Sanitary Waste', color: '#c384d3' },
+                { y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, name: 'Segregated Garbage', color: '#388e3c' },
                 { y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, name: 'Mixed Garbage', color: '#f44336' },
                 { y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, name: 'Construction And Demolition Waste', color: '#63676e' },
                 { y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, name: 'Horticulture Waste', color: '#1ad15c' },
-                { y: res_not_coll, label: "Garbage not received", hover_number: not_coll, name: 'Garbage Not Received',  color: '#fe9436' },
-                { y: res_not_spec_coll, label: "Garbage type not specified", hover_number: not_spec_coll, name: 'Garbage Type Not Specified',  color: '#0086c3' },
+                { y: res_not_coll, label: "Garbage Not Received", hover_number: not_coll, name: 'Garbage Not Received', color: '#fe9436' },
+                { y: res_not_spec_coll, label: "Garbage Type Not Specified", hover_number: not_spec_coll, name: 'Garbage Type Not Specified', color: '#0086c3' },
 
-               
-               
+                //{ y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, name: 'Wet Waste', color: '#186634' },
+                //{ y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, name: 'Dry Waste', color: '#66a2d5' },
+                //{ y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, name: 'Domestic Hazardous Waste', color: '#8f8b28' },
+                //{ y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, name: 'Sanitary Waste', color: '#c384d3' },
                
                // { y: res_TotalCW_coll, label: "Commercial Waste", hover_number: TotalCW_coll, color: '#63676e' },
+            ],
+        }]
+    });
+    showDefaultText(chart, "No Data available");
+    chart.render();
+    function showDefaultText(chart, text) {
+        var isEmpty = !(tot_house_coll && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+
+        if (isEmpty) {
+            chart.options.subtitles.push({
+                text: text,
+                verticalAlign: 'center',
+            });
+            (chart.options.data[0].dataPoints = []);
+        }
+
+
+
+    }
+    function explodePie(e) {
+        for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+            if (i !== e.dataPointIndex)
+                e.dataSeries.dataPoints[i].exploded = false;
+        }
+    }
+
+});
+
+//Segregation Type Bifurcation Pie Chart
+$(document).ready(function () {
+    debugger;
+
+    //var bif_coll = $('#bif_coll').val();
+    //var mixed_coll = $('#mixed_coll').val();
+    //var TotalCDW_coll = $('#TotalCDW_coll').val();
+    //var TotalHW_coll = $('#TotalHW_coll').val();
+    //var not_coll = $('#not_coll').val();
+    //var not_spec_coll = $('#not_spec_coll').val();
+
+
+    var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
+    var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
+    var TotalDHW_coll = $('#TotalDHW_coll').val();
+    var TotalSW_coll = $('#TotalSW_coll').val();
+
+    var tot_house_null_check = $('#bif_coll').val();
+
+    // var TotalCW_coll = $('#TotalCW_coll').val();
+
+    //var not_coll = 10;
+    //var mixed_coll = 10;
+    //var bif_coll = 10;
+    //var not_spec_coll = 10;
+
+    //var TotalCDW_coll = 10;
+    //var TotalHW_coll = 10;
+    //var TotalDryWaste_coll = 10;
+    //var TotalWetWaste_coll = 10;
+    //var TotalDHW_coll = 10;
+    //var TotalSW_coll = 10;
+    //var tot_house_null_check = 100;
+    //var TotalCW_coll = 10;
+
+    var tot_house_coll;
+    if (tot_house_null_check == 0) {
+        tot_house_coll = null;
+    } else {
+        tot_house_coll = $('#tot_house_coll').val();
+        //tot_house_coll = 100;
+    }
+
+
+    //var res_bif_coll = bif_coll * 100 / tot_house_coll;
+    //var res_mixed_coll = mixed_coll * 100 / tot_house_coll;
+    //var res_TotalCDW_coll = TotalCDW_coll * 100 / tot_house_coll;
+    //var res_TotalHW_coll = TotalHW_coll * 100 / tot_house_coll;
+    //var res_not_coll = not_coll * 100 / tot_house_coll;
+    //var res_not_spec_coll = not_spec_coll * 100 / tot_house_coll;
+
+
+
+    var res_TotalDryWaste_coll = TotalDryWaste_coll * 100 / tot_house_coll;
+    var res_TotalWetWaste_coll = TotalWetWaste_coll * 100 / tot_house_coll;
+    var res_TotalDHW_coll = TotalDHW_coll * 100 / tot_house_coll;
+    var res_TotalSW_coll = TotalSW_coll * 100 / tot_house_coll;
+
+    // var res_TotalCW_coll = TotalCW_coll * 100 / tot_house_coll;
+
+
+    var ary3 = []
+    //ary3.push({ v: bif_coll });
+    //ary3.push({ v: mixed_coll });
+    //ary3.push({ v: TotalCDW_coll });
+    //ary3.push({ v: TotalHW_coll });
+    //ary3.push({ v: not_coll });
+    //ary3.push({ v: not_spec_coll });
+
+
+    ary3.push({ v: TotalDryWaste_coll });
+    ary3.push({ v: TotalWetWaste_coll });
+    ary3.push({ v: TotalDHW_coll });
+    ary3.push({ v: TotalSW_coll });
+
+    //ary3.push({ v: TotalCW_coll });
+
+
+    //console.log(ary3);
+    var chart = new CanvasJS.Chart("chartContainerSegregationPie", {
+        theme: "light2",
+        animationEnabled: true,
+        // exportEnabled: true,
+        title: {
+            //text: "विलगिकरण प्रकार ",
+            fontSize: 24,
+            padding: 10
+        },
+        subtitles: [{
+            //text: "United Kingdom, 2016",
+            //fontSize: 16
+        }],
+        toolTip: {
+            content: "In Numbers {hover_number}",
+        },
+        //legend: {
+        //    maxWidth: 300,
+        //    itemWidth: 300,
+        //    fontSize: 14,
+        //     horizontalAlign: "left", // left, center ,right 
+        //    verticalAlign: "top",
+        //},
+        data: [{
+            type: "pie",
+            indexLabelFontSize: 12,
+            showInLegend: true,
+            legendText: "{name}:{hover_number}",
+            radius: 60,
+            indexLabel: "{label} - {y}",
+            yValueFormatString: "###0.0\"%\"",
+            click: explodePie,
+            legend: {
+                itemMaxWidth: 250,
+                itemWrap: false,// Comment itemWidth to see the difference
+            },
+            dataPoints: [
+                //{ y: res_bif_coll, label: "वर्गीकृत कचरा", hover_number: bif_coll, color: '#388e3c' },
+                //{ y: res_mixed_coll, label: "मिश्र कचरा", hover_number: mixed_coll, color: '#f44336' },
+                //{ y: res_not_coll, label: "कचरा मिळाला नाही", hover_number: not_coll, color: '#fe9436' },
+                //{ y: res_not_spec_coll, label: "वर्णन उपलब्ध नाही", hover_number: not_spec_coll, color: '#0086c3' },
+
+                //{ y: res_bif_coll, label: "Segregated Garbage", hover_number: bif_coll, name: 'Segregated Garbage', color: '#388e3c' },
+                //{ y: res_mixed_coll, label: "Mixed Garbage", hover_number: mixed_coll, name: 'Mixed Garbage', color: '#f44336' },
+                //{ y: res_TotalCDW_coll, label: "Construction And Demolition Waste", hover_number: TotalCDW_coll, name: 'Construction And Demolition Waste', color: '#63676e' },
+                //{ y: res_TotalHW_coll, label: "Horticulture Waste", hover_number: TotalHW_coll, name: 'Horticulture Waste', color: '#1ad15c' },
+                //{ y: res_not_coll, label: "Garbage Not Received", hover_number: not_coll, name: 'Garbage Not Received', color: '#fe9436' },
+                //{ y: res_not_spec_coll, label: "Garbage Type Not Specified", hover_number: not_spec_coll, name: 'Garbage Type Not Specified', color: '#0086c3' },
+
+                { y: res_TotalWetWaste_coll, label: "Wet Waste", hover_number: TotalWetWaste_coll, name: 'Wet Waste', color: '#186634' },
+                { y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, name: 'Dry Waste', color: '#66a2d5' },
+                { y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, name: 'Domestic Hazardous Waste', color: '#8f8b28' },
+                { y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, name: 'Sanitary Waste', color: '#c384d3' },
+
+                // { y: res_TotalCW_coll, label: "Commercial Waste", hover_number: TotalCW_coll, color: '#63676e' },
             ],
         }]
     });
@@ -1255,15 +1424,15 @@ $(document).ready(function () {
                 var fname = name.replace(/ .*/, ' ');
                 // alert(data[i]._Count)
                 not_spec.push({ y: data[i].NotSpecidfied, label: 'Not Specified', color: '#0086c3', intime: data[i].inTime });
-                not_coll.push({ y: data[i].NotCollected, label: 'Not Collected', color: '#fe9436', intime: data[i].inTime });
+                not_coll.push({ y: data[i].NotCollected, label: 'Not Received', color: '#fe9436', intime: data[i].inTime });
                 mixed.push({ y: data[i].MixedCount, label: 'Mixed', color: '#f44336', intime: data[i].inTime });
-               /* seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });*/
+                seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });
                 cdw.push({ y: data[i].ConstructionAndDemolition, label: 'Construction & Demolition', color: '#63676e', intime: data[i].inTime });
                 hw.push({ y: data[i].Horticulture, label: 'Horticulture', color: '#1ad15c', intime: data[i].inTime });
-                wet.push({ y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
-                dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
-                dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
-                sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
+                //wet.push({ y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
+               // dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
+               // dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
+                //sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
                 cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Specified', color: '#0086c3', intime: data[i].inTime });
                 cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not Received', color: '#fe9436', intime: data[i].inTime });
                 cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
@@ -1307,57 +1476,57 @@ $(document).ready(function () {
 
                     data: [
 
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Segregated",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#388e3c",
+                            dataPoints: seg
+                        },
                         //{
                         //    //indexLabel: "#total",
                         //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    showInLegend: true,
+                        //    legendText: "Drywaste",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#66a2d5",
+                        //    dataPoints: dry
+                        //},
+                        //{
+                        //    //indexLabel: "#total",
                         //    //indexLabelPlacement: "outside",
                         //    type: "stackedColumn",
                         //    showInLegend: true,
-                        //    legendText: "Segregated",
+                        //    legendText: "Wetwaste",
                         //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                        //    color: "#388e3c",
-                        //    dataPoints: seg
+                        //    color: "#186634",
+                        //    dataPoints: wet
                         //},
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Drywaste",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#66a2d5",
-                            dataPoints: dry
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Wetwaste",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#186634",
-                            dataPoints: wet
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Domestic Hazardous",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#8f8b28",
-                            dataPoints: dhw
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            showInLegend: true,
-                            legendText: "Sanitary",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#c384d3",
-                            dataPoints: sw
-                        },
+                        //{
+                        //    //indexLabel: "#total",
+                        //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    showInLegend: true,
+                        //    legendText: "Domestic Hazardous",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#8f8b28",
+                        //    dataPoints: dhw
+                        //},
+                        //{
+                        //    //indexLabel: "#total",
+                        //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    showInLegend: true,
+                        //    legendText: "Sanitary",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#c384d3",
+                        //    dataPoints: sw
+                        //},
                         {
                             //indexLabel: "#total",
                             //indexLabelPlacement: "outside",
@@ -1373,7 +1542,7 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
-                            legendText: "ConstructionAndDemolition",
+                            legendText: "Construction And Demolition",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#63676e",
                             dataPoints: cdw
@@ -1393,7 +1562,7 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
-                            legendText: "NotSpecified",
+                            legendText: "Not Specified",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#0086c3",
                             dataPoints: not_spec
@@ -1405,7 +1574,7 @@ $(document).ready(function () {
                             //indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
-                            legendText: "NotCollected",
+                            legendText: "Not Received",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#fe9436",
                             dataPoints: not_coll

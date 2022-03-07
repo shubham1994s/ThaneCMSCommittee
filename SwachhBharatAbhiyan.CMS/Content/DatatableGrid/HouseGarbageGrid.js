@@ -1,7 +1,15 @@
 ﻿$(document).ready(function () {
     var UserId = $('#selectnumber').val();
 
-
+    $('#Segid').change(function () {
+        debugger;
+        Segid = $('#Segid').val();
+        if (Segid == 1) {
+            $('#stype').show();
+        } else {
+            $('#stype').hide();
+        }
+    });
 
 
 
@@ -93,7 +101,42 @@
                         return "<div class='circle' style='height: 20px;width: 20px;background-color: #f44336;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Mixed Garbage)";
                     }
                     else if (full["type1"] == "1") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #388e3c;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Segregated Garbage)";
+                        if (full["wet"] == 1) {
+                            var Wet = "Wet"
+                        }
+                        else {
+                            var Wet = ""
+                        }
+                        if (full["dry"] == 1) {
+                            var Dry = "Dry"
+                        }
+                        else {
+                            var Dry = ""
+                        }
+                        if (full["sanitary"] == 1) {
+                            var Sanitary = "Sanitary"
+                        }
+                        else {
+                            var Sanitary = ""
+                        }
+                        if (full["domestic"] == 1) {
+                            var Domestic = "Domestic"
+                        }
+                        else {
+                            var Domestic = ""
+                        }
+                        if (Wet.length > 0 && (Dry.length > 0 || Sanitary.length > 0 || Domestic.length > 0)) {
+                            var Wet = "Wet |"
+                        }
+                        if (Dry.length > 0 && (Sanitary.length > 0 || Domestic.length > 0)) {
+                            var Dry = "Dry |"
+                        }
+                        if (Sanitary.length > 0 && Domestic.length > 0) {
+                            var Sanitary = "Sanitary |"
+                        }
+                        var details = " " + Wet + " " + Dry + " " + Sanitary + " " + Domestic + " ";
+
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #388e3c;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> Segregated Garbage (" +  details + ")";
 
                     }
                     else if (full["type1"] == "2") {
@@ -143,6 +186,50 @@
             { "data": "attandDate", "name": "attandDate", "autoWidth": false },
             { "data": "Employee", "name": "Employee", "autoWidth": false },
             { "data": "type1", "name": "type1", "autoWidth": false },
+            //{
+            //    "targets": [4],
+
+            //    "visible": true,
+
+            //    render: function (data, type, full, meta) {
+            //        if (full["wet"] == 1) {
+            //            var Wet = "Wet"
+            //        }
+            //        else {
+            //            var Wet = ""
+            //        }
+            //        if (full["dry"] == 1) {
+            //            var Dry = "Dry"
+            //        }
+            //        else {
+            //            var Dry = ""
+            //        }
+            //        if (full["sanitary"] == 1) {
+            //            var Sanitary = "Sanitary"
+            //        }
+            //        else {
+            //            var Sanitary = ""
+            //        }
+            //        if (full["domestic"] == 1) {
+            //            var Domestic = "Domestic"
+            //        }
+            //        else {
+            //            var Domestic = ""
+            //        }
+            //        if (Wet.length > 0 && (Dry.length > 0 || Sanitary.length > 0 || Domestic.length > 0)) {
+            //            var Wet = "Wet |"
+            //        }
+            //        if (Dry.length > 0 && (Sanitary.length > 0 || Domestic.length > 0)) {
+            //            var Dry = "Dry |"
+            //        }
+            //        if (Sanitary.length > 0 && Domestic.length > 0) {
+            //            var Sanitary = "Sanitary |"
+            //        }
+
+            //        var details = Wet + " " + Dry + " " + Sanitary + " " + Domestic;
+            //        return details;
+            //    }
+            //},
             { "data": "UserName", "name": "UserName", "autoWidth": false },
             { "data": "Address", "name": "Address", "autoWidth": false },
             { "data": "VehicleNumber", "autoWidth": false },
@@ -185,7 +272,8 @@
                     }
                 }
             },
-
+          
+        
         ]
     });
 
@@ -221,6 +309,9 @@ function PopImages(cel) {
     jQuery("#header_data").html(head);
 }
 
+
+
+
 function Search() {
     debugger;
     var txt_fdate, txt_tdate, Client, UserId;
@@ -239,11 +330,13 @@ function Search() {
     WardId = $('#WardNo').val();
     AreaId = $('#AreaId').val();
     Segid = $('#Segid').val();
+    
+    SegidSub = $('#SegidSub').val();
     Client = " ";
     NesEvent = " ";
     var Product = "";
     var catProduct = "";
-    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + ZoneId + "," + WardId + "," + AreaId + "," + Segid;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + ZoneId + "," + WardId + "," + AreaId + "," + Segid + "," + SegidSub ;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
     // alert(value );
     oTable = $('#demoGrid').DataTable();
     oTable.search(value).draw();

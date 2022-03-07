@@ -2803,7 +2803,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Saurabh (06 June 2019)
 
-        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype)
+        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype,int SegType)
         {
 
             List<SBALHouseLocationMapView> houseLocation = new List<SBALHouseLocationMapView>();
@@ -2811,7 +2811,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
+                var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, SegType).ToList();
                 foreach (var x in data)
                 {
 
@@ -2839,7 +2839,12 @@ namespace SwachBharat.CMS.Bll.Services
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         garbageType = x.garbageType,
-                        Ctype = x.CType
+                        Ctype = x.CType,
+                        wet=x.Wet,
+                        dry=x.Dry,
+                        domestic=x.Domestic,
+                        sanitary=x.Sanitary
+                        
                     });
                 }
                 if (!string.IsNullOrEmpty(SearchString))
