@@ -794,6 +794,9 @@
                     $('#txt_fdate').prop('disabled', 'disabled');
                     $('#selectnumber').prop('disabled', 'disabled');
                     $('#seg_type').prop('disabled', 'disabled');
+                    var dump = document.getElementById("dum");
+                    dump.classList.remove("btn-r");
+                    dump.classList.add("pull-right");
 
                 } else {
                     $('#SearchRow').show();
