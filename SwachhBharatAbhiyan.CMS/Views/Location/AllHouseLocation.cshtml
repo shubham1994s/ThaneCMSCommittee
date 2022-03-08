@@ -118,6 +118,14 @@
         table img {
             width: 15px;
         }
+    .btn-r {
+        margin-top: 5px;
+        margin-left: 61%;
+        position: absolute !important;
+        bottom: 117%;
+        right: 5%;
+        float: right !important;
+    }
 </style>
 
 <link rel="shortcut icon" href="~/Content/images/img/ictsbm2.png" />
@@ -592,8 +600,8 @@
             </div>
         </div>
 
-        <div class="row" id="SearchSegType" style="display:none">
-            <div class="col-sm-2">
+        <div class="row" id="SearchSegType" style="display: none; float: right; margin-right: 14%;">
+            <div class="col-md-6" style="width:100%">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Segregation Type </label>
                 <select id="seg_typeNew" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
@@ -610,7 +618,7 @@
 
         <div class="row  col-sm-12">
 
-            <div class="col-sm-1 pull-right">
+            <div class="col-sm-1 pull-right" id="dum">
                 <label>&nbsp;</label>
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
@@ -769,12 +777,16 @@
                 $('#SearchRow').hide();
                 $('#SearchSegType').show();
                 $('#seg_typeNew').val();
+                var dump = document.getElementById("dum");
+                dump.classList.remove("pull-right");
+                dump.classList.add("btn-r");
             }
             else
                 if (RadioValue == 0) {
                     $('#SearchRow').show();
                     $('#SearchSegType').hide();
                     $('#seg_typeNew').val(0);
+                   
 
                     document.getElementById('txt_fdate').value = today;
                     $('#selectnumber').val(-1);
@@ -791,6 +803,10 @@
                     $('#txt_fdate').prop('disabled', false);
                     $('#selectnumber').prop('disabled', false);
                     $('#seg_type').prop('disabled', false);
+
+                    var dump = document.getElementById("dum");
+                    dump.classList.remove("btn-r");
+                    dump.classList.add("pull-right");
                 }
             $("#wait").css("display", "block");
             $("#googleMap").css("display", "none");
