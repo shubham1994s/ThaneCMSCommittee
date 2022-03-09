@@ -90,9 +90,9 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     min-width: 250px;
     margin-left: -135px;
     /*background-color: #333;*/
-    background: #3ab59e;
+    /* background: #3ab59e;*/
+    background: #189cdf;
     box-shadow: 0 12px 20px -10px rgba(34,138,133,0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(34,138,133,0.2);
-
     color: #fff;
     text-align: center;
     border-radius: 2px;
