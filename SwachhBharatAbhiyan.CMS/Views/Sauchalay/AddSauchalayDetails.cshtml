@@ -224,13 +224,17 @@
         <div class="col-md-4">
             <div class="form-group">
                 @Html.Label("Type Of Electricity Meter Connection")
-                <input type="text" value="@Model.TOEMC" id="toemc" />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.TOEMC, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                @Html.ValidationMessageFor(model => model.TOEMC, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 @Html.Label("Toilet Categary")
-                <input type="text" value="@Model.TOC" id="toc" />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.TOC, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                @Html.ValidationMessageFor(model => model.TOC, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>

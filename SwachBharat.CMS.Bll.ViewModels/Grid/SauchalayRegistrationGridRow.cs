@@ -19,6 +19,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string Tot { get; set; }
         public string Tns { get; set; }
         public string QRCode { get; set; }
+        public string TOEMC { get; set; }
+        public string TOC { get; set; }
 
 
     }

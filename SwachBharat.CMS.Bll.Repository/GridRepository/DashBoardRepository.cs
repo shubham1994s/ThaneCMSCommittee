@@ -4653,7 +4653,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
                     Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : GetTot(x.Tot),
                     Tns = x.Tns.HasValue ? x.Tns.ToString() : "",
-                    QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode
+                    QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode,
+                    TOEMC = x.TOEMC,
+                    TOC = x.TOC
 
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))

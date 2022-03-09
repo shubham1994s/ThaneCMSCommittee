@@ -79,6 +79,8 @@
               { "data": "QrImage", "QrImage": "Name", "autoWidth": true },
               { "data": "Address", "name": "Address", "autoWidth": true },
               { "data": "CreatedDate", "name": "CreatedDate", "autoWidth": true },
+              { "data": "TOEMC", "name": "TOEMC", "autoWidth": true },
+              { "data": "TOC", "name": "TOC", "autoWidth": true },
            
              
             //   { "render": function (data, type, full, meta) { return '<input class="btn btn-primary btn-sm" type="button" onclick="Edit(' + full["houseId"] + ')" value="Edit" /> <input style="margin-left:2px" class="btn btn-danger btn-sm" type="button" onclick="Delete(' + full["houseId"] + ',' + full["Name"] + ')" value="Delete" />'; } }

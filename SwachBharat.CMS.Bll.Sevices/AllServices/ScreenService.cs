@@ -4619,6 +4619,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.ZoneId = data.ZoneId;
             model.WardNo = data.WardNo;
             model.userId = data.userId;
+            model.TOEMC = data.TOEMC;
+            model.TOC = data.TOC;
             return model;
         }
         #endregion
