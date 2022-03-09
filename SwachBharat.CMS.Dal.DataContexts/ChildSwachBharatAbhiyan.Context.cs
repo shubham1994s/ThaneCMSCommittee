@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -51,12 +51,12 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<DumpYardDetail> DumpYardDetails { get; set; }
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
         public virtual DbSet<CommercialMaster> CommercialMasters { get; set; }
-        public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
         public virtual DbSet<SWMMaster> SWMMasters { get; set; }
         public virtual DbSet<SS_1_4_ANSWER> SS_1_4_ANSWER { get; set; }
         public virtual DbSet<SS_1_4_QUESTION> SS_1_4_QUESTION { get; set; }
         public virtual DbSet<SS_1_7_ANSWER> SS_1_7_ANSWER { get; set; }
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
+        public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -392,7 +392,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CommercialDetails_Result>("CommercialDetails");
         }
     
-        public virtual ObjectResult<SP_CommercialGarbageCollection_Result> SP_CommercialGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
+        public virtual ObjectResult<SP_CommercialGarbageCollection_Result> SP_CommercialGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid, Nullable<int> segidSub)
         {
             var appIdParameter = appId.HasValue ?
                 new ObjectParameter("appId", appId) :
@@ -426,7 +426,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("Segid", segid) :
                 new ObjectParameter("Segid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialGarbageCollection_Result>("SP_CommercialGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
+            var segidSubParameter = segidSub.HasValue ?
+                new ObjectParameter("SegidSub", segidSub) :
+                new ObjectParameter("SegidSub", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialGarbageCollection_Result>("SP_CommercialGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter, segidSubParameter);
         }
     
         public virtual ObjectResult<SWMDetails_Result> SWMDetails()

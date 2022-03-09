@@ -328,6 +328,8 @@
           <Property Name="WardNo" Type="int" />
           <Property Name="userId" Type="int" />
           <Property Name="lastModifiedDateEntry" Type="datetime" />
+          <Property Name="TOEMC" Type="nvarchar(max)" />
+          <Property Name="TOC" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="SS_1_4_ANSWER">
           <Key>
@@ -637,6 +639,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="AreaId" Type="int" Mode="In" />
           <Parameter Name="WardNo" Type="int" Mode="In" />
           <Parameter Name="Segid" Type="int" Mode="In" />
+          <Parameter Name="SegidSub" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_CommercialOnMapDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="gcDate" Type="datetime" Mode="In" />
@@ -987,8 +990,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="AreaId" Mode="In" Type="Int32" />
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
             <Parameter Name="Segid" Mode="In" Type="Int32" />
+            <Parameter Name="SegidSub" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="SauchalayAddresses" EntityType="DevSwachhBharatNagpurModel.SauchalayAddress" />
           <EntitySet Name="SWMMasters" EntityType="DevSwachhBharatNagpurModel.SWMMaster" />
           <FunctionImport Name="SWMDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SWMDetails_Result)" />
           <FunctionImport Name="SP_CommercialScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CommercialScanify_Count_Result)" />
@@ -1103,6 +1106,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
             <Parameter Name="SegType" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="SauchalayAddresses" EntityType="DevSwachhBharatNagpurModel.SauchalayAddress" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2021,31 +2025,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
         </ComplexType>
-        <EntityType Name="SauchalayAddress">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SauchalayID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="Lat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Long" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="QrImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Tot" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Tns" Type="Int32" />
-          <Property Name="SauchalayQRCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ReferanceId" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
-          <Property Name="lastModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="AreaId" Type="Int32" />
-          <Property Name="ZoneId" Type="Int32" />
-          <Property Name="WardNo" Type="Int32" />
-          <Property Name="userId" Type="Int32" />
-          <Property Name="lastModifiedDateEntry" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="SWMMaster">
           <Key>
             <PropertyRef Name="swmId" />
@@ -2503,6 +2482,33 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="Domestic" Nullable="true" />
           <Property Type="Int32" Name="Sanitary" Nullable="true" />
         </ComplexType>
+        <EntityType Name="SauchalayAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SauchalayID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Lat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Long" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="QrImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tot" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tns" Type="Int32" />
+          <Property Name="SauchalayQRCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReferanceId" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="lastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="ZoneId" Type="Int32" />
+          <Property Name="WardNo" Type="Int32" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="lastModifiedDateEntry" Type="DateTime" Precision="3" />
+          <Property Name="TOEMC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TOC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3459,32 +3465,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="SauchalayAddresses">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SauchalayAddress">
-              <MappingFragment StoreEntitySet="SauchalayAddress">
-                <ScalarProperty Name="lastModifiedDateEntry" ColumnName="lastModifiedDateEntry" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
-                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
-                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
-                <ScalarProperty Name="lastModifiedDate" ColumnName="lastModifiedDate" />
-                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
-                <ScalarProperty Name="SauchalayQRCode" ColumnName="SauchalayQRCode" />
-                <ScalarProperty Name="Tns" ColumnName="Tns" />
-                <ScalarProperty Name="Tot" ColumnName="Tot" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="QrImageUrl" ColumnName="QrImageUrl" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Long" ColumnName="Long" />
-                <ScalarProperty Name="Lat" ColumnName="Lat" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="SauchalayID" ColumnName="SauchalayID" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SWMMasters">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SWMMaster">
               <MappingFragment StoreEntitySet="SWMMaster">
@@ -4013,6 +3993,34 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="SauchalayAddresses">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SauchalayAddress">
+              <MappingFragment StoreEntitySet="SauchalayAddress">
+                <ScalarProperty Name="TOC" ColumnName="TOC" />
+                <ScalarProperty Name="TOEMC" ColumnName="TOEMC" />
+                <ScalarProperty Name="lastModifiedDateEntry" ColumnName="lastModifiedDateEntry" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="lastModifiedDate" ColumnName="lastModifiedDate" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="SauchalayQRCode" ColumnName="SauchalayQRCode" />
+                <ScalarProperty Name="Tns" ColumnName="Tns" />
+                <ScalarProperty Name="Tot" ColumnName="Tot" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="QrImageUrl" ColumnName="QrImageUrl" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SauchalayID" ColumnName="SauchalayID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
          
         </EntityContainerMapping>
       </Mapping>
