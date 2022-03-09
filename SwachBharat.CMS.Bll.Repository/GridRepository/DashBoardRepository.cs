@@ -2841,6 +2841,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     batteryStatus = x.batteryStatus,
                     los = x.los,
                     ctype = x.CType,
+                    wet=x.Wet,
+                    dry=x.Dry,
 
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
