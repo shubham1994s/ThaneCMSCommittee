@@ -3963,6 +3963,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.AreaId = data.AreaId;
             model.ZoneId = data.ZoneId;
             model.WardNo = data.WardNo;
+            model.TOEMC = data.TOEMC;
+            model.TOC = data.TOC;
             //model.userId = data.userId;
             return model;
         }
@@ -6098,6 +6100,8 @@ namespace SwachBharat.CMS.Bll.Services
                             model.AreaId = data.AreaId;
                             model.ZoneId = data.ZoneId;
                             model.WardNo = data.WardNo;
+                            model.TOEMC = data.TOEMC;
+                            model.TOC = data.TOC;
                             //model.userId = data.userId;
                             db.SaveChanges();
                         }

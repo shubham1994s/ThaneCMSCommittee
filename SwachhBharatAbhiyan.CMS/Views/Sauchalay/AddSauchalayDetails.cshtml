@@ -74,8 +74,8 @@
         <div class="col-md-4">
             <div class="form-group">
                 @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
-                @Html.Label("CTPT Id")
-                <input type="text" value="@Model.SauchalayID" id="n" readonly="readonly" />
+                @Html.Label("CT/PT/U ID")
+                <input type="text" value="@Model.ReferanceId" id="refId" readonly="readonly" />
             </div>
 
 
@@ -195,16 +195,16 @@
 
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <div class="form-group">
-                @*@Html.Label("मोबाइल नंबर / Mobile Number")*@
-                @Html.Label("Mobile Number")
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", style = "font-family:Arial, FontAwesome", minlength = "10", maxlength = "10" })
-                <span class="text-danger" id="err_phone"></span>
-            </div>
-
+        <!--<div class="col-md-4">
+        <div class="form-group">-->
+        @*@Html.Label("मोबाइल नंबर / Mobile Number")*@
+        <!--@Html.Label("Mobile Number")
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", style = "font-family:Arial, FontAwesome", minlength = "10", maxlength = "10" })
+            <span class="text-danger" id="err_phone"></span>
         </div>
+
+    </div>-->
         <div class="col-md-4">
             <div class="form-group extra-height-for-textarea">
                 @Html.Label("Address")
@@ -214,11 +214,23 @@
                 <span class="text-danger" id="err_address"></span>
             </div><br />
         </div>
+        <!--<div class="col-md-4">
+        <div class="form-group">-->
+        @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
+        <!--@Html.Label("Reference Id")
+            <input type="text" value="@Model.ReferanceId" id="refId" readonly="readonly" />
+        </div>
+    </div>-->
         <div class="col-md-4">
             <div class="form-group">
-                @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
-                @Html.Label("Reference Id")
-                <input type="text" value="@Model.ReferanceId" id="refId" readonly="readonly" />
+                @Html.Label("Type Of Electricity Meter Connection")
+                <input type="text" value="@Model.TOEMC" id="toemc" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.Label("Toilet Categary")
+                <input type="text" value="@Model.TOC" id="toc" />
             </div>
         </div>
     </div>

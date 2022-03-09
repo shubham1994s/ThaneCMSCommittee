@@ -295,7 +295,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "GarbageCommercial":
-                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
+                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
                     return gridRepository;
                     break;
 
