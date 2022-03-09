@@ -7,6 +7,7 @@
         if (Segid == 1) {
             $('#stype').show();
         } else {
+            SegidSub = $('#SegidSub').val('');
             $('#stype').hide();
         }
     });
