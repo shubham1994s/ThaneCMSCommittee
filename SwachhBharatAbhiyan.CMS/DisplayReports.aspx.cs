@@ -88,9 +88,9 @@ namespace SwachhBharatAbhiyan.CMS
                     rptViewer.BackColor = System.Drawing.Color.White;
                     //rptViewer.Parent.ResolveClientUrl.
 
-                    if (ReportName == "Ghar Sankalan Tapashil")
+                    if (ReportName == "Ghar Sankalan Tapashil_New")
                     {
-                        ReportParameter[] param = new ReportParameter[6];
+                        ReportParameter[] param = new ReportParameter[7];
                         //param[0] = new ReportParameter("Appid", AppID);
                         param[0] = new ReportParameter("from", FromDate);
                         param[1] = new ReportParameter("to", ToDate);
@@ -98,6 +98,7 @@ namespace SwachhBharatAbhiyan.CMS
                         param[3] = new ReportParameter("gartype", garbageType);
                         param[4] = new ReportParameter("DBName", DB_Name);
                         param[5] = new ReportParameter("wastetype", wastetype);
+                        param[6] = new ReportParameter("id", AppID);
                         rptViewer.ServerReport.SetParameters(param);
 
                         // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
