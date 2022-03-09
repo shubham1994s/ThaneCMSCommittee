@@ -4803,7 +4803,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         CommercialMixed = x.CWM,
                         CommercialNotReceived = x.CWNR,
                         CommercialWet = x.CWW,
-                        CommercialDry = x.CWD
+                        CommercialDry = x.CWD,
+                        CommercialSegregeted=x.CommercialSegregeted
+
 
                         //Static
 
