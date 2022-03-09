@@ -1,7 +1,15 @@
 ﻿$(document).ready(function () {
     var UserId = $('#selectnumber').val();
 
-
+    $('#Segid').change(function () {
+        debugger;
+        Segid = $('#Segid').val();
+        if (Segid == 1) {
+            $('#stype').show();
+        } else {
+            $('#stype').hide();
+        }
+    });
 
 
 
@@ -105,6 +113,27 @@
                     }
                     else if (full["type1"] == "7") {
                         return "<div class='circle' style='height: 20px;width: 20px;background-color: #66a2d5;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Dry Waste)";
+
+                    }
+                    else if (full["type1"] == "1") {
+
+                        if (full["wet"] == 1) {
+                            var Wet = "Wet"
+                        }
+                        else {
+                            var Wet = ""
+                        }
+                        if (full["dry"] == 1) {
+                            var Dry = "Dry"
+                        }
+                        else {
+                            var Dry = ""
+                        }
+                        if (Wet.length > 0 && (Dry.length > 0 )) {
+                            var Wet = "Wet |"
+                        }
+                        var details = " " + Wet + " " + Dry + " ";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #186634;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> Segregated (" + details + ")";
 
                     }
                 
@@ -211,12 +240,13 @@ function Search() {
     WardId = $('#WardNo').val();
     AreaId = $('#AreaId').val();
     Segid = $('#Segid').val();
+    SegidSub = $('#SegidSub').val();
     S = $('#s').val();
     Client = " ";
     NesEvent = " ";
     var Product = "";
     var catProduct = "";
-    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + ZoneId + "," + WardId + "," + AreaId + "," + Segid;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + ZoneId + "," + WardId + "," + AreaId + "," + Segid + "," + SegidSub;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
     // alert(value );
     oTable = $('#demoGrid').DataTable();
     oTable.search(value).draw();

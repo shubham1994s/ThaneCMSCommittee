@@ -422,7 +422,7 @@ $(document).ready(function () {
     var not_coll = $('#not_coll').val();
     var not_spec_coll = $('#not_spec_coll').val();
 
-  
+
     //var TotalDryWaste_coll = $('#TotalDryWaste_coll').val();
     //var TotalWetWaste_coll = $('#TotalWetWaste_coll').val();
     //var TotalDHW_coll = $('#TotalDHW_coll').val();
@@ -430,7 +430,7 @@ $(document).ready(function () {
 
     var tot_house_null_check = $('#tot_house_coll').val();
 
-   // var TotalCW_coll = $('#TotalCW_coll').val();
+    // var TotalCW_coll = $('#TotalCW_coll').val();
 
     //var not_coll = 10;
     //var mixed_coll = 10;
@@ -454,22 +454,22 @@ $(document).ready(function () {
         //tot_house_coll = 100;
     }
 
-    
+
     var res_bif_coll = bif_coll * 100 / tot_house_coll;
     var res_mixed_coll = mixed_coll * 100 / tot_house_coll;
     var res_TotalCDW_coll = TotalCDW_coll * 100 / tot_house_coll;
     var res_TotalHW_coll = TotalHW_coll * 100 / tot_house_coll;
     var res_not_coll = not_coll * 100 / tot_house_coll;
     var res_not_spec_coll = not_spec_coll * 100 / tot_house_coll;
-   
 
-    
+
+
     //var res_TotalDryWaste_coll = TotalDryWaste_coll * 100 / tot_house_coll;
     //var res_TotalWetWaste_coll = TotalWetWaste_coll * 100 / tot_house_coll;
     //var res_TotalDHW_coll = TotalDHW_coll * 100 / tot_house_coll;
     //var res_TotalSW_coll = TotalSW_coll * 100 / tot_house_coll;
 
-   // var res_TotalCW_coll = TotalCW_coll * 100 / tot_house_coll;
+    // var res_TotalCW_coll = TotalCW_coll * 100 / tot_house_coll;
 
 
     var ary3 = []
@@ -493,7 +493,7 @@ $(document).ready(function () {
     var chart = new CanvasJS.Chart("chartContainerPie", {
         theme: "light2",
         animationEnabled: true,
-       // exportEnabled: true,
+        // exportEnabled: true,
         title: {
             //text: "विलगिकरण प्रकार ",
             fontSize: 24,
@@ -543,8 +543,8 @@ $(document).ready(function () {
                 //{ y: res_TotalDryWaste_coll, label: "Dry Waste", hover_number: TotalDryWaste_coll, name: 'Dry Waste', color: '#66a2d5' },
                 //{ y: res_TotalDHW_coll, label: "Domestic Hazardous Waste", hover_number: TotalDHW_coll, name: 'Domestic Hazardous Waste', color: '#8f8b28' },
                 //{ y: res_TotalSW_coll, label: "Sanitary Waste", hover_number: TotalSW_coll, name: 'Sanitary Waste', color: '#c384d3' },
-               
-               // { y: res_TotalCW_coll, label: "Commercial Waste", hover_number: TotalCW_coll, color: '#63676e' },
+
+                // { y: res_TotalCW_coll, label: "Commercial Waste", hover_number: TotalCW_coll, color: '#63676e' },
             ],
         }]
     });
@@ -828,9 +828,8 @@ $(document).ready(function () {
 
 //Dump Pie Chart
 
-
 $(document).ready(function () {
-   // debugger;
+    // debugger;
     var dry_count = $('#dry_count').val();
     var wet_count = $('#wet_count').val();
     var tot_dump_null_check = $('#tot_dump_count').val();
@@ -843,7 +842,7 @@ $(document).ready(function () {
         tot_dump_count = null;
     } else {
         tot_dump_count = $('#tot_dump_count').val();
-       // tot_dump_count = 100;
+        // tot_dump_count = 100;
     }
 
     var res_dry_count = parseFloat(dry_count) * 100 / parseFloat(tot_dump_count);
@@ -890,7 +889,7 @@ $(document).ready(function () {
                 //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
                 //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
 
-                { y: res_dry_count, label: "Total Weight (Dry Waste)", hover_number: dry_count, name:'Total Weight (Dry Waste)', color: '#0086c3' },
+                { y: res_dry_count, label: "Total Weight (Dry Waste)", hover_number: dry_count, name: 'Total Weight (Dry Waste)', color: '#0086c3' },
                 { y: res_wet_count, label: "Total Weight (Wet Waste)", hover_number: wet_count, name: 'Total Weight (Wet Waste)', color: '#01ad35' },
 
 
@@ -927,40 +926,36 @@ $(document).ready(function () {
 // Commercial Pie Chart
 
 $(document).ready(function () {
-    // debugger;
+    debugger;
+    var CommercialSegregetedCount = $('#tot_CommercialSegregetedCount').val();
     var CommercialMixCount = $('#tot_CommercialMixCount').val();
-    var CommercialWetCount = $('#tot_CommercialWetCount').val();
-    var CommercialDryCount = $('#tot_CommercialDryCount').val();
-
     var CommercialNotCollectedCount = $('#tot_CommercialNotCollectedCount').val();
     var CommercialNotSpecifiedCount = $('#tot_CommercialNotSpecifiedCount').val();
-
     var TotalCommercialCount_check = $('#tot_TotalCommercialCount').val();
 
+    //var CommercialSegregetedCount = 10;
     //var CommercialMixCount = 10;
-    //var CommercialWetCount = 10;
-    //var CommercialDryCount = 10;
-    //var TotalCommercialCount_check = 100;
+    //var CommercialNotCollectedCount = 10;
+    //var CommercialNotSpecifiedCount = 10;
+    //var TotalCommercialCount_check = 40;
 
     var TotalCommercialCount;
     if (TotalCommercialCount_check == 0) {
         TotalCommercialCount = null;
     } else {
         TotalCommercialCount = $('#tot_TotalCommercialCount').val();
-         //TotalCommercialCount = 100;
+       // TotalCommercialCount = 40;
     }
 
+    var res_seg1_count = parseFloat(CommercialSegregetedCount) * 100 / parseFloat(TotalCommercialCount);
     var res_mix_count = parseFloat(CommercialMixCount) * 100 / parseFloat(TotalCommercialCount);
-    var res_wet_count = parseFloat(CommercialWetCount) * 100 / parseFloat(TotalCommercialCount);
-    var res_dry_count = parseFloat(CommercialDryCount) * 100 / parseFloat(TotalCommercialCount);
 
     var res_notcollected_count = parseFloat(CommercialNotCollectedCount) * 100 / parseFloat(TotalCommercialCount);
     var res_notspecified_count = parseFloat(CommercialNotSpecifiedCount) * 100 / parseFloat(TotalCommercialCount);
 
     var ary3 = []
+    ary3.push({ v: CommercialSegregetedCount });
     ary3.push({ v: CommercialMixCount });
-    ary3.push({ v: CommercialDryCount });
-    ary3.push({ v: CommercialWetCount });
     ary3.push({ v: CommercialNotCollectedCount });
     ary3.push({ v: CommercialNotSpecifiedCount });
 
@@ -998,14 +993,133 @@ $(document).ready(function () {
             yValueFormatString: "###0.0\"%\"",
             click: explodePie,
             dataPoints: [
-                //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
-                //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
-                { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, name: 'Total (Dry Waste)', color: '#66a2d5' },
-                { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, name: 'Total (Wet Waste)', color: '#01ad35' },
+                { y: res_seg1_count, label: "Total (Segregated)", hover_number: CommercialSegregetedCount, name: 'Total (Segregated)', color: '#388e3c' },
                 { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name: 'Total (Mix Waste)', color: '#dc3545' },
                 { y: res_notcollected_count, label: "Total (Not Received)", hover_number: CommercialNotCollectedCount, name: 'Total (Not Received)', color: '#fe9436' },
                 { y: res_notspecified_count, label: "Total (Not Specified)", hover_number: CommercialNotSpecifiedCount, name: 'Total (Not Specified)', color: '#0086c3' },
-               
+
+            ],
+        }]
+    });
+    showDefaultText(chart, "No Data available");
+    chart.render();
+    function showDefaultText(chart, text) {
+        var isEmpty = !(TotalCommercialCount && chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+
+        if (isEmpty) {
+            chart.options.subtitles.push({
+                text: text,
+                verticalAlign: 'center',
+            });
+            (chart.options.data[0].dataPoints = []);
+        }
+
+
+
+    }
+    function explodePie(e) {
+        for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+            if (i !== e.dataPointIndex)
+                e.dataSeries.dataPoints[i].exploded = false;
+        }
+    }
+
+});
+
+// Commercial Segregation Type Bifurcation Pie Chart
+
+$(document).ready(function () {
+    // debugger;
+    var CommercialSegregetedCount = $('#tot_CommercialSegregetedCount').val();
+    var CommercialWetCount = $('#tot_CommercialWetCount').val();
+    var CommercialDryCount = $('#tot_CommercialDryCount').val();
+
+    var CommercialMixCount = $('#tot_CommercialMixCount').val();
+    var CommercialNotCollectedCount = $('#tot_CommercialNotCollectedCount').val();
+    var CommercialNotSpecifiedCount = $('#tot_CommercialNotSpecifiedCount').val();
+    var TotalCommercialCount_check = $('#tot_TotalCommercialCount').val();
+
+    //var CommercialSegregetedCount = 10;
+    //var CommercialWetCount = 5;
+    //var CommercialDryCount = 5;
+    ////var CommercialMixCount = 10;
+    ////var CommercialNotCollectedCount = 10;
+    ////var CommercialNotSpecifiedCount = 10;
+    //// var TotalCommercialCount_check = 100;
+
+    var TotalCommercialCount;
+    if (CommercialSegregetedCount == 0) {
+        TotalCommercialCount = null;
+    } else {
+        TotalCommercialCount = $('#tot_CommercialSegregetedCount').val();
+        //TotalCommercialCount = 10;
+    }
+
+
+    var res_wet_count = parseFloat(CommercialWetCount) * 100 / parseFloat(TotalCommercialCount);
+    var res_dry_count = parseFloat(CommercialDryCount) * 100 / parseFloat(TotalCommercialCount);
+
+    //var res_seg_count = parseFloat(CommercialSegregetedCount) * 100 / parseFloat(TotalCommercialCount);
+    //var res_mix_count = parseFloat(CommercialMixCount) * 100 / parseFloat(TotalCommercialCount);
+    //var res_notcollected_count = parseFloat(CommercialNotCollectedCount) * 100 / parseFloat(TotalCommercialCount);
+    //var res_notspecified_count = parseFloat(CommercialNotSpecifiedCount) * 100 / parseFloat(TotalCommercialCount);
+
+    var ary3 = []
+
+    ary3.push({ v: CommercialDryCount });
+    ary3.push({ v: CommercialWetCount });
+
+    //ary3.push({ v: CommercialSegregetedCount });
+    //ary3.push({ v: CommercialMixCount });
+    //ary3.push({ v: CommercialNotCollectedCount });
+    //ary3.push({ v: CommercialNotSpecifiedCount });
+
+
+    //console.log(ary3);
+    var chart = new CanvasJS.Chart("chartContainerPieCommercialSeg", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            //text: "विलगिकरण प्रकार ",
+            fontSize: 24,
+            padding: 10
+        },
+        subtitles: [{
+            //text: "United Kingdom, 2016",
+            //fontSize: 16
+        }],
+        toolTip: {
+            content: "In Numbers {hover_number} ",
+        },
+        legend: {
+            //maxWidth: 180,
+            //itemWidth: 75,
+            fontSize: 12,
+            // horizontalAlign: "right", // left, center ,right 
+            //verticalAlign: "center",
+        },
+        data: [{
+            type: "pie",
+            indexLabelFontSize: 12,
+            showInLegend: true,
+            legendText: "{name}:{hover_number}",
+            radius: 60,
+            indexLabel: "{label} - {y}",
+            yValueFormatString: "###0.0\"%\"",
+            click: explodePie,
+            dataPoints: [
+                //{ y: res_dry_count, label: "एकुण वजन (सुका कचरा)", hover_number: dry_count, color: '#0086c3' },
+                //{ y: res_wet_count, label: "एकुण वजन (ओला कचरा)", hover_number: wet_count, color: '#01ad35' },
+
+                { y: res_dry_count, label: "Total (Dry Waste)", hover_number: CommercialDryCount, name: 'Total (Dry Waste)', color: '#66a2d5' },
+                { y: res_wet_count, label: "Total (Wet Waste)", hover_number: CommercialWetCount, name: 'Total (Wet Waste)', color: '#01ad35' },
+                //{ y: res_seg_count, label: "Total (Segregeted)", hover_number: CommercialSegregetedCount, name: 'Total (Segregeted)', color: '#388e3c' },
+                //{ y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name: 'Total (Mix Waste)', color: '#dc3545' },
+                //{ y: res_notcollected_count, label: "Total (Not Received)", hover_number: CommercialNotCollectedCount, name: 'Total (Not Received)', color: '#fe9436' },
+                //{ y: res_notspecified_count, label: "Total (Not Specified)", hover_number: CommercialNotSpecifiedCount, name: 'Total (Not Specified)', color: '#0086c3' },
+
 
 
             ],
@@ -1041,19 +1155,19 @@ $(document).ready(function () {
 // SWM Pie Chart
 $(document).ready(function () {
     // debugger;
-    
+
     var TotalSWMCurrent = $('#tot_TotalSWMCurrent').val();
     var TotalSWM = $('#tot_TotalSWM').val();
 
     //var TotalSWMCurrent = 2;
     //var TotalSWM = 10;
     var remSWMCount = TotalSWM - TotalSWMCurrent
-    
+
 
 
 
     var TotalSWM_check = $('#tot_TotalSWM').val();
-   // var TotalSWM_check = 10;
+    // var TotalSWM_check = 10;
 
     var TotalSWMCount;
     if (TotalSWM_check == 0) {
@@ -1068,12 +1182,12 @@ $(document).ready(function () {
     var res_swm_count = (res_swm_count1) * 100 / (TotalSWMCount);
 
 
-  
+
 
     var ary3 = []
     ary3.push({ v: res_swmcurrent_count });
     ary3.push({ v: res_swm_count });
- 
+
 
 
 
@@ -1153,27 +1267,27 @@ $(document).ready(function () {
     var TotalUCount = $('#tot_TotalUCount').val();
     var TodayCTPTScanCount_check = $('#tot_TodayCTPTScanCount').val();
 
-   
+
 
     var TotalTodayCTPTScanCount;
     if (TodayCTPTScanCount_check == 0) {
         TotalTodayCTPTScanCount = null;
     } else {
         TotalTodayCTPTScanCount = $('#tot_TodayCTPTScanCount').val();
-       
+
     }
 
     var res_ct_count = parseFloat(TotalCTCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
     var res_pt_count = parseFloat(TotalPTCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
     var res_u_count = parseFloat(TotalUCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
 
-   
+
 
     var ary3 = []
     ary3.push({ v: TotalCTCount });
     ary3.push({ v: TotalPTCount });
     ary3.push({ v: TotalUCount });
-  
+
 
 
     //console.log(ary3);
@@ -1405,6 +1519,7 @@ $(document).ready(function () {
             var cwm = [];
             var cww = [];
             var cwd = [];
+            var commercialsegregeted = [];
             debugger;
             for (var i = 0; i < data.length; i++) {
                 // alert(data[i].inTime);
@@ -1430,14 +1545,15 @@ $(document).ready(function () {
                 cdw.push({ y: data[i].ConstructionAndDemolition, label: 'Construction & Demolition', color: '#63676e', intime: data[i].inTime });
                 hw.push({ y: data[i].Horticulture, label: 'Horticulture', color: '#1ad15c', intime: data[i].inTime });
                 //wet.push({ y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
-               // dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
-               // dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
+                // dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
+                // dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
                 //sw.push({ y: data[i].Sanitary, label: 'Sanitary', color: '#c384d3', intime: data[i].inTime });
                 cwns.push({ y: data[i].CommercialWasteNotSpecified, label: 'Commercial Waste Not Specified', color: '#0086c3', intime: data[i].inTime });
                 cwnr.push({ y: data[i].CommercialNotReceived, label: 'Commercial Waste Not Received', color: '#fe9436', intime: data[i].inTime });
                 cwm.push({ y: data[i].CommercialMixed, label: 'Commercial Waste Mixed', color: '#f44336', intime: data[i].inTime });
-                cww.push({ y: data[i].CommercialWet, label: 'Commercial Waste Wet', color: '#186634', intime: data[i].inTime });
-                cwd.push({ y: data[i].CommercialDry, label: 'Commercial Waste Dry', color: '#66a2d5', intime: data[i].inTime });
+                //cww.push({ y: data[i].CommercialWet, label: 'Commercial Waste Wet', color: '#186634', intime: data[i].inTime });
+                //cwd.push({ y: data[i].CommercialDry, label: 'Commercial Waste Dry', color: '#66a2d5', intime: data[i].inTime });
+                commercialsegregeted.push({ y: data[i].CommercialSegregeted, label: 'Commercial Segregeted', color: '#388e3c', intime: data[i].inTime });
                 emp_tar.push({ y: parseInt(data[i].gcTarget), label: fname + lastname_firstchar + ' Target', z: data[i].Count, intime: data[i].inTime });
                 emp_tar2.push({ y: parseInt(data[i].gcTarget2), label: fname + lastname_firstchar + ' Target', z: data[i].Count, intime: data[i].inTime });
                 // ary2.push({ y: parseInt(data[i].gcTarget), label: data[i].userName });
@@ -1457,8 +1573,8 @@ $(document).ready(function () {
                         labelFontColor: "dimGrey",
                         interval: 1
                     },
-                
-                   
+
+
                     axisX: {
                         labelAngle: 0,
                         labelFontSize: 10,
@@ -1471,7 +1587,7 @@ $(document).ready(function () {
                         labelFontSize: 10,
                         labelFontColor: "dimGrey",
                         title: "Commercial Collection",
-                       // interval: 1
+                        // interval: 1
                     },
 
                     data: [
@@ -1579,6 +1695,31 @@ $(document).ready(function () {
                             color: "#fe9436",
                             dataPoints: not_coll
                         },
+                        //{
+                        //    //indexLabel: "#total",
+                        //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    axisYType: "secondary",
+                        //    axisYIndex: 1,
+                        //    showInLegend: true,
+                        //    legendText: "Commercial Dry",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#66a2d5",
+                        //    dataPoints: cwd
+                        //},
+                        //{
+                        //    //indexLabel: "#total",
+                        //    //indexLabelPlacement: "outside",
+                        //    type: "stackedColumn",
+                        //    axisYType: "secondary",
+                        //    axisYIndex: 1,
+                        //    showInLegend: true,
+                        //    legendText: "Commercial Wet",
+                        //    toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                        //    color: "#186634",
+                        //    dataPoints: cww
+                        //},
+
                         {
                             //indexLabel: "#total",
                             //indexLabelPlacement: "outside",
@@ -1586,25 +1727,13 @@ $(document).ready(function () {
                             axisYType: "secondary",
                             axisYIndex: 1,
                             showInLegend: true,
-                            legendText: "Commercial Dry",
+                            legendText: "Commercial Segregeted",
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#66a2d5",
-                            dataPoints: cwd
-                        },
-                        {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
-                            type: "stackedColumn",
-                            axisYType: "secondary",
-                            axisYIndex: 1,
-                            showInLegend: true,
-                            legendText: "Commercial Wet",
-                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                            color: "#186634",
-                            dataPoints: cww
+                            color: "#388e3c",
+                            dataPoints: commercialsegregeted
                         },
 
-                       
+
                         {
                             //indexLabel: "#total",
                             //indexLabelPlacement: "outside",
@@ -1642,8 +1771,8 @@ $(document).ready(function () {
                             color: "#fe9436",
                             dataPoints: cwnr
                         },
-                     
-                       
+
+
 
                         {
                             type: "line",
@@ -1657,7 +1786,7 @@ $(document).ready(function () {
                         {
                             type: "line",
                             color: "#000000",
-                            axisYIndex:1,
+                            axisYIndex: 1,
                             axisYType: "secondary",
                             dataPoints: emp_tar2,
                             // indexLabel: "{y2}",
@@ -1685,24 +1814,24 @@ $(document).ready(function () {
             function showDefaultText(chart, text) {
                 debugger;
                 var isEmpty = !(chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
-               
+
 
                 if (!chart.options.subtitles)
                     (chart.options.subtitles = []);
-              
+
 
                 if (isEmpty)
                     chart.options.subtitles.push({
                         text: text,
                         verticalAlign: 'center',
                     });
-                
+
                 else
                     (chart.options.subtitles = []);
-                   
+
             }
 
-        
+
         }
     });
     chart.render();

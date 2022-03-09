@@ -2841,6 +2841,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     batteryStatus = x.batteryStatus,
                     los = x.los,
                     ctype = x.CType,
+                    wet=x.Wet,
+                    dry=x.Dry,
 
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
@@ -4803,7 +4805,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         CommercialMixed = x.CWM,
                         CommercialNotReceived = x.CWNR,
                         CommercialWet = x.CWW,
-                        CommercialDry = x.CWD
+                        CommercialDry = x.CWD,
+                        CommercialSegregeted=x.CommercialSegregeted
+
 
                         //Static
 
