@@ -14,7 +14,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class SP_CommercialOnMapDetails_Result
     {
         public Nullable<int> userId { get; set; }
-        public Nullable<int> commercialId { get; set; }
+        public int commercialId { get; set; }
         public Nullable<int> LWId { get; set; }
         public Nullable<int> SSId { get; set; }
         public string ReferanceId { get; set; }
@@ -27,5 +27,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string commercialLat { get; set; }
         public string commercialLong { get; set; }
         public string CType { get; set; }
+        public Nullable<int> Wet { get; set; }
+        public Nullable<int> Dry { get; set; }
     }
 }

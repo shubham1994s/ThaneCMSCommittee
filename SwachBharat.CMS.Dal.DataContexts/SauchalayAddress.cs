@@ -34,5 +34,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> WardNo { get; set; }
         public Nullable<int> userId { get; set; }
         public Nullable<System.DateTime> lastModifiedDateEntry { get; set; }
+        public string TOEMC { get; set; }
+        public string TOC { get; set; }
     }
 }

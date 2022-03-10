@@ -103,6 +103,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         TotalDumpUpdated_CurrentDay = detail.TotalDumpUpdated_CurrentDay,
 
 
+
                     });
 
                 }

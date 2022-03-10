@@ -28,6 +28,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> CommercialWet { get; set; }
         public Nullable<int> CommercialDry { get; set; }
 
+        public Nullable<int> CommercialSegregeted { get; set; }
+
         public int userId { get; set; }
         public string userName { get; set; }
         public string gcTarget { get; set; }

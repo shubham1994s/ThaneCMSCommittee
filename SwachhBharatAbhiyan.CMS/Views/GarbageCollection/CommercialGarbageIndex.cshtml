@@ -48,16 +48,30 @@
             </div>
             <div class="col-sm-4">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Segregation Type</label>
+                <label>Select Garbage Type</label>
                 <select id="Segid" class="form-control form-control form-control-sm">
-                    <option value="">Select Segregation Type</option>
+                    <option value="">All Garbage Type</option>
+                    <option value="1"> Segregated </option>
                     <option value="0"> Mixed Garbage </option>
-                    <option value="6"> Wet Waste </option>
-                    <option value="7"> Dry Waste </option>
+
+                    @*<option value="6"> Wet Waste </option>
+                <option value="7"> Dry Waste </option>*@
                     <option value="2"> Not Received </option>
                     <option value="-1"> Not Specified </option>
                 </select>
             </div>
+
+            <div class="col-sm-4" id="stype" style="display:none">
+                @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                <label>Select Segragation Type</label>
+                <select id="SegidSub" class="form-control form-control form-control-sm">
+                    <option value="">Select All</option>
+                    <option value="1"> Wet Waste</option>
+                    <option value="2">Dry Waste</option>
+                </select>
+
+            </div>
+
         </div>
         <div class="row">
             <div class="col-sm-2  offset-md-10" style="text-align:right">
@@ -92,7 +106,7 @@
                         <th>ID</th>
                         <th> Date</th>
                         <th> Employee</th>
-                        <th> Segregation Type </th>
+                        <th> Garbage Type </th>
                         <th> Commercial Owner</th>
                         <th> Collection Address</th>
                         <th> Vehicle Number</th>
@@ -142,40 +156,40 @@
 
 
 <script>
-        var date = new Date();
+    var date = new Date();
 
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
 
-        if (month < 10) month = "0" + month;
-        if (day < 10) day = "0" + day;
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
 
-        var today = day + "/" + month + "/" + year;
+    var today = day + "/" + month + "/" + year;
 
-        document.getElementById('txt_fdate').value = today;
-        document.getElementById('txt_tdate').value = today;
+    document.getElementById('txt_fdate').value = today;
+    document.getElementById('txt_tdate').value = today;
 
 
 </script>
 <script src="~/Content/graph-assets/js/custom.js"></script>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
 <script type="text/javascript">
-  $('.datepicker').datepicker({
-      format: 'dd/mm/yyyy',
-      weekStart: 1,
-      color: 'red',
-      pickTime: false
-  }).on('changeDate', function (e) {
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        weekStart: 1,
+        color: 'red',
+        pickTime: false
+    }).on('changeDate', function (e) {
 
-      $(this).datepicker('hide');
+        $(this).datepicker('hide');
 
-  });
-  //hide  show on hover
-  $('#txt_fdate').focus(function () {
-      $('.dtpk_drpdwn').eq(1).hide();
-  });
-  $('#txt_tdate').focus(function () {
-      $('.dtpk_drpdwn').eq(0).hide();
-  });
+    });
+    //hide  show on hover
+    $('#txt_fdate').focus(function () {
+        $('.dtpk_drpdwn').eq(1).hide();
+    });
+    $('#txt_tdate').focus(function () {
+        $('.dtpk_drpdwn').eq(0).hide();
+    });
 </script>

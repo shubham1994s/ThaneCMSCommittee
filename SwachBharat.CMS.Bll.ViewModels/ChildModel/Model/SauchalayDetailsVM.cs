@@ -25,6 +25,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public int? Tns { get; set; }
         public string SauchalayQRCode { get; set; }
         public string ReferanceId { get; set; }
+        public string TOEMC { get; set; }
+        public string TOC { get; set; }
         public string SerielNo { get; set; }
         public Nullable<System.DateTime> lastModifiedDateEntry { get; set; }
         public Nullable<int> userId { get; set; }

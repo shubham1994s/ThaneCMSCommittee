@@ -418,9 +418,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetAllHouseLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype, SegType);
         }
 
-        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype)
+        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType)
         {
-            return screenService.GetAllCommercialLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype);
+            return screenService.GetAllCommercialLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype, SegType);
         }
 
         public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype)

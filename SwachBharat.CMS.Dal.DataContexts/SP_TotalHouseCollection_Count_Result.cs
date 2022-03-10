@@ -14,16 +14,16 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class SP_TotalHouseCollection_Count_Result
     {
         public Nullable<int> TotalHouseCount { get; set; }
-        public Nullable<int> MixedCount { get; set; }
         public Nullable<int> BifurgatedCount { get; set; }
+        public Nullable<int> TotalWetWaste { get; set; }
+        public Nullable<int> TotalDryWaste { get; set; }
+        public Nullable<int> MixedCount { get; set; }
+        public Nullable<int> TotalDHW { get; set; }
+        public Nullable<int> TotalSW { get; set; }
         public Nullable<int> NotCollected { get; set; }
         public Nullable<int> NotSpecified { get; set; }
         public Nullable<int> TotalCDW { get; set; }
         public Nullable<int> TotalHW { get; set; }
-        public Nullable<int> TotalDryWaste { get; set; }
-        public Nullable<int> TotalWetWaste { get; set; }
-        public Nullable<int> TotalDHW { get; set; }
-        public Nullable<int> TotalSW { get; set; }
         public Nullable<int> TotalCW { get; set; }
         public decimal GcWeightCount { get; set; }
         public decimal DryWeightCount { get; set; }
@@ -53,6 +53,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public decimal GcHWWeightCount { get; set; }
         public decimal GcCDWWeightCount { get; set; }
         public int TotalCommercialCount { get; set; }
+        public int TotalCommercialSegregeted { get; set; }
         public int TotalCommercialMixCount { get; set; }
         public int TotalCommercialDryCount { get; set; }
         public int TotalCommercialWetCount { get; set; }

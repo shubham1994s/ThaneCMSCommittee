@@ -408,7 +408,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult CommercialLocationList(string date, string userid, string areaId, string wardNo, string SearchString, string garbageType, string filterType, string ctype)
+        public ActionResult CommercialLocationList(string date, string userid, string areaId, string wardNo, string SearchString, string garbageType, string filterType, string ctype, int SegType)
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -442,7 +442,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 {
                     ward = Convert.ToInt32(wardNo);
                 }
-                if (garbageType == "-1" || garbageType == null)
+
+                if (garbageType == "-2" || garbageType == null)
                 {
                     GarbageType = null;
                 }
@@ -450,6 +451,15 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 {
                     GarbageType = Convert.ToInt32(garbageType);
                 }
+
+                //if (garbageType == "-1" || garbageType == null)
+                //{
+                //    GarbageType = null;
+                //}
+                //else
+                //{
+                //    GarbageType = Convert.ToInt32(garbageType);
+                //}
                 if (filterType == "-1" || filterType == "0" || filterType == "null")
                 {
                     FilterType = 0;
@@ -464,7 +474,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 }
 
                 List<SBALCommercialLocationMapView> obj = new List<SBALCommercialLocationMapView>();
-                obj = childRepository.GetAllCommercialLocation(date, user, area, ward, SearchString, GarbageType, FilterType, null, ctype);
+                obj = childRepository.GetAllCommercialLocation(date, user, area, ward, SearchString, GarbageType, FilterType, null, ctype, SegType);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
