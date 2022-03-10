@@ -2977,7 +2977,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype)
+        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType)
         {
 
             List<SBALCommercialLocationMapView> houseLocation = new List<SBALCommercialLocationMapView>();
@@ -2985,7 +2985,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_CommercialOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
+                var data = db.SP_CommercialOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, SegType).ToList();
                 foreach (var x in data)
                 {
 
@@ -3013,7 +3013,10 @@ namespace SwachBharat.CMS.Bll.Services
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         garbageType = x.garbageType,
-                        Ctype = x.CType
+                        Ctype = x.CType,
+                        wet = x.Wet,
+                        dry = x.Dry
+
                     });
                 }
                 if (!string.IsNullOrEmpty(SearchString))

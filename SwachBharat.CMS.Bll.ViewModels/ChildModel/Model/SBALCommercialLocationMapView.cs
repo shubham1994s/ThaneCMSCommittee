@@ -36,5 +36,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         public string Ctype { get; set; }
 
+        public Nullable<int> wet { get; set; }
+        public Nullable<int> dry { get; set; }
+
     }
 }

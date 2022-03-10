@@ -147,7 +147,7 @@
                 </div>
             </div>
 
-            <div class="col" style="width:13.33%;padding-right: 5px;">
+            <div class="col" style="width:13.33%;padding-right: 5px; display:none;">
                 <div class="media" style="border:1px solid #66a2d5; padding: 5px; ">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
                         <img src="/Content/images/img/segregationImg/commercial_dry.png" class="media-object" />
@@ -158,7 +158,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col" style="width:13.33%;padding-right: 5px;">
+            <div class="col" style="width: 13.33%; padding-right: 5px; display: none;">
                 <div class="media" style="border:1px solid #186634; padding: 5px; ">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
                         <img src="/Content/images/img/segregationImg/commercial_wet.png" class="media-object" />
@@ -169,6 +169,19 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col" style="width: 13.33%; padding-right: 5px;">
+                <div class="media" style="border:1px solid #186634; padding: 5px; ">
+                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                        <img src="/Content/images/img/segregationImg/commercial_wet.png" class="media-object" />
+                    </div>
+                    <div class="media-body">
+                        <p class="media-heading" style="font-weight:600">Segregation</p>
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.BifurgatedCount</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="col" style="width:13.33%;padding-right: 5px;">
                 <div class="media" style="border:1px solid #d1655e;padding:5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
@@ -207,8 +220,8 @@
 
         </div><br />
 
-     
-       
+
+
         <br />
         <div class="row form" style="text-align:center;display:inline-flex">
             <label class="check-container">
@@ -233,8 +246,15 @@
                 <input type="radio" value="3" name="radio">
                 <span class="checkmark"></span>
             </label>
+
+            <label class="check-container">
+                Only Segregeted House
+                <input type="radio" value="4" name="radio">
+                <span class="checkmark"></span>
+            </label>
+
         </div>
-        <div class="row">
+        <div class="row" id="SearchRow">
             <div class="col-sm-2">
                 <div class="controls">
                     <input type="hidden" value="@ViewBag.lat" id="deflat" />
@@ -249,14 +269,26 @@
                 <label>Select Employee</label>
                 <select id="selectnumber" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
             </div>
-            <div class="col-sm-2">
-                @*<label>कर्मचारी निवडा / Select Employee</label>*@
+            @*<div class="col-sm-2">
+                <label>कर्मचारी निवडा / Select Employee</label>
                 <label>Select Segregation </label>
                 <select id="seg_type" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
                     <option value="-1"> All Records</option>
                     <option value="0"> Mixed Garbage</option>
                     <option value="6">Wet Waste</option>
                     <option value="7"> Dry Waste</option>
+                </select>
+            </div>*@
+
+            <div class="col-sm-2">
+                @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                <label>Select Garbage Type </label>
+                <select id="seg_type" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
+                    <option value="-2"> All Records</option>
+                    <option value="1"> Segregated Garbage</option>
+                    <option value="0"> Mixed Garbage</option>
+                    <option value="2"> Garbage Not Collected</option>
+                    <option value="-1">Garbage Type Not Specified</option>
                 </select>
             </div>
 
@@ -273,13 +305,25 @@
             </div>
         </div>
 
+        <div class="row" id="SearchSegType" style="display: none;">
+            <div class="col-md-6" style="width:25%">
+                @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                <label>Select Segregation Type </label>
+                <select id="seg_typeNew" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
+                    <option value="0"> All Records</option>
+                    <option value="1"> Wet Waste</option>
+                    <option value="2"> Dry Waste</option>
+                </select>
+            </div>
+        </div>
+
         <div class="row  col-sm-12">
 
             <div class="col-sm-1 pull-right">
                 <label>&nbsp;</label>
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
-                        <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
+                    <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
                     <a id="filter" onclick="Search()" style="margin-top: 5px; margin-left: 61%;" class="btn btn-sm btn-success filter-button-style">Search</a>
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>*@
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
@@ -429,25 +473,49 @@
 
         function myMap() {
             var RadioValue = $("input[name='radio']:checked").val();
-            if (RadioValue == 0) {
+
+            if (RadioValue == 4) {
+                debugger;
+                $('#SearchRow').hide();
+                $('#SearchSegType').show();
+                $('#seg_typeNew').val();
+                //var dump = document.getElementById("dum");
+                //dump.classList.remove("pull-right");
+                //dump.classList.add("btn-r");
+            }
+            else if (RadioValue == 0) {
+
+                $('#SearchRow').show();
+                $('#SearchSegType').hide();
+                $('#seg_typeNew').val(0);
+
                 document.getElementById('txt_fdate').value = today;
                 $('#selectnumber').val(-1);
-                $('#seg_type').val(-1);
+                $('#seg_type').val(-2);
                 $('#txt_fdate').prop('disabled', 'disabled');
                 $('#selectnumber').prop('disabled', 'disabled');
                 $('#seg_type').prop('disabled', 'disabled');
 
             } else {
+
+                $('#SearchRow').show();
+                $('#SearchSegType').hide();
+                $('#seg_typeNew').val(0);
+
                 $('#txt_fdate').prop('disabled', false);
                 $('#selectnumber').prop('disabled', false);
                 $('#seg_type').prop('disabled', false);
+
+                //var dump = document.getElementById("dum");
+                //dump.classList.remove("btn-r");
+                //dump.classList.add("pull-right");
             }
             $("#wait").css("display", "block");
             $("#googleMap").css("display", "none");
             $.ajax({
 
                 type: "post",
-                url: "/Location/CommercialLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue + "&ctype=" + $("#c_type").val(),
+                url: "/Location/CommercialLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue + "&ctype=" + $("#c_type").val() + "&SegType=" + $('#seg_typeNew').val(),
                 //url: "/Location/HouseLocationList",
                 datatype: "json",
                 traditional: true,
@@ -477,6 +545,9 @@
                     // alert(data.length);
                     // Get Addres
                     var gar_type;
+                    var seg_type_wet;
+                    var seg_type_dry;
+
                     for (i = 0; i < data.length; i++) {
                         if (data[i].commercialOwnerName == null) {
                             data[i].commercialOwnerName = 'Not Available';
@@ -488,6 +559,8 @@
                             data[i].commercialAddress = '';
                         }
                         gar_type = data[i].garbageType
+                        seg_type_wet = data[i].wet
+                        seg_type_dry = data[i].dry
 
                         /* var mUrl = "../Content/images/img/segregationImg/icon_commercial.png";*/
                         var mUrl = "../Content/images/img/segregationImg/commercial.png";
@@ -506,6 +579,18 @@
 
 
                         switch (gar_type) {
+
+                            case 1:
+                                mUrl = "../Content/images/img/segregationImg/commercial_wet.png"
+                                if (seg_type_wet == 1 && $('#seg_typeNew').val() == 1) {
+                                    mUrl = "../Content/images/img/segregationImg/commercial_wet.png"
+                                    break;
+                                }
+                                else if (seg_type_dry == 1 && $('#seg_typeNew').val() == 2) {
+                                    mUrl = "../Content/images/img/segregationImg/commercial_dry.png"
+                                    break;
+                                }
+                                break;
 
                             case 0:
                                 mUrl = "../Content/images/img/segregationImg/commercial_mixed.png"
