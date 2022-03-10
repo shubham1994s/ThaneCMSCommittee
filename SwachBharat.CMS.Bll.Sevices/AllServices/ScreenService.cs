@@ -5277,6 +5277,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.typeId = 1;
                             model.type = "Employee";
                             db.SaveChanges();
+
                         }
                     }
                     else
