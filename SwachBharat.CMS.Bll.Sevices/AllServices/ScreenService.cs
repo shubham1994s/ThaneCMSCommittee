@@ -123,6 +123,12 @@ namespace SwachBharat.CMS.Bll.Services
                         model.TotalDHWCount = Convert.ToInt32(houseCount.TotalDHW);
                         model.TotalSWCount = Convert.ToInt32(houseCount.TotalSW);
 
+                        model.ResidentialBuildingTotal= Convert.ToInt32(houseCount.TotalRBW);
+                        model.ResidentialSlumTotal = Convert.ToInt32(houseCount.TotalRSW);
+                        model.ResidentialBuildingCollection = Convert.ToInt32(houseCount.RBWDailyScanCount);
+                        model.ResidentialSlumCollection = Convert.ToInt32(houseCount.RSWDailyScanCount);
+
+
                         model.TotalCWCount = Convert.ToInt32(houseCount.TotalCW);
 
                         //For Liquid Waste

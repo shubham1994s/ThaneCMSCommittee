@@ -1096,9 +1096,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="SegidSub" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)" />
-          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
-          <Parameter Name="gcdate" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="SP_CommercialOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CommercialOnMapDetails_Result)">
             <Parameter Name="gcDate" Mode="In" Type="DateTime" />
             <Parameter Name="UserId" Mode="In" Type="Int32" />
@@ -1108,6 +1105,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="GarbageType" Mode="In" Type="Int32" />
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
             <Parameter Name="SegType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
+            <Parameter Name="gcdate" Mode="In" Type="DateTime" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2449,6 +2449,24 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="DHW" Nullable="true" />
           <Property Type="Int32" Name="SW" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="SP_CommercialOnMapDetails_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Int32" Name="commercialId" Nullable="false" />
+          <Property Type="Int32" Name="LWId" Nullable="true" />
+          <Property Type="Int32" Name="SSId" Nullable="true" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="commercialNumber" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="commercialOwner" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="commercialOwnerMobile" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="commercialAddress" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="garbageType" Nullable="true" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" />
+          <Property Type="String" Name="commercialLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="commercialLong" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Wet" Nullable="true" />
+          <Property Type="Int32" Name="Dry" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="SP_TotalHouseCollection_Count_Result">
           <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
           <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
@@ -2498,24 +2516,10 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalCommercialNotSpecifiedCount" Nullable="false" />
           <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
           <Property Type="Int32" Name="TotalSWM" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_CommercialOnMapDetails_Result">
-          <Property Type="Int32" Name="userId" Nullable="true" />
-          <Property Type="Int32" Name="commercialId" Nullable="false" />
-          <Property Type="Int32" Name="LWId" Nullable="true" />
-          <Property Type="Int32" Name="SSId" Nullable="true" />
-          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="commercialNumber" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="commercialOwner" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="commercialOwnerMobile" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="commercialAddress" Nullable="true" MaxLength="500" />
-          <Property Type="Int32" Name="garbageType" Nullable="true" />
-          <Property Type="DateTime" Name="gcDate" Nullable="true" />
-          <Property Type="String" Name="commercialLat" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="commercialLong" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
-          <Property Type="Int32" Name="Wet" Nullable="true" />
-          <Property Type="Int32" Name="Dry" Nullable="true" />
+          <Property Type="Int32" Name="TotalRBW" Nullable="true" />
+          <Property Type="Int32" Name="TotalRSW" Nullable="true" />
+          <Property Type="Int32" Name="RBWDailyScanCount" Nullable="false" />
+          <Property Type="Int32" Name="RSWDailyScanCount" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3959,6 +3963,28 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CommercialOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CommercialOnMapDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CommercialOnMapDetails_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="commercialId" ColumnName="commercialId" />
+                <ScalarProperty Name="LWId" ColumnName="LWId" />
+                <ScalarProperty Name="SSId" ColumnName="SSId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="commercialNumber" ColumnName="commercialNumber" />
+                <ScalarProperty Name="commercialOwner" ColumnName="commercialOwner" />
+                <ScalarProperty Name="commercialOwnerMobile" ColumnName="commercialOwnerMobile" />
+                <ScalarProperty Name="commercialAddress" ColumnName="commercialAddress" />
+                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="commercialLat" ColumnName="commercialLat" />
+                <ScalarProperty Name="commercialLong" ColumnName="commercialLong" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="Wet" ColumnName="Wet" />
+                <ScalarProperty Name="Dry" ColumnName="Dry" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_TotalHouseCollection_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_TotalHouseCollection_Count">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result">
@@ -4010,28 +4036,10 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalCommercialNotSpecifiedCount" ColumnName="TotalCommercialNotSpecifiedCount" />
                 <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
                 <ScalarProperty Name="TotalSWM" ColumnName="TotalSWM" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_CommercialOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CommercialOnMapDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CommercialOnMapDetails_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="commercialId" ColumnName="commercialId" />
-                <ScalarProperty Name="LWId" ColumnName="LWId" />
-                <ScalarProperty Name="SSId" ColumnName="SSId" />
-                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
-                <ScalarProperty Name="commercialNumber" ColumnName="commercialNumber" />
-                <ScalarProperty Name="commercialOwner" ColumnName="commercialOwner" />
-                <ScalarProperty Name="commercialOwnerMobile" ColumnName="commercialOwnerMobile" />
-                <ScalarProperty Name="commercialAddress" ColumnName="commercialAddress" />
-                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
-                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
-                <ScalarProperty Name="commercialLat" ColumnName="commercialLat" />
-                <ScalarProperty Name="commercialLong" ColumnName="commercialLong" />
-                <ScalarProperty Name="CType" ColumnName="CType" />
-                <ScalarProperty Name="Wet" ColumnName="Wet" />
-                <ScalarProperty Name="Dry" ColumnName="Dry" />
+                <ScalarProperty Name="TotalRBW" ColumnName="TotalRBW" />
+                <ScalarProperty Name="TotalRSW" ColumnName="TotalRSW" />
+                <ScalarProperty Name="RBWDailyScanCount" ColumnName="RBWDailyScanCount" />
+                <ScalarProperty Name="RSWDailyScanCount" ColumnName="RSWDailyScanCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

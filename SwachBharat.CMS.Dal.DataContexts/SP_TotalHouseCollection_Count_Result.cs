@@ -61,5 +61,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public int TotalCommercialNotSpecifiedCount { get; set; }
         public Nullable<int> TotalCTPT { get; set; }
         public Nullable<int> TotalSWM { get; set; }
+        public Nullable<int> TotalRBW { get; set; }
+        public Nullable<int> TotalRSW { get; set; }
+        public int RBWDailyScanCount { get; set; }
+        public int RSWDailyScanCount { get; set; }
     }
 }

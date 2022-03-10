@@ -139,6 +139,9 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> ResidentialSlumCollection { get; set; }
         public Nullable<int> CommercialCollection { get; set; }
 
+        public Nullable<int> ResidentialBuildingTotal { get; set; }
+        public Nullable<int> ResidentialSlumTotal { get; set; }
+
         public Nullable<int> ConstructionDemolitionCount { get; set; }
         public Nullable<int> HorticultureCount { get; set; }
         public Nullable<int> WetWasteCount { get; set; }
