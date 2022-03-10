@@ -139,16 +139,28 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 else
                 {
 
+                    //string bb = houseId.swmQRCode;
+                    //var ii = bb.Split('/');
+                    //if (ii.Length == 6)
+                    //{
+                    //    house.swmQRCode = ii[6];
+                    //}
+                    //if (ii.Length > 6)
+                    //{
+                    //    house.swmQRCode = ii[6];
+                    //}
+
                     string bb = houseId.swmQRCode;
                     var ii = bb.Split('/');
                     if (ii.Length == 6)
                     {
-                        house.swmQRCode = ii[6];
+                        house.swmQRCode = ii[ii.Length - 1];
                     }
                     if (ii.Length > 6)
                     {
-                        house.swmQRCode = ii[6];
+                        house.swmQRCode = ii[ii.Length - 1];
                     }
+
                 }
                 SWMDetailsVM swmDetails = childRepository.SaveSWM(house);
                 return Redirect("Index");
