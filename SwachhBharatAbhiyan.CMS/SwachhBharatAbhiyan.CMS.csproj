@@ -1728,6 +1728,7 @@
     <Content Include="Content\DatatableGrid\HouseDetailGrid.js" />
     <Content Include="Content\DatatableGrid\HouseGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\Location.js" />
+    <Content Include="Content\DatatableGrid\ResidentialBuildingGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\RfidGrid.js" />
     <Content Include="Content\DatatableGrid\SauchalayDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\SauchalayRegistrationGrid.js" />
@@ -3211,6 +3212,7 @@
     <Content Include="Views\Report\CommercialWise.cshtml" />
     <Content Include="Views\Location\AllSWMLocation.cshtml" />
     <Content Include="Views\Home\.gitattributes" />
+    <Content Include="Views\GarbageCollection\ResidentialBuildingGarbageIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

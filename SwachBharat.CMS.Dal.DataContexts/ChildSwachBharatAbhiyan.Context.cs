@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                : base(SwachBharatAppConnection.GetConnectionString(AppId))
+              : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -827,6 +827,88 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("gcdate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
+        }
+    
+        public virtual ObjectResult<SP_ResidentialBuildingGarbageCollection_Result> SP_ResidentialBuildingGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid, Nullable<int> segidSub)
+        {
+            var appIdParameter = appId.HasValue ?
+                new ObjectParameter("appId", appId) :
+                new ObjectParameter("appId", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var segidParameter = segid.HasValue ?
+                new ObjectParameter("Segid", segid) :
+                new ObjectParameter("Segid", typeof(int));
+    
+            var segidSubParameter = segidSub.HasValue ?
+                new ObjectParameter("SegidSub", segidSub) :
+                new ObjectParameter("SegidSub", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ResidentialBuildingGarbageCollection_Result>("SP_ResidentialBuildingGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter, segidSubParameter);
+        }
+    
+        public virtual ObjectResult<SP_ResidentialSlumGarbageCollection_Result> SP_ResidentialSlumGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid, Nullable<int> segidSub)
+        {
+            var appIdParameter = appId.HasValue ?
+                new ObjectParameter("appId", appId) :
+                new ObjectParameter("appId", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var segidParameter = segid.HasValue ?
+                new ObjectParameter("Segid", segid) :
+                new ObjectParameter("Segid", typeof(int));
+    
+            var segidSubParameter = segidSub.HasValue ?
+                new ObjectParameter("SegidSub", segidSub) :
+                new ObjectParameter("SegidSub", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ResidentialSlumGarbageCollection_Result>("SP_ResidentialSlumGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter, segidSubParameter);
         }
     }
 }
