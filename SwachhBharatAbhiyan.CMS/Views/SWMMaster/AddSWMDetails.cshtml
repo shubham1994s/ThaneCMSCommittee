@@ -81,14 +81,14 @@
 
                     <div class="col-md-4">
                         @*<div class="form-group">
-                @Html.Label("नाव मराठी / Name Marathi")
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(model => model.houseOwnerMar, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
-                @Html.ValidationMessageFor(model => model.houseOwnerMar, "", new { @class = "text-danger" })
-                <span class="text-danger" id="err_name_mar"></span>
-                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                <span class="help-block with-errors"></span>
-            </div>*@
+                    @Html.Label("नाव मराठी / Name Marathi")
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.houseOwnerMar, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                    @Html.ValidationMessageFor(model => model.houseOwnerMar, "", new { @class = "text-danger" })
+                    <span class="text-danger" id="err_name_mar"></span>
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                    <span class="help-block with-errors"></span>
+                </div>*@
                         <div class="form-group">
                             @*@Html.Label("मोबाइल नंबर / Mobile Number")*@
                             @Html.Label("Mobile Number")
@@ -187,6 +187,21 @@
                             <span class="text-danger" id="err_cat"></span>
                             <span class="help-block with-errors"></span>
                         </div>
+                      
+                            <div class="form-group">
+                                @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
+                                @Html.Label("Reference Id")
+                                <input type="text" value="@Model.ReferanceId" id="n" readonly="readonly" />
+                            </div>
+                     
+
+
+                        @Html.HiddenFor(c => c.ReferanceId)
+
+                        @Html.HiddenFor(model => model.swmLong, new { @class = "form-control", required = "required" })
+
+                        @Html.HiddenFor(model => model.swmLat, new { @class = "form-control", required = "required" })
+
                     </div>
 
                     <div class="col-md-4">
@@ -223,19 +238,6 @@
                             <span class="text-danger" id="err_Subcat"></span>
                             <span class="help-block with-errors"></span>
                         </div>
-                    </div>
-
-                </div>
-                <div class="row ">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
-                            @Html.Label("Reference Id")
-                            <input type="text" value="@Model.ReferanceId" id="n" readonly="readonly" />
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
                         <div class="form-group">
                             @*<label for="Select_Image">क्यु आर  कोड  / QR-Code Image</label>*@
                             @*@Html.Label("स्कॅनिफाय कोड  / Scaniffy Code")*@
@@ -270,17 +272,14 @@
                             </div>
                         </div>
 
-
-
                     </div>
 
-                    @Html.HiddenFor(c => c.ReferanceId)
 
-                    @Html.HiddenFor(model => model.swmLong, new { @class = "form-control", required = "required" })
 
-                    @Html.HiddenFor(model => model.swmLat, new { @class = "form-control", required = "required" })
+
+
                 </div>
-
+              
                 <center><span class="text-danger" id="err_generate"></span></center>
                 <div class="row">
 
