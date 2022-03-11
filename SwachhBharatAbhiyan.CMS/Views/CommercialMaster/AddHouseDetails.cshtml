@@ -185,14 +185,6 @@
                         </div>
 
 
-
-                    </div>
-
-
-                    
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
                         <div class="form-group">
                             @*<label for="Select_Image">क्यु आर  कोड  / QR-Code Image</label>*@
                             @*@Html.Label("स्कॅनिफाय कोड  / Scaniffy Code")*@
@@ -227,17 +219,18 @@
                             </div>
                         </div>
 
+                        @Html.HiddenFor(c => c.ReferanceId)
 
+                        @Html.HiddenFor(model => model.houseLong, new { @class = "form-control", required = "required" })
+
+                        @Html.HiddenFor(model => model.houseLat, new { @class = "form-control", required = "required" })
 
                     </div>
 
-                    @Html.HiddenFor(c => c.ReferanceId)
 
-                    @Html.HiddenFor(model => model.houseLong, new { @class = "form-control", required = "required" })
-
-                    @Html.HiddenFor(model => model.houseLat, new { @class = "form-control", required = "required" })
+                    
                 </div>
-
+           
                 <center><span class="text-danger" id="err_generate"></span></center>
                 <div class="row">
 
