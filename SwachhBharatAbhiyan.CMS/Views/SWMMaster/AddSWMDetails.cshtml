@@ -204,7 +204,6 @@
                                 SlistItems.Add(new SelectListItem { Text = "Plastics", Value = "P" });
                                 SlistItems.Add(new SelectListItem { Text = "Metal And Glass", Value = "MAG" });
                                 SlistItems.Add(new SelectListItem { Text = "Cardboards", Value = "CB" });
-                                SlistItems.Add(new SelectListItem { Text = "Any Other Veriety", Value = "AOV" });
                                 SlistItems.Add(new SelectListItem { Text = "Soil", Value = "SO" });
                                 SlistItems.Add(new SelectListItem { Text = "Sand", Value = "SA" });
                                 SlistItems.Add(new SelectListItem { Text = "<8mm Aggregates", Value = "LA" });
@@ -216,6 +215,7 @@
                                 SlistItems.Add(new SelectListItem { Text = "Dried Sludge", Value = "DS" });
                                 SlistItems.Add(new SelectListItem { Text = "Treated Wastewater", Value = "TW" });
                                 SlistItems.Add(new SelectListItem { Text = "Sanitary Landfill Facility", Value = "SLF" });
+                                SlistItems.Add(new SelectListItem { Text = "Any Other Veriety", Value = "AOV" });
 
                             }
                             @Html.DropDownListFor(model => model.swmSubType, SlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
@@ -225,12 +225,8 @@
                         </div>
                     </div>
 
-                   
-
-
-
                 </div>
-                <div class="row">
+                <div class="row ">
                     <div class="col-md-4">
                         <div class="form-group">
                             @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
