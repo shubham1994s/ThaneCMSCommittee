@@ -23,6 +23,7 @@
     .capitalize {
         text-transform: capitalize;
     }
+
 </style>
 @*<title class="title_change"></title>*@
 @using (Html.BeginForm("AddSWMDetails", "SWMMaster", FormMethod.Post, new { enctype = "multipart/form-data", data_toggle = "validator", role = "form" }))
@@ -154,36 +155,23 @@
 
                 <div class="row">
                     <div class="col-md-4">
-
                         <div class="form-group extra-height-for-textarea">
                             @Html.Label("Address")
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.TextAreaFor(model => model.swmAddress, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
                             @Html.ValidationMessageFor(model => model.swmAddress, "", new { @class = "text-danger" })
                             <span class="text-danger" id="err_address"></span>
-
-                        </div>
-
-
-
-
-
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
-                            @Html.Label("Reference Id")
-                            <input type="text" value="@Model.ReferanceId" id="n" readonly="readonly" />
                         </div>
                     </div>
+
 
                     <div class="col-md-4">
                         <div class="form-group">
                             @*@Html.Label("रक्त गट / Blood Group ")*@
-                            @Html.Label("SWM Type ")
+                            @Html.Label("SWM Facility ")
                             @{ var ClistItems = new List<SelectListItem>();
 
-                                ClistItems.Add(new SelectListItem { Text = "Select SWM Type", Value = "0" });
+                                ClistItems.Add(new SelectListItem { Text = "Select SWM Facility", Value = "0" });
                                 ClistItems.Add(new SelectListItem { Text = "Transfer Station", Value = "TS" });
                                 ClistItems.Add(new SelectListItem { Text = "Wet Waste Processing Facility", Value = "WWPF" });
                                 ClistItems.Add(new SelectListItem { Text = "Dry Waste Processing Facility", Value = "DWPF" });
@@ -196,20 +184,61 @@
                             }
                             @Html.DropDownListFor(model => model.swmType, ClistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
 
-
-
                             <span class="text-danger" id="err_cat"></span>
                             <span class="help-block with-errors"></span>
                         </div>
-
-
-
                     </div>
 
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @*@Html.Label("रक्त गट / Blood Group ")*@
+                            @Html.Label("SWM Sub Facility ")
+                            @{ var SlistItems = new List<SelectListItem>();
 
-                    
+                                SlistItems.Add(new SelectListItem { Text = "Select SWM Sub Facility", Value = "0" });
+                                SlistItems.Add(new SelectListItem { Text = "Municiple Solid Waste", Value = "MSW" });
+                                SlistItems.Add(new SelectListItem { Text = "Compost", Value = "C" });
+                                SlistItems.Add(new SelectListItem { Text = "Biogas", Value = "B" });
+                                SlistItems.Add(new SelectListItem { Text = "Biodigester Bottom Sludge", Value = "BBS" });
+                                SlistItems.Add(new SelectListItem { Text = "Refuse Derived Fuel", Value = "RDF" });
+                                SlistItems.Add(new SelectListItem { Text = "Plastics", Value = "P" });
+                                SlistItems.Add(new SelectListItem { Text = "Metal And Glass", Value = "MAG" });
+                                SlistItems.Add(new SelectListItem { Text = "Cardboards", Value = "C" });
+                                SlistItems.Add(new SelectListItem { Text = "Any Other Veriety", Value = "AOV" });
+                                SlistItems.Add(new SelectListItem { Text = "Soil", Value = "SO" });
+                                SlistItems.Add(new SelectListItem { Text = "Sand", Value = "SA" });
+                                SlistItems.Add(new SelectListItem { Text = "<8mm Aggregates", Value = "LA" });
+                                SlistItems.Add(new SelectListItem { Text = "8-16mm Aggregates", Value = "BA" });
+                                SlistItems.Add(new SelectListItem { Text = ">16mm Aggregates", Value = "GA" });
+                                SlistItems.Add(new SelectListItem { Text = "Manufactured Goods(Bricks,Tiles,etc.)", Value = "MG" });
+                                SlistItems.Add(new SelectListItem { Text = "Fly Ash", Value = "FA" });
+                                SlistItems.Add(new SelectListItem { Text = "Sand and Soil", Value = "SAS" });
+                                SlistItems.Add(new SelectListItem { Text = "Dried Sludge", Value = "DS" });
+                                SlistItems.Add(new SelectListItem { Text = "Treated Wastewater", Value = "TW" });
+                                SlistItems.Add(new SelectListItem { Text = "Sanitary Landfill Facility", Value = "SLF" });
+
+                            }
+                            @Html.DropDownListFor(model => model.swmSubType, SlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+                            <span class="text-danger" id="err_Subcat"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+
+                   
+
+
+
                 </div>
                 <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
+                            @Html.Label("Reference Id")
+                            <input type="text" value="@Model.ReferanceId" id="n" readonly="readonly" />
+                        </div>
+                    </div>
+
                     <div class="col-md-4">
                         <div class="form-group">
                             @*<label for="Select_Image">क्यु आर  कोड  / QR-Code Image</label>*@
@@ -850,6 +879,7 @@
 
             if ($.trim($("#swm1Type").val()) == "-1" || $.trim($("#swm1Type").val()) == "0") {
                 $("#err_cat").html("Type is Required").delay(1500).show().fadeOut('slow');
+                $("#err_Subcat").html("Type is Required").delay(1500).show().fadeOut('slow');
                 $('#houseCategory').focus();
                 return false;
             }
