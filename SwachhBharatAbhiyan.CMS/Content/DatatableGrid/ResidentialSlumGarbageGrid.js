@@ -39,7 +39,7 @@
         "pageLength": 10,
 
         "ajax": {
-            "url": "/Datable/GetJqGridJson?rn=GarbageResidentialBuilding",
+            "url": "/Datable/GetJqGridJson?rn=GarbageResidentialSlum",
             "type": "POST",
             "datatype": "json"
         },
@@ -121,7 +121,7 @@
                         var details = " ";
                         if (full["wet"] == 1) {
                             tempArr.push("Wet");
-                            
+
                         }
                         if (full["dry"] == 1) {
                             tempArr.push("Dry");
@@ -137,7 +137,7 @@
                         }
                         if (tempArr.length == 1) {
                             details += (tempArr[0] + " ");
-                        } else if (tempArr.length > 1){
+                        } else if (tempArr.length > 1) {
                             for (var i = 0; i < tempArr.length; i++) {
                                 if (i != tempArr.length - 1) {
                                     details += (tempArr[i] + " | ");

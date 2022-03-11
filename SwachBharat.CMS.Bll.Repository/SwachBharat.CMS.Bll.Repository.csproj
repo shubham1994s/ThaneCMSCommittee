@@ -110,6 +110,7 @@
     <Compile Include="GridRepository\Grid\OnePointSixGridRepository.cs" />
     <Compile Include="GridRepository\Grid\PGarbageCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\ResBuildingGarbageCollectionGridRepository.cs" />
+    <Compile Include="GridRepository\Grid\ResSlumGarbageCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\RfidGridRepository.cs" />
     <Compile Include="GridRepository\Grid\SauchalayGridRepository.cs" />
     <Compile Include="GridRepository\Grid\SauchalayRegistrationGridRepository.cs" />

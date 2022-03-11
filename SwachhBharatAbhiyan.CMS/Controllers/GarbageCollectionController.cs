@@ -67,7 +67,15 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
-
+        public ActionResult MenuResidentialBuildingGarbageIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
         public ActionResult ResidentialBuildingGarbageIndex()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -78,6 +86,25 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
+
+        public ActionResult MenuResidentialSlumGarbageIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+        public ActionResult ResidentialSlumGarbageIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
 
         public ActionResult MenuCTPTGarbageIndex()
         {

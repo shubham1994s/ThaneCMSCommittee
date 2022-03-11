@@ -302,7 +302,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new ResBuildingGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
                     return gridRepository;
                     break;
-
+                case "GarbageResidentialSlum":
+                    gridRepository = new ResSlumGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    return gridRepository;
+                    break;
                 case "GarbageSWM":
                     gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
                     return gridRepository;
