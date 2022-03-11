@@ -21,6 +21,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -389,11 +390,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<CommercialDetails_Result> CommercialDetails()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CommercialDetails_Result>("CommercialDetails");
-        }
-    
-        public virtual ObjectResult<SWMDetails_Result> SWMDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SWMDetails_Result>("SWMDetails");
         }
     
         public virtual ObjectResult<SP_CommercialScanify_Count_Result> SP_CommercialScanify_Count()
@@ -826,6 +822,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("gcdate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
+        }
+    
+        public virtual ObjectResult<SWMDetails_Result> SWMDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SWMDetails_Result>("SWMDetails");
         }
     }
 }

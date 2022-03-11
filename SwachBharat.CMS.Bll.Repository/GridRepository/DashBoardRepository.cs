@@ -2405,7 +2405,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     ManagerName = x.ManagerName,
                     QRCode = ThumbnaiUrlCMS + x.Images.Trim(),
                     ReferanceId = x.ReferanceId,
-                    swmType = x.swmType
+                    swmType = x.swmType,
+                    swmSubType=x.swmSubType
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))
                 {
@@ -2427,7 +2428,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                         (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
                                         (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
                                         (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode) + " " +
-                                        (string.IsNullOrEmpty(c.swmType) ? " " : c.swmType)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                        (string.IsNullOrEmpty(c.swmType) ? " " : c.swmType)).ToUpper().Contains(SearchString.ToUpper())).ToList(); 
+                   
 
 
                     data = model.ToList();

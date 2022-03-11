@@ -27,6 +27,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string Address { get; set; }
         public string swmLat { get; set; }
         public string swmLong { get; set; }
+        public string swmSubType { get; set; }
         public string swmType { get; set; }
     }
 }

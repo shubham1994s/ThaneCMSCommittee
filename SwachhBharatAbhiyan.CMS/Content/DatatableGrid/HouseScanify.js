@@ -108,17 +108,20 @@ $(document).ready(function () {
               //{ "data": "StartDate", "name": "StartDate", "autoWidth": true },
               //{ "data": "StartTime", "name": "StartTime", "autoWidth": true },
               //{ "data": "EndTime", "name": "EndTime", "autoWidth": true },
-            { "data": "HouseCount", "name": "HouseCount", "autoWidth": true },
-            { "data": "LiquidCount", "name": "LiquidCount", "autoWidth": true },
-            { "data": "StreetCount", "name": "StreetCount", "autoWidth": true },
-             // { "data": "PointCount", "name": "PointCount", "autoWidth": true },
-            { "data": "DumpCount", "name": "DumpCount", "autoWidth": true },
+           // { "data": "HouseCount", "name": "HouseCount", "autoWidth": true },
 
             { "data": "BuildingCount", "name": "BuildingCount", "autoWidth": true },
             { "data": "SlumCount", "name": "SlumCount", "autoWidth": true },
             { "data": "CommercialCount", "name": "CommercialCount", "autoWidth": true },
             { "data": "SWMCount", "name": "SWMCount", "autoWidth": true },
             { "data": "CTPTCount", "name": "CTPTCount", "autoWidth": true },
+            { "data": "LiquidCount", "name": "LiquidCount", "autoWidth": true },
+            { "data": "StreetCount", "name": "StreetCount", "autoWidth": true },
+             // { "data": "PointCount", "name": "PointCount", "autoWidth": true },
+            { "data": "DumpCount", "name": "DumpCount", "autoWidth": true },
+
+           
+           
               { "data": "qrEmpAddress", "name": "qrEmpAddress", "autoWidth": true },
               { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"   onclick="Edit(' + full["qrEmpId"] + ')"  ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
 
