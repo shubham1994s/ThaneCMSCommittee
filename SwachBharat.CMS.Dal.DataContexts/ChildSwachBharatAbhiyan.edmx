@@ -653,6 +653,11 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="SegType" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_CommercialScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_CTPT_Collection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FDate" Type="datetime" Mode="In" />
+          <Parameter Name="TDate" Type="datetime" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_CTPTGarbageCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="appId" Type="int" Mode="In" />
           <Parameter Name="userid" Type="int" Mode="In" />
@@ -1153,6 +1158,11 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
             <Parameter Name="Segid" Mode="In" Type="Int32" />
             <Parameter Name="SegidSub" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CTPT_Collection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPT_Collection_Result)">
+            <Parameter Name="FDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2615,6 +2625,13 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="gpBeforImage" Nullable="true" />
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_CTPT_Collection_Result">
+          <Property Type="Int32" Name="today_ctpt_count" Nullable="true" />
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="String" Name="CTPTID" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="CTPT_UserName" Nullable="true" MaxLength="500" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4193,6 +4210,17 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="gpBeforImage" ColumnName="gpBeforImage" />
                 <ScalarProperty Name="gpAfterImage" ColumnName="gpAfterImage" />
                 <ScalarProperty Name="garbageType" ColumnName="garbageType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CTPT_Collection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPT_Collection">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPT_Collection_Result">
+                <ScalarProperty Name="today_ctpt_count" ColumnName="today_ctpt_count" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CTPTID" ColumnName="CTPTID" />
+                <ScalarProperty Name="CTPT_UserName" ColumnName="CTPT_UserName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
