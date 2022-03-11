@@ -19,7 +19,82 @@
                 "targets": [0],
                 "visible": false,
                 "searchable": false
-            }],
+            },
+
+                 {
+                    "targets": [12],
+                    "visible": true,
+
+                    "render": function (data, type, full, meta) {
+                        if (full["swmSubType"] == "MSW") {
+                            return "Municiple Solid Waste";
+                        }
+                        else if (full["swmSubType"] == "C") {
+                            return "Compost";
+                        }
+                        else if (full["swmSubType"] == "B") {
+                            return "Biogas";
+                        }
+                        else if (full["swmSubType"] == "BBS") {
+                            return "Biodigester Bottom Sludge";
+                        }
+                        else if (full["swmSubType"] == "RDF") {
+                            return "Refuse Derived Fuel";
+                        }
+                        else if (full["swmSubType"] == "P") {
+                            return "Plastics";
+                        }
+                        else if (full["swmSubType"] == "MAG") {
+                            return "Metal And Glass";
+                        }
+                        else if (full["swmSubType"] == "CB") {
+                            return "Cardboards";
+                        }
+                        else if (full["swmSubType"] == "AOV") {
+                            return "Any Other Veriety";
+                        }
+                        else if (full["swmSubType"] == "SO") {
+                            return "Soil";
+                        }
+                        else if (full["swmSubType"] == "SA") {
+                            return "Sand";
+                        }
+                        else if (full["swmSubType"] == "LA") {
+                            return "<8mm Aggregates";
+                        }
+                        else if (full["swmSubType"] == "BA") {
+                            return "8-16mm Aggregates";
+                        }
+                        
+                        else if (full["swmSubType"] == "GA") {
+                            return ">18mm Aggregates";
+                        }
+                        else if (full["swmSubType"] == "MG") {
+                            return "Manufactured Goods(Bricks,Tiles,etc.)";
+                        }
+                        else if (full["swmSubType"] == "FA") {
+                            return "Fly Ash";
+                        }
+                        else if (full["swmSubType"] == "SAS") {
+                            return "Sand and Soil";
+                        }
+                        else if (full["swmSubType"] == "DS") {
+                            return "Dried Sludge";
+                        }
+                        else if (full["swmSubType"] == "TW") {
+                            return "Treated Wastewater";
+                        }
+                        else if (full["swmSubType"] == "SLF") {
+                            return "Sanitary Landfill Facility";
+                        }
+                        else {
+
+                            return "Not Available";
+                        }
+                    },
+                },
+
+            ],
 
         "columns": [
 
@@ -41,6 +116,7 @@
             { "data": "Mobile", "autoWidth": false },
             { "data": "Address", "autoWidth": false },
             { "data": "swmType", "name": "swmType", "autoWidth": false },
+            { "data": "swmSubType", "name": "swmSubType", "autoWidth": false },
 
             //   { "render": function (data, type, full, meta) { return '<input class="btn btn-primary btn-sm" type="button" onclick="Edit(' + full["houseId"] + ')" value="Edit" /> <input style="margin-left:2px" class="btn btn-danger btn-sm" type="button" onclick="Delete(' + full["houseId"] + ',' + full["Name"] + ')" value="Delete" />'; } }
             { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"  onclick="Edit(' + full["swmId"] + ')" ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },

@@ -154,7 +154,7 @@
                                   <th class="bg-b">Today</th>
                               </tr>
                               <tr  class="text-center">
-                                  <td>Property</td>
+                                  <td>Residential Property</td>
                                   <td>@Model.TotalHouse</td>
                                   <td>@Model.TotalHouseUpdated</td>
                                   <td>@Model.TotalHouseUpdated_CurrentDay</td>
@@ -186,7 +186,7 @@
                                   <th class="bg-b">Total</th>
                                   <th class="bg-b">Today</th>
                               </tr>
-                              <tr  class="text-center">
+                              <tr  class="text-center" hidden="hidden">
                                   <td>Residential</td>
                                   <td> @Model.TotalResidentialUpdated</td>
                                   <td>@Model.TotalResidentialUpdated_CurrentDay</td>
@@ -282,18 +282,21 @@
                                 <th> Name Marathi</th>
                                 <th> Mobile</th>
                                 @*<th> Date</th>
-                            <th> Start Time</th>
-                            <th> End Time</th>*@
-                                <th> Residential Count</th>
-                                <th> Liquid Count</th>
-                                <th> Street Count</th>
-                                @*<th> PointCount</th>*@
-                                <th> Dump Count</th>
+        <th> Start Time</th>
+        <th> End Time</th>*@
+                                @*<th> Residential Count</th>*@
                                 <th> Residential Building Count</th>
                                 <th> Residential Slum Count</th>
                                 <th> Commercial Count</th>
                                 <th> SWM Facility Count</th>
                                 <th> CTPT Count</th>
+
+                                <th> Liquid Count</th>
+                                <th> Street Count</th>
+                                @*<th> PointCount</th>*@
+                                <th> Dump Count</th>
+
+
                                 <th> Address</th>
                                 <th> Action</th>
                             </tr>

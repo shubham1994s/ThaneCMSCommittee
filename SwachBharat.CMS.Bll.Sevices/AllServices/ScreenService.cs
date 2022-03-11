@@ -1127,6 +1127,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.ZoneId = data.ZoneId;
                             model.lastModifiedEntry = DateTime.Now;
                             model.swmType = (data.swmType == "RW") ? null : data.swmType;
+                            model.swmSubType = data.swmSubType;
                             //if(data.WasteType== "DW")
                             //{ 
                             //model.WasteType = data.WasteType;
@@ -3806,7 +3807,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.ReferanceId = data.ReferanceId;
             model.modified = DateTime.Now;
             model.swmType = (data.swmType == "RW") ? null : data.swmType;
-           
+            model.swmSubType = data.swmSubType;
+
             return model;
         }
 
@@ -4291,6 +4293,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.swmLong = data.swmLong;
             model.ReferanceId = data.ReferanceId;
             model.swmType = (data.swmType is null) ? "RW" : data.swmType;
+            model.swmSubType = data.swmSubType;
             using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
             {
                 if (data.AreaId > 0)

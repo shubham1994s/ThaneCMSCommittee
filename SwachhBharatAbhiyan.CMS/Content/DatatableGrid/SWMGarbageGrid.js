@@ -143,6 +143,9 @@
                         return "Bulk Waste Generation For Onsite Wet Waste Processing";
 
                     }
+                    else {
+                        return "Not Available";
+                    }
                 },
             },
             ],
