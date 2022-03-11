@@ -24,5 +24,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public Nullable<int> zoneId { get; set; }
         public string ReferanceId { get; set; }
         public string swmType { get; set; }
+        public string swmSubType { get; set; }
     }
 }
