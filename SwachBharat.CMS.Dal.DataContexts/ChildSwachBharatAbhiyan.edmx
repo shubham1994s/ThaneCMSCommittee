@@ -754,6 +754,28 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="Emptype" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_LWaste_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_ResidentialBuildingGarbageCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="appId" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="ZoneId" Type="int" Mode="In" />
+          <Parameter Name="AreaId" Type="int" Mode="In" />
+          <Parameter Name="WardNo" Type="int" Mode="In" />
+          <Parameter Name="Segid" Type="int" Mode="In" />
+          <Parameter Name="SegidSub" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ResidentialSlumGarbageCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="appId" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="ZoneId" Type="int" Mode="In" />
+          <Parameter Name="AreaId" Type="int" Mode="In" />
+          <Parameter Name="WardNo" Type="int" Mode="In" />
+          <Parameter Name="Segid" Type="int" Mode="In" />
+          <Parameter Name="SegidSub" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_SSEmployeeSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from" Type="date" Mode="In" />
           <Parameter Name="to" Type="date" Mode="In" />
@@ -1110,6 +1132,28 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <EntitySet Name="SWMMasters" EntityType="DevSwachhBharatNagpurModel.SWMMaster" />
           <FunctionImport Name="SWMDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SWMDetails_Result)" />
+          <FunctionImport Name="SP_ResidentialBuildingGarbageCollection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_ResidentialBuildingGarbageCollection_Result)">
+            <Parameter Name="appId" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
+            <Parameter Name="Segid" Mode="In" Type="Int32" />
+            <Parameter Name="SegidSub" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ResidentialSlumGarbageCollection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_ResidentialSlumGarbageCollection_Result)">
+            <Parameter Name="appId" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
+            <Parameter Name="Segid" Mode="In" Type="Int32" />
+            <Parameter Name="SegidSub" Mode="In" Type="Int32" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2523,6 +2567,54 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="swmLong" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="swmSubType" Nullable="false" MaxLength="250" />
           <Property Type="String" Name="swmType" Nullable="false" MaxLength="64" />
+        </ComplexType>
+        <ComplexType Name="SP_ResidentialBuildingGarbageCollection_Result">
+          <Property Type="Int32" Name="gcId" Nullable="false" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="houseId" Nullable="true" />
+          <Property Type="String" Name="houseOwner" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="locAddresss" Nullable="true" />
+          <Property Type="String" Name="vehicleNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="note" Nullable="true" />
+          <Property Type="String" Name="batteryStatus" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="WasteType" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="los" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="gcType" Nullable="true" />
+          <Property Type="Int32" Name="Wet" Nullable="true" />
+          <Property Type="Int32" Name="Dry" Nullable="true" />
+          <Property Type="Int32" Name="Sanitary" Nullable="true" />
+          <Property Type="Int32" Name="Domestic" Nullable="true" />
+          <Property Type="String" Name="gpBeforImage" Nullable="true" />
+          <Property Type="String" Name="gpAfterImage" Nullable="true" />
+          <Property Type="Int32" Name="garbageType" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_ResidentialSlumGarbageCollection_Result">
+          <Property Type="Int32" Name="gcId" Nullable="false" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="houseId" Nullable="true" />
+          <Property Type="String" Name="houseOwner" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="locAddresss" Nullable="true" />
+          <Property Type="String" Name="vehicleNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="note" Nullable="true" />
+          <Property Type="String" Name="batteryStatus" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="WasteType" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="los" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="gcType" Nullable="true" />
+          <Property Type="Int32" Name="Wet" Nullable="true" />
+          <Property Type="Int32" Name="Dry" Nullable="true" />
+          <Property Type="Int32" Name="Sanitary" Nullable="true" />
+          <Property Type="Int32" Name="Domestic" Nullable="true" />
+          <Property Type="String" Name="gpBeforImage" Nullable="true" />
+          <Property Type="String" Name="gpAfterImage" Nullable="true" />
+          <Property Type="Int32" Name="garbageType" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4045,6 +4137,62 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="swmLong" ColumnName="swmLong" />
                 <ScalarProperty Name="swmSubType" ColumnName="swmSubType" />
                 <ScalarProperty Name="swmType" ColumnName="swmType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ResidentialBuildingGarbageCollection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_ResidentialBuildingGarbageCollection">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_ResidentialBuildingGarbageCollection_Result">
+                <ScalarProperty Name="gcId" ColumnName="gcId" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="locAddresss" ColumnName="locAddresss" />
+                <ScalarProperty Name="vehicleNumber" ColumnName="vehicleNumber" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="batteryStatus" ColumnName="batteryStatus" />
+                <ScalarProperty Name="WasteType" ColumnName="WasteType" />
+                <ScalarProperty Name="los" ColumnName="los" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="gcType" ColumnName="gcType" />
+                <ScalarProperty Name="Wet" ColumnName="Wet" />
+                <ScalarProperty Name="Dry" ColumnName="Dry" />
+                <ScalarProperty Name="Sanitary" ColumnName="Sanitary" />
+                <ScalarProperty Name="Domestic" ColumnName="Domestic" />
+                <ScalarProperty Name="gpBeforImage" ColumnName="gpBeforImage" />
+                <ScalarProperty Name="gpAfterImage" ColumnName="gpAfterImage" />
+                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ResidentialSlumGarbageCollection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_ResidentialSlumGarbageCollection">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_ResidentialSlumGarbageCollection_Result">
+                <ScalarProperty Name="gcId" ColumnName="gcId" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="locAddresss" ColumnName="locAddresss" />
+                <ScalarProperty Name="vehicleNumber" ColumnName="vehicleNumber" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="batteryStatus" ColumnName="batteryStatus" />
+                <ScalarProperty Name="WasteType" ColumnName="WasteType" />
+                <ScalarProperty Name="los" ColumnName="los" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="gcType" ColumnName="gcType" />
+                <ScalarProperty Name="Wet" ColumnName="Wet" />
+                <ScalarProperty Name="Dry" ColumnName="Dry" />
+                <ScalarProperty Name="Sanitary" ColumnName="Sanitary" />
+                <ScalarProperty Name="Domestic" ColumnName="Domestic" />
+                <ScalarProperty Name="gpBeforImage" ColumnName="gpBeforImage" />
+                <ScalarProperty Name="gpAfterImage" ColumnName="gpAfterImage" />
+                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
