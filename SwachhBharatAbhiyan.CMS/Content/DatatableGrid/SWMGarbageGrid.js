@@ -178,8 +178,69 @@
             // { "data": "ctype", "name": "ctype", "autoWidth": false },
             {
                 "data": "wastetype", "render": function (data, type, full, meta) {
-                    if (full["wastetype"] != null) {
-                        return '<p> ' + (full["wastetype"])
+                    //if (full["wastetype"] != null) {
+                    //    return '<p> ' + (full["wastetype"])
+                    //}
+                    if (full["wastetype"] == "MSW") {
+                        return "Municiple Solid Waste";
+                    }
+                    else if (full["wastetype"] == "C") {
+                        return "Compost";
+                    }
+                    else if (full["wastetype"] == "B") {
+                        return "Biogas";
+                    }
+                    else if (full["wastetype"] == "BBS") {
+                        return "Biodigester Bottom Sludge";
+                    }
+                    else if (full["wastetype"] == "RDF") {
+                        return "Refuse Derived Fuel";
+                    }
+                    else if (full["wastetype"] == "P") {
+                        return "Plastics";
+                    }
+                    else if (full["wastetype"] == "MAG") {
+                        return "Metal And Glass";
+                    }
+                    else if (full["wastetype"] == "CB") {
+                        return "Cardboards";
+                    }
+                    else if (full["wastetype"] == "AOV") {
+                        return "Any Other Veriety";
+                    }
+                    else if (full["wastetype"] == "SO") {
+                        return "Soil";
+                    }
+                    else if (full["wastetype"] == "SA") {
+                        return "Sand";
+                    }
+                    else if (full["wastetype"] == "LA") {
+                        return "<8mm Aggregates";
+                    }
+                    else if (full["wastetype"] == "BA") {
+                        return "8-16mm Aggregates";
+                    }
+
+                    else if (full["swmSubType"] == "GA") {
+                        return ">18mm Aggregates";
+                    }
+                    else if (full["wastetype"] == "MG") {
+                        return "Manufactured Goods(Bricks,Tiles,etc.)";
+                    }
+                    else if (full["wastetype"] == "FA") {
+                        return "Fly Ash";
+                    }
+                    else if (full["wastetype"] == "SAS") {
+                        return "Sand and Soil";
+                    }
+                    else if (full["wastetype"] == "DS") {
+                        return "Dried Sludge";
+                    }
+                    else if (full["wastetype"] == "TW") {
+                        return "Treated Wastewater";
+                    }
+                    else if (full["wastetype"] == "SLF") {
+                        return "Sanitary Landfill Facility";
                     }
                     else {
                         return 'Not Available';

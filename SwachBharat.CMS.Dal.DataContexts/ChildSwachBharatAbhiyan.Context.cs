@@ -21,7 +21,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                  : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -909,6 +908,23 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("SegidSub", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ResidentialSlumGarbageCollection_Result>("SP_ResidentialSlumGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter, segidSubParameter);
+        }
+    
+        public virtual ObjectResult<SP_CTPT_Collection_Result> SP_CTPT_Collection(Nullable<System.DateTime> fDate, Nullable<System.DateTime> tDate, Nullable<int> userId)
+        {
+            var fDateParameter = fDate.HasValue ?
+                new ObjectParameter("FDate", fDate) :
+                new ObjectParameter("FDate", typeof(System.DateTime));
+    
+            var tDateParameter = tDate.HasValue ?
+                new ObjectParameter("TDate", tDate) :
+                new ObjectParameter("TDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPT_Collection_Result>("SP_CTPT_Collection", fDateParameter, tDateParameter, userIdParameter);
         }
     }
 }
