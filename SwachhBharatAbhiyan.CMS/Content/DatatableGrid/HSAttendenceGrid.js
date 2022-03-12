@@ -37,7 +37,7 @@
 
     $("#demoGrid").DataTable({
         "sDom": "ltipr",
-         "order": [[1, "desc"]],
+        "order": [[1, "desc"]],
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
         "filter": true, // this is for disable filter (search box)
@@ -51,43 +51,44 @@
         },
 
         "columnDefs":
-        [{
-            "targets": [0],
-            "visible": false,
-            "searchable": false
-        },
-        //{
-        //    "targets": [9],
-        //    "visible": false,
-        //    "searchable": false
-        //}
-        ],
+            [{
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            },
+                //{
+                //    "targets": [9],
+                //    "visible": false,
+                //    "searchable": false
+                //}
+            ],
 
 
         "columns": [
-              { "data": "qrEmpDaId", "name": "qrEmpDaId", "autoWidth": true },
-              { "data": "userName", "name": "userName", "autoWidth": true },
-              { "data": "startDate", "name": "startDate", "autoWidth": true },
-              { "data": "startTime", "name": "startTime", "autoWidth": true },
-              { "data": "endDate", "name": "endDate", "autoWidth": true },
-              { "data": "endTime", "name": "endTime", "autoWidth": true }, 
-              { "data": "HouseCount", "name": "HouseCount", "autoWidth": true },  
-             
-              { "data": "LiquidCount", "name": "LiquidCount", "autoWidth": true },
+            { "data": "qrEmpDaId", "name": "qrEmpDaId", "autoWidth": true },
+            { "data": "userName", "name": "userName", "autoWidth": true },
+            { "data": "startDate", "name": "startDate", "autoWidth": true },
+            { "data": "startTime", "name": "startTime", "autoWidth": true },
+            { "data": "endDate", "name": "endDate", "autoWidth": true },
+            { "data": "endTime", "name": "endTime", "autoWidth": true },
+            //{ "data": "HouseCount", "name": "HouseCount", "autoWidth": true },
+            { "data": "ResidentialBuildingCount", "name": "ResidentialBuildingCount", "autoWidth": true },
+            { "data": "ResidentialSlumCount", "name": "ResidentialSlumCount", "autoWidth": true },
+            { "data": "LiquidCount", "name": "LiquidCount", "autoWidth": true },
             { "data": "StreetCount", "name": "StreetCount", "autoWidth": true },
-            { "data": "DumpYardCount", "name": "DumpYardCount", "autoWidth": true },
-           /* { "data": "CommercialCount", "name": "CommercialCount", "autoWidth": true },*/
+           // { "data": "DumpYardCount", "name": "DumpYardCount", "autoWidth": true },
+            /* { "data": "CommercialCount", "name": "CommercialCount", "autoWidth": true },*/
             { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
-              { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer" onclick="user_route(' + full["qrEmpDaId"] + ')" ><i class="material-icons location-icon">location_on</i><span class="tooltiptext1">Route</span> </a>'; }, "width": "10%" },
-           
-              //{ "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"   onclick="Edit(' + full["qrEmpId"] + ')"  ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
+            { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer" onclick="user_route(' + full["qrEmpDaId"] + ')" ><i class="material-icons location-icon">location_on</i><span class="tooltiptext1">Route</span> </a>'; }, "width": "10%" },
+
+            //{ "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"   onclick="Edit(' + full["qrEmpId"] + ')"  ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
 
 
         ],
 
     });
 
-   
+
 
     Search();
 
