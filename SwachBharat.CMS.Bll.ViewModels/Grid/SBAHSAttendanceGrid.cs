@@ -32,5 +32,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public int DumpYardCount { get; set; }
 
         public int CommercialCount { get; set; }
+
+        public int ResidentialBuildingCount { get; set; }
+        public int ResidentialSlumCount { get; set; }
     }
 }
