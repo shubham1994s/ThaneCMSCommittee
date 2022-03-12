@@ -155,14 +155,14 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         else param5 = null;
                     }
 
-                    if (arr.Length > 9)
-                    {
-                        if (arr[9].ToString() != null && arr[9].ToString() != "null" && arr[9] != " " && arr[9].ToString() != string.Empty)
-                        {
-                            param6 = Convert.ToInt32(arr[9]);
-                        }
-                        else param6 = null;
-                    }
+                    //if (arr.Length > 9)
+                    //{
+                    //    if (arr[9].ToString() != null && arr[9].ToString() != "null" && arr[9] != " " && arr[9].ToString() != string.Empty)
+                    //    {
+                    //        param6 = Convert.ToInt32(arr[9]);
+                    //    }
+                    //    else param6 = null;
+                    //}
 
                     //if (arr[3].ToString() != null && arr[3] != " ")
                     //{ clientId = arr[3]; }
@@ -316,7 +316,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "GarbageSWM":
-                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param6);
+                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
                     return gridRepository;
                     break;
 
