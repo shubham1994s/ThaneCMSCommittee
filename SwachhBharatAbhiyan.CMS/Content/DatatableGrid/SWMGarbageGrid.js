@@ -123,6 +123,10 @@
                         return "C&D Waste Processing Facility";
 
                     }
+                    else if (full["ctype"] == "IFDSWP") {
+                        return "Incineration Facility For Domestic and Sanitary Waste Processing";
+
+                    }
                     else if (full["ctype"] == "HSWPF") {
                         return "Hazardous & Sanitory Waste Processing Facility";
 
@@ -301,12 +305,13 @@ function Search() {
     WardId = $('#WardNo').val();
     AreaId = $('#AreaId').val();
     Segid = $('#Segid').val();
+    SWMTypeid = $('#SWMTypeid').val();
     S = $('#s').val();
     Client = " ";
     NesEvent = " ";
     var Product = "";
     var catProduct = "";
-    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + ZoneId + "," + WardId + "," + AreaId + "," + Segid;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + ZoneId + "," + WardId + "," + AreaId + "," + Segid + "," + SWMTypeid;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
     // alert(value );
     oTable = $('#demoGrid').DataTable();
     oTable.search(value).draw();

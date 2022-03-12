@@ -16,7 +16,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         IDataTableRepository gridRepository;
 
 
-        public string GetJqGridJson(string INSERT_ID, string draw, string start, string length, string rn, DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientName = null, int? param1 = null, int? param2 = null, int? param3 = null,int? param5 = null)
+        public string GetJqGridJson(string INSERT_ID, string draw, string start, string length, string rn, DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientName = null, int? param1 = null, int? param2 = null, int? param3 = null,int? param5 = null, int? param6 = null)
         {
             if (Convert.ToInt32(length) == 5)
             {
@@ -70,7 +70,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             }
 
             Dictionary<string, string> filtersFromSession = CreateFiltersDictionary(Session);
-            gridRepository = GetRepository(INSERT_ID, rn, searchValue, fdate, tdate, userId, clientName, param1, param2, param5);
+            gridRepository = GetRepository(INSERT_ID, rn, searchValue, fdate, tdate, userId, clientName, param1, param2, param5, param6);
             //string x = gridRepository.GetDataTabelJson(sord, page, rows, _search, Request.QueryString, filtersFromSession, sidx);
 
             return gridRepository.GetDataTabelJson(sortColumn, sortColumnDir, draw, length, searchValue, start);
@@ -88,7 +88,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             return FiltersDictionary;
         }
 
-        private IDataTableRepository GetRepository(string INSERT_ID, string RepositoryName, string searchString = "", DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientId = null, int? param1 = null, int? param2 = null, int? param3 = null, int? param4 = null, int? param5 = null)
+        private IDataTableRepository GetRepository(string INSERT_ID, string RepositoryName, string searchString = "", DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientId = null, int? param1 = null, int? param2 = null, int? param3 = null, int? param4 = null, int? param5 = null, int? param6 = null)
         {
             int product = 0, category = 0;
             //string[] arr = new string[6];
@@ -154,6 +154,15 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         }
                         else param5 = null;
                     }
+
+                    //if (arr.Length > 9)
+                    //{
+                    //    if (arr[9].ToString() != null && arr[9].ToString() != "null" && arr[9] != " " && arr[9].ToString() != string.Empty)
+                    //    {
+                    //        param6 = Convert.ToInt32(arr[9]);
+                    //    }
+                    //    else param6 = null;
+                    //}
 
                     //if (arr[3].ToString() != null && arr[3] != " ")
                     //{ clientId = arr[3]; }
@@ -307,7 +316,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "GarbageSWM":
-                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
+                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
                     return gridRepository;
                     break;
 

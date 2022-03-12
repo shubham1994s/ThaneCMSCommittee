@@ -36,21 +36,38 @@
                 <label>Select Zone</label>
                 <select id="ZoneId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Ward/Prabhag</label>
                 <select id="WardNo" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Area</label>
                 <select id="AreaId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4">
+
+            <div class="col-sm-3">
+                <label>Select SWM Facility</label>
+                <select id="SWMTypeid" class="form-control form-control form-control-sm">
+                    <option value="0">Select Facility Type</option>
+                    <option value="1">Transfer Station</option>
+                    <option value="2">Wet Waste Processing Facility</option>
+                    <option value="3">Dry Waste Processing Facility</option>
+                    <option value="4">C&D Waste Processing Facility</option>
+                    <option value="5">Incineration Facility For Domestic and Sanitary Waste Processing</option>
+                    <option value="6">Sanitary Landfill Facility</option>
+                    <option value="7">Legacy Waste Bioremediation Facility</option>
+                    <option value="8">Sewage Treatment Plant</option>
+                    <option value="9">Bulk Waste Generators For Onsite Wet Waste Processing</option>
+                </select>
+            </div>
+
+            <div class="col-sm-3">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select SWM Facility Type</label>
+                <label>Select SWM Sub Facility</label>
                 <select id="Segid" class="form-control form-control form-control-sm">
-                    <option value="0">Select Type</option>
+                    <option value="0">Select Sub Facility</option>
                     <option value="1">Municiple Solid Waste</option>
                     <option value="2">Compost</option>
                     <option value="3">Biogas</option>
@@ -59,7 +76,6 @@
                     <option value="6">Plastics</option>
                     <option value="7">Metal And Glass</option>
                     <option value="8">Cardboards</option>
-                    <option value="9">Any Other Veriety</option>
                     <option value="10">Soil</option>
                     <option value="11">Sand</option>
                     <option value="12">Less Than 8mm Aggregates</option>
@@ -71,19 +87,23 @@
                     <option value="18">Dried Sludge</option>
                     <option value="19">Treated Wastewater</option>
                     <option value="20">Sanitary Landfill Facility</option>
-                    SLF
+                    <option value="9">Any Other Veriety</option>
+
                 </select>
             </div>
+
+
+
         </div>
-        <div class="row">
-            <div class="col-sm-2  offset-md-10" style="text-align:right">
-                <div class="controls">
-                    <input data-background-color="filter-button-box-color" style="margin-top:8px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+            <div class="row">
+                <div class="col-sm-2  offset-md-10" style="text-align:right">
+                    <div class="controls">
+                        <input data-background-color="filter-button-box-color" style="margin-top:8px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
     <div class="container">
         <br />
         <div style="width:100%; margin:0 auto;">
