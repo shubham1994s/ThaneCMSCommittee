@@ -486,6 +486,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="imoNo2" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="VechileRegistration">
+          <Key>
+            <PropertyRef Name="vechileId" />
+          </Key>
+          <Property Name="vechileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vechileType" Type="int" />
+          <Property Name="vechileNo" Type="nvarchar" MaxLength="300" />
+          <Property Name="areaId" Type="int" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
         <EntityType Name="VehicleType">
           <Key>
             <PropertyRef Name="vtId" />
@@ -804,6 +814,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="gcType" Type="int" Mode="In" />
           <Parameter Name="FilterType" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_StreetSweepList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_StreetSweepLists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_SWMGarbageCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="appId" Type="int" Mode="In" />
           <Parameter Name="userid" Type="int" Mode="In" />
@@ -852,6 +864,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster_Liquid" EntityType="Self.UserMaster_Liquid" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster_Street" EntityType="Self.UserMaster_Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VechileRegistration" EntityType="Self.VechileRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WardNumber" EntityType="Self.WardNumber" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WM_Garbage_Details" EntityType="Self.WM_Garbage_Details" Schema="dbo" store:Type="Tables" />
@@ -1166,6 +1179,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="Segid" Mode="In" Type="Int32" />
             <Parameter Name="SWMTypeid" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="VechileRegistrations" EntityType="DevSwachhBharatNagpurModel.VechileRegistration" />
+          <FunctionImport Name="SP_StreetSweepList" ReturnType="Collection(String)" />
+          <FunctionImport Name="SP_StreetSweepLists" ReturnType="Collection(String)" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2635,6 +2651,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
         </ComplexType>
+        <EntityType Name="VechileRegistration">
+          <Key>
+            <PropertyRef Name="vechileId" />
+          </Key>
+          <Property Name="vechileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vechileType" Type="Int32" />
+          <Property Name="vechileNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="areaId" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4226,6 +4252,19 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="VechileRegistrations">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.VechileRegistration">
+              <MappingFragment StoreEntitySet="VechileRegistration">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="areaId" ColumnName="areaId" />
+                <ScalarProperty Name="vechileNo" ColumnName="vechileNo" />
+                <ScalarProperty Name="vechileType" ColumnName="vechileType" />
+                <ScalarProperty Name="vechileId" ColumnName="vechileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_StreetSweepList" FunctionName="DevSwachhBharatNagpurModel.Store.SP_StreetSweepList" />
+          <FunctionImportMapping FunctionImportName="SP_StreetSweepLists" FunctionName="DevSwachhBharatNagpurModel.Store.SP_StreetSweepLists" />
          
         </EntityContainerMapping>
       </Mapping>

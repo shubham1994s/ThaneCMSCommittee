@@ -414,6 +414,76 @@ namespace SwachBharat.CMS.Bll.Services
         }
         #endregion
 
+        #region Vechile Registration
+
+        public VechileRegVM GetVehicleDetails(int teamId)
+        {
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var Details = db.VechileRegistrations.Where(x => x.vechileId == teamId).FirstOrDefault();
+                    if (Details != null)
+                    {
+                        VechileRegVM vechile = FillVehicleTegViewModel(Details);
+                        vechile.AreaList = ListArea();
+                        vechile.VehicleList = ListVehicle();
+                        return vechile;
+                    }
+                    else
+                    {
+                        VechileRegVM vechile = new VechileRegVM();
+                        vechile.AreaList = ListArea();
+                        vechile.VehicleList = ListVehicle();
+                        return vechile;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void SaveVehicleRegDetails(VechileRegVM data)
+        {
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (data.vechileId > 0)
+                    {
+                        var model = db.VechileRegistrations.Where(x => x.vechileId == data.vechileId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.vechileId = data.vechileId;
+                            model.vechileType = data.vechileType;
+                            model.vechileNo = data.vechileNumber;
+                            model.areaId = data.AreaId;
+                            model.isActive = data.isActive;
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        var type = FillVehicleRegDataModel(data);
+                        db.VechileRegistrations.Add(type);
+                        db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion
+
+
+
+
+
         #region Ward Number
         public WardNumberVM GetWardNumberDetails(int teamId, string name)
         {
@@ -3730,6 +3800,18 @@ namespace SwachBharat.CMS.Bll.Services
             model.isActive = data.isActive;
             return model;
         }
+
+        private VechileRegistration FillVehicleRegDataModel(VechileRegVM data)
+        {
+            VechileRegistration model = new VechileRegistration();
+            model.vechileId = data.vechileId;
+            model.vechileType = data.vechileType;
+            model.vechileNo = data.vechileNumber;
+            model.areaId = data.AreaId;
+            model.isActive = data.isActive;
+            return model;
+        }
+
         private WardNumber FillWardDataModel(WardNumberVM data)
         {
             WardNumber model = new WardNumber();
@@ -4216,6 +4298,17 @@ namespace SwachBharat.CMS.Bll.Services
             model.Id = data.vtId;
             model.description = data.description;
             model.descriptionMar = data.descriptionMar;
+            model.isActive = data.isActive;
+            return model;
+        }
+
+        private VechileRegVM FillVehicleTegViewModel(VechileRegistration data)
+        {
+            VechileRegVM model = new VechileRegVM();
+            model.vechileId = data.vechileId;
+            model.vechileNumber = data.vechileNo;
+            model.vechileType = data.vechileType;
+            model.AreaId = data.areaId;
             model.isActive = data.isActive;
             return model;
         }

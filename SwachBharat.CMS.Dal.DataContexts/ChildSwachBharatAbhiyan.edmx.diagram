@@ -38,6 +38,7 @@
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.VehicleType" Width="1.5" PointX="3.375" PointY="4.75" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SauchalayAddress" Width="1.5" PointX="18.375" PointY="11.75" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SWMMaster" Width="1.5" PointX="13.375" PointY="18.75" />
+        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.VechileRegistration" Width="1.5" PointX="11.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

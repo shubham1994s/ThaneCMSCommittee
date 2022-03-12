@@ -87,6 +87,10 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.GetVehicleTypeDetails(teamId);
         }
+
+        public VechileRegVM GetVehicleReg(int teamId) {
+            return screenService.GetVehicleDetails(teamId);
+        }
         public void DeletVehicleType(int teamId)
         {
             screenService.DeletVehicleTypeDetails(teamId);
@@ -99,7 +103,16 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             }
             screenService.SaveVehicleTypeDetails(type);
         }
-         
+
+        public void SaveVehicleReg(VechileRegVM type)
+        {
+            if (type.vechileId <= 0)
+            {
+                type.vechileId = 0;
+            }
+            screenService.SaveVehicleRegDetails(type);
+        }
+
         public WardNumberVM GetWardNumber(int teamId,string name)
         {
             return screenService.GetWardNumberDetails(teamId,name);

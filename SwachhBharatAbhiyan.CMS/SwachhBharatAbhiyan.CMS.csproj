@@ -3217,6 +3217,7 @@
     <Content Include="Views\GarbageCollection\MenuResidentialBuildingGarbageIndex.cshtml" />
     <Content Include="Views\GarbageCollection\MenuResidentialSlumGarbageIndex.cshtml" />
     <Content Include="Views\GarbageCollection\ResidentialSlumGarbageIndex.cshtml" />
+    <Content Include="Views\MainMaster\AddVehicleRegDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

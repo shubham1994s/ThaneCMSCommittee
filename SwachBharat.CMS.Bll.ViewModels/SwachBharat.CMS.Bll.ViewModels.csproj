@@ -84,6 +84,7 @@
     <Compile Include="ChildModel\Model\StreetSweepVM.cs" />
     <Compile Include="ChildModel\Model\SWMDetailsVM.cs" />
     <Compile Include="ChildModel\Model\UserMasterVM.cs" />
+    <Compile Include="ChildModel\Model\VechileRegVM.cs" />
     <Compile Include="ChildModel\Model\VehicleTypeVM.cs" />
     <Compile Include="ChildModel\Model\WardNumberVM.cs" />
     <Compile Include="ChildModel\Model\WasteDetailsVM.cs" />
