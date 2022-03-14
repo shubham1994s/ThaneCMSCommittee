@@ -108,12 +108,12 @@
     });
     $("#btnSubmit").click(function () {
         //alert("aa");
-        //if ($.trim($("#description").val()) == '') {
-        //    //$("#err_description").html("वाहन आवश्यक आहे / Vehicle is Required").delay(1500).show().fadeOut('slow');
-        //    $("#err_description").html("Vehicle is Required").delay(1500).show().fadeOut('slow');
-        //    $('#description').focus();
-        //    return false;
-        //}
+        if ($.trim($("#vehicleNumber").val()) == '') {
+            //$("#err_description").html("वाहन आवश्यक आहे / Vehicle is Required").delay(1500).show().fadeOut('slow');
+            $("#err_vnumber").html("Vehicle No is Required").delay(1500).show().fadeOut('slow');
+            $('#vehicleNumber').focus();
+            return false;
+        }
         return true;
     });
 </script>
