@@ -1020,6 +1020,7 @@
     <Content Include="Areas\Street\Content\Script\DatatableGrid\Location.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\StreetGarbageGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\StreetIdealGrid.js" />
+    <Content Include="Areas\Street\Content\Script\DatatableGrid\StreetSweepingBeatList.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\StreetSweepingGrid.js" />
     <Content Include="Areas\Street\Content\theme-assets\css\custom.css" />
     <Content Include="Areas\Street\Content\theme-assets\css\fontastic.css" />
@@ -2735,6 +2736,8 @@
     <Content Include="Areas\Street\Views\StreetReport\Show1point4Report.cshtml" />
     <Content Include="Areas\Street\Views\StreetReport\SingleEmployeeCollection.cshtml" />
     <Content Include="Areas\Street\Views\StreetSweeping\ReportIndex.cshtml" />
+    <Content Include="Areas\Street\Views\StreetSweeping\MenuStreetBeatIndex.cshtml" />
+    <Content Include="Areas\Street\Views\StreetSweeping\StreetBeatIndex.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

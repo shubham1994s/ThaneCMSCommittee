@@ -401,6 +401,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
 
+                case "StreetSweepBeat":
+                    gridRepository = new StreetSweepBeatGrid(0, searchString, appId);
+                    return gridRepository;
+                    break;
+
                 case "LiquidWaste":
                     gridRepository = new LiquidWasteGridRepository(0, searchString, appId);
                     return gridRepository;

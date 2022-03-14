@@ -5350,6 +5350,28 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             //}
         }
 
+        public IEnumerable<SBAStreetSweepBeatDetailsGridRow> GetStreetSweepBeatData(long wildcard, string searchString, int appId)
+        {
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                var data = db.StreetSweepingBeats.Select(x => new SBAStreetSweepBeatDetailsGridRow
+                {
+
+                    Id = x.BeatId,
+                    ReferanceId1 = x.ReferanceId1,
+                    ReferanceId2 = x.ReferanceId2,
+                    ReferanceId3 = x.ReferanceId3,
+                    ReferanceId4 = x.ReferanceId4,
+                    ReferanceId5 = x.ReferanceId5
+
+                }).ToList();
+
+                return data.OrderByDescending(c => c.Id).ToList();
+            }
+        }
+
+       
+
         #endregion
     }
 }
