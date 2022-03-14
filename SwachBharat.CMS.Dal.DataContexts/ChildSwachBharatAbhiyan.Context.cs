@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -935,19 +935,14 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMGarbageCollection_Result>("SP_SWMGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, wardNoParameter, areaIdParameter, segidParameter, sWMTypeidParameter);
         }
     
-        public virtual ObjectResult<string> SP_StreetSweepList()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_StreetSweepList");
-        }
-    
-        public virtual ObjectResult<string> SP_StreetSweepLists()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_StreetSweepLists");
-        }
-    
         public virtual ObjectResult<GetVehicleDetails_Result> GetVehicleDetails()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetVehicleDetails_Result>("GetVehicleDetails");
+        }
+    
+        public virtual ObjectResult<SP_StreetSweepList_Result> SP_StreetSweepList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepList_Result>("SP_StreetSweepList");
         }
     }
 }
