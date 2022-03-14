@@ -445,6 +445,33 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
+        public StreetSweepVM GetBeatDetails(int teamId)
+        {
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var Details = db.SP_StreetSweepList().Where(x => x.SSId == teamId).FirstOrDefault();
+                    if (Details != null)
+                    {
+                        StreetSweepVM vechile = new StreetSweepVM();
+                        vechile.BeatList = ListBeat();
+                        return vechile;
+                    }
+                    else
+                    {
+                        StreetSweepVM vechile = new StreetSweepVM();
+                        vechile.BeatList = ListBeat();
+                        return vechile;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void SaveVehicleRegDetails(VehicleRegVM data)
         {
             try
@@ -4126,6 +4153,29 @@ namespace SwachBharat.CMS.Bll.Services
 
             return Vehicle;
         }
+
+
+        public List<SelectListItem> ListBeat()
+        {
+            var Vehicle = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Beat--", Value = "0" };
+
+            try
+            {
+                Vehicle = db.SP_StreetSweepList().ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.ReferanceId,
+                        Value = x.ReferanceId.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                Vehicle.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return Vehicle;
+        }
+
         public List<SelectListItem> ListWardNo()
         {
             var WardNo = new List<SelectListItem>();
@@ -4312,6 +4362,14 @@ namespace SwachBharat.CMS.Bll.Services
             model.isActive = data.isActive;
             return model;
         }
+
+        private StreetSweepVM FillBeatModel(StreetSweepVM data)
+        {
+            StreetSweepVM model = new StreetSweepVM();
+            model.BeatId = data.SSId;
+            return model;
+        }
+
         private WardNumberVM FillWardViewModel(WardNumber data)
         {
             WardNumberVM model = new WardNumberVM();

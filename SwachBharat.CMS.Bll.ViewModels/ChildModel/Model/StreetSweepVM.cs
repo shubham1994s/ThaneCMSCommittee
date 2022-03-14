@@ -22,5 +22,9 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string ReferanceId { get; set; }
         public string SSAddress { get; set; }
         public Nullable<System.DateTime> lastModifiedDate { get; set; }
+        public Nullable<int> BeatId { get; set; }
+        public string SSBeatone { get; set; }
+        public string SSBeattwo { get; set; }
+        public string SSBeatthree { get; set; }
     }
 }

@@ -82,6 +82,19 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 return Redirect("/Account/Login");
         }
 
+
+        public ActionResult AddStreetBeat(int teamId = -1)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                StreetSweepVM vehicle = childRepository.GetBeat(teamId);
+                return View(vehicle);
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+
         public ActionResult ReportIndex()
         {
 
