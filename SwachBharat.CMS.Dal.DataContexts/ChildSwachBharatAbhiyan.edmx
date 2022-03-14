@@ -365,6 +365,20 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="INSERT_ID" Type="int" />
           <Property Name="INSERT_DATE" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.StreetSweepingBeat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StreetSweepingBeat">
+          <Key>
+            <PropertyRef Name="BeatId" />
+          </Key>
+          <Property Name="BeatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ReferanceId1" Type="nvarchar" MaxLength="200" />
+          <Property Name="ReferanceId2" Type="nvarchar" MaxLength="200" />
+          <Property Name="ReferanceId3" Type="nvarchar" MaxLength="200" />
+          <Property Name="ReferanceId4" Type="nvarchar" MaxLength="200" />
+          <Property Name="ReferanceId5" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="StreetSweepingDetails">
           <Key>
             <PropertyRef Name="SSId" />
@@ -881,6 +895,17 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [SS_1_4_QUESTION].[NOTE] AS [NOTE]
     FROM [dbo].[SS_1.4_QUESTION] AS [SS_1_4_QUESTION]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="StreetSweepingBeat" EntityType="Self.StreetSweepingBeat" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StreetSweepingBeat].[BeatId] AS [BeatId], 
+    [StreetSweepingBeat].[CreateDate] AS [CreateDate], 
+    [StreetSweepingBeat].[ReferanceId1] AS [ReferanceId1], 
+    [StreetSweepingBeat].[ReferanceId2] AS [ReferanceId2], 
+    [StreetSweepingBeat].[ReferanceId3] AS [ReferanceId3], 
+    [StreetSweepingBeat].[ReferanceId4] AS [ReferanceId4], 
+    [StreetSweepingBeat].[ReferanceId5] AS [ReferanceId5]
+    FROM [dbo].[StreetSweepingBeat] AS [StreetSweepingBeat]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Vw_MsgNotification" EntityType="Self.Vw_MsgNotification" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Vw_MsgNotification].[userId] AS [userId], 
@@ -1182,6 +1207,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="VehicleRegistrations" EntityType="DevSwachhBharatNagpurModel.VehicleRegistration" />
           <FunctionImport Name="GetVehicleDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.GetVehicleDetails_Result)" />
           <FunctionImport Name="SP_StreetSweepList" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_StreetSweepList_Result)" />
+          <EntitySet Name="StreetSweepingBeats" EntityType="DevSwachhBharatNagpurModel.StreetSweepingBeat" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2672,6 +2698,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="SSId" Nullable="false" />
           <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
         </ComplexType>
+        <EntityType Name="StreetSweepingBeat">
+          <Key>
+            <PropertyRef Name="BeatId" />
+          </Key>
+          <Property Name="BeatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ReferanceId1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ReferanceId2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ReferanceId3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ReferanceId4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ReferanceId5" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4293,6 +4331,19 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="StreetSweepingBeats">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.StreetSweepingBeat">
+              <MappingFragment StoreEntitySet="StreetSweepingBeat">
+                <ScalarProperty Name="ReferanceId5" ColumnName="ReferanceId5" />
+                <ScalarProperty Name="ReferanceId4" ColumnName="ReferanceId4" />
+                <ScalarProperty Name="ReferanceId3" ColumnName="ReferanceId3" />
+                <ScalarProperty Name="ReferanceId2" ColumnName="ReferanceId2" />
+                <ScalarProperty Name="ReferanceId1" ColumnName="ReferanceId1" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="BeatId" ColumnName="BeatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
          
         </EntityContainerMapping>
       </Mapping>
