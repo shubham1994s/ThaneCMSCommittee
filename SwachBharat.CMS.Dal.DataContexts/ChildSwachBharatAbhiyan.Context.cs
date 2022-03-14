@@ -18,9 +18,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-              : base(SwachBharatAppConnection.GetConnectionString(AppId))
+               : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -57,7 +59,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
         public virtual DbSet<SWMMaster> SWMMasters { get; set; }
-        public virtual DbSet<VechileRegistration> VechileRegistrations { get; set; }
+        public virtual DbSet<VehicleRegistration> VehicleRegistrations { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -941,6 +943,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<string> SP_StreetSweepLists()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_StreetSweepLists");
+        }
+    
+        public virtual ObjectResult<GetVehicleDetails_Result> GetVehicleDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetVehicleDetails_Result>("GetVehicleDetails");
         }
     }
 }

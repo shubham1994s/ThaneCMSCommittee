@@ -28,10 +28,10 @@ namespace SwachBharat.CMS.Bll.Services
 
 
         VehicleTypeVM GetVehicleTypeDetails(int teamId);
-        VechileRegVM GetVehicleDetails(int teamId);
+        VehicleRegVM GetVehicleDetails(int teamId);
         void DeletVehicleTypeDetails(int teamId);
         void SaveVehicleTypeDetails(VehicleTypeVM type);
-        void SaveVehicleRegDetails(VechileRegVM type);
+        void SaveVehicleRegDetails(VehicleRegVM type);
 
         WardNumberVM GetWardNumberDetails(int teamId,string name);
          void SaveWardNumberDetails(WardNumberVM data);

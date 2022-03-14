@@ -155,6 +155,9 @@
     <Compile Include="GetAttendenceDetailsTotal_Result.cs">
       <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetVehicleDetails_Result.cs">
+      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+    </Compile>
     <Compile Include="GramCleaningComplient.cs">
       <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
@@ -430,7 +433,7 @@
     <Compile Include="UserMaster.cs">
       <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
-    <Compile Include="VechileRegistration.cs">
+    <Compile Include="VehicleRegistration.cs">
       <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="VehicleType.cs">

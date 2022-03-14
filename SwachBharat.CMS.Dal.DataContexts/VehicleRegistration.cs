@@ -12,11 +12,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
     using System;
     using System.Collections.Generic;
     
-    public partial class VechileRegistration
+    public partial class VehicleRegistration
     {
-        public int vechileId { get; set; }
-        public Nullable<int> vechileType { get; set; }
-        public string vechileNo { get; set; }
+        public int vehicleId { get; set; }
+        public Nullable<int> vehicleType { get; set; }
+        public string vehicleNo { get; set; }
         public Nullable<int> areaId { get; set; }
         public Nullable<bool> isActive { get; set; }
     }

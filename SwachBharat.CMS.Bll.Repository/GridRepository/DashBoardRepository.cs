@@ -394,6 +394,52 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
         }
+
+
+        public IEnumerable<SBAVehicleRegGridRow> GetVehicleRegData(long wildcard, string SearchString, int appId)
+        {
+            List<SBAVehicleRegGridRow> obj = new List<SBAVehicleRegGridRow>();
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+
+                var data = db.GetVehicleDetails().Select(x => new SBAVehicleRegGridRow
+                {
+                    Id = x.vehicleId,
+                    VehileType = x.vehicleType.ToString(),
+                    VehileNumber = x.vehicleNo,
+                    Area = x.area.ToString(),
+                    isActive = x.isActive.ToString()
+
+                }).ToList();
+                //  var result = data.SkipWhile(element => element.cId != element.reNewId); 
+
+                foreach (var item in data)
+                {
+                    if (item.VehileType == null || item.VehileType == "")
+                        item.VehileType = "";
+                    if (item.VehileNumber == null || item.VehileNumber == "")
+                        item.VehileNumber = "";
+                    if (item.Area == null || item.Area == "")
+                        item.Area = "";
+                    if (item.isActive == "True")
+                        item.isActive = "Active";
+                    else item.isActive = "Not Active";
+                }
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    var model = data.Where(c => ((string.IsNullOrEmpty(c.VehileType) ? " " : c.VehileType) + " " +
+                                                            (string.IsNullOrEmpty(c.VehileNumber) ? " " : c.VehileNumber) + " " +
+                                                            (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
+                                                            (string.IsNullOrEmpty(c.isActive) ? " " : c.isActive)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                    data = model.ToList();
+                }
+                return data.OrderByDescending(c => c.Id);
+
+            }
+
+
+        }
+
         public IEnumerable<SBAWardNumberGridRow> GetWardNoData(long wildcard, string SearchString, int appId)
         {
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))

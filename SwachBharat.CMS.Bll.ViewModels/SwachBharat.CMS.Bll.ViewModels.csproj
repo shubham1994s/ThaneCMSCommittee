@@ -111,6 +111,7 @@
     <Compile Include="Grid\SBASauchalayDetailsGridRow.cs" />
     <Compile Include="Grid\SBAStreeSweepDetailsGridRow.cs" />
     <Compile Include="Grid\SBASWMDetailsGridRow.cs" />
+    <Compile Include="Grid\SBAVehicleRegGridRow.cs" />
     <Compile Include="Grid\SBAVehicleTypeGridRow.cs" />
     <Compile Include="Grid\GPBussniessDetailsGridRow.cs" />
     <Compile Include="Grid\SBAWardNumberGridRow.cs" />

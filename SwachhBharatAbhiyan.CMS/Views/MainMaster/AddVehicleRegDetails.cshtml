@@ -1,4 +1,4 @@
-﻿@model SwachBharat.CMS.Bll.ViewModels.ChildModel.Model.VechileRegVM
+﻿@model SwachBharat.CMS.Bll.ViewModels.ChildModel.Model.VehicleRegVM
 @{
     //ViewBag.Title = "वाहन तपशील सादर करा / Add Vehicle Details";
     Layout = "";
@@ -11,41 +11,42 @@
 @using (Html.BeginForm("AddVehicleRegDetails", "MainMaster", FormMethod.Post, new { enctype = "multipart/form-data", data_toggle = "validator", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.vechileId);
+    @Html.HiddenFor(model => model.vehicleId);
 
 
     <div class="container">
         <div class="row">
             <span class="backk">
 
-                <a href="@Url.Action("VehicleIndex", "MainMaster")" id="btnBack" class="btn"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
+                <a href="@Url.Action("VehicleRegIndex", "MainMaster")" id="btnBack" class="btn"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
             </span>
             <h1 class="add-edit-h1 title_change"> </h1>
             <div class="panel panel-warning col-sm-12 ">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            @*@Html.Label("झोन / Zone")*@
-                            @Html.Label("Vechile Type")
-                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                            @Html.DropDownListFor(model => model.vechileType, Model.VehicleList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-                            <span class="text-danger" id="err_vtype"></span>
-                            <span class="help-block with-errors"></span>
-                        </div>
-                    </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             @*@Html.Label("मोबाइल नंबर / Mobile Number")*@
-                            @Html.Label("Vechile Number")
+                            @Html.Label("Vehicle Number")
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.TextBoxFor(model => model.vechileNumber, new { @class = "form-control", style = "font-family:Arial, FontAwesome", minlength = "10", maxlength = "10" })
-                            @Html.ValidationMessageFor(model => model.vechileNumber, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.vehicleNumber, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
+                            @Html.ValidationMessageFor(model => model.vehicleNumber, "", new { @class = "text-danger" })
                             <span class="text-danger" id="err_vnumber"></span>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                         </div>
 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("Vehicle Type")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.vehicleType, Model.VehicleList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_vtype"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -61,6 +62,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" style="margin-top:-5px">
+                            <br/>
                             <label>Is Active </label>
                             @Html.CheckBox("isActive")
                         </div>
@@ -106,12 +108,12 @@
     });
     $("#btnSubmit").click(function () {
         //alert("aa");
-        if ($.trim($("#description").val()) == '') {
-            //$("#err_description").html("वाहन आवश्यक आहे / Vehicle is Required").delay(1500).show().fadeOut('slow');
-            $("#err_description").html("Vehicle is Required").delay(1500).show().fadeOut('slow');
-            $('#description').focus();
-            return false;
-        }
+        //if ($.trim($("#description").val()) == '') {
+        //    //$("#err_description").html("वाहन आवश्यक आहे / Vehicle is Required").delay(1500).show().fadeOut('slow');
+        //    $("#err_description").html("Vehicle is Required").delay(1500).show().fadeOut('slow');
+        //    $('#description').focus();
+        //    return false;
+        //}
         return true;
     });
 </script>

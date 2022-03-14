@@ -416,23 +416,23 @@ namespace SwachBharat.CMS.Bll.Services
 
         #region Vechile Registration
 
-        public VechileRegVM GetVehicleDetails(int teamId)
+        public VehicleRegVM GetVehicleDetails(int teamId)
         {
             try
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
                 {
-                    var Details = db.VechileRegistrations.Where(x => x.vechileId == teamId).FirstOrDefault();
+                    var Details = db.VehicleRegistrations.Where(x => x.vehicleId == teamId).FirstOrDefault();
                     if (Details != null)
                     {
-                        VechileRegVM vechile = FillVehicleTegViewModel(Details);
+                        VehicleRegVM vechile = FillVehicleTegViewModel(Details);
                         vechile.AreaList = ListArea();
                         vechile.VehicleList = ListVehicle();
                         return vechile;
                     }
                     else
                     {
-                        VechileRegVM vechile = new VechileRegVM();
+                        VehicleRegVM vechile = new VehicleRegVM();
                         vechile.AreaList = ListArea();
                         vechile.VehicleList = ListVehicle();
                         return vechile;
@@ -445,20 +445,20 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public void SaveVehicleRegDetails(VechileRegVM data)
+        public void SaveVehicleRegDetails(VehicleRegVM data)
         {
             try
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
                 {
-                    if (data.vechileId > 0)
+                    if (data.vehicleId > 0)
                     {
-                        var model = db.VechileRegistrations.Where(x => x.vechileId == data.vechileId).FirstOrDefault();
+                        var model = db.VehicleRegistrations.Where(x => x.vehicleId == data.vehicleId).FirstOrDefault();
                         if (model != null)
                         {
-                            model.vechileId = data.vechileId;
-                            model.vechileType = data.vechileType;
-                            model.vechileNo = data.vechileNumber;
+                            model.vehicleId = data.vehicleId;
+                            model.vehicleType = data.vehicleType;
+                            model.vehicleNo = data.vehicleNumber;
                             model.areaId = data.AreaId;
                             model.isActive = data.isActive;
                             db.SaveChanges();
@@ -467,7 +467,7 @@ namespace SwachBharat.CMS.Bll.Services
                     else
                     {
                         var type = FillVehicleRegDataModel(data);
-                        db.VechileRegistrations.Add(type);
+                        db.VehicleRegistrations.Add(type);
                         db.SaveChanges();
                     }
                 }
@@ -3801,12 +3801,12 @@ namespace SwachBharat.CMS.Bll.Services
             return model;
         }
 
-        private VechileRegistration FillVehicleRegDataModel(VechileRegVM data)
+        private VehicleRegistration FillVehicleRegDataModel(VehicleRegVM data)
         {
-            VechileRegistration model = new VechileRegistration();
-            model.vechileId = data.vechileId;
-            model.vechileType = data.vechileType;
-            model.vechileNo = data.vechileNumber;
+            VehicleRegistration model = new VehicleRegistration();
+            model.vehicleId = data.vehicleId;
+            model.vehicleType = data.vehicleType;
+            model.vehicleNo = data.vehicleNumber;
             model.areaId = data.AreaId;
             model.isActive = data.isActive;
             return model;
@@ -4302,12 +4302,12 @@ namespace SwachBharat.CMS.Bll.Services
             return model;
         }
 
-        private VechileRegVM FillVehicleTegViewModel(VechileRegistration data)
+        private VehicleRegVM FillVehicleTegViewModel(VehicleRegistration data)
         {
-            VechileRegVM model = new VechileRegVM();
-            model.vechileId = data.vechileId;
-            model.vechileNumber = data.vechileNo;
-            model.vechileType = data.vechileType;
+            VehicleRegVM model = new VehicleRegVM();
+            model.vehicleId = data.vehicleId;
+            model.vehicleNumber = data.vehicleNo;
+            model.vehicleType = data.vehicleType;
             model.AreaId = data.areaId;
             model.isActive = data.isActive;
             return model;

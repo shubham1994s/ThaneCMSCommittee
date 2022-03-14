@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
-    public class VechileRegVM: BaseVM
+    public class VehicleRegVM: BaseVM
     {
-        public int vechileId { get; set; }
-        public Nullable<int> vechileType { get; set; }
-        public string vechileNumber { get; set; }
+        public int vehicleId { get; set; }
+        public Nullable<int> vehicleType { get; set; }
+        public string vehicleNumber { get; set; }
         public Nullable<int> AreaId { get; set; }
         public Nullable<bool> isActive { get; set; }
 

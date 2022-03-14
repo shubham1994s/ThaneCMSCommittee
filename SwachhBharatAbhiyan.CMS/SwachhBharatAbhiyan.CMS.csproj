@@ -1739,6 +1739,7 @@
     <Content Include="Content\DatatableGrid\SWMDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\SWMGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\TalukaGrid.js" />
+    <Content Include="Content\DatatableGrid\VehicleRegGrid.js" />
     <Content Include="Content\DatatableGrid\VehicleTypeGrid.js" />
     <Content Include="Content\DatatableGrid\WardNumberGrid.js" />
     <Content Include="Content\DatatableGrid\WM_WasteDetailsGrid.js" />
@@ -3218,6 +3219,8 @@
     <Content Include="Views\GarbageCollection\MenuResidentialSlumGarbageIndex.cshtml" />
     <Content Include="Views\GarbageCollection\ResidentialSlumGarbageIndex.cshtml" />
     <Content Include="Views\MainMaster\AddVehicleRegDetails.cshtml" />
+    <Content Include="Views\MainMaster\MenuVehicleRegIndex.cshtml" />
+    <Content Include="Views\MainMaster\VehicleRegIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

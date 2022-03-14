@@ -331,7 +331,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         #endregion
 
-        #region Vechile Registration
+        #region Vehicle Registration
         [HttpGet]
         public ActionResult VehicleRegIndex()
         {
@@ -356,7 +356,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                VechileRegVM vehicle = childRepository.GetVehicleReg(teamId);
+                VehicleRegVM vehicle = childRepository.GetVehicleReg(teamId);
                 return View(vehicle);
             }
             else
@@ -364,16 +364,16 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddVehicleRegDetails(VechileRegVM vehicle)
+        public ActionResult AddVehicleRegDetails(VehicleRegVM vehicle)
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                if (vehicle.vechileId <= 0)
+                if (vehicle.vehicleId <= 0)
                 {
-                    vehicle.vechileId = 0;
+                    vehicle.vehicleId = 0;
                 }
                 childRepository.SaveVehicleReg(vehicle);
-                return Redirect("VehicleIndex");
+                return Redirect("VehicleRegIndex");
             }
             else
                 return Redirect("/Account/Login");
