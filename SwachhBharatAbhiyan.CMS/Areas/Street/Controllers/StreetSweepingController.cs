@@ -59,6 +59,29 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         }
 
 
+        public ActionResult MenuStreetBeatIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                TempData.Keep();
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        [HttpGet]
+        public ActionResult StreetBeatIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                TempData.Keep();
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
         public ActionResult ReportIndex()
         {
 

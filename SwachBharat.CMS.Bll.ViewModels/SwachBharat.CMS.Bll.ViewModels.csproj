@@ -110,6 +110,7 @@
     <Compile Include="Grid\SBALocationGridRow.cs" />
     <Compile Include="Grid\SBASauchalayDetailsGridRow.cs" />
     <Compile Include="Grid\SBAStreeSweepDetailsGridRow.cs" />
+    <Compile Include="Grid\SBAStreetSweepBeatDetailsGridRow.cs" />
     <Compile Include="Grid\SBASWMDetailsGridRow.cs" />
     <Compile Include="Grid\SBAVehicleRegGridRow.cs" />
     <Compile Include="Grid\SBAVehicleTypeGridRow.cs" />
