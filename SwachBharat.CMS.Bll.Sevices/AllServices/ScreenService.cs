@@ -4113,7 +4113,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             try
             {
-                Vehicle = db.VehicleTypes.ToList()
+                Vehicle = db.VehicleTypes.Where(v => v.isActive == true).ToList()
                     .Select(x => new SelectListItem
                     {
                         Text = x.description,

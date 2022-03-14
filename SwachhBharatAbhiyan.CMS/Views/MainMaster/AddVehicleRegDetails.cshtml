@@ -114,6 +114,18 @@
             $('#vehicleNumber').focus();
             return false;
         }
+        if ($.trim($("#vehicleType").val()) == '0') {
+            //$("#err_description").html("वाहन आवश्यक आहे / Vehicle is Required").delay(1500).show().fadeOut('slow');
+            $("#err_vtype").html("Vehicle Type is Required").delay(1500).show().fadeOut('slow');
+            $('#vehicleType').focus();
+            return false;
+        }
+        if ($.trim($("#AreaId").val()) == '0') {
+            //$("#err_description").html("वाहन आवश्यक आहे / Vehicle is Required").delay(1500).show().fadeOut('slow');
+            $("#err_varea").html("Area is Required").delay(1500).show().fadeOut('slow');
+            $('#AreaId').focus();
+            return false;
+        }
         return true;
     });
 </script>
