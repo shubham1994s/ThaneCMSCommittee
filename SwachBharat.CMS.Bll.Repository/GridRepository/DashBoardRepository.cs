@@ -270,7 +270,47 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 return data.OrderByDescending(c => c.Id);
             }
         }
+        public IEnumerable<SBAGrabageCollectionGridRow> GetCTPTContGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        {
+            DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
+            var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
+            string ThumbnaiUrlAPI = appDetails.baseImageUrl + appDetails.basePath + appDetails.Collection + "/";
 
+            using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+
+
+
+                var data = db.SP_CTPT_Collection(fdate, tdate, userId).Select(x => new SBAGrabageCollectionGridRow
+                {
+
+                    userId = x.userid,
+                    UserName = x.CTPT_UserName,
+                    HouseNumber = x.CTPTID,
+                    attandDate = Convert.ToDateTime(x.Date).ToString("dd/MM/yyyy"),
+                    TCount = x.today_ctpt_count
+
+                }).OrderByDescending(c => c.gcDate).ToList().ToList();
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                       ).ToList();
+
+
+                    data = model.OrderByDescending(c => c.gcDate).ToList().ToList();
+                }
+
+                if (userId > 0)
+                {
+                    var model = data.Where(c => c.userId == userId).ToList();
+
+                    data = model.ToList();
+                }
+                return data.OrderByDescending(c => c.gcDate).ToList().ToList(); ;
+
+            }
+        }
         public IEnumerable<SBAAreaGridRow> GetAreaData(long wildcard, string SearchString, int appId)
         {
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
@@ -3193,48 +3233,6 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAGrabageCollectionGridRow> GetCTPTContGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
-        {
-            DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
-            var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
-            string ThumbnaiUrlAPI = appDetails.baseImageUrl + appDetails.basePath + appDetails.Collection + "/";
-
-            using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
-            {
-
-
-
-                var data = db.SP_CTPT_Collection(fdate, tdate,userId ).Select(x => new SBAGrabageCollectionGridRow
-                {
-                  
-                    userId = x.userid,       
-                    UserName = x.CTPT_UserName,
-                    HouseNumber = x.CTPTID,
-                    attandDate = Convert.ToDateTime(x.Date).ToString("dd/MM/yyyy"),
-                    TCount =x.today_ctpt_count
-
-                }).OrderByDescending(c => c.gcDate).ToList().ToList();
-
-                if (!string.IsNullOrEmpty(SearchString))
-                {
-                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
-                       ).ToList();
-
-
-                    data = model.OrderByDescending(c => c.gcDate).ToList().ToList();
-                }
-
-                if (userId > 0)
-                {
-                    var model = data.Where(c => c.userId == userId).ToList();
-
-                    data = model.ToList();
-                }
-                return data.OrderByDescending(c => c.gcDate).ToList().ToList(); ;
-
-            }
-        }
-
         public IEnumerable<SBAAttendenceGrid> GetAttendeceData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string Emptype)
         {
             List<SBAAttendenceGrid> obj = new List<SBAAttendenceGrid>();
@@ -4710,6 +4708,290 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 //}
 
                 return obj.OrderByDescending(c => c.qrEmpDaId).ToList();
+            }
+        }
+
+        public IEnumerable<SBAHSHouseDetailsGrid> GetHSHouseDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        {
+
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+
+                // var data = db.HouseMasters.Select(x => new SBAHSHouseDetailsGrid
+                //{
+                //    houseId = x.houseId,
+                //    Name = x.houseOwner,
+                //    HouseLat = x.houseLat,
+                //    HouseLong = x.houseLong,
+                //    QRCodeImage = string.IsNullOrEmpty(x.QRCodeImage)? "/Images/default_not_upload.png" : x.QRCodeImage,
+                //    ReferanceId = x.ReferanceId
+                //}).ToList();
+
+                var model = db.HouseMasters
+                        .GroupJoin(db.QrEmployeeMasters,
+                                     a => a.userId,
+                                     b => b.qrEmpId,
+                                     (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                          .SelectMany(r => r.d.DefaultIfEmpty(),
+                                      (p, b) => new
+                                      {
+                                          modifiedDate = p.c.modified,
+                                          userId = p.c.userId,
+                                          houseId = p.c.houseId,
+                                          Name = b.qrEmpName,
+                                          HouseLat = p.c.houseLat,
+                                          HouseLong = p.c.houseLong,
+                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          ReferanceId = p.c.ReferanceId
+                                      }).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+
+
+                if (fdate != null && tdate != null)
+                {
+                    if (Convert.ToDateTime(fdate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                    {
+                        model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy"))).ToList();
+                    }
+                    else
+                    {
+
+                        model = model.Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate)).ToList();
+                    }
+                }
+                if (userId > 0)
+                {
+                    model = model.Where(c => c.userId == userId).ToList();
+
+                }
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper())
+                     ).ToList();
+
+                }
+                model = model.GroupBy(book => new { book.houseId }).Select(book => book.FirstOrDefault()).ToList();
+
+                var data = model.Select(x => new SBAHSHouseDetailsGrid
+                {
+                    houseId = x.houseId,
+                    Name = x.Name,
+                    HouseLat = x.HouseLat,
+                    HouseLong = x.HouseLong,
+                    QRCodeImage = x.QRCodeImage,
+                    ReferanceId = x.ReferanceId
+                }).ToList();
+                return data;
+            }
+        }
+        public IEnumerable<SBAHSDumpyardDetailsGrid> GetHSDumpyardDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        {
+
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                //"/Images/default_not_upload.png"
+                //var data = db.DumpYardDetails.Select(x => new SBAHSDumpyardDetailsGrid
+                //{
+                //    dumpId = x.dyId,
+                //    Name = x.dyName,
+                //    HouseLat = x.dyLat,
+                //    HouseLong = x.dyLong,
+                //    QRCodeImage = string.IsNullOrEmpty(x.QRCodeImage) ? "/Images/default_not_upload.png" : x.QRCodeImage,
+                //    ReferanceId = x.ReferanceId
+                //}).ToList();
+                var model = db.DumpYardDetails
+                        .GroupJoin(db.QrEmployeeMasters,
+                                     a => a.userId,
+                                     b => b.qrEmpId,
+                                     (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                          .SelectMany(r => r.d.DefaultIfEmpty(),
+                                      (p, b) => new
+                                      {
+                                          modifiedDate = p.c.lastModifiedDate,
+                                          userId = p.c.userId,
+                                          houseId = p.c.dyId,
+                                          Name = b.qrEmpName,
+                                          HouseLat = p.c.dyLat,
+                                          HouseLong = p.c.dyLong,
+                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          ReferanceId = p.c.ReferanceId
+                                      }).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+
+
+                if (fdate != null && tdate != null)
+                {
+                    if (Convert.ToDateTime(fdate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                    {
+                        model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy"))).ToList();
+                    }
+                    else
+                    {
+
+                        model = model.Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate)).ToList();
+                    }
+                }
+                if (userId > 0)
+                {
+                    model = model.Where(c => c.userId == userId).ToList();
+
+                }
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper())
+                     ).ToList();
+
+                }
+                var data = model.Select(x => new SBAHSDumpyardDetailsGrid
+                {
+                    dumpId = x.houseId,
+                    Name = x.Name,
+                    HouseLat = x.HouseLat,
+                    HouseLong = x.HouseLong,
+                    QRCodeImage = x.QRCodeImage,
+                    ReferanceId = x.ReferanceId
+                }).ToList();
+                return data;
+            }
+        }
+        public IEnumerable<SBAHSLiquidDetailsGrid> GetHSLiquidDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        {
+
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                //"/Images/default_not_upload.png"
+                //var data = db.LiquidWasteDetails.Select(x => new SBAHSLiquidDetailsGrid
+                //{
+                //    liquidId = x.LWId,
+                //    Name = x.LWName,
+                //    HouseLat = x.LWLat,
+                //    HouseLong = x.LWLong,
+                //    QRCodeImage = string.IsNullOrEmpty(x.QRCodeImage) ? "/Images/default_not_upload.png" : x.QRCodeImage,
+                //    ReferanceId = x.ReferanceId
+                //}).ToList();
+                var model = db.LiquidWasteDetails
+                        .GroupJoin(db.QrEmployeeMasters,
+                                     a => a.userId,
+                                     b => b.qrEmpId,
+                                     (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                          .SelectMany(r => r.d.DefaultIfEmpty(),
+                                      (p, b) => new
+                                      {
+                                          modifiedDate = p.c.lastModifiedDate,
+                                          userId = p.c.userId,
+                                          houseId = p.c.LWId,
+                                          Name = b.qrEmpName,
+                                          HouseLat = p.c.LWLat,
+                                          HouseLong = p.c.LWLong,
+                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          ReferanceId = p.c.ReferanceId
+                                      }).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+
+
+                if (fdate != null && tdate != null)
+                {
+                    if (Convert.ToDateTime(fdate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                    {
+                        model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy"))).ToList();
+                    }
+                    else
+                    {
+
+                        model = model.Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate)).ToList();
+                    }
+                }
+                if (userId > 0)
+                {
+                    model = model.Where(c => c.userId == userId).ToList();
+
+                }
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper())
+                     ).ToList();
+
+                }
+                var data = model.Select(x => new SBAHSLiquidDetailsGrid
+                {
+                    liquidId = x.houseId,
+                    Name = x.Name,
+                    HouseLat = x.HouseLat,
+                    HouseLong = x.HouseLong,
+                    QRCodeImage = x.QRCodeImage,
+                    ReferanceId = x.ReferanceId
+                }).ToList();
+                return data;
+            }
+        }
+        public IEnumerable<SBAHSStreetDetailsGrid> GetHSStreetDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        {
+
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                //"/Images/default_not_upload.png"
+                //var data = db.StreetSweepingDetails.Select(x => new SBAHSStreetDetailsGrid
+                //{
+                //    streetId = x.SSId,
+                //    Name = x.SSName,
+                //    HouseLat = x.SSLat,
+                //    HouseLong = x.SSLong,
+                //    QRCodeImage = string.IsNullOrEmpty(x.QRCodeImage) ? "/Images/default_not_upload.png" : x.QRCodeImage,
+                //    ReferanceId = x.ReferanceId
+                //}).ToList();
+                var model = db.StreetSweepingDetails
+                        .GroupJoin(db.QrEmployeeMasters,
+                                     a => a.userId,
+                                     b => b.qrEmpId,
+                                     (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                          .SelectMany(r => r.d.DefaultIfEmpty(),
+                                      (p, b) => new
+                                      {
+                                          modifiedDate = p.c.lastModifiedDate,
+                                          userId = p.c.userId,
+                                          houseId = p.c.SSId,
+                                          Name = b.qrEmpName,
+                                          HouseLat = p.c.SSLat,
+                                          HouseLong = p.c.SSLong,
+                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          ReferanceId = p.c.ReferanceId
+                                      }).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+
+
+                if (fdate != null && tdate != null)
+                {
+                    if (Convert.ToDateTime(fdate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                    {
+                        model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy"))).ToList();
+                    }
+                    else
+                    {
+
+                        model = model.Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate)).ToList();
+                    }
+                }
+                if (userId > 0)
+                {
+                    model = model.Where(c => c.userId == userId).ToList();
+
+                }
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper())
+                     ).ToList();
+
+                }
+                var data = model.Select(x => new SBAHSStreetDetailsGrid
+                {
+                    streetId = x.houseId,
+                    Name = x.Name,
+                    HouseLat = x.HouseLat,
+                    HouseLong = x.HouseLong,
+                    QRCodeImage = x.QRCodeImage,
+                    ReferanceId = x.ReferanceId
+                }).ToList();
+                return data;
             }
         }
 

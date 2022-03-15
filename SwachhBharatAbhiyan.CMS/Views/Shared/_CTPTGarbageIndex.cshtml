@@ -61,13 +61,13 @@
             <!--<div class="col-sm-4">-->
             @*<label>कर्मचारी निवडा / Select Employee</label>*@
             <!--<label>Select Segregation Type</label>
-                <select id="Segid" class="form-control form-control form-control-sm">
-                    <option value="">Select Segregation Type</option>
-                    <option value="0">Mixed Garbage</option>
-                    <option value="6">Wet Waste</option>
-                    <option value="7"> Dry Waste</option>
-                </select>
-            </div>-->
+            <select id="Segid" class="form-control form-control form-control-sm">
+                <option value="">Select Segregation Type</option>
+                <option value="0">Mixed Garbage</option>
+                <option value="6">Wet Waste</option>
+                <option value="7"> Dry Waste</option>
+            </select>
+        </div>-->
         </div>
         <div class="row">
             <div class="col-sm-2  offset-md-10" style="text-align:right">
@@ -76,7 +76,8 @@
                 </div>
             </div>
         </div>
-
+        <input type="hidden" name="fdate" id="fdate" value="@ViewBag.fdate">
+        <input type="hidden" name="tdate" id="tdate" value="@ViewBag.tdate">
     </div>
     <div class="container">
         <br />
@@ -141,6 +142,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn" data-dismiss="modal">Close</button>
                         @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
+                        
                     </div>
                 </div>
 
@@ -153,19 +155,19 @@
 
 
 <script>
-        var date = new Date();
+        //var date = new Date();
 
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
+        //var day = date.getDate();
+        //var month = date.getMonth() + 1;
+        //var year = date.getFullYear();
 
-        if (month < 10) month = "0" + month;
-        if (day < 10) day = "0" + day;
+        //if (month < 10) month = "0" + month;
+        //if (day < 10) day = "0" + day;
 
-        var today = day + "/" + month + "/" + year;
+        //var today = day + "/" + month + "/" + year;
 
-        document.getElementById('txt_fdate').value = today;
-        document.getElementById('txt_tdate').value = today;
+    document.getElementById('txt_fdate').value = document.getElementById('fdate').value;
+    document.getElementById('txt_tdate').value = document.getElementById('tdate').value;
 
 
 </script>
@@ -211,7 +213,18 @@
         //});
         debugger;
         var UserId = $('#selectnumber1').val();
+        //var fdate = $('#txt_fdate').val();
+        //var tdates = $('#txt_tdate').val();
+        var name = [];
+        var arr = [$('#txt_fdate').val(), $('#txt_tdate').val()];
 
+        for (var i = 0; i <= arr.length - 1; i++) {
+            name = arr[i].split("/");
+            arr[i] = name[1] + "/" + name[0] + "/" + name[2];
+        }
+
+        txt_fdate = arr[0];
+        txt_tdate = arr[1];
         $("#demoGrid").DataTable({
             "sDom": "ltipr",
             "order": [[12, "desc"]],
@@ -222,7 +235,7 @@
             "pageLength": 10,
 
             "ajax": {
-                "url": "/Datable/GetJqGridJson?rn=GarbageCTPT&userId=" + UserId + "",
+                "url": "/Datable/GetJqGridJson?rn=GarbageCTPT&userId=" + UserId + "&fdate=" + txt_fdate + "&tdate=" + txt_tdate ,
                 "type": "POST",
                 "datatype": "json"
             },

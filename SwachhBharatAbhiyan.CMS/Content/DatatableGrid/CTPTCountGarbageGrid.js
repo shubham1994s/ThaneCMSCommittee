@@ -61,8 +61,10 @@
 function Edit(Id) {
     debugger;
     //alert("Aa");
+    var fdate = document.getElementById('txt_fdate').value;
+    var tdate = document.getElementById('txt_tdate').value;
     if (Id != null) {
-       var url = "/GarbageCollection/MenuCTPTDetailGarbageIndex?teamId=" + Id;
+        var url = "/GarbageCollection/MenuCTPTDetailGarbageIndex?teamId=" + Id + "&fdate=" + fdate + "&tdate=" + tdate;
         window.location.href = url;
      
     }

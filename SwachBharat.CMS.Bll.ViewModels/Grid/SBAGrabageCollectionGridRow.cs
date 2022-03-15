@@ -61,6 +61,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
 
         public string SegregationType { get; set; }
 
+        public Nullable<int> TCount { get; set; }
+
 
 
     }

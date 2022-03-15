@@ -198,10 +198,18 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             }
             else
             {
-
+                if(fdate!=tdate)
+                {
+                    fdate = fdate;
+                    tdate = tdate;
+                }
+                else
+                { 
                 string dt = DateTime.Now.ToString("MM/dd/yyyy");
                 fdate = Convert.ToDateTime(dt + " " + "00:00:00");
                 tdate = Convert.ToDateTime(dt + " " + "23:59:59");
+                }
+
 
             }
             //var appId = ((SessionHandler)Session["clsSession"]).AppId;
