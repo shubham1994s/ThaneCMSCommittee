@@ -144,6 +144,8 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SBALHSUserLocationMapView> GetHSUserAttenRoute(int qrEmpDaId);
         #endregion
 
+        List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate);
+
         //Added By saurabh (04 June 2019)
 
         List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype,int SegType);

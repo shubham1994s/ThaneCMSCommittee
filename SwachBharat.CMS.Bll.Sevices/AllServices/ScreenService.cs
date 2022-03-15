@@ -5678,6 +5678,126 @@ namespace SwachBharat.CMS.Bll.Services
             return userLocation;
         }
 
+        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate)
+        {
+            List<SBAHSHouseDetailsGrid> data = new List<SBAHSHouseDetailsGrid>();
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (UserId > 0)
+                    {
+                        if (type == 0)
+                        {
+                            data = db.HouseMasters.Where(a => a.modified > fDate && a.modified < tDate && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong) && !string.IsNullOrEmpty(a.QRCodeImage) && a.userId == UserId).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.houseId,
+                                Name = x.houseOwner,
+                                HouseLat = x.houseLat,
+                                HouseLong = x.houseLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 1)
+                        {
+                            data = db.DumpYardDetails.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.dyLat) && !string.IsNullOrEmpty(a.dyLong) && !string.IsNullOrEmpty(a.QRCodeImage) && a.userId == UserId).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.dyId,
+                                Name = x.dyName,
+                                HouseLat = x.dyLat,
+                                HouseLong = x.dyLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 2)
+                        {
+                            data = db.LiquidWasteDetails.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.LWLat) && !string.IsNullOrEmpty(a.LWLong) && !string.IsNullOrEmpty(a.QRCodeImage) && a.userId == UserId).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.LWId,
+                                Name = x.LWName,
+                                HouseLat = x.LWLat,
+                                HouseLong = x.LWLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 3)
+                        {
+                            data = db.StreetSweepingDetails.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.SSLat) && !string.IsNullOrEmpty(a.SSLong) && !string.IsNullOrEmpty(a.QRCodeImage) && a.userId == UserId).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.SSId,
+                                Name = x.SSName,
+                                HouseLat = x.SSLat,
+                                HouseLong = x.SSLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                    }
+                    else
+                    {
+                        if (type == 0)
+                        {
+                            data = db.HouseMasters.Where(a => a.modified > fDate && a.modified < tDate && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong) && !string.IsNullOrEmpty(a.QRCodeImage)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.houseId,
+                                Name = x.houseOwner,
+                                HouseLat = x.houseLat,
+                                HouseLong = x.houseLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 1)
+                        {
+                            data = db.DumpYardDetails.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.dyLat) && !string.IsNullOrEmpty(a.dyLong) && !string.IsNullOrEmpty(a.QRCodeImage)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.dyId,
+                                Name = x.dyName,
+                                HouseLat = x.dyLat,
+                                HouseLong = x.dyLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 2)
+                        {
+                            data = db.LiquidWasteDetails.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.LWLat) && !string.IsNullOrEmpty(a.LWLong) && !string.IsNullOrEmpty(a.QRCodeImage)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.LWId,
+                                Name = x.LWName,
+                                HouseLat = x.LWLat,
+                                HouseLong = x.LWLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 3)
+                        {
+                            data = db.StreetSweepingDetails.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.SSLat) && !string.IsNullOrEmpty(a.SSLong) && !string.IsNullOrEmpty(a.QRCodeImage)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.SSId,
+                                Name = x.SSName,
+                                HouseLat = x.SSLat,
+                                HouseLong = x.SSLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return data;
+            }
+            return data;
+        }
+
         #endregion
 
         // Added By Neha(12 July 2019)

@@ -440,6 +440,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHSUserAttenRoute(qrEmpDaId);
         }
 
+        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate)
+        {
+            return screenService.GetHSQRCodeImageByDate(type, UserId, fDate, tDate);
+        }
+
         #endregion
         // Addded By Saurabh (06 June 2019)
         public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype,int SegType)

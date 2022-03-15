@@ -106,6 +106,10 @@
     <Compile Include="Grid\SBAGarbagePointDetailsGridRow.cs" />
     <Compile Include="Grid\SBAHouseScanifyDetailsGridRow.cs" />
     <Compile Include="Grid\SBAHSAttendanceGrid.cs" />
+    <Compile Include="Grid\SBAHSDumpyardDetailsGrid.cs" />
+    <Compile Include="Grid\SBAHSHouseDetailsGrid.cs" />
+    <Compile Include="Grid\SBAHSLiquidDetailsGrid.cs" />
+    <Compile Include="Grid\SBAHSStreetDetailsGrid.cs" />
     <Compile Include="Grid\SBALiquidWasteGridRow.cs" />
     <Compile Include="Grid\SBALocationGridRow.cs" />
     <Compile Include="Grid\SBASauchalayDetailsGridRow.cs" />

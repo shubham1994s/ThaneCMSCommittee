@@ -513,6 +513,25 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
 
+                case "HSHouseDetails":
+                    gridRepository = new HSHouseDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    return gridRepository;
+                    break;
+                case "HSDumpyardDetails":
+                    gridRepository = new HSDumpyardDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    return gridRepository;
+                    break;
+                case "HSLiquidDetails":
+                    gridRepository = new HSLiquidDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    return gridRepository;
+                    break;
+                case "HSStreetDetails":
+                    gridRepository = new HSStreetDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    return gridRepository;
+                    break;
+
+
+
                 case "InfotainmentPlayerDetails":
                     gridRepository = new InfotainmentPlayerGridRepository(0, searchString, fdate, tdate, userId, appId);
                     return gridRepository;

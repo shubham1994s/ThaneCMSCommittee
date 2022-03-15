@@ -13,6 +13,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml;
 using SwachBharat.CMS.Dal.DataContexts;
+using System.IO.Compression;
+using System.Globalization;
+using SwachBharat.CMS.Bll.ViewModels.Grid;
 
 namespace SwachhBharatAbhiyan.CMS.Controllers
 {
@@ -62,6 +65,20 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
+
+
+        public ActionResult HouseDetails()
+        {
+            int appid = SessionHandler.Current.AppId;
+            if (SessionHandler.Current.AppId != 0)
+            {
+                ViewBag.AppId = appid;
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
 
         [HttpPost]
         [AllowAnonymous]
@@ -301,5 +318,122 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 Elmah.ErrorSignal.FromCurrentContext().Raise(exception);
             }
         }
+
+        public ActionResult Export(int type, int UserId, string fdate = null, string tdate = null)
+        {
+            DateTime fdt;
+            DateTime tdt;
+            List<SBAHSHouseDetailsGrid> data = new List<SBAHSHouseDetailsGrid>();
+            string strType = string.Empty;
+            string strFileDownloadName = string.Empty;
+            if (type == 0)
+            {
+                strType = "HousesQRCodeImage";
+            }
+            else if (type == 1)
+            {
+                strType = "DumpyardQRCodeImage";
+            }
+            else if (type == 2)
+            {
+                strType = "LiquidQRCodeImage";
+            }
+            else if (type == 3)
+            {
+                strType = "StreetQRCodeImage";
+            }
+            //strFileDownloadName = String.Format("Zip_{0}_{1}.zip", strType, DateTime.Now.ToString("yyyy-MMM-dd-HHmmss"));
+            if (string.IsNullOrEmpty(fdate) || string.IsNullOrEmpty(tdate))
+            {
+                string dt = DateTime.Now.ToString("MM/dd/yyyy");
+                fdt = Convert.ToDateTime(dt + " " + "00:00:00");
+                tdt = Convert.ToDateTime(dt + " " + "23:59:59");
+
+            }
+            else if (DateTime.TryParseExact(fdate, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+            DateTimeStyles.None, out fdt) && DateTime.TryParseExact(tdate, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+            DateTimeStyles.None, out tdt))
+            {
+                fdt = Convert.ToDateTime(fdt.ToString("MM/dd/yyyy") + " " + "00:00:00");
+                tdt = Convert.ToDateTime(tdt.ToString("MM/dd/yyyy") + " " + "23:59:59");
+
+            }
+            else
+            {
+                string dt = DateTime.Now.ToString("MM/dd/yyyy");
+                fdt = Convert.ToDateTime(dt + " " + "00:00:00");
+                tdt = Convert.ToDateTime(dt + " " + "23:59:59");
+
+            }
+
+            strFileDownloadName = String.Format("Zip_{0}_From_{1}_To_{2}.zip", strType, fdt.ToString("yyyy-MMM-dd"), tdt.ToString("yyyy-MMM-dd"));
+
+
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                data = childRepository.GetHSQRCodeImageByDate(type, UserId, fdt, tdt);
+                string strFileType = string.Empty;
+                if (data != null && data.Count > 0)
+                {
+                    using (var compressedFileStream = new MemoryStream())
+                    {
+                        //Create an archive and store the stream in memory.
+                        using (var zipArchive = new ZipArchive(compressedFileStream, ZipArchiveMode.Create, false))
+                        {
+                            foreach (var item in data)
+                            {
+                                string strImageTypePart = item.QRCodeImage.Split(',').First();
+                                if (strImageTypePart.ToUpper().Contains("JPEG"))
+                                {
+                                    strFileType = "jpeg";
+                                }
+                                else if (strImageTypePart.ToUpper().Contains("BMP"))
+                                {
+                                    strFileType = "bmp";
+                                }
+                                else if (strImageTypePart.ToUpper().Contains("PNG"))
+                                {
+                                    strFileType = "png";
+                                }
+                                else if (strImageTypePart.ToUpper().Contains("JPG"))
+                                {
+                                    strFileType = "jpg";
+                                }
+                                else if (strImageTypePart.ToUpper().Contains("GIF"))
+                                {
+                                    strFileType = "gif";
+                                }
+                                else
+                                {
+                                    strFileType = "jpeg";
+                                }
+                                //Create a zip entry for each attachment
+                                var zipEntry = zipArchive.CreateEntry(string.Format("{0}.{1}", item.ReferanceId, strFileType));
+                                byte[] file = Convert.FromBase64String(item.QRCodeImage.Substring(item.QRCodeImage.LastIndexOf(',') + 1));
+                                //Get the stream of the attachment
+                                using (var originalFileStream = new MemoryStream(file))
+                                using (var zipEntryStream = zipEntry.Open())
+                                {
+                                    //Copy the attachment stream to the zip entry stream
+                                    originalFileStream.CopyTo(zipEntryStream);
+                                }
+                            }
+
+                        }
+
+                        return new FileContentResult(compressedFileStream.ToArray(), "application/zip") { FileDownloadName = strFileDownloadName };
+                    }
+                }
+                else
+                    return new FileContentResult(new byte[] { }, "application/zip") { FileDownloadName = strFileDownloadName };
+
+            }
+            else
+                return new FileContentResult(new byte[] { }, "application/zip") { FileDownloadName = strFileDownloadName };
+            //return data;
+
+        }
+
     }
 }
