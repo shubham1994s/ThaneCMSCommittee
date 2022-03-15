@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = "";
+}
+@Styles.Render("~/Content/IndexCSS")
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+@Scripts.Render("~/Scripts/IndexScript")
+    <script src="~/Content/DatatableGrid/SWMDetailsGrid.js"></script>
+
+<body>
+
+    <div class="container">
+        <br />
+        <div style="width:100%; margin:0 auto;">
+            <a href="AddSWMDetails" class="btn btn-success btn-sm float-right" type="button">Add SWM Facility</a>
+            <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="s" class="form-control form-control-sm" onkeyup="Search()"></label>
+            <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                <thead>
+                    @*<tr>
+                        <th>Id</th>
+                        <th>घर आयडी <br />House ID</th>
+                        <th>नाव <br />Name</th>
+                        <th>स्कॅनिफाय कोड <br />Scaniffy Code</th>
+                        <th>डाउनलोड <br />Download</th>
+                        <th>झोन  <br />Zone</th>
+                        <th>वार्ड क्रमांक <br />Ward No.</th>
+                        <th>क्षेत्र <br />Areas</th>
+                        <th>घर क्रमांक <br />House No.</th>
+                        <th>मोबाइल <br />Mobile</th>
+                        <th>पत्ता <br />Address</th>
+                        <th data-sortable="false">क्रिया <br />Action</th>
+
+                    </tr>*@
+
+                    <tr>
+                        <th>Id</th>
+                        <th> SWM ID</th>
+                        <th> Facility Name</th>
+                        <th> Scaniffy Code</th>
+                        <th> Download</th>
+                        <th> Zone</th>
+                        <th> Ward / Prabhag</th>
+                        <th> Area</th>
+                        <th> Manager Name</th>
+                        <th> Mobile</th>
+                        <th> Address</th>
+                        <th> SWM Facility</th>
+                        <th> SWM Sub Facility</th>
+                        <th data-sortable="false"> Action</th>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div class="modal" id="sendlink_pop">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                @*<div class="modal-header">
+                    <h4 class="modal-title">संदेश पाठवित आहे / Sending Message...</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>*@
+                <!-- Modal body -->
+                <div class="modal-body" style="padding:5px;">
+                    <div class="form-group" style="height:auto;margin:10px 5px 5px 5px;">
+                        <p id="send_msg" style="margin:0px;font-size:14px"></p>
+
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer" style="padding:0px 0px 8px 0px;border-top:none;justify-content:center;">
+                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
