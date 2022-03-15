@@ -112,7 +112,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             {
                 return View();
             }
-
             else
                 return Redirect("/Account/Login");
         }
