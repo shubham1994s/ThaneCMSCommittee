@@ -144,6 +144,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         }
 
 
+
+
         [HttpPost]
         public ActionResult AddSauchalayDetails(SauchalayDetailsVM data)
         {
