@@ -116,6 +116,26 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
+        public ActionResult MenuCTPTDetailGarbageIndex(int teamId,string fdate, string tdate)
+        {
+
+                ViewBag.userid = teamId;
+                ViewBag.fdate = fdate;
+                ViewBag.tdate = tdate;
+                return PartialView(@"~/Views/Shared/_CTPTGarbageIndex.cshtml");
+          
+                
+        }
+
+        public ActionResult CTPTCountGarbageIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
         public ActionResult CTPTGarbageIndex()
         {
             if (SessionHandler.Current.AppId != 0)

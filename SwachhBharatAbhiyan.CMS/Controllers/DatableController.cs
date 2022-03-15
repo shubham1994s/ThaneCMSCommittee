@@ -198,10 +198,18 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             }
             else
             {
-
+                if(fdate!=tdate)
+                {
+                    fdate = fdate;
+                    tdate = tdate;
+                }
+                else
+                { 
                 string dt = DateTime.Now.ToString("MM/dd/yyyy");
                 fdate = Convert.ToDateTime(dt + " " + "00:00:00");
                 tdate = Convert.ToDateTime(dt + " " + "23:59:59");
+                }
+
 
             }
             //var appId = ((SessionHandler)Session["clsSession"]).AppId;
@@ -325,6 +333,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 case "GarbageCTPT":
                     gridRepository = new CTPTGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
+                    return gridRepository;
+                    break;
+                case "GarbageCountCTPT":
+                    gridRepository = new CTPTCountGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId);
                     return gridRepository;
                     break;
                 case "GarbagePoint":
@@ -512,25 +524,6 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new HSAttendanceGridRepository(0, searchString, fdate, tdate, userId, appId);
                     return gridRepository;
                     break;
-
-                case "HSHouseDetails":
-                    gridRepository = new HSHouseDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
-                    return gridRepository;
-                    break;
-                case "HSDumpyardDetails":
-                    gridRepository = new HSDumpyardDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
-                    return gridRepository;
-                    break;
-                case "HSLiquidDetails":
-                    gridRepository = new HSLiquidDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
-                    return gridRepository;
-                    break;
-                case "HSStreetDetails":
-                    gridRepository = new HSStreetDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
-                    return gridRepository;
-                    break;
-
-
 
                 case "InfotainmentPlayerDetails":
                     gridRepository = new InfotainmentPlayerGridRepository(0, searchString, fdate, tdate, userId, appId);
