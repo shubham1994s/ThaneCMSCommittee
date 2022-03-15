@@ -48,27 +48,27 @@ namespace SwachhBharatAbhiyan.CMS
                         wastetype = null;
                     }
 
-                    if (garbageType == "6")
-                    {
-                        garbageType = "1";
-                        wastetype = "1";
-                    }
+                    //if (garbageType == "6")
+                    //{
+                    //    garbageType = "1";
+                    //    wastetype = "1";
+                    //}
 
-                    if (garbageType == "7")
-                    {
-                        garbageType = "1";
-                        wastetype = "2";
-                    }
-                    if (garbageType == "8")
-                    {
-                        garbageType = "1";
-                        wastetype = "3";
-                    }
-                        if (garbageType == "9")
-                        {
-                            garbageType = "1";
-                            wastetype = "4";
-                        }
+                    //if (garbageType == "7")
+                    //{
+                    //    garbageType = "1";
+                    //    wastetype = "2";
+                    //}
+                    //if (garbageType == "8")
+                    //{
+                    //    garbageType = "1";
+                    //    wastetype = "3";
+                    //}
+                    //if (garbageType == "9")
+                    //{
+                    //    garbageType = "1";
+                    //    wastetype = "4";
+                    //}
 
                         //string urlReportServer = "http://TESTYOCC-1:80/reportServer";
                         //  string urlReportServer = "http://YOCC-2:82/reportServer";
@@ -88,6 +88,20 @@ namespace SwachhBharatAbhiyan.CMS
                     rptViewer.BackColor = System.Drawing.Color.White;
                     //rptViewer.Parent.ResolveClientUrl.
 
+
+                    if (ReportName == "Ghar Sankalan Tapashil")
+                    {
+                        ReportParameter[] param = new ReportParameter[6];
+                        param[0] = new ReportParameter("AppId", AppID);
+                        param[1] = new ReportParameter("from", FromDate);
+                        param[2] = new ReportParameter("to", ToDate);
+                        param[3] = new ReportParameter("userid", UserId);
+                        param[4] = new ReportParameter("gartype", garbageType);
+                        param[5] = new ReportParameter("DBName", DB_Name);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                        // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
+                    }
                     if (ReportName == "Ghar Sankalan Tapashil_New")
                     {
                         ReportParameter[] param = new ReportParameter[7];
