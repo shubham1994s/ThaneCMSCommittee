@@ -123,6 +123,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
      
 
         StreetSweepVM SaveStreetSweep(StreetSweepVM data);
+        StreetSweepVM SaveStreetBeat(StreetSweepVM data);
 
         LiquidWasteVM SaveLiquidWastes(LiquidWasteVM data);
 

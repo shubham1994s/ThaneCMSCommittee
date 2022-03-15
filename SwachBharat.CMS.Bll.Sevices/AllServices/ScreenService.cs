@@ -4027,6 +4027,18 @@ namespace SwachBharat.CMS.Bll.Services
             return model;
         }
 
+        private StreetSweepingBeat FillStreetBeatDetailsDataModel(StreetSweepVM data)
+        {
+            StreetSweepingBeat model = new StreetSweepingBeat();
+            model.CreateDate = DateTime.Now;
+            model.ReferanceId1 = data.SSBeatone;
+            model.ReferanceId2 = data.SSBeattwo;
+            model.ReferanceId3 = data.SSBeatthree;
+            model.ReferanceId4 = data.SSBeatfour;
+            model.ReferanceId5 = data.SSBeatfive;
+           
+            return model;
+        }
         private LiquidWasteDetail FillLiquidWasteDetailsDataModel(LiquidWasteVM data)
         {
             LiquidWasteDetail model = new LiquidWasteDetail();
@@ -5254,6 +5266,45 @@ namespace SwachBharat.CMS.Bll.Services
                 return vv;
             }
             catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public StreetSweepVM SaveStreetBeatDetails(StreetSweepVM data)
+        {
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (data.BeatId > 0)
+                    {
+                        var model = db.StreetSweepingBeats.Where(x => x.BeatId == data.BeatId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.CreateDate = DateTime.Now;
+                            model.ReferanceId1 = data.SSBeatone;
+                            model.ReferanceId2 = data.SSBeattwo;
+                            model.ReferanceId3 = data.SSBeatthree;
+                            model.ReferanceId4 = data.SSBeatfour;
+                            model.ReferanceId5 = data.SSBeatfive;
+
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        var type = FillStreetBeatDetailsDataModel(data);
+                        db.StreetSweepingBeats.Add(type);
+                        db.SaveChanges();
+                    }
+
+                }
+                var SSId = db.StreetSweepingBeats.OrderByDescending(x => x.BeatId).Select(x => x.BeatId).FirstOrDefault();
+                StreetSweepVM vv = GetBeatDetails(SSId);
+                return vv;
+            }
+            catch (Exception Ex)
             {
                 return null;
             }

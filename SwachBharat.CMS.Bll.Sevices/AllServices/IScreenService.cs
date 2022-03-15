@@ -107,6 +107,7 @@ namespace SwachBharat.CMS.Bll.Services
         DumpYardDetailsVM SaveDumpYardtDetails(DumpYardDetailsVM data,string Emptype);
 
         StreetSweepVM SaveStreetSweepDetails(StreetSweepVM data);
+        StreetSweepVM SaveStreetBeatDetails(StreetSweepVM data);
 
         LiquidWasteVM SaveLiquidWasteDetails(LiquidWasteVM data);
         void DeletDumpYardtDetails(int teamId);

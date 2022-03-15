@@ -26,5 +26,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string SSBeatone { get; set; }
         public string SSBeattwo { get; set; }
         public string SSBeatthree { get; set; }
+        public string SSBeatfour { get; set; }
+        public string SSBeatfive { get; set; }
     }
 }

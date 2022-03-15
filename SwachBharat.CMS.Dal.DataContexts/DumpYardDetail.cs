@@ -28,5 +28,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<System.DateTime> lastModifiedDate { get; set; }
         public Nullable<int> userId { get; set; }
         public string EmployeeType { get; set; }
+        public string QRCodeImage { get; set; }
     }
 }

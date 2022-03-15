@@ -34,5 +34,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string RFIDTagId { get; set; }
         public string WasteType { get; set; }
         public string CType { get; set; }
+        public string QRCodeImage { get; set; }
     }
 }

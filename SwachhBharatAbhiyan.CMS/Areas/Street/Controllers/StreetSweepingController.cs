@@ -95,6 +95,23 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult AddStreetBeat(StreetSweepVM StreetSweep)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
+               
+
+
+                StreetSweepVM pointDetails = childRepository.SaveStreetBeat(StreetSweep);
+
+
+                return Redirect("StreetBeatIndex");
+            }
+            else
+                return Redirect("/Account/Login");
+        }
         public ActionResult ReportIndex()
         {
 

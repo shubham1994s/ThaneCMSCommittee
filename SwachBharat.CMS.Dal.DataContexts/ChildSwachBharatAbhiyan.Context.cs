@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -41,14 +41,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<QrEmployeeMaster> QrEmployeeMasters { get; set; }
         public virtual DbSet<GramCleaningComplient> GramCleaningComplients { get; set; }
         public virtual DbSet<WM_Garbage_Sales> WM_Garbage_Sales { get; set; }
-        public virtual DbSet<HouseMaster> HouseMasters { get; set; }
         public virtual DbSet<Vw_MsgNotification> Vw_MsgNotification { get; set; }
-        public virtual DbSet<LiquidWasteDetail> LiquidWasteDetails { get; set; }
-        public virtual DbSet<StreetSweepingDetail> StreetSweepingDetails { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<GarbageCollectionDetail> GarbageCollectionDetails { get; set; }
-        public virtual DbSet<DumpYardDetail> DumpYardDetails { get; set; }
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
         public virtual DbSet<CommercialMaster> CommercialMasters { get; set; }
         public virtual DbSet<SS_1_4_ANSWER> SS_1_4_ANSWER { get; set; }
@@ -58,7 +54,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
         public virtual DbSet<SWMMaster> SWMMasters { get; set; }
         public virtual DbSet<VehicleRegistration> VehicleRegistrations { get; set; }
+        public virtual DbSet<DumpYardDetail> DumpYardDetails { get; set; }
+        public virtual DbSet<HouseMaster> HouseMasters { get; set; }
+        public virtual DbSet<LiquidWasteDetail> LiquidWasteDetails { get; set; }
         public virtual DbSet<StreetSweepingBeat> StreetSweepingBeats { get; set; }
+        public virtual DbSet<StreetSweepingDetail> StreetSweepingDetails { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
