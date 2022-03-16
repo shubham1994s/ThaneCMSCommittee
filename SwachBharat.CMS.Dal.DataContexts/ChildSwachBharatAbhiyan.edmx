@@ -1081,11 +1081,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
             <Parameter Name="Segid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_EmployeeSummary" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeSummary_Result)">
-            <Parameter Name="from" Mode="In" Type="DateTime" />
-            <Parameter Name="to" Mode="In" Type="DateTime" />
-            <Parameter Name="userid" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_HouseScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMOnMapDetails_Result)">
@@ -1200,6 +1195,11 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)" />
+          <FunctionImport Name="SP_EmployeeSummary" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeSummary_Result)">
+            <Parameter Name="from" Mode="In" Type="DateTime" />
+            <Parameter Name="to" Mode="In" Type="DateTime" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2197,26 +2197,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="gpBeforImage" Nullable="true" />
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="SP_EmployeeSummary_Result">
-          <Property Type="Int32" Name="daID" Nullable="true" />
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="200" />
-          <Property Type="DateTime" Name="Startdate" Nullable="true" />
-          <Property Type="DateTime" Name="Enddate" Nullable="true" />
-          <Property Type="String" Name="InBatteryStatus" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="OutBatteryStatus" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="Totalhousecollection" Nullable="true" />
-          <Property Type="Decimal" Name="Totaldistance" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Int32" Name="Totaldumpyard" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
-          <Property Type="Int32" Name="TotalConstructionAndDemolation" Nullable="true" />
-          <Property Type="Int32" Name="TotalHorticulture" Nullable="true" />
-          <Property Type="Int32" Name="TotalSLWM" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
-          <Property Type="Int64" Name="rownum" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="SP_HouseScanify_Count_Result">
           <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
           <Property Type="Int32" Name="TotalHouseLatLongCount" Nullable="true" />
@@ -2708,6 +2688,28 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalCommercialCurrent" Nullable="true" />
           <Property Type="Int32" Name="TotalCTPTCurrent" Nullable="true" />
           <Property Type="Int32" Name="TotalSWMCurrent" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_EmployeeSummary_Result">
+          <Property Type="Int32" Name="daID" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="Startdate" Nullable="true" />
+          <Property Type="DateTime" Name="Enddate" Nullable="true" />
+          <Property Type="String" Name="InBatteryStatus" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="OutBatteryStatus" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Totalhousecollection" Nullable="true" />
+          <Property Type="Int32" Name="TotalRBWcollection" Nullable="true" />
+          <Property Type="Int32" Name="TotalRSWcollection" Nullable="true" />
+          <Property Type="Decimal" Name="Totaldistance" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="Totaldumpyard" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
+          <Property Type="Int32" Name="TotalConstructionAndDemolation" Nullable="true" />
+          <Property Type="Int32" Name="TotalHorticulture" Nullable="true" />
+          <Property Type="Int32" Name="TotalSLWM" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
+          <Property Type="Int64" Name="rownum" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3754,30 +3756,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_EmployeeSummary" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeSummary">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeSummary_Result">
-                <ScalarProperty Name="daID" ColumnName="daID" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="Startdate" ColumnName="Startdate" />
-                <ScalarProperty Name="Enddate" ColumnName="Enddate" />
-                <ScalarProperty Name="InBatteryStatus" ColumnName="InBatteryStatus" />
-                <ScalarProperty Name="OutBatteryStatus" ColumnName="OutBatteryStatus" />
-                <ScalarProperty Name="Totalhousecollection" ColumnName="Totalhousecollection" />
-                <ScalarProperty Name="Totaldistance" ColumnName="Totaldistance" />
-                <ScalarProperty Name="Totaldumpyard" ColumnName="Totaldumpyard" />
-                <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
-                <ScalarProperty Name="TotalConstructionAndDemolation" ColumnName="TotalConstructionAndDemolation" />
-                <ScalarProperty Name="TotalHorticulture" ColumnName="TotalHorticulture" />
-                <ScalarProperty Name="TotalSLWM" ColumnName="TotalSLWM" />
-                <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
-                <ScalarProperty Name="rownum" ColumnName="rownum" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_HouseScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseScanify_Count">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result">
@@ -4347,6 +4325,32 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalCommercialCurrent" ColumnName="TotalCommercialCurrent" />
                 <ScalarProperty Name="TotalCTPTCurrent" ColumnName="TotalCTPTCurrent" />
                 <ScalarProperty Name="TotalSWMCurrent" ColumnName="TotalSWMCurrent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EmployeeSummary" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeSummary_Result">
+                <ScalarProperty Name="daID" ColumnName="daID" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Startdate" ColumnName="Startdate" />
+                <ScalarProperty Name="Enddate" ColumnName="Enddate" />
+                <ScalarProperty Name="InBatteryStatus" ColumnName="InBatteryStatus" />
+                <ScalarProperty Name="OutBatteryStatus" ColumnName="OutBatteryStatus" />
+                <ScalarProperty Name="Totalhousecollection" ColumnName="Totalhousecollection" />
+                <ScalarProperty Name="TotalRBWcollection" ColumnName="TotalRBWcollection" />
+                <ScalarProperty Name="TotalRSWcollection" ColumnName="TotalRSWcollection" />
+                <ScalarProperty Name="Totaldistance" ColumnName="Totaldistance" />
+                <ScalarProperty Name="Totaldumpyard" ColumnName="Totaldumpyard" />
+                <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
+                <ScalarProperty Name="TotalConstructionAndDemolation" ColumnName="TotalConstructionAndDemolation" />
+                <ScalarProperty Name="TotalHorticulture" ColumnName="TotalHorticulture" />
+                <ScalarProperty Name="TotalSLWM" ColumnName="TotalSLWM" />
+                <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
+                <ScalarProperty Name="rownum" ColumnName="rownum" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

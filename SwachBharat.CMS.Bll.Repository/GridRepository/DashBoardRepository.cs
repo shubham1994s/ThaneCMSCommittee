@@ -3868,6 +3868,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             TotalHorticulture = x.TotalHorticulture.ToString(),
                             TotalSLWM = x.TotalSLWM.ToString(),
                             TotalCTPT = x.TotalCTPT.ToString(),
+                            TotalRBW = x.TotalRBWcollection.ToString(),
+                            TotalRSW = x.TotalRSWcollection.ToString(),
+
 
                             //daDateTIme = Convert.ToDateTime(x.Startdate + x.StartTime).ToString("dd/MM/yyyy hh:mm tt"),
                             //DateTime startDate = Convert.ToDateTime(a + " " + Time1);

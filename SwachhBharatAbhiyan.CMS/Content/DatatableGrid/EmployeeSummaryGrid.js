@@ -38,13 +38,24 @@
                 "visible": false,
                 "searchable": false
             },
+                {
+                    "targets": [6],
+                    "visible": false,
+                    "searchable": false
+                },
+
+                {
+                    "targets": [14],
+                    "visible": false,
+                    "searchable": false
+                },
             {
-                "targets": [15],
+                "targets": [17],
                 "visible": false,
                 "searchable": false
             },
             {
-                "targets": [16],
+                "targets": [18],
                 "visible": false,
                 "searchable": false
             },
@@ -57,6 +68,8 @@
             { "data": "DaEndDate", "name": "daEndDate", "autoWidth": true },
             { "data": "EndTime", "name": "endTime", "autoWidth": true },
             { "data": "Totalhousecollection", "name": "Totalhousecollection", "autoWidth": true },
+            { "data": "TotalRBW", "name": "TotalRBW", "autoWidth": true },
+            { "data": "TotalRSW", "name": "TotalRSW", "autoWidth": true },
             { "data": "Totalcommercial", "name": "Totalcommercial", "autoWidth": true },
             { "data": "TotalConstructionAndDemolation", "name": "TotalConstructionAndDemolation", "autoWidth": true },
             { "data": "TotalHorticulture", "name": "TotalHorticulture", "autoWidth": true },
@@ -65,9 +78,10 @@
             { "data": "Totaldumpyard", "name": "totaldumpyard", "autoWidth": true },
             { "data": "InBatteryStatus", "name": "InBatteryStatus", "autoWidth": true },
             { "data": "OutBatteryStatus", "name": "OutBatteryStatus", "autoWidth": true },
-
             { "data": "Totaldistance", "name": "Totaldistance", "autoWidth": true },
+         
             { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
+           
 
         ],
         //Sort: "locId DESC"

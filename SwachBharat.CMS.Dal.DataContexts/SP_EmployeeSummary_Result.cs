@@ -23,6 +23,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string InBatteryStatus { get; set; }
         public string OutBatteryStatus { get; set; }
         public Nullable<int> Totalhousecollection { get; set; }
+        public Nullable<int> TotalRBWcollection { get; set; }
+        public Nullable<int> TotalRSWcollection { get; set; }
         public Nullable<decimal> Totaldistance { get; set; }
         public Nullable<int> Totaldumpyard { get; set; }
         public Nullable<int> TotalCommercial { get; set; }

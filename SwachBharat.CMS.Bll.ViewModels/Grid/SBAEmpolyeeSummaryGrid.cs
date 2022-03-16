@@ -30,5 +30,9 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string TotalHorticulture { get; set; }
         public string TotalSLWM { get; set; }
         public string TotalCTPT { get; set; }
+
+        public string TotalRBW { get; set; }
+
+        public string TotalRSW { get; set; }
     }
 }
