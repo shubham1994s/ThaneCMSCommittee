@@ -104,10 +104,10 @@
                     TlistItems.Add(new SelectListItem { Text = "Select Type Of Toilet", Value = "0" });
                     TlistItems.Add(new SelectListItem { Text = "Community Toilet", Value = "CT" });
                     TlistItems.Add(new SelectListItem { Text = "Public Toilet", Value = "PT" });
-                    TlistItems.Add(new SelectListItem { Text = "Urinal", Value = "U" });
+                    //TlistItems.Add(new SelectListItem { Text = "Urinal", Value = "U" });
 
                 }
-                @Html.DropDownListFor(model => model.Tot, TlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @disabled = "disabled", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                @Html.DropDownListFor(model => model.Tot, TlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
 
                 <span class="text-danger" id="err_tot"></span>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
