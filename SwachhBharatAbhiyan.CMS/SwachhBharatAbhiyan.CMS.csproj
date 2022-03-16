@@ -2744,6 +2744,12 @@
     <Content Include="Areas\Street\Views\StreetSweeping\MenuStreetBeatIndex.cshtml" />
     <Content Include="Areas\Street\Views\StreetSweeping\StreetBeatIndex.cshtml" />
     <Content Include="Areas\Street\Views\StreetSweeping\AddStreetBeat.cshtml" />
+    <Content Include="Areas\Street\Views\StreetMainMaster\AddVehicleRegDetails.cshtml" />
+    <Content Include="Areas\Street\Views\StreetMainMaster\MenuVehicleRegIndex.cshtml" />
+    <Content Include="Areas\Street\Views\StreetMainMaster\VehicleRegIndex.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidMainMaster\AddVehicleRegDetails.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidMainMaster\MenuVehicleRegIndex.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidMainMaster\VehicleRegIndex.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

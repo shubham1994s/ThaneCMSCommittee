@@ -333,6 +333,59 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
 
         #endregion
 
+        #region Vehicle Registration
+        [HttpGet]
+        public ActionResult VehicleRegIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+        public ActionResult MenuVehicleRegIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        public ActionResult AddVehicleRegDetails(int teamId = -1)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                VehicleRegVM vehicle = childRepository.GetVehicleReg(teamId);
+                return View(vehicle);
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        [HttpPost]
+        public ActionResult AddVehicleRegDetails(VehicleRegVM vehicle)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                if (vehicle.vehicleId <= 0)
+                {
+                    vehicle.vehicleId = 0;
+                }
+                childRepository.SaveVehicleReg(vehicle);
+                return Redirect("VehicleRegIndex");
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+
+
+        #endregion
+
+
         #region Area
         [HttpGet]
         public ActionResult AreaIndex()
