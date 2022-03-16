@@ -63,6 +63,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
 
         public Nullable<int> TCount { get; set; }
 
+        public Nullable<long> Row { get; set; }
+
 
 
     }

@@ -13,6 +13,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     
     public partial class SP_CTPT_Collection_Result
     {
+        public Nullable<long> RowCounts { get; set; }
         public Nullable<int> today_ctpt_count { get; set; }
         public Nullable<int> userid { get; set; }
         public Nullable<System.DateTime> Date { get; set; }

@@ -288,8 +288,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     UserName = x.CTPT_UserName,
                     HouseNumber = x.CTPTID,
                     attandDate = Convert.ToDateTime(x.Date).ToString("dd/MM/yyyy"),
-                    TCount = x.today_ctpt_count
-
+                    TCount = x.today_ctpt_count,
+                    Row=x.RowCounts,
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
 
                 if (!string.IsNullOrEmpty(SearchString))
@@ -3175,8 +3175,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
-
-
+                var ctptcountdata = db.SP_CTPT_Collection(fdate, tdate, userId).Where(x => x.RowCounts == param1).FirstOrDefault();
+                param1 = null;
                 var data = db.SP_CTPTGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
@@ -3205,7 +3205,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //ctype = x.CType,
 
 
-                }).OrderByDescending(c => c.gcDate).ToList().ToList();
+                }).Where(x=>x.ReferanceId==ctptcountdata.CTPTID).OrderByDescending(c => c.gcDate).ToList().ToList();
 
                 if (!string.IsNullOrEmpty(SearchString))
                 {

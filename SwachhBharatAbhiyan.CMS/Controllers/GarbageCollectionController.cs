@@ -116,13 +116,14 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult MenuCTPTDetailGarbageIndex(int teamId,string fdate, string tdate)
+        public ActionResult MenuCTPTDetailGarbageIndex(int teamId,string fdate, string tdate,int param1)
         {
 
                 ViewBag.userid = teamId;
                 ViewBag.fdate = fdate;
                 ViewBag.tdate = tdate;
-                return PartialView(@"~/Views/Shared/_CTPTGarbageIndex.cshtml");
+               ViewBag.Rown = param1;
+            return PartialView(@"~/Views/Shared/_CTPTGarbageIndex.cshtml");
           
                 
         }

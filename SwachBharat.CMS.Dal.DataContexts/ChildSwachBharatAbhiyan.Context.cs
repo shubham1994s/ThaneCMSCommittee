@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                  : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -876,23 +876,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ResidentialSlumGarbageCollection_Result>("SP_ResidentialSlumGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter, segidSubParameter);
         }
     
-        public virtual ObjectResult<SP_CTPT_Collection_Result> SP_CTPT_Collection(Nullable<System.DateTime> fDate, Nullable<System.DateTime> tDate, Nullable<int> userId)
-        {
-            var fDateParameter = fDate.HasValue ?
-                new ObjectParameter("FDate", fDate) :
-                new ObjectParameter("FDate", typeof(System.DateTime));
-    
-            var tDateParameter = tDate.HasValue ?
-                new ObjectParameter("TDate", tDate) :
-                new ObjectParameter("TDate", typeof(System.DateTime));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPT_Collection_Result>("SP_CTPT_Collection", fDateParameter, tDateParameter, userIdParameter);
-        }
-    
         public virtual ObjectResult<SP_SWMGarbageCollection_Result> SP_SWMGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> wardNo, Nullable<int> areaId, Nullable<int> segid, Nullable<int> sWMTypeid)
         {
             var appIdParameter = appId.HasValue ?
@@ -942,6 +925,23 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_StreetSweepList_Result> SP_StreetSweepList()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepList_Result>("SP_StreetSweepList");
+        }
+    
+        public virtual ObjectResult<SP_CTPT_Collection_Result> SP_CTPT_Collection(Nullable<System.DateTime> fDate, Nullable<System.DateTime> tDate, Nullable<int> userId)
+        {
+            var fDateParameter = fDate.HasValue ?
+                new ObjectParameter("FDate", fDate) :
+                new ObjectParameter("FDate", typeof(System.DateTime));
+    
+            var tDateParameter = tDate.HasValue ?
+                new ObjectParameter("TDate", tDate) :
+                new ObjectParameter("TDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPT_Collection_Result>("SP_CTPT_Collection", fDateParameter, tDateParameter, userIdParameter);
         }
     }
 }

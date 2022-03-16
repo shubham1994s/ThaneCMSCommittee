@@ -24,7 +24,7 @@
     });
     $("#demoGrid").DataTable({
         "sDom": "ltipr",
-       /* "order": [[12, "desc"]],*/
+        /* "order": [[12, "desc"]],*/
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
         "filter": true, // this is for disable filter (search box)
@@ -43,32 +43,64 @@
                 "visible": false,
                 "searchable": false
             },
+                {
+                    "targets": [1],
+                    "visible": false,
+                    "searchable": false
+                },
             ],
 
         "columns": [
+            { "data": "Row", "name": "Row", "autoWidth": false },
             { "data": "userId", "name": "userId", "autoWidth": false },
             { "data": "attandDate", "name": "attandDate", "autoWidth": false },
             { "data": "HouseNumber", "name": "HouseNumber", "autoWidth": false },
             { "data": "UserName", "name": "UserName", "autoWidth": false },
             { "data": "TCount", "name": "TCount", "autoWidth": false },
-            { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"  onclick="Edit(' + full["userId"] + ')" >View</a>'; }, "width": "10%" },
+            /*  { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"  onclick="Edit(' + full["userId"] + ',' + data[i].HouseNumber +')" >View</a>'; }, "width": "10%" },*/
+
+               /*{ "render": function (data, type, row) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"  onclick="Edit(' + row.userId + ','+row.HouseNumber+')" >View</a>'; }, "width": "10%" },*/
+            { "render": function (data, type, row) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"  onclick="Edit(' + row.userId + ',' + row.Row +')" >View</a>'; }, "width": "10%" },
+           /* < button > class='btnUpdate' type = 'button' onClick = 'testUpdateButton(" + i + ")'</button >*/
         ]
     });
+    //    branchList = response.branches;
+    //    var data = { "aaData": [] };
+
+    //    $.each(response.data, function (i, item) {
+    //    data.aaData.push({
+    //        "userId": item.userId,
+    //        "attandDate": item.attandDate,
+    //        "HouseNumber": item.HouseNumber,
+    //        "UserName": item.UserName,
+    //        "action": "<button> class='btnUpdate' type='button' onClick='testUpdateButton(" + i + ")'</button>"
+    //    });
+    //});
 
 
 });
 
-function Edit(Id) {
+function Edit(userId, HouseNumber) {
     debugger;
-    //alert("Aa");
+   
     var fdate = document.getElementById('txt_fdate').value;
     var tdate = document.getElementById('txt_tdate').value;
-    if (Id != null) {
-        var url = "/GarbageCollection/MenuCTPTDetailGarbageIndex?teamId=" + Id + "&fdate=" + fdate + "&tdate=" + tdate;
+    if (userId != null) {
+        var url = "/GarbageCollection/MenuCTPTDetailGarbageIndex?teamId=" + userId + "&fdate=" + fdate + "&tdate=" + tdate + "&param1=" + HouseNumber;
         window.location.href = url;
      
     }
 };
+
+function testUpdateButton(index) {
+    //alert(index);
+    selectedIndex = index;
+    var name = $("table tr").eq(index).children('td').eq(1).text();
+    var email = $("table tr").eq(index).children('td').eq(2).text();
+    alert(name);
+    alert(email);
+    onBtnUpdateClicked(index, name, email);
+}
 
 function DownloadQRCode(Id) {
     window.location.href = "/GarbagePoint/Export?Id=" + Id;

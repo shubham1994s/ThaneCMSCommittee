@@ -78,6 +78,7 @@
         </div>
         <input type="hidden" name="fdate" id="fdate" value="@ViewBag.fdate">
         <input type="hidden" name="tdate" id="tdate" value="@ViewBag.tdate">
+        <input type="hidden" name="Rnow" id="Rnow" value="@ViewBag.Rown">
     </div>
     <div class="container">
         <br />
@@ -222,7 +223,7 @@
             name = arr[i].split("/");
             arr[i] = name[1] + "/" + name[0] + "/" + name[2];
         }
-
+        var Rnow = $('#Rnow').val();
         txt_fdate = arr[0];
         txt_tdate = arr[1];
         $("#demoGrid").DataTable({
@@ -235,7 +236,7 @@
             "pageLength": 10,
 
             "ajax": {
-                "url": "/Datable/GetJqGridJson?rn=GarbageCTPT&userId=" + UserId + "&fdate=" + txt_fdate + "&tdate=" + txt_tdate ,
+                "url": "/Datable/GetJqGridJson?rn=GarbageCTPT&userId=" + UserId + "&fdate=" + txt_fdate + "&tdate=" + txt_tdate + "&param1=" + Rnow,
                 "type": "POST",
                 "datatype": "json"
             },
