@@ -100,7 +100,6 @@ namespace SwachhBharatAbhiyan.CMS
                         param[5] = new ReportParameter("DBName", DB_Name);
                         rptViewer.ServerReport.SetParameters(param);
 
-                        // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
                     }
                     if (ReportName == "Ghar Sankalan Tapashil_New")
                     {

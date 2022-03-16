@@ -224,13 +224,22 @@
         <div class="col-md-4">
             <div class="form-group">
                 @Html.Label("Type Of Electricity Meter Connection")
-                <input type="text" value="@Model.TOEMC" id="toemc" />
+          
+                <select value="@Model.TOEMC" id="toemc" class="form-control" style = "font-family:Arial, FontAwesome">
+                    <option value="">Select Meter Connection</option>
+                    <option value="Installed meter">Installed meter</option>
+                    <option value="Shared meter">Shared meter</option>
+                </select>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 @Html.Label("Toilet Categary")
-                <input type="text" value="@Model.TOC" id="toc" />
+               <select value="@Model.TOC" id="toc" class="form-control" style = "font-family:Arial, FontAwesome">
+                    <option value="">Select Toilet Categary</option>
+                    <option value="Best Toilet">Best Toilet</option>
+                    <option value="Normal Toilet">Normal Toilet</option>
+                </select>
             </div>
         </div>
     </div>
