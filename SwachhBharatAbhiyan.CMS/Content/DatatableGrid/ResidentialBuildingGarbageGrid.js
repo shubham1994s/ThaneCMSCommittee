@@ -109,7 +109,7 @@
                     }
 
                     else if (full["type1"] == "5") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #186634;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Horticulture Waste)";
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #8BC34A;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Horticulture Waste)";
 
                     }
                     else if (full["type1"] == "4") {
