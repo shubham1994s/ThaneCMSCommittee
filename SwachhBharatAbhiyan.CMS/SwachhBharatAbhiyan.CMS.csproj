@@ -1701,6 +1701,7 @@
     <Content Include="Content\DatatableGrid\CommercialDetailGrid.js" />
     <Content Include="Content\DatatableGrid\CommercialGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\Complaint.js" />
+    <Content Include="Content\DatatableGrid\CTPTAttendenceGrid.js" />
     <Content Include="Content\DatatableGrid\CTPTCountGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\CTPTGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\District.js" />
@@ -3233,6 +3234,8 @@
     <Content Include="Views\HouseScanify\HouseDetails.cshtml" />
     <Content Include="Views\GarbageCollection\CTPTCountGarbageIndex.cshtml" />
     <Content Include="Views\Shared\_CTPTGarbageIndex.cshtml" />
+    <Content Include="Views\Attendence\CTPTMenuIndex.cshtml" />
+    <Content Include="Views\Attendence\CTPTIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
