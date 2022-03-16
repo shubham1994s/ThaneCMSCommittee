@@ -48,34 +48,34 @@ namespace SwachhBharatAbhiyan.CMS
                         wastetype = null;
                     }
 
-                    //if (garbageType == "6")
-                    //{
-                    //    garbageType = "1";
-                    //    wastetype = "1";
-                    //}
+                    if (garbageType == "6")
+                    {
+                        garbageType = "1";
+                        wastetype = "1";
+                    }
 
-                    //if (garbageType == "7")
-                    //{
-                    //    garbageType = "1";
-                    //    wastetype = "2";
-                    //}
-                    //if (garbageType == "8")
-                    //{
-                    //    garbageType = "1";
-                    //    wastetype = "3";
-                    //}
-                    //if (garbageType == "9")
-                    //{
-                    //    garbageType = "1";
-                    //    wastetype = "4";
-                    //}
+                    if (garbageType == "7")
+                    {
+                        garbageType = "1";
+                        wastetype = "2";
+                    }
+                    if (garbageType == "8")
+                    {
+                        garbageType = "1";
+                        wastetype = "3";
+                    }
+                    if (garbageType == "9")
+                    {
+                        garbageType = "1";
+                        wastetype = "4";
+                    }
 
-                        //string urlReportServer = "http://TESTYOCC-1:80/reportServer";
-                        //  string urlReportServer = "http://YOCC-2:82/reportServer";
-                        //string urlReportServer = "http://192.168.100.123/ReportServer";
-                        //string urlReportServer = "http://192.168.100.123/ReportServer";
+                    //string urlReportServer = "http://TESTYOCC-1:80/reportServer";
+                    //  string urlReportServer = "http://YOCC-2:82/reportServer";
+                    //string urlReportServer = "http://192.168.100.123/ReportServer";
+                    //string urlReportServer = "http://192.168.100.123/ReportServer";
 
-                        string urlReportServer = "http://202.65.157.253:85/ReportServer";
+                    string urlReportServer = "http://202.65.157.253:85/ReportServer";
                     //string urlReportServer = "http://COMP-7/ReportServer";
                     //rptViewer.ServerReport.ReportServerCredentials = new ReportServerCredentials("Administrator", "Pass@123", "192.168.100.7");
                     rptViewer.ServerReport.ReportServerCredentials = new ReportServerCredentials("Administrator", "Telec0m#B!9V", "202.65.157.253");
