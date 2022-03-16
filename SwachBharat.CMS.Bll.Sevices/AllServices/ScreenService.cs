@@ -93,6 +93,8 @@ namespace SwachBharat.CMS.Bll.Services
 
                         model.TodayAttandence = data.TodayAttandence;
                         model.TotalAttandence = data.TotalAttandence;
+                        model.TodayCTPTAttandence = data.TodayCTPTAttandence;
+                        model.TotalCTPTAttandence = data.TotalCTPTAttandence;
                         model.HouseCollection = data.TotalHouse;
                         model.PointCollection = data.TotalPoint;
                         model.TotalComplaint = obj.Count();

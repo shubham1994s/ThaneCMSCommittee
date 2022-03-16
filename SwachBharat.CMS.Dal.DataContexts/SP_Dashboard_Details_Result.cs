@@ -15,6 +15,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
     {
         public Nullable<int> TodayAttandence { get; set; }
         public Nullable<int> TotalAttandence { get; set; }
+        public Nullable<int> TodayCTPTAttandence { get; set; }
+        public Nullable<int> TotalCTPTAttandence { get; set; }
         public Nullable<int> TotalHouse { get; set; }
         public Nullable<int> TotalPoint { get; set; }
         public Nullable<int> TotalDump { get; set; }
