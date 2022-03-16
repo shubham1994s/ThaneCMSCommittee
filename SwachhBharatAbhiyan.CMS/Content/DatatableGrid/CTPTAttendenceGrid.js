@@ -59,9 +59,20 @@
                 "visible": false,
                 "searchable": false
             },
-            {
-                "targets": [10],
-                "orderable": false
+            //{
+            //    "targets": [10],
+            //    "orderable": false
+            //    },
+
+                {
+                    "targets": [10],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [11],
+                    "visible": false,
+                    "searchable": false
                 },
                 {
                     "targets": [12],
