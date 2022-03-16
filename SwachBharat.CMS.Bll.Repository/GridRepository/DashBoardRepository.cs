@@ -289,7 +289,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseNumber = x.CTPTID,
                     attandDate = Convert.ToDateTime(x.Date).ToString("dd/MM/yyyy"),
                     TCount = x.today_ctpt_count,
-                    Row=x.RowCounts,
+                    Row = x.RowCounts,
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
 
                 if (!string.IsNullOrEmpty(SearchString))
@@ -798,7 +798,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         data = model.ToList();
 
                     }
-                    return data.OrderByDescending(c => c.userId );
+                    return data.OrderByDescending(c => c.userId);
 
                 }
             }
@@ -823,7 +823,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        
+
 
 
                     }).Where(x => x.isActive == "False" && x.EmployeeType == null).ToList();
@@ -1546,7 +1546,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
         public IEnumerable<SBALocationGridRow> GetLocatioData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string Emptype)
         {
-            if (Emptype ==null)
+            if (Emptype == null)
             {
                 using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -2210,7 +2210,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             Address = checkNull(x.locAddresss).Replace("Unnamed Road,", ""),
                             //gpBeforImage = x.gpBeforImage,
                             //gpAfterImage = x.gpAfterImage,
-                            gpAfterImage = (x.gpAfterImage == ""  || x.gpAfterImage is null ? "/Images/default_not_upload.png" : x.gpAfterImage.Trim()),
+                            gpAfterImage = (x.gpAfterImage == "" || x.gpAfterImage is null ? "/Images/default_not_upload.png" : x.gpAfterImage.Trim()),
                             gpBeforImage = (x.gpBeforImage == "" || x.gpBeforImage is null ? "/Images/default_not_upload.png" : x.gpBeforImage.Trim())
 
                         });
@@ -2299,7 +2299,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     }
                     foreach (var x in data1)
                     {
-                        
+
 
                         data.Add(new SBAGrabageCollectionGridRow
                         {
@@ -2319,8 +2319,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             Lat = x.Lat,
                             Long = x.Long,
                             Address = checkNull(x.locAddresss).Replace("Unnamed Road,", ""),
-                            gpAfterImage = (x.gpAfterImage == "" || x.gpAfterImage is null ? "/Images/default_not_upload.png" :  x.gpAfterImage.Trim()),
-                            gpBeforImage = (x.gpBeforImage == "" || x.gpAfterImage is null ? "/Images/default_not_upload.png" :  x.gpBeforImage.Trim())
+                            gpAfterImage = (x.gpAfterImage == "" || x.gpAfterImage is null ? "/Images/default_not_upload.png" : x.gpAfterImage.Trim()),
+                            gpBeforImage = (x.gpBeforImage == "" || x.gpAfterImage is null ? "/Images/default_not_upload.png" : x.gpBeforImage.Trim())
 
                         });
 
@@ -2373,7 +2373,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //             from t6 in tm.DefaultIfEmpty()
                     //             where (t4.zoneId == param1 || param1 == 0 || param1 == null) && (t3.wardId == param2 || param2 == 0 || param2 == null) && (t3.areaId == param3 || param3 == 0 || param3 == null)
 
-                    var data1 = (from t1 in db.GarbageCollectionDetails.Where(g => g.gcType == 3 & g.gcDate >= fdate & g.gcDate <= tdate & g.EmployeeType==null)
+                    var data1 = (from t1 in db.GarbageCollectionDetails.Where(g => g.gcType == 3 & g.gcDate >= fdate & g.gcDate <= tdate & g.EmployeeType == null)
                                  join t2 in db.UserMasters on t1.userId equals t2.userId
                                  join dy in db.DumpYardDetails on t1.dyId equals dy.dyId into dy
                                  from t3 in dy.DefaultIfEmpty()
@@ -2492,7 +2492,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     QRCode = ThumbnaiUrlCMS + x.Images.Trim(),
                     ReferanceId = x.ReferanceId,
                     swmType = x.swmType,
-                    swmSubType=x.swmSubType
+                    swmSubType = x.swmSubType
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))
                 {
@@ -2514,8 +2514,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                         (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
                                         (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId) + " " +
                                         (string.IsNullOrEmpty(c.QRCode) ? " " : c.QRCode) + " " +
-                                        (string.IsNullOrEmpty(c.swmType) ? " " : c.swmType)).ToUpper().Contains(SearchString.ToUpper())).ToList(); 
-                   
+                                        (string.IsNullOrEmpty(c.swmType) ? " " : c.swmType)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
 
 
                     data = model.ToList();
@@ -2616,7 +2616,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             Long = x.Long,
                             Address = checkNull(x.locAddresss).Replace("Unnamed Road,", ""),
                             gpAfterImage = (x.gpAfterImage == "" || x.gpAfterImage == null ? "/Images/default_not_upload.png" : x.gpAfterImage.Trim()),
-                            gpBeforImage = (x.gpBeforImage == "" || x.gpAfterImage == null ? "/Images/default_not_upload.png" :  x.gpBeforImage.Trim())
+                            gpBeforImage = (x.gpBeforImage == "" || x.gpAfterImage == null ? "/Images/default_not_upload.png" : x.gpBeforImage.Trim())
                         });
 
                         foreach (var item in data)
@@ -2834,7 +2834,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 //                }
 
 
-                var data = db.SP_GarbageCollection(appId, userId, fdate, tdate, param1, param2, param3,param4,param5).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_GarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -2842,10 +2842,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     UserName = x.houseOwner,
                     HouseNumber = x.houseOwner,
                     gcDate = x.gcDate,
-                   // gcType = 1,
-                  
+                    // gcType = 1,
+
                     type1 = x.garbageType.ToString(),
-                    Ctype =x.gcType.ToString(),
+                    Ctype = x.gcType.ToString(),
                     Address = (x.locAddresss).Replace("Unnamed Road,", ""),
                     gpBeforImage = x.gpBeforImage,
                     gpAfterImage = x.gpAfterImage,
@@ -2857,13 +2857,13 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     gpIdfk = x.gcId,
                     gpIdpk = x.gcId,
                     batteryStatus = x.batteryStatus,
-                    los=x.los,
-                    ctype=x.CType,
-                    wet=x.Wet,
-                    dry=x.Dry,
-                    domestic=x.Domestic,
-                    sanitary=x.Sanitary,
-                    SegregationType=(x.Wet+","+x.Dry+","+x.Domestic+","+x.Sanitary).ToString(),
+                    los = x.los,
+                    ctype = x.CType,
+                    wet = x.Wet,
+                    dry = x.Dry,
+                    domestic = x.Domestic,
+                    sanitary = x.Sanitary,
+                    SegregationType = (x.Wet + "," + x.Dry + "," + x.Domestic + "," + x.Sanitary).ToString(),
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
 
@@ -2901,7 +2901,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
             using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-              
+
 
 
                 var data = db.SP_CommercialGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5).Select(x => new SBAGrabageCollectionGridRow
@@ -2929,8 +2929,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     batteryStatus = x.batteryStatus,
                     los = x.los,
                     ctype = x.CType,
-                    wet=x.Wet,
-                    dry=x.Dry,
+                    wet = x.Wet,
+                    dry = x.Dry,
 
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
@@ -3001,7 +3001,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     wet = x.Wet,
                     dry = x.Dry,
                     sanitary = x.Sanitary,
-                    domestic= x.Domestic,
+                    domestic = x.Domestic,
 
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
@@ -3201,11 +3201,11 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     gpIdpk = x.gcId,
                     batteryStatus = x.batteryStatus,
                     los = x.los,
-                    tns=x.TNS
+                    tns = x.TNS
                     //ctype = x.CType,
 
 
-                }).Where(x=>x.ReferanceId==ctptcountdata.CTPTID && Convert.ToDateTime(x.gcDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(ctptcountdata.Date).ToString("dd/MM/yyyy")).OrderByDescending(c => c.gcDate).ToList().ToList();
+                }).Where(x => x.ReferanceId == ctptcountdata.CTPTID && Convert.ToDateTime(x.gcDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(ctptcountdata.Date).ToString("dd/MM/yyyy")).OrderByDescending(c => c.gcDate).ToList().ToList();
 
                 if (!string.IsNullOrEmpty(SearchString))
                 {
@@ -3253,8 +3253,11 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     int a = Convert.ToInt32(x.vtId.Trim());
                     string vt = "";
-                    try { vt = db.VehicleTypes.Where(c => c.vtId == a).FirstOrDefault().description; }
-                    catch { vt = ""; }
+                    if (a != 0)
+                    {
+                        try { vt = db.VehicleTypes.Where(c => c.vtId == a).FirstOrDefault().description; }
+                        catch { vt = ""; }
+                    }
                     ///x.daDate = checkNull(x.daDate.tp);
                     x.endLat = checkNull(x.endLat);
                     x.endLong = checkNull(x.endLong);
@@ -3265,7 +3268,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     x.vehicleNumber = checkNull(x.vehicleNumber);
                     x.daEndNote = checkNull(x.daEndNote);
                     x.daStartNote = checkNull(x.daStartNote);
-                    x.CType= checkNull(x.CType);
+                    x.CType = checkNull(x.CType);
                     string endate = "";
                     if (x.daEndDate == null)
                     {
@@ -3296,7 +3299,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         vtId = vt,
                         vehicleNumber = x.vehicleNumber,
                         CompareDate = x.daDate,
-                        CType=x.CType,
+                        CType = x.CType,
                         daDateTIme = (displayTime + " " + time)
                     });
                 }
@@ -3872,7 +3875,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             //String.Format("{0:0.00}", 123.4567);
                             //IdelTime = workHours
                             //AnsDate = Convert.ToDateTime(x.AnsDate).ToString("dd/MM/yyyy hh:mm tt"),
-                        }) ;
+                        });
                     }
 
 
@@ -4505,11 +4508,11 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseCount = x.HouseCount,
                     PointCount = x.PointCount,
                     DumpCount = x.DumpCount,
-                    LiquidCount=x.LiquidCount,
-                    StreetCount=x.StreetCount,
-                    BuildingCount=x.BuildingCount,
-                    SlumCount=x.SlumCount,
-                    CommercialCount=x.CommercialCount,
+                    LiquidCount = x.LiquidCount,
+                    StreetCount = x.StreetCount,
+                    BuildingCount = x.BuildingCount,
+                    SlumCount = x.SlumCount,
+                    CommercialCount = x.CommercialCount,
                     SWMCount = x.SWMCount,
                     CTPTCount = x.CTPTCount,
                     //StartDate = (string.IsNullOrEmpty(x.StartDate.ToString()) ? "" : Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy")) + " " + x.StartTime,
@@ -4538,7 +4541,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                 //    data = model.ToList();
                 //}
-                return data.OrderByDescending(c => c.LiquidCount).OrderByDescending(c=>c.HouseCount).OrderByDescending(c=>c.StreetCount);
+                return data.OrderByDescending(c => c.LiquidCount).OrderByDescending(c => c.HouseCount).OrderByDescending(c => c.StreetCount);
             }
         }
 
@@ -4633,8 +4636,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     DateTime endDate = Convert.ToDateTime(b + " " + Time2);
                     var houseCount = db.HouseMasters.Where(c => c.modified >= startDate && c.modified <= endDate && c.userId == x.qrEmpId).Count();
 
-                   var residentialbuildingCount = db.HouseMasters.Where(c => c.modified >= startDate && c.modified <= endDate && c.userId == x.qrEmpId && c.CType=="RBW").Count();
-                   var residentialslumCount = db.HouseMasters.Where(c => c.modified >= startDate && c.modified <= endDate && c.userId == x.qrEmpId && c.CType == "RSW").Count();
+                    var residentialbuildingCount = db.HouseMasters.Where(c => c.modified >= startDate && c.modified <= endDate && c.userId == x.qrEmpId && c.CType == "RBW").Count();
+                    var residentialslumCount = db.HouseMasters.Where(c => c.modified >= startDate && c.modified <= endDate && c.userId == x.qrEmpId && c.CType == "RSW").Count();
 
                     var liquidCount = db.LiquidWasteDetails.Where(c => c.lastModifiedDate >= startDate && c.lastModifiedDate <= endDate && c.userId == x.qrEmpId).Count();
                     var streetCount = db.StreetSweepingDetails.Where(c => c.lastModifiedDate >= startDate && c.lastModifiedDate <= endDate && c.userId == x.qrEmpId).Count();
@@ -4676,12 +4679,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         endNote = checkNull(x.endNote),
                         CompareDate = x.startDate,
                         HouseCount = houseCount,
-                        ResidentialBuildingCount=residentialbuildingCount,
-                        ResidentialSlumCount=residentialslumCount,
-                        LiquidCount=liquidCount,
-                        StreetCount= streetCount,
-                        DumpYardCount=dumpyardcount,
-                        CommercialCount= commercialCount,
+                        ResidentialBuildingCount = residentialbuildingCount,
+                        ResidentialSlumCount = residentialslumCount,
+                        LiquidCount = liquidCount,
+                        StreetCount = streetCount,
+                        DumpYardCount = dumpyardcount,
+                        CommercialCount = commercialCount,
                         daDateTIme = (displayTime1 + " " + sTime)
 
 
@@ -5296,7 +5299,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 var data = db.SP_EmployeeHouseCollectionType().ToList();
-               // var data = "1";
+                // var data = "1";
 
                 foreach (var x in data)
                 {
@@ -5324,7 +5327,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         CommercialNotReceived = x.CWNR,
                         CommercialWet = x.CWW,
                         CommercialDry = x.CWD,
-                        CommercialSegregeted=x.CommercialSegregeted
+                        CommercialSegregeted = x.CommercialSegregeted
 
 
                         //Static
@@ -5694,7 +5697,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-       
+
 
         #endregion
     }

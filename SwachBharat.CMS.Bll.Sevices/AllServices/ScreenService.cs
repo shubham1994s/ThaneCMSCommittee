@@ -4318,7 +4318,7 @@ namespace SwachBharat.CMS.Bll.Services
            Text = m.u.userName,
            Value = m.u.userId.ToString()
 
-       }).OrderBy(t => t.Text).ToList();
+       }).OrderBy(t => t.Text).Distinct().ToList();
                 //    user = new SelectList(new List<SelectListItem>{
                 //from u in db.UserMasters
                 //    join b in db.GarbageCollectionDetails
