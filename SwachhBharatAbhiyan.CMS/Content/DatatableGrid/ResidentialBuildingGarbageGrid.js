@@ -108,12 +108,12 @@
                         return "<div class='circle' style='height: 20px;width: 20px;background-color: #fe9436;border-radius: 50%;    vertical-align: middle;display: inline-flex;'></div> (Not Received)";
                     }
 
-                    else if (full["type1"] == "6") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #186634;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Wet Waste)";
+                    else if (full["type1"] == "5") {
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #8BC34A;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Horticulture Waste)";
 
                     }
-                    else if (full["type1"] == "7") {
-                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #66a2d5;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Dry Waste)";
+                    else if (full["type1"] == "4") {
+                        return "<div class='circle' style='height: 20px;width: 20px;background-color: #0000001f;border-radius: 50%;vertical-align: middle;display: inline-flex;'></div> (Construction And Demolition Waste)";
 
                     }
                     else if (full["type1"] == "1") {
