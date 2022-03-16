@@ -22,14 +22,14 @@
     </div>
     <div class="container" style="padding-top:8px">
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-2" hidden="hidden">
                 <div class="controls">
                     @*<label>तारखेपासून / From Date</label>*@
                     <label>From Date</label>
                     <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2" hidden="hidden">
                 <div class="controls">
                     @*<label>तारीख पर्यंत / To Date</label>*@
                     <label>To Date</label>
@@ -43,17 +43,17 @@
                     <option value="@ViewBag.userid">select</option>
                 </select>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4"  hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Zone</label>
                 <select id="ZoneId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4"  hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Ward/Prabhag</label>
                 <select id="WardNo" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4"  hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Area</label>
                 <select id="AreaId" class="form-control form-control form-control-sm"></select>
@@ -69,7 +69,7 @@
             </select>
         </div>-->
         </div>
-        <div class="row">
+        <div class="row"  hidden="hidden">
             <div class="col-sm-2  offset-md-10" style="text-align:right">
                 <div class="controls">
                     <input data-background-color="filter-button-box-color" style="margin-top:8px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
@@ -104,18 +104,17 @@
                         <th>ID</th>
                         <th> Date</th>
                         <th> Employee</th>
+                        <th> CTPT ID</th>
+                        <th> Total Number of Seat </th>
                         <th> Type Of Toilet </th>
                         <th> Name</th>
-                        <th> Collection Address</th>
+                        <th> CTPT Address</th>
                         <th> Vehicle Number</th>
                         <th> Comment </th>
                         <th> Before Image </th>
                         <th> After Image </th>
-                        <th> CTPT ID</th>
                         <th> Battery Status </th>
-                        <th> gcDate </th>
-                        <th> Total Number of Seat </th>
-
+                        @*<th> gcDate </th>*@
                         @*<th>Type</th>*@
                     </tr>
                 </thead>
@@ -254,7 +253,7 @@
                 },
 
                 {
-                    "targets": [8],
+                    "targets": [10],
                     "visible": true,
 
                     "render": function (data, type, full, meta) {
@@ -270,7 +269,7 @@
                     },
                 },
                 {
-                    "targets": [9],
+                    "targets": [11],
                     "visible": true,
 
                     "render": function (data, type, full, meta) {
@@ -288,7 +287,7 @@
 
 
                 {
-                    "targets": [3],
+                    "targets": [5],
 
                     "visible": true,
 
@@ -319,6 +318,8 @@
                 { "data": "Id", "name": "Id", "autoWidth": false },
                 { "data": "attandDate", "name": "attandDate", "autoWidth": false },
                 { "data": "Employee", "name": "Employee", "autoWidth": false },
+                { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": false },
+                { "data": "tns", "name": "tns", "autoWidth": false },
                 { "data": "type1", "name": "type1", "autoWidth": false },
                 { "data": "UserName", "name": "UserName", "autoWidth": false },
                 { "data": "Address", "name": "Address", "autoWidth": false },
@@ -326,10 +327,8 @@
                 { "data": "Note", "autoWidth": false },
                 { "data": "gpBeforImage", "name": "gpBeforImage", "autoWidth": false },
                 { "data": "gpAfterImage", "name": "gpAfterImage", "autoWidth": false },
-                { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": false },
                 { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
-                { "data": "gcDate", "name": "gcDate", "autoWidth": false },
-                { "data": "tns", "name": "tns", "autoWidth": false },
+            /*    { "data": "gcDate", "name": "gcDate", "autoWidth": false },*/
 
 
             ]
