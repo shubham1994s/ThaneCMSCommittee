@@ -84,6 +84,11 @@
         color: #fff;
     }
 
+    .bg-ctptBlue {
+        background-color: #1f508dbd !important;
+        color: #fff;
+    }
+
     .bg-light-green {
         background-color: #8BC34A !important;
         color: #fff;
@@ -328,7 +333,7 @@
         <!--Start New Card-->
     <div class="row w-100">
         <!--Employee Attendence-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/Attendence/MenuIndex';" style="cursor:pointer" id="worker">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/Attendence/MenuIndex';" style="cursor:pointer" id="worker">
             <div class="card flex bg-orange" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s;">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -347,8 +352,32 @@
                 </div>
             </div>
         </div>
+
+
+        <!--CTPT Employee Attendence-->
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/Attendence/MenuIndex';" style="cursor:pointer" id="worker">
+            <div class="card flex bg-ctptBlue" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s;">
+                <div class="card-body">
+                    <div class="d-flex align-items-center text-hover-success d-flex-cus">
+                        <div class="avatar w-56 m-2 no-shadow gd-success worsvg">
+                            @*<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>*@
+                            <svg class="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 36.449 36.448" style="enable-background:new 0 0 36.449 36.448;" xml:space="preserve"><g><g><rect x="12.858" y="14.626" width="4.596" height="4.089" fill="#b5b5b5" /><rect x="18.996" y="14.626" width="4.595" height="4.089" fill="#b5b5b5" /><rect x="25.128" y="14.626" width="4.596" height="4.089" fill="#b5b5b5" /><rect x="6.724" y="20.084" width="4.595" height="4.086" fill="#b5b5b5" /><rect x="12.858" y="20.084" width="4.596" height="4.086" fill="#b5b5b5" /><rect x="18.996" y="20.084" width="4.595" height="4.086" fill="#b5b5b5" /><rect x="25.128" y="20.084" width="4.596" height="4.086" fill="#b5b5b5" /><rect x="6.724" y="25.54" width="4.595" height="4.086" fill="#b5b5b5" /><rect x="12.858" y="25.54" width="4.596" height="4.086" fill="#b5b5b5" /><rect x="18.996" y="25.54" width="4.595" height="4.086" fill="#b5b5b5" /><rect x="25.128" y="25.54" width="4.596" height="4.086" fill="#b5b5b5" /><path d="M31.974,32.198c0,0.965-0.785,1.75-1.75,1.75h-24c-0.965,0-1.75-0.785-1.75-1.75V12.099h-2.5v20.099 c0,2.343,1.907,4.25,4.25,4.25h24c2.344,0,4.25-1.907,4.25-4.25V12.099h-2.5V32.198z" fill="#b5b5b5" /><path d="M30.224,3.948h-1.098V2.75c0-1.517-1.197-2.75-2.67-2.75c-1.474,0-2.67,1.233-2.67,2.75v1.197h-2.74V2.75 c0-1.517-1.197-2.75-2.67-2.75c-1.473,0-2.67,1.233-2.67,2.75v1.197h-2.74V2.75c0-1.517-1.197-2.75-2.67-2.75 c-1.473,0-2.67,1.233-2.67,2.75v1.197H6.224c-2.343,0-4.25,1.907-4.25,4.25v2h2.5h27.5h2.5v-2 C34.474,5.855,32.568,3.948,30.224,3.948z M11.466,7.646c0,0.689-0.525,1.25-1.17,1.25s-1.17-0.561-1.17-1.25V2.75 c0-0.689,0.525-1.25,1.17-1.25s1.17,0.561,1.17,1.25V7.646z M19.546,7.646c0,0.689-0.525,1.25-1.17,1.25s-1.17-0.561-1.17-1.25 V2.75c0-0.689,0.525-1.25,1.17-1.25s1.17,0.561,1.17,1.25V7.646z M27.626,7.646c0,0.689-0.525,1.25-1.17,1.25 c-0.646,0-1.17-0.561-1.17-1.25V2.75c0-0.689,0.524-1.25,1.17-1.25c0.645,0,1.17,0.561,1.17,1.25V7.646z" fill="#b5b5b5" /></g></g></svg>
+                        </div>
+                        <div class="flex">
+                            <div style="width:107%">CTPT Attendance</div>
+                            <div class="text-white mt-2 outfont text-center">@Model.TodayCTPTAttandence / @Model.TotalCTPTAttandence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!--House Count-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuHouseGarbageIndex';" style="cursor:pointer; display:none" id="house">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuHouseGarbageIndex';" style="cursor:pointer; display:none" id="house">
             <div class="card flex bg-light-green" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s;">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -368,7 +397,7 @@
             </div>
         </div>
         <!--Dump Count-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuDumpYardIndex';" style="cursor:pointer;display:none; " id="dump">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuDumpYardIndex';" style="cursor:pointer;display:none; " id="dump">
             <div class="card flex bg-cyan" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s;">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -390,7 +419,7 @@
         </div>
 
         <!--Residential Building Count-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuResidentialBuildingGarbageIndex';" style="cursor:pointer;" id="house">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuResidentialBuildingGarbageIndex';" style="cursor:pointer;" id="house">
             <div class="card flex" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s; background: #4aadc3; color: white ">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -519,7 +548,7 @@
         </div>
 
         <!--Residential Slum Count-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuResidentialSlumGarbageIndex';" style="cursor:pointer;" id="house">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuResidentialSlumGarbageIndex';" style="cursor:pointer;" id="house">
             <div class="card flex " data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s; background: #43be9c ;color:white">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -679,7 +708,7 @@
         </div>
 
         <!--Commercial Count-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuCommercialGarbageIndex';" style="cursor:pointer" id="Commer">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuCommercialGarbageIndex';" style="cursor:pointer" id="Commer">
             <div class="card flex bg-purpal" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s;">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -776,10 +805,8 @@
             </div>
         </div>
 
-
-
         <!--Horiculture-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuHouseGarbageIndex';" style="cursor:pointer;" id="house">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuHouseGarbageIndex';" style="cursor:pointer;" id="house">
             <div class="card flex bg-light-green" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s;">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -831,9 +858,8 @@
             </div>
         </div>
 
-
         <!--Construction Demolition-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuHouseGarbageIndex';" style="cursor:pointer;" id="house">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuHouseGarbageIndex';" style="cursor:pointer;" id="house">
             <div class="card flex" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s; background: #9da198;color:white ">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -938,7 +964,7 @@
             </div>
         </div>
         <!--CTPT Count-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuCTPTGarbageIndex';" style="cursor:pointer" id="dump">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuCTPTGarbageIndex';" style="cursor:pointer" id="dump">
             <div class="card flex bg-blue" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s;">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -985,7 +1011,7 @@
             </div>
         </div>
         <!--SWM Count-->
-        <div class="col-lg-3 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuSWMGarbageIndex';" style="cursor:pointer" id="dump">
+        <div class="col-lg-4 col-md-6 col-sm-12" onclick="location.href = '/GarbageCollection/MenuSWMGarbageIndex';" style="cursor:pointer" id="dump">
             <div class="card flex bg-org" data-sr-id="10" style="visibility: visible; transform: none; opacity: 1; transition: none 0s ease 0s;">
                 <div class="card-body">
                     <div class="d-flex align-items-center text-hover-success d-flex-cus">
@@ -1290,7 +1316,7 @@
 
 
             <!--Dump Yard Pie Chart-->
-            <div class="col-lg-12">
+            <div class="col-lg-12" hidden="hidden">
                 <div class="bar-chart-example card">
                     <div class="card-header d-flex align-items-center">
                         @*<h3 class="h4" style="width:50%">डंप यार्ड तपशील</h3><span style="font-size:14px;font-weight:700;width:50%;text-align:right">एकुण वजन: @Model.TotalGcWeightCount Ton</span>*@

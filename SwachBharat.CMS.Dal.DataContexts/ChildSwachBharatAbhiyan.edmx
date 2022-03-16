@@ -1086,7 +1086,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="to" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)" />
           <FunctionImport Name="SP_HouseScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMOnMapDetails_Result)">
@@ -1200,6 +1199,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="TDate" Mode="In" Type="DateTime" />
             <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2217,16 +2217,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
           <Property Type="Int64" Name="rownum" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="SP_Dashboard_Details_Result">
-          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
-          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
-          <Property Type="Int32" Name="TotalDump" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercialCurrent" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTPTCurrent" Nullable="true" />
-          <Property Type="Int32" Name="TotalSWMCurrent" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="SP_HouseScanify_Count_Result">
           <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
           <Property Type="Int32" Name="TotalHouseLatLongCount" Nullable="true" />
@@ -2706,6 +2696,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="DateTime" Name="Date" Nullable="true" />
           <Property Type="String" Name="CTPTID" Nullable="true" MaxLength="350" />
           <Property Type="String" Name="CTPT_UserName" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_Dashboard_Details_Result">
+          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TodayCTPTAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
+          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
+          <Property Type="Int32" Name="TotalDump" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercialCurrent" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTCurrent" Nullable="true" />
+          <Property Type="Int32" Name="TotalSWMCurrent" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3776,20 +3778,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_Dashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_Dashboard_Details">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result">
-                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
-                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
-                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
-                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
-                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
-                <ScalarProperty Name="TotalCommercialCurrent" ColumnName="TotalCommercialCurrent" />
-                <ScalarProperty Name="TotalCTPTCurrent" ColumnName="TotalCTPTCurrent" />
-                <ScalarProperty Name="TotalSWMCurrent" ColumnName="TotalSWMCurrent" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_HouseScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseScanify_Count">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result">
@@ -4343,6 +4331,22 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="CTPTID" ColumnName="CTPTID" />
                 <ScalarProperty Name="CTPT_UserName" ColumnName="CTPT_UserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Dashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_Dashboard_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result">
+                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
+                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
+                <ScalarProperty Name="TodayCTPTAttandence" ColumnName="TodayCTPTAttandence" />
+                <ScalarProperty Name="TotalCTPTAttandence" ColumnName="TotalCTPTAttandence" />
+                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
+                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
+                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
+                <ScalarProperty Name="TotalCommercialCurrent" ColumnName="TotalCommercialCurrent" />
+                <ScalarProperty Name="TotalCTPTCurrent" ColumnName="TotalCTPTCurrent" />
+                <ScalarProperty Name="TotalSWMCurrent" ColumnName="TotalSWMCurrent" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

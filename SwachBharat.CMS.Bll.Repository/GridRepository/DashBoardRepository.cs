@@ -3205,7 +3205,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //ctype = x.CType,
 
 
-                }).Where(x=>x.ReferanceId==ctptcountdata.CTPTID).OrderByDescending(c => c.gcDate).ToList().ToList();
+                }).Where(x=>x.ReferanceId==ctptcountdata.CTPTID && Convert.ToDateTime(x.gcDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(ctptcountdata.Date).ToString("dd/MM/yyyy")).OrderByDescending(c => c.gcDate).ToList().ToList();
 
                 if (!string.IsNullOrEmpty(SearchString))
                 {
