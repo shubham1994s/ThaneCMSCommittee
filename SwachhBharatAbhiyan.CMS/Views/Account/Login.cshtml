@@ -256,17 +256,17 @@
                         <center>
                         <div class="card login-card">
                             <div class="card-header">
-                                <div class="logo">
-                                    <img style="height: 196px; width: auto;width: 180px; max-width: 100%; " src="~/Content/images/New_Img/Final_New.png" />
+                                <div class="logo" style="padding-top:5%">
+                                    <img style="height: 176px; width: auto;width: 160px; max-width: 100%; " src="~/Content/images/New_Img/Final_New.png" />
                                 </div>
                                 <h5 class="text-center" style=" margin-bottom: 3%; margin-top: 2%;color:#000;font-size:18px"> Thane Mahanagar Palika</h5>
                                 <h4 class="text-center" style=" margin-bottom: 3.5%; margin-top: 2%; color: #524d4d;font-size:14px;">ICT BASED MONITORING TECHNOLOGY</h4>
                             </div>
-                            <div class="card-body bg-blue">
+                            <div class="card-body bg-blue" style="padding-top:15px !important">
                                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
                                 {
                                     @Html.AntiForgeryToken()
-                                    <div class="form d-flex align-items-center">
+                                    <div class="form d-flex align-items-center" style="margin-bottom:15px !important">
                                         <div class="content">
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger", style = "margin-bottom:-15px;display:block;font-size:12px;" })
                                             <h3 class="text-center" style=" margin-bottom: 5%; margin-top: -3%; font-weight: 800;">ADMIN LOGIN</h3>
@@ -287,7 +287,7 @@
                                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "display:block;font-size:11px;margin-top:2px" })
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group" >
                                                 @Html.PasswordFor(m => m.Password, new { @class = "input-material ", @id = "login-password", placeholder = "Password" })
                                                 <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; margin-right: 10px; cursor: pointer; color: #9a9b9d; "></i>
                                                 @*<label for="login-password" class="label-material">पासवर्ड </label>*@
