@@ -105,6 +105,20 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         }
 
+        public ActionResult CTPTUserRoute(int daId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                ViewBag.daId = daId;
+                SBALUserLocationMapView obj = new SBALUserLocationMapView();
+                obj = childRepository.GetHouseByIdforMap(-1, daId);
+                return View(obj);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
         public ActionResult UserRouteData(int daId)
         {
             if (SessionHandler.Current.AppId != 0)
@@ -129,6 +143,23 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 SBALUserLocationMapView obj = new SBALUserLocationMapView();
                 obj = childRepository.GetHouseByIdforMap(-1, daId);          
+                return View(obj);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
+        public ActionResult CTPTRoute(int daId)
+        {
+
+            if (SessionHandler.Current.AppId != 0)
+            {
+                ViewBag.daId = daId;
+                ViewBag.lat = SessionHandler.Current.Latitude;
+                ViewBag.lang = SessionHandler.Current.Logitude;
+                SBALUserLocationMapView obj = new SBALUserLocationMapView();
+                obj = childRepository.GetHouseByIdforMap(-1, daId);
                 return View(obj);
             }
             else

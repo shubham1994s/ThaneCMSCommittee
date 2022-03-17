@@ -3242,6 +3242,8 @@
     <Content Include="Views\Shared\_CTPTGarbageIndex.cshtml" />
     <Content Include="Views\Attendence\CTPTMenuIndex.cshtml" />
     <Content Include="Views\Attendence\CTPTIndex.cshtml" />
+    <Content Include="Views\Attendence\CTPTUserRoute.cshtml" />
+    <Content Include="Views\Attendence\CTPTRoute.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

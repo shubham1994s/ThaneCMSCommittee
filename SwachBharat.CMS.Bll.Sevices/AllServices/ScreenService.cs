@@ -4660,9 +4660,6 @@ namespace SwachBharat.CMS.Bll.Services
                     model.wardName = "";
                 }
 
-
-
-
             }
 
             return model;

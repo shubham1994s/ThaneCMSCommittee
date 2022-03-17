@@ -64,16 +64,16 @@
             //    "orderable": false
             //    },
 
-                {
-                    "targets": [10],
-                    "visible": false,
-                    "searchable": false
-                },
-                {
-                    "targets": [11],
-                    "visible": false,
-                    "searchable": false
-                },
+                //{
+                //    "targets": [10],
+                //    "visible": false,
+                //    "searchable": false
+                //},
+                //{
+                //    "targets": [11],
+                //    "visible": false,
+                //    "searchable": false
+                //},
                 {
                     "targets": [12],
                     "visible": false,
@@ -131,11 +131,11 @@ function test(id) {
 };
 
 function user_route(id) {
-    window.location.href = "/Attendence/UserRoute?daId=" + id;
+    window.location.href = "/Attendence/CTPTUserRoute?daId=" + id;
 };
 
 function house_route(id) {
-    window.location.href = "/Attendence/HouseRoute?daId=" + id;
+    window.location.href = "/Attendence/CTPTRoute?daId=" + id;
 };
 function map(a) {
     window.location.href = "/Location/viewLocation?teamId=" + a;
