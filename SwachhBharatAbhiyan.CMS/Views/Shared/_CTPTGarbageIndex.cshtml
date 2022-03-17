@@ -285,7 +285,23 @@
                     },
                 },
 
+                {
+                    "targets": [4],
 
+                    "visible": true,
+
+                    "render": function (data, type, full, meta) {
+
+
+
+                        if (full["tns"] == null) {
+                            return "Not Mention";
+                        }
+
+
+
+                    },
+                },
                 {
                     "targets": [5],
 
@@ -306,8 +322,8 @@
                         else if (full["type1"] == "U") {
                             return "Urinal";
                         }
-                        else {
-                            return "Not Available";
+                        else if (full["type1"] == null){
+                            return "Not Mention";
                         }
 
                     },

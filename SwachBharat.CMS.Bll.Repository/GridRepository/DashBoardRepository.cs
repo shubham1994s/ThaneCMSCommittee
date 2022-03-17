@@ -3187,7 +3187,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     gcDate = x.gcDate,
                     // gcType = 1,
 
-                    type1 = x.TOT.ToString(),
+                    type1 = x.TOT,
                     Ctype = x.gcType.ToString(),
                     Address = (x.locAddresss).Replace("Unnamed Road,", ""),
                     gpBeforImage = x.gpBeforImage,
