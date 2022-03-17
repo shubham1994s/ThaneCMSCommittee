@@ -2566,6 +2566,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         userId = userName.userId,
                                         userName = userName.userName,
                                         datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                        new_datetime = d.gcDate,
                                         date = dat,
                                         time = tim,
                                         lat = d.Lat,

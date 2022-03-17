@@ -303,16 +303,6 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <span id="starttime" style="display:none"></span>
-                    <span id="endtime"  style="display:none"></span>
-                </div>
-                <div class="col-md-4">
-                    Total Time Duration :<p id="timeduration"></p>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
         </div>
 
     </div>
@@ -364,19 +354,6 @@
     </style>
     <script>
         debugger;
-
-        function diff_minutes(dt2, dt1) {
-
-            var diff = (dt2.getTime() - dt1.getTime()) / 1000;
-            diff /= 60;
-            return Math.abs(Math.round(diff));
-
-        }
-        var dt1 = document.getElementById("starttime").innerHTML;
-        var dt2 = document.getElementById("endtime").innerHTML;
-        var timediff = dt2 - dt1;
-        document.getElementById("timeduration").innerHTML = timediff;
-
         $('#ZoneId').change(function () {
             debugger;
             var selectedText = $(this).find("option:selected").text();
@@ -618,12 +595,7 @@
                         var lat_lng = new Array();
                         var latlngbounds = new google.maps.LatLngBounds();
 
-                        if (markers.length == 1) {
-                            document.getElementById("starttime").innerHTML = data.datetime;
-                        }
-                        else {
-                            document.getElementById("endtime").innerHTML = data.datetime;
-                        }
+
 
                         for (i = 0; i < markers.length; i++) {
 
@@ -670,17 +642,19 @@
                                 }
 
                                 document.getElementById("date").innerHTML = data.date;
+
+                                //document.getElementById("startdate").innerHTML = data[].date;
+
+                                //document.getElementById("enddate").innerHTML = data.date;
                             }
                             if (data.HouseId != null) {
                                 debugger;
                                 var a = i + 1;
                                 if (a == 1) {
                                     temicon = "../Content/images/img/segregationImg/Start-Point.png";
-                                   
                                 }
                                 else if (a == lastmarker) {
                                     temicon = "../Content/images/img/segregationImg/End_Point.png";
-                                  
                                 }
                                 else {
                                     temicon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + a + col
