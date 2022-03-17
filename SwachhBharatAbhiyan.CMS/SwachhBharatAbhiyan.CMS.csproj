@@ -1713,10 +1713,13 @@
     <Content Include="Content\DatatableGrid\GarbagePointGrid.js" />
     <Content Include="Content\DatatableGrid\HouseScanify.js" />
     <Content Include="Content\DatatableGrid\HSAttendenceGrid.js" />
+    <Content Include="Content\DatatableGrid\HSCommercialDetailsGrid.js" />
+    <Content Include="Content\DatatableGrid\HSCTPTDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\HSDumpyardDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\HSHouseDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\HSLiquidDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\HSStreetDetailsGrid.js" />
+    <Content Include="Content\DatatableGrid\HSSWMDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\IdelGrid.js" />
     <Content Include="Content\DatatableGrid\InfotainmentGrid.js" />
     <Content Include="Content\DatatableGrid\InfotainmentResult.js" />

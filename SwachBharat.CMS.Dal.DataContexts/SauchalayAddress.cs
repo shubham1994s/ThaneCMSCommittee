@@ -36,5 +36,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<System.DateTime> lastModifiedDateEntry { get; set; }
         public string TOEMC { get; set; }
         public string TOC { get; set; }
+        public string QRCodeImage { get; set; }
     }
 }

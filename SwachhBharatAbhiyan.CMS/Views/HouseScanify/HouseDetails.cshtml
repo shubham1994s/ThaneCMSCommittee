@@ -85,6 +85,9 @@
 <script src="~/Content/DatatableGrid/HSDumpyardDetailsGrid.js"></script>
 <script src="~/Content/DatatableGrid/HSLiquidDetailsGrid.js"></script>
 <script src="~/Content/DatatableGrid/HSStreetDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSCommercialDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSSWMDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSCTPTDetailsGrid.js"></script>
 <body>
     <input type="hidden" value="@ViewBag.AppId" id="appid" />
 
@@ -101,28 +104,28 @@
             </div>
             <br />
             @*<div class="row">
-            <div class="col-sm-3">
-                <div class="controls">
-                    <label>From Date</label>
-                    <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
+                <div class="col-sm-3">
+                    <div class="controls">
+                        <label>From Date</label>
+                        <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="controls">
-                    <label>To Date</label>
-                    <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
+                <div class="col-sm-3">
+                    <div class="controls">
+                        <label>To Date</label>
+                        <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <label>Select Employee</label>
-                <select id="selectnumber" class="form-control form-control form-control-sm"></select>
-            </div>
-            <div class="col-sm-2">
-                <div class="controls">
-                    <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                <div class="col-sm-4">
+                    <label>Select Employee</label>
+                    <select id="selectnumber" class="form-control form-control form-control-sm"></select>
                 </div>
-            </div>
-        </div>*@
+                <div class="col-sm-2">
+                    <div class="controls">
+                        <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                    </div>
+                </div>
+            </div>*@
             <div class="row form" style="text-align: center; display: inline-flex; margin-left: 300px;">
                 <label class="check-container">
                     <b>House</b>
@@ -130,10 +133,23 @@
                     <span class="checkmark"></span>
                 </label>
                 <label class="check-container">
-                    <b>Dump Yard</b>
+                    <b>Commercial</b>
                     <input type="radio" value="1" name="radio">
                     <span class="checkmark"></span>
                 </label>
+
+                <label class="check-container">
+                    <b>CTPT</b>
+                    <input type="radio" value="4" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="check-container">
+                    <b>SWM</b>
+                    <input type="radio" value="5" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+
                 <label class="check-container">
                     <b>Liquid</b>
                     <input type="radio" value="2" name="radio">
@@ -165,10 +181,7 @@
                 </div>
                 <div class="col-sm-2">
                     <div class="controls">
-                        <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records"  onclick="Filter()" />
-                        @*<input data-background-color="filter-button-box-color" style="margin-top:28px; " class="btn btn-sm btn-success filter-button-style"  type="button" value="Filter Records" id="filterDump" onclick="SearchDump()"  />
-                        <input data-background-color="filter-button-box-color" style="margin-top: 28px; " class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filterLiquid" onclick="SearchLiquid()" />
-                        <input data-background-color="filter-button-box-color" style="margin-top: 28px; " class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filterStreet" onclick="SearchStreet()" />*@
+                        <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" onclick="Filter()" />
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -201,15 +214,15 @@
                 </table>
             </div>
         </div>
-        <div class="container" style="overflow-y:auto;display:none" id="divDump">
+        <div class="container" style="overflow-y:auto;display:none" id="divCommercial">
             <br />
             <div style="width:100%; margin:0 auto;">
-                <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="sDump" class="form-control form-control-sm" onkeyup="SearchDump()"></label>
+                <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="sDump" class="form-control form-control-sm" onkeyup="SearchCommercial()"></label>
                 <table id="demoGrid1" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0" style="font-size:14px">
                     <thead style="font-size:14px">
                         <tr>
                             <th>Id</th>
-                            <th> Dumpyard ID</th>
+                            <th> Commercial ID</th>
                             <th> Employee Name</th>
                             <th> Latiude</th>
                             <th> Longitude</th>
@@ -248,6 +261,46 @@
                         <tr>
                             <th>Id</th>
                             <th> Street ID</th>
+                            <th> Employee Name</th>
+                            <th> Latiude</th>
+                            <th> Longitude</th>
+                            <th> Photo</th>
+                            @*<th> Action</th>*@
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="container" style="overflow-y:auto;display:none" id="divCTPT">
+            <br />
+            <div style="width:100%; margin:0 auto;">
+                <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="sStreet" class="form-control form-control-sm" onkeyup="SearchCTPT()"></label>
+                <table id="demoGrid4" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0" style="font-size:14px">
+                    <thead style="font-size:14px">
+                        <tr>
+                            <th>Id</th>
+                            <th> CTPT ID</th>
+                            <th> Employee Name</th>
+                            <th> Latiude</th>
+                            <th> Longitude</th>
+                            <th> Photo</th>
+                            @*<th> Action</th>*@
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="container" style="overflow-y:auto;display:none" id="divSWM">
+            <br />
+            <div style="width:100%; margin:0 auto;">
+                <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="sStreet" class="form-control form-control-sm" onkeyup="SearchSWM()"></label>
+                <table id="demoGrid5" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0" style="font-size:14px">
+                    <thead style="font-size:14px">
+                        <tr>
+                            <th>Id</th>
+                            <th> SWM ID</th>
                             <th> Employee Name</th>
                             <th> Latiude</th>
                             <th> Longitude</th>
@@ -317,41 +370,67 @@
 
                 if (RadioValue == 0) {
                     $("#divHouse").show();
-                    $("#divDump").hide();
+                    $("#divCommercial").hide();
                     $("#divLiquid").hide();
                     $("#divStreet").hide();
+                    $("#divCTPT").hide();
+                    $("#divSWM").hide();
                     loadGridHouse();
                 }
                 else if (RadioValue == 1) {
                     $("#divHouse").hide();
-                    $("#divDump").show();
+                    $("#divCommercial").show();
                     $("#divLiquid").hide();
                     $("#divStreet").hide();
-                    // loadGridDump();
+                    $("#divCTPT").hide();
+                    $("#divSWM").hide();
                 }
                 else if (RadioValue == 2) {
                     $("#divHouse").hide();
-                    $("#divDump").hide();
+                    $("#divCommercial").hide();
                     $("#divLiquid").show();
                     $("#divStreet").hide();
-                    //    loadGridLiquid();
+                    $("#divCTPT").hide();
+                    $("#divSWM").hide();
                 }
                 else if (RadioValue == 3) {
                     $("#divHouse").hide();
-                    $("#divDump").hide();
+                    $("#divCommercial").hide();
                     $("#divLiquid").hide();
                     $("#divStreet").show();
+                    $("#divCTPT").hide();
+                    $("#divSWM").hide();
+                }
+
+                else if (RadioValue == 4) {
+                    $("#divHouse").hide();
+                    $("#divCommercial").hide();
+                    $("#divLiquid").hide();
+                    $("#divStreet").hide();
+                    $("#divCTPT").show();
+                    $("#divSWM").hide();
+                }
+
+                else if (RadioValue == 5) {
+                    $("#divHouse").hide();
+                    $("#divCommercial").hide();
+                    $("#divLiquid").hide();
+                    $("#divStreet").hide();
+                    $("#divCTPT").hide();
+                    $("#divSWM").show();
                     //    loadGridStreet();
                 }
 
 
 
 
-
             });
-            var CheckDump = '0';
+            var CheckCommercial = '0';
             var CheckLiquid = '0';
             var CheckStreet = '0';
+            var CheckCTPT = '0';
+            var CheckSWM = '0';
+
     $('input[type=radio][name=radio]').change(function () {
         var date = new Date();
 
@@ -372,20 +451,24 @@
         var RadioValue = $("input[name='radio']:checked").val();
         if (RadioValue == 0) {
             $("#divHouse").show();
-            $("#divDump").hide();
+            $("#divCommercial").hide();
             $("#divLiquid").hide();
             $("#divStreet").hide();
+            $("#divCTPT").hide();
+            $("#divSWM").hide();
         //    loadGridHouse();
         }
         else if (RadioValue == 1) {
             debugger;
             $("#divHouse").hide();
-            $("#divDump").show();
+            $("#divCommercial").show();
             $("#divLiquid").hide();
             $("#divStreet").hide();
-            if (CheckDump == '0') {
-                loadGridDump();
-                CheckDump = '1';
+            $("#divCTPT").hide();
+            $("#divSWM").hide();
+            if (CheckCommercial == '0') {
+                loadGridCommercial();
+                CheckCommercial = '1';
             }
             else {
 
@@ -394,9 +477,11 @@
         }
         else if (RadioValue == 2) {
             $("#divHouse").hide();
-            $("#divDump").hide();
+            $("#divCommercial").hide();
             $("#divLiquid").show();
             $("#divStreet").hide();
+            $("#divCTPT").hide();
+            $("#divSWM").hide();
             if (CheckLiquid == '0') {
                 loadGridLiquid();
                 CheckLiquid = '1';
@@ -408,9 +493,11 @@
         }
         else if (RadioValue == 3) {
             $("#divHouse").hide();
-            $("#divDump").hide();
+            $("#divCommercial").hide();
             $("#divLiquid").hide();
             $("#divStreet").show();
+            $("#divCTPT").hide();
+            $("#divSWM").hide();
             if (CheckStreet == '0') {
                 loadGridStreet();
                 CheckStreet = '1';
@@ -419,6 +506,40 @@
 
             }
           
+        }
+
+        else if (RadioValue == 4) {
+            $("#divHouse").hide();
+            $("#divCommercial").hide();
+            $("#divLiquid").hide();
+            $("#divStreet").hide();
+            $("#divCTPT").show();
+            $("#divSWM").hide();
+            if (CheckCTPT == '0') {
+                loadGridCTPT();
+                CheckCTPT = '1';
+            }
+            else {
+
+            }
+
+        }
+
+        else if (RadioValue == 5) {
+            $("#divHouse").hide();
+            $("#divCommercial").hide();
+            $("#divLiquid").hide();
+            $("#divStreet").hide();
+            $("#divCTPT").hide();
+            $("#divSWM").show();
+            if (CheckSWM == '0') {
+                loadGridSWM();
+                CheckSWM = '1';
+            }
+            else {
+
+            }
+
         }
     });
 
@@ -451,31 +572,60 @@
         var RadioValue = $("input[name='radio']:checked").val();
         if (RadioValue == 0) {
             $("#divHouse").show();
-            $("#divDump").hide();
+            $("#divCommercial").hide();
             $("#divLiquid").hide();
             $("#divStreet").hide();
+            $("#divCTPT").hide();
+            $("#divSWM").hide();
             SearchHouse();
         }
         else if (RadioValue == 1) {
             $("#divHouse").hide();
-            $("#divDump").show();
+            $("#divCommercial").show();
             $("#divLiquid").hide();
             $("#divStreet").hide();
-            SearchDump();
+            $("#divCTPT").hide();
+            $("#divSWM").hide();
+            SearchCommercial();
         }
         else if (RadioValue == 2) {
             $("#divHouse").hide();
-            $("#divDump").hide();
+            $("#divCommercial").hide();
             $("#divLiquid").show();
             $("#divStreet").hide();
+            $("#divCTPT").hide();
+            $("#divSWM").hide();
             SearchLiquid();
         }
         else if (RadioValue == 3) {
             $("#divHouse").hide();
-            $("#divDump").hide();
+            $("#divCommercial").hide();
             $("#divLiquid").hide();
             $("#divStreet").show();
+            $("#divCTPT").hide();
+            $("#divSWM").hide();
             SearchStreet();
+        }
+        else if (RadioValue == 4) {
+            $("#divHouse").hide();
+            $("#divCommercial").hide();
+            $("#divLiquid").hide();
+            $("#divStreet").hide();
+            $("#divCTPT").show();
+            $("#divSWM").hide();
+            SearchCTPT();
+
+        }
+
+        else if (RadioValue == 5) {
+            $("#divHouse").hide();
+            $("#divCommercial").hide();
+            $("#divLiquid").hide();
+            $("#divStreet").hide();
+            $("#divCTPT").hide();
+            $("#divSWM").show();
+            SearchSWM();
+
         }
     }
 </script>

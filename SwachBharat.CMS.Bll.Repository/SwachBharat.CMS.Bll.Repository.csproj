@@ -91,10 +91,13 @@
     <Compile Include="GridRepository\Grid\HouseDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\HouseScanifyGridRepository.cs" />
     <Compile Include="GridRepository\Grid\HSAttendanceGridRepository.cs" />
+    <Compile Include="GridRepository\Grid\HSCommercialDetailsGridRepository.cs" />
+    <Compile Include="GridRepository\Grid\HSCTPTDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\HSDumpyardDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\HSHouseDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\HSLiquidDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\HSStreetDetailsGridRepository.cs" />
+    <Compile Include="GridRepository\Grid\HSSWMDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\IdelGridRepository.cs" />
     <Compile Include="GridRepository\Grid\InfotainmentGridRepository.cs" />
     <Compile Include="GridRepository\Grid\InfotainmentPlayerGridRepository.cs" />
