@@ -1581,7 +1581,7 @@ $(document).ready(function () {
                         interval: 1
                     },
                     axisY: {
-                        title: "House Collection",
+                        title: "Residential Collection",
                     },
                     axisY2: {
                         labelFontSize: 10,
