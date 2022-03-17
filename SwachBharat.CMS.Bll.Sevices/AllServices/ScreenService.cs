@@ -3705,7 +3705,7 @@ namespace SwachBharat.CMS.Bll.Services
                         gcDate = x.gcDate,
                         gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock                                               
                         SWMLat = x.swmLat,
-                        SWMLong = x.swmLat,
+                        SWMLong = x.swmLong,
                         SWMType = x.swmType,
 
                     });
