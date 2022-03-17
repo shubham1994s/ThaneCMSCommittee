@@ -36,5 +36,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string WasteType { get; set; }
         public string swmType { get; set; }
         public string swmSubType { get; set; }
+        public string QRCodeImage { get; set; }
     }
 }
