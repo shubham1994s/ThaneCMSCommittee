@@ -4,14 +4,15 @@ function loadGridCTPT() {
 
 
     $("#demoGrid4").dataTable().fnDestroy();
+    $("#demoGrid4").show();
     $("#demoGrid4").DataTable({
         "sDom": "ltipr",
         //   "order": [[11, "desc"]],
-        "processing": true, // for show progress bar
+     //   "processing": true, // for show progress bar
         "serverSide": true, // for process server side
-        "filter": true, // this is for disable filter (search box)
-        "orderMulti": false, // for disable multiple column at once
-        //"pageLength": 10,
+     //   "filter": true, // this is for disable filter (search box)
+      //  "orderMulti": false, // for disable multiple column at once
+     //   "pageLength": 10,
 
         "ajax": {
             "url": "/Datable/GetJqGridJson?rn=HSCTPTDetails",
@@ -56,7 +57,7 @@ function loadGridCTPT() {
 
     });
 
-
+  
     // SearchDump();
 }
 
