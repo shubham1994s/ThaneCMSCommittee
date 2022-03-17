@@ -176,6 +176,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHouseByIdforMap(teamId, daId);
         }
 
+        public SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId)
+        {
+            return screenService.GetCTPTByIdforMap(teamId, daId);
+        }
+
         public SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType)
         {
             return screenService.GetLiquidByIdforMap(teamId, daId, EmpType);
@@ -247,10 +252,20 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetUserAttenRoute(daId);
         }
 
+        public List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int daId)
+        {
+            return screenService.GetCTPTUserAttenRoute(daId);
+        }
+
         //Added By Saurabh(11 July 2019)
         public List<SBALUserLocationMapView> GetHouseAttenRoute(int daId,int areaid)
         {
             return screenService.GetHouseAttenRoute(daId,areaid);
+        }
+
+        public List<SBALUserLocationMapView> GetCTPTAttenRoute(int daId, int areaid)
+        {
+            return screenService.GetCTPTAttenRoute(daId, areaid);
         }
 
         public List<SBALUserLocationMapView> GetLiquidAttenRoute(int daId, int areaid)

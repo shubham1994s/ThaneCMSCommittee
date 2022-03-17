@@ -111,7 +111,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             {
                 ViewBag.daId = daId;
                 SBALUserLocationMapView obj = new SBALUserLocationMapView();
-                obj = childRepository.GetHouseByIdforMap(-1, daId);
+                obj = childRepository.GetCTPTByIdforMap(-1, daId);
                 return View(obj);
             }
             else
@@ -125,6 +125,21 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             {
                 List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
                 obj = childRepository.GetUserAttenRoute(daId);
+                // return Json(obj);
+                return Json(obj, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
+
+        public ActionResult CTPTUserRouteData(int daId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
+                obj = childRepository.GetCTPTUserAttenRoute(daId);
                 // return Json(obj);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
@@ -159,7 +174,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 SBALUserLocationMapView obj = new SBALUserLocationMapView();
-                obj = childRepository.GetHouseByIdforMap(-1, daId);
+                obj = childRepository.GetCTPTByIdforMap(-1, daId);
                 return View(obj);
             }
             else
@@ -176,6 +191,22 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 obj = childRepository.GetHouseAttenRoute(daId, areaid);
                 // return Json(obj);
                
+                return Json(obj, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
+        public ActionResult CTPTRouteData(int daId, int areaid)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+
+                List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
+                obj = childRepository.GetCTPTAttenRoute(daId, areaid);
+                // return Json(obj);
+
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
             else

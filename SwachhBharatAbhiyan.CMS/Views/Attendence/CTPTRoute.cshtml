@@ -543,7 +543,7 @@
             $.ajax({
 
                 type: "post",
-                url: "/Attendence/HouseRouteData?daId=" + industries + "&areaid=" + areaid,
+                url: "/Attendence/CTPTRouteData?daId=" + industries + "&areaid=" + areaid,
                 datatype: "json",
                 traditional: true,
                 success: function (m) {
@@ -870,7 +870,7 @@
                                     }
                                     if (data.HouseId != null) {
                                         google.maps.event.addListener(marker, "click", function (e) {
-                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>House Details:</b></h5><p><b>House-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Mobile No:</b>' + data.OwnerMobileNo + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>House Address:</b>' + data.HouseAddress + '</p><p><b>Garbage type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
+                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>CTPT Details:</b></h5><p><b>CTPT-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Mobile No:</b>' + data.OwnerMobileNo + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>CTPT Address:</b>' + data.HouseAddress + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
                                             infoWindow.open(map, marker);
 
                                             //animateCircle(poly,9);
