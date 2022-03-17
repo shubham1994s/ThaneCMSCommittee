@@ -425,11 +425,7 @@
 
 
             });
-            var CheckCommercial = '0';
-            var CheckLiquid = '0';
-            var CheckStreet = '0';
-            var CheckCTPT = '0';
-            var CheckSWM = '0';
+        
 
     $('input[type=radio][name=radio]').change(function () {
         var date = new Date();
@@ -456,7 +452,7 @@
             $("#divStreet").hide();
             $("#divCTPT").hide();
             $("#divSWM").hide();
-        //    loadGridHouse();
+            loadGridHouse();
         }
         else if (RadioValue == 1) {
             debugger;
@@ -466,14 +462,9 @@
             $("#divStreet").hide();
             $("#divCTPT").hide();
             $("#divSWM").hide();
-            if (CheckCommercial == '0') {
+           
                 loadGridCommercial();
-                CheckCommercial = '1';
-            }
-            else {
-
-            }
-              
+            
         }
         else if (RadioValue == 2) {
             $("#divHouse").hide();
@@ -482,13 +473,9 @@
             $("#divStreet").hide();
             $("#divCTPT").hide();
             $("#divSWM").hide();
-            if (CheckLiquid == '0') {
+         
                 loadGridLiquid();
-                CheckLiquid = '1';
-            }
-            else {
-
-            }
+              
            
         }
         else if (RadioValue == 3) {
@@ -498,14 +485,9 @@
             $("#divStreet").show();
             $("#divCTPT").hide();
             $("#divSWM").hide();
-            if (CheckStreet == '0') {
+        
                 loadGridStreet();
-                CheckStreet = '1';
-            }
-            else {
-
-            }
-          
+               
         }
 
         else if (RadioValue == 4) {
@@ -515,13 +497,9 @@
             $("#divStreet").hide();
             $("#divCTPT").show();
             $("#divSWM").hide();
-            if (CheckCTPT == '0') {
+            
                 loadGridCTPT();
-                CheckCTPT = '1';
-            }
-            else {
-
-            }
+              
 
         }
 
@@ -531,15 +509,9 @@
             $("#divLiquid").hide();
             $("#divStreet").hide();
             $("#divCTPT").hide();
-            $("#divSWM").show();
-            if (CheckSWM == '0') {
+            $("#divSWM").show();    
                 loadGridSWM();
-                CheckSWM = '1';
-            }
-            else {
-
-            }
-
+           
         }
     });
 
