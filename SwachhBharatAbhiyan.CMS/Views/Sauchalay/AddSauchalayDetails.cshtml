@@ -134,7 +134,7 @@
                 @*@Html.Label("नाव / Name")*@
                 @Html.Label("Lattitude")
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(model => model.Lat, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                @Html.TextBoxFor(model => model.Lat, new { @class = "form-control", @readonly = "readonly", style = "font-family:Arial, FontAwesome" })
                 @Html.ValidationMessageFor(model => model.Lat, "", new { @class = "text-danger" })
                 <span class="text-danger" id="err_lat"></span>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -147,7 +147,7 @@
                 @*@Html.Label("नाव / Name")*@
                 @Html.Label("Longitude")
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(model => model.Long, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                @Html.TextBoxFor(model => model.Long, new { @class = "form-control", @readonly = "readonly", style = "font-family:Arial, FontAwesome" })
                 @Html.ValidationMessageFor(model => model.Long, "", new { @class = "text-danger" })
                 <span class="text-danger" id="err_log"></span>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>

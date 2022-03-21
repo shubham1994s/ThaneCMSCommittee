@@ -2566,7 +2566,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         userId = userName.userId,
                                         userName = userName.userName,
                                         datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
-                                        new_datetime = d.gcDate,
+                                        new_datetime = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
                                         date = dat,
                                         time = tim,
                                         lat = d.Lat,
@@ -2596,6 +2596,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     userId = userName.userId,
                                     userName = userName.userName,
                                     datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                    new_datetime = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
                                     date = dat,
                                     time = tim,
                                     lat = d.Lat,
@@ -2630,6 +2631,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         userId = userName.userId,
                                         userName = userName.userName,
                                         datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                        new_datetime = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
                                         date = dat,
                                         time = tim,
                                         lat = d.Lat,
@@ -2662,6 +2664,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     userId = userName.userId,
                                     userName = userName.userName,
                                     datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                    new_datetime = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
                                     date = dat,
                                     time = tim,
                                     lat = d.Lat,
@@ -3705,7 +3708,7 @@ namespace SwachBharat.CMS.Bll.Services
                         gcDate = x.gcDate,
                         gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock                                               
                         SWMLat = x.swmLat,
-                        SWMLong = x.swmLat,
+                        SWMLong = x.swmLong,
                         SWMType = x.swmType,
 
                     });

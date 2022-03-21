@@ -57,7 +57,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         public string SerielNo { get; set; }
 
-        public Nullable<System.DateTime> new_datetime { get; set; }
+        public string new_datetime { get; set; }
 
 
 
