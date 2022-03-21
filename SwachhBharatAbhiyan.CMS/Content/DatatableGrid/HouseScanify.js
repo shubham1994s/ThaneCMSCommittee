@@ -97,7 +97,12 @@ $(document).ready(function () {
             "targets": [2],
             "visible": false,
             "searchable": false
-        }],
+                },
+                {
+                    "targets": [11],
+                    "visible": false,
+                    "searchable": false
+                }            ],
 
 
         "columns": [
