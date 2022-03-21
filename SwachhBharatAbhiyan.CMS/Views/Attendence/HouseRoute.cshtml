@@ -140,7 +140,7 @@
             <spn style="font-weight: bold; font-size: 16px;">Search By :</spn>  <input type="radio" name="filter" checked="checked" value="1" style="margin-left: 1%;" /> Zone/Ward/Area
 
             <input type="radio" name="filter" value="2" style="margin-left: 1%;" /> Pin No
-            <input type="radio" name="filter" value="3" style="margin-left: 1%;" /> Date Time
+            <input type="radio" name="filter" value="3" style="margin-left: 1%;" /> Time
             <div id="filter1" class="desc">
 
 
@@ -874,7 +874,12 @@
                                 difference -= hourDifference * 3600;
                                 let minuteDifference = Math.floor(difference / 60);
                                 difference -= minuteDifference * 60;
-                                timediff.innerHTML = `${hourDifference} hours, ${minuteDifference} minutes`;
+                                if (hourDifference >= 1) {
+                                    timediff.innerHTML = `${hourDifference} hours, ${minuteDifference} minutes`;
+                                }
+                                else {
+                                    timediff.innerHTML = `${minuteDifference} minutes`;
+                                }
                             }
 
                             //End Time Difference Code
