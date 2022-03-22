@@ -107,7 +107,7 @@
                     TlistItems.Add(new SelectListItem { Text = "Urinal", Value = "U" });
 
                 }
-                @Html.DropDownListFor(model => model.Tot, TlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                @Html.DropDownListFor(model => model.Tot, TlistItems, new {@disabled="disabled", style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
 
                 <span class="text-danger" id="err_tot"></span>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>

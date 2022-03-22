@@ -19,7 +19,12 @@
             "targets": [0],
             "visible": false,
             "searchable": false
-        },
+            },
+                {
+                    "targets": [11],
+                    "visible": false,
+                    "searchable": false
+                },
          {
                  "targets": [8],
                  "visible": false,
