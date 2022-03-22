@@ -76,6 +76,9 @@
             { "data": "ResidentialSlumCount", "name": "ResidentialSlumCount", "autoWidth": true },
             { "data": "LiquidCount", "name": "LiquidCount", "autoWidth": true },
             { "data": "StreetCount", "name": "StreetCount", "autoWidth": true },
+            { "data": "CommercialCount", "name": "CommercialCount", "autoWidth": true },
+            { "data": "CTPTCount", "name": "CTPTCount", "autoWidth": true },
+            { "data": "SWMCount", "name": "SWMCount", "autoWidth": true },
            // { "data": "DumpYardCount", "name": "DumpYardCount", "autoWidth": true },
             /* { "data": "CommercialCount", "name": "CommercialCount", "autoWidth": true },*/
             { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
