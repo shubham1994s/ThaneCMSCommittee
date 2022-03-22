@@ -332,7 +332,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             }
             else if (type == 1)
             {
-                strType = "DumpyardQRCodeImage";
+                strType = "CommercialQRCodeImage";
             }
             else if (type == 2)
             {
@@ -341,6 +341,14 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else if (type == 3)
             {
                 strType = "StreetQRCodeImage";
+            }
+            else if (type == 4)
+            {
+                strType = "CTPTQRCodeImage";
+            }
+            else if (type == 5)
+            {
+                strType = "SWMQRCodeImage";
             }
             //strFileDownloadName = String.Format("Zip_{0}_{1}.zip", strType, DateTime.Now.ToString("yyyy-MMM-dd-HHmmss"));
             if (string.IsNullOrEmpty(fdate) || string.IsNullOrEmpty(tdate))

@@ -6151,12 +6151,12 @@ namespace SwachBharat.CMS.Bll.Services
                         }
                         else if (type == 1)
                         {
-                            data = db.DumpYardDetails.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.dyLat) && !string.IsNullOrEmpty(a.dyLong) && !string.IsNullOrEmpty(a.QRCodeImage) && a.userId == UserId).Select(x => new SBAHSHouseDetailsGrid
+                            data = db.CommercialMasters.Where(a => a.modified > fDate && a.modified < tDate && !string.IsNullOrEmpty(a.commercialLat) && !string.IsNullOrEmpty(a.commercialLong) && !string.IsNullOrEmpty(a.QRCodeImage) && a.userId == UserId).Select(x => new SBAHSHouseDetailsGrid
                             {
-                                houseId = x.dyId,
-                                Name = x.dyName,
-                                HouseLat = x.dyLat,
-                                HouseLong = x.dyLong,
+                                houseId = x.commercialId,
+                                Name = x.commercialOwner,
+                                HouseLat = x.commercialLat,
+                                HouseLong = x.commercialLong,
                                 QRCodeImage = x.QRCodeImage,
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
@@ -6185,6 +6185,30 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
+                        else if (type == 4)
+                        {
+                            data = db.SauchalayAddresses.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.Lat) && !string.IsNullOrEmpty(a.Long) && !string.IsNullOrEmpty(a.QRCodeImage) && a.userId == UserId).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.Id,
+                                Name = x.Name,
+                                HouseLat = x.Lat,
+                                HouseLong = x.Long,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 5)
+                        {
+                            data = db.SWMMasters.Where(a => a.modified > fDate && a.modified < tDate && !string.IsNullOrEmpty(a.swmLat) && !string.IsNullOrEmpty(a.swmLong) && !string.IsNullOrEmpty(a.QRCodeImage) && a.userId == UserId).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.swmId,
+                                Name = x.swmName,
+                                HouseLat = x.swmLat,
+                                HouseLong = x.swmLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
                     }
                     else
                     {
@@ -6202,12 +6226,12 @@ namespace SwachBharat.CMS.Bll.Services
                         }
                         else if (type == 1)
                         {
-                            data = db.DumpYardDetails.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.dyLat) && !string.IsNullOrEmpty(a.dyLong) && !string.IsNullOrEmpty(a.QRCodeImage)).Select(x => new SBAHSHouseDetailsGrid
+                            data = db.CommercialMasters.Where(a => a.modified > fDate && a.modified < tDate && !string.IsNullOrEmpty(a.commercialLat) && !string.IsNullOrEmpty(a.commercialLong) && !string.IsNullOrEmpty(a.QRCodeImage)).Select(x => new SBAHSHouseDetailsGrid
                             {
-                                houseId = x.dyId,
-                                Name = x.dyName,
-                                HouseLat = x.dyLat,
-                                HouseLong = x.dyLong,
+                                houseId = x.commercialId,
+                                Name = x.commercialOwner,
+                                HouseLat = x.commercialLat,
+                                HouseLong = x.commercialLong,
                                 QRCodeImage = x.QRCodeImage,
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
@@ -6236,7 +6260,30 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-
+                        else if (type == 4)
+                        {
+                            data = db.SauchalayAddresses.Where(a => a.lastModifiedDate > fDate && a.lastModifiedDate < tDate && !string.IsNullOrEmpty(a.Lat) && !string.IsNullOrEmpty(a.Long) && !string.IsNullOrEmpty(a.QRCodeImage)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.Id,
+                                Name = x.Name,
+                                HouseLat = x.Lat,
+                                HouseLong = x.Long,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 5)
+                        {
+                            data = db.SWMMasters.Where(a => a.modified > fDate && a.modified < tDate && !string.IsNullOrEmpty(a.swmLat) && !string.IsNullOrEmpty(a.swmLong) && !string.IsNullOrEmpty(a.QRCodeImage)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.swmId,
+                                Name = x.swmName,
+                                HouseLat = x.swmLat,
+                                HouseLong = x.swmLong,
+                                QRCodeImage = x.QRCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
 
                     }
                 }
