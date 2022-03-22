@@ -35,5 +35,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
 
         public int ResidentialBuildingCount { get; set; }
         public int ResidentialSlumCount { get; set; }
+
+        public int SWMCount { get; set; }
+        public int CTPTCount { get; set; }
     }
 }

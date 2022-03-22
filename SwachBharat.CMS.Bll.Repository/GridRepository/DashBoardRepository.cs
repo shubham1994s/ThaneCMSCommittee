@@ -4646,6 +4646,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     var streetCount = db.StreetSweepingDetails.Where(c => c.lastModifiedDate >= startDate && c.lastModifiedDate <= endDate && c.userId == x.qrEmpId).Count();
                     var dumpyardcount = db.DumpYardDetails.Where(c => c.lastModifiedDate >= startDate && c.lastModifiedDate <= endDate && c.userId == x.qrEmpId).Count();
                     var commercialCount = db.CommercialMasters.Where(c => c.modified >= startDate && c.modified <= endDate && c.userId == x.qrEmpId).Count();
+
+                    var swmCount = db.SWMMasters.Where(c => c.modified >= startDate && c.modified <= endDate && c.userId == x.qrEmpId).Count();
+                    var ctptCount = db.SauchalayAddresses.Where(c => c.lastModifiedDate >= startDate && c.lastModifiedDate <= endDate && c.userId == x.qrEmpId).Count();
+
                     ///x.daDate = checkNull(x.daDate.tp);
                     //x.endLat = checkNull(x.endLat);
                     //x.endLong = checkNull(x.endLong);
@@ -4688,8 +4692,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         StreetCount = streetCount,
                         DumpYardCount = dumpyardcount,
                         CommercialCount = commercialCount,
+                        SWMCount = swmCount,
+                        CTPTCount = ctptCount,
                         daDateTIme = (displayTime1 + " " + sTime)
-
 
 
                     });

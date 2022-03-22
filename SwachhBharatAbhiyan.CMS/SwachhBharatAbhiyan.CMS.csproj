@@ -3247,6 +3247,8 @@
     <Content Include="Views\Attendence\CTPTIndex.cshtml" />
     <Content Include="Views\Attendence\CTPTUserRoute.cshtml" />
     <Content Include="Views\Attendence\CTPTRoute.cshtml" />
+    <Content Include="Views\HouseMaster\MenuCommercialReportIndex.cshtml" />
+    <Content Include="Views\HouseMaster\CommercialReportIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

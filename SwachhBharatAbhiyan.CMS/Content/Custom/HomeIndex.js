@@ -1262,7 +1262,7 @@ $(document).ready(function () {
 
 //CTPT Pie Chart
 $(document).ready(function () {
-    // debugger;
+     debugger;
 
     var TotalCTCount = $('#tot_TotalCTCount').val();
     var TotalPTCount = $('#tot_TotalPTCount').val();
@@ -1279,9 +1279,9 @@ $(document).ready(function () {
 
     }
 
-    var res_ct_count = parseFloat(TotalCTCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
-    var res_pt_count = parseFloat(TotalPTCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
-    var res_u_count = parseFloat(TotalUCount) * 100 / parseFloat(TotalTodayCTPTScanCount);
+    var res_ct_count = (TotalCTCount) * 100 / (TotalTodayCTPTScanCount);
+    var res_pt_count = (TotalPTCount) * 100 / (TotalTodayCTPTScanCount);
+    var res_u_count = (TotalUCount) * 100 / (TotalTodayCTPTScanCount);
 
 
 
