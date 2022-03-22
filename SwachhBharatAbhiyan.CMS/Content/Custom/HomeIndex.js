@@ -516,6 +516,7 @@ $(document).ready(function () {
         data: [{
             type: "pie",
             indexLabelFontSize: 12,
+            indexLabelMaxWidth: 80,
             showInLegend: true,
             legendText: "{name}:{hover_number}",
             radius: 60,
@@ -680,6 +681,7 @@ $(document).ready(function () {
         data: [{
             type: "pie",
             indexLabelFontSize: 12,
+            indexLabelMaxWidth: 80,
             showInLegend: true,
             legendText: "{name}:{hover_number}",
             radius: 60,
