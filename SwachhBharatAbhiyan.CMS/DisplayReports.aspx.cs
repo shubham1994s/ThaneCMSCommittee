@@ -69,7 +69,16 @@ namespace SwachhBharatAbhiyan.CMS
                         garbageType = "1";
                         wastetype = "4";
                     }
-
+                    if (garbageType == "-1")
+                    {
+                        garbageType = "-1";
+                        wastetype = null;
+                    }
+                    if (garbageType == "2")
+                    {
+                        garbageType = "2";
+                        wastetype = null;
+                    }
                     //string urlReportServer = "http://TESTYOCC-1:80/reportServer";
                     //  string urlReportServer = "http://YOCC-2:82/reportServer";
                     //string urlReportServer = "http://192.168.100.123/ReportServer";
