@@ -155,7 +155,7 @@
                 </div>
             </div>
 
-            <div class="col" style="width:17.33%;padding-right: 5px; display:none;">
+            <div class="col" style="width:17.33%;padding-right: 5px; ">
                 <div class="media" style="border:1px solid #66a2d5; padding: 5px; ">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
                         <img src="/Content/images/img/segregationImg/commercial_dry.png" class="media-object" />
@@ -166,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col" style="width: 17.33%; padding-right: 5px; display: none;">
+            <div class="col" style="width: 17.33%; padding-right: 5px; ">
                 <div class="media" style="border:1px solid #186634; padding: 5px; ">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
                         <img src="/Content/images/img/segregationImg/commercial_wet.png" class="media-object" />
@@ -178,7 +178,7 @@
                 </div>
             </div>
 
-            <div class="col" style="width: 17.33%; padding-right: 5px;">
+            <div class="col" style="width: 17.33%; padding-right: 5px; display: none;">
                 <div class="media" style="border:1px solid #186634; padding: 5px; ">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
                         <img src="/Content/images/img/segregationImg/commercial_wet.png" class="media-object" />
@@ -201,7 +201,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col" style="width:17.34%;padding-right: 5px;">
                 <div class="media" style="border: 1px solid #fe9436; padding: 5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
@@ -213,6 +212,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+    <br/>
+        <div class="row" style="display:flex">
+          
 
             <div class="col" style="width:17.34%;padding-right: 5px;">
                 <div class="media" style="border: 1px solid #66a2d5; padding: 5px;">
@@ -225,7 +228,28 @@
                     </div>
                 </div>
             </div>
-
+            <div class="col" style="width:25%;padding-right: 5px;">
+                <div class="media" style="border: 1px solid #66a2d5; padding: 5px;">
+                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                        <img src="/Content/images/img/segregationImg/Commercial-Not-Specified.png" class="media-object" />
+                    </div>
+                    <div class="media-body">
+                        <p class="media-heading" style="font-weight:600">Construction And Demolition</p>
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.ConstructionDemolitionCount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col" style="width:17.34%;padding-right: 5px;">
+                <div class="media" style="border: 1px solid #66a2d5; padding: 5px;">
+                    <div class="media-left media-middle" style="padding: 0px 10px;">
+                        <img src="/Content/images/img/segregationImg/Commercial-Not-Specified.png" class="media-object" />
+                    </div>
+                    <div class="media-body">
+                        <p class="media-heading" style="font-weight:600">Horticulture</p>
+                        <p style="font-size:14px;margin:0px"><b>Total :</b> @Model.HorticultureCount</p>
+                    </div>
+                </div>
+            </div>
         </div><br />
 
 
@@ -327,7 +351,7 @@
 
         <div class="row  col-sm-12">
 
-            <div class="col-sm-1 pull-right"id="dum">
+            <div class="col-sm-1 pull-right" id="dum">
                 <label>&nbsp;</label>
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
