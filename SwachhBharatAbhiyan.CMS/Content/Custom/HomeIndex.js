@@ -1007,7 +1007,7 @@ $(document).ready(function () {
                 { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name: 'Total (Mix Waste)', color: '#dc3545' },
                 { y: res_notcollected_count, label: "Total (Not Received)", hover_number: CommercialNotCollectedCount, name: 'Total (Not Received)', color: '#fe9436' },
                 { y: res_notspecified_count, label: "Total (Not Specified)", hover_number: CommercialNotSpecifiedCount, name: 'Total (Not Specified)', color: '#0086c3' },
-                { y: res_construction_count, label: "Total (Counstruction Demolition)", hover_number: TotalCommercialCDW, name: 'Total (Counstruction Demolition)', color: '#63676e' },
+                { y: res_construction_count, label: "Total (Counstruction and Demolition)", hover_number: TotalCommercialCDW, name: 'Total (Counstruction and Demolition)', color: '#63676e' },
                 { y: res_horticulture_count, label: "Total (Horticulture)", hover_number: TotalCommercialHW, name: 'Total (Horticulture)', color: '#1ad15c' },
 
             ],
