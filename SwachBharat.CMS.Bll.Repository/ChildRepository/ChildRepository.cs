@@ -266,7 +266,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         public List<SBALUserLocationMapView> GetCTPTAttenRoute(int daId, int areaid)
         {
             return screenService.GetCTPTAttenRoute(daId, areaid);
-        }
+        } 
 
         public List<SBALUserLocationMapView> GetLiquidAttenRoute(int daId, int areaid)
         {
