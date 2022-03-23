@@ -4754,7 +4754,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.houseLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x=>x.HouseLat!=null && x.HouseLong!=null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5582,6 +5582,30 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         //CommercialDry = 4
 
 
+                    });
+                }
+                return obj.OrderBy(c => c.userName);
+            }
+        }
+
+        public IEnumerable<CurrentCTPTCollectionCount> GetCurrentCTPTCollectionCount(int appId)
+        {
+            List<CurrentCTPTCollectionCount> obj = new List<CurrentCTPTCollectionCount>();
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                var data = db.SP_CurrentCTPTCount().ToList();
+                // var data = "1";
+
+                foreach (var x in data)
+                {
+                    obj.Add(new CurrentCTPTCollectionCount()
+                    {
+                        userId = x.userId,
+                        userName = x.userName,
+                        ToDate = x.TodayDate.ToString(),
+                        TotalPTCount = x.TotalPTCount,
+                        TotalCTCount = x.TotalCTCount,
+                        TotalUCount = x.TotalUCount
                     });
                 }
                 return obj.OrderBy(c => c.userName);

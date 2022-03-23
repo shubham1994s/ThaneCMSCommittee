@@ -417,7 +417,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                                     strFileType = "jpeg";
                                 }
                                 //Create a zip entry for each attachment
-                                var zipEntry = zipArchive.CreateEntry(string.Format("{0}.{1}", item.ReferanceId, strFileType));
+                                var zipEntry = zipArchive.CreateEntry(string.Format("{0}.{1}", item.ReferanceId, strFileType), CompressionLevel.Fastest);
                                 byte[] file = Convert.FromBase64String(item.QRCodeImage.Substring(item.QRCodeImage.LastIndexOf(',') + 1));
                                 //Get the stream of the attachment
                                 using (var originalFileStream = new MemoryStream(file))
