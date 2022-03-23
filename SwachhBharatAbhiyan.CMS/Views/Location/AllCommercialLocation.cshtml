@@ -231,7 +231,7 @@
             <div class="col" style="width:25%;padding-right: 5px;">
                 <div class="media" style="border: 1px solid #66a2d5; padding: 5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/Commercial-Not-Specified.png" class="media-object" />
+                        <img src="/Content/images/img/segregationImg/Construction-Icon.png" class="media-object" />
                     </div>
                     <div class="media-body">
                         <p class="media-heading" style="font-weight:600">Construction And Demolition</p>
@@ -242,7 +242,7 @@
             <div class="col" style="width:17.34%;padding-right: 5px;">
                 <div class="media" style="border: 1px solid #66a2d5; padding: 5px;">
                     <div class="media-left media-middle" style="padding: 0px 10px;">
-                        <img src="/Content/images/img/segregationImg/Commercial-Not-Specified.png" class="media-object" />
+                        <img src="/Content/images/img/segregationImg/Horticulture-Icon.png" class="media-object" />
                     </div>
                     <div class="media-body">
                         <p class="media-heading" style="font-weight:600">Horticulture</p>
@@ -319,7 +319,9 @@
                     <option value="-2"> All Records</option>
                     <option value="1"> Segregated Garbage</option>
                     <option value="0"> Mixed Garbage</option>
-                    <option value="2"> Garbage Not Collected</option>
+                    <option value="4"> Construction And Demolition Waste</option>
+                    <option value="5"> Horticulture Waste</option>
+                    <option value="2"> Garbage Not Received</option>
                     <option value="-1">Garbage Type Not Specified</option>
                 </select>
             </div>
@@ -642,6 +644,13 @@
                                 break;
                             case 2:
                                 mUrl = "../Content/images/img/segregationImg/Commercial-Not-Collected.png"
+                                break;
+
+                            case 4:
+                                mUrl = "../Content/images/img/segregationImg/Construction-Icon.png"
+                                break;
+                            case 5:
+                                mUrl = "../Content/images/img/segregationImg/Horticulture-Icon.png"
                                 break;
                         }
 
