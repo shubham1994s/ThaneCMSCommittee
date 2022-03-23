@@ -2677,6 +2677,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalHW" Nullable="true" />
           <Property Type="Int32" Name="TotalCommercialCDW" Nullable="true" />
           <Property Type="Int32" Name="TotalCommercialHW" Nullable="true" />
+          <Property Type="Int32" Name="TotalConstDemo" Nullable="true" />
+          <Property Type="Int32" Name="TotalHorticulture" Nullable="true" />
           <Property Type="Int32" Name="TotalCW" Nullable="true" />
           <Property Type="Decimal" Name="GcWeightCount" Nullable="false" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="DryWeightCount" Nullable="false" Precision="38" Scale="4" />
@@ -4323,6 +4325,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalHW" ColumnName="TotalHW" />
                 <ScalarProperty Name="TotalCommercialCDW" ColumnName="TotalCommercialCDW" />
                 <ScalarProperty Name="TotalCommercialHW" ColumnName="TotalCommercialHW" />
+                <ScalarProperty Name="TotalConstDemo" ColumnName="TotalConstDemo" />
+                <ScalarProperty Name="TotalHorticulture" ColumnName="TotalHorticulture" />
                 <ScalarProperty Name="TotalCW" ColumnName="TotalCW" />
                 <ScalarProperty Name="GcWeightCount" ColumnName="GcWeightCount" />
                 <ScalarProperty Name="DryWeightCount" ColumnName="DryWeightCount" />
