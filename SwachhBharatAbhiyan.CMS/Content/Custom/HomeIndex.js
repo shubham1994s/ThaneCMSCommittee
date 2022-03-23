@@ -1881,3 +1881,135 @@ $(document).ready(function () {
 
 
 });
+
+
+$(document).ready(function () {
+    $.ajax({
+        type: "post",
+        url: "/Home/GetCurrentCTPTCollectionCount",
+        //data: { userId: UserId, },
+        datatype: "json",
+        traditional: true,
+        success: function (data) {
+            console.log(data);
+            var comu = [];
+            var pub = [];
+            var urin = [];
+            debugger;
+            for (var i = 0; i < data.length; i++) {
+                // alert(data[i].inTime);
+                var name = data[i].userName;
+                name = name.trim();
+                var lastname_array = name.split(' ');
+                var lastname_firstchar;
+                if (lastname_array.length == 1) {
+                    //if condition lastname_array[1] == undefined
+                    lastname_firstchar = ""
+                } else {
+                    lastname_firstchar = lastname_array[1][0];
+                }
+
+
+                //var fname = name.substring(0, name.indexOf(" "));
+                var fname = name.replace(/ .*/, ' ');
+                // alert(data[i]._Count)
+
+                //comu.push({ y: data[i].TotalCTCount, x: fname + lastname_firstchar, label: 'CT Count', color: '#0086c3', intime: data[i].inTime });
+                //pub.push({ y: data[i].TotalPTCount, x: fname + lastname_firstchar, label: 'PT Count', color: '#fe9436', intime: data[i].inTime });
+                //urin.push({ y: data[i].TotalUCount, x: fname + lastname_firstchar, label: 'Urinal Count', color: '#f44336', intime: data[i].inTime });
+
+                comu.push({ y: data[i].TotalCTCount, label: fname + lastname_firstchar, color: '#917b0f', intime: data[i].ToDate });
+                pub.push({ y: data[i].TotalPTCount, label: fname + lastname_firstchar, color: '#a0a004', intime: data[i].ToDate });
+                urin.push({ y: data[i].TotalUCount, label: fname + lastname_firstchar, color: '#835787', intime: data[i].ToDate });
+
+
+            }
+
+            var chart = new CanvasJS.Chart("chartContainerTarget3",
+                {
+
+                    //title: {
+                    //    text: "Grouped Stacked Chart"
+                    //},
+                    theme: "theme3",
+                    // interval :1,
+                    axisY: {
+                        labelFontSize: 10,
+                        labelFontColor: "dimGrey",
+                        interval: 1,
+                        title: "CTPT Cleaning"
+                    },
+
+
+                    axisX: {
+                        labelAngle: 0,
+                        labelFontSize: 10,
+                        interval: 1
+                    },
+                    
+
+                    data: [
+
+                        {
+                            
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Community Toilet",
+                            toolTipContent: "Community Toilet:{y} ",
+                            color: "#917b0f",
+                            dataPoints: comu
+                        },
+                        
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Public Toilet",
+                            toolTipContent: "Public Toilet:{y} ",
+                            color: "#a0a004",
+                            dataPoints: pub
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            showInLegend: true,
+                            legendText: "Urinal",
+                            toolTipContent: "Urinal:{y} ",
+                            color: "#835787",
+                            dataPoints: urin
+                        }
+
+                    ]
+                });
+            showDefaultText(chart, "No Data available");
+            chart.render();
+            function showDefaultText(chart, text) {
+                debugger;
+                var isEmpty = !(chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
+
+
+                if (!chart.options.subtitles)
+                    (chart.options.subtitles = []);
+
+
+                if (isEmpty)
+                    chart.options.subtitles.push({
+                        text: text,
+                        verticalAlign: 'center',
+                    });
+
+                else
+                    (chart.options.subtitles = []);
+
+            }
+
+
+        }
+    });
+    chart.render();
+
+
+});
+

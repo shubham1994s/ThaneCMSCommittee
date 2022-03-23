@@ -142,5 +142,21 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
+
+        public ActionResult GetCurrentCTPTCollectionCount()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+
+                IEnumerable<CurrentCTPTCollectionCount> obj;
+
+                DashBoardRepository objRep = new DashBoardRepository();
+
+                obj = objRep.GetCurrentCTPTCollectionCount(SessionHandler.Current.AppId);
+                return Json(obj, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+        }
     }
 }
