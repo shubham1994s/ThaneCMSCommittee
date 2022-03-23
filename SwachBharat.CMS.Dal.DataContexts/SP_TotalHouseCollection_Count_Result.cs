@@ -24,6 +24,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> NotSpecified { get; set; }
         public Nullable<int> TotalCDW { get; set; }
         public Nullable<int> TotalHW { get; set; }
+        public Nullable<int> TotalCommercialCDW { get; set; }
+        public Nullable<int> TotalCommercialHW { get; set; }
         public Nullable<int> TotalCW { get; set; }
         public decimal GcWeightCount { get; set; }
         public decimal DryWeightCount { get; set; }

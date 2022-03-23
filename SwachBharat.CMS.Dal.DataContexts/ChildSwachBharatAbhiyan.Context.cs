@@ -21,6 +21,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
                  : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -757,15 +758,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialOnMapDetails_Result>("SP_CommercialOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter, segTypeParameter);
         }
     
-        public virtual ObjectResult<SP_TotalHouseCollection_Count_Result> SP_TotalHouseCollection_Count(Nullable<System.DateTime> gcdate)
-        {
-            var gcdateParameter = gcdate.HasValue ?
-                new ObjectParameter("gcdate", gcdate) :
-                new ObjectParameter("gcdate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
-        }
-    
         public virtual ObjectResult<SWMDetails_Result> SWMDetails()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SWMDetails_Result>("SWMDetails");
@@ -941,6 +933,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("userid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeSummary_Result>("SP_EmployeeSummary", fromParameter, toParameter, useridParameter);
+        }
+    
+        public virtual ObjectResult<SP_TotalHouseCollection_Count_Result> SP_TotalHouseCollection_Count(Nullable<System.DateTime> gcdate)
+        {
+            var gcdateParameter = gcdate.HasValue ?
+                new ObjectParameter("gcdate", gcdate) :
+                new ObjectParameter("gcdate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
         }
     }
 }
