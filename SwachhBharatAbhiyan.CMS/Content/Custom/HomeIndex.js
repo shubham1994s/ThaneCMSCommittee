@@ -1520,6 +1520,8 @@ $(document).ready(function () {
             var seg = [];
             var cdw = [];
             var hw = [];
+            var ccdw = [];
+            var chw = [];
             var dry = [];
             var wet = [];
             var dhw = [];
@@ -1556,6 +1558,9 @@ $(document).ready(function () {
                 seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });
                 cdw.push({ y: data[i].ConstructionAndDemolition, label: 'Construction & Demolition', color: '#63676e', intime: data[i].inTime });
                 hw.push({ y: data[i].Horticulture, label: 'Horticulture', color: '#1ad15c', intime: data[i].inTime });
+
+                ccdw.push({ y: data[i].CommercialConstructionAndDemolition, label: 'Commercial Construction & Demolition', color: '#9da198', intime: data[i].inTime });
+                chw.push({ y: data[i].CommercialHorticulture, label: 'Commercial Horticulture', color: '#8BC34A', intime: data[i].inTime });
                 //wet.push({ y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
                 // dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#66a2d5', intime: data[i].inTime });
                 // dhw.push({ y: data[i].DomesticHazardous, label: 'Domestic Hazardous', color: '#8f8b28', intime: data[i].inTime });
@@ -1743,6 +1748,32 @@ $(document).ready(function () {
                             toolTipContent: "InTime:{intime} <br>{label}:{y} ",
                             color: "#388e3c",
                             dataPoints: commercialsegregeted
+                        },
+
+
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
+                            showInLegend: true,
+                            legendText: "Commercial Construction And Demolition",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#9da198",
+                            dataPoints: ccdw
+                        },
+                        {
+                            //indexLabel: "#total",
+                            //indexLabelPlacement: "outside",
+                            type: "stackedColumn",
+                            axisYType: "secondary",
+                            axisYIndex: 1,
+                            showInLegend: true,
+                            legendText: "Commercial Horticulture",
+                            toolTipContent: "InTime:{intime} <br>{label}:{y} ",
+                            color: "#8BC34A",
+                            dataPoints: chw
                         },
 
 
