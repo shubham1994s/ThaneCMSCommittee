@@ -707,6 +707,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="FilterType" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_CTPTScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_CurrentCTPTCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_Dashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_DumpYardDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_EmployeeHouseCollectionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1203,6 +1204,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="gcdate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)" />
+          <FunctionImport Name="SP_CurrentCTPTCount" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CurrentCTPTCount_Result)" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2722,6 +2724,14 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="DryWaste" Nullable="true" />
           <Property Type="Int32" Name="DHW" Nullable="true" />
           <Property Type="Int32" Name="SW" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_CurrentCTPTCount_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="TotalPTCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalUCount" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4372,6 +4382,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
                 <ScalarProperty Name="DHW" ColumnName="DHW" />
                 <ScalarProperty Name="SW" ColumnName="SW" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CurrentCTPTCount" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CurrentCTPTCount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CurrentCTPTCount_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="TotalPTCount" ColumnName="TotalPTCount" />
+                <ScalarProperty Name="TotalCTCount" ColumnName="TotalCTCount" />
+                <ScalarProperty Name="TotalUCount" ColumnName="TotalUCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
