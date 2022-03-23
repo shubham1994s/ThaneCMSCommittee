@@ -935,6 +935,9 @@ $(document).ready(function () {
     var CommercialNotSpecifiedCount = $('#tot_CommercialNotSpecifiedCount').val();
     var TotalCommercialCount_check = $('#tot_TotalCommercialCount').val();
 
+    var TotalCommercialCDW = $('#TotalCommercialCDW_coll').val();
+    var TotalCommercialHW = $('#TotalCommercialHW_coll').val();
+
     //var CommercialSegregetedCount = 10;
     //var CommercialMixCount = 10;
     //var CommercialNotCollectedCount = 10;
@@ -955,11 +958,16 @@ $(document).ready(function () {
     var res_notcollected_count = parseFloat(CommercialNotCollectedCount) * 100 / parseFloat(TotalCommercialCount);
     var res_notspecified_count = parseFloat(CommercialNotSpecifiedCount) * 100 / parseFloat(TotalCommercialCount);
 
+    var res_construction_count = parseFloat(TotalCommercialCDW) * 100 / parseFloat(TotalCommercialCount);
+    var res_horticulture_count = parseFloat(TotalCommercialHW) * 100 / parseFloat(TotalCommercialCount);
+
     var ary3 = []
     ary3.push({ v: CommercialSegregetedCount });
     ary3.push({ v: CommercialMixCount });
     ary3.push({ v: CommercialNotCollectedCount });
     ary3.push({ v: CommercialNotSpecifiedCount });
+    ary3.push({ v: TotalCommercialCDW });
+    ary3.push({ v: TotalCommercialHW });
 
 
     //console.log(ary3);
@@ -999,6 +1007,8 @@ $(document).ready(function () {
                 { y: res_mix_count, label: "Total (Mix Waste)", hover_number: CommercialMixCount, name: 'Total (Mix Waste)', color: '#dc3545' },
                 { y: res_notcollected_count, label: "Total (Not Received)", hover_number: CommercialNotCollectedCount, name: 'Total (Not Received)', color: '#fe9436' },
                 { y: res_notspecified_count, label: "Total (Not Specified)", hover_number: CommercialNotSpecifiedCount, name: 'Total (Not Specified)', color: '#0086c3' },
+                { y: res_construction_count, label: "Total (Counstruction Demolition)", hover_number: TotalCommercialCDW, name: 'Total (Counstruction Demolition)', color: '#63676e' },
+                { y: res_horticulture_count, label: "Total (Horticulture)", hover_number: TotalCommercialHW, name: 'Total (Horticulture)', color: '#1ad15c' },
 
             ],
         }]
