@@ -54,6 +54,12 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<double> TotalCDWCount { get; set; }
         public Nullable<double> TotalHWCount { get; set; }
 
+        public Nullable<double> TotalConstDemo { get; set; }
+        public Nullable<double> TotalHorticulture { get; set; }
+
+        public Nullable<double> TotalCommercialCDWCount { get; set; }
+        public Nullable<double> TotalCommercialHWCount { get; set; }
+
         public Nullable<double> TotalDHWCount { get; set; }
         public Nullable<double> TotalSWCount { get; set; }
 

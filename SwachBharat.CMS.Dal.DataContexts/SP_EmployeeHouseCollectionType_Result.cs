@@ -25,13 +25,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> NotCollected { get; set; }
         public Nullable<int> NotSpecidfied { get; set; }
         public Nullable<int> CDW { get; set; }
+        public Nullable<int> HW { get; set; }
+        public Nullable<int> CommercialCDW { get; set; }
+        public Nullable<int> CommercialHW { get; set; }
         public Nullable<int> CWNS { get; set; }
         public Nullable<int> CWM { get; set; }
         public Nullable<int> CWNR { get; set; }
         public Nullable<int> CWW { get; set; }
         public Nullable<int> CWD { get; set; }
         public Nullable<int> CommercialSegregeted { get; set; }
-        public Nullable<int> HW { get; set; }
         public Nullable<int> WetWaste { get; set; }
         public Nullable<int> DryWaste { get; set; }
         public Nullable<int> DHW { get; set; }

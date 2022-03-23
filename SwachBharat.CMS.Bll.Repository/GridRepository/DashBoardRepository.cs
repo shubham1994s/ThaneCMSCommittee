@@ -5540,6 +5540,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         userName = x.userName,
                         ConstructionAndDemolition = x.CDW,
                         Horticulture = x.HW,
+
+                        CommercialConstructionAndDemolition = x.CommercialCDW,
+                        CommercialHorticulture = x.CommercialHW,
+
                         WetWaste = x.WetWaste,
                         DryWaste = x.DryWaste,
                         DomesticHazardous = x.DHW,

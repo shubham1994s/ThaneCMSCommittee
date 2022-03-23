@@ -15,6 +15,10 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> NotSpecidfied { get; set; }
         public Nullable<int> ConstructionAndDemolition { get; set; }
         public Nullable<int> Horticulture { get; set; }
+
+        public Nullable<int> CommercialConstructionAndDemolition { get; set; }
+        public Nullable<int> CommercialHorticulture { get; set; }
+
         public Nullable<int> DryWaste { get; set; }
         public Nullable<int> WetWaste { get; set; }
         public Nullable<int> DomesticHazardous { get; set; }

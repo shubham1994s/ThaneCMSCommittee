@@ -163,6 +163,12 @@ namespace SwachBharat.CMS.Bll.Services
                         model.CommercialNotSpecifiedCount = Convert.ToDouble(houseCount.TotalCommercialNotSpecifiedCount);
                         model.CommercialSegregetedCount = Convert.ToDouble(houseCount.TotalCommercialSegregeted);
 
+                        model.TotalCommercialCDWCount = Convert.ToInt32(houseCount.TotalCommercialCDW);
+                        model.TotalCommercialHWCount = Convert.ToInt32(houseCount.TotalCommercialHW);
+
+                        model.TotalConstDemo = Convert.ToInt32(houseCount.TotalConstDemo);
+                        model.TotalHorticulture = Convert.ToInt32(houseCount.TotalHorticulture);
+
                         model.TotalCommercialCurrent = data.TotalCommercialCurrent;
                         model.TotalCommercial = Convert.ToDouble(houseCount.TotalCommercial);
 
