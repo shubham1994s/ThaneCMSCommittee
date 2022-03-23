@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="form-group" hidden="hidden">
                             @*@Html.Label("घर क्रमांक / House Number")*@
                             @Html.Label("House Number")
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -97,6 +97,29 @@
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <span class="help-block with-errors"></span>
                         </div>
+
+                        <div class="form-group">
+                            @*@Html.Label("रक्त गट / Blood Group ")*@
+                            @Html.Label("Category ")
+                            @{ var ClistItems = new List<SelectListItem>();
+
+                                ClistItems.Add(new SelectListItem { Text = "House Category", Value = "0" });
+                                ClistItems.Add(new SelectListItem { Text = "Residential Building Waste", Value = "RBW" });
+                                ClistItems.Add(new SelectListItem { Text = "Residential Slum Waste", Value = "RSW" });
+                                //ClistItems.Add(new SelectListItem { Text = "Commercial Waste", Value = "CW" });
+
+                            }
+                            @Html.DropDownListFor(model => model.houseCategory, ClistItems, new { @disabled = "disabled", style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+
+
+                            <span class="text-danger" id="err_cat"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+
+
+
+
                     </div>
                 </div>
                 <div class="row">
@@ -165,24 +188,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <div class="form-group" hidden="hidden">
-                            @*@Html.Label("रक्त गट / Blood Group ")*@
-                            @Html.Label("Category ")
-                            @{ var ClistItems = new List<SelectListItem>();
-
-                                ClistItems.Add(new SelectListItem { Text = "Select House Category", Value = "0" });
-                                ClistItems.Add(new SelectListItem { Text = "Residential Building Waste", Value = "RBW" });
-                                ClistItems.Add(new SelectListItem { Text = "Residential Slum Waste", Value = "RSW" });
-                                //ClistItems.Add(new SelectListItem { Text = "Commercial Waste", Value = "CW" });
-
-                            }
-                            @Html.DropDownListFor(model => model.houseCategory, ClistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-
-
-
-                            <span class="text-danger" id="err_cat"></span>
-                            <span class="help-block with-errors"></span>
-                        </div>
+                       
 
 
                         <div class="form-group">
