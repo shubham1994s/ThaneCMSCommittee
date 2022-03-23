@@ -576,7 +576,23 @@ namespace SwachhBharatAbhiyan.CMS
 
                         // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
                     }
+
+                    else if (ReportName == "CTPT_Details")
+                    {
+                        ReportParameter[] param = new ReportParameter[5];
+                      
+                        param[0] = new ReportParameter("from", FromDate);
+                        param[1] = new ReportParameter("to", ToDate);
+                        param[2] = new ReportParameter("userid", UserId);
+                        param[3] = new ReportParameter("DBName", DB_Name);
+                        param[4] = new ReportParameter("id", AppID);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                        // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
+                    }
+                    
                     rptViewer.ServerReport.Refresh();
+
 
 
 
