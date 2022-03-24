@@ -24,6 +24,9 @@
     .capitalize {
         text-transform: capitalize;
     }
+    #swmSubType option{
+        display: none;
+    }
 </style>
 @*<title class="title_change"></title>*@
 @using (Html.BeginForm("AddSWMDetails", "SWMMaster", FormMethod.Post, new { enctype = "multipart/form-data", data_toggle = "validator", role = "form" }))
@@ -1266,9 +1269,15 @@
         debugger;
         var text = obj.options[obj.selectedIndex].text;
         var ddl2 = document.querySelectorAll('#swmSubType option');
+
         for (var i = 1; i < ddl2.length; i++) {
             var option = ddl2[i];
-            option.style.display = 'none';
+            option.style.display = 'none'; 
+            if (text == 'Select SWM Facility') {
+                
+                    option.style.display = 'none'
+
+            }
             if (text == 'Transfer Station') {
                 if (['Municiple Solid Waste'].indexOf(option.text) > -1)
                     option.style.display = 'block'
