@@ -26,7 +26,7 @@ $("#demoGrid3").DataTable({
             "searchable": false
         },
         {
-            "targets": [5],
+            "targets": [6],
             "visible": true,
 
             "render": function (data, type, full, meta) {
@@ -46,6 +46,7 @@ $("#demoGrid3").DataTable({
 
     "columns": [
         { "data": "streetId", "name": "streetId", "autoWidth": true },
+        { "data": "modifiedDate", "name": "modifiedDate", "autoWidth": true },
         { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": true },
         { "data": "Name", "name": "Name", "autoWidth": true },
         { "data": "HouseLat", "name": "HouseLat", "autoWidth": true },
