@@ -14,5 +14,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string HouseLat { get; set; }
         public string HouseLong { get; set; }
         public string QRCodeImage { get; set; }
+        public string modifiedDate { get; set; }
     }
 }

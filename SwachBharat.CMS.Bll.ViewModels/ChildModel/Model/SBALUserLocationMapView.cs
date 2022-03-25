@@ -20,6 +20,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string userMobile { get; set; }
 
         public string HouseId { get; set; }
+
+        public string CommercialId { get; set; }
         public string DyId { get; set; }
         public string HouseOwnerName { get; set; }
         public string OwnerMobileNo { get; set; }

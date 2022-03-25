@@ -615,7 +615,7 @@ $(document).ready(function () {
     if (tot_house_null_check == 0) {
         tot_house_coll = null;
     } else {
-        tot_house_coll = $('#tot_house_coll').val();
+        tot_house_coll = $('#bif_coll').val();
         //tot_house_coll = 100;
     }
 

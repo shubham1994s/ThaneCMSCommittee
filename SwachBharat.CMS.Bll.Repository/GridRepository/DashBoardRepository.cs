@@ -4754,7 +4754,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.houseLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId!=null && x.modifiedDate>=fdate && x.modifiedDate<=tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -4790,7 +4790,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
                     QRCodeImage = x.QRCodeImage,
-                    ReferanceId = x.ReferanceId
+                    ReferanceId = x.ReferanceId,
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
@@ -4826,7 +4827,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.dyLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -4860,7 +4861,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
                     QRCodeImage = x.QRCodeImage,
-                    ReferanceId = x.ReferanceId
+                    ReferanceId = x.ReferanceId,
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
@@ -4897,7 +4899,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.swmLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -4931,7 +4933,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
                     QRCodeImage = x.QRCodeImage,
-                    ReferanceId = x.ReferanceId
+                    ReferanceId = x.ReferanceId,
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
@@ -4968,7 +4971,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.Long,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5002,7 +5005,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
                     QRCodeImage = x.QRCodeImage,
-                    ReferanceId = x.ReferanceId
+                    ReferanceId = x.ReferanceId,
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
@@ -5039,7 +5043,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.commercialLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5073,7 +5077,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
                     QRCodeImage = x.QRCodeImage,
-                    ReferanceId = x.ReferanceId
+                    ReferanceId = x.ReferanceId,
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
@@ -5110,7 +5115,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.LWLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5144,7 +5149,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
                     QRCodeImage = x.QRCodeImage,
-                    ReferanceId = x.ReferanceId
+                    ReferanceId = x.ReferanceId,
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
@@ -5180,7 +5186,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.SSLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5214,7 +5220,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
                     QRCodeImage = x.QRCodeImage,
-                    ReferanceId = x.ReferanceId
+                    ReferanceId = x.ReferanceId,
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }

@@ -27,7 +27,7 @@ function loadGridCTPT() {
                 "searchable": false
             },
             {
-                "targets": [5],
+                "targets": [6],
                 "visible": true,
 
                 "render": function (data, type, full, meta) {
@@ -47,6 +47,7 @@ function loadGridCTPT() {
 
         "columns": [
             { "data": "dumpId", "name": "dumpId", "autoWidth": true },
+            { "data": "modifiedDate", "name": "modifiedDate", "autoWidth": true },
             { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": true },
             { "data": "Name", "name": "Name", "autoWidth": true },
             { "data": "HouseLat", "name": "HouseLat", "autoWidth": true },
@@ -127,7 +128,7 @@ function SearchCTPT() {
     NesEvent = " ";
     var Product = "";
     var catProduct = "";
-    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#sDump").val();//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#sCTPT").val();//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
     // alert(value );
     oTable = $('#demoGrid4').DataTable();
     oTable.search(value).draw();
