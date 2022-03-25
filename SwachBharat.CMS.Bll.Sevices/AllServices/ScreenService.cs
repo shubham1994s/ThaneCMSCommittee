@@ -2427,7 +2427,7 @@ namespace SwachBharat.CMS.Bll.Services
                 string dt2 = Convert.ToDateTime(att.daEndDate).ToString("MM/dd/yyyy");
                 edate = Convert.ToDateTime(dt2 + " " + t2);
             }
-            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).ToList();
+            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).OrderBy(x=>x.locId).ToList();
 
 
             foreach (var x in data)
@@ -2482,7 +2482,7 @@ namespace SwachBharat.CMS.Bll.Services
                 string dt2 = Convert.ToDateTime(att.daEndDate).ToString("MM/dd/yyyy");
                 edate = Convert.ToDateTime(dt2 + " " + t2);
             }
-            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).ToList();
+            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).OrderBy(x=>x.locId).ToList();
 
 
             foreach (var x in data)
