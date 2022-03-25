@@ -2552,7 +2552,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     //var gcd = db.GarbageCollectionDetails.Where(c => (c.userId == x.userId & c.houseId != null) & EntityFunctions.TruncateTime(c.gcDate) == EntityFunctions.TruncateTime(x.datetime)).OrderBy(c => c.gcDate).ToList();//.ToList();
 
-                    var gcd = db.GarbageCollectionDetails.Where(c => (c.userId == x.userId & (c.houseId != null || c.dyId != null)) & EntityFunctions.TruncateTime(c.gcDate) == EntityFunctions.TruncateTime(x.datetime)).OrderBy(c => c.gcId).ToList();//.ToList();
+                    var gcd = db.GarbageCollectionDetails.Where(c => (c.userId == x.userId & (c.houseId != null || c.dyId != null || c.commercialId!=null)) & EntityFunctions.TruncateTime(c.gcDate) == EntityFunctions.TruncateTime(x.datetime)).OrderBy(c => c.gcId).ToList();//.ToList();
 
 
                     foreach (var d in gcd)
@@ -2622,9 +2622,74 @@ namespace SwachBharat.CMS.Bll.Services
 
                                 });
                             }
-
-
                         }
+
+                        // Roshan 25-03-2022
+                        if (d.commercialId != null)
+                        {
+                            if (areaid != 0)
+                            {
+                                var commercial = db.CommercialMasters.Where(c => c.commercialId == d.commercialId & c.AreaId == areaid).FirstOrDefault();
+                                if (commercial != null)
+                                {
+                                    userLocation.Add(new SBALUserLocationMapView()
+                                    {
+                                        userId = userName.userId,
+                                        userName = userName.userName,
+                                        datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                        new_datetime = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
+                                        date = dat,
+                                        time = tim,
+                                        lat = d.Lat,
+                                        log = d.Long,
+                                        address = x.address,
+                                        vehcileNumber = att.vehicleNumber,
+                                        userMobile = userName.userMobileNumber,
+                                        type = Convert.ToInt32(x.type),
+                                        CommercialId = commercial.ReferanceId,
+                                        HouseAddress = (commercial.commercialAddress == null ? "" : commercial.commercialAddress.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = commercial.commercialOwner,
+                                        OwnerMobileNo = commercial.commercialOwnerMobile,
+                                        WasteType = d.garbageType.ToString(),
+                                        gpBeforImage = d.gpBeforImage,
+                                        gpAfterImage = d.gpAfterImage,
+                                        ZoneList = ListZone(),
+
+                                    });
+                                }
+
+                            }
+                            else
+                            {
+                                var commercial = db.CommercialMasters.Where(c => c.commercialId == d.commercialId).FirstOrDefault();
+                                userLocation.Add(new SBALUserLocationMapView()
+                                {
+                                    userId = userName.userId,
+                                    userName = userName.userName,
+                                    datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                    new_datetime = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
+                                    date = dat,
+                                    time = tim,
+                                    lat = d.Lat,
+                                    log = d.Long,
+                                    address = x.address,
+                                    vehcileNumber = att.vehicleNumber,
+                                    userMobile = userName.userMobileNumber,
+                                    type = Convert.ToInt32(x.type),
+                                    CommercialId = commercial.ReferanceId,
+                                    HouseAddress = (commercial.commercialAddress == null ? "" : commercial.commercialAddress.Replace("Unnamed Road, ", "")),
+                                    HouseOwnerName = commercial.commercialOwner,
+                                    OwnerMobileNo = commercial.commercialOwnerMobile,
+                                    WasteType = d.garbageType.ToString(),
+                                    gpBeforImage = d.gpBeforImage,
+                                    gpAfterImage = d.gpAfterImage,
+                                    ZoneList = ListZone(),
+
+                                });
+                            }
+                        }
+                        //End
+
                         if (d.dyId != null)
                         {
                             if (areaid != 0)
@@ -2693,8 +2758,6 @@ namespace SwachBharat.CMS.Bll.Services
 
                                 });
                             }
-
-
                         }
 
                     }
