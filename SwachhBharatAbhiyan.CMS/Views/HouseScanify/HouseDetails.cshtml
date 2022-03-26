@@ -139,7 +139,7 @@
                 </label>
 
                 <label class="check-container">
-                    <b>CTPT</b>
+                    <b>CT/PT/U</b>
                     <input type="radio" value="4" name="radio">
                     <span class="checkmark"></span>
                 </label>
@@ -377,7 +377,7 @@
             $("#divStreet").hide();
             $("#divCTPT").hide();
             $("#divSWM").hide();
-
+            $("#hide_add").text('House ID : ');
             if (CheckHouse == '0') {
                 loadGridHouse();
                 CheckHouse = '1';
@@ -394,6 +394,7 @@
             $("#divStreet").hide();
             $("#divCTPT").hide();
             $("#divSWM").hide();
+            $("#hide_add").text('Commercial ID : ');
             if (CheckCommercial == '0') {
                 loadGridCommercial();
                 CheckCommercial = '1';
@@ -410,6 +411,7 @@
             $("#divStreet").hide();
             $("#divCTPT").hide();
             $("#divSWM").hide();
+            $("#hide_add").text('Liquid ID : ');
             if (CheckLiquid == '0') {
                 loadGridLiquid();
                 CheckLiquid = '1';
@@ -426,6 +428,7 @@
             $("#divStreet").show();
             $("#divCTPT").hide();
             $("#divSWM").hide();
+            $("#hide_add").text('Street ID : ');
             if (CheckStreet == '0') {
                 loadGridStreet();
                 CheckStreet = '1';
@@ -443,6 +446,7 @@
             $("#divStreet").hide();
             $("#divCTPT").show();
             $("#divSWM").hide();
+            $("#hide_add").text('CT/PT/U ID : ');
             if (CheckCTPT == '0') {
                 loadGridCTPT();
                 CheckCTPT = '1';
@@ -460,6 +464,7 @@
             $("#divStreet").hide();
             $("#divCTPT").hide();
             $("#divSWM").show();
+            $("#hide_add").text('SWM ID : ');
             if (CheckSWM == '0') {
                 loadGridSWM();
                 CheckSWM = '1';
