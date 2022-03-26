@@ -70,7 +70,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             }
 
             Dictionary<string, string> filtersFromSession = CreateFiltersDictionary(Session);
-            gridRepository = GetRepository(INSERT_ID, rn, searchValue, fdate, tdate, userId, clientName, param1, param2, param5, param6);
+            GetRepository(INSERT_ID, rn, searchValue, fdate, tdate, userId, clientName, param1, param2, param3, param5, param6, param6, sortColumn, sortColumnDir, draw, length, start);
             //string x = gridRepository.GetDataTabelJson(sord, page, rows, _search, Request.QueryString, filtersFromSession, sidx);
 
             return gridRepository.GetDataTabelJson(sortColumn, sortColumnDir, draw, length, searchValue, start);
@@ -88,7 +88,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             return FiltersDictionary;
         }
 
-        private IDataTableRepository GetRepository(string INSERT_ID, string RepositoryName, string searchString = "", DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientId = null, int? param1 = null, int? param2 = null, int? param3 = null, int? param4 = null, int? param5 = null, int? param6 = null)
+        private IDataTableRepository GetRepository(string INSERT_ID, string RepositoryName, string searchString = "", DateTime? fdate = null, DateTime? tdate = null, int userId = 0, string clientId = null, int? param1 = null, int? param2 = null, int? param3 = null, int? param4 = null, int? param5 = null, int? param6 = null, string sortColumn = "", string sortColumnDir = "", string draw = "", string length = "", string start = "")
         {
             int product = 0, category = 0;
             //string[] arr = new string[6];
@@ -530,7 +530,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "HSHouseDetails":
-                    gridRepository = new HSHouseDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new HSHouseDetailsGridRepository(0, searchString, fdate, tdate, userId, appId, sortColumn, sortColumnDir, draw, length, start);
                     return gridRepository;
                     break;
                 case "HSDumpyardDetails":
