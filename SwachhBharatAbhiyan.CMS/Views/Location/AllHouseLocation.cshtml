@@ -834,16 +834,12 @@
                         });
 
                     }
-                    
-                        var map = new google.maps.Map(document.getElementById('googleMap'), {
-                            zoom: 25,
-                            center: new google.maps.LatLng(data[0].houseLat, data[0].houseLong),
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        });
-                    
-                       
-                        
-                   
+                  
+                    var map = new google.maps.Map(document.getElementById('googleMap'), {
+                      zoom: 15,
+                      center: new google.maps.LatLng(data[0].houseLat, data[0].houseLong),
+                       mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
 
                     var infowindow = new google.maps.InfoWindow();
                     bounds = new google.maps.LatLngBounds();
