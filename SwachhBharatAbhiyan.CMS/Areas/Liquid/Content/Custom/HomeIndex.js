@@ -672,7 +672,7 @@ $(document).ready(function () {
             click: explodePie,
             dataPoints: [
 
-                { y: res_TotalLiquid_Count, label: "Liquid Waste Scan", hover_number: TotalLiquid_Count, color: '#0086c3' },
+                { y: res_TotalLiquid_Count, label: "Liquid Waste Scan", hover_number: TotalLiquid_Count, color: '#8BC34A' },
                 { y: res_TotalLiquidProperty_Count, label: "Not Scan", hover_number: res_TotalLiquidProperty_Count1, color: '#f44336' },
 
             ],
@@ -870,7 +870,7 @@ $(document).ready(function () {
                 // alert(data[i]._Count)
                 //not_spec.push({ y: data[i].NotSpecidfied, label: 'Not Specified', color: '#0086c3', intime: data[i].inTime });
                 //not_coll.push({ y: data[i].NotCollected, label: 'Not Collected', color: '#fe9436', intime: data[i].inTime });
-                LiquidCollectionCount.push({ y: data[i].LiquidCollectionCount, label: 'Liquid Collection', color: '#f44336', intime: data[i].inTime });
+                LiquidCollectionCount.push({ y: data[i].LiquidCollectionCount, label: 'Liquid Collection', color: '#8BC34A', intime: data[i].inTime });
              /*   seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });*/
                 //dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#0462EA', intime: data[i].inTime });
                 //wet.push({y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
@@ -920,7 +920,7 @@ $(document).ready(function () {
                      showInLegend: true,
                    legendText: "LiquidCollectionCount",
                      toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                     color: "#f44336",
+                   color: "#8BC34A",
                    dataPoints: LiquidCollectionCount
                  },
                //  {
