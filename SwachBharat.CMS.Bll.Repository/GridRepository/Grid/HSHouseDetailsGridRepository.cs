@@ -20,12 +20,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
             dataset = objRep.GetHSHouseDetailsData(wildcard, SearchString, fdate, tdate, userId, appId, sortColumn, sortColumnDir, draw, length, start);
         }
 
-        //public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)
-        //{
-        //    var json = dataset.GetDataTableJson(sortColumn, sortColumnDir, draw, length, searchValue, start);
-        //    return json;
-        //}
-
+       
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)
         {

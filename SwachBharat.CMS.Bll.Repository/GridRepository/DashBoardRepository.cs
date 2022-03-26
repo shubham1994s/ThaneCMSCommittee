@@ -4725,9 +4725,6 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
         public IEnumerable<SBAHSHouseDetailsGrid> GetHSHouseDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string sortColumn = "", string sortColumnDir = "", string draw = "", string length = "", string start = "")
         {
-
-            
-
                 string strOrderBy = "";
                 if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
                 {
