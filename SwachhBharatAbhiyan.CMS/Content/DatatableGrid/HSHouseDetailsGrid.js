@@ -1,8 +1,6 @@
-﻿
+﻿var appName;
 
-
-
-
+appName = ('#ulb_name').val();
 function loadGridHouse() {
 
     var txt_fdate, txt_tdate, Client, UserId;
@@ -26,7 +24,16 @@ function loadGridHouse() {
     debugger;
     $("#demoGrid").dataTable().fnDestroy();
     $("#demoGrid").DataTable({
-        "sDom": "ltipr",
+        buttons: [
+
+            {
+                extend: 'excel', className: 'btn btn-sm btn-success filter-button-style', title: appName, text: 'Export to Excel', exportOptions: { columns: [0, 1, 2, 3, 4, 5] }
+            },
+        ],
+        //"sDom": "ltipr",
+        dom: 'lBfrtip',
+        lbFilter: false,
+        //"sDom": "ltipr",
         //"order": [[0, "desc"]],
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
