@@ -293,7 +293,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 Session["DB_Name"] = SessionHandler.Current.DB_Name;
                 Session["User_ID"] = SessionHandler.Current.UserId;
                 string Reportname = "ss";
-
+                TempData.Keep();
                 ViewBag.IframeUrl = "/DisplayReports.aspx?FromDate=" + DateTime.Now.ToString("MM/dd/yyyy");
 
                 return View();

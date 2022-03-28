@@ -502,7 +502,7 @@ $(document).ready(function () {
                //// { y: res_TotalDryWaste_coll, label: "Dry Waste Garbage", hover_number: TotalDryWaste_coll, color: '#0462EA' },
                // //{ y: res_TotalWetWaste_coll, label: "Wet Waste Garbage", hover_number: TotalWetWaste_coll, color: '#186634' },
 
-                { y: res_TotalStreet_Count, label: "Street Sweep Scan", hover_number: TotalStreet_Count, color: '#0086c3' },
+                { y: res_TotalStreet_Count, label: "Street Sweep Scan", hover_number: TotalStreet_Count, color: '#8BC34A' },
                 { y: res_TotalStreetProperty_Count, label: "Not Scan", hover_number: res_TotalStreetProperty_Count1, color: '#f44336' },
                 
             ],
@@ -790,7 +790,7 @@ $(document).ready(function () {
                 // alert(data[i]._Count)
                 //not_spec.push({ y: data[i].NotSpecidfied, label: 'Not Specified', color: '#0086c3', intime: data[i].inTime });
                 //not_coll.push({ y: data[i].NotCollected, label: 'Not Collected', color: '#fe9436', intime: data[i].inTime });
-                Street_Collection.push({ y: data[i].StreetCollectionCount, label: 'Street Collection', color: '#f44336', intime: data[i].inTime });
+                Street_Collection.push({ y: data[i].StreetCollectionCount, label: 'Street Collection', color: '#8BC34A', intime: data[i].inTime });
                /* seg.push({ y: data[i].Bifur, label: 'Segregated', color: '#388e3c', intime: data[i].inTime });*/
                 //dry.push({ y: data[i].DryWaste, label: 'Dry Waste', color: '#0462EA', intime: data[i].inTime });
                 //wet.push({y: data[i].WetWaste, label: 'Wet Waste', color: '#186634', intime: data[i].inTime });
@@ -840,7 +840,7 @@ $(document).ready(function () {
                      showInLegend: true,
                      legendText: "StreetCollection",
                      toolTipContent: "InTime:{intime} <br>{label}:{y} ",
-                     color: "#f44336",
+                   color: "#8BC34A",
                      dataPoints: Street_Collection
                  },
                //  {
