@@ -734,6 +734,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="Segid" Type="int" Mode="In" />
           <Parameter Name="SegidSub" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_GetHSHouseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="sortColumn" Type="varchar" Mode="In" />
+          <Parameter Name="sortOrder" Type="varchar" Mode="In" />
+          <Parameter Name="OffsetValue" Type="int" Mode="In" />
+          <Parameter Name="PagingSize" Type="int" Mode="In" />
+          <Parameter Name="SearchText" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SP_GetLiveTracking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_HouseOnMapDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="gcDate" Type="datetime" Mode="In" />
@@ -1205,6 +1215,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)" />
           <FunctionImport Name="SP_CurrentCTPTCount" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CurrentCTPTCount_Result)" />
+          <FunctionImport Name="SP_GetHSHouseDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_GetHSHouseDetails_Result)">
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="sortColumn" Mode="In" Type="String" />
+            <Parameter Name="sortOrder" Mode="In" Type="String" />
+            <Parameter Name="OffsetValue" Mode="In" Type="Int32" />
+            <Parameter Name="PagingSize" Mode="In" Type="Int32" />
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2732,6 +2752,17 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalPTCount" Nullable="true" />
           <Property Type="Int32" Name="TotalCTCount" Nullable="true" />
           <Property Type="Int32" Name="TotalUCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_GetHSHouseDetails_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Int32" Name="houseId" Nullable="false" />
+          <Property Type="String" Name="houseLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="houseLong" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="DateTime" Name="modified" Nullable="true" Precision="23" />
+          <Property Type="String" Name="qrEmpName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="QRCodeImage" Nullable="true" />
+          <Property Type="Int32" Name="FilterTotalCount" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4394,6 +4425,21 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalPTCount" ColumnName="TotalPTCount" />
                 <ScalarProperty Name="TotalCTCount" ColumnName="TotalCTCount" />
                 <ScalarProperty Name="TotalUCount" ColumnName="TotalUCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetHSHouseDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_GetHSHouseDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_GetHSHouseDetails_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
+                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="qrEmpName" ColumnName="qrEmpName" />
+                <ScalarProperty Name="QRCodeImage" ColumnName="QRCodeImage" />
+                <ScalarProperty Name="FilterTotalCount" ColumnName="FilterTotalCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

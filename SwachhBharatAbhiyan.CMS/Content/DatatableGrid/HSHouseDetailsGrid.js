@@ -1,15 +1,35 @@
 ﻿function loadGridHouse() {
+    var txt_fdate, txt_tdate, Client, UserId;
+    var name = [];
+    var arr = [$('#txt_fdate').val(), $('#txt_tdate').val()];
+
+    for (var i = 0; i <= arr.length - 1; i++) {
+        name = arr[i].split("/");
+        arr[i] = name[1] + "/" + name[0] + "/" + name[2];
+    }
+
+    txt_fdate = arr[0];
+    txt_tdate = arr[1];
+    UserId = $('#selectnumber').val();
+    Client = " ";
+    NesEvent = " ";
+    var Product = "";
+    var catProduct = "";
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#sHouse").val();//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+
     debugger;
     $("#demoGrid").dataTable().fnDestroy();
     $("#demoGrid").DataTable({
         "sDom": "ltipr",
-        //"order": [[0, "desc"]],
+        "order": [[1, "desc"]],
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
         "filter": true, // this is for disable filter (search box)
         "orderMulti": false, // for disable multiple column at once
         "pageLength": 10,
-
+        "search": {
+            "search": value
+        },
         "ajax": {
             "url": "/Datable/GetJqGridJson?rn=HSHouseDetails",
             "type": "POST",
@@ -22,6 +42,7 @@
                 "visible": false,
                 "searchable": false
             },
+                { bSortable: false, targets: [4,5,6] } ,
                 {
                     "targets": [6],
                     "visible": true,

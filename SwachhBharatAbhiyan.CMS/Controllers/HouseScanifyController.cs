@@ -321,6 +321,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         public ActionResult Export(int type, int UserId, string fdate = null, string tdate = null)
         {
+
             DateTime fdt;
             DateTime tdt;
             List<SBAHSHouseDetailsGrid> data = new List<SBAHSHouseDetailsGrid>();
