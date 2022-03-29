@@ -4724,21 +4724,245 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         }
         public IEnumerable<SBAHSHouseDetailsGrid> GetHSHouseDetailsData1(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
         {
+                string strOrderBy = "";
+                if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
+                {
+                    strOrderBy = sortColumn + " " + sortColumnDir;
+                }
 
-            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
-            {
+                int pageSize = length != null ? Convert.ToInt32(length) : 0;
+                int skip = start != null ? Convert.ToInt32(start) : 0;
 
-                // var data = db.HouseMasters.Select(x => new SBAHSHouseDetailsGrid
-                //{
-                //    houseId = x.houseId,
-                //    Name = x.houseOwner,
-                //    HouseLat = x.houseLat,
-                //    HouseLong = x.houseLong,
-                //    QRCodeImage = string.IsNullOrEmpty(x.QRCodeImage)? "/Images/default_not_upload.png" : x.QRCodeImage,
-                //    ReferanceId = x.ReferanceId
-                //}).ToList();
+                List<SBAHSHouseDetailsGrid> data = null;
 
-                var model = db.HouseMasters
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                 
+
+
+                    if (fdate != null && tdate != null)
+                    {
+                        if (Convert.ToDateTime(fdate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                        {
+                            if (userId > 0)
+                            {
+                                if (!string.IsNullOrEmpty(SearchString))
+                                {
+                                    var query = db.HouseMasters
+                       .GroupJoin(db.QrEmployeeMasters,
+                                    a => a.userId,
+                                    b => b.qrEmpId,
+                                    (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                         .SelectMany(r => r.d.DefaultIfEmpty(),
+                                     (p, b) => new
+                                     {
+                                         modifiedDate = p.c.modified,
+                                         userId = p.c.userId,
+                                         houseId = p.c.houseId,
+                                         Name = b.qrEmpName,
+                                         HouseLat = p.c.houseLat,
+                                         HouseLong = p.c.houseLong,
+                                         QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                         ReferanceId = p.c.ReferanceId
+                                     }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                     .Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy")))
+                                     .Where(c => c.userId == userId)
+                                     .Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper()));
+
+                                    var totalRowCount = query.Count();
+
+                                    var model = query
+                                    .Skip(skip)
+                                     .Take(pageSize)
+                                     .ToList();
+                                    data = model.Select(x => new SBAHSHouseDetailsGrid
+                                    {
+                                        houseId = x.houseId,
+                                        Name = x.Name,
+                                        HouseLat = x.HouseLat,
+                                        HouseLong = x.HouseLong,
+                                        QRCodeImage = x.QRCodeImage,
+                                        ReferanceId = x.ReferanceId,
+                                        modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                        totalRowCount = totalRowCount
+                                    }).ToList();
+                                }
+                                else
+                                {
+                                    var query = db.HouseMasters
+                       .GroupJoin(db.QrEmployeeMasters,
+                                    a => a.userId,
+                                    b => b.qrEmpId,
+                                    (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                         .SelectMany(r => r.d.DefaultIfEmpty(),
+                                     (p, b) => new
+                                     {
+                                         modifiedDate = p.c.modified,
+                                         userId = p.c.userId,
+                                         houseId = p.c.houseId,
+                                         Name = b.qrEmpName,
+                                         HouseLat = p.c.houseLat,
+                                         HouseLong = p.c.houseLong,
+                                         QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                         ReferanceId = p.c.ReferanceId
+                                     }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                     .Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy")))
+                                     .Where(c => c.userId == userId);
+
+                                    var totalRowCount = query.Count();
+
+                                    var model = query
+                                     .Skip(skip)
+                                     .Take(pageSize)
+                                     .ToList();
+                                    data = model.Select(x => new SBAHSHouseDetailsGrid
+                                    {
+                                        houseId = x.houseId,
+                                        Name = x.Name,
+                                        HouseLat = x.HouseLat,
+                                        HouseLong = x.HouseLong,
+                                        QRCodeImage = x.QRCodeImage,
+                                        ReferanceId = x.ReferanceId,
+                                        modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                        totalRowCount = totalRowCount
+                                    }).ToList();
+                                }
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(SearchString))
+                                {
+                                    var query = db.HouseMasters
+                       .GroupJoin(db.QrEmployeeMasters,
+                                    a => a.userId,
+                                    b => b.qrEmpId,
+                                    (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                         .SelectMany(r => r.d.DefaultIfEmpty(),
+                                     (p, b) => new
+                                     {
+                                         modifiedDate = p.c.modified,
+                                         userId = p.c.userId,
+                                         houseId = p.c.houseId,
+                                         Name = b.qrEmpName,
+                                         HouseLat = p.c.houseLat,
+                                         HouseLong = p.c.houseLong,
+                                         QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                         ReferanceId = p.c.ReferanceId
+                                     }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                     .Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy")))
+                                     .Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper()));
+
+                                    var totalRowCount = query.Count();
+
+                                    var model = query
+                                     .Skip(skip)
+                                     .Take(pageSize)
+                                     .ToList();
+                                    data = model.Select(x => new SBAHSHouseDetailsGrid
+                                    {
+                                        houseId = x.houseId,
+                                        Name = x.Name,
+                                        HouseLat = x.HouseLat,
+                                        HouseLong = x.HouseLong,
+                                        QRCodeImage = x.QRCodeImage,
+                                        ReferanceId = x.ReferanceId,
+                                        modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                        totalRowCount = totalRowCount
+                                    }).ToList();
+                                }
+                                else
+                                {
+                                    var query = db.HouseMasters
+                      .GroupJoin(db.QrEmployeeMasters,
+                                   a => a.userId,
+                                   b => b.qrEmpId,
+                                   (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                        .SelectMany(r => r.d.DefaultIfEmpty(),
+                                    (p, b) => new
+                                    {
+                                        modifiedDate = p.c.modified,
+                                        userId = p.c.userId,
+                                        houseId = p.c.houseId,
+                                        Name = b.qrEmpName,
+                                        HouseLat = p.c.houseLat,
+                                        HouseLong = p.c.houseLong,
+                                        QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                        ReferanceId = p.c.ReferanceId
+                                    }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                    //.AsEnumerable()
+                                    //.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy")))
+                                    .Where(c => (DbFunctions.TruncateTime(c.modifiedDate) == DbFunctions.TruncateTime(fdate)));
+
+                                    var totalRowCount = query.Count();
+
+                                    var model = query
+                                    .Skip(skip)
+                                    .Take(pageSize)
+                                    .ToList();
+                                    data = model.Select(x => new SBAHSHouseDetailsGrid
+                                    {
+                                        houseId = x.houseId,
+                                        Name = x.Name,
+                                        HouseLat = x.HouseLat,
+                                        HouseLong = x.HouseLong,
+                                        QRCodeImage = x.QRCodeImage,
+                                        ReferanceId = x.ReferanceId,
+                                        modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                        totalRowCount = totalRowCount
+                                    }).ToList();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (userId > 0)
+                            {
+                                if (!string.IsNullOrEmpty(SearchString))
+                                {
+                                    var query = db.HouseMasters
+                       .GroupJoin(db.QrEmployeeMasters,
+                                    a => a.userId,
+                                    b => b.qrEmpId,
+                                    (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                         .SelectMany(r => r.d.DefaultIfEmpty(),
+                                     (p, b) => new
+                                     {
+                                         modifiedDate = p.c.modified,
+                                         userId = p.c.userId,
+                                         houseId = p.c.houseId,
+                                         Name = b.qrEmpName,
+                                         HouseLat = p.c.houseLat,
+                                         HouseLong = p.c.houseLong,
+                                         QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                         ReferanceId = p.c.ReferanceId
+                                     }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                     .Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate))
+                                     .Where(c => c.userId == userId)
+                                     .Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper()));
+
+                                    var totalRowCount = query.Count();
+
+                                    var model = query
+                                     .Skip(skip)
+                                     .Take(pageSize)
+                                    .ToList();
+                                    data = model.Select(x => new SBAHSHouseDetailsGrid
+                                    {
+                                        houseId = x.houseId,
+                                        Name = x.Name,
+                                        HouseLat = x.HouseLat,
+                                        HouseLong = x.HouseLong,
+                                        QRCodeImage = x.QRCodeImage,
+                                        ReferanceId = x.ReferanceId,
+                                        modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                        totalRowCount = totalRowCount
+                                    }).ToList();
+
+                                }
+                                else
+                                {
+                                    var query = db.HouseMasters
                         .GroupJoin(db.QrEmployeeMasters,
                                      a => a.userId,
                                      b => b.qrEmpId,
@@ -4754,46 +4978,286 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.houseLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                      .Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate))
+                                      .Where(c => c.userId == userId);
+
+                                    var totalRowCount = query.Count();
+
+                                    var model = query
+                                      .Skip(skip)
+                                      .Take(pageSize)
+                                      .ToList();
+                                    data = model.Select(x => new SBAHSHouseDetailsGrid
+                                    {
+                                        houseId = x.houseId,
+                                        Name = x.Name,
+                                        HouseLat = x.HouseLat,
+                                        HouseLong = x.HouseLong,
+                                        QRCodeImage = x.QRCodeImage,
+                                        ReferanceId = x.ReferanceId,
+                                        modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                        totalRowCount = totalRowCount
+                                    }).ToList();
+                                }
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(SearchString))
+                                {
+                                    var query = db.HouseMasters
+                       .GroupJoin(db.QrEmployeeMasters,
+                                    a => a.userId,
+                                    b => b.qrEmpId,
+                                    (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                         .SelectMany(r => r.d.DefaultIfEmpty(),
+                                     (p, b) => new
+                                     {
+                                         modifiedDate = p.c.modified,
+                                         userId = p.c.userId,
+                                         houseId = p.c.houseId,
+                                         Name = b.qrEmpName,
+                                         HouseLat = p.c.houseLat,
+                                         HouseLong = p.c.houseLong,
+                                         QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                         ReferanceId = p.c.ReferanceId
+                                     }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                     .Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate))
+                                     .Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper()));
 
 
-                if (fdate != null && tdate != null)
-                {
-                    if (Convert.ToDateTime(fdate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
-                    {
-                        model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fdate).ToString("dd/MM/yyyy"))).ToList();
+                                    var totalRowCount = query.Count();
+
+                                    var model = query
+                                     .Skip(skip)
+                                     .Take(pageSize)
+                                     .ToList();
+                                    data = model.Select(x => new SBAHSHouseDetailsGrid
+                                    {
+                                        houseId = x.houseId,
+                                        Name = x.Name,
+                                        HouseLat = x.HouseLat,
+                                        HouseLong = x.HouseLong,
+                                        QRCodeImage = x.QRCodeImage,
+                                        ReferanceId = x.ReferanceId,
+                                        modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                        totalRowCount = totalRowCount
+                                    }).ToList();
+
+                                }
+                                else
+                                {
+                                    var query = db.HouseMasters
+                       .GroupJoin(db.QrEmployeeMasters,
+                                    a => a.userId,
+                                    b => b.qrEmpId,
+                                    (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                         .SelectMany(r => r.d.DefaultIfEmpty(),
+                                     (p, b) => new
+                                     {
+                                         modifiedDate = p.c.modified,
+                                         userId = p.c.userId,
+                                         houseId = p.c.houseId,
+                                         Name = b.qrEmpName,
+                                         HouseLat = p.c.houseLat,
+                                         HouseLong = p.c.houseLong,
+                                         QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                         ReferanceId = p.c.ReferanceId
+                                     }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                     .Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate));
+
+                                    var totalRowCount = query.Count();
+
+                                    var model = query
+                                     .Skip(skip)
+                                     .Take(pageSize)
+                                     .ToList();
+                                    data = model.Select(x => new SBAHSHouseDetailsGrid
+                                    {
+                                        houseId = x.houseId,
+                                        Name = x.Name,
+                                        HouseLat = x.HouseLat,
+                                        HouseLong = x.HouseLong,
+                                        QRCodeImage = x.QRCodeImage,
+                                        ReferanceId = x.ReferanceId,
+                                        modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                        totalRowCount = totalRowCount
+                                    }).ToList();
+                                }
+                            }
+
+                        }
                     }
                     else
                     {
+                        if (userId > 0)
+                        {
+                            if (!string.IsNullOrEmpty(SearchString))
+                            {
+                                var query = db.HouseMasters
+                        .GroupJoin(db.QrEmployeeMasters,
+                                     a => a.userId,
+                                     b => b.qrEmpId,
+                                     (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                          .SelectMany(r => r.d.DefaultIfEmpty(),
+                                      (p, b) => new
+                                      {
+                                          modifiedDate = p.c.modified,
+                                          userId = p.c.userId,
+                                          houseId = p.c.houseId,
+                                          Name = b.qrEmpName,
+                                          HouseLat = p.c.houseLat,
+                                          HouseLong = p.c.houseLong,
+                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          ReferanceId = p.c.ReferanceId
+                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                      .Where(c => c.userId == userId)
+                                      .Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper()));
 
-                        model = model.Where(c => (c.modifiedDate >= fdate && c.modifiedDate <= tdate)).ToList();
+
+                                var totalRowCount = query.Count();
+
+                                var model = query
+                                      .Skip(skip)
+                                      .Take(pageSize)
+                                      .ToList();
+                                data = model.Select(x => new SBAHSHouseDetailsGrid
+                                {
+                                    houseId = x.houseId,
+                                    Name = x.Name,
+                                    HouseLat = x.HouseLat,
+                                    HouseLong = x.HouseLong,
+                                    QRCodeImage = x.QRCodeImage,
+                                    ReferanceId = x.ReferanceId,
+                                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                    totalRowCount = totalRowCount
+                                }).ToList();
+                            }
+                            else
+                            {
+                                var query = db.HouseMasters
+                      .GroupJoin(db.QrEmployeeMasters,
+                                   a => a.userId,
+                                   b => b.qrEmpId,
+                                   (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                        .SelectMany(r => r.d.DefaultIfEmpty(),
+                                    (p, b) => new
+                                    {
+                                        modifiedDate = p.c.modified,
+                                        userId = p.c.userId,
+                                        houseId = p.c.houseId,
+                                        Name = b.qrEmpName,
+                                        HouseLat = p.c.houseLat,
+                                        HouseLong = p.c.houseLong,
+                                        QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                        ReferanceId = p.c.ReferanceId
+                                    }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                    .Where(c => c.userId == userId);
+
+                                var totalRowCount = query.Count();
+
+                                var model = query
+                                    .Skip(skip)
+                                    .Take(pageSize)
+                                    .ToList();
+                                data = model.Select(x => new SBAHSHouseDetailsGrid
+                                {
+                                    houseId = x.houseId,
+                                    Name = x.Name,
+                                    HouseLat = x.HouseLat,
+                                    HouseLong = x.HouseLong,
+                                    QRCodeImage = x.QRCodeImage,
+                                    ReferanceId = x.ReferanceId,
+                                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                    totalRowCount = totalRowCount
+                                }).ToList();
+                            }
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(SearchString))
+                            {
+                                var query = db.HouseMasters
+                       .GroupJoin(db.QrEmployeeMasters,
+                                    a => a.userId,
+                                    b => b.qrEmpId,
+                                    (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                         .SelectMany(r => r.d.DefaultIfEmpty(),
+                                     (p, b) => new
+                                     {
+                                         modifiedDate = p.c.modified,
+                                         userId = p.c.userId,
+                                         houseId = p.c.houseId,
+                                         Name = b.qrEmpName,
+                                         HouseLat = p.c.houseLat,
+                                         HouseLong = p.c.houseLong,
+                                         QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                         ReferanceId = p.c.ReferanceId
+                                     }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId)
+                                     .Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper()));
+
+                                var totalRowCount = query.Count();
+
+                                var model = query
+                                     .Skip(skip)
+                                     .Take(pageSize)
+                                     .ToList();
+                                data = model.Select(x => new SBAHSHouseDetailsGrid
+                                {
+                                    houseId = x.houseId,
+                                    Name = x.Name,
+                                    HouseLat = x.HouseLat,
+                                    HouseLong = x.HouseLong,
+                                    QRCodeImage = x.QRCodeImage,
+                                    ReferanceId = x.ReferanceId,
+                                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                    totalRowCount = totalRowCount
+                                }).ToList();
+                            }
+                            else
+                            {
+                                var query = db.HouseMasters
+                       .GroupJoin(db.QrEmployeeMasters,
+                                    a => a.userId,
+                                    b => b.qrEmpId,
+                                    (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                         .SelectMany(r => r.d.DefaultIfEmpty(),
+                                     (p, b) => new
+                                     {
+                                         modifiedDate = p.c.modified,
+                                         userId = p.c.userId,
+                                         houseId = p.c.houseId,
+                                         Name = b.qrEmpName,
+                                         HouseLat = p.c.houseLat,
+                                         HouseLong = p.c.houseLong,
+                                         QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                         ReferanceId = p.c.ReferanceId
+                                     }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId);
+
+                                var totalRowCount = query.Count();
+
+                                var model = query
+                                     .Skip(skip)
+                                     .Take(pageSize)
+                                     .ToList();
+                                data = model.Select(x => new SBAHSHouseDetailsGrid
+                                {
+                                    houseId = x.houseId,
+                                    Name = x.Name,
+                                    HouseLat = x.HouseLat,
+                                    HouseLong = x.HouseLong,
+                                    QRCodeImage = x.QRCodeImage,
+                                    ReferanceId = x.ReferanceId,
+                                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                                    totalRowCount = totalRowCount
+                                }).ToList();
+                            }
+
+                        }
+
                     }
-                }
-                if (userId > 0)
-                {
-                    model = model.Where(c => c.userId == userId).ToList();
 
-                }
-
-                if (!string.IsNullOrEmpty(SearchString))
-                {
-                    model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(SearchString.ToUpper())
-                     ).ToList();
-
-                }
-                model = model.GroupBy(book => new { book.houseId }).Select(book => book.FirstOrDefault()).ToList();
-
-                var data = model.Select(x => new SBAHSHouseDetailsGrid
-                {
-                    houseId = x.houseId,
-                    Name = x.Name,
-                    HouseLat = x.HouseLat,
-                    HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
-                    ReferanceId = x.ReferanceId,
-                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
-                }).ToList();
-                return data;
+                    return data;
             }
         }
 
@@ -5410,7 +5874,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.dyLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5482,7 +5946,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.swmLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5554,7 +6018,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.Long,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5626,7 +6090,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.commercialLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5698,7 +6162,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.LWLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5769,7 +6233,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           HouseLong = p.c.SSLong,
                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
                                           ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.HouseLat != null && x.HouseLong != null).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)

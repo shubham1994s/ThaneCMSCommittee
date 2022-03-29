@@ -16,6 +16,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public List<SelectListItem> TalukaList { get; set; }
 
         public List<SelectListItem> AreaList { get; set; }
+
+        public List<SelectListItem> SubList { get; set; }
         public List<SelectListItem> WardList { get; set; }
         public List<SelectListItem> ZoneList { get; set; }
         public List<SelectListItem> VehicleList { get; set; }

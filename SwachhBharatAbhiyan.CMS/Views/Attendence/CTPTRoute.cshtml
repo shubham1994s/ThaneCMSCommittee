@@ -607,33 +607,16 @@
                             var data = markers[i]
                             if (data.type == 1) {
                                 (function (marker, data) {
-                                    if (data.WasteType == "0") {
-                                        col = '|f44336|000000'
+                                    if (data.WasteType == "CT") {
+                                        col = '|917b0f|000000'
                                     }
-                                    else if (data.WasteType == "1") {
-                                        col = '|388e3c|000000'
+                                    else if (data.WasteType == "PT") {
+                                        col = '|a0a004|000000'
                                     }
-                                    else if (data.WasteType == "2") {
-                                        col = '|fe9436|000000'
+                                    else if (data.WasteType == "U") {
+                                        col = '|835787|000000'
                                     }
-                                    else if (data.WasteType == "4") {
-                                        col = '|63676e|ffffff'
-                                    }
-                                    else if (data.WasteType == "5") {
-                                        col = '|1ad15c|000000'
-                                    }
-                                    else if (data.WasteType == "6") {
-                                        col = '|186634|ffffff'
-                                    }
-                                    else if (data.WasteType == "7") {
-                                        col = '|66a2d5|000000'
-                                    }
-                                    else if (data.WasteType == "8") {
-                                        col = '|8f8b28|ffffff'
-                                    }
-                                    else if (data.WasteType == "9") {
-                                        col = '|c384d3|ffffff'
-                                    }
+                                   
 
                                 })(marker, data);
 
@@ -835,33 +818,18 @@
                                     if (data.WasteType == null) {
                                         data.WasteType = '';
                                     }
-                                    else if (data.WasteType == "0") {
-                                        data.WasteType = "Mixed Garbage"
+
+                                    else if (data.WasteType == "CT") {
+                                        data.WasteType = "Community Toilet"
                                     }
-                                    else if (data.WasteType == "1") {
-                                        data.WasteType = "Segregated Garbage"
+                                    else if (data.WasteType == "PT") {
+                                        data.WasteType = "Public Toilet"
                                     }
-                                    else if (data.WasteType == "2") {
-                                        data.WasteType = "Garbage not Received"
+                                    else if (data.WasteType == "U") {
+                                        data.WasteType = "Urinal Toilet"
                                     }
-                                    else if (data.WasteType == "4") {
-                                        data.WasteType = "Construction And Demolition Waste"
-                                    }
-                                    else if (data.WasteType == "5") {
-                                        data.WasteType = "Horticulture Waste"
-                                    }
-                                    else if (data.WasteType == "6") {
-                                        data.WasteType = "Wet Waste"
-                                    }
-                                    else if (data.WasteType == "7") {
-                                        data.WasteType = "Dry Waste"
-                                    }
-                                    else if (data.WasteType == "8") {
-                                        data.WasteType = "Domestic Hazardous Waste"
-                                    }
-                                    else if (data.WasteType == "9") {
-                                        data.WasteType = "Sanitary Waste"
-                                    }
+
+                                   
                                     if (data.gpBeforImage == null) {
                                         data.gpBeforImage = "/Images/default_not_upload.png"
                                     }
@@ -870,7 +838,7 @@
                                     }
                                     if (data.HouseId != null) {
                                         google.maps.event.addListener(marker, "click", function (e) {
-                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>CTPT Details:</b></h5><p><b>CTPT-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Mobile No:</b>' + data.OwnerMobileNo + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>CTPT Address:</b>' + data.HouseAddress + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
+                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>CT/PT/U   Details:</b></h5><p><b>CT/PT/U-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Mobile No:</b>' + data.OwnerMobileNo + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>CT/PT/U Address:</b>' + data.HouseAddress + '</p><p><b>Cleaning Type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
                                             infoWindow.open(map, marker);
 
                                             //animateCircle(poly,9);
@@ -965,7 +933,7 @@
                         var path = new google.maps.MVCArray();
 
                         //Initialize the Direction Service
-                       // var service = new google.maps.DirectionsService();
+                        // var service = new google.maps.DirectionsService();
 
                         //Set the Path Stroke Color
                         var poly = new google.maps.Polyline({
@@ -1104,24 +1072,24 @@
         });
     </script>
     <script>
-                        //$(document).ready(function () {
-                        //    $("input[name$='filter']").click(function () {
+                            //$(document).ready(function () {
+                            //    $("input[name$='filter']").click(function () {
 
-                        //        var test = $(this).val();
+                            //        var test = $(this).val();
 
-                        //        $("div.desc").hide();
-                        //        $("#filter" + test).show();
-                        //    });
-                        //});
+                            //        $("div.desc").hide();
+                            //        $("#filter" + test).show();
+                            //    });
+                            //});
     </script>
     <script>
-                        //$(document).ready(function () {
-                        //    debugger;
+                            //$(document).ready(function () {
+                            //    debugger;
 
-                        //    var x = document.getElementById("username").innerHTML;
-                        //    var tem = x.charAt(0).toUpperCase() + x.slice(1);
-                        //    document.getElementById("demo").innerHTML = tem;
-                        //});
+                            //    var x = document.getElementById("username").innerHTML;
+                            //    var tem = x.charAt(0).toUpperCase() + x.slice(1);
+                            //    document.getElementById("demo").innerHTML = tem;
+                            //});
 
     </script>
 </fieldset>
