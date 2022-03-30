@@ -1,7 +1,4 @@
-﻿/*/*var appName;*/*/
-
-/*appName = ('#ulb_name').val();*/
-
+﻿
 function loadGridHouse() {
 
     var txt_fdate, txt_tdate, Client, UserId;
