@@ -1,9 +1,9 @@
 ﻿
-//appName = ('#ulb_name').val();
+
 
 function loadGridHouse() {
     debugger;
-    let appName = document.getElementById("ulb_name").innerHTML
+    let appName = document.getElementById("ulb_name").innerHTML;
     var txt_fdate, txt_tdate, Client, UserId;
     var name = [];
     var arr = [$('#txt_fdate').val(), $('#txt_tdate').val()];

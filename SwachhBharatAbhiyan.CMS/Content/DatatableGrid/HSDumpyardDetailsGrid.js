@@ -1,10 +1,8 @@
-﻿var appName;
-
-appName = ('#ulb_name').val();
+﻿
 function loadGridDump() {
     debugger;
    
-
+    let appName = document.getElementById("ulb_name").innerHTML;
     $("#demoGrid1").dataTable().fnDestroy();
     $("#demoGrid1").DataTable({
         buttons: [
