@@ -1,8 +1,26 @@
-﻿var appName;
+﻿var appName=('#ulb_name').val();
+//appName = ('#ulb_name').val();
 
-appName = ('#ulb_name').val();
 function loadGridHouse() {
     debugger;
+
+    var txt_fdate, txt_tdate, Client, UserId;
+    var name = [];
+    var arr = [$('#txt_fdate').val(), $('#txt_tdate').val()];
+
+    for (var i = 0; i <= arr.length - 1; i++) {
+        name = arr[i].split("/");
+        arr[i] = name[1] + "/" + name[0] + "/" + name[2];
+    }
+
+    txt_fdate = arr[0];
+    txt_tdate = arr[1];
+    UserId = $('#selectnumber').val();
+    Client = " ";
+    NesEvent = " ";
+    var Product = "";
+    var catProduct = "";
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#sHouse").val();//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
     $("#demoGrid").dataTable().fnDestroy();
     $("#demoGrid").DataTable({
         buttons: [
@@ -11,7 +29,7 @@ function loadGridHouse() {
                 extend: 'excel', className: 'btn btn-sm btn-success filter-button-style', title: appName, text: 'Export to Excel', exportOptions: { columns: [0, 1, 2, 3, 4, 5] }
             },
         ],
-        "sDom": "ltipr",
+        "sDom": "lBfrtip",
         //"order": [[0, "desc"]],
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
