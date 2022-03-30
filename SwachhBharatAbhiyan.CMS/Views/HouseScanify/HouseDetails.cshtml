@@ -108,6 +108,13 @@
     }
 </style>
 
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSDumpyardDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSLiquidDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSStreetDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSCommercialDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSSWMDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSCTPTDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSHouseDetailsGrid.js"></script>
 <body>
     <input type="hidden" value="@ViewBag.AppId" id="appid" />
     <div class="content-inner">
@@ -409,6 +416,7 @@
     function LoadGrid() {
         var RadioValue = $("input[name='radio']:checked").val();
         if (RadioValue == 0) {
+            debugger;
             $("#divHouse").show();
             $("#divCommercial").hide();
             $("#divLiquid").hide();
@@ -685,7 +693,7 @@
 
 
 </script>
-<script src="~/Content/graph-assets/js/custom.js"></script>
+@*<script src="~/Content/graph-assets/js/custom.js"></script>*@
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
 <script type="text/javascript">
     $('.datepicker').datepicker({
