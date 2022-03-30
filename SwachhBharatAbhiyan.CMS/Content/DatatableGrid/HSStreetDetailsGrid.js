@@ -1,4 +1,6 @@
-﻿
+﻿////var appName;
+
+////appName = ('#ulb_name').val();
 function loadGridStreet() {
 debugger;
 

@@ -1,10 +1,8 @@
-﻿var appName;
-
-appName = ('#ulb_name').val();
+﻿
 function loadGridCTPT() {
     debugger;
 
-
+    let appName = document.getElementById("ulb_name").innerHTML;
     $("#demoGrid4").dataTable().fnDestroy();
     $("#demoGrid4").show();
     $("#demoGrid4").DataTable({
