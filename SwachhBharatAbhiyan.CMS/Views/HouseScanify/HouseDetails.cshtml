@@ -78,6 +78,7 @@
         border-radius: 50%;
         background: white;
     }
+
     #demoGrid_filter {
         display: none;
     }
@@ -106,13 +107,7 @@
         display: none;
     }
 </style>
-<script src="~/Content/DatatableGrid/HSHouseDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSDumpyardDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSLiquidDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSStreetDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSCommercialDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSSWMDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSCTPTDetailsGrid.js"></script>
+
 <body>
     <input type="hidden" value="@ViewBag.AppId" id="appid" />
     <div class="content-inner">
@@ -370,7 +365,7 @@
         </div>
     </div>
 
-    
+
 
     <div id="snackbar">Image not uploaded...</div>
 </body>
@@ -389,7 +384,7 @@
 
     $(document).ready(function () {
         $.get("/houseScanify/GetAppNames", null, house);
-
+        debugger;
         function house(data) {
             var qqq = $('#appid').val();
             for (var i = 0; i < data.length; i++) {
@@ -403,6 +398,13 @@
 
     });
 </script>
+<script src="~/Content/DatatableGrid/HSHouseDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSDumpyardDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSLiquidDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSStreetDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSCommercialDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSSWMDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSCTPTDetailsGrid.js"></script>
 <script type="text/javascript">
     function LoadGrid() {
         var RadioValue = $("input[name='radio']:checked").val();
@@ -646,7 +648,7 @@
 <script type="text/javascript">
     var _tmr;
     function DownloadQRCode() {
-        
+
         var RadioValue = $("input[name='radio']:checked").val();
         var txt_fdate, txt_tdate, Client, UserId;
         //var name = [];
