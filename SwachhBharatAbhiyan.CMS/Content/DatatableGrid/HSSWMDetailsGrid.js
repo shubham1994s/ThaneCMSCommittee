@@ -1,10 +1,8 @@
-﻿var appName;
-
-appName = ('#ulb_name').val();
+﻿
 function loadGridSWM() {
     debugger;
 
-
+    let appName = document.getElementById("ulb_name").innerHTML;
     $("#demoGrid5").dataTable().fnDestroy();
     $("#demoGrid5").DataTable({
         buttons: [

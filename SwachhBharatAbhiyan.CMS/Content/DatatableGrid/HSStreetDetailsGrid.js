@@ -1,10 +1,10 @@
-﻿var appName;
+﻿////var appName;
 
-appName = ('#ulb_name').val();
+////appName = ('#ulb_name').val();
 function loadGridStreet() {
 debugger;
 
-
+    let appName = document.getElementById("ulb_name").innerHTML;
 $("#demoGrid3").dataTable().fnDestroy();
     $("#demoGrid3").DataTable({
         buttons: [
