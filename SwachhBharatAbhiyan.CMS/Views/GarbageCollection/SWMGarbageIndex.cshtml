@@ -49,7 +49,7 @@
 
             <div class="col-sm-3">
                 <label>Select SWM Facility</label>
-                <select id="SWMTypeid" class="form-control form-control form-control-sm">
+                <select id="SWMTypeid" class="form-control form-control form-control-sm" onchange = "changeddl(this)">
                     <option value="0">Select Facility Type</option>
                     <option value="1">Transfer Station</option>
                     <option value="2">Wet Waste Processing Facility</option>
@@ -214,4 +214,63 @@
   $('#txt_tdate').focus(function () {
       $('.dtpk_drpdwn').eq(0).hide();
   });
+</script>
+
+<script>
+
+    function changeddl(obj) {
+        debugger;
+        var text = obj.options[obj.selectedIndex].text;
+        var ddl2 = document.querySelectorAll('#Segid option');
+        const $select = document.querySelector('#Segid');
+        $select.value = 0
+
+        for (var i = 1; i < ddl2.length; i++) {
+            var option = ddl2[i];
+            option.style.display = 'none';
+            if (text == 'Select Facility Type') {
+
+                option.style.display = 'none'
+
+            }
+            if (text == 'Transfer Station') {
+                if (['Municiple Solid Waste'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+
+            }
+            if (text == 'Wet Waste Processing Facility') {
+                if (['Compost', 'Biogas', 'Biodigester Bottom Sludge'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+            }
+            if (text == 'Dry Waste Processing Facility') {
+                if (['Refuse Derived Fuel', 'Plastics', 'Metal And Glass', 'Cardboards', 'Any Other Veriety'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+            }
+            if (text == 'C&D Waste Processing Facility') {
+                if (['Soil', 'Sand', '<8mm Aggregates', '>16mm Aggregates', 'Manufactured Goods(Bricks,Tiles,etc.)'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+            }
+            if (text == 'Incineration Facility For Domestic and Sanitary Waste Processing') {
+                if (['Fly Ash'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+            }
+            if (text == 'Sanitary Landfill Facility') {
+                if (['Sanitary Landfill Facility'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+            }
+            if (text == 'Legacy Waste Bioremediation Facility') {
+                if (['Refuse Derived Fuel', 'Sand and Soil', '<8mm Aggregates', '8-16mm Aggregates', '>16mm Aggregates'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+            }
+            if (text == 'Sewage Treatment Plant') {
+                if (['Dried Sludge', 'Treated Wastewater'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+            }
+            if (text == 'Bulk Waste Generators For Onsite Wet Waste Processing') {
+                if (['Compost', 'Biogas', 'Biodigester Bottom Sludge'].indexOf(option.text) > -1)
+                    option.style.display = 'block'
+            }
+        }
+    }
+
 </script>

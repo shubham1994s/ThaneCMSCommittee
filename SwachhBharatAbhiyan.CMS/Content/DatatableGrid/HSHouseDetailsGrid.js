@@ -1,6 +1,4 @@
-﻿var appName;
-
-appName = ('#ulb_name').val();
+﻿
 function loadGridHouse() {
 
     var txt_fdate, txt_tdate, Client, UserId;
@@ -20,27 +18,29 @@ function loadGridHouse() {
     var Product = "";
     var catProduct = "";
     var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#sHouse").val();//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+    // alert(value );
 
     debugger;
+    let appName = document.getElementById("ulb_name").innerHTML;
     $("#demoGrid").dataTable().fnDestroy();
     $("#demoGrid").DataTable({
         buttons: [
 
             {
-                extend: 'excel', className: 'btn btn-sm btn-success filter-button-style', title: appName, text: 'Export to Excel', exportOptions: { columns: [0, 1, 2, 3, 4, 5] }
+                extend: 'excel', className: 'btn btn-sm btn-success filter-button-style', title: appName + ' House Report', text: 'Export to Excel', exportOptions: { columns: [0, 1, 2, 3, 4, 5] }
             },
         ],
         //"sDom": "ltipr",
         dom: 'lBfrtip',
-        lbFilter: false,
-        //"sDom": "ltipr",
         //"order": [[0, "desc"]],
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
         "filter": true, // this is for disable filter (search box)
         "orderMulti": false, // for disable multiple column at once
         "pageLength": 10,
-
+        "search": {
+            "search": value
+        },
         "ajax": {
             "url": "/Datable/GetJqGridJson?rn=HSHouseDetails",
             "type": "POST",
@@ -53,6 +53,7 @@ function loadGridHouse() {
                 "visible": false,
                 "searchable": false
             },
+                { bSortable: false, targets: [4,5,6] } ,
                 {
                     "targets": [6],
                     "visible": true,

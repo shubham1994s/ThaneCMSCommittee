@@ -1,16 +1,14 @@
-﻿var appName;
-
-appName = ('#ulb_name').val();
+﻿
 function loadGridSWM() {
     debugger;
 
-
+    let appName = document.getElementById("ulb_name").innerHTML;
     $("#demoGrid5").dataTable().fnDestroy();
     $("#demoGrid5").DataTable({
         buttons: [
 
             {
-                extend: 'excel', className: 'btn btn-sm btn-success filter-button-style', title: appName, text: 'Export to Excel', exportOptions: { columns: [0, 1, 2, 3, 4, 5] }
+                extend: 'excel', className: 'btn btn-sm btn-success filter-button-style', title: appName + ' SWM Report', text: 'Export to Excel', exportOptions: { columns: [0, 1, 2, 3, 4, 5] }
             },
         ],
         //"sDom": "ltipr",

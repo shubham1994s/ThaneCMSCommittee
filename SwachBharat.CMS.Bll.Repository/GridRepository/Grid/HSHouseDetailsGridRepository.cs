@@ -15,7 +15,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public HSHouseDetailsGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string sortColumn = "", string sortColumnDir = "", string draw = "", string length = "", string start = "")
+        public HSHouseDetailsGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,string sortColumn = "", string sortColumnDir = "", string draw = "", string length = "", string start = "")
         {
             dataset = objRep.GetHSHouseDetailsData(wildcard, SearchString, fdate, tdate, userId, appId, sortColumn, sortColumnDir, draw, length, start);
         }
@@ -29,7 +29,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
             {
                 recordsTotal = dataset.First().totalRowCount;
             }
-
+            
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             serializer.MaxJsonLength = Int32.MaxValue;
             var result = serializer.Serialize(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = dataset });

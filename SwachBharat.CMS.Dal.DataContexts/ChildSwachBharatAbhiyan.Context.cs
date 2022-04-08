@@ -22,6 +22,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         {
         }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -947,6 +948,43 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_CurrentCTPTCount_Result> SP_CurrentCTPTCount()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CurrentCTPTCount_Result>("SP_CurrentCTPTCount");
+        }
+    
+        public virtual ObjectResult<SP_GetHSHouseDetails_Result> SP_GetHSHouseDetails(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid, string sortColumn, string sortOrder, Nullable<int> offsetValue, Nullable<int> pagingSize, string searchText)
+        {
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var sortColumnParameter = sortColumn != null ?
+                new ObjectParameter("sortColumn", sortColumn) :
+                new ObjectParameter("sortColumn", typeof(string));
+    
+            var sortOrderParameter = sortOrder != null ?
+                new ObjectParameter("sortOrder", sortOrder) :
+                new ObjectParameter("sortOrder", typeof(string));
+    
+            var offsetValueParameter = offsetValue.HasValue ?
+                new ObjectParameter("OffsetValue", offsetValue) :
+                new ObjectParameter("OffsetValue", typeof(int));
+    
+            var pagingSizeParameter = pagingSize.HasValue ?
+                new ObjectParameter("PagingSize", pagingSize) :
+                new ObjectParameter("PagingSize", typeof(int));
+    
+            var searchTextParameter = searchText != null ?
+                new ObjectParameter("SearchText", searchText) :
+                new ObjectParameter("SearchText", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetHSHouseDetails_Result>("SP_GetHSHouseDetails", fdateParameter, tdateParameter, useridParameter, sortColumnParameter, sortOrderParameter, offsetValueParameter, pagingSizeParameter, searchTextParameter);
         }
     }
 }

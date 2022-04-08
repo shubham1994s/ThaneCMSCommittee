@@ -78,6 +78,7 @@
         border-radius: 50%;
         background: white;
     }
+
     #demoGrid_filter {
         display: none;
     }
@@ -106,16 +107,16 @@
         display: none;
     }
 </style>
-<script src="~/Content/DatatableGrid/HSHouseDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSDumpyardDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSLiquidDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSStreetDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSCommercialDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSSWMDetailsGrid.js"></script>
-<script src="~/Content/DatatableGrid/HSCTPTDetailsGrid.js"></script>
+
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSDumpyardDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSLiquidDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSStreetDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSCommercialDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSSWMDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSCTPTDetailsGrid.js"></script>
+<script  language="text/javascript" src="~/Content/DatatableGrid/HSHouseDetailsGrid.js"></script>
 <body>
     <input type="hidden" value="@ViewBag.AppId" id="appid" />
-
     <div class="content-inner">
         <br />
 
@@ -343,6 +344,7 @@
             </div>
         </div>
     </div>
+
     <div id="myModal_Image" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
 
@@ -370,6 +372,8 @@
         </div>
     </div>
 
+
+
     <div id="snackbar">Image not uploaded...</div>
 </body>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
@@ -382,11 +386,12 @@
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
 @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>*@
 <!-- Dashboard Header Section    -->
+
 <script type="text/javascript">
 
     $(document).ready(function () {
         $.get("/houseScanify/GetAppNames", null, house);
-
+        debugger;
         function house(data) {
             var qqq = $('#appid').val();
             for (var i = 0; i < data.length; i++) {
@@ -400,10 +405,18 @@
 
     });
 </script>
+<script src="~/Content/DatatableGrid/HSHouseDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSDumpyardDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSLiquidDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSStreetDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSCommercialDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSSWMDetailsGrid.js"></script>
+<script src="~/Content/DatatableGrid/HSCTPTDetailsGrid.js"></script>
 <script type="text/javascript">
     function LoadGrid() {
         var RadioValue = $("input[name='radio']:checked").val();
         if (RadioValue == 0) {
+            debugger;
             $("#divHouse").show();
             $("#divCommercial").hide();
             $("#divLiquid").hide();
@@ -413,11 +426,13 @@
             $("#hide_add").text('House ID : ');
             if (CheckHouse == '0') {
                 loadGridHouse();
+
                 CheckHouse = '1';
             }
             else {
                 SearchHouse();
             }
+
         }
         else if (RadioValue == 1) {
             debugger;
@@ -640,7 +655,9 @@
     }
 </script>
 <script type="text/javascript">
+    var _tmr;
     function DownloadQRCode() {
+
         var RadioValue = $("input[name='radio']:checked").val();
         var txt_fdate, txt_tdate, Client, UserId;
         //var name = [];
@@ -677,7 +694,7 @@
 
 
 </script>
-<script src="~/Content/graph-assets/js/custom.js"></script>
+@*<script src="~/Content/graph-assets/js/custom.js"></script>*@
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
 <script type="text/javascript">
     $('.datepicker').datepicker({

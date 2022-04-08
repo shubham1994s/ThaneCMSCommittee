@@ -124,7 +124,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-           if (model.Type == "W")
+            if (model.Type == "W")
             {
 
                 if (!ModelState.IsValid)

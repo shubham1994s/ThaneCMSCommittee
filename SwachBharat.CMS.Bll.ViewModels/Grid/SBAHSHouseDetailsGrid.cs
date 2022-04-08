@@ -17,6 +17,5 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string modifiedDate { get; set; }
         public int totalRowCount { get; set; }
 
-
     }
 }

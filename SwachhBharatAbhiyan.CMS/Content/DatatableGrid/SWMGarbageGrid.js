@@ -143,7 +143,7 @@
                         return "Sevage Treatement Plant";
 
                     }
-                    else if (full["ctype"] == "BWWP") {
+                    else if (full["ctype"] == "BWGWWP") {
                         return "Bulk Waste Generation For Onsite Wet Waste Processing";
 
                     }
