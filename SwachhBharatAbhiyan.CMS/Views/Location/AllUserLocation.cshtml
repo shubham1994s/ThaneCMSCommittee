@@ -31,6 +31,12 @@
     #floating-panel {
         margin-left: -10px;
     }
+    .btn-primary, .btn-primary:hover, .btn-primary:focus {
+        color: #fff;
+        background-color: #189cdf !important;
+        border-color: #007bff !important;
+    }
+     
 </style>
 
 
@@ -63,8 +69,8 @@
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
                         <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
-                    <a id="filter" onclick="Search()" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style">Search</a>
-                    <a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>
+                    <a id="filter" onclick="Search()" style="margin-top:25px" class="btn btn-sm btn-primary filter-button-style">Search</a>
+                    <a id="drop" style="margin-top:25px" class="btn btn-sm btn-primary filter-button-style" onclick="userroute()">Route</a>
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
 
 
