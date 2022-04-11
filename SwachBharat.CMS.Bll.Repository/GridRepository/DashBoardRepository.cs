@@ -3328,7 +3328,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     obj = model.ToList();
                 }
-                var d = obj.OrderByDescending(c => DateTime.Parse(c.daDateTIme)).ToList();
+                //var d = obj.OrderByDescending(c => DateTime.Parse(c.daDateTIme)).ToList();
+                var d = obj.OrderByDescending(c => c.daID).ToList();
                 return d;
             }
         }
