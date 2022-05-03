@@ -18,10 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -464,11 +463,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("FilterType", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter);
-        }
-    
-        public virtual ObjectResult<SP_HouseScanifyDetails_Result> SP_HouseScanifyDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanifyDetails_Result>("SP_HouseScanifyDetails");
         }
     
         public virtual ObjectResult<SP_HouseScanify_Result> SP_HouseScanify(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
@@ -985,6 +979,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("SearchText", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetHSHouseDetails_Result>("SP_GetHSHouseDetails", fdateParameter, tdateParameter, useridParameter, sortColumnParameter, sortOrderParameter, offsetValueParameter, pagingSizeParameter, searchTextParameter);
+        }
+    
+        public virtual ObjectResult<SP_HouseScanifyDetails_Result> SP_HouseScanifyDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanifyDetails_Result>("SP_HouseScanifyDetails");
         }
     }
 }

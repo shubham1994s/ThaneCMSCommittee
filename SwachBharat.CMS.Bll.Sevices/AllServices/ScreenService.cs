@@ -6075,13 +6075,15 @@ namespace SwachBharat.CMS.Bll.Services
 
                         model.TotalCommercialUpdated = data.TotalCommercial;
                         model.TotalCommercialUpdated_CurrentDay = data.TotalCommercialUpdated_CurrentDay;
+                        model.TotalCommercial = data.TotalCommercialUpdated;
 
                         model.TotalSWMUpdated = data.TotalSWM;
                         model.TotalSWMUpdated_CurrentDay = data.TotalSWMUpdated_CurrentDay;
+                        model.TotalSWM = data.TotalSWMUpdated;
 
                         model.TotalCTPTUpdated = data.TotalCTPT;
                         model.TotalCTPTUpdated_CurrentDay = data.TotalCTPTUpdated_CurrentDay;
-
+                        model.TotalCTPT = data.TotalCTPTUpdated;
 
 
 

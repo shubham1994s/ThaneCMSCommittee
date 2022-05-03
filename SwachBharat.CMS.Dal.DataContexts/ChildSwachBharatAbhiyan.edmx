@@ -735,8 +735,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="SegidSub" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_GetHSHouseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="fdate" Type="date" Mode="In" />
-          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="fdate" Type="datetime" Mode="In" />
+          <Parameter Name="tdate" Type="datetime" Mode="In" />
           <Parameter Name="userid" Type="int" Mode="In" />
           <Parameter Name="sortColumn" Type="varchar" Mode="In" />
           <Parameter Name="sortOrder" Type="varchar" Mode="In" />
@@ -1077,7 +1077,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="SS_1_4_QUESTION" EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION" />
           <EntitySet Name="SS_1_7_ANSWER" EntityType="DevSwachhBharatNagpurModel.SS_1_7_ANSWER" />
           <EntitySet Name="VehicleTypes" EntityType="DevSwachhBharatNagpurModel.VehicleType" />
-          <FunctionImport Name="SP_HouseScanifyDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanifyDetails_Result)" />
           <FunctionImport Name="SP_HouseScanify" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
@@ -1225,6 +1224,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="PagingSize" Mode="In" Type="Int32" />
             <Parameter Name="SearchText" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_HouseScanifyDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanifyDetails_Result)" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2118,35 +2118,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="RegNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="VechileNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
-        <ComplexType Name="SP_HouseScanifyDetails_Result">
-          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
-          <Property Type="Int32" Name="TotalHouseUpdated" Nullable="true" />
-          <Property Type="Int32" Name="TotalHouseUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
-          <Property Type="Int32" Name="TotalPointUpdated" Nullable="true" />
-          <Property Type="Int32" Name="TotalPointUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalDump" Nullable="true" />
-          <Property Type="Int32" Name="TotalDumpUpdated" Nullable="true" />
-          <Property Type="Int32" Name="TotalDumpUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalLiquid" Nullable="true" />
-          <Property Type="Int32" Name="TotalLiquidUpdated" Nullable="true" />
-          <Property Type="Int32" Name="TotalLiquidUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreet" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreetUpdated" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreetUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalBuilding" Nullable="true" />
-          <Property Type="Int32" Name="TotalBuildingUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalSlum" Nullable="true" />
-          <Property Type="Int32" Name="TotalSlumUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercialUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalResidential" Nullable="true" />
-          <Property Type="Int32" Name="TotalResidentialUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalSWM" Nullable="true" />
-          <Property Type="Int32" Name="TotalSWMUpdated_CurrentDay" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTPTUpdated_CurrentDay" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="SP_HouseScanify_Result">
           <Property Type="Int32" Name="qrEMpId" Nullable="false" />
           <Property Type="String" Name="qrEmpName" Nullable="true" MaxLength="500" />
@@ -2763,6 +2734,38 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="qrEmpName" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="QRCodeImage" Nullable="true" />
           <Property Type="Int32" Name="FilterTotalCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_HouseScanifyDetails_Result">
+          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouseUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouseUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
+          <Property Type="Int32" Name="TotalPointUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalPointUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalDump" Nullable="true" />
+          <Property Type="Int32" Name="TotalDumpUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalDumpUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalLiquid" Nullable="true" />
+          <Property Type="Int32" Name="TotalLiquidUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalLiquidUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreet" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreetUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreetUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalBuilding" Nullable="true" />
+          <Property Type="Int32" Name="TotalBuildingUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalSlum" Nullable="true" />
+          <Property Type="Int32" Name="TotalSlumUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercialUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercialUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalResidential" Nullable="true" />
+          <Property Type="Int32" Name="TotalResidentialUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalSWM" Nullable="true" />
+          <Property Type="Int32" Name="TotalSWMUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalSWMUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTUpdated" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3688,39 +3691,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_HouseScanifyDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseScanifyDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseScanifyDetails_Result">
-                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
-                <ScalarProperty Name="TotalHouseUpdated" ColumnName="TotalHouseUpdated" />
-                <ScalarProperty Name="TotalHouseUpdated_CurrentDay" ColumnName="TotalHouseUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
-                <ScalarProperty Name="TotalPointUpdated" ColumnName="TotalPointUpdated" />
-                <ScalarProperty Name="TotalPointUpdated_CurrentDay" ColumnName="TotalPointUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
-                <ScalarProperty Name="TotalDumpUpdated" ColumnName="TotalDumpUpdated" />
-                <ScalarProperty Name="TotalDumpUpdated_CurrentDay" ColumnName="TotalDumpUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalLiquid" ColumnName="TotalLiquid" />
-                <ScalarProperty Name="TotalLiquidUpdated" ColumnName="TotalLiquidUpdated" />
-                <ScalarProperty Name="TotalLiquidUpdated_CurrentDay" ColumnName="TotalLiquidUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalStreet" ColumnName="TotalStreet" />
-                <ScalarProperty Name="TotalStreetUpdated" ColumnName="TotalStreetUpdated" />
-                <ScalarProperty Name="TotalStreetUpdated_CurrentDay" ColumnName="TotalStreetUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalBuilding" ColumnName="TotalBuilding" />
-                <ScalarProperty Name="TotalBuildingUpdated_CurrentDay" ColumnName="TotalBuildingUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalSlum" ColumnName="TotalSlum" />
-                <ScalarProperty Name="TotalSlumUpdated_CurrentDay" ColumnName="TotalSlumUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
-                <ScalarProperty Name="TotalCommercialUpdated_CurrentDay" ColumnName="TotalCommercialUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalResidential" ColumnName="TotalResidential" />
-                <ScalarProperty Name="TotalResidentialUpdated_CurrentDay" ColumnName="TotalResidentialUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalSWM" ColumnName="TotalSWM" />
-                <ScalarProperty Name="TotalSWMUpdated_CurrentDay" ColumnName="TotalSWMUpdated_CurrentDay" />
-                <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
-                <ScalarProperty Name="TotalCTPTUpdated_CurrentDay" ColumnName="TotalCTPTUpdated_CurrentDay" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_HouseScanify" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseScanify">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseScanify_Result">
@@ -4440,6 +4410,42 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="qrEmpName" ColumnName="qrEmpName" />
                 <ScalarProperty Name="QRCodeImage" ColumnName="QRCodeImage" />
                 <ScalarProperty Name="FilterTotalCount" ColumnName="FilterTotalCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HouseScanifyDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseScanifyDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseScanifyDetails_Result">
+                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
+                <ScalarProperty Name="TotalHouseUpdated" ColumnName="TotalHouseUpdated" />
+                <ScalarProperty Name="TotalHouseUpdated_CurrentDay" ColumnName="TotalHouseUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
+                <ScalarProperty Name="TotalPointUpdated" ColumnName="TotalPointUpdated" />
+                <ScalarProperty Name="TotalPointUpdated_CurrentDay" ColumnName="TotalPointUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
+                <ScalarProperty Name="TotalDumpUpdated" ColumnName="TotalDumpUpdated" />
+                <ScalarProperty Name="TotalDumpUpdated_CurrentDay" ColumnName="TotalDumpUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalLiquid" ColumnName="TotalLiquid" />
+                <ScalarProperty Name="TotalLiquidUpdated" ColumnName="TotalLiquidUpdated" />
+                <ScalarProperty Name="TotalLiquidUpdated_CurrentDay" ColumnName="TotalLiquidUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalStreet" ColumnName="TotalStreet" />
+                <ScalarProperty Name="TotalStreetUpdated" ColumnName="TotalStreetUpdated" />
+                <ScalarProperty Name="TotalStreetUpdated_CurrentDay" ColumnName="TotalStreetUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalBuilding" ColumnName="TotalBuilding" />
+                <ScalarProperty Name="TotalBuildingUpdated_CurrentDay" ColumnName="TotalBuildingUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalSlum" ColumnName="TotalSlum" />
+                <ScalarProperty Name="TotalSlumUpdated_CurrentDay" ColumnName="TotalSlumUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
+                <ScalarProperty Name="TotalCommercialUpdated_CurrentDay" ColumnName="TotalCommercialUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalCommercialUpdated" ColumnName="TotalCommercialUpdated" />
+                <ScalarProperty Name="TotalResidential" ColumnName="TotalResidential" />
+                <ScalarProperty Name="TotalResidentialUpdated_CurrentDay" ColumnName="TotalResidentialUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalSWM" ColumnName="TotalSWM" />
+                <ScalarProperty Name="TotalSWMUpdated_CurrentDay" ColumnName="TotalSWMUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalSWMUpdated" ColumnName="TotalSWMUpdated" />
+                <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
+                <ScalarProperty Name="TotalCTPTUpdated_CurrentDay" ColumnName="TotalCTPTUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalCTPTUpdated" ColumnName="TotalCTPTUpdated" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
