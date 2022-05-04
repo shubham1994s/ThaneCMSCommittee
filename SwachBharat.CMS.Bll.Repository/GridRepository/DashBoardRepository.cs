@@ -4547,7 +4547,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                 //    data = model.ToList();
                 //}
-                return data.OrderByDescending(c => c.LiquidCount).OrderByDescending(c => c.HouseCount).OrderByDescending(c => c.StreetCount).OrderByDescending(c => c.CTPTCount).OrderByDescending(c => c.CommercialCount);
+                return data.OrderByDescending(c => c.LiquidCount).OrderByDescending(c => c.HouseCount).OrderByDescending(c => c.StreetCount).OrderByDescending(c => c.CTPTCount).OrderByDescending(c => c.CommercialCount).OrderByDescending(c => c.SlumCount).OrderByDescending(c => c.BuildingCount);
             }
         }
 
