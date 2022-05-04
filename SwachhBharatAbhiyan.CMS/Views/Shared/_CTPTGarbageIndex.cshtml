@@ -114,6 +114,9 @@
                         <th> Before Image </th>
                         <th> After Image </th>
                         <th> Battery Status </th>
+                        <th> Before Time  </th>
+                        <th> After Time  </th>
+                        <th> Total Cleaning Time </th>
                         @*<th> gcDate </th>*@
                         @*<th>Type</th>*@
                     </tr>
@@ -334,7 +337,44 @@
                         }
 
                     },
-                },
+                    },
+
+                    {
+                        "targets": [15],
+
+                        "visible": true,
+
+                        "render": function (data, type, full, meta) {
+
+                            if (full["TimeSpan"] == "") {
+                                return "Not Available";
+                            }
+                            else {
+                                return full["TimeSpan"];
+                            }
+
+
+                        },
+                    },
+
+                    {
+                        "targets": [13],
+
+                        "visible": true,
+
+                        "render": function (data, type, full, meta) {
+
+                            if (full["gpBeforImageTime"] == "01/01/1900 12:00 AM" || full["gpBeforImageTime"] == "01-01-1900 12:00 AM") {
+                                return "Not Available";
+                            }
+                            else {
+                                return full["gpBeforImageTime"];
+                            }
+
+
+                        },
+                    },
+
                 ],
 
             "columns": [
@@ -351,6 +391,9 @@
                 { "data": "gpBeforImage", "name": "gpBeforImage", "autoWidth": false },
                 { "data": "gpAfterImage", "name": "gpAfterImage", "autoWidth": false },
                 { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
+                { "data": "gpBeforImageTime", "name": "gpBeforImageTime", "autoWidth": false },
+                { "data": "attandDate", "name": "attandDate", "autoWidth": false },
+                { "data": "TimeSpan", "name": "TimeSpan", "autoWidth": false },
             /*    { "data": "gcDate", "name": "gcDate", "autoWidth": false },*/
 
 
