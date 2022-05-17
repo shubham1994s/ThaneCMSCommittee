@@ -131,7 +131,7 @@
 
                 for (var i = 0; i < data.length; i++) {
                     res += "<li class='' ><a style='cursor:pointer' class='li-hover' onclick='Edit(" + data[i].AppId + ")' id='" + data[i].AppId + "' >" + data[i].AppName + " ";
-                    if (data[i].TotalHouseUpdated_CurrentDay != 0 || data[i].TotalPointUpdated_CurrentDay != 0 || data[i].TotalDumpUpdated_CurrentDay != 0) {
+                    if (data[i].TotalHouseUpdated_CurrentDay != 0 || data[i].TotalPointUpdated_CurrentDay != 0 || data[i].TotalDumpUpdated_CurrentDay != 0 || data[i].TotalCommercialUpdated_CurrentDay != 0 || data[i].TotalSWMUpdated_CurrentDay != 0 || data[i].TotalCTPTUpdated_CurrentDay != 0 ) {
                         res += "<i class='fa fa-circle pull-right' style='color:#fe9428;font-size:12px;margin: 3% auto;'></i>";
                     }
                     //if (AppId_New == data[i].AppId) {
