@@ -84,10 +84,11 @@ namespace SwachhBharatAbhiyan.CMS
                     //string urlReportServer = "http://192.168.100.123/ReportServer";
                     //string urlReportServer = "http://192.168.100.123/ReportServer";
 
-                    string urlReportServer = "http://202.65.157.253:85/ReportServer";
+                   // string urlReportServer = "http://202.65.157.253:85/ReportServer";
+                    string urlReportServer = "http://202.65.157.254/ReportServer";
                     //string urlReportServer = "http://COMP-7/ReportServer";
                     //rptViewer.ServerReport.ReportServerCredentials = new ReportServerCredentials("Administrator", "Pass@123", "192.168.100.7");
-                    rptViewer.ServerReport.ReportServerCredentials = new ReportServerCredentials("Administrator", "Telec0m#B!9V", "202.65.157.253");
+                    rptViewer.ServerReport.ReportServerCredentials = new ReportServerCredentials("Administrator", "Telec0m#B!9V", "202.65.157.254");
 
                     rptViewer.ProcessingMode = ProcessingMode.Remote;
 
