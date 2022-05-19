@@ -118,7 +118,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         TotalHouseUpdated_CurrentDay = detail.TotalHouseUpdated_CurrentDay,
                         TotalPointUpdated_CurrentDay = detail.TotalPointUpdated_CurrentDay,
                         TotalDumpUpdated_CurrentDay = detail.TotalDumpUpdated_CurrentDay,
-                        //TotalCommercialUpdated_CurrentDay=detail.TotalCommercialUpdated_CurrentDay,
+                        TotalLiquidUpdated_CurrentDay=detail.TotalLiquidUpdated_CurrentDay,
+                        TotalStreetUpdated_CurrentDay=detail.TotalStreetUpdated_CurrentDay,
+                        TotalCommercialUpdated_CurrentDay =detail.TotalCommercialUpdated_CurrentDay,
+                        TotalSWMUpdated_CurrentDay=detail.TotalSWMUpdated_CurrentDay,
+                        TotalCTPTUpdated_CurrentDay=detail.TotalCTPTUpdated_CurrentDay,
 
 
 
