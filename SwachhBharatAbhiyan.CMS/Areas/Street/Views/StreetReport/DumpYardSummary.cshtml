@@ -71,7 +71,7 @@
         if (month < 10) month = "0" + month;
         if (day < 10) day = "0" + day;
 
-        var today = month + "/" + day + "/" + year;
+    var today = day + "/" + month + "/" + year;
 
         document.getElementById('txt_fdate').value = today;
         document.getElementById('txt_tdate').value = today;
@@ -131,7 +131,7 @@
     }
 
   $('.datepicker').datepicker({
-      format: 'mm/dd/yyyy',
+      format: 'dd/mm/yyyy',
       weekStart: 1,
       color: 'red',
       pickTime: false,

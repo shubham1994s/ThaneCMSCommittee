@@ -20,6 +20,11 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public string gpBeforImage { get; set; }
         public string gpAfterImage { get; set; }
         public Nullable<DateTime> gcDate { get; set; }
+
+        //public Nullable<DateTime> gpBeforImageTime { get; set; }
+        // public Nullable<DateTime> TimeSpan { get; set; }
+        public string gpBeforImageTime { get; set; }
+        public string TimeSpan { get; set; }
         public Nullable<int> userId { get; set; }
         public Nullable<int> houseId { get; set; }
         public Nullable<int> gpIdfk { get; set; }

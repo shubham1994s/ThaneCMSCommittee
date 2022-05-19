@@ -31,6 +31,12 @@
     #floating-panel {
         margin-left: -10px;
     }
+    .btn-primary, .btn-primary:hover, .btn-primary:focus {
+        color: #fff;
+        background-color: #189cdf !important;
+        border-color: #007bff !important;
+    }
+     
 </style>
 
 
@@ -63,8 +69,8 @@
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
                         <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
-                    <a id="filter" onclick="Search()" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style">Search</a>
-                    <a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>
+                    <a id="filter" onclick="Search()" style="margin-top:25px" class="btn btn-sm btn-primary filter-button-style">Search</a>
+                    <a id="drop" style="margin-top:25px" class="btn btn-sm btn-primary filter-button-style" onclick="userroute()">Route</a>
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
 
 
@@ -272,10 +278,10 @@
         }
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxgJE8ITyvoY7NW_bZ0tnrnSs03a5VWD8&callback=myMap" type="text/javascript"></script>
 
     @*Paid API*@
-    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>*@
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxgJE8ITyvoY7NW_bZ0tnrnSs03a5VWD8&callback=myMap" type="text/javascript"></script>*@
 
 </fieldset>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>

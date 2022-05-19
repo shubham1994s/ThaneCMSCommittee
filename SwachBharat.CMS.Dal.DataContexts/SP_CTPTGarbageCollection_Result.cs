@@ -29,6 +29,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> gcType { get; set; }
         public string TOT { get; set; }
         public Nullable<int> TNS { get; set; }
+        public Nullable<System.DateTime> gpBeforImageTime { get; set; }
+        public Nullable<System.TimeSpan> TimeSpan { get; set; }
         public string gpBeforImage { get; set; }
         public string gpAfterImage { get; set; }
     }

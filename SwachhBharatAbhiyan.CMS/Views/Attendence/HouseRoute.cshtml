@@ -315,7 +315,7 @@
             <div class="col-md-4"></div>
         </div>
 
-        </div>
+    </div>
     <div id="floating-panel" style="display:inline-flex;width:auto;background:transparent;border:none">
         <a style="margin-left:5px" class="btn btn-sm btn-success" href="/Attendence/Index">Back</a>
     </div>
@@ -364,9 +364,9 @@
     </style>
     <script>
         debugger;
-     
 
-     
+
+
         $('#ZoneId').change(function () {
             debugger;
             var selectedText = $(this).find("option:selected").text();
@@ -656,9 +656,9 @@
 
                                 document.getElementById("date").innerHTML = data.date;
 
-                             
+
                             }
-                            if (data.HouseId != null || data.CommercialId!=null) {
+                            if (data.HouseId != null || data.CommercialId != null) {
                                 debugger;
 
                                 var a = i + 1;
@@ -694,7 +694,7 @@
                                             //temicon = "../Content/images/img/segregationImg/Start-Point.png";
                                             document.getElementById("starttime").value = data.datetime;
                                         }
-                                        else if(a == lastmarker) {
+                                        else if (a == lastmarker) {
                                             //temicon = "../Content/images/img/segregationImg/End_Point.png";
                                             document.getElementById("endtime").value = data.datetime;
                                         }
@@ -747,8 +747,8 @@
                                             }
                                         });
 
-                                     
-                                      
+
+
                                     }
                                     else {
                                         var myLatlng = new google.maps.LatLng(data.lat, data.log);
@@ -819,7 +819,7 @@
                                             }
                                         });
 
-                                      
+
                                     }
                                     else {
                                         var myLatlng = new google.maps.LatLng(data.lat, data.log);
@@ -859,7 +859,7 @@
                             var start = document.getElementById("starttime").value;
                             var end = document.getElementById("endtime").value;
 
-                            //create date format          
+                            //create date format
                             var timeStart = new Date("01/01/2007 " + start);
                             var timeEnd = new Date("01/01/2007 " + end);
 
@@ -1047,7 +1047,7 @@
                         var path = new google.maps.MVCArray();
 
                         //Initialize the Direction Service
-                       // var service = new google.maps.DirectionsService();
+                        var service = new google.maps.DirectionsService();
 
                         //Set the Path Stroke Color
                         var poly = new google.maps.Polyline({
@@ -1094,17 +1094,17 @@
                                 var des = lat_lng[i + 1];
                                 path.push(src);
                                 poly.setPath(path);
-                                //service.route({
-                                //    origin: src,
-                                //    destination: des,
-                                //    travelMode: google.maps.DirectionsTravelMode.DRIVING
-                                //}, function (result, status) {
-                                //    if (status == google.maps.DirectionsStatus.OK) {
-                                //        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-                                //            path.push(result.routes[0].overview_path[i]);
-                                //        }
-                                //    }
-                                //});
+                                service.route({
+                                    origin: src,
+                                    destination: des,
+                                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                                }, function (result, status) {
+                                    if (status == google.maps.DirectionsStatus.OK) {
+                                        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                                            path.push(result.routes[0].overview_path[i]);
+                                        }
+                                    }
+                                });
                             }
                         }
                     }
@@ -1113,7 +1113,7 @@
 
             });
 
-           
+
         }
 
 
@@ -1122,7 +1122,7 @@
 
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxgJE8ITyvoY7NW_bZ0tnrnSs03a5VWD8&callback=myMap" type="text/javascript"></script>
 
     @*Paid API*@
     @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>*@
@@ -1194,27 +1194,27 @@
         });
     </script>
     <script>
-                        //$(document).ready(function () {
-                        //    $("input[name$='filter']").click(function () {
+                            //$(document).ready(function () {
+                            //    $("input[name$='filter']").click(function () {
 
-                        //        var test = $(this).val();
+                            //        var test = $(this).val();
 
-                        //        $("div.desc").hide();
-                        //        $("#filter" + test).show();
-                        //    });
-                        //});
+                            //        $("div.desc").hide();
+                            //        $("#filter" + test).show();
+                            //    });
+                            //});
     </script>
     <script>
-                        //$(document).ready(function () {
-                        //    debugger;
+                            //$(document).ready(function () {
+                            //    debugger;
 
-                        //    var x = document.getElementById("username").innerHTML;
-                        //    var tem = x.charAt(0).toUpperCase() + x.slice(1);
-                        //    document.getElementById("demo").innerHTML = tem;
-                        //});
+                            //    var x = document.getElementById("username").innerHTML;
+                            //    var tem = x.charAt(0).toUpperCase() + x.slice(1);
+                            //    document.getElementById("demo").innerHTML = tem;
+                            //});
 
     </script>
-   
+
 </fieldset>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
 

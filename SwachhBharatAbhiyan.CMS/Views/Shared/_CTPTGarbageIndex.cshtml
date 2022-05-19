@@ -43,17 +43,17 @@
                     <option value="@ViewBag.userid">select</option>
                 </select>
             </div>
-            <div class="col-sm-4"  hidden="hidden">
+            <div class="col-sm-4" hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Zone</label>
                 <select id="ZoneId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4"  hidden="hidden">
+            <div class="col-sm-4" hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Ward/Prabhag</label>
                 <select id="WardNo" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4"  hidden="hidden">
+            <div class="col-sm-4" hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Area</label>
                 <select id="AreaId" class="form-control form-control form-control-sm"></select>
@@ -61,15 +61,15 @@
             <!--<div class="col-sm-4">-->
             @*<label>कर्मचारी निवडा / Select Employee</label>*@
             <!--<label>Select Segregation Type</label>
-            <select id="Segid" class="form-control form-control form-control-sm">
-                <option value="">Select Segregation Type</option>
-                <option value="0">Mixed Garbage</option>
-                <option value="6">Wet Waste</option>
-                <option value="7"> Dry Waste</option>
-            </select>
-        </div>-->
+                <select id="Segid" class="form-control form-control form-control-sm">
+                    <option value="">Select Segregation Type</option>
+                    <option value="0">Mixed Garbage</option>
+                    <option value="6">Wet Waste</option>
+                    <option value="7"> Dry Waste</option>
+                </select>
+            </div>-->
         </div>
-        <div class="row"  hidden="hidden">
+        <div class="row" hidden="hidden">
             <div class="col-sm-2  offset-md-10" style="text-align:right">
                 <div class="controls">
                     <input data-background-color="filter-button-box-color" style="margin-top:8px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
@@ -114,6 +114,9 @@
                         <th> Before Image </th>
                         <th> After Image </th>
                         <th> Battery Status </th>
+                        <th> Before Time  </th>
+                        <th> After Time  </th>
+                        <th> Total Cleaning Time </th>
                         @*<th> gcDate </th>*@
                         @*<th>Type</th>*@
                     </tr>
@@ -142,7 +145,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn" data-dismiss="modal">Close</button>
                         @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
-                        
+
                     </div>
                 </div>
 
@@ -155,16 +158,16 @@
 
 
 <script>
-        //var date = new Date();
+    //var date = new Date();
 
-        //var day = date.getDate();
-        //var month = date.getMonth() + 1;
-        //var year = date.getFullYear();
+    //var day = date.getDate();
+    //var month = date.getMonth() + 1;
+    //var year = date.getFullYear();
 
-        //if (month < 10) month = "0" + month;
-        //if (day < 10) day = "0" + day;
+    //if (month < 10) month = "0" + month;
+    //if (day < 10) day = "0" + day;
 
-        //var today = day + "/" + month + "/" + year;
+    //var today = day + "/" + month + "/" + year;
 
     document.getElementById('txt_fdate').value = document.getElementById('fdate').value;
     document.getElementById('txt_tdate').value = document.getElementById('tdate').value;
@@ -174,23 +177,23 @@
 <script src="~/Content/graph-assets/js/custom.js"></script>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>
 <script type="text/javascript">
-  $('.datepicker').datepicker({
-      format: 'dd/mm/yyyy',
-      weekStart: 1,
-      color: 'red',
-      pickTime: false
-  }).on('changeDate', function (e) {
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        weekStart: 1,
+        color: 'red',
+        pickTime: false
+    }).on('changeDate', function (e) {
 
-      $(this).datepicker('hide');
+        $(this).datepicker('hide');
 
-  });
-  //hide  show on hover
-  $('#txt_fdate').focus(function () {
-      $('.dtpk_drpdwn').eq(1).hide();
-  });
-  $('#txt_tdate').focus(function () {
-      $('.dtpk_drpdwn').eq(0).hide();
-  });
+    });
+    //hide  show on hover
+    $('#txt_fdate').focus(function () {
+        $('.dtpk_drpdwn').eq(1).hide();
+    });
+    $('#txt_tdate').focus(function () {
+        $('.dtpk_drpdwn').eq(0).hide();
+    });
     $(document).ready(function () {
 
 
@@ -246,11 +249,11 @@
                     "visible": false,
                     "searchable": false
                 },
-                    {
-                        "targets": [8],
-                        "visible": false,
-                        "searchable": false
-                    },
+                {
+                    "targets": [8],
+                    "visible": false,
+                    "searchable": false
+                },
                 {
                     "targets": [12],
                     "visible": false,
@@ -329,12 +332,66 @@
                         else if (full["type1"] == "U") {
                             return "Urinal";
                         }
-                        else if (full["type1"] == null){
+                        else if (full["type1"] == null) {
                             return "Not Mention";
                         }
 
                     },
                 },
+
+                {
+                    "targets": [15],
+
+                    "visible": true,
+
+                    "render": function (data, type, full, meta) {
+
+                        if (full["TimeSpan"] == "" || full["TimeSpan"].length > 10) {
+                            return "Not Available";
+                        }
+                        else {
+                            return full["TimeSpan"];
+                        }
+
+
+                    },
+                },
+                    {
+                        "targets": [14],
+
+                        "visible": true,
+
+                        "render": function (data, type, full, meta) {
+
+                            if (full["TimeSpan"] == "" || full["TimeSpan"].length > 10) {
+                                return "Not Available";
+                            }
+                            else {
+                                return full["attandDate"];
+                            }
+
+
+                        },
+                    },
+
+                {
+                    "targets": [13],
+
+                    "visible": true,
+
+                    "render": function (data, type, full, meta) {
+
+                        if (full["gpBeforImageTime"] == "01/01/1900 12:00 AM" || full["gpBeforImageTime"] == "01-01-1900 12:00 AM" || full["gpBeforImageTime"] == "01/01/0001 12:00 AM" || full["gpBeforImageTime"] == "01-01-0001 12:00 AM") {
+                            return "Not Available";
+                        }
+                        else {
+                            return full["gpBeforImageTime"];
+                        }
+
+
+                    },
+                },
+
                 ],
 
             "columns": [
@@ -351,7 +408,10 @@
                 { "data": "gpBeforImage", "name": "gpBeforImage", "autoWidth": false },
                 { "data": "gpAfterImage", "name": "gpAfterImage", "autoWidth": false },
                 { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
-            /*    { "data": "gcDate", "name": "gcDate", "autoWidth": false },*/
+                { "data": "gpBeforImageTime", "name": "gpBeforImageTime", "autoWidth": false },
+                { "data": "attandDate", "name": "attandDate", "autoWidth": false },
+                { "data": "TimeSpan", "name": "TimeSpan", "autoWidth": false },
+                /*    { "data": "gcDate", "name": "gcDate", "autoWidth": false },*/
 
 
             ]

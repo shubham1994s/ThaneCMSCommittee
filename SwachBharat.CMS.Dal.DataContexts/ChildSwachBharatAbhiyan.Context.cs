@@ -18,11 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -466,11 +464,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter);
         }
     
-        public virtual ObjectResult<SP_HouseScanifyDetails_Result> SP_HouseScanifyDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanifyDetails_Result>("SP_HouseScanifyDetails");
-        }
-    
         public virtual ObjectResult<SP_HouseScanify_Result> SP_HouseScanify(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
         {
             var fdateParameter = fdate.HasValue ?
@@ -491,43 +484,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_CTPTScanify_Count_Result> SP_CTPTScanify_Count()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTScanify_Count_Result>("SP_CTPTScanify_Count");
-        }
-    
-        public virtual ObjectResult<SP_CTPTGarbageCollection_Result> SP_CTPTGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
-        {
-            var appIdParameter = appId.HasValue ?
-                new ObjectParameter("appId", appId) :
-                new ObjectParameter("appId", typeof(int));
-    
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(int));
-    
-            var fdateParameter = fdate.HasValue ?
-                new ObjectParameter("fdate", fdate) :
-                new ObjectParameter("fdate", typeof(System.DateTime));
-    
-            var tdateParameter = tdate.HasValue ?
-                new ObjectParameter("tdate", tdate) :
-                new ObjectParameter("tdate", typeof(System.DateTime));
-    
-            var zoneIdParameter = zoneId.HasValue ?
-                new ObjectParameter("ZoneId", zoneId) :
-                new ObjectParameter("ZoneId", typeof(int));
-    
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("AreaId", areaId) :
-                new ObjectParameter("AreaId", typeof(int));
-    
-            var wardNoParameter = wardNo.HasValue ?
-                new ObjectParameter("WardNo", wardNo) :
-                new ObjectParameter("WardNo", typeof(int));
-    
-            var segidParameter = segid.HasValue ?
-                new ObjectParameter("Segid", segid) :
-                new ObjectParameter("Segid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTGarbageCollection_Result>("SP_CTPTGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
         }
     
         public virtual ObjectResult<SP_HouseScanify_Count_Result> SP_HouseScanify_Count()
@@ -985,6 +941,48 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("SearchText", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetHSHouseDetails_Result>("SP_GetHSHouseDetails", fdateParameter, tdateParameter, useridParameter, sortColumnParameter, sortOrderParameter, offsetValueParameter, pagingSizeParameter, searchTextParameter);
+        }
+    
+        public virtual ObjectResult<SP_HouseScanifyDetails_Result> SP_HouseScanifyDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanifyDetails_Result>("SP_HouseScanifyDetails");
+        }
+    
+        public virtual ObjectResult<SP_CTPTGarbageCollection_Result> SP_CTPTGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
+        {
+            var appIdParameter = appId.HasValue ?
+                new ObjectParameter("appId", appId) :
+                new ObjectParameter("appId", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var segidParameter = segid.HasValue ?
+                new ObjectParameter("Segid", segid) :
+                new ObjectParameter("Segid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTGarbageCollection_Result>("SP_CTPTGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
         }
     }
 }

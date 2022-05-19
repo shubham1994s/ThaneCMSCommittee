@@ -3187,7 +3187,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     HouseNumber = x.Name,
                     gcDate = x.gcDate,
                     // gcType = 1,
-
+                    gpBeforImageTime = Convert.ToDateTime(x.gpBeforImageTime).ToString("dd/MM/yyyy hh:mm tt"),
+                    TimeSpan = x.TimeSpan.ToString(),
                     type1 = x.TOT,
                     Ctype = x.gcType.ToString(),
                     Address = (x.locAddresss).Replace("Unnamed Road,", ""),
@@ -3328,7 +3329,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     obj = model.ToList();
                 }
-                var d = obj.OrderByDescending(c => DateTime.Parse(c.daDateTIme)).ToList();
+                //var d = obj.OrderByDescending(c => DateTime.Parse(c.daDateTIme)).ToList();
+                var d = obj.OrderByDescending(c => c.daID).ToList();
                 return d;
             }
         }
@@ -4545,7 +4547,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                 //    data = model.ToList();
                 //}
-                return data.OrderByDescending(c => c.LiquidCount).OrderByDescending(c => c.HouseCount).OrderByDescending(c => c.StreetCount);
+                return data.OrderByDescending(c => c.LiquidCount).OrderByDescending(c => c.HouseCount).OrderByDescending(c => c.StreetCount).OrderByDescending(c => c.CTPTCount).OrderByDescending(c => c.CommercialCount).OrderByDescending(c => c.SlumCount).OrderByDescending(c => c.BuildingCount);
             }
         }
 
@@ -4738,7 +4740,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         //        using (var db = new DevChildSwachhBharatNagpurEntities(appId))
         //        {
 
-                 
+
 
 
         //            if (fdate != null && tdate != null)
