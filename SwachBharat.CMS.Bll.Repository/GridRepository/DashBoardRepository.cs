@@ -4535,18 +4535,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }).ToList();
 
 
-                //if (!string.IsNullOrEmpty(SearchString))
-                //{
-                //    var model = data.Where(c => c.userMobileNumber.ToString().Contains(SearchString) || c.userEmployeeNo.ToString().Contains(SearchString)
-                //    || c.userAddress.ToString().Contains(SearchString) || c.userName.ToString().Contains(SearchString) || c.userNameMar.ToString().Contains(SearchString) || c.bloodGroup.ToString().Contains(SearchString)
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    //var model = data.Where(c => c.qrEmpName.ToString().Contains(SearchString)).ToList();
+                    //data = model.ToList();
+                    var model = data.Where(c => ((c.qrEmpName == null ? " " : c.qrEmpName)).ToUpper().Contains(SearchString.ToUpper())
+                      ).ToList();
+                    data = model.ToList();
+                }
 
-                //    || c.userMobileNumber.Contains(SearchString) || c.userAddress.ToLower().ToString().Contains(SearchString) || c.userName.ToLower().ToString().Contains(SearchString) || c.userNameMar.ToLower().ToString().Contains(SearchString)
-                //    || c.userEmployeeNo.ToLower().ToString().Contains(SearchString) || c.bloodGroup.ToLower().ToString().Contains(SearchString)
-
-                //    || c.userMobileNumber.ToUpper().ToString().Contains(SearchString) || c.userNameMar.ToUpper().ToString().Contains(SearchString) || c.userName.ToUpper().ToString().Contains(SearchString) || c.bloodGroup.ToUpper().ToString().Contains(SearchString) || c.userAddress.ToUpper().ToString().Contains(SearchString) || c.userEmployeeNo.ToUpper().ToString().Contains(SearchString)).ToList();
-
-                //    data = model.ToList();
-                //}
                 return data.OrderByDescending(c => c.LiquidCount).OrderByDescending(c => c.HouseCount).OrderByDescending(c => c.StreetCount).OrderByDescending(c => c.CTPTCount).OrderByDescending(c => c.CommercialCount).OrderByDescending(c => c.SlumCount).OrderByDescending(c => c.BuildingCount);
             }
         }
@@ -4702,6 +4699,13 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     });
                 }
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    var model = obj.Where(c => ((c.userName == null ? " " : c.userName)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                    obj = model.ToList();
+                }
+
 
                 //if (!string.IsNullOrEmpty(SearchString))
                 //{
