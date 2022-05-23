@@ -124,6 +124,14 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         TotalSWMUpdated_CurrentDay=detail.TotalSWMUpdated_CurrentDay,
                         TotalCTPTUpdated_CurrentDay=detail.TotalCTPTUpdated_CurrentDay,
 
+                        HouseMinutes = detail.HouseMinutes,
+                        LiquidMinutes = detail.LiquidMinutes,
+                        StreetMinutes = detail.StreetMinutes,
+                        DumpYardMinutes = detail.DumpYardMinutes,
+                        CommercialMinutes = detail.CommercialMinutes,
+                        SWMMinutes = detail.SWMMinutes,
+                        CTPTMinutes = detail.CTPTMinutes,
+
 
 
                     });

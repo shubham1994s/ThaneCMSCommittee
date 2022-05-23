@@ -6085,6 +6085,15 @@ namespace SwachBharat.CMS.Bll.Services
                         model.TotalCTPTUpdated_CurrentDay = data.TotalCTPTUpdated_CurrentDay;
                         model.TotalCTPT = data.TotalCTPTUpdated;
 
+                        // For Blink in House Scanify 
+                        model.HouseMinutes = data.HouseMinutes;
+                        model.LiquidMinutes = data.LiquidMinutes;
+                        model.StreetMinutes = data.StreetMinutes;
+                        model.DumpYardMinutes = data.DumpYardMinutes;
+                        model.CommercialMinutes = data.CommercialMinutes;
+                        model.SWMMinutes = data.SWMMinutes;
+                        model.CTPTMinutes = data.CTPTMinutes;
+
 
 
                         return model;

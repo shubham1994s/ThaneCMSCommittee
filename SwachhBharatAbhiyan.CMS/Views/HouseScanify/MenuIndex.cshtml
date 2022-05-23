@@ -21,6 +21,8 @@
     @*@RenderSection("styles", required: false)*@
     <link rel="shortcut icon" href="~/Content/images/img/ictsbm2.png" />
 
+    <link href="~/Content/css/blink.css" rel="stylesheet" />
+   
 </head>
 <body>
     <div class="page">
@@ -58,8 +60,10 @@
             <nav class="side-navbar">
                 <!-- Sidebar Header-->
 
-                <ul class="list-unstyled"><p id="img_ldr" style="display:block;position:absolute;top:40%;left:5%;">
-                    <img style="height:90px" class="rotate_img" src="~/Content/images/img/loading.gif"></p>
+                <ul class="list-unstyled">
+                    <p id="img_ldr" style="display:block;position:absolute;top:40%;left:5%;">
+                        <img style="height:90px" class="rotate_img" src="~/Content/images/img/loading.gif">
+                    </p>
                 </ul>
                 @*<span class="heading">Extras</span>*@
 
@@ -90,7 +94,7 @@
     <script>
 
         function Edit(Id) {
-           // alert(Id);
+            // alert(Id);
             if (Id != null) {
                 var url = "/houseScanify/UserList?AppId=" + Id;
                 window.location.href = url;
@@ -102,18 +106,24 @@
             $.get("/houseScanify/GetAppNames", null, house);
             debugger;
             function house(data) {
-               // window.localStorage.setItem("ulb_menu", JSON.stringify(data));
+                // window.localStorage.setItem("ulb_menu", JSON.stringify(data));
                 var res = '';
                 for (var i = 0; i < data.length; i++) {
                     res += "<li class='' ><a style='cursor:pointer' class='li-hover' onclick='Edit(" + data[i].AppId + ")' id='" + data[i].AppId + "' >" + data[i].AppName + " ";
-                    if (data[i].TotalHouseUpdated_CurrentDay != 0 || data[i].TotalPointUpdated_CurrentDay != 0 || data[i].TotalDumpUpdated_CurrentDay != 0 || data[i].TotalCommercialUpdated_CurrentDay != 0 || data[i].TotalSWMUpdated_CurrentDay != 0 || data[i].TotalCTPTUpdated_CurrentDay != 0 ) {
-                      res += "<i class='fa fa-circle pull-right' style='color:#fe9428;font-size:12px;margin: 3% auto;'></i>";
+                    if (data[i].TotalHouseUpdated_CurrentDay != 0 || data[i].TotalPointUpdated_CurrentDay != 0 || data[i].TotalDumpUpdated_CurrentDay != 0 || data[i].TotalCommercialUpdated_CurrentDay != 0 || data[i].TotalSWMUpdated_CurrentDay != 0 || data[i].TotalCTPTUpdated_CurrentDay != 0) {
+
+                        if (data[i].HouseMinutes <= 10 || data[i].LiquidMinutes <= 10 || data[i].StreetMinutes <= 10 || data[i].DumpYardMinutes <= 10 || data[i].SWMMinutes <= 10 || data[i].CommercialMinutes <= 10 || data[i].CTPTMinutes <= 10 ) {
+                            res += "<i class='fa fa-circle pull-right blink' style='color:#33cc33;font-size:12px;margin: 3% auto;'></i>";
+                        } else {
+                            res += "<i class='fa fa-circle pull-right' style='color:#fe9428;font-size:12px;margin: 3% auto;'></i>";
+                        }
+                      
                     }
                     res += "</a></li>";
                 }
 
                 $('.list-unstyled').html(res);
-                $('#img_ldr').css("display","none");
+                $('#img_ldr').css("display", "none");
                 $(".li-hover").hover(function () {
                     $(this).css("color", "#fff");
                 }, function () {
@@ -181,6 +191,11 @@
                 $('.navbar-header .brand-small').show();
             }
         });
+
+
+        window.setTimeout(function () {
+            window.location.reload();
+        }, 600000);
 
     </script>
     <script src="~/Content/theme-assets/js/icons_load.js"></script>
