@@ -290,6 +290,358 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
 
         }
+        public void SaveHSQRStatusHouse(int appId, int houseId, string QRStatus)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                childRepository.SaveHSQRStatusHouse(houseId, QRStatus);
+            }
+        }
+
+        public void SaveHSQRStatusComr(int appId, int comrId, string QRStatus)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                childRepository.SaveHSQRStatusComr(comrId, QRStatus);
+            }
+        }
+
+        public void SaveHSQRStatusCTPT(int appId, int CTPTId, string QRStatus)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                childRepository.SaveHSQRStatusCTPT(CTPTId, QRStatus);
+            }
+        }
+
+        public void SaveHSQRStatusSWM(int appId, int SWMId, string QRStatus)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                childRepository.SaveHSQRStatusSWM(SWMId, QRStatus);
+            }
+        }
+        public void SaveHSQRStatusLW(int appId, int LWId, string QRStatus)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                childRepository.SaveHSQRStatusLW(LWId, QRStatus);
+            }
+        }
+        public void SaveHSQRStatusSW(int appId, int SWId, string QRStatus)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                childRepository.SaveHSQRStatusSW(SWId, QRStatus);
+            }
+        }
+        public ActionResult GetHSHouseDetailsID(string fdate, string tdate, int userId, string searchString, int? qrStatus, string sortColumn, string sortOrder)
+        {
+            List<int> obj = new List<int>();
+            DateTime? fromDate;
+            DateTime? toDate;
+            if (!string.IsNullOrEmpty(fdate))
+            {
+                fromDate = Convert.ToDateTime(fdate + " " + "00:00:00");
+            }
+            else
+            {
+                fromDate = null;
+            }
+
+            if (!string.IsNullOrEmpty(tdate))
+            {
+                toDate = Convert.ToDateTime(tdate + " " + "23:59:59");
+            }
+            else
+            {
+                toDate = null;
+            }
+
+            int iQRStatus = qrStatus ?? -1;
+            iQRStatus = iQRStatus == 2 ? 0 : iQRStatus;
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetHSHouseDetailsID(fromDate, toDate, userId, searchString, iQRStatus, sortColumn, sortOrder);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetHSComrDetailsID(string fdate, string tdate, int userId, string searchString, int? qrStatus, string sortColumn, string sortOrder)
+        {
+            List<int> obj = new List<int>();
+            DateTime? fromDate;
+            DateTime? toDate;
+            if (!string.IsNullOrEmpty(fdate))
+            {
+                fromDate = Convert.ToDateTime(fdate + " " + "00:00:00");
+            }
+            else
+            {
+                fromDate = null;
+            }
+
+            if (!string.IsNullOrEmpty(tdate))
+            {
+                toDate = Convert.ToDateTime(tdate + " " + "23:59:59");
+            }
+            else
+            {
+                toDate = null;
+            }
+
+            int iQRStatus = qrStatus ?? -1;
+            iQRStatus = iQRStatus == 2 ? 0 : iQRStatus;
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetHSComrDetailsID(fromDate, toDate, userId, searchString, iQRStatus, sortColumn, sortOrder);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetHSCTPTDetailsID(string fdate, string tdate, int userId, string searchString, int? qrStatus, string sortColumn, string sortOrder)
+        {
+            List<int> obj = new List<int>();
+            DateTime? fromDate;
+            DateTime? toDate;
+            if (!string.IsNullOrEmpty(fdate))
+            {
+                fromDate = Convert.ToDateTime(fdate + " " + "00:00:00");
+            }
+            else
+            {
+                fromDate = null;
+            }
+
+            if (!string.IsNullOrEmpty(tdate))
+            {
+                toDate = Convert.ToDateTime(tdate + " " + "23:59:59");
+            }
+            else
+            {
+                toDate = null;
+            }
+
+            int iQRStatus = qrStatus ?? -1;
+            iQRStatus = iQRStatus == 2 ? 0 : iQRStatus;
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetHSCTPTDetailsID(fromDate, toDate, userId, searchString, iQRStatus, sortColumn, sortOrder);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetHSSWMDetailsID(string fdate, string tdate, int userId, string searchString, int? qrStatus, string sortColumn, string sortOrder)
+        {
+            List<int> obj = new List<int>();
+            DateTime? fromDate;
+            DateTime? toDate;
+            if (!string.IsNullOrEmpty(fdate))
+            {
+                fromDate = Convert.ToDateTime(fdate + " " + "00:00:00");
+            }
+            else
+            {
+                fromDate = null;
+            }
+
+            if (!string.IsNullOrEmpty(tdate))
+            {
+                toDate = Convert.ToDateTime(tdate + " " + "23:59:59");
+            }
+            else
+            {
+                toDate = null;
+            }
+
+            int iQRStatus = qrStatus ?? -1;
+            iQRStatus = iQRStatus == 2 ? 0 : iQRStatus;
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetHSSWMDetailsID(fromDate, toDate, userId, searchString, iQRStatus, sortColumn, sortOrder);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetHSLWDetailsID(string fdate, string tdate, int userId, string searchString, int? qrStatus, string sortColumn, string sortOrder)
+        {
+            List<int> obj = new List<int>();
+            DateTime? fromDate;
+            DateTime? toDate;
+            if (!string.IsNullOrEmpty(fdate))
+            {
+                fromDate = Convert.ToDateTime(fdate + " " + "00:00:00");
+            }
+            else
+            {
+                fromDate = null;
+            }
+
+            if (!string.IsNullOrEmpty(tdate))
+            {
+                toDate = Convert.ToDateTime(tdate + " " + "23:59:59");
+            }
+            else
+            {
+                toDate = null;
+            }
+
+            int iQRStatus = qrStatus ?? -1;
+            iQRStatus = iQRStatus == 2 ? 0 : iQRStatus;
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetHSLWDetailsID(fromDate, toDate, userId, searchString, iQRStatus, sortColumn, sortOrder);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetHSSWDetailsID(string fdate, string tdate, int userId, string searchString, int? qrStatus, string sortColumn, string sortOrder)
+        {
+            List<int> obj = new List<int>();
+            DateTime? fromDate;
+            DateTime? toDate;
+            if (!string.IsNullOrEmpty(fdate))
+            {
+                fromDate = Convert.ToDateTime(fdate + " " + "00:00:00");
+            }
+            else
+            {
+                fromDate = null;
+            }
+
+            if (!string.IsNullOrEmpty(tdate))
+            {
+                toDate = Convert.ToDateTime(tdate + " " + "23:59:59");
+            }
+            else
+            {
+                toDate = null;
+            }
+
+            int iQRStatus = qrStatus ?? -1;
+            iQRStatus = iQRStatus == 2 ? 0 : iQRStatus;
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetHSSWDetailsID(fromDate, toDate, userId, searchString, iQRStatus, sortColumn, sortOrder);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult GetHouseDetailsById(int houseId)
+        {
+            SBAHSHouseDetailsGrid obj = new SBAHSHouseDetailsGrid();
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetHouseDetailsById(houseId);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetComrDetailsById(int comrId)
+        {
+            SBAHSDumpyardDetailsGrid obj = new SBAHSDumpyardDetailsGrid();
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetComrDetailsById(comrId);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetCTPTDetailsById(int CTPTId)
+        {
+            SBAHSDumpyardDetailsGrid obj = new SBAHSDumpyardDetailsGrid();
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetCTPTDetailsById(CTPTId);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetSWMDetailsById(int SWMId)
+        {
+            SBAHSDumpyardDetailsGrid obj = new SBAHSDumpyardDetailsGrid();
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetSWMDetailsById(SWMId);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetLWDetailsById(int LWId)
+        {
+            SBAHSLiquidDetailsGrid obj = new SBAHSLiquidDetailsGrid();
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetLWDetailsById(LWId);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetSWDetailsById(int SWId)
+        {
+            SBAHSStreetDetailsGrid obj = new SBAHSStreetDetailsGrid();
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //SBALUserLocationMapView obj = new SBALUserLocationMapView();
+
+                obj = childRepository.GetSWDetailsById(SWId);
+
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+
         private void AddSession(int AppID)
         {
             try
