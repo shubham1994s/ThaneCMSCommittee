@@ -1620,6 +1620,7 @@
     <Content Include="Content\css\appy-platter\js\vendor\modernizr-2.6.2.min.js" />
     <Content Include="Content\css\appy-platter\js\waypoints.min.js" />
     <Content Include="Content\css\appy-platter\js\wow.min.js" />
+    <Content Include="Content\css\blink.css" />
     <Content Include="Content\css\Calender css\images\ui-icons_222222_256x240.png" />
     <Content Include="Content\css\Calender css\jquery-ui.css" />
     <Content Include="Content\css\Calender css\jquery-ui.js" />

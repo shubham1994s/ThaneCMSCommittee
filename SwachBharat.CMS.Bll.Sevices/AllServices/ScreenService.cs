@@ -3497,6 +3497,7 @@ namespace SwachBharat.CMS.Bll.Services
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         garbageType = x.gcType,
+                        BeatId = db.StreetSweepingBeats.Where(s => s.ReferanceId1 == x.ReferanceId || s.ReferanceId2 == x.ReferanceId || s.ReferanceId3 == x.ReferanceId || s.ReferanceId4 == x.ReferanceId || s.ReferanceId5 == x.ReferanceId).Select(a => a.BeatId).FirstOrDefault()
 
                     });
                 }
@@ -6085,6 +6086,15 @@ namespace SwachBharat.CMS.Bll.Services
                         model.TotalCTPTUpdated_CurrentDay = data.TotalCTPTUpdated_CurrentDay;
                         model.TotalCTPT = data.TotalCTPTUpdated;
 
+                        // For Blink in House Scanify 
+                        model.HouseMinutes = data.HouseMinutes;
+                        model.LiquidMinutes = data.LiquidMinutes;
+                        model.StreetMinutes = data.StreetMinutes;
+                        model.DumpYardMinutes = data.DumpYardMinutes;
+                        model.CommercialMinutes = data.CommercialMinutes;
+                        model.SWMMinutes = data.SWMMinutes;
+                        model.CTPTMinutes = data.CTPTMinutes;
+
 
 
                         return model;
@@ -6367,6 +6377,911 @@ namespace SwachBharat.CMS.Bll.Services
             }
             return data;
         }
+
+
+
+        public void SaveHSQRStatusHouse(int houseId, string QRStatus)
+        {
+            bool? bQRStatus = null;
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (houseId > 0 && !string.IsNullOrEmpty(QRStatus))
+                    {
+                        if (QRStatus == "1")
+                        {
+                            bQRStatus = true;
+                        }
+                        else if (QRStatus == "0")
+                        {
+                            bQRStatus = false;
+                        }
+                        else
+                        {
+                            bQRStatus = null;
+                        }
+
+                        var model = db.HouseMasters.Where(x => x.houseId == houseId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.QRStatus = bQRStatus;
+                            model.QRStatusDate = DateTime.Now;
+                            db.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public void SaveHSQRStatusComr(int comrId, string QRStatus)
+        {
+            bool? bQRStatus = null;
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (comrId > 0 && !string.IsNullOrEmpty(QRStatus))
+                    {
+                        if (QRStatus == "1")
+                        {
+                            bQRStatus = true;
+                        }
+                        else if (QRStatus == "0")
+                        {
+                            bQRStatus = false;
+                        }
+                        else
+                        {
+                            bQRStatus = null;
+                        }
+
+                        var model = db.CommercialMasters.Where(x => x.commercialId == comrId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.QRStatus = bQRStatus;
+                            model.QRStatusDate = DateTime.Now;
+                            db.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void SaveHSQRStatusCTPT(int CTPTId, string QRStatus)
+        {
+            bool? bQRStatus = null;
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (CTPTId > 0 && !string.IsNullOrEmpty(QRStatus))
+                    {
+                        if (QRStatus == "1")
+                        {
+                            bQRStatus = true;
+                        }
+                        else if (QRStatus == "0")
+                        {
+                            bQRStatus = false;
+                        }
+                        else
+                        {
+                            bQRStatus = null;
+                        }
+
+                        var model = db.SauchalayAddresses.Where(x => x.Id == CTPTId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.QRStatus = bQRStatus;
+                            model.QRStatusDate = DateTime.Now;
+                            db.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void SaveHSQRStatusSWM(int SWMId, string QRStatus)
+        {
+            bool? bQRStatus = null;
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (SWMId > 0 && !string.IsNullOrEmpty(QRStatus))
+                    {
+                        if (QRStatus == "1")
+                        {
+                            bQRStatus = true;
+                        }
+                        else if (QRStatus == "0")
+                        {
+                            bQRStatus = false;
+                        }
+                        else
+                        {
+                            bQRStatus = null;
+                        }
+
+                        var model = db.SWMMasters.Where(x => x.swmId == SWMId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.QRStatus = bQRStatus;
+                            model.QRStatusDate = DateTime.Now;
+                            db.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void SaveHSQRStatusLW(int LWId, string QRStatus)
+        {
+            bool? bQRStatus = null;
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (LWId > 0 && !string.IsNullOrEmpty(QRStatus))
+                    {
+                        if (QRStatus == "1")
+                        {
+                            bQRStatus = true;
+                        }
+                        else if (QRStatus == "0")
+                        {
+                            bQRStatus = false;
+                        }
+                        else
+                        {
+                            bQRStatus = null;
+                        }
+
+                        var model = db.LiquidWasteDetails.Where(x => x.LWId == LWId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.QRStatus = bQRStatus;
+                            model.QRStatusDate = DateTime.Now;
+                            db.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void SaveHSQRStatusSW(int SWId, string QRStatus)
+        {
+            bool? bQRStatus = null;
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (SWId > 0 && !string.IsNullOrEmpty(QRStatus))
+                    {
+                        if (QRStatus == "1")
+                        {
+                            bQRStatus = true;
+                        }
+                        else if (QRStatus == "0")
+                        {
+                            bQRStatus = false;
+                        }
+                        else
+                        {
+                            bQRStatus = null;
+                        }
+
+                        var model = db.StreetSweepingDetails.Where(x => x.SSId == SWId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.QRStatus = bQRStatus;
+                            model.QRStatusDate = DateTime.Now;
+                            db.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<int> GetHSHouseDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+            List<int> lstIDs = new List<int>() { };
+
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var data = db.SP_GetHSHouseDetailsID(fromDate, toDate, userId, QRStatus, sortColumn, sortOrder, searchString).ToList();
+                    if (data != null && data.Count > 0)
+                    {
+                        foreach (var i in data)
+                        {
+                            lstIDs.Add(i ?? 0);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lstIDs;
+        }
+        public List<int> GetHSComrDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+
+
+            List<int> lstIDs = new List<int>() { };
+            bool? bQRStatus = null;
+            if (QRStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QRStatus == 2)
+            {
+                bQRStatus = false;
+
+            }
+            else
+            {
+                bQRStatus = null;
+            }
+
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var model = db.CommercialMasters
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.modified,
+                                           userId = p.c.userId,
+                                           houseId = p.c.commercialId,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.commercialLat,
+                                           HouseLong = p.c.commercialLong,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+
+
+                    if (fromDate != null && toDate != null)
+                    {
+                        if (Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                        {
+                            model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy"))).ToList();
+                        }
+                        else
+                        {
+
+                            model = model.Where(c => (c.modifiedDate >= fromDate && c.modifiedDate <= toDate)).ToList();
+                        }
+                    }
+                    if (userId > 0)
+                    {
+                        model = model.Where(c => c.userId == userId).ToList();
+
+                    }
+
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(searchString.ToUpper())
+                         ).ToList();
+
+                    }
+
+                    lstIDs = model.Select(x => x.houseId).ToList();
+
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lstIDs;
+        }
+
+        public List<int> GetHSCTPTDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+
+
+            List<int> lstIDs = new List<int>() { };
+            bool? bQRStatus = null;
+            if (QRStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QRStatus == 2)
+            {
+                bQRStatus = false;
+
+            }
+            else
+            {
+                bQRStatus = null;
+            }
+
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var model = db.SauchalayAddresses
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.lastModifiedDate,
+                                           userId = p.c.userId,
+                                           houseId = p.c.Id,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.Lat,
+                                           HouseLong = p.c.Long,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+
+
+                    if (fromDate != null && toDate != null)
+                    {
+                        if (Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                        {
+                            model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy"))).ToList();
+                        }
+                        else
+                        {
+
+                            model = model.Where(c => (c.modifiedDate >= fromDate && c.modifiedDate <= toDate)).ToList();
+                        }
+                    }
+                    if (userId > 0)
+                    {
+                        model = model.Where(c => c.userId == userId).ToList();
+
+                    }
+
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(searchString.ToUpper())
+                         ).ToList();
+
+                    }
+
+                    lstIDs = model.Select(x => x.houseId).ToList();
+
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lstIDs;
+        }
+
+        public List<int> GetHSSWMDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+
+
+            List<int> lstIDs = new List<int>() { };
+            bool? bQRStatus = null;
+            if (QRStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QRStatus == 2)
+            {
+                bQRStatus = false;
+
+            }
+            else
+            {
+                bQRStatus = null;
+            }
+
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var model = db.SWMMasters
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.modified,
+                                           userId = p.c.userId,
+                                           houseId = p.c.swmId,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.swmLat,
+                                           HouseLong = p.c.swmLong,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+
+
+                    if (fromDate != null && toDate != null)
+                    {
+                        if (Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                        {
+                            model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy"))).ToList();
+                        }
+                        else
+                        {
+
+                            model = model.Where(c => (c.modifiedDate >= fromDate && c.modifiedDate <= toDate)).ToList();
+                        }
+                    }
+                    if (userId > 0)
+                    {
+                        model = model.Where(c => c.userId == userId).ToList();
+
+                    }
+
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(searchString.ToUpper())
+                         ).ToList();
+
+                    }
+
+                    lstIDs = model.Select(x => x.houseId).ToList();
+
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lstIDs;
+        }
+
+        public List<int> GetHSLWDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+
+
+            List<int> lstIDs = new List<int>() { };
+            bool? bQRStatus = null;
+            if (QRStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QRStatus == 2)
+            {
+                bQRStatus = false;
+
+            }
+            else
+            {
+                bQRStatus = null;
+            }
+
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var model = db.LiquidWasteDetails
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.lastModifiedDate,
+                                           userId = p.c.userId,
+                                           houseId = p.c.LWId,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.LWLat,
+                                           HouseLong = p.c.LWLong,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+
+
+                    if (fromDate != null && toDate != null)
+                    {
+                        if (Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                        {
+                            model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy"))).ToList();
+                        }
+                        else
+                        {
+
+                            model = model.Where(c => (c.modifiedDate >= fromDate && c.modifiedDate <= toDate)).ToList();
+                        }
+                    }
+                    if (userId > 0)
+                    {
+                        model = model.Where(c => c.userId == userId).ToList();
+
+                    }
+
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(searchString.ToUpper())
+                         ).ToList();
+
+                    }
+
+                    lstIDs = model.Select(x => x.houseId).ToList();
+
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lstIDs;
+        }
+
+        public List<int> GetHSSWDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+
+
+            List<int> lstIDs = new List<int>() { };
+            bool? bQRStatus = null;
+            if (QRStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QRStatus == 2)
+            {
+                bQRStatus = false;
+
+            }
+            else
+            {
+                bQRStatus = null;
+            }
+
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var model = db.StreetSweepingDetails
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.lastModifiedDate,
+                                           userId = p.c.userId,
+                                           houseId = p.c.SSId,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.SSLat,
+                                           HouseLong = p.c.SSLong,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+
+
+                    if (fromDate != null && toDate != null)
+                    {
+                        if (Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                        {
+                            model = model.Where(c => (Convert.ToDateTime(c.modifiedDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy"))).ToList();
+                        }
+                        else
+                        {
+
+                            model = model.Where(c => (c.modifiedDate >= fromDate && c.modifiedDate <= toDate)).ToList();
+                        }
+                    }
+                    if (userId > 0)
+                    {
+                        model = model.Where(c => c.userId == userId).ToList();
+
+                    }
+
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        model = model.Where(c => ((string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " + (string.IsNullOrEmpty(c.ReferanceId) ? " " : c.ReferanceId)).ToUpper().Contains(searchString.ToUpper())
+                         ).ToList();
+
+                    }
+
+                    lstIDs = model.Select(x => x.houseId).ToList();
+
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lstIDs;
+        }
+
+        public SBAHSHouseDetailsGrid GetHouseDetailsById(int houseId)
+        {
+            SBAHSHouseDetailsGrid data = null;
+            using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+            {
+                data = db.SP_GetHSHouseDetailsById(houseId).Select(x => new SBAHSHouseDetailsGrid
+                {
+                    houseId = x.houseId,
+                    Name = x.qrEmpName,
+                    HouseLat = x.houseLat,
+                    HouseLong = x.houseLong,
+                    QRCodeImage = x.QRCodeImage,
+                    ReferanceId = x.ReferanceId,
+                    modifiedDate = x.modified.HasValue ? Convert.ToDateTime(x.modified).ToString("dd/MM/yyyy hh:mm tt") : "",
+                    QRStatusDate = x.QRStatusDate.HasValue ? Convert.ToDateTime(x.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                    QRStatus = x.QRStatus
+                }).FirstOrDefault();
+            }
+            return data;
+        }
+
+        public SBAHSDumpyardDetailsGrid GetComrDetailsById(int comrId)
+        {
+            SBAHSDumpyardDetailsGrid data = null;
+            using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+            {
+                var model = db.CommercialMasters
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.modified,
+                                           userId = p.c.userId,
+                                           dumpId = p.c.commercialId,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.commercialLat,
+                                           HouseLong = p.c.commercialLong,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(a => a.dumpId == comrId).FirstOrDefault();
+
+                if (model != null)
+                {
+                    data = new SBAHSDumpyardDetailsGrid()
+                    {
+                        dumpId = model.dumpId,
+                        Name = model.Name,
+                        HouseLat = model.HouseLat,
+                        HouseLong = model.HouseLong,
+                        QRCodeImage = model.QRCodeImage,
+                        ReferanceId = model.ReferanceId,
+                        modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatus = model.QRStatus
+                    };
+                }
+            }
+            return data;
+        }
+
+
+        public SBAHSDumpyardDetailsGrid GetCTPTDetailsById(int CTPTId)
+        {
+            SBAHSDumpyardDetailsGrid data = null;
+            using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+            {
+                var model = db.SauchalayAddresses
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.lastModifiedDate,
+                                           userId = p.c.userId,
+                                           dumpId = p.c.Id,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.Lat,
+                                           HouseLong = p.c.Long,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(a => a.dumpId == CTPTId).FirstOrDefault();
+
+                if (model != null)
+                {
+                    data = new SBAHSDumpyardDetailsGrid()
+                    {
+                        dumpId = model.dumpId,
+                        Name = model.Name,
+                        HouseLat = model.HouseLat,
+                        HouseLong = model.HouseLong,
+                        QRCodeImage = model.QRCodeImage,
+                        ReferanceId = model.ReferanceId,
+                        modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatus = model.QRStatus
+                    };
+                }
+            }
+            return data;
+        }
+
+        public SBAHSDumpyardDetailsGrid GetSWMDetailsById(int SWMId)
+        {
+            SBAHSDumpyardDetailsGrid data = null;
+            using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+            {
+                var model = db.SWMMasters
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.modified,
+                                           userId = p.c.userId,
+                                           dumpId = p.c.swmId,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.swmLat,
+                                           HouseLong = p.c.swmLong,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(a => a.dumpId == SWMId).FirstOrDefault();
+
+                if (model != null)
+                {
+                    data = new SBAHSDumpyardDetailsGrid()
+                    {
+                        dumpId = model.dumpId,
+                        Name = model.Name,
+                        HouseLat = model.HouseLat,
+                        HouseLong = model.HouseLong,
+                        QRCodeImage = model.QRCodeImage,
+                        ReferanceId = model.ReferanceId,
+                        modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatus = model.QRStatus
+                    };
+                }
+            }
+            return data;
+        }
+        public SBAHSLiquidDetailsGrid GetLWDetailsById(int LWId)
+        {
+            SBAHSLiquidDetailsGrid data = null;
+            using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+            {
+                var model = db.LiquidWasteDetails
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.lastModifiedDate,
+                                           userId = p.c.userId,
+                                           dumpId = p.c.LWId,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.LWLat,
+                                           HouseLong = p.c.LWLong,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(a => a.dumpId == LWId).FirstOrDefault();
+
+                if (model != null)
+                {
+                    data = new SBAHSLiquidDetailsGrid()
+                    {
+                        liquidId = model.dumpId,
+                        Name = model.Name,
+                        HouseLat = model.HouseLat,
+                        HouseLong = model.HouseLong,
+                        QRCodeImage = model.QRCodeImage,
+                        ReferanceId = model.ReferanceId,
+                        modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatus = model.QRStatus
+                    };
+                }
+            }
+            return data;
+        }
+
+        public SBAHSStreetDetailsGrid GetSWDetailsById(int SWId)
+        {
+            SBAHSStreetDetailsGrid data = null;
+            using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+            {
+                var model = db.StreetSweepingDetails
+                         .GroupJoin(db.QrEmployeeMasters,
+                                      a => a.userId,
+                                      b => b.qrEmpId,
+                                      (a, b) => new { c = a, d = b.DefaultIfEmpty() })
+                           .SelectMany(r => r.d.DefaultIfEmpty(),
+                                       (p, b) => new
+                                       {
+                                           modifiedDate = p.c.lastModifiedDate,
+                                           userId = p.c.userId,
+                                           dumpId = p.c.SSId,
+                                           Name = b.qrEmpName,
+                                           HouseLat = p.c.SSLat,
+                                           HouseLong = p.c.SSLong,
+                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           ReferanceId = p.c.ReferanceId,
+                                           QRStatus = p.c.QRStatus,
+                                           QRStatusDate = p.c.QRStatusDate
+                                       }).Where(a => a.dumpId == SWId).FirstOrDefault();
+
+                if (model != null)
+                {
+                    data = new SBAHSStreetDetailsGrid()
+                    {
+                        streetId = model.dumpId,
+                        Name = model.Name,
+                        HouseLat = model.HouseLat,
+                        HouseLong = model.HouseLong,
+                        QRCodeImage = model.QRCodeImage,
+                        ReferanceId = model.ReferanceId,
+                        modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                        QRStatus = model.QRStatus
+                    };
+                }
+            }
+            return data;
+        }
+
 
         #endregion
 

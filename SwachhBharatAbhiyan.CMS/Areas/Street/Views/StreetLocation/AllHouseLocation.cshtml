@@ -529,7 +529,106 @@
                     }
                     map.fitBounds(bounds);
                     map.panToBounds(bounds);
+                    //var perChunk = 3 // items per chunk
 
+                    //var inputArray = data
+
+                    //var coordinates = inputArray.reduce((resultArray, item, index) => {
+                    //    const chunkIndex = Math.floor(index / perChunk)
+
+                    //    if (!resultArray[chunkIndex]) {
+                    //        resultArray[chunkIndex] = [] // start a new chunk
+                    //    }
+
+                    //    resultArray[chunkIndex].push(item)
+
+                    //    return resultArray
+                    //}, [])
+
+
+                    var perChunk = 3 // items per chunk
+
+                    var inputArray = data
+
+                    var coordinates = inputArray.reduce((resultArray, item, index) => {
+                        const chunkIndex = item.BeatId;
+
+                        if (!resultArray[chunkIndex]) {
+                            resultArray[chunkIndex] = [] // start a new chunk
+                        }
+
+                        resultArray[chunkIndex].push(item)
+
+                        return resultArray
+                    }, [])
+
+
+
+
+
+                    console.log(coordinates);
+
+
+                    //arr1 = []
+                    //debugger
+                    //for (i = 0; i < coordinates.length; i++) {
+                    //    var myLatlng = new google.maps.LatLng(coordinates[i].houseLat, coordinates[i].houseLong);
+                    //    arr1.push(myLatlng);
+                    //    console.log(arr1)
+
+                    // debugger;
+                    //var mapOptions = {
+                    //    zoom: 5,
+                    //    center: new google.maps.LatLng(coordinates[i][0].houseLat, coordinates[i][0].houseLong),
+                    //    mapTypeId: google.maps.MapTypeId.TERRAIN
+                    //};
+
+                    var bounds = new google.maps.LatLngBounds();
+                    var polygons = [];
+                    var arr = new Array();
+                    //var map = new google.maps.Map(document.getElementById('googleMap'),
+                    //    map);
+
+
+                    for (var i in coordinates) {
+                        console.log(i);
+                        console.log(coordinates);
+                        arr = [];
+                        console.log(arr)
+                        debugger
+                        if (i != 0) {
+                            for (var j = 0; j < coordinates[i].length; j++) {
+                                arr.push(new google.maps.LatLng(
+                                    parseFloat(coordinates[i][j].houseLat),
+                                    parseFloat(coordinates[i][j].houseLong)
+                                ));
+
+                                bounds.extend(arr[arr.length - 1])
+                            }
+                        }
+                        var color_of_this = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+                        // Construct the polygon.
+                        polygons.push(new google.maps.Polyline({
+                            path: arr,
+                            strokeColor: color_of_this,
+                            // strokeOpacity: 0.8,
+                            strokeWeight: 6,
+                            fillColor: color_of_this/* '#FF0000'*/,
+                            fillOpacity: 0.35
+                        }));
+                        polygons[polygons.length - 1].setMap(map);
+
+                        //var infowindow = new google.maps.InfoWindow({
+                        //    content: "Hello World!"
+                        //});
+
+                        google.maps.event.addListener(polygons[polygons.length - 1], 'click', function (event) {
+                            infowindow.open(map);
+                            infowindow.setPosition(event.latLng);
+                        });
+
+                    }
+                    map.fitBounds(bounds);
                 }
 
             });
@@ -548,10 +647,10 @@
         }
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxgJE8ITyvoY7NW_bZ0tnrnSs03a5VWD8&callback=myMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>
 
     @*Paid API*@
-    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxgJE8ITyvoY7NW_bZ0tnrnSs03a5VWD8&callback=myMap" type="text/javascript"></script>*@
+    @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>*@
 
 </fieldset>
 <script src="~/Content/css/datepicker/js/datepicker.js"></script>

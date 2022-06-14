@@ -29,9 +29,10 @@
         /*    text-align: center;*/
         font-size: 14px;
     }
-    .bg-b{
+
+    .bg-b {
         background: #189cdf;
-        color:#fff;
+        color: #fff;
     }
 </style>
 <body>
@@ -45,274 +46,280 @@
                 <h4 id="ulb_name" class="text-center" style="padding-left:14px;"></h4>
             </div>
             @*<div class="row">
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #ff7676">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Property</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalHouse <span class="card-text">|<b> Updated : </b>@Model.TotalHouseUpdated |<b> Today : </b>@Model.TotalHouseUpdated_CurrentDay</span></p>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #ff7676">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Property</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalHouse <span class="card-text">|<b> Updated : </b>@Model.TotalHouseUpdated |<b> Today : </b>@Model.TotalHouseUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-4" hidden="hidden">
-                    <div class="card" style="width: 105%; border-color: #54e69d">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Garbage Point Collection</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalPoint <span class="card-text">|<b> Updated : </b>@Model.TotalPointUpdated |<b> Today : </b>@Model.TotalPointUpdated_CurrentDay</span></p>
+                    <div class="col-sm-4" hidden="hidden">
+                        <div class="card" style="width: 105%; border-color: #54e69d">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Garbage Point Collection</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalPoint <span class="card-text">|<b> Updated : </b>@Model.TotalPointUpdated |<b> Today : </b>@Model.TotalPointUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #54e69d">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Liquid Waste Collection</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalLiquid <span class="card-text">|<b> Updated : </b>@Model.TotalLiquidUpdated |<b> Today : </b>@Model.TotalLiquidUpdated_CurrentDay</span></p>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #54e69d">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Liquid Waste Collection</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalLiquid <span class="card-text">|<b> Updated : </b>@Model.TotalLiquidUpdated |<b> Today : </b>@Model.TotalLiquidUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #ff7676">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Street Sweep Collection</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalStreet <span class="card-text">|<b> Updated : </b>@Model.TotalStreetUpdated |<b> Today : </b>@Model.TotalStreetUpdated_CurrentDay</span></p>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #ff7676">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Street Sweep Collection</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalStreet <span class="card-text">|<b> Updated : </b>@Model.TotalStreetUpdated |<b> Today : </b>@Model.TotalStreetUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-3">
-                    <div class="card" style="border-color:#54c4d8">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Dump Yard Details</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalDump <span class="card-text">|<b> Updated : </b>@Model.TotalDumpUpdated</span> |<b> Today : </b>@Model.TotalDumpUpdated_CurrentDay</span></p>
+                    <div class="col-sm-3">
+                        <div class="card" style="border-color:#54c4d8">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Dump Yard Details</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalDump <span class="card-text">|<b> Updated : </b>@Model.TotalDumpUpdated</span> |<b> Today : </b>@Model.TotalDumpUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div><br />
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #54e69d">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Residential</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalResidentialUpdated <span class="card-text">|<b> Today : </b>@Model.TotalResidentialUpdated_CurrentDay</span></p>
+                </div><br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #54e69d">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Residential</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalResidentialUpdated <span class="card-text">|<b> Today : </b>@Model.TotalResidentialUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #54e69d">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Residential Building</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalBuildingUpdated <span class="card-text">|<b> Today : </b>@Model.TotalBuildingUpdated_CurrentDay</span></p>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #54e69d">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Residential Building</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalBuildingUpdated <span class="card-text">|<b> Today : </b>@Model.TotalBuildingUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #54e69d">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Residential Slum</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalSlumUpdated <span class="card-text">|<b> Today : </b>@Model.TotalSlumUpdated_CurrentDay</span></p>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #54e69d">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Residential Slum</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalSlumUpdated <span class="card-text">|<b> Today : </b>@Model.TotalSlumUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #54e69d">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">Commercial</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalCommercialUpdated <span class="card-text">|<b> Today : </b>@Model.TotalCommercialUpdated_CurrentDay</span></p>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #54e69d">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">Commercial</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalCommercialUpdated <span class="card-text">|<b> Today : </b>@Model.TotalCommercialUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div><br />
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #54e69d">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">SWM Facility</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalSWMUpdated <span class="card-text">|<b> Today : </b>@Model.TotalSWMUpdated_CurrentDay</span></p>
+                </div><br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #54e69d">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">SWM Facility</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalSWMUpdated <span class="card-text">|<b> Today : </b>@Model.TotalSWMUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-3">
-                    <div class="card" style="width: 105%; border-color: #54e69d">
-                        <div class="card-body" style="padding:10px">
-                            <p class="card-title text-center" style="font-size:16px">CTPT</p>
-                            <p class="card-text text-center"><b>Total :</b> @Model.TotalCTPTUpdated <span class="card-text">|<b> Today : </b>@Model.TotalCTPTUpdated_CurrentDay</span></p>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 105%; border-color: #54e69d">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-title text-center" style="font-size:16px">CTPT</p>
+                                <p class="card-text text-center"><b>Total :</b> @Model.TotalCTPTUpdated <span class="card-text">|<b> Today : </b>@Model.TotalCTPTUpdated_CurrentDay</span></p>
+                            </div>
                         </div>
                     </div>
+
+                </div><br />*@
+
+            <div class="row w-100">
+                <div class="col-lg-4">
+                    <table style="width:100%">
+                        <tr class="text-center">
+                            <th class="bg-b">Name</th>
+                            <th class="bg-b">Total</th>
+                            <th class="bg-b">Updated</th>
+                            <th class="bg-b">Today</th>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Residential Property</td>
+                            <td>@Model.TotalHouse</td>
+                            <td>@Model.TotalHouseUpdated</td>
+                            <td>@Model.TotalHouseUpdated_CurrentDay</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Liquid Waste Collection</td>
+                            <td>@Model.TotalLiquid</td>
+                            <td>@Model.TotalLiquidUpdated</td>
+                            <td>@Model.TotalLiquidUpdated_CurrentDay</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Street Sweep Collection</td>
+                            <td> @Model.TotalStreet</td>
+                            <td>@Model.TotalStreetUpdated</td>
+                            <td>@Model.TotalStreetUpdated_CurrentDay</td>
+                        </tr>
+                        <tr class="text-center" hidden="hidden">
+                            <td>Dump Yard Details</td>
+                            <td> @Model.TotalDump</td>
+                            <td>@Model.TotalDumpUpdated</td>
+                            <td>@Model.TotalDumpUpdated_CurrentDay</td>
+                        </tr>
+                    </table>
                 </div>
-
-            </div><br />*@
-
-                  <div class="row w-100">
-                      <div class="col-lg-4">
-                          <table style="width:100%">
-                              <tr  class="text-center">
-                                  <th class="bg-b">Name</th>
-                                  <th class="bg-b">Total</th>
-                                  <th class="bg-b">Updated</th>
-                                  <th class="bg-b">Today</th>
-                              </tr>
-                              <tr  class="text-center">
-                                  <td>Residential Property</td>
-                                  <td>@Model.TotalHouse</td>
-                                  <td>@Model.TotalHouseUpdated</td>
-                                  <td>@Model.TotalHouseUpdated_CurrentDay</td>
-                              </tr>
-                              <tr  class="text-center">
-                                  <td>Liquid Waste Collection</td>
-                                  <td>@Model.TotalLiquid</td>
-                                  <td>@Model.TotalLiquidUpdated</td>
-                                  <td>@Model.TotalLiquidUpdated_CurrentDay</td>
-                              </tr>
-                              <tr  class="text-center">
-                                  <td>Street Sweep Collection</td>
-                                  <td> @Model.TotalStreet</td>
-                                  <td>@Model.TotalStreetUpdated</td>
-                                  <td>@Model.TotalStreetUpdated_CurrentDay</td>
-                              </tr>
-                              <tr  class="text-center" hidden="hidden">
-                                  <td>Dump Yard Details</td>
-                                  <td> @Model.TotalDump</td>
-                                  <td>@Model.TotalDumpUpdated</td>
-                                  <td>@Model.TotalDumpUpdated_CurrentDay</td>
-                              </tr>
-                          </table>
-                      </div>
-                      <div class="col-lg-4">
-                          <table style="width:100%">
-                              <tr  class="text-center">
-                                  <th class="bg-b">Name</th>
-                                  <th class="bg-b">Total</th>
-                                  <th class="bg-b">Today</th>
-                              </tr>
-                              <tr  class="text-center" hidden="hidden">
-                                  <td>Residential</td>
-                                  <td> @Model.TotalResidentialUpdated</td>
-                                  <td>@Model.TotalResidentialUpdated_CurrentDay</td>
-                              </tr>
-                              <tr  class="text-center">
-                                  <td>Residential Building</td>
-                                  <td>@Model.TotalBuildingUpdated</td>
-                                  <td>@Model.TotalBuildingUpdated_CurrentDay</td>
-                              </tr>
-                              <tr  class="text-center">
-                                  <td>Residential Slum</td>
-                                  <td>@Model.TotalSlumUpdated</td>
-                                  <td>@Model.TotalSlumUpdated_CurrentDay</td>
-                              </tr>
-                          </table>
-                      </div>
-                      <div class="col-lg-4">
-                          <table style="width:100%">
-                              <tr class="text-center">
-                                  <th class="bg-b">Name</th>
-                                  <th class="bg-b">Total</th>
-                                  <th class="bg-b">Updated</th>
-                                  <th class="bg-b">Today</th>
-                              </tr>
-                              <tr class="text-center">
-                                  <td>Commercial</td>
-                                  <td> @Model.TotalCommercialUpdated</td>
-                                  <td>@Model.TotalCommercial</td>
-                                  <td>@Model.TotalCommercialUpdated_CurrentDay</td>
-                              </tr>
-                              <tr class="text-center">
-                                  <td>SWM Facility</td>
-                                  <td>@Model.TotalSWMUpdated</td>
-                                  <td>@Model.TotalSWM</td>
-                                  <td>@Model.TotalSWMUpdated_CurrentDay</td>
-                              </tr>
-                              <tr class="text-center">
-                                  <td>CT / PT / U</td>
-                                  <td>@Model.TotalCTPTUpdated</td>
-                                  <td>@Model.TotalCTPT</td>
-                                  <td>@Model.TotalCTPTUpdated_CurrentDay</td>
-                              </tr>
-                          </table>
-                      </div>
-                  </div>
-
-
-                      <div class="row">
-                          <div class="col-sm-3">
-                              <div class="controls">
-                                  <label>From Date</label>
-                                  <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
-                              </div>
-                          </div>
-                          <div class="col-sm-3">
-                              <div class="controls">
-                                  <label>To Date</label>
-                                  <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
-                              </div>
-                          </div>
-                          <div class="col-sm-4">
-                              <label>Select Employee</label>
-                              <select id="selectnumber" class="form-control form-control form-control-sm"></select>
-                          </div>
-                          <div class="col-sm-2">
-                              <div class="controls">
-                                  <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
-                              </div>
-                          </div>
-                      </div>
-
-                  </div>
-            <div class="container" style="overflow-y:auto">
-                <br />
-                <div style="width:100%; margin:0 auto;">
-                    <a href="AttendenceIndex" class="btn btn-success btn-sm float-right" type="button">Attendance</a>
-                    <a href="AddHSEmployeeDetails" class="btn btn-success btn-sm float-right" style="margin-right: 5px;" type="button">Add Employee</a>
-                    <a href="HouseDetails" class="btn btn-success btn-sm float-right" style="margin-right: 5px;" type="button">House Details</a>
-                    @*<label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="s" class="form-control form-control-sm" onkeyup="Search()"></label>*@
-                    <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0" style="font-size:14px">
-
-                        <thead style="font-size:14px">
-                            @*<tr>
-                    <th>Id</th>
-                    <th>नाव <br /> Name</th>
-                    <th>नाव मराठी <br /> Name Marathi</th>
-                    <th>मोबाइल <br /> Mobile</th>
-                    <th>पत्ता<br /> Address</th>
-                    <th> घराची गणना<br /> HouseCount</th>
-                    <th> पॉइंट गणना<br /> PointCount</th>
-                    <th> डंप गणना<br /> DumpCount</th>
-                    <th> क्रिया <br /> Action</th>
-                </tr>*@
-
-                            <tr>
-                                <th>Id</th>
-                                <th> Name</th>
-                                <th> Name Marathi</th>
-                                <th> Mobile</th>
-                                @*<th> Date</th>
-                    <th> Start Time</th>
-                    <th> End Time</th>*@
-                                @*<th> Residential Count</th>*@
-                                <th> Residential Building Count</th>
-                                <th> Residential Slum Count</th>
-                                <th> Commercial Count</th>
-                                <th> SWM Facility Count</th>
-                                <th> CT/PT/U Count</th>
-
-                                <th> Liquid Count</th>
-                                <th> Street Count</th>
-                                @*<th> PointCount</th>*@
-                                <th> Dump Count</th>
-
-
-                                <th> Address</th>
-                                <th> Action</th>
-                            </tr>
-                        </thead>
-
-
+                <div class="col-lg-4">
+                    <table style="width:100%">
+                        <tr class="text-center">
+                            <th class="bg-b">Name</th>
+                            <th class="bg-b">Total</th>
+                            <th class="bg-b">Today</th>
+                        </tr>
+                        <tr class="text-center" hidden="hidden">
+                            <td>Residential</td>
+                            <td> @Model.TotalResidentialUpdated</td>
+                            <td>@Model.TotalResidentialUpdated_CurrentDay</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Residential Building</td>
+                            <td>@Model.TotalBuildingUpdated</td>
+                            <td>@Model.TotalBuildingUpdated_CurrentDay</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Residential Slum</td>
+                            <td>@Model.TotalSlumUpdated</td>
+                            <td>@Model.TotalSlumUpdated_CurrentDay</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-4">
+                    <table style="width:100%">
+                        <tr class="text-center">
+                            <th class="bg-b">Name</th>
+                            <th class="bg-b">Total</th>
+                            <th class="bg-b">Updated</th>
+                            <th class="bg-b">Today</th>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Commercial</td>
+                            <td> @Model.TotalCommercialUpdated</td>
+                            <td>@Model.TotalCommercial</td>
+                            <td>@Model.TotalCommercialUpdated_CurrentDay</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>SWM Facility</td>
+                            <td>@Model.TotalSWMUpdated</td>
+                            <td>@Model.TotalSWM</td>
+                            <td>@Model.TotalSWMUpdated_CurrentDay</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>CT / PT / U</td>
+                            <td>@Model.TotalCTPTUpdated</td>
+                            <td>@Model.TotalCTPT</td>
+                            <td>@Model.TotalCTPTUpdated_CurrentDay</td>
+                        </tr>
                     </table>
                 </div>
             </div>
 
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="controls">
+                        <label>From Date</label>
+                        <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="controls">
+                        <label>To Date</label>
+                        <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label>Select Employee</label>
+                    <select id="selectnumber" class="form-control form-control form-control-sm"></select>
+                </div>
+                <div class="col-sm-2">
+                    <div class="controls">
+                        <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                    </div>
+                </div>
+            </div>
+
         </div>
+       
+        <div class="row" style="margin-left:34%;margin-top:2%;">
+            <a href="HouseDetails" class="btn btn-success btn-sm float-right" style="margin-right: 5px;" type="button">House Details</a>
+            <a href="AddHSEmployeeDetails" class="btn btn-success btn-sm float-right" style="margin-right: 5px;" type="button">Add Employee</a>
+            <a href="AttendenceIndex" class="btn btn-success btn-sm float-right" style="margin-right: 5px;" type="button">Attendance</a>
+        </div>
+        <div class="container" style="overflow-y:auto">
+            <br />
+            <div style="width:100%; margin:0 auto;">
+                @*<a href="AttendenceIndex" class="btn btn-success btn-sm float-right" type="button">Attendance</a>
+                <a href="AddHSEmployeeDetails" class="btn btn-success btn-sm float-right" style="margin-right: 5px;" type="button">Add Employee</a>
+                <a href="HouseDetails" class="btn btn-success btn-sm float-right" style="margin-right: 5px;" type="button">House Details</a>*@
+                <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="s" class="form-control form-control-sm" onkeyup="Search()"></label>
+                <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0" style="font-size:14px">
+
+                    <thead style="font-size:14px">
+                        @*<tr>
+                                <th>Id</th>
+                                <th>नाव <br /> Name</th>
+                                <th>नाव मराठी <br /> Name Marathi</th>
+                                <th>मोबाइल <br /> Mobile</th>
+                                <th>पत्ता<br /> Address</th>
+                                <th> घराची गणना<br /> HouseCount</th>
+                                <th> पॉइंट गणना<br /> PointCount</th>
+                                <th> डंप गणना<br /> DumpCount</th>
+                                <th> क्रिया <br /> Action</th>
+                            </tr>*@
+
+                        <tr>
+                            <th>Id</th>
+                            <th> Name</th>
+                            <th> Name Marathi</th>
+                            <th> Mobile</th>
+                            @*<th> Date</th>
+                                <th> Start Time</th>
+                                <th> End Time</th>*@
+                            @*<th> Residential Count</th>*@
+                            <th> Residential Building Count</th>
+                            <th> Residential Slum Count</th>
+                            <th> Commercial Count</th>
+                            <th> SWM Facility Count</th>
+                            <th> CT/PT/U Count</th>
+
+                            <th> Liquid Count</th>
+                            <th> Street Count</th>
+                            @*<th> PointCount</th>*@
+                            <th> Dump Count</th>
+
+
+                            <th> Address</th>
+                            <th> Action</th>
+                        </tr>
+                    </thead>
+
+
+                </table>
+            </div>
+        </div>
+
+    </div>
 </body>
 
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
@@ -323,7 +330,7 @@
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxgJE8ITyvoY7NW_bZ0tnrnSs03a5VWD8&callback=myMap" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>
 <!-- Dashboard Header Section    -->
 
 <script>

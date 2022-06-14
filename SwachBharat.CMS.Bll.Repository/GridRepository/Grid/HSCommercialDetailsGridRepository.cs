@@ -13,9 +13,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public HSCommercialDetailsGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public HSCommercialDetailsGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? QrStatus)
         {
-            dataset = objRep.GetHSCommercialDetailsData(wildcard, SearchString, fdate, tdate, userId, appId);
+            dataset = objRep.GetHSCommercialDetailsData(wildcard, SearchString, fdate, tdate, userId, appId, QrStatus);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)

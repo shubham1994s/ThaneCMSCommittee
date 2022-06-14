@@ -53,6 +53,14 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> TotalCTPTUpdated { get; set; }
         public Nullable<int> TotalCTPTUpdated_CurrentDay { get; set; }
 
+        public Nullable<int> HouseMinutes { get; set; }
+        public Nullable<int> DumpYardMinutes { get; set; }
+        public Nullable<int> LiquidMinutes { get; set; }
+        public Nullable<int> StreetMinutes { get; set; }
+        public Nullable<int> CommercialMinutes { get; set; }
+        public Nullable<int> SWMMinutes { get; set; }
+        public Nullable<int> CTPTMinutes { get; set; }
+
 
 
     }
