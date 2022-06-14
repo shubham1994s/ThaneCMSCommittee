@@ -114,15 +114,15 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     details.Add(new HSDashBoardVM()
                     {
                         AppId = x.AppId,
-                        AppName = x. AppName,
+                        AppName = x.AppName,
                         TotalHouseUpdated_CurrentDay = detail.TotalHouseUpdated_CurrentDay,
                         TotalPointUpdated_CurrentDay = detail.TotalPointUpdated_CurrentDay,
                         TotalDumpUpdated_CurrentDay = detail.TotalDumpUpdated_CurrentDay,
-                        TotalLiquidUpdated_CurrentDay=detail.TotalLiquidUpdated_CurrentDay,
-                        TotalStreetUpdated_CurrentDay=detail.TotalStreetUpdated_CurrentDay,
-                        TotalCommercialUpdated_CurrentDay =detail.TotalCommercialUpdated_CurrentDay,
-                        TotalSWMUpdated_CurrentDay=detail.TotalSWMUpdated_CurrentDay,
-                        TotalCTPTUpdated_CurrentDay=detail.TotalCTPTUpdated_CurrentDay,
+                        TotalLiquidUpdated_CurrentDay = detail.TotalLiquidUpdated_CurrentDay,
+                        TotalStreetUpdated_CurrentDay = detail.TotalStreetUpdated_CurrentDay,
+                        TotalCommercialUpdated_CurrentDay = detail.TotalCommercialUpdated_CurrentDay,
+                        TotalSWMUpdated_CurrentDay = detail.TotalSWMUpdated_CurrentDay,
+                        TotalCTPTUpdated_CurrentDay = detail.TotalCTPTUpdated_CurrentDay,
 
                         HouseMinutes = detail.HouseMinutes,
                         LiquidMinutes = detail.LiquidMinutes,
@@ -188,7 +188,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         public ActionResult AddHSEmployeeDetails(int teamId = -1)
         {
-            
+
             if (SessionHandler.Current.AppId != 0)
             {
                 mainRepository = new MainRepository();
@@ -217,7 +217,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-       
+
         [HttpPost]
         public ActionResult CheckUserDetails(HouseScanifyEmployeeDetailsVM obj)
         {
@@ -240,17 +240,20 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         user.qrEmpId = obj.qrEmpId;
                     }
                     if (user1 == obj.qrEmpLoginId & user.qrEmpId != obj.qrEmpId)
-                    { return Json(false, JsonRequestBehavior.AllowGet);
+                    {
+                        return Json(false, JsonRequestBehavior.AllowGet);
                     }
                     else if (user1 == user.qrEmpLoginId & user.qrEmpId != obj.qrEmpId)
-                    { return Json(false, JsonRequestBehavior.AllowGet);
+                    {
+                        return Json(false, JsonRequestBehavior.AllowGet);
                     }
                     else
                         return Json(true, JsonRequestBehavior.AllowGet);
                 }
                 else
                  if (user.qrEmpLoginId != null)
-                { return Json(false, JsonRequestBehavior.AllowGet);
+                {
+                    return Json(false, JsonRequestBehavior.AllowGet);
                 }
                 else
                     return Json(true, JsonRequestBehavior.AllowGet);
@@ -684,7 +687,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             }
         }
 
-        public ActionResult Export(int type, int UserId, string fdate = null, string tdate = null)
+        public ActionResult Export(int type, int UserId, string fdate = null, string tdate = null, string QrStatus = null)
         {
 
             DateTime fdt;
@@ -743,10 +746,77 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             strFileDownloadName = String.Format("Zip_{0}_From_{1}_To_{2}.zip", strType, fdt.ToString("yyyy-MMM-dd"), tdt.ToString("yyyy-MMM-dd"));
 
 
+            //if (SessionHandler.Current.AppId != 0)
+            //{
+            //    childRepository = new ChildRepository(SessionHandler.Current.AppId);
+            //    data = childRepository.GetHSQRCodeImageByDate(type, UserId, fdt, tdt, QrStatus);
+            //    string strFileType = string.Empty;
+            //    if (data != null && data.Count > 0)
+            //    {
+            //        using (var compressedFileStream = new MemoryStream())
+            //        {
+            //            //Create an archive and store the stream in memory.
+            //            using (var zipArchive = new ZipArchive(compressedFileStream, ZipArchiveMode.Create, false))
+            //            {
+            //                foreach (var item in data)
+            //                {
+            //                    string strImageTypePart = item.QRCodeImage.Split(',').First();
+            //                    if (strImageTypePart.ToUpper().Contains("JPEG"))
+            //                    {
+            //                        strFileType = "jpeg";
+            //                    }
+            //                    else if (strImageTypePart.ToUpper().Contains("BMP"))
+            //                    {
+            //                        strFileType = "bmp";
+            //                    }
+            //                    else if (strImageTypePart.ToUpper().Contains("PNG"))
+            //                    {
+            //                        strFileType = "png";
+            //                    }
+            //                    else if (strImageTypePart.ToUpper().Contains("JPG"))
+            //                    {
+            //                        strFileType = "jpg";
+            //                    }
+            //                    else if (strImageTypePart.ToUpper().Contains("GIF"))
+            //                    {
+            //                        strFileType = "gif";
+            //                    }
+            //                    else
+            //                    {
+            //                        strFileType = "jpeg";
+            //                    }
+            //                    //Create a zip entry for each attachment
+            //                    var zipEntry = zipArchive.CreateEntry(string.Format("{0}.{1}", item.ReferanceId, strFileType), CompressionLevel.Fastest);
+            //                    byte[] file = Convert.FromBase64String(item.QRCodeImage.Substring(item.QRCodeImage.LastIndexOf(',') + 1));
+            //                    //Get the stream of the attachment
+            //                    using (var originalFileStream = new MemoryStream(file))
+            //                    using (var zipEntryStream = zipEntry.Open())
+            //                    {
+            //                        //Copy the attachment stream to the zip entry stream
+            //                        originalFileStream.CopyTo(zipEntryStream);
+            //                    }
+            //                }
+
+            //            }
+
+            //            return new FileContentResult(compressedFileStream.ToArray(), "application/zip") { FileDownloadName = strFileDownloadName };
+            //        }
+            //    }
+            //    else
+            //        return new FileContentResult(new byte[] { }, "application/zip") { FileDownloadName = strFileDownloadName };
+
+            //}
+            //else
+            //    return new FileContentResult(new byte[] { }, "application/zip") { FileDownloadName = strFileDownloadName };
+
+
+
+
+
             if (SessionHandler.Current.AppId != 0)
             {
                 childRepository = new ChildRepository(SessionHandler.Current.AppId);
-                data = childRepository.GetHSQRCodeImageByDate(type, UserId, fdt, tdt);
+                data = childRepository.GetHSQRCodeImageByDate(type, UserId, fdt, tdt, QrStatus);
                 string strFileType = string.Empty;
                 if (data != null && data.Count > 0)
                 {
@@ -757,34 +827,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         {
                             foreach (var item in data)
                             {
-                                string strImageTypePart = item.QRCodeImage.Split(',').First();
-                                if (strImageTypePart.ToUpper().Contains("JPEG"))
-                                {
-                                    strFileType = "jpeg";
-                                }
-                                else if (strImageTypePart.ToUpper().Contains("BMP"))
-                                {
-                                    strFileType = "bmp";
-                                }
-                                else if (strImageTypePart.ToUpper().Contains("PNG"))
-                                {
-                                    strFileType = "png";
-                                }
-                                else if (strImageTypePart.ToUpper().Contains("JPG"))
-                                {
-                                    strFileType = "jpg";
-                                }
-                                else if (strImageTypePart.ToUpper().Contains("GIF"))
-                                {
-                                    strFileType = "gif";
-                                }
-                                else
-                                {
-                                    strFileType = "jpeg";
-                                }
+                                strFileType = "jpeg";
                                 //Create a zip entry for each attachment
                                 var zipEntry = zipArchive.CreateEntry(string.Format("{0}.{1}", item.ReferanceId, strFileType), CompressionLevel.Fastest);
-                                byte[] file = Convert.FromBase64String(item.QRCodeImage.Substring(item.QRCodeImage.LastIndexOf(',') + 1));
+                                byte[] file = item.BinaryQrCodeImage;
                                 //Get the stream of the attachment
                                 using (var originalFileStream = new MemoryStream(file))
                                 using (var zipEntryStream = zipEntry.Open())

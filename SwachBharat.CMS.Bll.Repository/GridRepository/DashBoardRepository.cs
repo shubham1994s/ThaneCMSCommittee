@@ -5833,13 +5833,14 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
-                data = db.SP_GetHSHouseDetails1(fdate, tdate, userId, iQRStatus, sortColumn, sortColumnDir, skip, pageSize, SearchString).Select(x => new SBAHSHouseDetailsGrid
+                data = db.SP_GetHSHouseDetailsnew(fdate, tdate, userId, iQRStatus, sortColumn, sortColumnDir, skip, pageSize, SearchString).Select(x => new SBAHSHouseDetailsGrid
                 {
                     houseId = x.houseId,
                     Name = x.qrEmpName,
                     HouseLat = x.houseLat,
                     HouseLong = x.houseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = x.BinaryQrCodeImage,
                     ReferanceId = x.ReferanceId,
                     modifiedDate = x.modified.HasValue ? Convert.ToDateTime(x.modified).ToString("dd/MM/yyyy hh:mm tt") : "",
                     totalRowCount = x.FilterTotalCount.HasValue ? Convert.ToInt32(x.FilterTotalCount) : 0,
@@ -5968,11 +5969,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.swmLat,
                                           HouseLong = p.c.swmLong,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
                                           ReferanceId = p.c.ReferanceId,
                                           QRStatus = p.c.QRStatus,
                                           QRStatusDate = p.c.QRStatusDate
-                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fdate && c.QRStatusDate <= tdate)) || (bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate))).OrderBy(d => d.houseId).ToList();
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6005,7 +6007,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
                     modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                     QRStatus = x.QRStatus,
@@ -6058,11 +6061,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.Lat,
                                           HouseLong = p.c.Long,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
                                           ReferanceId = p.c.ReferanceId,
                                           QRStatus = p.c.QRStatus,
                                           QRStatusDate = p.c.QRStatusDate
-                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fdate && c.QRStatusDate <= tdate)) || (bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate))).OrderBy(d => d.houseId).ToList();
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6095,7 +6099,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
                     modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                     QRStatus = x.QRStatus,
@@ -6147,11 +6152,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.commercialLat,
                                           HouseLong = p.c.commercialLong,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
                                           ReferanceId = p.c.ReferanceId,
                                           QRStatus = p.c.QRStatus,
                                           QRStatusDate = p.c.QRStatusDate
-                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fdate && c.QRStatusDate <= tdate)) || (bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate))).OrderBy(d => d.houseId).ToList();
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6184,7 +6190,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
                     modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                     QRStatus = x.QRStatus,
@@ -6236,11 +6243,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.LWLat,
                                           HouseLong = p.c.LWLong,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
                                           ReferanceId = p.c.ReferanceId,
                                           QRStatus = p.c.QRStatus,
                                           QRStatusDate = p.c.QRStatusDate
-                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fdate && c.QRStatusDate <= tdate)) ||(bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate))).OrderBy(d => d.houseId).ToList();
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6273,7 +6281,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
                     modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                     QRStatus = x.QRStatus,
@@ -6324,11 +6333,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.SSLat,
                                           HouseLong = p.c.SSLong,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
                                           ReferanceId = p.c.ReferanceId,
                                           QRStatus = p.c.QRStatus,
                                           QRStatusDate = p.c.QRStatusDate
-                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fdate && c.QRStatusDate <= tdate)) || (bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate))).OrderBy(d => d.houseId).ToList();
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6361,7 +6371,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
                     modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                     QRStatus = x.QRStatus,

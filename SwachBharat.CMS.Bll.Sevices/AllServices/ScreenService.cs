@@ -6211,7 +6211,7 @@ namespace SwachBharat.CMS.Bll.Services
             return userLocation;
         }
 
-        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate)
+        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate1(int type, int UserId, DateTime fDate, DateTime tDate)
         {
             List<SBAHSHouseDetailsGrid> data = new List<SBAHSHouseDetailsGrid>();
             try
@@ -6378,6 +6378,119 @@ namespace SwachBharat.CMS.Bll.Services
             return data;
         }
 
+        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate,string QrStatus)
+        {
+
+            bool? bQRStatus = null;
+            if (QrStatus == "1")
+            {
+                bQRStatus = true;
+            }
+            else if (QrStatus == "2")
+            {
+                bQRStatus = false;
+
+            }
+            else
+            {
+                bQRStatus = null;
+            }
+            List<SBAHSHouseDetailsGrid> data = new List<SBAHSHouseDetailsGrid>();
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    
+                        if (type == 0)
+                        {
+                        //data = db.HouseMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (a.QRStatusDate >= fDate && a.QRStatusDate <= tDate)) || (bQRStatus == null && (a.modified >= fDate && a.modified <= tDate))) && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+
+
+                            data = db.HouseMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong)  && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.houseId,
+                                Name = x.houseOwner,
+                                HouseLat = x.houseLat,
+                                HouseLong = x.houseLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 1)
+                        {
+                            data = db.CommercialMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.commercialLat) && !string.IsNullOrEmpty(a.commercialLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.commercialId,
+                                Name = x.commercialOwner,
+                                HouseLat = x.commercialLat,
+                                HouseLong = x.commercialLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 2)
+                        {
+                            data = db.LiquidWasteDetails.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.LWLat) && !string.IsNullOrEmpty(a.LWLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.LWId,
+                                Name = x.LWName,
+                                HouseLat = x.LWLat,
+                                HouseLong = x.LWLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 3)
+                        {
+                            data = db.StreetSweepingDetails.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.SSLat) && !string.IsNullOrEmpty(a.SSLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.SSId,
+                                Name = x.SSName,
+                                HouseLat = x.SSLat,
+                                HouseLong = x.SSLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 4)
+                        {
+                            data = db.SauchalayAddresses.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.Lat) && !string.IsNullOrEmpty(a.Long) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.Id,
+                                Name = x.Name,
+                                HouseLat = x.Lat,
+                                HouseLong = x.Long,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                        else if (type == 5)
+                        {
+                            data = db.SWMMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.swmLat) && !string.IsNullOrEmpty(a.swmLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.swmId,
+                                Name = x.swmName,
+                                HouseLat = x.swmLat,
+                                HouseLong = x.swmLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                return data;
+            }
+            return data;
+        }
 
 
         public void SaveHSQRStatusHouse(int houseId, string QRStatus)
@@ -6669,14 +6782,16 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.commercialLat,
                                            HouseLong = p.c.commercialLong,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
-                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
+                                        //}).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
-                    if (fromDate != null && toDate != null)
+                if (fromDate != null && toDate != null)
                     {
                         if (Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
                         {
@@ -6751,11 +6866,12 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.Lat,
                                            HouseLong = p.c.Long,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
-                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                     if (fromDate != null && toDate != null)
@@ -6833,11 +6949,12 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.swmLat,
                                            HouseLong = p.c.swmLong,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
-                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                     if (fromDate != null && toDate != null)
@@ -6915,11 +7032,12 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.LWLat,
                                            HouseLong = p.c.LWLong,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
-                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                     if (fromDate != null && toDate != null)
@@ -6997,11 +7115,12 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.SSLat,
                                            HouseLong = p.c.SSLong,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
-                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))).OrderBy(d => d.houseId).ToList();
+                                       }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                     if (fromDate != null && toDate != null)
@@ -7081,7 +7200,8 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.commercialLat,
                                            HouseLong = p.c.commercialLong,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
@@ -7095,7 +7215,8 @@ namespace SwachBharat.CMS.Bll.Services
                         Name = model.Name,
                         HouseLat = model.HouseLat,
                         HouseLong = model.HouseLong,
-                        QRCodeImage = model.QRCodeImage,
+                        //QRCodeImage = model.QRCodeImage,
+                        QRCodeImage = (model.QRCodeImage == null || model.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(model.QRCodeImage)),
                         ReferanceId = model.ReferanceId,
                         modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                         QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
@@ -7126,7 +7247,8 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.Lat,
                                            HouseLong = p.c.Long,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
@@ -7140,7 +7262,8 @@ namespace SwachBharat.CMS.Bll.Services
                         Name = model.Name,
                         HouseLat = model.HouseLat,
                         HouseLong = model.HouseLong,
-                        QRCodeImage = model.QRCodeImage,
+                        //QRCodeImage = model.QRCodeImage,
+                        QRCodeImage = (model.QRCodeImage == null || model.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(model.QRCodeImage)),
                         ReferanceId = model.ReferanceId,
                         modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                         QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
@@ -7170,7 +7293,8 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.swmLat,
                                            HouseLong = p.c.swmLong,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
@@ -7184,7 +7308,8 @@ namespace SwachBharat.CMS.Bll.Services
                         Name = model.Name,
                         HouseLat = model.HouseLat,
                         HouseLong = model.HouseLong,
-                        QRCodeImage = model.QRCodeImage,
+                        //QRCodeImage = model.QRCodeImage,
+                        QRCodeImage = (model.QRCodeImage == null || model.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(model.QRCodeImage)),
                         ReferanceId = model.ReferanceId,
                         modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                         QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
@@ -7213,7 +7338,8 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.LWLat,
                                            HouseLong = p.c.LWLong,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
@@ -7227,7 +7353,8 @@ namespace SwachBharat.CMS.Bll.Services
                         Name = model.Name,
                         HouseLat = model.HouseLat,
                         HouseLong = model.HouseLong,
-                        QRCodeImage = model.QRCodeImage,
+                        //QRCodeImage = model.QRCodeImage,
+                        QRCodeImage = (model.QRCodeImage == null || model.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(model.QRCodeImage)),
                         ReferanceId = model.ReferanceId,
                         modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                         QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
@@ -7257,7 +7384,8 @@ namespace SwachBharat.CMS.Bll.Services
                                            Name = b.qrEmpName,
                                            HouseLat = p.c.SSLat,
                                            HouseLong = p.c.SSLong,
-                                           QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                           QRCodeImage = p.c.BinaryQrCodeImage,
                                            ReferanceId = p.c.ReferanceId,
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
@@ -7271,7 +7399,8 @@ namespace SwachBharat.CMS.Bll.Services
                         Name = model.Name,
                         HouseLat = model.HouseLat,
                         HouseLong = model.HouseLong,
-                        QRCodeImage = model.QRCodeImage,
+                        //QRCodeImage = model.QRCodeImage,
+                        QRCodeImage = (model.QRCodeImage == null || model.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(model.QRCodeImage)),
                         ReferanceId = model.ReferanceId,
                         modifiedDate = model.modifiedDate.HasValue ? Convert.ToDateTime(model.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
                         QRStatusDate = model.QRStatusDate.HasValue ? Convert.ToDateTime(model.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
