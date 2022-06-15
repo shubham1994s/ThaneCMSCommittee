@@ -21,14 +21,14 @@
     @*@RenderSection("styles", required: false)*@
     <link rel="shortcut icon" href="/Content/images/img/ictsbm2.png" />
     @Scripts.Render("~/Scripts/IndexScript")
- 
+
     @Styles.Render("~/Content/IndexCSS")
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
     @Scripts.Render("~/Scripts/IndexScript")
     @*<script src="~/Content/DatatableGrid/HouseScanify.js"></script>*@
 
-
+    <link href="~/Content/css/blink.css" rel="stylesheet" />
 </head>
 <body>
     @*<input type="hidden" value='@Request.QueryString["daId"]' id='HdnIndustries' />*@
@@ -132,7 +132,11 @@
                 for (var i = 0; i < data.length; i++) {
                     res += "<li class='' ><a style='cursor:pointer' class='li-hover' onclick='Edit(" + data[i].AppId + ")' id='" + data[i].AppId + "' >" + data[i].AppName + " ";
                     if (data[i].TotalHouseUpdated_CurrentDay != 0 || data[i].TotalPointUpdated_CurrentDay != 0 || data[i].TotalDumpUpdated_CurrentDay != 0 || data[i].TotalCommercialUpdated_CurrentDay != 0 || data[i].TotalSWMUpdated_CurrentDay != 0 || data[i].TotalCTPTUpdated_CurrentDay != 0 ) {
-                        res += "<i class='fa fa-circle pull-right' style='color:#fe9428;font-size:12px;margin: 3% auto;'></i>";
+                        if (data[i].HouseMinutes <= 10 || data[i].LiquidMinutes <= 10 || data[i].StreetMinutes <= 10 || data[i].DumpYardMinutes <= 10 || data[i].SWMMinutes <= 10 || data[i].CommercialMinutes <= 10 || data[i].CTPTMinutes <= 10) {
+                            res += "<i class='fa fa-circle pull-right blink' style='color:#33cc33;font-size:12px;margin: 3% auto;'></i>";
+                        } else {
+                            res += "<i class='fa fa-circle pull-right' style='color:#fe9428;font-size:12px;margin: 3% auto;'></i>";
+                        }
                     }
                     //if (AppId_New == data[i].AppId) {
                     //      res += "<i class='fa fa-circle pull-right' style='color:#fe9428;font-size:12px;margin: 3% auto;'></i>";
@@ -187,7 +191,9 @@
                 $('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');
             }
 
-
+            window.setTimeout(function () {
+                window.location.reload();
+            }, 600000);
 
         });
 

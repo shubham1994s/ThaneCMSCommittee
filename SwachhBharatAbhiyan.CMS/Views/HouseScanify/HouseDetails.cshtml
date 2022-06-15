@@ -106,6 +106,18 @@
     #demoGrid6_filter {
         display: none;
     }
+
+    .save {
+        padding: 3px 25px;
+        background: #40a50a !important;
+        border-color: #40a50a !important;
+    }
+
+    .close1 {
+        padding: 3px 25px !important;
+        border-color: #ec3836 !important;
+        background: #ec3836 !important;
+    }
 </style>
 
 <script  language="text/javascript" src="~/Content/DatatableGrid/HSDumpyardDetailsGrid.js"></script>
@@ -189,17 +201,25 @@
                 </label>
             </div>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <div class="controls">
                         <label>From Date</label>
                         <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <div class="controls">
                         <label>To Date</label>
                         <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
                     </div>
+                </div>
+                <div class="col-sm-2">
+                    <label>Select Status</label>
+                    <select id="selectQRStatus" class="form-control form-control form-control-sm">
+                        <option value="-1">Select Status</option>
+                        <option value="1">Approve</option>
+                        <option value="2">Reject</option>
+                    </select>
                 </div>
                 <div class="col-sm-2">
                     <label>Select Employee</label>
@@ -233,6 +253,9 @@
                             <th> Latiude</th>
                             <th> Longitude</th>
                             <th> Photo</th>
+                            <th> QR Status</th>
+                            <th> QR Status Date</th>
+                            <th> Re-Scan Status</th>
                             @*<th> Action</th>*@
                         </tr>
                     </thead>
@@ -255,6 +278,8 @@
                             <th> Latiude</th>
                             <th> Longitude</th>
                             <th> Photo</th>
+                            <th> QR Status</th>
+                            <th> QR Status Date</th>
                             @*<th> Action</th>*@
                         </tr>
                     </thead>
@@ -275,6 +300,8 @@
                             <th> Latiude</th>
                             <th> Longitude</th>
                             <th> Photo</th>
+                            <th> QR Status</th>
+                            <th> QR Status Date</th>
                             @*<th> Action</th>*@
                         </tr>
                     </thead>
@@ -295,6 +322,8 @@
                             <th> Latiude</th>
                             <th> Longitude</th>
                             <th> Photo</th>
+                            <th> QR Status</th>
+                            <th> QR Status Date</th>
                             @*<th> Action</th>*@
                         </tr>
                     </thead>
@@ -316,6 +345,8 @@
                             <th> Latiude</th>
                             <th> Longitude</th>
                             <th> Photo</th>
+                            <th> QR Status</th>
+                            <th> QR Status Date</th>
                             @*<th> Action</th>*@
                         </tr>
                     </thead>
@@ -337,6 +368,8 @@
                             <th> Latiude</th>
                             <th> Longitude</th>
                             <th> Photo</th>
+                            <th> QR Status</th>
+                            <th> QR Status Date</th>
                             @*<th> Action</th>*@
                         </tr>
                     </thead>
@@ -372,10 +405,313 @@
         </div>
     </div>
 
+    <div id="myModal_Image_House" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="ulb_name1House" class="text-center" style="padding-left:12%;width:80%"></h3>
+                </div>
 
+                <div class="modal-body pt-0">
+                    <center>
+
+                        <div class="row">
+                            <div class="col-md-6" style="padding-top:1rem;text-align:left;padding-left:8%">
+                                <h4 id="header_dataHouse" class="modal-title" style="padding-bottom:2rem;text-align:left;"></h4>
+                                <p> <b id="hide_date">Employee Name: </b><span id="dateDataHouse"></span></p>
+                                <p> <b id="hide_add">House Id: </b><span id="latlongDataHouse"></span></p>
+                                <p>  <b id="hide_add1">Date And Time: </b><span id="date1House"></span></p>
+                                <p>  <b id="hide_add2">Lat: </b><span id="latHouse"></span> <b id="hide_add3">Long: </b><span id="longHouse"></span></p>
+                                <p>
+                                    <b>Status : </b><input type="radio" name="QRStatusHouse" value="1"> Approve
+                                    <input type="radio" name="QRStatusHouse" value="0"> Reject
+                                </p>
+
+                                <div class="text-center pt-1"><button type="button" class="btn btn-success save" id="btnHouseSave">Save</button></div>
+                                <p class="text-center pt-2"><b><span class="text-success" id="houseSave_pop"></span></b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <img class="img-responsive" id="imgggHouse" alt="Photo Not Found" style="height:400px">
+
+                            </div>
+                        </div>
+                    </center>
+
+                    <div class="modal-footer d-flex" style="padding-left: 12%; padding-right: 4%;">
+                        <button type="button" class="btn btn-primary  align-self-cente mr-5" id="btnHousePrv" style="padding: 3px 15px;">Previous</button>
+                        <button type="button" class="btn btn-primary align-self-cente" id="btnHouseNxt" style="padding: 3px 25px;">Next</button>
+                        <button type="button" class="btn btn-primary  ml-auto close1" data-dismiss="modal" id="target">Close</button>
+                        <input type="hidden" id="hdHouseId" />
+
+                        @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal_Image_Comr" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="ulb_name1Comr" class="text-center" style="padding-left:12%;width:80%"></h3>
+                </div>
+
+                <div class="modal-body pt-0">
+                    <center>
+
+                        <div class="row">
+                            <div class="col-md-6" style="padding-top:1rem;text-align:left;padding-left:8%">
+                                <h4 id="header_dataComr" class="modal-title" style="padding-bottom:2rem;text-align:left;"></h4>
+                                <p> <b id="hide_date">Employee Name: </b><span id="dateDataComr"></span></p>
+                                <p> <b id="hide_add">Commercial Id: </b><span id="latlongDataComr"></span></p>
+                                <p>  <b id="hide_add1">Date And Time: </b><span id="date1Comr"></span></p>
+                                <p>  <b id="hide_add2">Lat: </b><span id="latComr"></span> <b id="hide_add3">Long: </b><span id="longComr"></span></p>
+                                <p>
+                                    <b>Status : </b><input type="radio" name="QRStatusComr" value="1"> Approve
+                                    <input type="radio" name="QRStatusComr" value="0"> Reject
+                                </p>
+
+                                <div class="text-center pt-1"><button type="button" class="btn btn-success save" id="btnComrSave">Save</button></div>
+                                <p class="text-center pt-2"><b><span class="text-success" id="ComrSave_pop"></span></b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <img class="img-responsive" id="imgggComr" alt="Photo Not Found" style="height:400px">
+
+                            </div>
+                        </div>
+                    </center>
+
+                    <div class="modal-footer d-flex" style="padding-left: 12%; padding-right: 4%;">
+                        <button type="button" class="btn btn-primary  align-self-cente mr-5" id="btnComrPrv" style="padding: 3px 15px;">Previous</button>
+                        <button type="button" class="btn btn-primary align-self-cente" id="btnComrNxt" style="padding: 3px 25px;">Next</button>
+                        <button type="button" class="btn btn-primary  ml-auto close1" data-dismiss="modal" id="target1">Close</button>
+                        <input type="hidden" id="hdComrId" />
+
+                        @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal_Image_CTPT" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="ulb_name1CTPT" class="text-center" style="padding-left:12%;width:80%"></h3>
+                </div>
+
+                <div class="modal-body pt-0">
+                    <center>
+
+                        <div class="row">
+                            <div class="col-md-6" style="padding-top:1rem;text-align:left;padding-left:8%">
+                                <h4 id="header_dataCTPT" class="modal-title" style="padding-bottom:2rem;text-align:left;"></h4>
+                                <p> <b id="hide_date">Employee Name: </b><span id="dateDataCTPT"></span></p>
+                                <p> <b id="hide_add">Commercial Id: </b><span id="latlongDataCTPT"></span></p>
+                                <p>  <b id="hide_add1">Date And Time: </b><span id="date1CTPT"></span></p>
+                                <p>  <b id="hide_add2">Lat: </b><span id="latCTPT"></span> <b id="hide_add3">Long: </b><span id="longCTPT"></span></p>
+                                <p>
+                                    <b>Status : </b><input type="radio" name="QRStatusCTPT" value="1"> Approve
+                                    <input type="radio" name="QRStatusCTPT" value="0"> Reject
+                                </p>
+
+                                <div class="text-center pt-1"><button type="button" class="btn btn-success save" id="btnCTPTSave">Save</button></div>
+                                <p class="text-center pt-2"><b><span class="text-success" id="CTPTSave_pop"></span></b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <img class="img-responsive" id="imgggCTPT" alt="Photo Not Found" style="height:400px">
+
+                            </div>
+                        </div>
+                    </center>
+
+                    <div class="modal-footer d-flex" style="padding-left: 12%; padding-right: 4%;">
+                        <button type="button" class="btn btn-primary  align-self-cente mr-5" id="btnCTPTPrv" style="padding: 3px 15px;">Previous</button>
+                        <button type="button" class="btn btn-primary align-self-cente" id="btnCTPTNxt" style="padding: 3px 25px;">Next</button>
+                        <button type="button" class="btn btn-primary  ml-auto close1" data-dismiss="modal" id="target2">Close</button>
+                        <input type="hidden" id="hdCTPTId" />
+
+                        @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal_Image_SWM" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="ulb_name1SWM" class="text-center" style="padding-left:12%;width:80%"></h3>
+                </div>
+
+                <div class="modal-body pt-0">
+                    <center>
+
+                        <div class="row">
+                            <div class="col-md-6" style="padding-top:1rem;text-align:left;padding-left:8%">
+                                <h4 id="header_dataSWM" class="modal-title" style="padding-bottom:2rem;text-align:left;"></h4>
+                                <p> <b id="hide_date">Employee Name: </b><span id="dateDataSWM"></span></p>
+                                <p> <b id="hide_add">Commercial Id: </b><span id="latlongDataSWM"></span></p>
+                                <p>  <b id="hide_add1">Date And Time: </b><span id="date1SWM"></span></p>
+                                <p>  <b id="hide_add2">Lat: </b><span id="latSWM"></span> <b id="hide_add3">Long: </b><span id="longSWM"></span></p>
+                                <p>
+                                    <b>Status : </b><input type="radio" name="QRStatusSWM" value="1"> Approve
+                                    <input type="radio" name="QRStatusSWM" value="0"> Reject
+                                </p>
+
+                                <div class="text-center pt-1"><button type="button" class="btn btn-success save" id="btnSWMSave">Save</button></div>
+                                <p class="text-center pt-2"><b><span class="text-success" id="SWMSave_pop"></span></b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <img class="img-responsive" id="imgggSWM" alt="Photo Not Found" style="height:400px">
+
+                            </div>
+                        </div>
+                    </center>
+
+                    <div class="modal-footer d-flex" style="padding-left: 12%; padding-right: 4%;">
+                        <button type="button" class="btn btn-primary  align-self-cente mr-5" id="btnSWMPrv" style="padding: 3px 15px;">Previous</button>
+                        <button type="button" class="btn btn-primary align-self-cente" id="btnSWMNxt" style="padding: 3px 25px;">Next</button>
+                        <button type="button" class="btn btn-primary  ml-auto close1" data-dismiss="modal" id="target3">Close</button>
+                        <input type="hidden" id="hdSWMId" />
+
+                        @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal_Image_LW" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="ulb_name1LW" class="text-center" style="padding-left:12%;width:80%"></h3>
+                </div>
+
+                <div class="modal-body pt-0">
+                    <center>
+
+                        <div class="row">
+                            <div class="col-md-6" style="padding-top:1rem;text-align:left;padding-left:8%">
+                                <h4 id="header_dataLW" class="modal-title" style="padding-bottom:2rem;text-align:left;"></h4>
+                                <p> <b id="hide_date">Employee Name: </b><span id="dateDataLW"></span></p>
+                                <p> <b id="hide_add">Commercial Id: </b><span id="latlongDataLW"></span></p>
+                                <p>  <b id="hide_add1">Date And Time: </b><span id="date1LW"></span></p>
+                                <p>  <b id="hide_add2">Lat: </b><span id="latLW"></span> <b id="hide_add3">Long: </b><span id="longLW"></span></p>
+                                <p>
+                                    <b>Status : </b><input type="radio" name="QRStatusLW" value="1"> Approve
+                                    <input type="radio" name="QRStatusLW" value="0"> Reject
+                                </p>
+
+                                <div class="text-center pt-1"><button type="button" class="btn btn-success save" id="btnLWSave">Save</button></div>
+                                <p class="text-center pt-2"><b><span class="text-success" id="LWSave_pop"></span></b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <img class="img-responsive" id="imgggLW" alt="Photo Not Found" style="height:400px">
+
+                            </div>
+                        </div>
+                    </center>
+
+                    <div class="modal-footer d-flex" style="padding-left: 12%; padding-right: 4%;">
+                        <button type="button" class="btn btn-primary  align-self-cente mr-5" id="btnLWPrv" style="padding: 3px 15px;">Previous</button>
+                        <button type="button" class="btn btn-primary align-self-cente" id="btnLWNxt" style="padding: 3px 25px;">Next</button>
+                        <button type="button" class="btn btn-primary  ml-auto close1" data-dismiss="modal" id="target4">Close</button>
+                        <input type="hidden" id="hdLWId" />
+
+                        @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal_Image_SW" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="ulb_name1SW" class="text-center" style="padding-left:12%;width:80%"></h3>
+                </div>
+
+                <div class="modal-body pt-0">
+                    <center>
+
+                        <div class="row">
+                            <div class="col-md-6" style="padding-top:1rem;text-align:left;padding-left:8%">
+                                <h4 id="header_dataSW" class="modal-title" style="padding-bottom:2rem;text-align:left;"></h4>
+                                <p> <b id="hide_date">Employee Name: </b><span id="dateDataSW"></span></p>
+                                <p> <b id="hide_add">Commercial Id: </b><span id="latlongDataSW"></span></p>
+                                <p>  <b id="hide_add1">Date And Time: </b><span id="date1SW"></span></p>
+                                <p>  <b id="hide_add2">Lat: </b><span id="latSW"></span> <b id="hide_add3">Long: </b><span id="longSW"></span></p>
+                                <p>
+                                    <b>Status : </b><input type="radio" name="QRStatusSW" value="1"> Approve
+                                    <input type="radio" name="QRStatusSW" value="0"> Reject
+                                </p>
+
+                                <div class="text-center pt-1"><button type="button" class="btn btn-success save" id="btnSWSave">Save</button></div>
+                                <p class="text-center pt-2"><b><span class="text-success" id="SWSave_pop"></span></b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <img class="img-responsive" id="imgggSW" alt="Photo Not Found" style="height:400px">
+
+                            </div>
+                        </div>
+                    </center>
+
+                    <div class="modal-footer d-flex" style="padding-left: 12%; padding-right: 4%;">
+                        <button type="button" class="btn btn-primary  align-self-cente mr-5" id="btnSWPrv" style="padding: 3px 15px;">Previous</button>
+                        <button type="button" class="btn btn-primary align-self-cente" id="btnSWNxt" style="padding: 3px 25px;">Next</button>
+                        <button type="button" class="btn btn-primary  ml-auto close1" data-dismiss="modal" id="target5">Close</button>
+                        <input type="hidden" id="hdSWId" />
+
+                        @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="div_ldr" class="loaderStyle">
+        <div style="position: relative; top: 50%; left: 40%;">
+            <img style="height: 200px; width: 200px;" class="" src="~/Content/images/img/loading.gif">
+            <p style="font-size:18px;color:white"><b>Please Wait Downloading.....</b></p>
+        </div>
+    </div>
     <div id="snackbar">Image not uploaded...</div>
 </body>
+<style>
+    .loaderStyle {
+        display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(100,100,100,0.75);
+        background-size: cover
+    }
+</style>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -388,6 +724,1003 @@
 <!-- Dashboard Header Section    -->
 
 <script type="text/javascript">
+    var arrHouseIDs = [];
+    var arrComrIDs = [];
+    var arrCTPTIDs = [];
+    var arrSWMIDs = [];
+    var arrLWIDs = [];
+    var arrSWIDs = [];
+    var curHouseIdIndex = 0;
+    var curComrIdIndex = 0;
+    var curCTPTIdIndex = 0;
+    var curSWMIdIndex = 0;
+    var curLWIdIndex = 0;
+    var curSWIdIndex = 0;
+    $("#btnHouseSave").click(function () {
+        var QRStatus = $("input[name='QRStatusHouse']:checked").val();
+        var houseId = $("#hdHouseId").val();
+        var AppId = $('#appid').val();
+        $.ajax({
+            type: "post",
+            url: "/HouseScanify/SaveHSQRStatusHouse?appId=" + AppId + "&houseId=" + houseId + "&QRStatus=" + QRStatus,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                //$('#myModal_Image_House').modal('toggle');
+                //LoadGrid();
+
+                $("#houseSave_pop").html("QR Status Saved Successfully...").delay(2000).show().fadeOut('slow');
+
+            }
+        });
+    }
+    );
+
+    $("#btnComrSave").click(function () {
+        var QRStatus = $("input[name='QRStatusComr']:checked").val();
+        var comrId = $("#hdComrId").val();
+        var AppId = $('#appid').val();
+        $.ajax({
+            type: "post",
+            url: "/HouseScanify/SaveHSQRStatusComr?appId=" + AppId + "&comrId=" + comrId + "&QRStatus=" + QRStatus,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                //$('#myModal_Image_House').modal('toggle');
+                //LoadGrid();
+
+                $("#ComrSave_pop").html("QR Status Saved Successfully...").delay(2000).show().fadeOut('slow');
+
+            }
+        });
+    }
+    );
+
+    $("#btnCTPTSave").click(function () {
+        var QRStatus = $("input[name='QRStatusCTPT']:checked").val();
+        var CTPTId = $("#hdCTPTId").val();
+        var AppId = $('#appid').val();
+        $.ajax({
+            type: "post",
+            url: "/HouseScanify/SaveHSQRStatusCTPT?appId=" + AppId + "&CTPTId=" + CTPTId + "&QRStatus=" + QRStatus,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                //$('#myModal_Image_House').modal('toggle');
+                //LoadGrid();
+
+                $("#CTPTSave_pop").html("QR Status Saved Successfully...").delay(2000).show().fadeOut('slow');
+
+            }
+        });
+    }
+    );
+
+    $("#btnSWMSave").click(function () {
+        var QRStatus = $("input[name='QRStatusSWM']:checked").val();
+        var SWMId = $("#hdSWMId").val();
+        var AppId = $('#appid').val();
+        $.ajax({
+            type: "post",
+            url: "/HouseScanify/SaveHSQRStatusSWM?appId=" + AppId + "&SWMId=" + SWMId + "&QRStatus=" + QRStatus,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                //$('#myModal_Image_House').modal('toggle');
+                //LoadGrid();
+
+                $("#SWMSave_pop").html("QR Status Saved Successfully...").delay(2000).show().fadeOut('slow');
+
+            }
+        });
+    }
+    );
+
+    $("#btnLWSave").click(function () {
+        var QRStatus = $("input[name='QRStatusLW']:checked").val();
+        var LWId = $("#hdLWId").val();
+        var AppId = $('#appid').val();
+        $.ajax({
+            type: "post",
+            url: "/HouseScanify/SaveHSQRStatusLW?appId=" + AppId + "&LWId=" + LWId + "&QRStatus=" + QRStatus,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                //$('#myModal_Image_House').modal('toggle');
+                //LoadGrid();
+
+                $("#LWSave_pop").html("QR Status Saved Successfully...").delay(2000).show().fadeOut('slow');
+
+            }
+        });
+    }
+    );
+
+    $("#btnSWSave").click(function () {
+        var QRStatus = $("input[name='QRStatusSW']:checked").val();
+        var SWId = $("#hdSWId").val();
+        var AppId = $('#appid').val();
+        $.ajax({
+            type: "post",
+            url: "/HouseScanify/SaveHSQRStatusSW?appId=" + AppId + "&SWId=" + SWId + "&QRStatus=" + QRStatus,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                //$('#myModal_Image_House').modal('toggle');
+                //LoadGrid();
+
+                $("#SWSave_pop").html("QR Status Saved Successfully...").delay(2000).show().fadeOut('slow');
+
+            }
+        });
+    }
+    );
+
+    $("#btnHousePrv").click(function () {
+        curHouseIdIndex--;
+        if (curHouseIdIndex < 0) {
+            curHouseIdIndex = arrHouseIDs.length - 1;
+        }
+
+        var houseId = arrHouseIDs[curHouseIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetHouseDetailsById?houseId=" + houseId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1House").text($("#ulb_name").text());
+                    $("#date1House").text(data.modifiedDate);
+                    $("#latlongDataHouse").text(data.ReferanceId);
+                    $("#dateDataHouse").text(data.Name);
+                    $("#imgggHouse").attr('src', data.QRCodeImage);
+
+                    $("#header_dataHouse").html('HouseScanify QR Image');
+                    $("#latHouse").text(data.HouseLat);
+                    $("#longHouse").text(data.HouseLong);
+                    $("#hdHouseId").val(data.houseId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusHouse][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusHouse][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusHouse][value=1]").prop('checked', false);
+                        $("input[name=QRStatusHouse][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+
+    $("#btnComrPrv").click(function () {
+        curComrIdIndex--;
+        if (curComrIdIndex < 0) {
+            curComrIdIndex = arrComrIDs.length - 1;
+        }
+
+        var comrId = arrComrIDs[curComrIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetComrDetailsById?comrId=" + comrId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1Comr").text($("#ulb_name").text());
+                    $("#date1Comr").text(data.modifiedDate);
+                    $("#latlongDataComr").text(data.ReferanceId);
+                    $("#dateDataComr").text(data.Name);
+                    $("#imgggComr").attr('src', data.QRCodeImage);
+
+                    $("#header_dataComr").html('HouseScanify QR Image');
+                    $("#latComr").text(data.HouseLat);
+                    $("#longComr").text(data.HouseLong);
+                    $("#hdComrId").val(data.dumpId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusComr][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusComr][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusComr][value=1]").prop('checked', false);
+                        $("input[name=QRStatusComr][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+    $("#btnCTPTPrv").click(function () {
+        curCTPTIdIndex--;
+        if (curCTPTIdIndex < 0) {
+            curCTPTIdIndex = arrCTPTIDs.length - 1;
+        }
+
+        var CTPTId = arrCTPTIDs[curCTPTIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetCTPTDetailsById?CTPTId=" + CTPTId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1CTPT").text($("#ulb_name").text());
+                    $("#date1CTPT").text(data.modifiedDate);
+                    $("#latlongDataCTPT").text(data.ReferanceId);
+                    $("#dateDataCTPT").text(data.Name);
+                    $("#imgggCTPT").attr('src', data.QRCodeImage);
+
+                    $("#header_dataCTPT").html('HouseScanify QR Image');
+                    $("#latCTPT").text(data.HouseLat);
+                    $("#longCTPT").text(data.HouseLong);
+                    $("#hdCTPTId").val(data.dumpId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusCTPT][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusCTPT][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusCTPT][value=1]").prop('checked', false);
+                        $("input[name=QRStatusCTPT][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+    $("#btnSWMPrv").click(function () {
+        curSWMIdIndex--;
+        if (curSWMIdIndex < 0) {
+            curSWMIdIndex = arrSWMIDs.length - 1;
+        }
+
+        var SWMId = arrSWMIDs[curSWMIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetSWMDetailsById?SWMId=" + SWMId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1SWM").text($("#ulb_name").text());
+                    $("#date1SWM").text(data.modifiedDate);
+                    $("#latlongDataSWM").text(data.ReferanceId);
+                    $("#dateDataSWM").text(data.Name);
+                    $("#imgggSWM").attr('src', data.QRCodeImage);
+
+                    $("#header_dataSWM").html('HouseScanify QR Image');
+                    $("#latSWM").text(data.HouseLat);
+                    $("#longSWM").text(data.HouseLong);
+                    $("#hdSWMId").val(data.dumpId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusSWM][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusSWM][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusSWM][value=1]").prop('checked', false);
+                        $("input[name=QRStatusSWM][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+    $("#btnLWPrv").click(function () {
+        curLWIdIndex--;
+        if (curLWIdIndex < 0) {
+            curLWIdIndex = arrLWIDs.length - 1;
+        }
+
+        var LWId = arrLWIDs[curLWIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetLWDetailsById?LWId=" + LWId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1LW").text($("#ulb_name").text());
+                    $("#date1LW").text(data.modifiedDate);
+                    $("#latlongDataLW").text(data.ReferanceId);
+                    $("#dateDataLW").text(data.Name);
+                    $("#imgggLW").attr('src', data.QRCodeImage);
+
+                    $("#header_dataLW").html('HouseScanify QR Image');
+                    $("#latLW").text(data.HouseLat);
+                    $("#longLW").text(data.HouseLong);
+                    $("#hdLWId").val(data.liquidId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusLW][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusLW][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusLW][value=1]").prop('checked', false);
+                        $("input[name=QRStatusLW][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+    $("#btnSWPrv").click(function () {
+        curSWIdIndex--;
+        if (curSWIdIndex < 0) {
+            curSWIdIndex = arrSWIDs.length - 1;
+        }
+
+        var SWId = arrSWIDs[curSWIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetSWDetailsById?SWId=" + SWId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1SW").text($("#ulb_name").text());
+                    $("#date1SW").text(data.modifiedDate);
+                    $("#latlongDataSW").text(data.ReferanceId);
+                    $("#dateDataSW").text(data.Name);
+                    $("#imgggSW").attr('src', data.QRCodeImage);
+
+                    $("#header_dataSW").html('HouseScanify QR Image');
+                    $("#latSW").text(data.HouseLat);
+                    $("#longSW").text(data.HouseLong);
+                    $("#hdSWId").val(data.streetId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusSW][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusSW][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusSW][value=1]").prop('checked', false);
+                        $("input[name=QRStatusSW][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+
+    $("#btnHouseNxt").click(function () {
+        curHouseIdIndex++;
+        if (curHouseIdIndex >= arrHouseIDs.length) {
+            curHouseIdIndex = 0;
+        }
+
+        var houseId = arrHouseIDs[curHouseIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetHouseDetailsById?houseId=" + houseId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1House").text($("#ulb_name").text());
+                    $("#date1House").text(data.modifiedDate);
+                    $("#latlongDataHouse").text(data.ReferanceId);
+                    $("#dateDataHouse").text(data.Name);
+                    $("#imgggHouse").attr('src', data.QRCodeImage);
+
+                    $("#header_dataHouse").html('HouseScanify QR Image');
+                    $("#latHouse").text(data.HouseLat);
+                    $("#longHouse").text(data.HouseLong);
+                    $("#hdHouseId").val(data.houseId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusHouse][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusHouse][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusHouse][value=1]").prop('checked', false);
+                        $("input[name=QRStatusHouse][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+
+    $("#btnComrNxt").click(function () {
+        curComrIdIndex++;
+        if (curComrIdIndex >= arrComrIDs.length) {
+            curComrIdIndex = 0;
+        }
+
+        var comrId = arrComrIDs[curComrIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetComrDetailsById?comrId=" + comrId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    
+                        $("#ulb_name1Comr").text($("#ulb_name").text());
+                        $("#date1Comr").text(data.modifiedDate);
+                        $("#latlongDataComr").text(data.ReferanceId);
+                        $("#dateDataComr").text(data.Name);
+                        $("#imgggComr").attr('src', data.QRCodeImage);
+
+                        $("#header_dataComr").html('HouseScanify QR Image');
+                        $("#latComr").text(data.HouseLat);
+                        $("#longComr").text(data.HouseLong);
+                        $("#hdComrId").val(data.dumpId);
+                        if (data.QRStatus == true) {
+                            $("input[name=QRStatusComr][value=1]").prop('checked', true);
+                        }
+                        else if (data.QRStatus == false) {
+
+                            $("input[name=QRStatusComr][value=0]").prop('checked', true);
+                        }
+                        else {
+                            $("input[name=QRStatusComr][value=1]").prop('checked', false);
+                            $("input[name=QRStatusComr][value=0]").prop('checked', false);
+                        }
+
+                    }
+                
+
+            }
+        });
+    }
+    );
+
+    $("#btnCTPTNxt").click(function () {
+        curCTPTIdIndex++;
+        if (curCTPTIdIndex >= arrCTPTIDs.length) {
+            curCTPTIdIndex = 0;
+        }
+
+        var CTPTId = arrCTPTIDs[curCTPTIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetCTPTDetailsById?CTPTId=" + CTPTId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1CTPT").text($("#ulb_name").text());
+                    $("#date1CTPT").text(data.modifiedDate);
+                    $("#latlongDataCTPT").text(data.ReferanceId);
+                    $("#dateDataCTPT").text(data.Name);
+                    $("#imgggCTPT").attr('src', data.QRCodeImage);
+
+                    $("#header_dataCTPT").html('HouseScanify QR Image');
+                    $("#latCTPT").text(data.HouseLat);
+                    $("#longCTPT").text(data.HouseLong);
+                    $("#hdCTPTId").val(data.dumpId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusCTPT][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusCTPT][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusCTPT][value=1]").prop('checked', false);
+                        $("input[name=QRStatusCTPT][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+
+    $("#btnSWMNxt").click(function () {
+        curSWMIdIndex++;
+        if (curSWMIdIndex >= arrSWMIDs.length) {
+            curSWMIdIndex = 0;
+        }
+
+        var SWMId = arrSWMIDs[curSWMIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetSWMDetailsById?SWMId=" + SWMId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1SWM").text($("#ulb_name").text());
+                    $("#date1SWM").text(data.modifiedDate);
+                    $("#latlongDataSWM").text(data.ReferanceId);
+                    $("#dateDataSWM").text(data.Name);
+                    $("#imgggSWM").attr('src', data.QRCodeImage);
+
+                    $("#header_dataSWM").html('HouseScanify QR Image');
+                    $("#latSWM").text(data.HouseLat);
+                    $("#longSWM").text(data.HouseLong);
+                    $("#hdSWMId").val(data.dumpId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusSWM][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusSWM][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusSWM][value=1]").prop('checked', false);
+                        $("input[name=QRStatusSWM][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+    $("#btnLWNxt").click(function () {
+        curLWIdIndex++;
+        if (curLWIdIndex >= arrLWIDs.length) {
+            curLWIdIndex = 0;
+        }
+
+        var LWId = arrLWIDs[curLWIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetLWDetailsById?LWId=" + LWId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1LW").text($("#ulb_name").text());
+                    $("#date1LW").text(data.modifiedDate);
+                    $("#latlongDataLW").text(data.ReferanceId);
+                    $("#dateDataLW").text(data.Name);
+                    $("#imgggLW").attr('src', data.QRCodeImage);
+
+                    $("#header_dataLW").html('HouseScanify QR Image');
+                    $("#latLW").text(data.HouseLat);
+                    $("#longLW").text(data.HouseLong);
+                    $("#hdLWId").val(data.liquidId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusLW][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusLW][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusLW][value=1]").prop('checked', false);
+                        $("input[name=QRStatusLW][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+    $("#btnSWNxt").click(function () {
+        curSWIdIndex++;
+        if (curSWIdIndex >= arrSWIDs.length) {
+            curSWIdIndex = 0;
+        }
+
+        var SWId = arrSWIDs[curSWIdIndex];
+
+        $.ajax({
+            type: "GET",
+            url: "/HouseScanify/GetSWDetailsById?SWId=" + SWId,
+            data: {},
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                if (data != null) {
+                    $("#ulb_name1SW").text($("#ulb_name").text());
+                    $("#date1SW").text(data.modifiedDate);
+                    $("#latlongDataSW").text(data.ReferanceId);
+                    $("#dateDataSW").text(data.Name);
+                    $("#imgggSW").attr('src', data.QRCodeImage);
+
+                    $("#header_dataSW").html('HouseScanify QR Image');
+                    $("#latSW").text(data.HouseLat);
+                    $("#longSW").text(data.HouseLong);
+                    $("#hdSWId").val(data.streetId);
+                    if (data.QRStatus == true) {
+                        $("input[name=QRStatusSW][value=1]").prop('checked', true);
+                    }
+                    else if (data.QRStatus == false) {
+
+                        $("input[name=QRStatusSW][value=0]").prop('checked', true);
+                    }
+                    else {
+                        $("input[name=QRStatusSW][value=1]").prop('checked', false);
+                        $("input[name=QRStatusSW][value=0]").prop('checked', false);
+                    }
+
+                }
+
+            }
+        });
+    }
+    );
+
+
+    function PopImagesHouse(cel) {
+
+
+        //debugger
+        $('#myModal_Image_House').modal('toggle');
+        var d1 = $(cel).find('.date_time').text();
+        var addr = $(cel).find('.addr-length').text();
+        var date = $(cel).find('.li_date').text();
+        var imgsrc = $(cel).find('img').attr('src');
+        var head = $(cel).find('.li_title').text();
+
+        var lat = $(cel).find('.li_lat').text();
+        var long = $(cel).find('.li_long').text();
+        var houseId = $(cel).find('.li_houseId').text();
+        var QRStatus = $(cel).find('.li_QRStatus').text();
+
+        curHouseIdIndex = arrHouseIDs.indexOf(parseInt(houseId));
+        //alert(curHouseIdIndex);
+
+        if (QRStatus != 'null') {
+            if (QRStatus == 'true') {
+                $("input[name=QRStatusHouse][value=1]").prop('checked', true);
+            }
+            else if (QRStatus == 'false') {
+
+                $("input[name=QRStatusHouse][value=0]").prop('checked', true);
+            }
+            else {
+                $("input[name=QRStatusHouse][value=1]").prop('checked', false);
+                $("input[name=QRStatusHouse][value=0]").prop('checked', false);
+            }
+        }
+        else {
+            $("input[name=QRStatusHouse][value=1]").prop('checked', false);
+            $("input[name=QRStatusHouse][value=0]").prop('checked', false);
+        }
+
+        $("#hdHouseId").val(houseId);
+
+        var ulb = $("#ulb_name").text()
+        $("#ulb_name1House").text(ulb);
+        $("#date1House").text(d1);
+        $("#latlongDataHouse").text(addr);
+        $("#dateDataHouse").text(date);
+        $("#imgggHouse").attr('src', imgsrc);
+        //jQuery("#latlongData").text(cellValue);
+        $("#header_dataHouse").html(head);
+        $("#latHouse").text(lat);
+        $("#longHouse").text(long);
+
+    }
+
+    function PopImagesComr(cel) {
+
+
+        //debugger
+        $('#myModal_Image_Comr').modal('toggle');
+        var d1 = $(cel).find('.date_time').text();
+        var addr = $(cel).find('.addr-length').text();
+        var date = $(cel).find('.li_date').text();
+        var imgsrc = $(cel).find('img').attr('src');
+        var head = $(cel).find('.li_title').text();
+
+        var lat = $(cel).find('.li_lat').text();
+        var long = $(cel).find('.li_long').text();
+        var houseId = $(cel).find('.li_houseId').text();
+        var QRStatus = $(cel).find('.li_QRStatus').text();
+
+        curComrIdIndex = arrComrIDs.indexOf(parseInt(houseId));
+        //alert(curHouseIdIndex);
+
+        if (QRStatus != 'null') {
+            if (QRStatus == 'true') {
+                $("input[name=QRStatusComr][value=1]").prop('checked', true);
+            }
+            else if (QRStatus == 'false') {
+
+                $("input[name=QRStatusComr][value=0]").prop('checked', true);
+            }
+            else {
+                $("input[name=QRStatusComr][value=1]").prop('checked', false);
+                $("input[name=QRStatusComr][value=0]").prop('checked', false);
+            }
+        }
+        else {
+            $("input[name=QRStatusComr][value=1]").prop('checked', false);
+            $("input[name=QRStatusComr][value=0]").prop('checked', false);
+        }
+
+        $("#hdComrId").val(houseId);
+
+        var ulb = $("#ulb_name").text()
+        $("#ulb_name1Comr").text(ulb);
+        $("#date1Comr").text(d1);
+        $("#latlongDataComr").text(addr);
+        $("#dateDataComr").text(date);
+        $("#imgggComr").attr('src', imgsrc);
+        //jQuery("#latlongData").text(cellValue);
+        $("#header_dataComr").html(head);
+        $("#latComr").text(lat);
+        $("#longComr").text(long);
+
+    }
+
+    function PopImagesCTPT(cel) {
+
+
+        //debugger
+        $('#myModal_Image_CTPT').modal('toggle');
+        var d1 = $(cel).find('.date_time').text();
+        var addr = $(cel).find('.addr-length').text();
+        var date = $(cel).find('.li_date').text();
+        var imgsrc = $(cel).find('img').attr('src');
+        var head = $(cel).find('.li_title').text();
+
+        var lat = $(cel).find('.li_lat').text();
+        var long = $(cel).find('.li_long').text();
+        var houseId = $(cel).find('.li_houseId').text();
+        var QRStatus = $(cel).find('.li_QRStatus').text();
+
+        curCTPTIdIndex = arrCTPTIDs.indexOf(parseInt(houseId));
+        //alert(curHouseIdIndex);
+
+        if (QRStatus != 'null') {
+            if (QRStatus == 'true') {
+                $("input[name=QRStatusCTPT][value=1]").prop('checked', true);
+            }
+            else if (QRStatus == 'false') {
+
+                $("input[name=QRStatusCTPT][value=0]").prop('checked', true);
+            }
+            else {
+                $("input[name=QRStatusCTPT][value=1]").prop('checked', false);
+                $("input[name=QRStatusCTPT][value=0]").prop('checked', false);
+            }
+        }
+        else {
+            $("input[name=QRStatusCTPT][value=1]").prop('checked', false);
+            $("input[name=QRStatusCTPT][value=0]").prop('checked', false);
+        }
+
+        $("#hdCTPTId").val(houseId);
+
+        var ulb = $("#ulb_name").text()
+        $("#ulb_name1CTPT").text(ulb);
+        $("#date1CTPT").text(d1);
+        $("#latlongDataCTPT").text(addr);
+        $("#dateDataCTPT").text(date);
+        $("#imgggCTPT").attr('src', imgsrc);
+        //jQuery("#latlongData").text(cellValue);
+        $("#header_dataCTPT").html(head);
+        $("#latCTPT").text(lat);
+        $("#longCTPT").text(long);
+
+    }
+
+    function PopImagesSWM(cel) {
+
+
+        //debugger
+        $('#myModal_Image_SWM').modal('toggle');
+        var d1 = $(cel).find('.date_time').text();
+        var addr = $(cel).find('.addr-length').text();
+        var date = $(cel).find('.li_date').text();
+        var imgsrc = $(cel).find('img').attr('src');
+        var head = $(cel).find('.li_title').text();
+
+        var lat = $(cel).find('.li_lat').text();
+        var long = $(cel).find('.li_long').text();
+        var houseId = $(cel).find('.li_houseId').text();
+        var QRStatus = $(cel).find('.li_QRStatus').text();
+
+        curSWMIdIndex = arrSWMIDs.indexOf(parseInt(houseId));
+        //alert(curHouseIdIndex);
+
+        if (QRStatus != 'null') {
+            if (QRStatus == 'true') {
+                $("input[name=QRStatusSWM][value=1]").prop('checked', true);
+            }
+            else if (QRStatus == 'false') {
+
+                $("input[name=QRStatusSWM][value=0]").prop('checked', true);
+            }
+            else {
+                $("input[name=QRStatusSWM][value=1]").prop('checked', false);
+                $("input[name=QRStatusSWM][value=0]").prop('checked', false);
+            }
+        }
+        else {
+            $("input[name=QRStatusSWM][value=1]").prop('checked', false);
+            $("input[name=QRStatusSWM][value=0]").prop('checked', false);
+        }
+
+        $("#hdSWMId").val(houseId);
+
+        var ulb = $("#ulb_name").text()
+        $("#ulb_name1SWM").text(ulb);
+        $("#date1SWM").text(d1);
+        $("#latlongDataSWM").text(addr);
+        $("#dateDataSWM").text(date);
+        $("#imgggSWM").attr('src', imgsrc);
+        //jQuery("#latlongData").text(cellValue);
+        $("#header_dataSWM").html(head);
+        $("#latSWM").text(lat);
+        $("#longSWM").text(long);
+
+    }
+
+    function PopImagesLW(cel) {
+
+
+        //debugger
+        $('#myModal_Image_LW').modal('toggle');
+        var d1 = $(cel).find('.date_time').text();
+        var addr = $(cel).find('.addr-length').text();
+        var date = $(cel).find('.li_date').text();
+        var imgsrc = $(cel).find('img').attr('src');
+        var head = $(cel).find('.li_title').text();
+
+        var lat = $(cel).find('.li_lat').text();
+        var long = $(cel).find('.li_long').text();
+        var houseId = $(cel).find('.li_houseId').text();
+        var QRStatus = $(cel).find('.li_QRStatus').text();
+
+        curLWIdIndex = arrLWIDs.indexOf(parseInt(houseId));
+        //alert(curHouseIdIndex);
+
+        if (QRStatus != 'null') {
+            if (QRStatus == 'true') {
+                $("input[name=QRStatusLW][value=1]").prop('checked', true);
+            }
+            else if (QRStatus == 'false') {
+
+                $("input[name=QRStatusLW][value=0]").prop('checked', true);
+            }
+            else {
+                $("input[name=QRStatusLW][value=1]").prop('checked', false);
+                $("input[name=QRStatusLW][value=0]").prop('checked', false);
+            }
+        }
+        else {
+            $("input[name=QRStatusLW][value=1]").prop('checked', false);
+            $("input[name=QRStatusLW][value=0]").prop('checked', false);
+        }
+
+        $("#hdLWId").val(houseId);
+
+        var ulb = $("#ulb_name").text()
+        $("#ulb_name1LW").text(ulb);
+        $("#date1LW").text(d1);
+        $("#latlongDataLW").text(addr);
+        $("#dateDataLW").text(date);
+        $("#imgggLW").attr('src', imgsrc);
+        //jQuery("#latlongData").text(cellValue);
+        $("#header_dataLW").html(head);
+        $("#latLW").text(lat);
+        $("#longLW").text(long);
+
+    }
+
+    function PopImagesSW(cel) {
+
+
+        //debugger
+        $('#myModal_Image_SW').modal('toggle');
+        var d1 = $(cel).find('.date_time').text();
+        var addr = $(cel).find('.addr-length').text();
+        var date = $(cel).find('.li_date').text();
+        var imgsrc = $(cel).find('img').attr('src');
+        var head = $(cel).find('.li_title').text();
+
+        var lat = $(cel).find('.li_lat').text();
+        var long = $(cel).find('.li_long').text();
+        var houseId = $(cel).find('.li_houseId').text();
+        var QRStatus = $(cel).find('.li_QRStatus').text();
+
+        curSWIdIndex = arrSWIDs.indexOf(parseInt(houseId));
+        //alert(curHouseIdIndex);
+
+        if (QRStatus != 'null') {
+            if (QRStatus == 'true') {
+                $("input[name=QRStatusSW][value=1]").prop('checked', true);
+            }
+            else if (QRStatus == 'false') {
+
+                $("input[name=QRStatusSW][value=0]").prop('checked', true);
+            }
+            else {
+                $("input[name=QRStatusSW][value=1]").prop('checked', false);
+                $("input[name=QRStatusSW][value=0]").prop('checked', false);
+            }
+        }
+        else {
+            $("input[name=QRStatusSW][value=1]").prop('checked', false);
+            $("input[name=QRStatusSW][value=0]").prop('checked', false);
+        }
+
+        $("#hdSWId").val(houseId);
+
+        var ulb = $("#ulb_name").text()
+        $("#ulb_name1SW").text(ulb);
+        $("#date1SW").text(d1);
+        $("#latlongDataSW").text(addr);
+        $("#dateDataSW").text(date);
+        $("#imgggSW").attr('src', imgsrc);
+        //jQuery("#latlongData").text(cellValue);
+        $("#header_dataSW").html(head);
+        $("#latSW").text(lat);
+        $("#longSW").text(long);
+
+    }
+
 
     $(document).ready(function () {
         $.get("/houseScanify/GetAppNames", null, house);
@@ -563,6 +1896,7 @@
         document.getElementById('sSWM').value = '';
 
         debugger;
+        $('#selectQRStatus').val("-1");
         LoadUserList();
 
 
@@ -656,7 +1990,7 @@
 </script>
 <script type="text/javascript">
     var _tmr;
-    function DownloadQRCode() {
+    function DownloadQRCode1() {
 
         var RadioValue = $("input[name='radio']:checked").val();
         var txt_fdate, txt_tdate, Client, UserId;
@@ -671,6 +2005,62 @@
         txt_fdate = $('#txt_fdate').val();
         txt_tdate = $('#txt_tdate').val();
         window.location.href = "/HouseScanify/Export?type=" + RadioValue + "&UserId=" + UserId + "&fdate=" + txt_fdate + "&tdate=" + txt_tdate;
+
+    }
+    function DownloadQRCode() {
+
+        var RadioValue = $("input[name='radio']:checked").val();
+        var txt_fdate, txt_tdate, Client, UserId, QrStatus;
+        //var name = [];
+        //var arr = [$('#txt_fdate').val(), $('#txt_tdate').val()];
+
+        //for (var i = 0; i <= arr.length - 1; i++) {
+        //    name = arr[i].split("/");
+        //    arr[i] = name[1] + "/" + name[0] + "/" + name[2];
+        //}
+        UserId = $('#selectnumber').val();
+        txt_fdate = $('#txt_fdate').val();
+        txt_tdate = $('#txt_tdate').val();
+        QrStatus = $('#selectQRStatus').val();
+        //window.location.href = "/HouseScanify/Export?type=" + RadioValue + "&UserId=" + UserId + "&fdate=" + txt_fdate + "&tdate=" + txt_tdate;
+
+
+        $('#div_ldr').show();
+        $('#btnDownload').prop('disabled', true);
+
+        var urlToSend = "/HouseScanify/Export?type=" + RadioValue + "&UserId=" + UserId + "&fdate=" + txt_fdate + "&tdate=" + txt_tdate + "&QrStatus=" + QrStatus;;
+        var req = new XMLHttpRequest();
+        req.open("GET", urlToSend, true);
+        req.responseType = "blob";
+        req.onreadystatechange = function (event) {
+
+
+            if (req.readyState === XMLHttpRequest.DONE) {
+                var status = req.status;
+                if (status === 0 || (status >= 200 && status < 400)) {
+                    var blob = req.response;
+
+                    const filenameHeader = req.getResponseHeader("Content-disposition").split(';')[1];
+                    const fileName = filenameHeader.substring(filenameHeader.indexOf("=") + 1);
+
+                    console.log("filename-" + fileName);
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = fileName;
+                    link.click();
+                    $('#div_ldr').hide();
+                    $('#btnDownload').prop('disabled', false);
+
+                } else {
+                    $('#div_ldr').hide();
+                    $('#btnDownload').prop('disabled', false);
+
+                }
+            }
+
+        };
+
+        req.send();
 
     }
 

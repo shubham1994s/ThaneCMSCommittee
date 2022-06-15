@@ -37,5 +37,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string swmType { get; set; }
         public string swmSubType { get; set; }
         public string QRCodeImage { get; set; }
+        public Nullable<bool> QRStatus { get; set; }
+        public Nullable<System.DateTime> QRStatusDate { get; set; }
+        public byte[] BinaryQrCodeImage { get; set; }
     }
 }

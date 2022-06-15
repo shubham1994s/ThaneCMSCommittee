@@ -4535,18 +4535,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }).ToList();
 
 
-                //if (!string.IsNullOrEmpty(SearchString))
-                //{
-                //    var model = data.Where(c => c.userMobileNumber.ToString().Contains(SearchString) || c.userEmployeeNo.ToString().Contains(SearchString)
-                //    || c.userAddress.ToString().Contains(SearchString) || c.userName.ToString().Contains(SearchString) || c.userNameMar.ToString().Contains(SearchString) || c.bloodGroup.ToString().Contains(SearchString)
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    //var model = data.Where(c => c.qrEmpName.ToString().Contains(SearchString)).ToList();
+                    //data = model.ToList();
+                    var model = data.Where(c => ((c.qrEmpName == null ? " " : c.qrEmpName)).ToUpper().Contains(SearchString.ToUpper())
+                      ).ToList();
+                    data = model.ToList();
+                }
 
-                //    || c.userMobileNumber.Contains(SearchString) || c.userAddress.ToLower().ToString().Contains(SearchString) || c.userName.ToLower().ToString().Contains(SearchString) || c.userNameMar.ToLower().ToString().Contains(SearchString)
-                //    || c.userEmployeeNo.ToLower().ToString().Contains(SearchString) || c.bloodGroup.ToLower().ToString().Contains(SearchString)
-
-                //    || c.userMobileNumber.ToUpper().ToString().Contains(SearchString) || c.userNameMar.ToUpper().ToString().Contains(SearchString) || c.userName.ToUpper().ToString().Contains(SearchString) || c.bloodGroup.ToUpper().ToString().Contains(SearchString) || c.userAddress.ToUpper().ToString().Contains(SearchString) || c.userEmployeeNo.ToUpper().ToString().Contains(SearchString)).ToList();
-
-                //    data = model.ToList();
-                //}
                 return data.OrderByDescending(c => c.LiquidCount).OrderByDescending(c => c.HouseCount).OrderByDescending(c => c.StreetCount).OrderByDescending(c => c.CTPTCount).OrderByDescending(c => c.CommercialCount).OrderByDescending(c => c.SlumCount).OrderByDescending(c => c.BuildingCount);
             }
         }
@@ -4702,6 +4699,13 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     });
                 }
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    var model = obj.Where(c => ((c.userName == null ? " " : c.userName)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                    obj = model.ToList();
+                }
+
 
                 //if (!string.IsNullOrEmpty(SearchString))
                 //{
@@ -5812,7 +5816,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAHSHouseDetailsGrid> GetHSHouseDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string sortColumn = "", string sortColumnDir = "", string draw = "", string length = "", string start = "")
+        public IEnumerable<SBAHSHouseDetailsGrid> GetHSHouseDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int? QrStatus, int appId, string sortColumn = "", string sortColumnDir = "", string draw = "", string length = "", string start = "")
         {
             string strOrderBy = "";
             if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
@@ -5822,22 +5826,28 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
             int pageSize = length != null ? Convert.ToInt32(length) : 0;
             int skip = start != null ? Convert.ToInt32(start) : 0;
-
+            int iQRStatus = QrStatus ?? -1;
+            iQRStatus = iQRStatus == 2 ? 0 : iQRStatus;
             List<SBAHSHouseDetailsGrid> data = null;
 
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
-                data = db.SP_GetHSHouseDetails(fdate, tdate, userId, sortColumn, sortColumnDir, skip, pageSize, SearchString).Select(x => new SBAHSHouseDetailsGrid
+                data = db.SP_GetHSHouseDetailsnew(fdate, tdate, userId, iQRStatus, sortColumn, sortColumnDir, skip, pageSize, SearchString).Select(x => new SBAHSHouseDetailsGrid
                 {
                     houseId = x.houseId,
                     Name = x.qrEmpName,
                     HouseLat = x.houseLat,
                     HouseLong = x.houseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = x.BinaryQrCodeImage,
                     ReferanceId = x.ReferanceId,
                     modifiedDate = x.modified.HasValue ? Convert.ToDateTime(x.modified).ToString("dd/MM/yyyy hh:mm tt") : "",
-                    totalRowCount = x.FilterTotalCount.HasValue ? Convert.ToInt32(x.FilterTotalCount) : 0
+                    totalRowCount = x.FilterTotalCount.HasValue ? Convert.ToInt32(x.FilterTotalCount) : 0,
+                    QRStatusDate = x.QRStatusDate.HasValue ? Convert.ToDateTime(x.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                    modifiedDate1 = x.modified,
+                    QRStatusDate1 = x.QRStatusDate,
+                    QRStatus = x.QRStatus
                 }).ToList();
 
                 return data;
@@ -5917,9 +5927,22 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAHSDumpyardDetailsGrid> GetHSSWMDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAHSDumpyardDetailsGrid> GetHSSWMDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? QrStatus)
         {
+            bool? bQRStatus = null;
+            if (QrStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QrStatus == 2)
+            {
+                bQRStatus = false;
 
+            }
+            else
+            {
+                bQRStatus = null;
+            }
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 //"/Images/default_not_upload.png"
@@ -5946,9 +5969,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.swmLat,
                                           HouseLong = p.c.swmLong,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
-                                          ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
+                                          ReferanceId = p.c.ReferanceId,
+                                          QRStatus = p.c.QRStatus,
+                                          QRStatusDate = p.c.QRStatusDate
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -5981,16 +6007,33 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
-                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                    QRStatus = x.QRStatus,
+                    QRStatusDate = x.QRStatusDate.HasValue ? Convert.ToDateTime(x.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
         }
 
-        public IEnumerable<SBAHSDumpyardDetailsGrid> GetHSCTPTDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAHSDumpyardDetailsGrid> GetHSCTPTDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? QrStatus)
         {
+            bool? bQRStatus = null;
+            if (QrStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QrStatus == 2)
+            {
+                bQRStatus = false;
+
+            }
+            else
+            {
+                bQRStatus = null;
+            }
 
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
@@ -6018,9 +6061,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.Lat,
                                           HouseLong = p.c.Long,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
-                                          ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
+                                          ReferanceId = p.c.ReferanceId,
+                                          QRStatus = p.c.QRStatus,
+                                          QRStatusDate = p.c.QRStatusDate
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6053,17 +6099,33 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
-                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                    QRStatus = x.QRStatus,
+                    QRStatusDate = x.QRStatusDate.HasValue ? Convert.ToDateTime(x.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
         }
 
-        public IEnumerable<SBAHSDumpyardDetailsGrid> GetHSCommercialDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAHSDumpyardDetailsGrid> GetHSCommercialDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? QrStatus)
         {
+            bool? bQRStatus = null;
+            if (QrStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QrStatus == 2)
+            {
+                bQRStatus = false;
 
+            }
+            else
+            {
+                bQRStatus = null;
+            }
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 //"/Images/default_not_upload.png"
@@ -6090,9 +6152,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.commercialLat,
                                           HouseLong = p.c.commercialLong,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
-                                          ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
+                                          ReferanceId = p.c.ReferanceId,
+                                          QRStatus = p.c.QRStatus,
+                                          QRStatusDate = p.c.QRStatusDate
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6125,17 +6190,33 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
-                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                    QRStatus = x.QRStatus,
+                    QRStatusDate = x.QRStatusDate.HasValue ? Convert.ToDateTime(x.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
         }
 
-        public IEnumerable<SBAHSLiquidDetailsGrid> GetHSLiquidDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAHSLiquidDetailsGrid> GetHSLiquidDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? QrStatus)
         {
+            bool? bQRStatus = null;
+            if (QrStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QrStatus == 2)
+            {
+                bQRStatus = false;
 
+            }
+            else
+            {
+                bQRStatus = null;
+            }
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 //"/Images/default_not_upload.png"
@@ -6162,9 +6243,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.LWLat,
                                           HouseLong = p.c.LWLong,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
-                                          ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
+                                          ReferanceId = p.c.ReferanceId,
+                                          QRStatus = p.c.QRStatus,
+                                          QRStatusDate = p.c.QRStatusDate
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6197,16 +6281,32 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
-                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                    QRStatus = x.QRStatus,
+                    QRStatusDate = x.QRStatusDate.HasValue ? Convert.ToDateTime(x.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }
         }
-        public IEnumerable<SBAHSStreetDetailsGrid> GetHSStreetDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAHSStreetDetailsGrid> GetHSStreetDetailsData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? QrStatus)
         {
+            bool? bQRStatus = null;
+            if (QrStatus == 1)
+            {
+                bQRStatus = true;
+            }
+            else if (QrStatus == 2)
+            {
+                bQRStatus = false;
 
+            }
+            else
+            {
+                bQRStatus = null;
+            }
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
                 //"/Images/default_not_upload.png"
@@ -6233,9 +6333,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                           Name = b.qrEmpName,
                                           HouseLat = p.c.SSLat,
                                           HouseLong = p.c.SSLong,
-                                          QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
-                                          ReferanceId = p.c.ReferanceId
-                                      }).Where(x => x.userId != null && x.modifiedDate >= fdate && x.modifiedDate <= tdate).OrderByDescending(d => d.modifiedDate).ThenByDescending(c => c.houseId).ToList();
+                                          //QRCodeImage = string.IsNullOrEmpty(p.c.QRCodeImage) ? "/Images/default_not_upload.png" : p.c.QRCodeImage,
+                                          QRCodeImage = p.c.BinaryQrCodeImage,
+                                          ReferanceId = p.c.ReferanceId,
+                                          QRStatus = p.c.QRStatus,
+                                          QRStatusDate = p.c.QRStatusDate
+                                      }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fdate && c.modifiedDate <= tdate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
 
                 if (fdate != null && tdate != null)
@@ -6268,9 +6371,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     Name = x.Name,
                     HouseLat = x.HouseLat,
                     HouseLong = x.HouseLong,
-                    QRCodeImage = x.QRCodeImage,
+                    //QRCodeImage = x.QRCodeImage,
+                    QRCodeImage = (x.QRCodeImage == null || x.QRCodeImage.Length == 0) ? "/Images/default_not_upload.png" : ("data:image/jpeg;base64," + System.Convert.ToBase64String(x.QRCodeImage)),
                     ReferanceId = x.ReferanceId,
-                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : ""
+                    modifiedDate = x.modifiedDate.HasValue ? Convert.ToDateTime(x.modifiedDate).ToString("dd/MM/yyyy hh:mm tt") : "",
+                    QRStatus = x.QRStatus,
+                    QRStatusDate = x.QRStatusDate.HasValue ? Convert.ToDateTime(x.QRStatusDate).ToString("dd/MM/yyyy hh:mm tt") : ""
                 }).ToList();
                 return data;
             }

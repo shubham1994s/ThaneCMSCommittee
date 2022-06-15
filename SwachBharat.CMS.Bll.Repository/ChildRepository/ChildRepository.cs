@@ -430,7 +430,83 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.GetUserList(AppId, teamId);
         }
+        public void SaveHSQRStatusHouse(int houseId, string QRStatus)
+        {
+            screenService.SaveHSQRStatusHouse(houseId, QRStatus);
+        }
+        public void SaveHSQRStatusComr(int comrId, string QRStatus)
+        {
+            screenService.SaveHSQRStatusComr(comrId, QRStatus);
+        }
+        public void SaveHSQRStatusCTPT(int CTPTId, string QRStatus)
+        {
+            screenService.SaveHSQRStatusCTPT(CTPTId, QRStatus);
+        }
+        public void SaveHSQRStatusSWM(int SWMId, string QRStatus)
+        {
+            screenService.SaveHSQRStatusSWM(SWMId, QRStatus);
+        }
 
+        public void SaveHSQRStatusLW(int LWId, string QRStatus)
+        {
+            screenService.SaveHSQRStatusLW(LWId, QRStatus);
+        }
+        public void SaveHSQRStatusSW(int SWId, string QRStatus)
+        {
+            screenService.SaveHSQRStatusSW(SWId, QRStatus);
+        }
+        public List<int> GetHSHouseDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+            return screenService.GetHSHouseDetailsID(fromDate, toDate, userId, searchString, QRStatus, sortColumn, sortOrder);
+        }
+        public List<int> GetHSComrDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+            return screenService.GetHSComrDetailsID(fromDate, toDate, userId, searchString, QRStatus, sortColumn, sortOrder);
+        }
+        public List<int> GetHSCTPTDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+            return screenService.GetHSCTPTDetailsID(fromDate, toDate, userId, searchString, QRStatus, sortColumn, sortOrder);
+        }
+
+        public List<int> GetHSSWMDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+            return screenService.GetHSSWMDetailsID(fromDate, toDate, userId, searchString, QRStatus, sortColumn, sortOrder);
+        }
+        public List<int> GetHSLWDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+            return screenService.GetHSLWDetailsID(fromDate, toDate, userId, searchString, QRStatus, sortColumn, sortOrder);
+        }
+
+        public List<int> GetHSSWDetailsID(DateTime? fromDate, DateTime? toDate, int userId, string searchString, int QRStatus, string sortColumn, string sortOrder)
+        {
+            return screenService.GetHSSWDetailsID(fromDate, toDate, userId, searchString, QRStatus, sortColumn, sortOrder);
+        }
+        public SBAHSHouseDetailsGrid GetHouseDetailsById(int houseId)
+        {
+            return screenService.GetHouseDetailsById(houseId);
+        }
+
+        public SBAHSDumpyardDetailsGrid GetComrDetailsById(int comrId)
+        {
+            return screenService.GetComrDetailsById(comrId);
+        }
+        public SBAHSDumpyardDetailsGrid GetCTPTDetailsById(int CTPTId)
+        {
+            return screenService.GetCTPTDetailsById(CTPTId);
+        }
+        public SBAHSDumpyardDetailsGrid GetSWMDetailsById(int SWMId)
+        {
+            return screenService.GetSWMDetailsById(SWMId);
+        }
+
+        public SBAHSLiquidDetailsGrid GetLWDetailsById(int LWId)
+        {
+            return screenService.GetLWDetailsById(LWId);
+        }
+        public SBAHSStreetDetailsGrid GetSWDetailsById(int SWId)
+        {
+            return screenService.GetSWDetailsById(SWId);
+        }
         // Addded By Saurabh (03 June 2019)
         public HouseScanifyEmployeeDetailsVM GetHSEmployeeById(int teamId)
         {
@@ -455,9 +531,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHSUserAttenRoute(qrEmpDaId);
         }
 
-        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate)
+        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate, string QrStatus)
         {
-            return screenService.GetHSQRCodeImageByDate(type, UserId, fDate, tDate);
+            return screenService.GetHSQRCodeImageByDate(type, UserId, fDate, tDate, QrStatus);
         }
 
         #endregion

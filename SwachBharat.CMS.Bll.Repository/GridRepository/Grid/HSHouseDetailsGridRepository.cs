@@ -15,9 +15,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public HSHouseDetailsGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,string sortColumn = "", string sortColumnDir = "", string draw = "", string length = "", string start = "")
+        public HSHouseDetailsGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int? QrStatus, int appId,string sortColumn = "", string sortColumnDir = "", string draw = "", string length = "", string start = "")
         {
-            dataset = objRep.GetHSHouseDetailsData(wildcard, SearchString, fdate, tdate, userId, appId, sortColumn, sortColumnDir, draw, length, start);
+            dataset = objRep.GetHSHouseDetailsData(wildcard, SearchString, fdate, tdate, userId, QrStatus, appId, sortColumn, sortColumnDir, draw, length, start);
         }
 
        

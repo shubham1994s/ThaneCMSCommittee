@@ -530,7 +530,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "HSHouseDetails":
-                    gridRepository = new HSHouseDetailsGridRepository(0, searchString, fdate, tdate, userId, appId, sortColumn, sortColumnDir, draw, length, start);
+                    gridRepository = new HSHouseDetailsGridRepository(0, searchString, fdate, tdate, userId, param1, appId, sortColumn, sortColumnDir, draw, length, start);
                     return gridRepository;
                     break;
                 case "HSDumpyardDetails":
@@ -538,22 +538,22 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
 
                 case "HSCommercialDetails":
-                    gridRepository = new HSCommercialDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new HSCommercialDetailsGridRepository(0, searchString, fdate, tdate, userId, appId, param1);
                     return gridRepository;
                 case "HSSWMDetails":
-                    gridRepository = new HSSWMDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new HSSWMDetailsGridRepository(0, searchString, fdate, tdate, userId, appId, param1);
                     return gridRepository;
 
                 case "HSCTPTDetails":
-                    gridRepository = new HSCTPTDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new HSCTPTDetailsGridRepository(0, searchString, fdate, tdate, userId, appId, param1);
                     return gridRepository;
                     break;
                 case "HSLiquidDetails":
-                    gridRepository = new HSLiquidDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new HSLiquidDetailsGridRepository(0, searchString, fdate, tdate, userId, appId, param1);
                     return gridRepository;
                     break;
                 case "HSStreetDetails":
-                    gridRepository = new HSStreetDetailsGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new HSStreetDetailsGridRepository(0, searchString, fdate, tdate, userId, appId, param1);
                     return gridRepository;
                     break;
                 case "InfotainmentPlayerDetails":
