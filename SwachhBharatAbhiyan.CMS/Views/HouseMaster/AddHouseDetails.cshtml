@@ -180,17 +180,7 @@
 
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
-                            @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
-                            @Html.Label("Reference Id")
-                            <input type="text" value="@Model.ReferanceId" id="n" readonly="readonly" />
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                       
-
-
+                        
                         <div class="form-group">
                             @*<label for="Select_Image">क्यु आर  कोड  / QR-Code Image</label>*@
                             @*@Html.Label("स्कॅनिफाय कोड  / Scaniffy Code")*@
@@ -229,6 +219,27 @@
                         @Html.HiddenFor(model => model.houseLong, new { @class = "form-control", required = "required" })
 
                         @Html.HiddenFor(model => model.houseLat, new { @class = "form-control", required = "required" })
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
+                            @Html.Label("Reference Id")
+                            <input type="text" value="@Model.ReferanceId" id="n" readonly="readonly" />
+                        </div>
+                        <center><span class="text-danger" id="err_generate"></span></center>
+                        <div class="row">
+
+                            <div class="form-group1" style="margin-top:15%">
+                                <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
+
+                                    <span class="glyphicon glyphicon-saved"></span>
+                                    <span id="buttonName" onclick="disableButton(this)">Save</span>
+                                </button>
+                            </div>
+                        </div>
+
+
 
                     </div>
 
@@ -244,17 +255,7 @@
 
                      </div>*@
 
-                <center><span class="text-danger" id="err_generate"></span></center>
-                <div class="row">
-
-                    <div class="form-group1">
-                        <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
-
-                            <span class="glyphicon glyphicon-saved"></span>
-                            <span id="buttonName" onclick="disableButton(this)">Save</span>
-                        </button>
-                    </div>
-                </div><br /><br /><br />
+            <br /><br /><br />
 
             </div>
         </div>
