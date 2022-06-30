@@ -124,9 +124,11 @@
     <Compile Include="GridRepository\Grid\SauchalayRegistrationGridRepository.cs" />
     <Compile Include="GridRepository\Grid\SBAAttendenceGrid.cs" />
     <Compile Include="GridRepository\Grid\SSCollectionGridRepository.cs" />
+    <Compile Include="GridRepository\Grid\SSCollectionGridRepositoryBeat.cs" />
     <Compile Include="GridRepository\Grid\StreetDumpYardCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\StreetIdelGridRepository.cs" />
     <Compile Include="GridRepository\Grid\StreetSweepBeatGrid.cs" />
+    <Compile Include="GridRepository\Grid\StreetSweepBeatPointGrid.cs" />
     <Compile Include="GridRepository\Grid\StreetSweepGrid.cs" />
     <Compile Include="GridRepository\Grid\SWMDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\SWMGarbageCollectionGridRepository.cs" />
