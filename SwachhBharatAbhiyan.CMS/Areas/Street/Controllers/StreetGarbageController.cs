@@ -49,6 +49,28 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 return Redirect("/Account/Login");
         }
 
+        public ActionResult MenuStreetBitMapIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                TempData.Keep();
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        public ActionResult StreetBitMapIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                TempData.Keep();
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
         public ActionResult PointGarbageIndex()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -66,6 +88,18 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
             }
             else
                 return Redirect("/Account/Login");
+        }
+
+        public ActionResult MenuStreetDetailGarbageIndex(int teamId, string fdate, string tdate, int param1)
+        {
+
+            ViewBag.userid = teamId;
+            ViewBag.fdate = fdate;
+            ViewBag.tdate = tdate;
+            ViewBag.Rown = param1;
+            return PartialView(@"/Areas/Street/Views/Shared/_StreetBeatMap.cshtml");
+
+
         }
 
         public ActionResult DumpYardIndex()

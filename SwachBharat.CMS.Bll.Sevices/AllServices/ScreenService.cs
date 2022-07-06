@@ -2427,7 +2427,7 @@ namespace SwachBharat.CMS.Bll.Services
                 string dt2 = Convert.ToDateTime(att.daEndDate).ToString("MM/dd/yyyy");
                 edate = Convert.ToDateTime(dt2 + " " + t2);
             }
-            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).OrderBy(x=>x.locId).ToList();
+            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).OrderBy(x => x.locId).ToList();
 
 
             foreach (var x in data)
@@ -2482,7 +2482,7 @@ namespace SwachBharat.CMS.Bll.Services
                 string dt2 = Convert.ToDateTime(att.daEndDate).ToString("MM/dd/yyyy");
                 edate = Convert.ToDateTime(dt2 + " " + t2);
             }
-            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).OrderBy(x=>x.locId).ToList();
+            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).OrderBy(x => x.locId).ToList();
 
 
             foreach (var x in data)
@@ -2552,7 +2552,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     //var gcd = db.GarbageCollectionDetails.Where(c => (c.userId == x.userId & c.houseId != null) & EntityFunctions.TruncateTime(c.gcDate) == EntityFunctions.TruncateTime(x.datetime)).OrderBy(c => c.gcDate).ToList();//.ToList();
 
-                    var gcd = db.GarbageCollectionDetails.Where(c => (c.userId == x.userId & (c.houseId != null || c.dyId != null || c.commercialId!=null)) & EntityFunctions.TruncateTime(c.gcDate) == EntityFunctions.TruncateTime(x.datetime)).OrderBy(c => c.gcId).ToList();//.ToList();
+                    var gcd = db.GarbageCollectionDetails.Where(c => (c.userId == x.userId & (c.houseId != null || c.dyId != null || c.commercialId != null)) & EntityFunctions.TruncateTime(c.gcDate) == EntityFunctions.TruncateTime(x.datetime)).OrderBy(c => c.gcId).ToList();//.ToList();
 
 
                     foreach (var d in gcd)
@@ -6378,7 +6378,7 @@ namespace SwachBharat.CMS.Bll.Services
             return data;
         }
 
-        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate,string QrStatus)
+        public List<SBAHSHouseDetailsGrid> GetHSQRCodeImageByDate(int type, int UserId, DateTime fDate, DateTime tDate, string QrStatus)
         {
 
             bool? bQRStatus = null;
@@ -6400,13 +6400,14 @@ namespace SwachBharat.CMS.Bll.Services
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
                 {
-                    
-                        if (type == 0)
-                        {
+
+                    if (type == 0)
+                    {
                         //data = db.HouseMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (a.QRStatusDate >= fDate && a.QRStatusDate <= tDate)) || (bQRStatus == null && (a.modified >= fDate && a.modified <= tDate))) && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
 
-
-                            data = db.HouseMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong)  && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                        if (QrStatus == "3")
+                        {
+                            data = db.HouseMasters.Where(a => (a.QRStatus==null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
                             {
                                 houseId = x.houseId,
                                 Name = x.houseOwner,
@@ -6417,9 +6418,27 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-                        else if (type == 1)
+                        else
                         {
-                            data = db.CommercialMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.commercialLat) && !string.IsNullOrEmpty(a.commercialLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            data = db.HouseMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.houseId,
+                                Name = x.houseOwner,
+                                HouseLat = x.houseLat,
+                                HouseLong = x.houseLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+
+                    }
+                    else if (type == 1)
+                    {
+
+                        if (QrStatus == "3")
+                        {
+                            data = db.CommercialMasters.Where(a => (a.QRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.commercialLat) && !string.IsNullOrEmpty(a.commercialLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
                             {
                                 houseId = x.commercialId,
                                 Name = x.commercialOwner,
@@ -6430,9 +6449,28 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-                        else if (type == 2)
+                        else
                         {
-                            data = db.LiquidWasteDetails.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.LWLat) && !string.IsNullOrEmpty(a.LWLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            data = db.CommercialMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.commercialLat) && !string.IsNullOrEmpty(a.commercialLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.commercialId,
+                                Name = x.commercialOwner,
+                                HouseLat = x.commercialLat,
+                                HouseLong = x.commercialLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+
+                      
+                    }
+                    else if (type == 2)
+                    {
+
+                        if (QrStatus == "3")
+                        {
+                            data = db.LiquidWasteDetails.Where(a => (a.QRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.LWLat) && !string.IsNullOrEmpty(a.LWLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
                             {
                                 houseId = x.LWId,
                                 Name = x.LWName,
@@ -6443,9 +6481,27 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-                        else if (type == 3)
+                        else
                         {
-                            data = db.StreetSweepingDetails.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.SSLat) && !string.IsNullOrEmpty(a.SSLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            data = db.LiquidWasteDetails.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.LWLat) && !string.IsNullOrEmpty(a.LWLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.LWId,
+                                Name = x.LWName,
+                                HouseLat = x.LWLat,
+                                HouseLong = x.LWLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+
+                           
+                    }
+                    else if (type == 3)
+                    {
+                        if (QrStatus == "3")
+                        {
+                            data = db.StreetSweepingDetails.Where(a => (a.QRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.SSLat) && !string.IsNullOrEmpty(a.SSLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
                             {
                                 houseId = x.SSId,
                                 Name = x.SSName,
@@ -6456,9 +6512,27 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-                        else if (type == 4)
+                        else
                         {
-                            data = db.SauchalayAddresses.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.Lat) && !string.IsNullOrEmpty(a.Long) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            data = db.StreetSweepingDetails.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.SSLat) && !string.IsNullOrEmpty(a.SSLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.SSId,
+                                Name = x.SSName,
+                                HouseLat = x.SSLat,
+                                HouseLong = x.SSLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+
+                           
+                    }
+                    else if (type == 4)
+                    {
+                        if (QrStatus == "3")
+                        {
+                            data = db.SauchalayAddresses.Where(a => (a.QRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.Lat) && !string.IsNullOrEmpty(a.Long) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
                             {
                                 houseId = x.Id,
                                 Name = x.Name,
@@ -6469,9 +6543,26 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-                        else if (type == 5)
+                        else
                         {
-                            data = db.SWMMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.swmLat) && !string.IsNullOrEmpty(a.swmLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null )).Select(x => new SBAHSHouseDetailsGrid
+                            data = db.SauchalayAddresses.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.lastModifiedDate >= fDate && a.lastModifiedDate <= tDate) && !string.IsNullOrEmpty(a.Lat) && !string.IsNullOrEmpty(a.Long) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.Id,
+                                Name = x.Name,
+                                HouseLat = x.Lat,
+                                HouseLong = x.Long,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                       
+                    }
+                    else if (type == 5)
+                    {
+                        if (QrStatus == "3")
+                        {
+                            data = db.SWMMasters.Where(a => (a.QRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.swmLat) && !string.IsNullOrEmpty(a.swmLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
                             {
                                 houseId = x.swmId,
                                 Name = x.swmName,
@@ -6482,7 +6573,22 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-                   
+                        else
+                        {
+                            data = db.SWMMasters.Where(a => ((bQRStatus != null && a.QRStatus == bQRStatus) || bQRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.swmLat) && !string.IsNullOrEmpty(a.swmLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                            {
+                                houseId = x.swmId,
+                                Name = x.swmName,
+                                HouseLat = x.swmLat,
+                                HouseLong = x.swmLong,
+                                //QRCodeImage = x.QRCodeImage,
+                                BinaryQrCodeImage = x.BinaryQrCodeImage,
+                                ReferanceId = x.ReferanceId
+                            }).OrderBy(a => a.houseId).ToList();
+                        }
+                       
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -6788,10 +6894,14 @@ namespace SwachBharat.CMS.Bll.Services
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
                                        }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
-                                        //}).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
+                    //}).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && ((bQRStatus != null && (c.QRStatusDate >= fromDate && c.QRStatusDate <= toDate)) || (bQRStatus == null && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate))) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
+                    if (QRStatus == 3)
+                    {
+                        model = model.Where(c => (c.QRStatus == null)).ToList();
+                    }
 
-                if (fromDate != null && toDate != null)
+                    if (fromDate != null && toDate != null)
                     {
                         if (Convert.ToDateTime(fromDate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
                         {
@@ -6873,6 +6983,10 @@ namespace SwachBharat.CMS.Bll.Services
                                            QRStatusDate = p.c.QRStatusDate
                                        }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
+                    if (QRStatus == 3)
+                    {
+                        model = model.Where(c => (c.QRStatus == null)).ToList();
+                    }
 
                     if (fromDate != null && toDate != null)
                     {
@@ -6956,6 +7070,10 @@ namespace SwachBharat.CMS.Bll.Services
                                            QRStatusDate = p.c.QRStatusDate
                                        }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
+                    if (QRStatus == 3)
+                    {
+                        model = model.Where(c => (c.QRStatus == null)).ToList();
+                    }
 
                     if (fromDate != null && toDate != null)
                     {
@@ -7039,6 +7157,10 @@ namespace SwachBharat.CMS.Bll.Services
                                            QRStatusDate = p.c.QRStatusDate
                                        }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
 
+                    if (QRStatus == 3)
+                    {
+                        model = model.Where(c => (c.QRStatus == null)).ToList();
+                    }
 
                     if (fromDate != null && toDate != null)
                     {
@@ -7121,7 +7243,10 @@ namespace SwachBharat.CMS.Bll.Services
                                            QRStatus = p.c.QRStatus,
                                            QRStatusDate = p.c.QRStatusDate
                                        }).Where(c => ((bQRStatus != null && c.QRStatus == bQRStatus) || bQRStatus == null) && (c.modifiedDate >= fromDate && c.modifiedDate <= toDate) && c.HouseLat != null && c.HouseLong != null).OrderBy(c => c.houseId).ToList();
-
+                    if (QRStatus == 3)
+                    {
+                        model = model.Where(c => (c.QRStatus == null)).ToList();
+                    }
 
                     if (fromDate != null && toDate != null)
                     {

@@ -352,6 +352,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new SSCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3);
                     return gridRepository;
                     break;
+
+                case "StreetGarbageBeat":
+                    gridRepository = new SSCollectionGridRepositoryBeat(0, searchString, fdate, tdate, userId, appId, param1, param2, param3);
+                    return gridRepository;
+                    break;
+
                 case "Attendence":
                     gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, null);
                     return gridRepository;
@@ -420,6 +426,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 case "StreetSweepBeat":
                     gridRepository = new StreetSweepBeatGrid(0, searchString, appId);
+                    return gridRepository;
+                    break;
+
+                case "StreetSweepBeatMap":
+                    gridRepository = new StreetSweepBeatPointGrid(0, fdate, tdate, userId, searchString, appId);
                     return gridRepository;
                     break;
 

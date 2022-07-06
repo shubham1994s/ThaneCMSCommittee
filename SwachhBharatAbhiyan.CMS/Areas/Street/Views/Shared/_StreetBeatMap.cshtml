@@ -4,26 +4,30 @@
 }
 
 @Styles.Render("~/Content/IndexCSS")
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
 @Scripts.Render("~/Scripts/IndexScript")
-@*<script src="~/Content/DatatableGrid/CTPTGarbageGrid.js"></script>*@
 <script src="~/Content/Custom/LoadZoneWardArea.js"></script>
-<header>
-    @*<h1>@ViewBag.userid Scanning Summary</h1>*@
-</header>
+@*<script src="~/Areas/Street/Content/Script/DatatableGrid/StreetGarbageGrid.js"></script>*@
+<style>
+    #btnBack {
+        color: #fff;
+        margin-left: 10px;
+        background-color: #189cdf;
+        border-color: #189cdf;
+        border-radius: 0.4rem;
+        padding: 6px 11px 6px 11px;
+    }
+</style>
 <body>
-    <div class="col-sm-1">
-        <span class="backk">
-
-            <a href="@Url.Action("CTPTCountGarbageIndex", "GarbageCollection")" id="btnBack" data-background-color="filter-button-box-color" style="margin-top:8px;" class="btn btn-sm btn-success filter-button-style"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
-
-        </span>
-    </div>
+    <input type="hidden" name="fdate" id="fdate" value="@ViewBag.fdate">
+    <input type="hidden" name="tdate" id="tdate" value="@ViewBag.tdate">
+    <input type="hidden" name="Rnow" id="Rnow" value="@ViewBag.Rown">
+    <input type="hidden" name="userid" id="userid" value="@ViewBag.userid">
     <div class="container" style="padding-top:8px">
         <div class="row">
-            <div class="col-sm-2" hidden="hidden">
-                <div class="controls">
+            <div class="col-sm-2">
+                <div class="controls" hidden="hidden">
                     @*<label>तारखेपासून / From Date</label>*@
                     <label>From Date</label>
                     <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
@@ -36,89 +40,72 @@
                     <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
                 </div>
             </div>
-            <div class="col-sm-4" hidden="hidden">
+            <div class="col-sm-2" hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Employee</label>
                 <select id="selectnumber1" class="form-control form-control form-control-sm">
-                    <option value="@ViewBag.userid">select</option>
+                <option value="@ViewBag.userid">select</option>
                 </select>
             </div>
-            <div class="col-sm-4" hidden="hidden">
+            <div class="col-sm-2"  hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Zone</label>
                 <select id="ZoneId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4" hidden="hidden">
+            <div class="col-sm-2"  hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Ward/Prabhag</label>
                 <select id="WardNo" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4" hidden="hidden">
+            <div class="col-sm-2"  hidden="hidden">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Area</label>
                 <select id="AreaId" class="form-control form-control form-control-sm"></select>
             </div>
-            <!--<div class="col-sm-4">-->
-            @*<label>कर्मचारी निवडा / Select Employee</label>*@
-            <!--<label>Select Segregation Type</label>
-                <select id="Segid" class="form-control form-control form-control-sm">
-                    <option value="">Select Segregation Type</option>
-                    <option value="0">Mixed Garbage</option>
-                    <option value="6">Wet Waste</option>
-                    <option value="7"> Dry Waste</option>
-                </select>
-            </div>-->
         </div>
-        <div class="row" hidden="hidden">
+        <div class="row">
             <div class="col-sm-2  offset-md-10" style="text-align:right">
                 <div class="controls">
-                    <input data-background-color="filter-button-box-color" style="margin-top:8px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                    <a href="@Url.Action("StreetBitMapIndex", "StreetGarbage")" id="btnBack" class="btn"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
                 </div>
             </div>
         </div>
-        <input type="hidden" name="fdate" id="fdate" value="@ViewBag.fdate">
-        <input type="hidden" name="tdate" id="tdate" value="@ViewBag.tdate">
-        <input type="hidden" name="Rnow" id="Rnow" value="@ViewBag.Rown">
+
     </div>
+
     <div class="container">
         <br />
         <div style="width:100%; margin:0 auto;">
             <label style="display:inline-flex" class="float-right">Search:&nbsp;<input type="text" id="s" class="form-control form-control-sm" onkeyup="Search()"></label>
+
             <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
                 <thead>
                     @*<tr>
                             <th>ID</th>
                             <th>तारीख / Date</th>
                             <th>कर्मचारी / Employee</th>
-                            <th>घर आयडी /  House ID</th>
-                            <th>घर मालक / House Owner</th>
-                            <th>पत्ता /Collection Address</th>
-                            <th>वाहन क्रमांक / Vehicle Number</th>
+                            <th>कचरा पॉइंट आयडी /  Garbage Point ID</th>
+                            <th>कचरा पॉइंट / Garbage Point</th>
+                            <th>पत्ता / Collection Address </th>
+                            <th>वाहन क्रमांक / Vehicle Number </th>
                             <th>टिप्पणी / Comment </th>
                             <th>पूर्व फोटो / Before Image </th>
                             <th>नंतर फोटो / After Image </th>
-                            <th>वर्गीकरणाचे प्रकार / Segregated Type </th>
-                            <th>बॅटरीची स्थिती / Battery Status </th>
                         </tr>*@
+
                     <tr>
-                        <th>ID</th>
+                        <th> ID</th>
                         <th> Date</th>
                         <th> Employee</th>
-                        <th> CT/PT/U ID</th>
-                        <th> Total Number of Seat </th>
-                        <th> Type Of Toilet </th>
-                        <th> Name</th>
-                        <th> CTPT Address</th>
-                        <th> Vehicle Number</th>
+                        <th> Street Sweeping Point ID</th>
+                        <th> Street Sweeping Point Name</th>
+                        <th> Point Address </th>
+                        <th> Vehicle Number </th>
                         <th> Comment </th>
                         <th> Before Image </th>
                         <th> After Image </th>
+                        <th> gcdate </th>
                         <th> Battery Status </th>
-                        <th> Before Time  </th>
-                        <th> After Time  </th>
-                        <th> Total Cleaning Time </th>
-                        @*<th> gcDate </th>*@
-                        @*<th>Type</th>*@
                     </tr>
                 </thead>
             </table>
@@ -145,29 +132,17 @@
                     <div class="modal-footer">
                         <button type="button" class="btn" data-dismiss="modal">Close</button>
                         @*<a href="~/Images/Nagpur/Job/download.pdf" class="btn btn-default" download>Download</a>*@
-
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-
     <div id="snackbar">Image not uploaded...</div>
 </body>
 
-
 <script>
-    //var date = new Date();
-
-    //var day = date.getDate();
-    //var month = date.getMonth() + 1;
-    //var year = date.getFullYear();
-
-    //if (month < 10) month = "0" + month;
-    //if (day < 10) day = "0" + day;
-
-    //var today = day + "/" + month + "/" + year;
+  
 
     document.getElementById('txt_fdate').value = document.getElementById('fdate').value;
     document.getElementById('txt_tdate').value = document.getElementById('tdate').value;
@@ -195,28 +170,9 @@
         $('.dtpk_drpdwn').eq(0).hide();
     });
     $(document).ready(function () {
-
-
-
-
-        //$.ajax({
-        //    type: "post",
-        //    url: "/Location/UserList",
-        //    data: { userId: UserId, },
-        //    datatype: "json",
-        //    traditional: true,
-        //    success: function (data) {
-        //        district = '<option value="-1">Select Employee</option>';
-        //        for (var i = 0; i < data.length; i++) {
-        //            district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-        //        }
-        //        //district = district + '</select>';
-        //        $('#selectnumber').html(district);
-        //    }
-        //});
         debugger;
+      //  var uid=
         var UserId = $('#selectnumber1').val();
-        
         //var fdate = $('#txt_fdate').val();
         //var tdates = $('#txt_tdate').val();
         var name = [];
@@ -231,7 +187,7 @@
         txt_tdate = arr[1];
         $("#demoGrid").DataTable({
             "sDom": "ltipr",
-            "order": [[12, "desc"]],
+            "order": [[10, "desc"]],
             "processing": true, // for show progress bar
             "serverSide": true, // for process server side
             "filter": true, // this is for disable filter (search box)
@@ -239,7 +195,7 @@
             "pageLength": 10,
 
             "ajax": {
-                "url": "/Datable/GetJqGridJson?rn=GarbageCTPT&userId=" + UserId + "&fdate=" + txt_fdate + "&tdate=" + txt_tdate + "&param1=" + Rnow,
+                "url": "/Datable/GetJqGridJson?rn=StreetGarbageBeat&userId=" + UserId + "&fdate=" + txt_fdate + "&tdate=" + txt_tdate + "&param1=" + Rnow,
                 "type": "POST",
                 "datatype": "json"
             },
@@ -251,18 +207,12 @@
                     "searchable": false
                 },
                 {
-                    "targets": [8],
-                    "visible": false,
-                    "searchable": false
-                },
-                {
-                    "targets": [12],
-                    "visible": false,
-                    "searchable": false
-                },
-
-                {
                     "targets": [10],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [8],
                     "visible": true,
 
                     "render": function (data, type, full, meta) {
@@ -278,7 +228,7 @@
                     },
                 },
                 {
-                    "targets": [11],
+                    "targets": [9],
                     "visible": true,
 
                     "render": function (data, type, full, meta) {
@@ -294,105 +244,6 @@
                     },
                 },
 
-                {
-                    "targets": [4],
-
-                    "visible": true,
-
-                    "render": function (data, type, full, meta) {
-
-
-
-                        if (full["tns"] == null) {
-                            return "Not Mention";
-                        }
-                        else {
-                            return full["tns"];
-                        }
-
-
-                    },
-                },
-                {
-                    "targets": [5],
-
-                    "visible": true,
-
-                    "render": function (data, type, full, meta) {
-
-
-
-                        if (full["type1"] == "CT") {
-                            return "Community Toilet";
-                        }
-
-                        else if (full["type1"] == "PT") {
-                            return "Public Toilet";
-
-                        }
-                        else if (full["type1"] == "U") {
-                            return "Urinal";
-                        }
-                        else if (full["type1"] == null) {
-                            return "Not Mention";
-                        }
-
-                    },
-                },
-
-                {
-                    "targets": [15],
-
-                    "visible": true,
-
-                    "render": function (data, type, full, meta) {
-
-                        if (full["TimeSpan"] == "" || full["TimeSpan"].length > 10) {
-                            return "Not Available";
-                        }
-                        else {
-                            return full["TimeSpan"];
-                        }
-
-
-                    },
-                },
-                    {
-                        "targets": [14],
-
-                        "visible": true,
-
-                        "render": function (data, type, full, meta) {
-
-                            if (full["TimeSpan"] == "" || full["TimeSpan"].length > 10) {
-                                return "Not Available";
-                            }
-                            else {
-                                return full["attandDate"];
-                            }
-
-
-                        },
-                    },
-
-                {
-                    "targets": [13],
-
-                    "visible": true,
-
-                    "render": function (data, type, full, meta) {
-
-                        if (full["gpBeforImageTime"] == "01/01/1900 12:00 AM" || full["gpBeforImageTime"] == "01-01-1900 12:00 AM" || full["gpBeforImageTime"] == "01/01/0001 12:00 AM" || full["gpBeforImageTime"] == "01-01-0001 12:00 AM") {
-                            return "Not Available";
-                        }
-                        else {
-                            return full["gpBeforImageTime"];
-                        }
-
-
-                    },
-                },
-
                 ],
 
             "columns": [
@@ -400,35 +251,23 @@
                 { "data": "attandDate", "name": "attandDate", "autoWidth": false },
                 { "data": "Employee", "name": "Employee", "autoWidth": false },
                 { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": false },
-                { "data": "tns", "name": "tns", "autoWidth": false },
-                { "data": "type1", "name": "type1", "autoWidth": false },
                 { "data": "UserName", "name": "UserName", "autoWidth": false },
                 { "data": "Address", "name": "Address", "autoWidth": false },
                 { "data": "VehicleNumber", "autoWidth": false },
                 { "data": "Note", "autoWidth": false },
                 { "data": "gpBeforImage", "name": "gpBeforImage", "autoWidth": false },
-                { "data": "gpAfterImage", "name": "gpAfterImage", "autoWidth": false },
-                { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
-                { "data": "gpBeforImageTime", "name": "gpBeforImageTime", "autoWidth": false },
-                { "data": "attandDate", "name": "attandDate", "autoWidth": false },
-                { "data": "TimeSpan", "name": "TimeSpan", "autoWidth": false },
-                /*    { "data": "gcDate", "name": "gcDate", "autoWidth": false },*/
-
+                { "data": "gpAfterImage", "gpAfterImage": "Address", "autoWidth": false },
+                { "data": "gcDate", "name": "gcDate", "autoWidth": false },
+                { "data": "batteryStatus", "title": "batteryStatus", "autoWidth": false },
 
             ]
         });
-
-
-
     });
 
     function DownloadQRCode(Id) {
         window.location.href = "/GarbagePoint/Export?Id=" + Id;
     };
 
-    function showInventoriesGrid() {
-        Search();
-    }
     function noImageNotification() {
         document.getElementById("snackbar").innerHTML = "Image not uploaded...";
         var x = document.getElementById("snackbar");
@@ -450,9 +289,11 @@
         //jQuery("#latlongData").text(cellValue);
         jQuery("#header_data").html(head);
     }
+    function showInventoriesGrid() {
+        Search();
+    }
 
     function Search() {
-        debugger;
         var txt_fdate, txt_tdate, Client, UserId;
         var name = [];
         var arr = [$('#txt_fdate').val(), $('#txt_tdate').val()];
@@ -468,7 +309,6 @@
         ZoneId = $('#ZoneId').val();
         WardId = $('#WardNo').val();
         AreaId = $('#AreaId').val();
-        //Segid = $('#Segid').val();
         Client = " ";
         NesEvent = " ";
         var Product = "";
@@ -481,3 +321,4 @@
         document.getElementById('USER_ID_FK').value = -1;
     }
 </script>
+
