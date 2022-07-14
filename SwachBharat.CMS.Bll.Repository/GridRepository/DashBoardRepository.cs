@@ -6755,6 +6755,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     var model = data.Where(c => ((string.IsNullOrEmpty(c.SauchalayID) ? " " : c.SauchalayID) + " " +
                                         (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                                         (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                                         (string.IsNullOrEmpty(c.TOEMC) ? " " : c.TOEMC) + " " +
+                                         (string.IsNullOrEmpty(c.TOC) ? " " : c.TOC) + " " +
                                         (string.IsNullOrEmpty(c.Tot) ? " " : c.Tot)).ToUpper().Contains(SearchString.ToUpper())).ToList();
 
 
