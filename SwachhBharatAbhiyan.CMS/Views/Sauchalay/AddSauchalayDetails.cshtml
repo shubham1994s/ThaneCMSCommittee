@@ -107,7 +107,7 @@
                     TlistItems.Add(new SelectListItem { Text = "Urinal", Value = "U" });
 
                 }
-                @Html.DropDownListFor(model => model.Tot, TlistItems, new {@disabled="disabled", style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                @Html.DropDownListFor(model => model.Tot, TlistItems, new {style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
 
                 <span class="text-danger" id="err_tot"></span>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -224,23 +224,47 @@
         <div class="col-md-4">
             <div class="form-group">
                 @Html.Label("Type Of Electricity Meter Connection")
-          
-                <select value="@Model.TOEMC" id="toemc" class="form-control" style = "font-family:Arial, FontAwesome">
+
+                @*<select value="@Model.TOEMC" id="toemc" class="form-control" style="font-family:Arial, FontAwesome">
                     <option value="">Select Meter Connection</option>
                     <option value="Installed meter">Installed meter</option>
                     <option value="Shared meter">Shared meter</option>
                 </select>
+
+                @Html.Label("Type Of Toilet")*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @{ var ElistItems = new List<SelectListItem>();
+
+                    ElistItems.Add(new SelectListItem { Text = "Select Meter Connection", Value = "0" });
+                    ElistItems.Add(new SelectListItem { Text = "Installed Meter", Value = "IM" });
+                    ElistItems.Add(new SelectListItem { Text = "Shared Meter", Value = "SM" });
+                }
+                @Html.DropDownListFor(model => model.TOEMC, ElistItems, new {style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+
+
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
                 @Html.Label("Toilet Categary")
-               <select value="@Model.TOC" id="toc" class="form-control" style = "font-family:Arial, FontAwesome">
-                    <option value="">Select Toilet Categary</option>
-                    <option value="Best Toilet">Best Toilet</option>
-                    <option value="Normal Toilet">Normal Toilet</option>
-                </select>
+                @*<select value="@Model.TOC" id="toc" class="form-control" style = "font-family:Arial, FontAwesome">
+            <option value="">Select Toilet Categary</option>
+            <option value="Best Toilet">Best Toilet</option>
+            <option value="Normal Toilet">Normal Toilet</option>
+        </select>*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @{ var ClistItems = new List<SelectListItem>();
+
+                    ClistItems.Add(new SelectListItem { Text = "Select Toilet Categary", Value = "0" });
+                    ClistItems.Add(new SelectListItem { Text = "Best Toilet", Value = "BT" });
+                    ClistItems.Add(new SelectListItem { Text = "Normal Toilet", Value = "NT" });
+                }
+                @Html.DropDownListFor(model => model.TOC, ClistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+
+
             </div>
         </div>
     </div>

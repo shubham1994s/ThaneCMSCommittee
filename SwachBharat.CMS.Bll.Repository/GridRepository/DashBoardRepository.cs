@@ -6744,7 +6744,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
                     Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : GetTot(x.Tot),
                     Tns = x.Tns.HasValue ? x.Tns.ToString() : "",
-                    QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode
+                    QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode,
+                    TOEMC = (string.IsNullOrEmpty(x.TOEMC)) ? "" : GetTot(x.TOEMC),
+                    TOC = (string.IsNullOrEmpty(x.TOC)) ? "" : GetTot(x.TOC),
 
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))
@@ -6773,6 +6775,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     return "Public Toilet";
                 else if (tot.ToUpper() == "U")
                     return "Urinal";
+                else if (tot.ToUpper() == "IM")
+                    return "Installed Meter";
+                else if (tot.ToUpper() == "SM")
+                    return "Shared Meter";
+                else if (tot.ToUpper() == "BT")
+                    return "Best Toilet";
+                else if (tot.ToUpper() == "NT")
+                    return "Normal Toilet";
+
                 else
                     return "";
             }
