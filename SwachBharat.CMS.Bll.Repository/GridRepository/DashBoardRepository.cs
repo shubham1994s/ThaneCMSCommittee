@@ -3369,11 +3369,29 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     int a = Convert.ToInt32(x.vtId.Trim());
                     string vt = "";
+                    string ward = "";
                     if (a != 0)
                     {
                         try { vt = db.VehicleTypes.Where(c => c.vtId == a).FirstOrDefault().description; }
                         catch { vt = ""; }
                     }
+
+                    if (x.WardId != null)
+                    {
+                        int b = Convert.ToInt32(x.WardId.Trim());
+                        if (b != 0)
+                        {
+                            try { ward = db.WardNumbers.Where(c => c.Id == a).FirstOrDefault().WardNo; }
+                            catch { ward = ""; }
+                        }
+                    }
+                    else
+                    {
+                        ward = "";
+                    }
+                   
+
+
                     ///x.daDate = checkNull(x.daDate.tp);
                     x.endLat = checkNull(x.endLat);
                     x.endLong = checkNull(x.endLong);
@@ -3413,6 +3431,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         endLat = x.startLong,
                         endLong = x.endLong,
                         vtId = vt,
+                        wardId = ward,
                         vehicleNumber = x.vehicleNumber,
                         CompareDate = x.daDate,
                         CType = x.CType,
@@ -3424,7 +3443,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     var model = obj.Where(c => c.vehicleNumber.Contains(SearchString) || c.daDate.Contains(SearchString) || c.endTime.Contains(SearchString) || c.startLat.Contains(SearchString) || c.endLat.Contains(SearchString) || c.startTime.Contains(SearchString) || c.userName.Contains(SearchString) || c.vtId.Contains(SearchString)
 
-                    || c.vehicleNumber.ToLower().Contains(SearchString) || c.vtId.ToLower().Contains(SearchString) || c.daDate.ToLower().Contains(SearchString) || c.endTime.ToLower().Contains(SearchString) || c.startLat.ToLower().Contains(SearchString) || c.endLat.ToLower().Contains(SearchString) || c.startTime.ToLower().Contains(SearchString) || c.userName.ToLower().Contains(SearchString)).ToList();
+                    || c.vehicleNumber.ToLower().Contains(SearchString) || c.vtId.ToLower().Contains(SearchString) || c.wardId.ToLower().Contains(SearchString) || c.daDate.ToLower().Contains(SearchString) || c.endTime.ToLower().Contains(SearchString) || c.startLat.ToLower().Contains(SearchString) || c.endLat.ToLower().Contains(SearchString) || c.startTime.ToLower().Contains(SearchString) || c.userName.ToLower().Contains(SearchString)).ToList();
 
                     obj = model.ToList();
                 }
