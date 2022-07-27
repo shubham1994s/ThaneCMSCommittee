@@ -435,6 +435,7 @@ namespace SwachBharat.CMS.Bll.Services
                     {
                         VehicleRegVM vechile = FillVehicleTegViewModel(Details);
                         vechile.AreaList = ListArea();
+                        vechile.WardList = ListWardNo();
                         vechile.VehicleList = ListVehicle();
                         return vechile;
                     }
@@ -442,6 +443,7 @@ namespace SwachBharat.CMS.Bll.Services
                     {
                         VehicleRegVM vechile = new VehicleRegVM();
                         vechile.AreaList = ListArea();
+                        vechile.WardList = ListWardNo();
                         vechile.VehicleList = ListVehicle();
                         return vechile;
                     }
@@ -5317,6 +5319,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.ZoneId = data.ZoneId;
             model.WardNo = data.WardNo;
             model.userId = data.userId;
+            model.TOEMC = data.TOEMC;
+            model.TOC = data.TOC;
             return model;
         }
         #endregion

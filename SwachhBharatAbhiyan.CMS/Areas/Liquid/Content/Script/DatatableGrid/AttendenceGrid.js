@@ -94,7 +94,7 @@
               { "data": "vehicleNumber", "name": "vehicleNumber", "autoWidth": true },
               { "data": "CompareDate", "name": "daID", "autoWidth": true },
               { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
-             
+            { "data": "wardId", "name": "wardId", "autoWidth": true },
         ],
        // Sort: "locId DESC"
     });

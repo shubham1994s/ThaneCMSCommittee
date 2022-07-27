@@ -50,19 +50,29 @@
                     </div>
                 </div>
                 <div class="row">
+                    <!--<div class="col-md-6">
+                    <div class="form-group">-->
+                    @*@Html.Label("झोन / Zone")*@
+                    <!--@Html.Label("Area")-->
+                    @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                    <!--@Html.DropDownListFor(model => model.AreaId, Model.AreaList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_varea"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>-->
                     <div class="col-md-6">
                         <div class="form-group">
                             @*@Html.Label("झोन / Zone")*@
-                            @Html.Label("Area")
+                            @Html.Label("Ward")
                             @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                            @Html.DropDownListFor(model => model.AreaId, Model.AreaList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            @Html.DropDownListFor(model => model.AreaId, Model.WardList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
                             <span class="text-danger" id="err_varea"></span>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" style="margin-top:-5px">
-                            <br/>
+                            <br />
                             <label>Is Active </label>
                             @Html.CheckBox("isActive")
                         </div>

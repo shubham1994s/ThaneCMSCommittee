@@ -119,7 +119,7 @@
             { "data": "Address", "name": "Address", "autoWidth": false },
             { "data": "VehicleNumber", "autoWidth": false },
             { "data": "Note", "autoWidth": false },
-            { "data": "gpBeforImage", "name": "gpBeforImage", "autoWidth": false },
+            { "data": "gcDate", "name": "gcDate", "autoWidth": false },
             { "data": "gpAfterImage", "name": "gpAfterImage", "autoWidth": false },
             { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": false },
             { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
