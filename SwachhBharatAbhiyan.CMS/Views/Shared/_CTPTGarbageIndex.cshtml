@@ -111,11 +111,11 @@
                         <th> CTPT Address</th>
                         <th> Vehicle Number</th>
                         <th> Comment </th>
+                        <th> Before Time  </th>
                         <th> Before Image </th>
+                        <th> After Time  </th>
                         <th> After Image </th>
                         <th> Battery Status </th>
-                        <th> Before Time  </th>
-                        <th> After Time  </th>
                         <th> Total Cleaning Time </th>
                         @*<th> gcDate </th>*@
                         @*<th>Type</th>*@
@@ -256,13 +256,13 @@
                     "searchable": false
                 },
                 {
-                    "targets": [12],
+                    "targets": [14],
                     "visible": false,
                     "searchable": false
                 },
 
                 {
-                    "targets": [10],
+                    "targets": [11],
                     "visible": true,
 
                     "render": function (data, type, full, meta) {
@@ -278,7 +278,7 @@
                     },
                 },
                 {
-                    "targets": [11],
+                    "targets": [13],
                     "visible": true,
 
                     "render": function (data, type, full, meta) {
@@ -358,7 +358,7 @@
                     },
                 },
                     {
-                        "targets": [14],
+                        "targets": [12],
 
                         "visible": true,
 
@@ -376,7 +376,7 @@
                     },
 
                 {
-                    "targets": [13],
+                    "targets": [10],
 
                     "visible": true,
 
@@ -406,11 +406,11 @@
                 { "data": "Address", "name": "Address", "autoWidth": false },
                 { "data": "VehicleNumber", "autoWidth": false },
                 { "data": "Note", "autoWidth": false },
-                { "data": "gpBeforImage", "name": "gpBeforImage", "autoWidth": false },
-                { "data": "gpAfterImage", "name": "gpAfterImage", "autoWidth": false },
-                { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },
                 { "data": "gpBeforImageTime", "name": "gpBeforImageTime", "autoWidth": false },
+                { "data": "gpBeforImage", "name": "gpBeforImage", "autoWidth": false },
                 { "data": "attandDate", "name": "attandDate", "autoWidth": false },
+                { "data": "gpAfterImage", "name": "gpAfterImage", "autoWidth": false },
+                { "data": "batteryStatus", "name": "batteryStatus", "autoWidth": false },   
                 { "data": "TimeSpan", "name": "TimeSpan", "autoWidth": false },
                 /*    { "data": "gcDate", "name": "gcDate", "autoWidth": false },*/
 
