@@ -97,7 +97,7 @@
               { "data": "CompareDate", "name": "daID", "autoWidth": true },
               { "data": "daDateTIme", "name": "daDateTIme", "autoWidth": true },
             //  { "data": "CType", "name": "CType", "autoWidth": true },
-
+            { "data": "wardId", "name": "wardId", "autoWidth": true },
              
         ],
        // Sort: "locId DESC"

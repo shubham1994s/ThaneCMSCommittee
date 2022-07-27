@@ -3369,11 +3369,29 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     int a = Convert.ToInt32(x.vtId.Trim());
                     string vt = "";
+                    string ward = "";
                     if (a != 0)
                     {
                         try { vt = db.VehicleTypes.Where(c => c.vtId == a).FirstOrDefault().description; }
                         catch { vt = ""; }
                     }
+
+                    if (x.WardId != null)
+                    {
+                        int b = Convert.ToInt32(x.WardId.Trim());
+                        if (b != 0)
+                        {
+                            try { ward = db.WardNumbers.Where(c => c.Id == a).FirstOrDefault().WardNo; }
+                            catch { ward = ""; }
+                        }
+                    }
+                    else
+                    {
+                        ward = "";
+                    }
+                   
+
+
                     ///x.daDate = checkNull(x.daDate.tp);
                     x.endLat = checkNull(x.endLat);
                     x.endLong = checkNull(x.endLong);
@@ -3413,6 +3431,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         endLat = x.startLong,
                         endLong = x.endLong,
                         vtId = vt,
+                        wardId = ward,
                         vehicleNumber = x.vehicleNumber,
                         CompareDate = x.daDate,
                         CType = x.CType,
@@ -3424,7 +3443,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     var model = obj.Where(c => c.vehicleNumber.Contains(SearchString) || c.daDate.Contains(SearchString) || c.endTime.Contains(SearchString) || c.startLat.Contains(SearchString) || c.endLat.Contains(SearchString) || c.startTime.Contains(SearchString) || c.userName.Contains(SearchString) || c.vtId.Contains(SearchString)
 
-                    || c.vehicleNumber.ToLower().Contains(SearchString) || c.vtId.ToLower().Contains(SearchString) || c.daDate.ToLower().Contains(SearchString) || c.endTime.ToLower().Contains(SearchString) || c.startLat.ToLower().Contains(SearchString) || c.endLat.ToLower().Contains(SearchString) || c.startTime.ToLower().Contains(SearchString) || c.userName.ToLower().Contains(SearchString)).ToList();
+                    || c.vehicleNumber.ToLower().Contains(SearchString) || c.vtId.ToLower().Contains(SearchString) || c.wardId.ToLower().Contains(SearchString) || c.daDate.ToLower().Contains(SearchString) || c.endTime.ToLower().Contains(SearchString) || c.startLat.ToLower().Contains(SearchString) || c.endLat.ToLower().Contains(SearchString) || c.startTime.ToLower().Contains(SearchString) || c.userName.ToLower().Contains(SearchString)).ToList();
 
                     obj = model.ToList();
                 }
@@ -6744,7 +6763,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
                     Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : GetTot(x.Tot),
                     Tns = x.Tns.HasValue ? x.Tns.ToString() : "",
-                    QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode
+                    QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode,
+                    TOEMC = (string.IsNullOrEmpty(x.TOEMC)) ? "" : GetTot(x.TOEMC),
+                    TOC = (string.IsNullOrEmpty(x.TOC)) ? "" : GetTot(x.TOC),
 
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))
@@ -6753,6 +6774,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     var model = data.Where(c => ((string.IsNullOrEmpty(c.SauchalayID) ? " " : c.SauchalayID) + " " +
                                         (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                                         (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                                         (string.IsNullOrEmpty(c.TOEMC) ? " " : c.TOEMC) + " " +
+                                         (string.IsNullOrEmpty(c.TOC) ? " " : c.TOC) + " " +
                                         (string.IsNullOrEmpty(c.Tot) ? " " : c.Tot)).ToUpper().Contains(SearchString.ToUpper())).ToList();
 
 
@@ -6773,6 +6797,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     return "Public Toilet";
                 else if (tot.ToUpper() == "U")
                     return "Urinal";
+                else if (tot.ToUpper() == "IM")
+                    return "Installed Meter";
+                else if (tot.ToUpper() == "SM")
+                    return "Shared Meter";
+                else if (tot.ToUpper() == "BT")
+                    return "Best Toilet";
+                else if (tot.ToUpper() == "NT")
+                    return "Normal Toilet";
+
                 else
                     return "";
             }

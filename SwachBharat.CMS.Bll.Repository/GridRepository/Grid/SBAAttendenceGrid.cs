@@ -26,6 +26,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string daDateTIme { get; set; }
          public string CType { get; set; }
 
+        public string wardId { get; set; }
+
 
     }
 }
