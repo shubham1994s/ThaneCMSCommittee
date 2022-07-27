@@ -1936,7 +1936,7 @@ $(document).ready(function () {
                     axisY: {
                         labelFontSize: 10,
                         labelFontColor: "dimGrey",
-                        interval: 1,
+                       /* interval: 1,*/
                         title: "CTPT Cleaning"
                     },
 
@@ -1961,8 +1961,10 @@ $(document).ready(function () {
                         },
                         
                         {
-                            //indexLabel: "#total",
-                            //indexLabelPlacement: "outside",
+                            indexLabel: "#total",
+                            indexLabelPlacement: "outside",
+                            /*indexLabel: "#total",*/
+                            indexLabelPlacement: "outside",
                             type: "stackedColumn",
                             showInLegend: true,
                             legendText: "Public Toilet",
