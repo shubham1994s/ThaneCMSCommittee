@@ -206,7 +206,7 @@
                 <span class="checkmark"></span>
             </label>
         </div>
-        <div class="row">
+        <div class="row" style="margin-bottom:4%;">
             <div class="col-sm-2">
                 <div class="controls">
                     <input type="hidden" value="@ViewBag.lat" id="deflat" />
@@ -221,7 +221,7 @@
                 <label>Select Employee</label>
                 <select id="selectnumber" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
             </div>
-          
+
 
 
             <div class="col-sm-2">
@@ -234,16 +234,11 @@
                 <label>Select Area</label>
                 <select id="selectArea" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
             </div>
-        </div>
-
-        <div class="row  col-sm-12">
-
-            <div class="col-sm-1 pull-right">
-                <label>&nbsp;</label>
+            <div class="col-sm-2">
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
-                        <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
-                    <a id="filter" onclick="Search()" style="margin-top: 5px; margin-left: 61%;" class="btn btn-sm btn-success filter-button-style">Search</a>
+            <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
+                    <a id="filter" onclick="Search()" style="margin-top: 25px; margin-left: 30%;" class="btn btn-sm btn-success filter-button-style">Search</a>
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>*@
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
 
@@ -251,6 +246,22 @@
                 </div>
             </div>
         </div>
+
+        <!--<div class="row  col-sm-12">
+
+            <div class="col-sm-1 pull-right">
+                <label>&nbsp;</label>
+                <div class="controls">-->
+                    @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
+                        <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
+                    <!--<a id="filter" onclick="Search()" style="margin-top: 5px; margin-left: 61%;" class="btn btn-sm btn-success filter-button-style">Search</a>-->
+                    @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>*@
+                    @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
+
+
+                <!--</div>
+            </div>
+        </div>-->
         <div class="row">
             <div class="col-sm-4">
                 <label>&nbsp;</label>
@@ -522,7 +533,7 @@
                                     //    poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
                                     //}
                                     if (data[i].CTPTAddress != '') {
-                                        poptext = poptext + '<p><b>Address: </b>' + data[i].CTPTAddress + '<p>';
+                                        poptext = poptext + '<p style="text-transform: capitalize;"><b>Address: </b>' + data[i].CTPTAddress + '<p>';
                                     }
                                     poptext = poptext + '<b>Date: </b>' + data[i].gcDate + '</p><div style="height:auto; width:150px"><p><b>Time: </b>' + data[i].gcTime + '</p></div></div>';
                                     infowindow.setContent(poptext);
@@ -540,7 +551,7 @@
                                     //    poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
                                     //}
                                     if (data[i].CTPTAddress != '') {
-                                        poptext = poptext + '<p><b>Address: </b>' + data[i].CTPTAddress + '</p>';
+                                        poptext = poptext + '<p style="text-transform: capitalize;"><b>Address: </b>' + data[i].CTPTAddress + '</p>';
                                     }
                                     poptext = poptext + '</div>';
                                     infowindow.setContent(poptext);
