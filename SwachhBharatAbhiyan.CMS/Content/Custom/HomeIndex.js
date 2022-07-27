@@ -1937,7 +1937,8 @@ $(document).ready(function () {
                         labelFontSize: 10,
                         labelFontColor: "dimGrey",
                        /* interval: 1,*/
-                        title: "CTPT Cleaning"
+                        title: "CTPT Cleaning",
+                        includeZero: true
                     },
 
 
