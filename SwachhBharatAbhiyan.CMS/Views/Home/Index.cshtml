@@ -1008,7 +1008,7 @@
                             </div>
                             <div class="flex">
                                 <div>CT / PT / U </div>
-                                <div class="text-white mt-2 outfont text-center">@Model.TotalCTCount / @Model.TotalPTCount / @Model.TotalUCount</div>
+                                <div class="text-white mt-2 outfont text-center">@Model.TotalCTCount / @Model.TotalPTCount / @Model.TotalUCount (<span id="tot_CTPTU"></span>)</div>
                             </div>
                         </div>
                     </div>
@@ -1577,4 +1577,12 @@
 
 <script type="text/javascript">
         //setInterval('window.location.reload()', 60000);
+    debugger;
+    let tot_CT = document.getElementById("tot_TotalCTCount").value;
+    let tot_PT = document.getElementById("tot_TotalPTCount").value;
+    let tot_U = document.getElementById("tot_TotalUCount").value;
+
+    let tot_CTPTU = Number(tot_CT) + Number(tot_PT) + Number(tot_U);
+
+    document.getElementById("tot_CTPTU").innerHTML = tot_CTPTU;
 </script>
