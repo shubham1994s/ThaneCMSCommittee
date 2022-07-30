@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChildModel\Model\CommercialDetailsVM.cs" />
+    <Compile Include="ChildModel\Model\CommitteeVM.cs" />
     <Compile Include="ChildModel\Model\ComplaintVM.cs" />
     <Compile Include="ChildModel\Model\CurrentCTPTCollectionCount.cs" />
     <Compile Include="ChildModel\Model\DashBoardVM.cs" />

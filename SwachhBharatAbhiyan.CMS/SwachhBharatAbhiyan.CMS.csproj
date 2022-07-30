@@ -3287,6 +3287,9 @@
     <Content Include="Views\Report\CTPTReportIndex.cshtml" />
     <Content Include="Views\Report\MenuSWMReportIndex.cshtml" />
     <Content Include="Views\Report\SWMReportIndex.cshtml" />
+    <Content Include="Views\MainMaster\MenuCommitteIndex.cshtml" />
+    <Content Include="Views\MainMaster\CommitteeIndex.cshtml" />
+    <Content Include="Views\MainMaster\AddCommitteeDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
