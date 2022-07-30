@@ -128,6 +128,10 @@ namespace SwachBharat.CMS.Bll.Repository.MainRepository
         {
             return mainService.GetUserAppIdSS(UserId);
         }
+        public int GetUserAppIdSA(string UserId)
+        {
+            return mainService.GetUserAppIdSA(UserId);
+        }
         public EmployeeVM Login(EmployeeVM _userinfo)
         {
             EmployeeVM _EmployeeVM = new EmployeeVM();
@@ -178,6 +182,32 @@ namespace SwachBharat.CMS.Bll.Repository.MainRepository
             }
         }
 
+        public EmployeeVM LoginSA(EmployeeVM _userinfo)
+        {
+            EmployeeVM _EmployeeVM = new EmployeeVM();
+            using (DevSwachhBharatMainEntities db = new DevSwachhBharatMainEntities())
+            {
+                var appUser = (db.AD_USER_MST_SA.Where(x => x.ADUM_LOGIN_ID == _userinfo.ADUM_LOGIN_ID && x.ADUM_PASSWORD == _userinfo.ADUM_PASSWORD && x.AD_USER_TYPE==_userinfo.AD_USER_TYPE).SingleOrDefault());
+                if (appUser != null)
+                {
+                    _EmployeeVM.ADUM_LOGIN_ID = appUser.ADUM_LOGIN_ID;
+
+                    _EmployeeVM.APP_ID = appUser.APP_ID;
+                    _EmployeeVM.ADUM_USER_NAME = appUser.ADUM_USER_NAME;
+                    _EmployeeVM.ADUM_USER_CODE = Convert.ToInt32(appUser.ADUM_USER_CODE);
+                    _EmployeeVM.AD_USER_TYPE = appUser.AD_USER_TYPE;
+                    _EmployeeVM.status = "Success";
+
+                    return _EmployeeVM;
+                }
+                else
+                {
+                    _EmployeeVM.status = "Failure";
+                    return _EmployeeVM;
+                }
+            }
+        }
+      
 
         //Addedv By Saurabh (27 May 2019)
 

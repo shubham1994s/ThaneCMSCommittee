@@ -44,6 +44,8 @@ namespace SwachBharat.CMS.Bll.Repository.MainRepository
         int GetUserAppIdL(string UserId);
 
         int GetUserAppIdSS(string UserId);
+
+        int GetUserAppIdSA(string UserId);
         string GetDatabaseFromAppID(int AppId);
 
        // Added By Saurabh ( 27 May 2019)
@@ -52,6 +54,8 @@ namespace SwachBharat.CMS.Bll.Repository.MainRepository
         EmployeeVM Login(EmployeeVM _userinfo);
 
         EmployeeVM LoginStreet(EmployeeVM _userinfo);
+
+        EmployeeVM LoginSA(EmployeeVM _userinfo);
 
         #region Game
         List<GameMaster> GetGameList();

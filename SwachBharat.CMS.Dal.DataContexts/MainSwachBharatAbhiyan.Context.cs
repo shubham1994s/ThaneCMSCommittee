@@ -46,6 +46,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<AD_USER_MST_STREET> AD_USER_MST_STREET { get; set; }
         public virtual DbSet<AppDetail> AppDetails { get; set; }
         public virtual DbSet<AppConnection> AppConnections { get; set; }
+        public virtual DbSet<AD_USER_MST_SA> AD_USER_MST_SA { get; set; }
     
         public virtual int SP_Admin_table()
         {

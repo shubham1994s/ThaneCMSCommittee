@@ -70,5 +70,14 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string CommercialQRCode { get; set; }
         public string CTPTQRCode { get; set; }
         public string SWMQRCode { get; set; }
+        public Nullable<bool> Today_Waste_Status { get; set; }
+        public Nullable<bool> Today_Liquid_Status { get; set; }
+        public Nullable<bool> Today_Street_Status { get; set; }
+        public Nullable<int> ulb_property { get; set; }
+        public Nullable<int> Add_Ulb_Property { get; set; }
+        public Nullable<bool> Status { get; set; }
+        public string VehicalQRCode { get; set; }
+        public string AppAreaLatLong { get; set; }
+        public Nullable<bool> IsAreaActive { get; set; }
     }
 }

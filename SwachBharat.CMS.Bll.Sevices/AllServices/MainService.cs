@@ -318,7 +318,15 @@ namespace SwachBharat.CMS.Bll.Services
 
             return AppId;
         }
+        public int GetUserAppIdSA(string UserId)
+        {
+            int AppId = 0;
+            int AppId1 = 0;
+            AppId1 = Convert.ToInt32(UserId);
+            AppId = dbMain.AD_USER_MST_SA.Where(x => x.APP_ID == AppId1).Select(x => x.APP_ID).FirstOrDefault();
 
+            return AppId;
+        }
         public List<AppDetail> GetAppName()
         {
             List<AppDetail> appNames = new List<AppDetail>();

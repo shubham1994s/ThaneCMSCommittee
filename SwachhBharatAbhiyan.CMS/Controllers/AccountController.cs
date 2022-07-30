@@ -124,6 +124,54 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+
+              if (model.AType == "SA")
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+
+                //   LoginViewModel Result= new LoginViewModel();
+                EmployeeVM Result = new EmployeeVM();
+                Result.ADUM_LOGIN_ID = model.Email;
+                Result.ADUM_PASSWORD = model.Password;
+                Result.AD_USER_TYPE = model.Type;
+                Result = mainrepository.LoginSA(Result);
+                //var UserDetails = await UserManager.FindAsync(model.Email, model.Password);
+                switch (Result.status)
+                {
+                    case "Success":
+                        //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                        //var identity = await UserManager.CreateIdentityAsync(UserDetails, DefaultAuthenticationTypes.ApplicationCookie);
+                        //AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, identity);
+                        //string UserId = UserDetails.Id;
+                        //string UserRole = UserManager.GetRoles(UserId).FirstOrDefault();
+                        //string UserEmail = UserDetails.Email;
+                        //string UserName = identity.Name;
+                        Session["status"] = "Success";
+                        TempData["status"] = "Success";
+                        TempData["ADUM_USER_NAME"] = Result.ADUM_USER_NAME;
+                        AddSessionSA(Result.ADUM_USER_CODE.ToString(), Result.AD_USER_TYPE_ID.ToString(), Result.ADUM_LOGIN_ID, Result.ADUM_USER_NAME, Result.APP_ID.ToString());
+                        Session["UserID"] = Result.ADUM_USER_CODE.ToString();
+                        Session["LoginId"] = Result.ADUM_LOGIN_ID.ToString();
+                        Session["UserProfile"] = Result;
+                       
+                       
+                       return RedirectToComLocal(returnUrl,Result.AD_USER_TYPE);
+                       
+                    case "LockedOut":
+                        return View("Lockout");
+                    case "RequiresVerification":
+
+                    case "Failure":
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+
+                }
+            }
             if (model.Type == "W")
             {
 
@@ -644,6 +692,25 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             return RedirectToAction("Index", "Street/StreetHome");
         }
 
+        private ActionResult RedirectToComLocal(string returnUrl,string CType)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
+            if(CType=="L")
+            {
+                return RedirectToAction("Index", "Liquid/LiquidHome");
+            } 
+            else if (CType == "S")
+            {
+                return RedirectToAction("Index", "Street/StreetHome");
+            }
+            else
+                return RedirectToAction("Index", "Home");
+
+        }
 
         internal class ChallengeResult : HttpUnauthorizedResult
         {
@@ -756,7 +823,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             try
             {
-                int AppId = mainrepository.GetUserAppIdL(usertype);
+                int AppId = mainrepository.GetUserAppIdSS(usertype);
                 if (AppId != 0)
                 {
                     AppDetailsVM ApplicationDetails = mainrepository.GetApplicationDetails(AppId);
@@ -792,24 +859,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     //HttpContext.Session["Apikey"] = "";
 
                 }
-                // if (SessionHandler.Current.Type.Trim() == "np")
-                // {
-                //     SessionHandler.Current.sessionType = "नगर पंचायत | Our Nagar Panchayat";
-                // }
-                // else
-                //if (SessionHandler.Current.Type.Trim() == "npp")
-                // {
-                //     SessionHandler.Current.sessionType = "नगरपरिषद | Municipal Council";
-                // }
-                // else
-                //     if (SessionHandler.Current.Type.Trim() == "gp")
-                // {
-                //     SessionHandler.Current.sessionType = "ग्रामपंचायत | Gram Panchayat";
-                // }
-                // else
-                // {
-                //     SessionHandler.Current.sessionType = "ग्रामपंचायत | Gram Panchayat";
-                // }
+                
 
             }
             catch (Exception exception)
@@ -817,6 +867,56 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 Elmah.ErrorSignal.FromCurrentContext().Raise(exception);
             }
         }
+
+        private void AddSessionSA(string UserId, string UserRole, string UserEmail, string UserName, string usertype)
+        {
+            try
+            {
+                int AppId = mainrepository.GetUserAppIdSA(usertype);
+                if (AppId != 0)
+                {
+                    AppDetailsVM ApplicationDetails = mainrepository.GetApplicationDetails(AppId);
+                    string DB_Connect = mainrepository.GetDatabaseFromAppID(AppId);
+                    SessionHandler.Current.UserId = UserId;
+                    SessionHandler.Current.UserRole = UserRole;
+                    SessionHandler.Current.UserEmail = UserEmail;
+                    SessionHandler.Current.UserName = UserName;
+                    SessionHandler.Current.AppId = ApplicationDetails.AppId;
+                    SessionHandler.Current.AppName = ApplicationDetails.AppName;
+                    SessionHandler.Current.IsLoggedIn = true;
+                    SessionHandler.Current.Type = ApplicationDetails.Type;
+                    SessionHandler.Current.Latitude = ApplicationDetails.Latitude;
+                    SessionHandler.Current.Logitude = ApplicationDetails.Logitude;
+                    SessionHandler.Current.DB_Name = DB_Connect;
+                    SessionHandler.Current.YoccClientID = ApplicationDetails.YoccClientID;
+                    SessionHandler.Current.GramPanchyatAppID = ApplicationDetails.GramPanchyatAppID;
+                    SessionHandler.Current.YoccFeddbackLink = ApplicationDetails.YoccFeddbackLink;
+                    SessionHandler.Current.YoccDndLink = ApplicationDetails.YoccDndLink;
+                    //HttpContext.Session["Apikey"] = (string.IsNullOrEmpty(ApplicationDetails.Apikey)) ? "" : ApplicationDetails.Apikey;
+
+                }
+                else
+                {
+                    SessionHandler.Current.UserId = null;
+                    SessionHandler.Current.UserRole = null;
+                    SessionHandler.Current.UserEmail = null;
+                    SessionHandler.Current.UserName = null;
+                    SessionHandler.Current.AppId = 0;
+                    SessionHandler.Current.AppName = null;
+                    SessionHandler.Current.IsLoggedIn = false;
+                    SessionHandler.Current.Type = null;
+                    //HttpContext.Session["Apikey"] = "";
+
+                }
+
+
+            }
+            catch (Exception exception)
+            {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(exception);
+            }
+        }
+
         #endregion
 
     }

@@ -21,5 +21,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string longitude { get; set; }
         public Nullable<int> state { get; set; }
         public Nullable<int> district { get; set; }
+        public Nullable<bool> IsCheked { get; set; }
     }
 }

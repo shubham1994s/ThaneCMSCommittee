@@ -28,6 +28,11 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public bool UPDATE_FLAG { get; set; }
         public string LAST_UPDATE { get; set; }
         public int AD_USER_TYPE_ID { get; set; }
+        
+
+        public string AD_USER_TYPE { get; set; }
+
+        
         public string MOBILE_ID { get; set; }
         public bool IS_ACTIVE { get; set; }
 
