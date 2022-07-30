@@ -34,7 +34,7 @@ else if (@HttpContext.Current.Session["status"] == "Success")
             </li>
 
             <li class="nav-item">
-                @Html.ActionLink(@TempData["ADUM_USER_NAME"] + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage", @id = "asdf" })
+                @Html.ActionLink(@Session["ADUM_USER_NAME"] + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage", @id = "asdf" })
 
                 @*@Html.ActionLink(@HttpContext.Current.User.Identity.GetUserId() + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage", @id = "asdf" })*@
 
