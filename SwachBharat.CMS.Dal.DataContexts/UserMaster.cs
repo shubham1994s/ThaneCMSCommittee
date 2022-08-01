@@ -32,5 +32,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string EmployeeType { get; set; }
         public string imoNo2 { get; set; }
         public string ComgcTarget { get; set; }
+        public Nullable<int> ZoneId { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
     }
 }
