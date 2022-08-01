@@ -152,6 +152,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         //string UserName = identity.Name;
                         Session["status"] = "Success";
                         TempData["status"] = "Success";
+                        Session["ADUM_USER_NAME"] = Result.ADUM_USER_NAME;
                         TempData["ADUM_USER_NAME"] = Result.ADUM_USER_NAME;
                         AddSessionSA(Result.ADUM_USER_CODE.ToString(), Result.AD_USER_TYPE_ID.ToString(), Result.ADUM_LOGIN_ID, Result.ADUM_USER_NAME, Result.APP_ID.ToString());
                         Session["UserID"] = Result.ADUM_USER_CODE.ToString();
