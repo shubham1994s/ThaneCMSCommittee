@@ -1612,6 +1612,8 @@ namespace SwachBharat.CMS.Bll.Services
                             model.gcTarget = data.gcTarget;
                             model.ComgcTarget = data.ComgcTarget;
                             model.userDesignation = data.userDesignation;
+                            model.ZoneId = data.ZoneId;
+                            model.PrabhagId = data.PrabhagId;
                             //model.EmployeeType = Emptype;
                             db.SaveChanges();
                         }
@@ -4500,6 +4502,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = Emptype;
             model.userDesignation = data.userDesignation;
+            model.ZoneId = data.PrabhagId;
             return model;
         }
 
