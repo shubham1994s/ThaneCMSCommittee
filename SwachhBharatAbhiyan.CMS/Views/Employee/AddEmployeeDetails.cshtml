@@ -196,9 +196,32 @@
                 </div>
             </div>
 
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @*@Html.Label("झोन / Zone")*@
+                    @Html.Label("Zone")
+                    @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                    @Html.DropDownListFor(model => model.ZoneId, Model.ZoneList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                    <span class="text-danger" id="err_zone"></span>
+                    <span class="help-block with-errors"></span>
+                </div>
+            </div>
 
+            <div class="col-md-6">
 
+                <div class="form-group">
+                    @*@Html.Label("वार्ड क्रमांक / Ward No")*@
+                    @Html.Label("Ward / Prabhag")
+                    @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopWard()"> + Add Ward </a>*@
 
+                    @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                    @Html.ValidationMessageFor(model => model.PrabhagId, "", new { @class = "text-danger" })
+                    <span class="text-danger" id="err_ward"></span>
+                    <span class="help-block with-errors"></span>
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -320,6 +343,33 @@
             //$('.title_change').text("कर्मचारी तपशील सादर करा / Add  Employee Details");
             $('.title_change').text("Add  Employee Details");
         }
+
+
+
+        $('#ZoneId').change(function () {
+            debugger;
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "/Employee/LoadPrabhagNoList?",
+                data: { ZoneId: $('#ZoneId').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var prabhag;
+                    for (var i = 0; i < data.length; i++) {
+                        prabhag = prabhag + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+
+                    $('#PrabhagId').html(prabhag);
+
+                 
+                }
+            });
+
+        });
     });
 
 

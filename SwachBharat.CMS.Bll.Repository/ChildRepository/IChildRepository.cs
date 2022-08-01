@@ -232,6 +232,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         void EditOnePointSeven(List<OnePoint7QuestionVM> OnePoint7);
 
         List<SelectListItem> LoadListWardNo(int ZoneId);
+        List<SelectListItem> LoadListPrabhagNo(int ZoneId);
 
         List<SelectListItem> LoadListArea(int WardNo);
 
