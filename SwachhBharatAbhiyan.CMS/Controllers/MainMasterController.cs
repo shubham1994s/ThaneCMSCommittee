@@ -780,17 +780,17 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         //}
 
         [HttpPost]
-        public ActionResult CheckCommitteeDetails(WardNumberVM obj)
+        public ActionResult CheckCommitteeDetails(CommitteeVM obj)
         {
             if (SessionHandler.Current.AppId != 0)
             {
 
-                CommitteeVM area = childRepository.GetCommitteeName(0, obj.WardNo);
+                CommitteeVM area = childRepository.GetCommitteeName(0, obj.CommitteeNo);
 
 
                 if (obj.Id > 0)
                 {
-                    if (area.CommitteeNo == obj.WardNo & area.Id != obj.Id)
+                    if (area.CommitteeNo == obj.CommitteeNo & area.Id != obj.Id)
                     { return Json(false, JsonRequestBehavior.AllowGet); }
                     else
                         return Json(true, JsonRequestBehavior.AllowGet);
