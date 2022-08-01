@@ -22,7 +22,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         {
         }
 
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -38,7 +37,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<WM_Garbage_Summary> WM_Garbage_Summary { get; set; }
         public virtual DbSet<ZoneMaster> ZoneMasters { get; set; }
         public virtual DbSet<TeritoryMaster> TeritoryMasters { get; set; }
-        public virtual DbSet<WardNumber> WardNumbers { get; set; }
         public virtual DbSet<QrEmployeeMaster> QrEmployeeMasters { get; set; }
         public virtual DbSet<GramCleaningComplient> GramCleaningComplients { get; set; }
         public virtual DbSet<WM_Garbage_Sales> WM_Garbage_Sales { get; set; }
@@ -61,6 +59,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<SS_1_4_QUESTION> SS_1_4_QUESTION { get; set; }
         public virtual DbSet<DumpYardDetail> DumpYardDetails { get; set; }
         public virtual DbSet<CommitteeMaster> CommitteeMasters { get; set; }
+        public virtual DbSet<WardNumber> WardNumbers { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
