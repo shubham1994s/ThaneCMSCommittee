@@ -15,6 +15,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         public Nullable<int> zoneId { get; set; }
 
+        public Nullable<int> PrabhagId { get; set; }
 
 
         public int LWId { get; set; }

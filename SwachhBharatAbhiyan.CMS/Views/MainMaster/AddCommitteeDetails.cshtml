@@ -45,7 +45,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @*@Html.Label("वार्ड क्रमांक / Ward Number")*@
-                    @Html.Label("Committee Name")
+                    @Html.Label("Prabhag Samitee Name")
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.TextBoxFor(model => model.CommitteeNo, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
                     @Html.ValidationMessageFor(model => model.CommitteeNo, "", new { @class = "text-danger" })
@@ -96,7 +96,7 @@
 
                     <div class="form-group">
                         @*@Html.Label("वार्ड क्रमांक / Ward Number")*@
-                        @Html.Label("Committee Name")
+                        @Html.Label("Prabhag Samitee Name")
                         <input type="text" class="form-control" id="txtZone" placeholder="Ward no." />
                         <span class="text-danger" id="err_zone_pop"></span>
                         <br /><br />
@@ -117,11 +117,11 @@
         if (id > 0) {
             $('#buttonName').text("Save Changes");
             //$('.title_change').text("वार्ड तपशील सादर बदला / Edit Ward Details");
-            $('.title_change').text("Edit Committee Details");
+            $('.title_change').text("Edit Prabhag Samitee Details");
         } else {
             $('#buttonName').text("Save");
             //$('.title_change').text(" वार्ड तपशील सादर करा / Add Ward Details ");
-            $('.title_change').text("Add Committee Details ");
+            $('.title_change').text("Add Prabhag Samitee Details ");
         }
     });
     $("#btnSubmit").click(function () {
@@ -135,7 +135,7 @@
         }
         if ($.trim($("#CommitteeNo").val()) == '') {
             //$("#err_ward").html("वार्ड क्रमांक आवश्यक आहे / Ward number is Required").delay(1500).show().fadeOut('slow');
-            $("#err_committee").html("Committee Name is Required").delay(1500).show().fadeOut('slow');
+            $("#err_committee").html("Prabhag Samitee Name is Required").delay(1500).show().fadeOut('slow');
             $('#CommitteeNo').focus();
             return false;
         }
