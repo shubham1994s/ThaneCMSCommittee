@@ -566,7 +566,10 @@ namespace SwachBharat.CMS.Bll.Services
                             model.Id = data.Id;
                             model.WardNo = data.WardNo;
                             model.PrabhagId = data.PrabhagId;
+                            if(zone!=null)
+                            { 
                             model.zoneId = zone.zoneId;
+                            }
                             db.SaveChanges();
                         }
                     }
@@ -5019,7 +5022,7 @@ namespace SwachBharat.CMS.Bll.Services
             WardNumberVM model = new WardNumberVM();
             model.Id = data.Id;
             model.WardNo = data.WardNo;
-            model.zoneId = data.zoneId;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 

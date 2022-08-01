@@ -489,18 +489,18 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     Id = x.Id,
                     WardNo = x.WardNo,
-                    zone = db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name,
+                    Prabhag = db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
                 }).ToList();
                 foreach (var item in data)
                 {
                     item.WardNo = checkNull(item.WardNo);
-                    item.zone = checkNull(item.zone);
+                    item.Prabhag = checkNull(item.Prabhag);
 
 
                 }
                 if (!string.IsNullOrEmpty(SearchString))
                 {
-                    var model = data.Where(c => c.WardNo.ToUpper().ToString().Contains(SearchString) || c.WardNo.ToString().ToLower().ToString().Contains(SearchString) || c.WardNo.ToString().Contains(SearchString) || c.zone.ToString().Contains(SearchString) || c.zone.ToUpper().ToString().Contains(SearchString) || c.zone.ToLower().ToString().Contains(SearchString)).ToList();
+                    var model = data.Where(c => c.WardNo.ToUpper().ToString().Contains(SearchString) || c.WardNo.ToString().ToLower().ToString().Contains(SearchString) || c.WardNo.ToString().Contains(SearchString) || c.Prabhag.ToString().Contains(SearchString) || c.Prabhag.ToUpper().ToString().Contains(SearchString) || c.Prabhag.ToLower().ToString().Contains(SearchString)).ToList();
 
                     data = model.ToList();
                 }
