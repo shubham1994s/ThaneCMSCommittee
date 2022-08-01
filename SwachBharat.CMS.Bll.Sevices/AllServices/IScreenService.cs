@@ -13,11 +13,11 @@ namespace SwachBharat.CMS.Bll.Services
 {
     public interface IScreenService
     {
-        DashBoardVM GetDashBoardDetails();
+        DashBoardVM GetDashBoardDetails(int PrabhagId);
 
-        DashBoardVM GetLiquidDashBoardDetails();
+        DashBoardVM GetLiquidDashBoardDetails(int PrabhagId);
 
-        DashBoardVM GetStreetDashBoardDetails();
+        DashBoardVM GetStreetDashBoardDetails(int PrabhagId);
         string Address(string location);
         AreaVM GetAreaDetails(int teamId,string Name);
         void DeletAreaDetails(int teamId);
@@ -177,7 +177,7 @@ namespace SwachBharat.CMS.Bll.Services
         //Added By Saurabh (2 July 2019)
         DashBoardVM GetHouseOnMapDetails();
         DashBoardVM GetCommercialOnMapDetails();
-        DashBoardVM GetCTPTOnMapDetails();
+        DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 
         DashBoardVM GetSWMOnMapDetails();
         DashBoardVM GetLiquidWasteDetails();

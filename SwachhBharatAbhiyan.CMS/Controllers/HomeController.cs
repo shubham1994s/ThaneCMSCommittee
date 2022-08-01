@@ -37,8 +37,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.YoccFeddbackLink = SessionHandler.Current.YoccFeddbackLink;
-            
-                var details = childRepository.GetDashBoardDetails();
+                var PrabhagId = Session["PrabhagId"];
+               int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                var details = childRepository.GetDashBoardDetails(PId);
                 return View(details);
             }
             else
@@ -72,7 +74,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                var details = childRepository.GetDashBoardDetails();
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                var details = childRepository.GetDashBoardDetails(PId);
 
                 if (details!=null)
                 {
@@ -136,7 +140,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 DashBoardRepository objRep = new DashBoardRepository();
 
-                obj = objRep.getEmployeeHouseCollectionType(SessionHandler.Current.AppId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                obj = objRep.getEmployeeHouseCollectionType(SessionHandler.Current.AppId, PId);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
             else
@@ -152,7 +158,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 DashBoardRepository objRep = new DashBoardRepository();
 
-                obj = objRep.GetCurrentCTPTCollectionCount(SessionHandler.Current.AppId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                obj = objRep.GetCurrentCTPTCollectionCount(SessionHandler.Current.AppId, PId);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
             else

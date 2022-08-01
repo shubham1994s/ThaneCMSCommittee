@@ -196,6 +196,7 @@ namespace SwachBharat.CMS.Bll.Repository.MainRepository
                     _EmployeeVM.ADUM_USER_NAME = appUser.ADUM_USER_NAME;
                     _EmployeeVM.ADUM_USER_CODE = Convert.ToInt32(appUser.ADUM_USER_CODE);
                     _EmployeeVM.AD_USER_TYPE = appUser.AD_USER_TYPE;
+                    _EmployeeVM.PRABHAG_ID = appUser.PrabhagId;
                     _EmployeeVM.status = "Success";
 
                     return _EmployeeVM;

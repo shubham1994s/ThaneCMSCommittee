@@ -62,7 +62,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         #endregion
         #region Dashboard
-        public DashBoardVM GetDashBoardDetails()
+        public DashBoardVM GetDashBoardDetails(int PrabhagId)
         {
             DashBoardVM model = new DashBoardVM();
             try
@@ -83,11 +83,12 @@ namespace SwachBharat.CMS.Bll.Services
                         string json = new WebClient().DownloadString(appdetails.Grampanchayat_Pro + "/api/Get/Complaint?appId=" + appdetails.GramPanchyatAppID);
                         obj = JsonConvert.DeserializeObject<List<ComplaintVM>>(json).Where(c => Convert.ToDateTime(c.createdDate2).ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")).ToList();
                     }
-                    var data = db.SP_Dashboard_Details().First();
-                    var data1 = db.SP_CTPTScanify_Count().First();
+
+                    var data = db.SP_Dashboard_Details(PrabhagId).First();
+                    var data1 = db.SP_CTPTScanify_Count(PrabhagId).First();
 
                     var date = DateTime.Today;
-                    var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();
+                    var houseCount = db.SP_TotalHouseCollection_Count(date, PrabhagId).FirstOrDefault();
                     if (data != null)
                     {
 
@@ -4009,7 +4010,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public DashBoardVM GetCTPTOnMapDetails()
+        public DashBoardVM GetCTPTOnMapDetails(int PrabhagId)
 
         {
             DashBoardVM model = new DashBoardVM();
@@ -4028,7 +4029,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //}
 
 
-                    var data = db.SP_CTPTScanify_Count().First();
+                    var data = db.SP_CTPTScanify_Count(PrabhagId).First();
 
                     //var date = DateTime.Today;
                     //var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();
@@ -9004,7 +9005,7 @@ namespace SwachBharat.CMS.Bll.Services
             return userLocation;
         }
 
-        public DashBoardVM GetLiquidDashBoardDetails()
+        public DashBoardVM GetLiquidDashBoardDetails(int PrabhagId)
         {
             DashBoardVM model = new DashBoardVM();
             try
@@ -9028,7 +9029,7 @@ namespace SwachBharat.CMS.Bll.Services
                     var data = db.SP_LiquidDashboard_Details().First();
 
                     var date = DateTime.Today;
-                    var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();
+                    var houseCount = db.SP_TotalHouseCollection_Count(date, PrabhagId).FirstOrDefault();
                     if (data != null)
                     {
 
@@ -9082,7 +9083,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public DashBoardVM GetStreetDashBoardDetails()
+        public DashBoardVM GetStreetDashBoardDetails(int PrabhagId)
         {
             DashBoardVM model = new DashBoardVM();
             try
@@ -9096,7 +9097,7 @@ namespace SwachBharat.CMS.Bll.Services
                     var data = db.SP_StreetDashboard_Details().First();
 
                     var date = DateTime.Today;
-                    var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();
+                    var houseCount = db.SP_TotalHouseCollection_Count(date, PrabhagId).FirstOrDefault();
                     if (data != null)
                     {
 

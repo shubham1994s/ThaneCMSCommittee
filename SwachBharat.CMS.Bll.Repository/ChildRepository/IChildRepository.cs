@@ -17,11 +17,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
     public interface IChildRepository
     {
      
-        DashBoardVM GetDashBoardDetails();
+        DashBoardVM GetDashBoardDetails(int PrabhagId);
 
-        DashBoardVM GetLiquidDashBoardDetails();
+        DashBoardVM GetLiquidDashBoardDetails(int PrabhagId);
 
-        DashBoardVM GetStreetDashBoardDetails();
+        DashBoardVM GetStreetDashBoardDetails(int PrabhagId);
         string Address(string location);
         AreaVM GetArea(int teamId,string name);
         void DeletArea(int teamId);
@@ -197,7 +197,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         //Added By saurabh ( 02 July 2019)
         DashBoardVM GetHouseOnMapDetails();
         DashBoardVM GetCommercialOnMapDetails();
-        DashBoardVM GetCTPTOnMapDetails();
+        DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 
         DashBoardVM GetSWMOnMapDetails();
 

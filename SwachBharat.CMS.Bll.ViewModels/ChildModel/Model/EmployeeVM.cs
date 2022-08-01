@@ -42,5 +42,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         public string DEVICE_ID { get; set; }
         public string status { get; set; }
+
+        public Nullable<int> PRABHAG_ID { get; set; }
     }
 }

@@ -18,9 +18,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-    : base(SwachBharatAppConnection.GetConnectionString(AppId))
+       : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -484,11 +485,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Result>("SP_HouseScanify", fdateParameter, tdateParameter, useridParameter);
         }
     
-        public virtual ObjectResult<SP_CTPTScanify_Count_Result> SP_CTPTScanify_Count()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTScanify_Count_Result>("SP_CTPTScanify_Count");
-        }
-    
         public virtual ObjectResult<SP_HouseScanify_Count_Result> SP_HouseScanify_Count()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Count_Result>("SP_HouseScanify_Count");
@@ -868,11 +864,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPT_Collection_Result>("SP_CTPT_Collection", fDateParameter, tDateParameter, userIdParameter);
         }
     
-        public virtual ObjectResult<SP_Dashboard_Details_Result> SP_Dashboard_Details()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result>("SP_Dashboard_Details");
-        }
-    
         public virtual ObjectResult<SP_EmployeeSummary_Result> SP_EmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid)
         {
             var fromParameter = from.HasValue ?
@@ -888,25 +879,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("userid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeSummary_Result>("SP_EmployeeSummary", fromParameter, toParameter, useridParameter);
-        }
-    
-        public virtual ObjectResult<SP_TotalHouseCollection_Count_Result> SP_TotalHouseCollection_Count(Nullable<System.DateTime> gcdate)
-        {
-            var gcdateParameter = gcdate.HasValue ?
-                new ObjectParameter("gcdate", gcdate) :
-                new ObjectParameter("gcdate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter);
-        }
-    
-        public virtual ObjectResult<SP_EmployeeHouseCollectionType_Result> SP_EmployeeHouseCollectionType()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeHouseCollectionType_Result>("SP_EmployeeHouseCollectionType");
-        }
-    
-        public virtual ObjectResult<SP_CurrentCTPTCount_Result> SP_CurrentCTPTCount()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CurrentCTPTCount_Result>("SP_CurrentCTPTCount");
         }
     
         public virtual ObjectResult<SP_GetHSHouseDetails_Result> SP_GetHSHouseDetails(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid, string sortColumn, string sortOrder, Nullable<int> offsetValue, Nullable<int> pagingSize, string searchText)
@@ -1127,6 +1099,55 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("Segid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTGarbageCollection_Result>("SP_CTPTGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
+        }
+    
+        public virtual ObjectResult<SP_CTPTScanify_Count_Result> SP_CTPTScanify_Count(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTScanify_Count_Result>("SP_CTPTScanify_Count", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_Dashboard_Details_Result> SP_Dashboard_Details(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result>("SP_Dashboard_Details", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_TotalHouseCollection_Count_Result> SP_TotalHouseCollection_Count(Nullable<System.DateTime> gcdate, Nullable<int> prabhagid)
+        {
+            var gcdateParameter = gcdate.HasValue ?
+                new ObjectParameter("gcdate", gcdate) :
+                new ObjectParameter("gcdate", typeof(System.DateTime));
+    
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TotalHouseCollection_Count_Result>("SP_TotalHouseCollection_Count", gcdateParameter, prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_CurrentCTPTCount_Result> SP_CurrentCTPTCount(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CurrentCTPTCount_Result>("SP_CurrentCTPTCount", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_EmployeeHouseCollectionType_Result> SP_EmployeeHouseCollectionType(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeHouseCollectionType_Result>("SP_EmployeeHouseCollectionType", prabhagidParameter);
         }
     }
 }

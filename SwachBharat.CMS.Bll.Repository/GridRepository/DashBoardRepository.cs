@@ -6934,12 +6934,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
         //by neha 13 june 2019
-        public IEnumerable<EmployeeHouseCollectionType> getEmployeeHouseCollectionType(int appId)
+        public IEnumerable<EmployeeHouseCollectionType> getEmployeeHouseCollectionType(int appId , int PrabhagId)
         {
             List<EmployeeHouseCollectionType> obj = new List<EmployeeHouseCollectionType>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_EmployeeHouseCollectionType().ToList();
+                var data = db.SP_EmployeeHouseCollectionType(PrabhagId).ToList();
                 // var data = "1";
 
                 foreach (var x in data)
@@ -7007,12 +7007,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<CurrentCTPTCollectionCount> GetCurrentCTPTCollectionCount(int appId)
+        public IEnumerable<CurrentCTPTCollectionCount> GetCurrentCTPTCollectionCount(int appId, int PrabhagId)
         {
             List<CurrentCTPTCollectionCount> obj = new List<CurrentCTPTCollectionCount>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_CurrentCTPTCount().ToList();
+                var data = db.SP_CurrentCTPTCount(PrabhagId).ToList();
                 // var data = "1";
 
                 foreach (var x in data)

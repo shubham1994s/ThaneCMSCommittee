@@ -37,8 +37,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.YoccFeddbackLink = SessionHandler.Current.YoccFeddbackLink;
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 TempData.Keep();
-                var details = childRepository.GetStreetDashBoardDetails();
+                var details = childRepository.GetStreetDashBoardDetails(PId);
                 return View(details);
             }
             else
