@@ -141,6 +141,26 @@
         }
         return true;
     });
+
+
+    $("#CommitteeNo").keyup(function () {
+
+
+        var CommitteeNo = $("#CommitteeNo").val();
+        $.ajax({
+            url: "/MainMaster/CheckCommitteeDetails?userName=" + CommitteeNo,
+            type: "POST",
+            data: { CommitteeNo: CommitteeNo }
+        })
+            .done(function (msg) {
+                if (msg == 1) {
+                    $('#err_committee').text('');
+                } else {
+                    $('#err_committee').text('This Name Is Already Exist!');
+                }
+            });
+    });
+
 </script>
 
 

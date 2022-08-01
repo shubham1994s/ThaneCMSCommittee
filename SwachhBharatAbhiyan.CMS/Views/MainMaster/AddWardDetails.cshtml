@@ -141,5 +141,24 @@
         }
         return true;
     });
+
+    $("#WardNo").keyup(function () {
+
+
+        var WardNo = $("#WardNo").val();
+        $.ajax({
+            url: "/MainMaster/CheckWardDetails?userName=" + WardNo,
+            type: "POST",
+            data: { WardNo: WardNo }
+        })
+            .done(function (msg) {
+                if (msg == 1) {
+                    $('#err_ward').text('');
+                } else {
+                    $('#err_ward').text('This Name Is Already Exist!');
+                }
+            });
+    });
+
 </script>
 
