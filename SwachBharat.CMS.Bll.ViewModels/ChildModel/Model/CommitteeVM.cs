@@ -10,7 +10,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
     public class CommitteeVM : BaseVM
     {
         public int Id { get; set; }
-        [Remote("CheckCommitteeDetails", "MainMaster", HttpMethod = "POST", ErrorMessage = "Name already exists!", AdditionalFields = "Id")]
+        //[Remote("CheckCommitteeDetails", "MainMaster", HttpMethod = "POST", ErrorMessage = "Name already exists!", AdditionalFields = "Id")]
         public string CommitteeNo { get; set; }
 
         public Nullable<int> zoneId { get; set; }
