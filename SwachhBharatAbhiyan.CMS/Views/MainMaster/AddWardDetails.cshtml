@@ -29,10 +29,10 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                             @*@Html.Label("झोन  / Zone")*@
-                            @Html.Label("Zone")
+                            @Html.Label("Prabhag Samitee Name")
                             @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                            @Html.DropDownListFor(model => model.zoneId, Model.ZoneList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-                            @Html.ValidationMessageFor(model => model.zoneId, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            @Html.ValidationMessageFor(model => model.PrabhagId, "", new { @class = "text-danger" })
                             <span class="text-danger" id="err_zone"></span>
                             <span class="help-block with-errors"></span>
                         </div>
@@ -45,7 +45,7 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                             @*@Html.Label("वार्ड क्रमांक / Ward Number")*@
-                            @Html.Label("Ward / Prabhag Name")
+                            @Html.Label("Ward  Name")
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.TextBoxFor(model => model.WardNo, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
                             @Html.ValidationMessageFor(model => model.WardNo, "", new { @class = "text-danger" })
@@ -85,7 +85,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Add Zone</h4>
+                <h4 class="modal-title">Add Prabhag Samitee</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -96,7 +96,7 @@
 
                     <div class="form-group">
                         @*@Html.Label("वार्ड क्रमांक / Ward Number")*@
-                        @Html.Label("Ward / Prabhag Name")
+                        @Html.Label("Ward  Name")
                         <input type="text" class="form-control" id="txtZone" placeholder="Ward no." / >
                         <span class="text-danger" id="err_zone_pop"></span>
                         <br /><br />
@@ -117,25 +117,25 @@
         if (id > 0) {
             $('#buttonName').text("Save Changes");
             //$('.title_change').text("वार्ड तपशील सादर बदला / Edit Ward Details");
-            $('.title_change').text("Edit Ward / Prabhag Details");
+            $('.title_change').text("Edit Ward  Details");
         } else {
             $('#buttonName').text("Save");
             //$('.title_change').text(" वार्ड तपशील सादर करा / Add Ward Details ");
-            $('.title_change').text("Add Ward / Prabhag Details ");
+            $('.title_change').text("Add Ward  Details ");
         }
     });
     $("#btnSubmit").click(function () {
         //alert("aa");
 
-        if ($.trim($("#zoneId").val()) == "-1" || $.trim($("#zoneId").val()) == "0") {
+        if ($.trim($("#PrabhagId").val()) == "-1" || $.trim($("#PrabhagId").val()) == "0") {
             //$("#err_zone").html("झोन आवश्यक आहे / Zone is Required").delay(1500).show().fadeOut('slow');
-            $("#err_zone").html("Zone is Required").delay(1500).show().fadeOut('slow');
+            $("#err_zone").html("Prabhag Samitee is Required").delay(1500).show().fadeOut('slow');
             $('#selectnumber').focus();
             return false;
         }
         if ($.trim($("#WardNo").val()) == '') {
             //$("#err_ward").html("वार्ड क्रमांक आवश्यक आहे / Ward number is Required").delay(1500).show().fadeOut('slow');
-            $("#err_ward").html("Ward / Prabhag Name is Required").delay(1500).show().fadeOut('slow');
+            $("#err_ward").html("Ward  Name is Required").delay(1500).show().fadeOut('slow');
             $('#WardNo').focus();
             return false;
         }

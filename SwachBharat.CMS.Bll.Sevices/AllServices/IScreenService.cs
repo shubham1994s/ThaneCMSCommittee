@@ -215,6 +215,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         void EditOnePointSeven(List<OnePoint7QuestionVM> OnePoint7QuestionVM);
         List<SelectListItem> LoadListWardNo(int ZoneId);
+        List<SelectListItem> LoadListPrabhagNo(int ZoneId);
         List<SelectListItem> LoadListArea(int WardNo);
         //InfotainmentDetailsVW GetInfotainmentDetailsById(int ID);
         //void SaveGameDetails(InfotainmentDetailsVW data);

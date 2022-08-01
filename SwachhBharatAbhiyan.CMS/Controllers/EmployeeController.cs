@@ -123,5 +123,23 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
+
+        public ActionResult LoadPrabhagNoList(int ZoneId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                EmployeeDetailsVM obj = new EmployeeDetailsVM();
+                try
+                {
+                    obj.PrabhagList = childRepository.LoadListPrabhagNo(ZoneId);
+                }
+                catch (Exception ex) { throw ex; }
+
+                return Json(obj.PrabhagList, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
     }
 }
