@@ -5296,6 +5296,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = data.EmployeeType;
             model.userDesignation = data.userDesignation;
+            model.ZoneId = data.ZoneId;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 
