@@ -23,7 +23,7 @@
 
         "columns": [
               { "data": "Id", "name": "Id", "autoWidth": false },
-              { "data": "zone", "name": "zone", "autoWidth": false },
+            { "data": "Prabhag", "name": "Prabhag", "autoWidth": false },
               { "data": "WardNo", "name": "WardNo", "autoWidth": false },
        { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"  onclick="Edit(' + full["Id"] + ')" ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
       // <a  data-toggle="modal" style="cursor:pointer;margin-left:10px;" class="tooltip1" style="cursor:pointer" onclick="Delete(' + full["Id"] + ')" ><i class="material-icons delete-icon">delete</i><span class="tooltiptext1">Delete</span> </a>

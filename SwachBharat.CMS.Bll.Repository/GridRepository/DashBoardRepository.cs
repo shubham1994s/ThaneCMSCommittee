@@ -489,18 +489,18 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     Id = x.Id,
                     WardNo = x.WardNo,
-                    zone = db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name,
+                    Prabhag = db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
                 }).ToList();
                 foreach (var item in data)
                 {
                     item.WardNo = checkNull(item.WardNo);
-                    item.zone = checkNull(item.zone);
+                    item.Prabhag = checkNull(item.Prabhag);
 
 
                 }
                 if (!string.IsNullOrEmpty(SearchString))
                 {
-                    var model = data.Where(c => c.WardNo.ToUpper().ToString().Contains(SearchString) || c.WardNo.ToString().ToLower().ToString().Contains(SearchString) || c.WardNo.ToString().Contains(SearchString) || c.zone.ToString().Contains(SearchString) || c.zone.ToUpper().ToString().Contains(SearchString) || c.zone.ToLower().ToString().Contains(SearchString)).ToList();
+                    var model = data.Where(c => c.WardNo.ToUpper().ToString().Contains(SearchString) || c.WardNo.ToString().ToLower().ToString().Contains(SearchString) || c.WardNo.ToString().Contains(SearchString) || c.Prabhag.ToString().Contains(SearchString) || c.Prabhag.ToUpper().ToString().Contains(SearchString) || c.Prabhag.ToLower().ToString().Contains(SearchString)).ToList();
 
                     data = model.ToList();
                 }
@@ -764,6 +764,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == null).ToList();
@@ -792,6 +794,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
 
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
@@ -820,7 +826,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                               (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
                                              (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
-                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation) + " " +
+                                             (string.IsNullOrEmpty(c.Zone) ? " " : c.Zone) + " " +
+                                             (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag)).ToUpper().Contains(SearchString.ToUpper())).ToList();
 
 
                         data = model.ToList();
@@ -851,6 +859,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
 
@@ -880,7 +890,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
-
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else
@@ -899,9 +912,11 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
                                              (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
-                                                 (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
                                              (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
-                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation) + " " +
+                                             (string.IsNullOrEmpty(c.Zone) ? " " : c.Zone) + " " +
+                                             (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }

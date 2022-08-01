@@ -17,5 +17,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public int Id { get; set; }
         public string WardNo { get; set; }
         public Nullable<int> zoneId { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
     }
 }

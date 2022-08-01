@@ -12,5 +12,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public string WardNo { get; set; }
         
         public string zone { get; set; }
+
+        public string Prabhag { get; set; }
     }
 }

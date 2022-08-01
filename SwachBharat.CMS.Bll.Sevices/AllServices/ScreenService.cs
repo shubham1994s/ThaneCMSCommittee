@@ -532,18 +532,18 @@ namespace SwachBharat.CMS.Bll.Services
                     if (Details != null)
                     {
                         WardNumberVM type = FillWardViewModel(Details);
-                        type.ZoneList = ListZone();
+                        type.PrabhagList = ListPrabhag();
                         return type;
                     }
                     else
                     {
                         WardNumberVM type = new WardNumberVM();
-                        type.ZoneList = ListZone();
+                        type.PrabhagList = ListPrabhag();
                         return type;
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception Ex)
             {
                 throw;
             }
@@ -557,11 +557,18 @@ namespace SwachBharat.CMS.Bll.Services
                     if (data.Id > 0)
                     {
                         var model = db.WardNumbers.Where(x => x.Id == data.Id).FirstOrDefault();
+
+                        
                         if (model != null)
                         {
+                            var zone = db.CommitteeMasters.Where(x => x.Id == model.PrabhagId).FirstOrDefault();
                             model.Id = data.Id;
                             model.WardNo = data.WardNo;
-                            model.zoneId = data.zoneId;
+                            model.PrabhagId = data.PrabhagId;
+                            if(zone!=null)
+                            { 
+                            model.zoneId = zone.zoneId;
+                            }
                             db.SaveChanges();
                         }
                     }
@@ -573,7 +580,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception Ex)
             {
                 throw;
             }
@@ -631,7 +638,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -1505,11 +1512,16 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             type.userProfileImage = "/Images/default_not_upload.png";
                         }
+
+                        type.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(type.ZoneId)); //ListWardNo();
+                        type.ZoneList = ListZone();
                         return type;
                     }
                     else
                     {
                         type.userProfileImage = "/Images/add_image_square.png";
+                        type.PrabhagList = ListPrabhagNo();
+                        type.ZoneList = ListZone();
                         return type;
                     }
                 }
@@ -1600,6 +1612,8 @@ namespace SwachBharat.CMS.Bll.Services
                             model.gcTarget = data.gcTarget;
                             model.ComgcTarget = data.ComgcTarget;
                             model.userDesignation = data.userDesignation;
+                            model.ZoneId = data.ZoneId;
+                            model.PrabhagId = data.PrabhagId;
                             //model.EmployeeType = Emptype;
                             db.SaveChanges();
                         }
@@ -4338,7 +4352,7 @@ namespace SwachBharat.CMS.Bll.Services
             WardNumber model = new WardNumber();
             model.Id = data.Id;
             model.WardNo = data.WardNo;
-            model.zoneId = data.zoneId;
+            model.zoneId = data.PrabhagId;
             return model;
         }
 
@@ -4488,6 +4502,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = Emptype;
             model.userDesignation = data.userDesignation;
+            model.ZoneId = data.PrabhagId;
             return model;
         }
 
@@ -4712,6 +4727,28 @@ namespace SwachBharat.CMS.Bll.Services
 
             return WardNo;
         }
+
+        public List<SelectListItem> ListPrabhagNo()
+        {
+            var WardNo = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+
+            try
+            {
+
+                WardNo = db.CommitteeMasters.ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                WardNo.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return WardNo;
+        }
         public List<SelectListItem> ListZone()
         {
             var Zone = new List<SelectListItem>();
@@ -4731,6 +4768,27 @@ namespace SwachBharat.CMS.Bll.Services
             catch (Exception ex) { throw ex; }
 
             return Zone;
+        }
+
+        public List<SelectListItem> ListPrabhag()
+        {
+            var Committee = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Samitee--", Value = "0" };
+
+            try
+            {
+                Committee = db.CommitteeMasters.ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.CommitteeName,
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                Committee.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return Committee;
         }
         public List<SelectListItem> ListUser(string Emptype)
         {
@@ -4815,6 +4873,32 @@ namespace SwachBharat.CMS.Bll.Services
                         .Select(x => new SelectListItem
                         {
                             Text = x.WardNo + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                            Value = x.Id.ToString()
+                        }).OrderBy(t => t.Text).ToList();
+                    WardNo.Insert(0, itemAdd);
+                }
+                catch (Exception ex) { throw ex; }
+                return WardNo;
+            }
+        }
+
+        public List<SelectListItem> LoadListPrabhagNo(Int32 ZoneId)
+        {
+            var WardNo = new List<SelectListItem>();
+            if (ZoneId == 0)
+            {
+                WardNo = ListPrabhagNo();
+                return WardNo;
+            }
+            else
+            {
+                try
+                {
+                    SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Name.--", Value = "0" };
+                    WardNo = db.CommitteeMasters.Where(c => c.zoneId == ZoneId).ToList()
+                        .Select(x => new SelectListItem
+                        {
+                            Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
                             Value = x.Id.ToString()
                         }).OrderBy(t => t.Text).ToList();
                     WardNo.Insert(0, itemAdd);
@@ -4937,7 +5021,7 @@ namespace SwachBharat.CMS.Bll.Services
             WardNumberVM model = new WardNumberVM();
             model.Id = data.Id;
             model.WardNo = data.WardNo;
-            model.zoneId = data.zoneId;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 
