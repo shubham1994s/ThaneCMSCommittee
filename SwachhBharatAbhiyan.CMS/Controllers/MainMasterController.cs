@@ -760,7 +760,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             if (SessionHandler.Current.AppId != 0)
             {
                 childRepository.SaveCommittee(area);
-                return Redirect("WardIndex");
+                return Redirect("CommitteeIndex");
             }
             else
                 return Redirect("/Account/Login");
