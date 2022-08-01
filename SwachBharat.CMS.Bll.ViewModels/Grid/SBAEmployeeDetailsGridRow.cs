@@ -27,5 +27,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public string ComgcTarget { get; set; }
 
         public string EmployeeType { get; set; }
+        public string Zone { get; set; }
+        public string Prabhag { get; set; }
     }
 }
