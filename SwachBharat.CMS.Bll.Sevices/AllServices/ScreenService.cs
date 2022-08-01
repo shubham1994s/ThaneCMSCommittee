@@ -532,13 +532,13 @@ namespace SwachBharat.CMS.Bll.Services
                     if (Details != null)
                     {
                         WardNumberVM type = FillWardViewModel(Details);
-                        type.ZoneList = ListZone();
+                        type.PrabhagList = ListPrabhag();
                         return type;
                     }
                     else
                     {
                         WardNumberVM type = new WardNumberVM();
-                        type.ZoneList = ListZone();
+                        type.PrabhagList = ListPrabhag();
                         return type;
                     }
                 }
@@ -561,7 +561,7 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             model.Id = data.Id;
                             model.WardNo = data.WardNo;
-                            model.zoneId = data.zoneId;
+                            model.zoneId = data.PrabhagId;
                             db.SaveChanges();
                         }
                     }
@@ -573,7 +573,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception Ex)
             {
                 throw;
             }
@@ -4345,7 +4345,7 @@ namespace SwachBharat.CMS.Bll.Services
             WardNumber model = new WardNumber();
             model.Id = data.Id;
             model.WardNo = data.WardNo;
-            model.zoneId = data.zoneId;
+            model.zoneId = data.PrabhagId;
             return model;
         }
 
@@ -4761,6 +4761,27 @@ namespace SwachBharat.CMS.Bll.Services
             catch (Exception ex) { throw ex; }
 
             return Zone;
+        }
+
+        public List<SelectListItem> ListPrabhag()
+        {
+            var Committee = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Samitee--", Value = "0" };
+
+            try
+            {
+                Committee = db.CommitteeMasters.ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.CommitteeName,
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                Committee.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return Committee;
         }
         public List<SelectListItem> ListUser(string Emptype)
         {
