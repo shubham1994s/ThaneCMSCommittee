@@ -123,6 +123,16 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.GetWardNumberDetails(teamId,name);
         }
+
+        public CommitteeVM GetCommitteeName(int teamId, string name)
+        {
+            return screenService.GetCommitteeNameDetails(teamId, name);
+        }
+
+        public CommitteeVM GetComitteeName(int teamId, string name)
+        {
+            return screenService.GetCommitteeNameDetails(teamId, name);
+        }
         public void DeleteWardNumber(int teamId)
         {
             screenService.DeletWardNumberDetails(teamId);
@@ -134,6 +144,15 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
                 type.Id = 0;
             }
             screenService.SaveWardNumberDetails(type);
+        }
+
+        public void SaveCommittee(CommitteeVM type)
+        {
+            if (type.Id <= 0)
+            {
+                type.Id = 0;
+            }
+            screenService.SaveCommitteeDetails(type);
         }
 
 

@@ -37,7 +37,11 @@ namespace SwachBharat.CMS.Bll.Services
         void SaveVehicleRegDetails(VehicleRegVM type);
 
         WardNumberVM GetWardNumberDetails(int teamId,string name);
-         void SaveWardNumberDetails(WardNumberVM data);
+
+        CommitteeVM GetCommitteeNameDetails(int teamId, string name);
+        void SaveWardNumberDetails(WardNumberVM data);
+
+        void SaveCommitteeDetails(CommitteeVM data);
 
         void LiquidSaveWardNumberDetails(WardNumberVM data);
 

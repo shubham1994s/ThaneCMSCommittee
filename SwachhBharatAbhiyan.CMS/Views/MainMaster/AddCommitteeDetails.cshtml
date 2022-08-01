@@ -10,7 +10,7 @@
 @Scripts.Render("~/bundles/modernizr")
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddCommitteDetails", "MainMaster", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id);
@@ -65,7 +65,7 @@
                 </div>*@
 
             <div class="form-group1" style="padding-top:3%">
-                <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
+                <button type="submit" name="submit" class="btn" id="btnSubmit">
                     <span class="glyphicon glyphicon-saved"></span>
                     <span id="buttonName">Save</span>
                 </button>

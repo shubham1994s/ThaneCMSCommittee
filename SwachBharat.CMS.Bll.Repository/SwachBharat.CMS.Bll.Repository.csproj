@@ -78,6 +78,7 @@
     <Compile Include="GridRepository\Grid\AttendenceSettingsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\CommercialDetailsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\CommGarbageCollectionGridRepository.cs" />
+    <Compile Include="GridRepository\Grid\CommitteeNameGridRepository.cs" />
     <Compile Include="GridRepository\Grid\ComplaintGridRepository.cs" />
     <Compile Include="GridRepository\Grid\CTPTCountGarbageCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\CTPTGarbageCollectionGridRepository.cs" />

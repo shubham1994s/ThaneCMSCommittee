@@ -508,6 +508,33 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
+        public IEnumerable<SBACommitteeGridRow> GetCommitteeNameData(long wildcard, string SearchString, int appId)
+        {
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                var data = db.CommitteeMasters.Select(x => new SBACommitteeGridRow
+                {
+                    Id = x.Id,
+                    CommitteeNo = x.CommitteeName,
+                    zone = db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name,
+                }).ToList();
+                foreach (var item in data)
+                {
+                    item.CommitteeNo = checkNull(item.CommitteeNo);
+                    item.zone = checkNull(item.zone);
+
+
+                }
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    var model = data.Where(c => c.CommitteeNo.ToUpper().ToString().Contains(SearchString) || c.CommitteeNo.ToString().ToLower().ToString().Contains(SearchString) || c.CommitteeNo.ToString().Contains(SearchString) || c.zone.ToString().Contains(SearchString) || c.zone.ToUpper().ToString().Contains(SearchString) || c.zone.ToLower().ToString().Contains(SearchString)).ToList();
+
+                    data = model.ToList();
+                }
+                return data.OrderByDescending(c => c.Id);
+            }
+        }
+
 
         public IEnumerable<SBAAttendenceSettingsGridRow> GetAttendenceSettingsDate(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
         {

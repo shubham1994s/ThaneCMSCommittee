@@ -721,5 +721,96 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         #endregion
 
+
+        #region Committe Name
+        [HttpGet]
+        public ActionResult CommitteeIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+        public ActionResult MenuCommitteeIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        public ActionResult AddCommitteeDetails(int teamId = -1)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                CommitteeVM vehicle = childRepository.GetComitteeName(teamId, "");
+                return View(vehicle);
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        [HttpPost]
+        public ActionResult AddCommitteDetails(CommitteeVM area)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository.SaveCommittee(area);
+                return Redirect("WardIndex");
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
+        //[HttpGet]
+        //public ActionResult DeleteWard(int teamId)
+        //{
+        //    if (SessionHandler.Current.AppId != 0)
+        //    {
+        //        childRepository.DeleteWardNumber(teamId);
+        //        return Redirect("WardIndex");
+        //    }
+        //    else
+        //        return Redirect("/Account/Login");
+        //}
+
+        [HttpPost]
+        public ActionResult CheckCommitteeDetails(WardNumberVM obj)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+
+                CommitteeVM area = childRepository.GetCommitteeName(0, obj.WardNo);
+
+
+                if (obj.Id > 0)
+                {
+                    if (area.CommitteeNo == obj.WardNo & area.Id != obj.Id)
+                    { return Json(false, JsonRequestBehavior.AllowGet); }
+                    else
+                        return Json(true, JsonRequestBehavior.AllowGet);
+                }
+
+                else
+                      if (area.CommitteeNo != null)
+                { return Json(false, JsonRequestBehavior.AllowGet); }
+                else
+                    return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Json(true, JsonRequestBehavior.AllowGet);
+
+
+
+        }
+
+
+        #endregion
+
     }
 }

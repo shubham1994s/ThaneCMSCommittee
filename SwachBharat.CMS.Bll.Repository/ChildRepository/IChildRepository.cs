@@ -46,8 +46,14 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
 
         WardNumberVM GetWardNumber(int teamId,string name);
+
+        CommitteeVM GetCommitteeName(int teamId, string name);
+
+        CommitteeVM GetComitteeName(int teamId, string name);
         void DeleteWardNumber(int teamId);
         void SaveWardNumber(WardNumberVM type);
+
+        void SaveCommittee(CommitteeVM type);
 
         void LiquidSaveWardNumber(WardNumberVM type);
 

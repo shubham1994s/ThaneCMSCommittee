@@ -101,6 +101,7 @@
     <Compile Include="Grid\SauchalayRegistrationGridRow.cs" />
     <Compile Include="Grid\SBAAdminCountGrid.cs" />
     <Compile Include="Grid\SBAAttendenceSettingsGridRow.cs" />
+    <Compile Include="Grid\SBACommitteeGridRow.cs" />
     <Compile Include="Grid\SBADumpYardDetailsGridRow.cs" />
     <Compile Include="Grid\SBAEmplyeeIdelGrid.cs" />
     <Compile Include="Grid\SBAEmpolyeeSummaryGrid.cs" />

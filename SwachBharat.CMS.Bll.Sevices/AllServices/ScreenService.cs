@@ -579,6 +579,63 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
+        public CommitteeVM GetCommitteeNameDetails(int teamId, string name)
+        {
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    var Details = db.CommitteeMasters.Where(x => x.Id == teamId || x.CommitteeName == name).FirstOrDefault();
+                    if (Details != null)
+                    {
+                        CommitteeVM type = FillCommitteeViewModel(Details);
+                        type.ZoneList = ListZone();
+                        return type;
+                    }
+                    else
+                    {
+                        CommitteeVM type = new CommitteeVM();
+                        type.ZoneList = ListZone();
+                        return type;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void SaveCommitteeDetails(CommitteeVM data)
+        {
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (data.Id > 0)
+                    {
+                        var model = db.CommitteeMasters.Where(x => x.Id == data.Id).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.Id = data.Id;
+                            model.CommitteeName = data.CommitteeNo;
+                            model.zoneId = data.zoneId;
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        var type = FillCommitteeDataModel(data);
+                        db.CommitteeMasters.Add(type);
+                        db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public void LiquidSaveWardNumberDetails(WardNumberVM data)
         {
             try
@@ -4285,6 +4342,15 @@ namespace SwachBharat.CMS.Bll.Services
             return model;
         }
 
+        private CommitteeMaster FillCommitteeDataModel(CommitteeVM data)
+        {
+            CommitteeMaster model = new CommitteeMaster();
+            model.Id = data.Id;
+            model.CommitteeName = data.CommitteeNo;
+            model.zoneId = data.zoneId;
+            return model;
+        }
+
 
         private WardNumber LiquidFillWardDataModel(WardNumberVM data)
         {
@@ -4871,6 +4937,15 @@ namespace SwachBharat.CMS.Bll.Services
             WardNumberVM model = new WardNumberVM();
             model.Id = data.Id;
             model.WardNo = data.WardNo;
+            model.zoneId = data.zoneId;
+            return model;
+        }
+
+        private CommitteeVM FillCommitteeViewModel(CommitteeMaster data)
+        {
+            CommitteeVM model = new CommitteeVM();
+            model.Id = data.Id;
+            model.CommitteeNo = data.CommitteeName;
             model.zoneId = data.zoneId;
             return model;
         }

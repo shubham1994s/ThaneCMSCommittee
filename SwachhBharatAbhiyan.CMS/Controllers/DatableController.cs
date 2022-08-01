@@ -282,6 +282,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new WardNumberGridRepository(0, searchString, appId);
                     return gridRepository;
                     break;
+
+                case "CommitteeDetail":
+                    gridRepository = new CommitteeNameGridRepository(0, searchString, appId);
+                    return gridRepository;
+                    break;
+
                 case "VehicleDetail":
                     gridRepository = new VehicleTypeGridRepository(0, searchString, appId);
                     return gridRepository;
