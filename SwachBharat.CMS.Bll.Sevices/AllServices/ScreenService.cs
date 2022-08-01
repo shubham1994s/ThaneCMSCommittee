@@ -557,11 +557,15 @@ namespace SwachBharat.CMS.Bll.Services
                     if (data.Id > 0)
                     {
                         var model = db.WardNumbers.Where(x => x.Id == data.Id).FirstOrDefault();
+
+                        
                         if (model != null)
                         {
+                            var zone = db.CommitteeMasters.Where(x => x.Id == model.PrabhagId).FirstOrDefault();
                             model.Id = data.Id;
                             model.WardNo = data.WardNo;
-                            model.zoneId = data.PrabhagId;
+                            model.PrabhagId = data.PrabhagId;
+                            model.zoneId = zone.zoneId;
                             db.SaveChanges();
                         }
                     }
