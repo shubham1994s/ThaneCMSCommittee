@@ -528,7 +528,6 @@
     <Content Include="ChildSwachBharatAbhiyan.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ChildSwachBharatAbhiyan.edmx</DependentUpon>
-      <LastGenOutput>ChildSwachBharatAbhiyan.cs</LastGenOutput>
     </Content>
     <Content Include="MainSwachBharatAbhiyan.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
