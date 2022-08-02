@@ -58,6 +58,7 @@
           <Property Name="MOBILE_ID" Type="nvarchar" MaxLength="100" />
           <Property Name="IS_ACTIVE" Type="bit" />
           <Property Name="IMO_NO" Type="nvarchar" MaxLength="1" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <EntityType Name="AD_USER_MST_STREET">
           <Key>
@@ -152,16 +153,16 @@
           <Property Name="MsgForNotReceived" Type="nvarchar" MaxLength="1000" />
           <Property Name="MsgForSegregated" Type="nvarchar" MaxLength="1000" />
           <Property Name="IsScanNear" Type="bit" />
-          <Property Name="LiquidQRCode" Type="varchar" MaxLength="100" />
-          <Property Name="StreetQRCode" Type="varchar" MaxLength="100" />
-          <Property Name="CommercialQRCode" Type="nvarchar" MaxLength="220" />
+          <Property Name="LiquidQRCode" Type="varchar" MaxLength="50" />
+          <Property Name="StreetQRCode" Type="varchar" MaxLength="50" />
+          <Property Name="CommercialQRCode" Type="nvarchar" MaxLength="100" />
           <Property Name="CTPTQRCode" Type="nvarchar" MaxLength="100" />
           <Property Name="SWMQRCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ulb_property" Type="int" />
+          <Property Name="Add_Ulb_Property" Type="int" />
           <Property Name="Today_Waste_Status" Type="bit" />
           <Property Name="Today_Liquid_Status" Type="bit" />
           <Property Name="Today_Street_Status" Type="bit" />
-          <Property Name="ulb_property" Type="int" />
-          <Property Name="Add_Ulb_Property" Type="int" />
           <Property Name="Status" Type="bit" />
           <Property Name="VehicalQRCode" Type="nvarchar" MaxLength="250" />
           <Property Name="AppAreaLatLong" Type="nvarchar(max)" />
@@ -329,7 +330,6 @@
           <Property Name="longitude" Type="nvarchar" MaxLength="20" />
           <Property Name="state" Type="int" />
           <Property Name="district" Type="int" />
-          <Property Name="IsCheked" Type="bit" />
         </EntityType>
         <EntityType Name="UserInApps">
           <Key>
@@ -519,19 +519,6 @@
           <Property Name="subscriptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subscriptionName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="tehsil">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="name_mar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="state" Type="Int32" />
-          <Property Name="district" Type="Int32" />
-          <Property Name="IsCheked" Type="Boolean" />
-        </EntityType>
         <EntityType Name="UserInApp">
           <Key>
             <PropertyRef Name="UserInAppsID" />
@@ -581,7 +568,6 @@
           <EntitySet Name="country_states" EntityType="Self.country_states" />
           <EntitySet Name="state_districts" EntityType="Self.state_districts" />
           <EntitySet Name="Subscriptions" EntityType="Self.Subscription" />
-          <EntitySet Name="tehsils" EntityType="Self.tehsil" />
           <EntitySet Name="UserInApps" EntityType="Self.UserInApp" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -608,6 +594,7 @@
           <EntitySet Name="AppDetails" EntityType="DevSwachhBharatMainModel.AppDetail" />
           <EntitySet Name="AppConnections" EntityType="DevSwachhBharatMainModel.AppConnection" />
           <EntitySet Name="AD_USER_MST_SA" EntityType="DevSwachhBharatMainModel.AD_USER_MST_SA" />
+          <EntitySet Name="tehsils" EntityType="DevSwachhBharatMainModel.tehsil" />
         </EntityContainer>
         <ComplexType Name="SP_Admin2_Result">
           <Property Type="String" Name="appName" Nullable="true" MaxLength="500" />
@@ -799,9 +786,9 @@
           <Property Name="MsgForNotReceived" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="MsgForSegregated" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="IsScanNear" Type="Boolean" />
-          <Property Name="LiquidQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="StreetQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CommercialQRCode" Type="String" MaxLength="220" FixedLength="false" Unicode="true" />
+          <Property Name="LiquidQRCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StreetQRCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommercialQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CTPTQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SWMQRCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Today_Waste_Status" Type="Boolean" />
@@ -851,6 +838,19 @@
           <Property Name="MOBILE_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IS_ACTIVE" Type="Boolean" />
           <Property Name="IMO_NO" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="PrabhagId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tehsil">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="name_mar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="district" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -932,20 +932,6 @@
               <MappingFragment StoreEntitySet="Subscriptions">
                 <ScalarProperty Name="subscriptionId" ColumnName="subscriptionId" />
                 <ScalarProperty Name="subscriptionName" ColumnName="subscriptionName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tehsils">
-            <EntityTypeMapping TypeName="DevSwachhBharatMainModel.tehsil">
-              <MappingFragment StoreEntitySet="tehsil">
-                <ScalarProperty Name="IsCheked" ColumnName="IsCheked" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="name_mar" ColumnName="name_mar" />
-                <ScalarProperty Name="latitude" ColumnName="latitude" />
-                <ScalarProperty Name="longitude" ColumnName="longitude" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="district" ColumnName="district" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1201,6 +1187,7 @@
           <EntitySetMapping Name="AD_USER_MST_SA">
             <EntityTypeMapping TypeName="DevSwachhBharatMainModel.AD_USER_MST_SA">
               <MappingFragment StoreEntitySet="AD_USER_MST_SA">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="IMO_NO" ColumnName="IMO_NO" />
                 <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
                 <ScalarProperty Name="MOBILE_ID" ColumnName="MOBILE_ID" />
@@ -1223,6 +1210,19 @@
                 <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
                 <ScalarProperty Name="SERVER_ID" ColumnName="SERVER_ID" />
                 <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tehsils">
+            <EntityTypeMapping TypeName="DevSwachhBharatMainModel.tehsil">
+              <MappingFragment StoreEntitySet="tehsil">
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="name_mar" ColumnName="name_mar" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -34,5 +34,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string EmployeeType { get; set; }
         public string CType { get; set; }
         public string WardId { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
     }
 }
