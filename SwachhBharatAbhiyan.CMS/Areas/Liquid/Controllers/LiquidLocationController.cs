@@ -54,7 +54,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                SBALUserLocationMapView loc = childRepository.GetLocation(teamId, "L");
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                SBALUserLocationMapView loc = childRepository.GetLocation(teamId, "L", PId);
                 TempData.Keep();
                 return View(loc);
             }
@@ -133,7 +134,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
             {
                 SBALUserLocationMapView obj = new SBALUserLocationMapView();
 
-                obj = childRepository.GetLocation(-1, rn);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                obj = childRepository.GetLocation(-1, rn, PId);
                 return Json(obj.UserList, JsonRequestBehavior.AllowGet);
 
             }

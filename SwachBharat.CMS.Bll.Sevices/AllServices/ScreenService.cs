@@ -1799,7 +1799,7 @@ namespace SwachBharat.CMS.Bll.Services
 
 
         }
-        public SBALUserLocationMapView GetLocationDetails(int teamId, string Emptype)
+        public SBALUserLocationMapView GetLocationDetails(int teamId, string Emptype,int PrabhagId)
         {
             try
             {
@@ -1818,7 +1818,12 @@ namespace SwachBharat.CMS.Bll.Services
                         if (Details != null)
                         {
                             //var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId && c.EmployeeType == null).FirstOrDefault();
+
                             var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId).FirstOrDefault();
+                            if(PrabhagId > 0)
+                            {
+                                atten = db.Daily_Attendance.Where(c => c.PrabhagId == PrabhagId).FirstOrDefault();
+                            }
                             SBALUserLocationMapView loc = new SBALUserLocationMapView();
                             //var user = db.UserMasters.Where(c => c.userId == Details.userId && c.EmployeeType == null).FirstOrDefault();
                             var user = db.UserMasters.Where(c => c.userId == Details.userId).FirstOrDefault();
@@ -1828,7 +1833,7 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.address = checkNull(Details.address).Replace("Unnamed Road, ", "");
                             loc.lat = Details.lat;
                             loc.log = Details.@long;
-                            loc.UserList = ListUser(null);
+                            loc.UserList = ListUser(null,PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
                             try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
@@ -1859,6 +1864,10 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             //var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId && c.EmployeeType == Emptype).FirstOrDefault();
                             var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId).FirstOrDefault();
+                            if (PrabhagId > 0)
+                            {
+                                atten = db.Daily_Attendance.Where(c => c.PrabhagId == PrabhagId).FirstOrDefault();
+                            }
                             SBALUserLocationMapView loc = new SBALUserLocationMapView();
                             var user = db.UserMasters.Where(c => c.userId == Details.userId).FirstOrDefault();
                             loc.userName = user.userName;
@@ -1867,7 +1876,7 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.address = checkNull(Details.address).Replace("Unnamed Road, ", "");
                             loc.lat = Details.lat;
                             loc.log = Details.@long;
-                            loc.UserList = ListUser(Emptype);
+                            loc.UserList = ListUser(Emptype, PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
                             try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
@@ -1899,6 +1908,10 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             //var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId && c.EmployeeType == Emptype).FirstOrDefault();
                             var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId).FirstOrDefault();
+                            if (PrabhagId > 0)
+                            {
+                                atten = db.Daily_Attendance.Where(c => c.PrabhagId == PrabhagId).FirstOrDefault();
+                            }
                             SBALUserLocationMapView loc = new SBALUserLocationMapView();
                             var user = db.UserMasters.Where(c => c.userId == Details.userId).FirstOrDefault();
                             loc.userName = user.userName;
@@ -1907,7 +1920,7 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.address = checkNull(Details.address).Replace("Unnamed Road, ", "");
                             loc.lat = Details.lat;
                             loc.log = Details.@long;
-                            loc.UserList = ListUser(Emptype);
+                            loc.UserList = ListUser(Emptype, PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
                             try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
@@ -1940,6 +1953,10 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             //var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId && c.EmployeeType == Emptype).FirstOrDefault();
                             var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId).FirstOrDefault();
+                            if (PrabhagId > 0)
+                            {
+                                atten = db.Daily_Attendance.Where(c => c.PrabhagId == PrabhagId).FirstOrDefault();
+                            }
                             SBALUserLocationMapView loc = new SBALUserLocationMapView();
                             var user = db.UserMasters.Where(c => c.userId == Details.userId).FirstOrDefault();
                             loc.userName = user.userName;
@@ -1948,7 +1965,7 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.address = checkNull(Details.address).Replace("Unnamed Road, ", "");
                             loc.lat = Details.lat;
                             loc.log = Details.@long;
-                            loc.UserList = CTPTListUser(Emptype);
+                            loc.UserList = CTPTListUser(Emptype, PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
                             try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
@@ -1980,6 +1997,10 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             //var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId && c.EmployeeType == Emptype).FirstOrDefault();
                             var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId).FirstOrDefault();
+                            if (PrabhagId > 0)
+                            {
+                                atten = db.Daily_Attendance.Where(c => c.PrabhagId == PrabhagId).FirstOrDefault();
+                            }
                             SBALUserLocationMapView loc = new SBALUserLocationMapView();
                             var user = db.UserMasters.Where(c => c.userId == Details.userId).FirstOrDefault();
                             loc.userName = user.userName;
@@ -1988,7 +2009,7 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.address = checkNull(Details.address).Replace("Unnamed Road, ", "");
                             loc.lat = Details.lat;
                             loc.log = Details.@long;
-                            loc.UserList = ListUser(Emptype);
+                            loc.UserList = ListUser(Emptype, PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
                             try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
@@ -4791,20 +4812,36 @@ namespace SwachBharat.CMS.Bll.Services
 
             return Committee;
         }
-        public List<SelectListItem> ListUser(string Emptype)
+        public List<SelectListItem> ListUser(string Emptype,int PId)
         {
             var user = new List<SelectListItem>();
             SelectListItem itemAdd = new SelectListItem() { Text = "--Select Employee--", Value = "0" };
 
             try
             {
-                user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype).ToList()
-                //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
-                    .Select(x => new SelectListItem
-                    {
-                        Text = x.userName,
-                        Value = x.userId.ToString()
-                    }).OrderBy(t => t.Text).ToList();
+                if (PId > 0)
+                {
+                    user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype && c.PrabhagId == PId).ToList()
+
+                  //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                  .Select(x => new SelectListItem
+                  {
+                      Text = x.userName,
+                      Value = x.userId.ToString()
+                  }).OrderBy(t => t.Text).ToList();
+                }
+                else
+                {
+                    user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype).ToList()
+
+                     //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                     .Select(x => new SelectListItem
+                     {
+                         Text = x.userName,
+                         Value = x.userId.ToString()
+                     }).OrderBy(t => t.Text).ToList();
+                    }
+             
 
             }
             catch (Exception ex) { throw ex; }
@@ -4812,7 +4849,7 @@ namespace SwachBharat.CMS.Bll.Services
             return user;
         }
 
-        public List<SelectListItem> CTPTListUser(string Emptype)
+        public List<SelectListItem> CTPTListUser(string Emptype, int PId)
         {
             var user = new List<SelectListItem>();
             SelectListItem itemAdd = new SelectListItem() { Text = "--Select Employee--", Value = "0" };
@@ -4826,17 +4863,29 @@ namespace SwachBharat.CMS.Bll.Services
                 //        Text = x.userName,
                 //        Value = x.userId.ToString()
                 //    }).OrderBy(t => t.Text).ToList();
+                if (PId > 0)
+                {
+                    user = db.UserMasters.Join(db.Daily_Attendance, u => u.userId, uir => uir.userId, (u, uir) => new { u, uir })
+                        .Where(m => m.uir.EmployeeType == "CT" && m.uir.PrabhagId == PId)
+                         .Select(m => new SelectListItem
+                         {
+                             Text = m.u.userName,
+                             Value = m.u.userId.ToString()
 
-                user = db.UserMasters.
-       Join(db.Daily_Attendance, u => u.userId, uir => uir.userId,
-       (u, uir) => new { u, uir })
-      .Where(m => m.uir.EmployeeType == "CT")
-       .Select(m => new SelectListItem
-       {
-           Text = m.u.userName,
-           Value = m.u.userId.ToString()
+                         }).OrderBy(t => t.Text).Distinct().ToList();
+                }
+                else
+                {
+                    user = db.UserMasters.Join(db.Daily_Attendance, u => u.userId, uir => uir.userId, (u, uir) => new { u, uir })
+                        .Where(m => m.uir.EmployeeType == "CT")
+                         .Select(m => new SelectListItem
+                         {
+                             Text = m.u.userName,
+                             Value = m.u.userId.ToString()
 
-       }).OrderBy(t => t.Text).Distinct().ToList();
+                         }).OrderBy(t => t.Text).Distinct().ToList();
+                }
+                  
                 //    user = new SelectList(new List<SelectListItem>{
                 //from u in db.UserMasters
                 //    join b in db.GarbageCollectionDetails

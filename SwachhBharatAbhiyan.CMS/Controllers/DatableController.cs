@@ -366,21 +366,21 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "Attendence":
-                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, null);
+                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, null,PId);
                     return gridRepository;
                     break;
 
                 case "CTPTAttendence":
-                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, "CT");
+                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, "CT",PId);
                     return gridRepository;
                     break;
 
                 case "LiquidAttendence":
-                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, "L");
+                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, "L",PId);
                     return gridRepository;
                     break;
                 case "StreetAttendence":
-                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, "S");
+                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, "S",PId);
                     return gridRepository;
                     break;
 

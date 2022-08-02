@@ -65,7 +65,7 @@ namespace SwachBharat.CMS.Bll.Services
         CommercialDetailsVM SaveCommercialDetails(CommercialDetailsVM data);
         void DeletHouseDetails(int teamId);
 
-        SBALUserLocationMapView GetLocationDetails(int teamId,string Emptype);
+        SBALUserLocationMapView GetLocationDetails(int teamId,string Emptype,int PrabhagId);
         List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype);
 
         List<SBALUserLocationMapView> GetAdminLocation();

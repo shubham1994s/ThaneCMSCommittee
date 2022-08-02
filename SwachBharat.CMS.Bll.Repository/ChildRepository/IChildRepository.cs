@@ -79,7 +79,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         void DeletHouse(int teamId);
 
 
-        SBALUserLocationMapView GetLocation(int teamId,string Emptype);
+        SBALUserLocationMapView GetLocation(int teamId,string Emptype,int PrabhagId);
         List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype);
         // for admin
         List<SBALUserLocationMapView> GetAdminLocation();

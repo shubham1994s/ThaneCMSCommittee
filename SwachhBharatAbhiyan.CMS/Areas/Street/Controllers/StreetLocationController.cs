@@ -136,7 +136,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
             {
                 SBALUserLocationMapView obj = new SBALUserLocationMapView();
 
-                obj = childRepository.GetLocation(-1, rn);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                obj = childRepository.GetLocation(-1, rn, PId);
                 return Json(obj.UserList, JsonRequestBehavior.AllowGet);
 
             }
@@ -175,7 +176,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                SBALUserLocationMapView loc = childRepository.GetLocation(teamId, "S");
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                SBALUserLocationMapView loc = childRepository.GetLocation(teamId, "S", PId);
                 TempData.Keep();
                 return View(loc);
             }
