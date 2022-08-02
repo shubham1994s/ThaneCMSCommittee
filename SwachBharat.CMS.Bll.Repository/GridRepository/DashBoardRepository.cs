@@ -737,13 +737,13 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 return data.OrderByDescending(c => c.houseId);
             }
         }
-        public IEnumerable<SBAEmployeeDetailsGridRow> GetEmployeeDetailsData(long wildcard, string SearchString, int appId, string isActive, string emptype)
+        public IEnumerable<SBAEmployeeDetailsGridRow> GetEmployeeDetailsData(long wildcard, string SearchString, int appId, string isActive, string emptype,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
 
             string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.UserProfile + "/";
-            if (isActive == "1" && emptype == "")
+            if (isActive == "1" && emptype == "" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -769,6 +769,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == null).ToList();
+
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -838,7 +839,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                 }
             }
-            else if (isActive == "0" && emptype == "")
+            else if (isActive == "0" && emptype == "" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -865,6 +866,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
                     }).Where(x => x.isActive == "False" && x.EmployeeType == null).ToList();
+
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -925,7 +927,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }
             }
 
-            else if (isActive == "1" && emptype == "L")
+            else if (isActive == "1" && emptype == "L" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -951,6 +953,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == "L").ToList();
+                
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -1010,7 +1013,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                 }
             }
-            else if (isActive == "1" && emptype == "S")
+            else if (isActive == "1" && emptype == "S" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -1036,6 +1039,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == "S").ToList();
+                  
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -1096,7 +1100,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }
             }
 
-            else if (isActive == "0" && emptype == "L")
+            else if (isActive == "0" && emptype == "L" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -1117,9 +1121,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).Where(x => x.isActive == "False" && x.EmployeeType == "L").ToList();
+                   
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -1145,7 +1152,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
-
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else
@@ -1174,7 +1184,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                 }
             }
-            else if (isActive == "0" && emptype == "S")
+            else if (isActive == "0" && emptype == "S" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -1195,9 +1205,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).Where(x => x.isActive == "False" && x.EmployeeType == "S").ToList();
+                 
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -1223,7 +1236,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
-
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else
@@ -1253,7 +1269,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }
             }
 
-            else if (emptype == "")
+            else if (emptype == "" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -1274,9 +1290,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).Where(x => x.EmployeeType == "").ToList();
+                  
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -1302,7 +1321,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
-
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else
@@ -1332,7 +1354,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }
             }
 
-            else if (emptype == "L")
+            else if (emptype == "L" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -1353,9 +1375,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).Where(x => x.EmployeeType == "L").ToList();
+                  
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -1381,7 +1406,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
-
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else
@@ -1411,7 +1439,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }
             }
 
-            else if (emptype == "S")
+            else if (emptype == "S" && PId == 0)
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
@@ -1432,9 +1460,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).Where(x => x.EmployeeType == "S").ToList();
+                  
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -1460,7 +1491,794 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
 
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                                 (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (isActive == "1" && emptype == "" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+                    }).Where(x => x.isActive == "True" && x.EmployeeType == null && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        //var model = data.Where(c => c.userMobileNumber.ToString().Contains(SearchString) || c.userEmployeeNo.ToString().Contains(SearchString)
+                        //|| c.userAddress.ToString().Contains(SearchString) || c.userName.ToString().Contains(SearchString) || c.userNameMar.ToString().Contains(SearchString)||c.bloodGroup.ToString().Contains(SearchString)
+
+                        //|| c.userMobileNumber.Contains(SearchString) || c.userAddress.ToLower().ToString().Contains(SearchString)|| c.userName.ToLower().ToString().Contains(SearchString) || c.userNameMar.ToLower().ToString().Contains(SearchString)
+                        //|| c.userEmployeeNo.ToLower().ToString().Contains(SearchString) || c.bloodGroup.ToLower().ToString().Contains(SearchString)
+
+                        //|| c.userMobileNumber.ToUpper().ToString().Contains(SearchString) || c.userNameMar.ToUpper().ToString().Contains(SearchString)|| c.userName.ToUpper().ToString().Contains(SearchString) || c.bloodGroup.ToUpper().ToString().Contains(SearchString) || c.userAddress.ToUpper().ToString().Contains(SearchString) || c.userEmployeeNo.ToUpper().ToString().Contains(SearchString)).ToList();
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                              (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation) + " " +
+                                             (string.IsNullOrEmpty(c.Zone) ? " " : c.Zone) + " " +
+                                             (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (isActive == "0" && emptype == "" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+
+                    }).Where(x => x.isActive == "False" && x.EmployeeType == null && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                             (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation) + " " +
+                                             (string.IsNullOrEmpty(c.Zone) ? " " : c.Zone) + " " +
+                                             (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (isActive == "1" && emptype == "L" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+                    }).Where(x => x.isActive == "True" && x.EmployeeType == "L" && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                                 (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation) + " " +
+                                             (string.IsNullOrEmpty(c.Zone) ? " " : c.Zone) + " " +
+                                             (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (isActive == "1" && emptype == "S" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+                    }).Where(x => x.isActive == "True" && x.EmployeeType == "S" && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                                 (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation) + " " +
+                                             (string.IsNullOrEmpty(c.Zone) ? " " : c.Zone) + " " +
+                                             (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (isActive == "0" && emptype == "L" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+                    }).Where(x => x.isActive == "False" && x.EmployeeType == "L" && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                                 (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (isActive == "0" && emptype == "S" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+                    }).Where(x => x.isActive == "False" && x.EmployeeType == "S" && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                                 (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (emptype == "" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+                    }).Where(x => x.EmployeeType == "" && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                                 (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (emptype == "L" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+                    }).Where(x => x.EmployeeType == "L" && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
+                        if (item.userProfileImage == null || item.userProfileImage == "")
+                        { item.userProfileImage = "/Images/default_not_upload.png"; }
+                        else
+                        {
+                            item.userProfileImage = ThumbnaiUrlCMS + item.userProfileImage.Trim();
+                        }
+                        if (item.userDesignation == null || item.userDesignation == "")
+                            item.userDesignation = "";
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userMobileNumber) ? " " : c.userMobileNumber) + " " +
+                                             (string.IsNullOrEmpty(c.userNameMar) ? " " : c.userNameMar) + " " +
+                                             (string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                             (string.IsNullOrEmpty(c.bloodGroup) ? " " : c.bloodGroup) + " " +
+                                             (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
+                                                 (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
+                                             (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                        data = model.ToList();
+
+                    }
+                    return data.OrderByDescending(c => c.userId);
+
+                }
+            }
+            else if (emptype == "S" && PId > 0)
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+
+                    var data = db.UserMasters.Select(x => new SBAEmployeeDetailsGridRow
+                    {
+                        userId = x.userId,
+                        userAddress = x.userAddress,
+                        userLoginId = x.userLoginId,
+                        userMobileNumber = x.userMobileNumber,
+                        userName = x.userName,
+                        userNameMar = x.userNameMar,
+                        userProfileImage = x.userProfileImage,
+                        userEmployeeNo = x.userEmployeeNo,
+                        isActive = x.isActive.ToString(),
+                        bloodGroup = x.bloodGroup,
+                        gcTarget = x.gcTarget,
+                        ComgcTarget = x.ComgcTarget,
+                        EmployeeType = x.EmployeeType,
+                        userDesignation = x.userDesignation,
+                        PrabhagId = x.PrabhagId,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
+
+
+                    }).Where(x => x.EmployeeType == "S" && x.PrabhagId == PId).ToList();
+
+                    foreach (var item in data)
+                    {
+                        item.isActive = checkNull(item.isActive);
+                        if (item.bloodGroup == "0")
+                        {
+                            item.bloodGroup = "";
+                        }
+                        if (item.isActive == "True")
+                        {
+
+                            item.isActive = "Active";
+                        }
+                        else { item.isActive = "Not Active"; }
+                        item.userNameMar = checkNull(item.userNameMar);
+                        item.bloodGroup = checkNull(item.bloodGroup);
+                        if (item.userAddress == null && item.userAddress == "")
+                            item.userAddress = "";
+                        if (item.userMobileNumber == null && item.userMobileNumber == "")
+                            item.userMobileNumber = "";
+                        if (item.userName == null && item.userName == "")
+                            item.userName = "";
+                        if (item.userNameMar == null && item.userNameMar == "")
+                            item.userNameMar = "";
+                        if (item.userEmployeeNo == null && item.userEmployeeNo == "")
+                            item.userEmployeeNo = "";
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else
@@ -1510,9 +2328,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).ToList();
+                 
                     foreach (var item in data)
                     {
                         item.isActive = checkNull(item.isActive);
@@ -1538,7 +2359,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
-
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else

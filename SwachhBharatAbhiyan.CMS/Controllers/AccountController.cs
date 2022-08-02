@@ -154,7 +154,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         TempData["status"] = "Success";
                         Session["ADUM_USER_NAME"] = Result.ADUM_USER_NAME;
                         TempData["ADUM_USER_NAME"] = Result.ADUM_USER_NAME;
-                        AddSessionSA(Result.ADUM_USER_CODE.ToString(), Result.AD_USER_TYPE_ID.ToString(), Result.ADUM_LOGIN_ID, Result.ADUM_USER_NAME, Result.APP_ID.ToString());
+                        AddSessionSA(Result.ADUM_USER_CODE.ToString(), Result.AD_USER_TYPE_ID.ToString(), Result.ADUM_LOGIN_ID, Result.ADUM_USER_NAME, Result.APP_ID.ToString(),Result.PRABHAG_ID.ToString());
                         Session["UserID"] = Result.ADUM_USER_CODE.ToString();
                         Session["LoginId"] = Result.ADUM_LOGIN_ID.ToString();
                         Session["PrabhagId"] = Result.PRABHAG_ID;
@@ -751,6 +751,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             try
             {
                 int AppId = 0;
+                int PrabhagId = 0;
                 if(usertype=="W")
                 {
                     AppId = mainrepository.GetUserAppId(UserId);
@@ -789,6 +790,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     SessionHandler.Current.UserEmail = null;
                     SessionHandler.Current.UserName = null;
                     SessionHandler.Current.AppId =0;
+                    SessionHandler.Current.PrabhagId =0;
                     SessionHandler.Current.AppName = null;
                     SessionHandler.Current.IsLoggedIn = false;
                     SessionHandler.Current.Type = null;
@@ -870,7 +872,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             }
         }
 
-        private void AddSessionSA(string UserId, string UserRole, string UserEmail, string UserName, string usertype)
+        private void AddSessionSA(string UserId, string UserRole, string UserEmail, string UserName, string usertype, string PrabhagId)
         {
             try
             {
@@ -884,6 +886,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     SessionHandler.Current.UserEmail = UserEmail;
                     SessionHandler.Current.UserName = UserName;
                     SessionHandler.Current.AppId = ApplicationDetails.AppId;
+                    SessionHandler.Current.PrabhagId = Convert.ToInt32(PrabhagId);
                     SessionHandler.Current.AppName = ApplicationDetails.AppName;
                     SessionHandler.Current.IsLoggedIn = true;
                     SessionHandler.Current.Type = ApplicationDetails.Type;
@@ -904,6 +907,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     SessionHandler.Current.UserEmail = null;
                     SessionHandler.Current.UserName = null;
                     SessionHandler.Current.AppId = 0;
+                    SessionHandler.Current.PrabhagId = 0;
                     SessionHandler.Current.AppName = null;
                     SessionHandler.Current.IsLoggedIn = false;
                     SessionHandler.Current.Type = null;

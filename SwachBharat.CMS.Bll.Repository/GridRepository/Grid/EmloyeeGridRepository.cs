@@ -16,9 +16,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public EmployeeGridRepository(long wildcard, string SearchString, int AppId, string isActive, string Emptype)
+        public EmployeeGridRepository(long wildcard, string SearchString, int AppId, string isActive, string Emptype , int PId)
         {
-            dataSet =  objRep.GetEmployeeDetailsData(wildcard, SearchString, AppId, isActive,Emptype);
+            dataSet =  objRep.GetEmployeeDetailsData(wildcard, SearchString, AppId, isActive,Emptype, PId);
         }
 
        

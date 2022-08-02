@@ -214,6 +214,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             }
             //var appId = ((SessionHandler)Session["clsSession"]).AppId;
             var appId = SessionHandler.Current.AppId;
+            int PId = Convert.ToInt32(Session["PrabhagId"]);
             switch (RepositoryName)
             {
                 case "Location":
@@ -231,30 +232,30 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "ActiveEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "");
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "", PId);
                     return gridRepository;
                     break;
 
                 case "LiquidActiveEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "L");
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "L", PId);
                     return gridRepository;
                     break;
                 case "StreetActiveEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "S");
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "S", PId);
                     return gridRepository;
                     break;
 
                 case "NotActiveEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "");
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "", PId);
                     return gridRepository;
                     break;
 
                 case "NotActiveLiquidEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "L");
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "L", PId);
                     return gridRepository;
                     break;
                 case "NotActiveStreetEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "S");
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "S", PId);
                     return gridRepository;
                     break;
 
