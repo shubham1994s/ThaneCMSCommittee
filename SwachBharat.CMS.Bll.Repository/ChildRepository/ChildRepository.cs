@@ -25,21 +25,21 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
            
             AppID = AppId;
         }
-        public DashBoardVM GetDashBoardDetails()
+        public DashBoardVM GetDashBoardDetails(int PrabhagId)
         {
-            return screenService.GetDashBoardDetails();
+            return screenService.GetDashBoardDetails(PrabhagId);
 
         }
 
-        public DashBoardVM GetLiquidDashBoardDetails()
+        public DashBoardVM GetLiquidDashBoardDetails(int PrabhagId)
         {
-            return screenService.GetLiquidDashBoardDetails();
+            return screenService.GetLiquidDashBoardDetails(PrabhagId);
 
         }
 
-        public DashBoardVM GetStreetDashBoardDetails()
+        public DashBoardVM GetStreetDashBoardDetails(int PrabhagId)
         {
-            return screenService.GetStreetDashBoardDetails();
+            return screenService.GetStreetDashBoardDetails(PrabhagId);
 
         }
 
@@ -599,9 +599,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetCommercialOnMapDetails();
 
         }
-        public DashBoardVM GetCTPTOnMapDetails()
+        public DashBoardVM GetCTPTOnMapDetails(int PrabhagId)
         {
-            return screenService.GetCTPTOnMapDetails();
+            return screenService.GetCTPTOnMapDetails(PrabhagId);
 
         }
 

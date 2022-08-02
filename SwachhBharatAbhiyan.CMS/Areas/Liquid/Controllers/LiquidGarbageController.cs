@@ -72,7 +72,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                var details = childRepository.GetDashBoardDetails();
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                var details = childRepository.GetDashBoardDetails(PId);
                 return View(details);
             }
             else

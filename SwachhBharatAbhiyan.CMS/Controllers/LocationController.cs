@@ -244,8 +244,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.AppName = SessionHandler.Current.AppName;
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
-                var details = childRepository.GetCTPTOnMapDetails();
+                var details = childRepository.GetCTPTOnMapDetails(PId);
                 return View(details);
             }
             else

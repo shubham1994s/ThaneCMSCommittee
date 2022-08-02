@@ -39,8 +39,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.YoccFeddbackLink = SessionHandler.Current.YoccFeddbackLink;
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 TempData.Keep();
-                var details = childRepository.GetLiquidDashBoardDetails();
+                var details = childRepository.GetLiquidDashBoardDetails(PId);
                 return View(details);
             }
             else
@@ -63,7 +64,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                var details = childRepository.GetLiquidDashBoardDetails();
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                var details = childRepository.GetLiquidDashBoardDetails(PId);
 
                 if (details != null)
                 {

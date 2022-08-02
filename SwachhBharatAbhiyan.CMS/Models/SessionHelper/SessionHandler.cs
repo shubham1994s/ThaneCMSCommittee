@@ -29,6 +29,8 @@ namespace SwachhBharatAbhiyan.CMS.Models.SessionHelper
         public string YoccFeddbackLink { get; set; }
         public string YoccDndLink { get; set; }
 
+        public Nullable<int> PrabhagId { get; set; }
+
         //private constructor
         public SessionHandler()
         {

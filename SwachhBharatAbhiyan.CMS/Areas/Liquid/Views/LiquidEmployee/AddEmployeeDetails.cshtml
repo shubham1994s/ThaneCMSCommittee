@@ -16,230 +16,256 @@
     @Html.HiddenFor(model => model.userId);
     @Html.HiddenFor(model => model.EmployeeType,"L");
 
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
 
-            <div class="col-sm-1">
-                <span class="backk">
-                    <a href="@Url.Action("Index", "LiquidEmployee")" id="btnBack" class="btn"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
-                </span>
+        <div class="col-sm-1">
+            <span class="backk">
+                <a href="@Url.Action("Index", "LiquidEmployee")" id="btnBack" class="btn"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
+            </span>
+        </div>
+
+        <div class="col-sm-10">
+            <h1 class="add-edit-h1 title_change"></h1>
+        </div>
+        <div class="panel panel-warning col-sm-12 ">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        @*<div class="col-md-6">
+                <div class="form-group">
+                    @Html.Label("पत्ता /Comfirm Password")
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.userConfirmPassword, new { placeholder = HttpUtility.HtmlDecode("&#xf039;  Comfirm Password"), style = "font-family:Arial, FontAwesome", required = "required" })
+                    @Html.ValidationMessageFor(model => model.userConfirmPassword, "", new { @class = "text-danger" })
+                    <span class="text-danger" id="err_Confirmpassword"></span>
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                    <span class="help-block with-errors"></span>
+                </div>
+            </div>*@
+
+        <div class="col-md-6">
+            <div class="form-groups">
+                <div style="width: auto;padding: 6px;text-align: center;margin: 0px auto;height: auto;">
+                    <div id="FileUpload_Preview">
+                        <a><img src="@Model.userProfileImage" class="add-image" style="width:150px;height:130px;padding:2px;overflow:hidden" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="" style="">
+                @*<label for="Select_Image">Select Image</label>*@
+                <div class="input-group1">
+                    <span class="btn btn-file">
+                        <span class="glyphicon glyphicon-picture"></span>
+                        Browse &hellip;    <input type="file" accept="image/*" name="filesUpload" class="fileUplode" id="filesUpload" onchange="ValidateSize(this)">
+                    </span>
+                </div>
+
             </div>
 
-            <div class="col-sm-10">
-                <h1 class="add-edit-h1 title_change"></h1>
-            </div>
-            <div class="panel panel-warning col-sm-12 ">
+
+
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @*@Html.Label("नाव / Name")*@
+                @Html.Label("Name")
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.userName, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
+                @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_name"></span>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <span class="help-block with-errors"></span>
             </div>
-
-        </div>
-
-        <div class="row">
-
-            @*<div class="col-md-6">
-                    <div class="form-group">
-                        @Html.Label("पत्ता /Comfirm Password")
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.TextBoxFor(model => model.userConfirmPassword, new { placeholder = HttpUtility.HtmlDecode("&#xf039;  Comfirm Password"), style = "font-family:Arial, FontAwesome", required = "required" })
-                        @Html.ValidationMessageFor(model => model.userConfirmPassword, "", new { @class = "text-danger" })
-                        <span class="text-danger" id="err_Confirmpassword"></span>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <span class="help-block with-errors"></span>
-                    </div>
+            @*<div class="form-group">
+                    @Html.Label("नाव मराठी / Name Marathi")
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.userNameMar, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                    @Html.ValidationMessageFor(model => model.userNameMar, "", new { @class = "text-danger" })
+                    <span class="text-danger" id="err_name_mar"></span>
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                    <span class="help-block with-errors"></span>
                 </div>*@
-
-            <div class="col-md-6">
-                <div class="form-groups">
-                    <div style="width: auto;padding: 6px;text-align: center;margin: 0px auto;height: auto;">
-                        <div id="FileUpload_Preview">
-                            <a><img src="@Model.userProfileImage" class="add-image" style="width:150px;height:130px;padding:2px;overflow:hidden" /></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="" style="">
-                    @*<label for="Select_Image">Select Image</label>*@
-                    <div class="input-group1">
-                        <span class="btn btn-file">
-                            <span class="glyphicon glyphicon-picture"></span>
-                            Browse &hellip;    <input type="file" accept="image/*" name="filesUpload" class="fileUplode" id="filesUpload" onchange="ValidateSize(this)">
-                        </span>
-                    </div>
-
-                </div>
-
-
-
-
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @*@Html.Label("नाव / Name")*@
-                    @Html.Label("Name")
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.TextBoxFor(model => model.userName, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
-                    @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
-                    <span class="text-danger" id="err_name"></span>
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <span class="help-block with-errors"></span>
-                </div>
-                @*<div class="form-group">
-                        @Html.Label("नाव मराठी / Name Marathi")
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.TextBoxFor(model => model.userNameMar, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
-                        @Html.ValidationMessageFor(model => model.userNameMar, "", new { @class = "text-danger" })
-                        <span class="text-danger" id="err_name_mar"></span>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <span class="help-block with-errors"></span>
-                    </div>*@
-                <div class="form-group">
-                    @*@Html.Label("एम्प्लॉयमेंट आयडी / Employment ID ")*@
-                    @Html.Label("Employment ID ")
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.TextBoxFor(model => model.userEmployeeNo, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
-                    @Html.ValidationMessageFor(model => model.userEmployeeNo, "", new { @class = "text-danger" })
-                    <span class="text-danger" id="err_empidd"></span>
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <span class="help-block with-errors"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    @*@Html.Label("पत्ता / Address")*@
-                    @Html.Label("Address")
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.TextBoxFor(model => model.userAddress, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
-                    @Html.ValidationMessageFor(model => model.userAddress, "", new { @class = "text-danger" })
-                    <span class="text-danger" id="err_address"></span>
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <span class="help-block with-errors"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @*@Html.Label("मोबाइल / Mobile")*@
-                    @Html.Label("Mobile")
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.TextBoxFor(model => model.userMobileNumber, new { @class = "form-control", style = "font-family:Arial, FontAwesome", minlength = "10", maxlength = "10", required = "required" })
-                    @Html.ValidationMessageFor(model => model.userMobileNumber, "", new { @class = "text-danger" })
-                    <span class="text-danger" id="err_mobile"></span>
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <span class="help-block with-errors"></span>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    @*@Html.Label("लॉगिन आई डी / Login ID")*@
-                    @Html.Label("Login ID")
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.TextBoxFor(model => model.userLoginId, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
-                    @Html.ValidationMessageFor(model => model.userLoginId, "", new { @class = "text-danger" })
-                    <span class="text-danger" id="err_login"></span>
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <span class="help-block with-errors"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @*@Html.Label("पासवर्ड / Password")*@
-                    @Html.Label("Password")
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.TextBoxFor(model => model.userPassword, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
-                    @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
-                    <span class="text-danger" id="err_pw"></span>
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <span class="help-block with-errors"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    @*@Html.Label("लक्ष्य/ Target ")*@
-                    @Html.Label("Target ")
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.TextBoxFor(model => model.gcTarget, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
-                    @Html.ValidationMessageFor(model => model.gcTarget, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="form-group">
-                    @*@Html.Label("आयएमईआय संख्या / Login Number ")*@
-                    @Html.Label("IMEI Number ")
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.TextBoxFor(model => model.imoNo, new { @readonly = "readonly", @class = "form-control", style = "font-family:Arial, FontAwesome;color:#999;" })
-                    <span class="text-danger" id="err_pw"></span>
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <span class="help-block with-errors"></span>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <br />
-                <div class="form-group" style="margin-top:10px">
-
-                    <label>Clear Login </label>   <input type="checkbox" id="check" />
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    @*@Html.Label("रक्त गट / Blood Group ")*@
-                    @Html.Label("Blood Group ")
-                    @{ var RlistItems = new List<SelectListItem>();
-
-                        RlistItems.Add(new SelectListItem { Text = "Select Blood Group", Value = "0" });
-                        RlistItems.Add(new SelectListItem { Text = "A+ve", Value = "A+ve" });
-                        RlistItems.Add(new SelectListItem { Text = "A-ve", Value = "A-ve" });
-                        RlistItems.Add(new SelectListItem { Text = "B+ve", Value = "B+ve" });
-                        RlistItems.Add(new SelectListItem { Text = "B-ve", Value = "B-ve" });
-                        RlistItems.Add(new SelectListItem { Text = "O+ve", Value = "O+ve" });
-                        RlistItems.Add(new SelectListItem { Text = "O-ve", Value = "O-ve" });
-                        RlistItems.Add(new SelectListItem { Text = "AB+ve", Value = "AB+ve" });
-                        RlistItems.Add(new SelectListItem { Text = "AB-ve", Value = "AB-ve" });
-                    }
-                    @Html.DropDownListFor(model => model.bloodGroup, RlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-
-
-
-                    <span class="text-danger" id="err_pw"></span>
-                    <span class="help-block with-errors"></span>
-                </div>
-
-            </div>
-            <div class="col-md-2">
-                <br />
-                <div class="form-group" style="margin-top:10px">
-                    <label>Is Active </label>
-                    @Html.CheckBox("isActive")
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-            </div>
-        </div>
-        <div class="row">
-            <center><span class="text-danger" id="err_generate"></span></center>
-            <div class="form-group1">
-                <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
-
-                    <span class="glyphicon glyphicon-saved"></span>
-                    <span id="buttonName">Save Changes</span>
-                </button>
+            <div class="form-group">
+                @*@Html.Label("एम्प्लॉयमेंट आयडी / Employment ID ")*@
+                @Html.Label("Employment ID ")
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.userEmployeeNo, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                @Html.ValidationMessageFor(model => model.userEmployeeNo, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_empidd"></span>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <span class="help-block with-errors"></span>
             </div>
         </div>
     </div>
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @*@Html.Label("पत्ता / Address")*@
+                @Html.Label("Address")
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.userAddress, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
+                @Html.ValidationMessageFor(model => model.userAddress, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_address"></span>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @*@Html.Label("मोबाइल / Mobile")*@
+                @Html.Label("Mobile")
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.userMobileNumber, new { @class = "form-control", style = "font-family:Arial, FontAwesome", minlength = "10", maxlength = "10", required = "required" })
+                @Html.ValidationMessageFor(model => model.userMobileNumber, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_mobile"></span>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @*@Html.Label("लॉगिन आई डी / Login ID")*@
+                @Html.Label("Login ID")
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.userLoginId, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
+                @Html.ValidationMessageFor(model => model.userLoginId, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_login"></span>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @*@Html.Label("पासवर्ड / Password")*@
+                @Html.Label("Password")
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.userPassword, new { @class = "form-control", style = "font-family:Arial, FontAwesome", required = "required" })
+                @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_pw"></span>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @*@Html.Label("झोन / Zone")*@
+                @Html.Label("Zone")
+                @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                @Html.DropDownListFor(model => model.ZoneId, Model.ZoneList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                <span class="text-danger" id="err_zone"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="form-group">
+                @*@Html.Label("वार्ड क्रमांक / Ward No")*@
+                @Html.Label("Prabhag")
+                @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopWard()"> + Add Ward </a>*@
+
+                @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                @Html.ValidationMessageFor(model => model.PrabhagId, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_ward"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @*@Html.Label("लक्ष्य/ Target ")*@
+                @Html.Label("Target ")
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.gcTarget, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                @Html.ValidationMessageFor(model => model.gcTarget, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                @*@Html.Label("आयएमईआय संख्या / Login Number ")*@
+                @Html.Label("IMEI Number ")
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.imoNo, new { @readonly = "readonly", @class = "form-control", style = "font-family:Arial, FontAwesome;color:#999;" })
+                <span class="text-danger" id="err_pw"></span>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <br />
+            <div class="form-group" style="margin-top:10px">
+
+                <label>Clear Login </label>   <input type="checkbox" id="check" />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @*@Html.Label("रक्त गट / Blood Group ")*@
+                @Html.Label("Blood Group ")
+                @{ var RlistItems = new List<SelectListItem>();
+
+                    RlistItems.Add(new SelectListItem { Text = "Select Blood Group", Value = "0" });
+                    RlistItems.Add(new SelectListItem { Text = "A+ve", Value = "A+ve" });
+                    RlistItems.Add(new SelectListItem { Text = "A-ve", Value = "A-ve" });
+                    RlistItems.Add(new SelectListItem { Text = "B+ve", Value = "B+ve" });
+                    RlistItems.Add(new SelectListItem { Text = "B-ve", Value = "B-ve" });
+                    RlistItems.Add(new SelectListItem { Text = "O+ve", Value = "O+ve" });
+                    RlistItems.Add(new SelectListItem { Text = "O-ve", Value = "O-ve" });
+                    RlistItems.Add(new SelectListItem { Text = "AB+ve", Value = "AB+ve" });
+                    RlistItems.Add(new SelectListItem { Text = "AB-ve", Value = "AB-ve" });
+                }
+                @Html.DropDownListFor(model => model.bloodGroup, RlistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+
+
+                <span class="text-danger" id="err_pw"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+
+        </div>
+        <div class="col-md-2">
+            <br />
+            <div class="form-group" style="margin-top:10px">
+                <label>Is Active </label>
+                @Html.CheckBox("isActive")
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+        </div>
+    </div>
+    <div class="row">
+        <center><span class="text-danger" id="err_generate"></span></center>
+        <div class="form-group1">
+            <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
+
+                <span class="glyphicon glyphicon-saved"></span>
+                <span id="buttonName">Save Changes</span>
+            </button>
+        </div>
+    </div>
+</div>
 
 }
 <script type="text/javascript">
@@ -295,6 +321,32 @@
             //$('.title_change').text("कर्मचारी तपशील सादर करा / Add  Employee Details");
             $('.title_change').text("Add  Employee Details");
         }
+
+
+        $('#ZoneId').change(function () {
+            debugger;
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "/Employee/LoadPrabhagNoList?",
+                data: { ZoneId: $('#ZoneId').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var prabhag;
+                    for (var i = 0; i < data.length; i++) {
+                        prabhag = prabhag + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+
+                    $('#PrabhagId').html(prabhag);
+
+
+                }
+            });
+
+        });
     });
 
 

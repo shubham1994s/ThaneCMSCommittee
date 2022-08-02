@@ -33,6 +33,7 @@
           <Property Name="QRStatus" Type="bit" />
           <Property Name="QRStatusDate" Type="datetime" />
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <EntityType Name="CommitteeMaster">
           <Key>
@@ -42,8 +43,6 @@
           <Property Name="CommitteeName" Type="nvarchar" MaxLength="50" />
           <Property Name="zoneId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Daily_Attendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Daily_Attendance">
           <Key>
             <PropertyRef Name="daID" />
@@ -68,6 +67,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Daily_Attendan
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="CType" Type="varchar" MaxLength="10" />
           <Property Name="WardId" Type="nchar" MaxLength="10" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.DumpYardDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -93,6 +93,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.DumpYardDetail
           <Property Name="QRStatus" Type="bit" />
           <Property Name="QRStatusDate" Type="datetime" />
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GamePlayerDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -161,6 +162,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GarbageCollect
           <Property Name="Sanitary" Type="int" />
           <Property Name="gpBeforImageTime" Type="datetime" />
           <Property Name="gpAfterImageTime" Type="datetime" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GarbagePointDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -212,8 +214,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GramCleaningCo
           <Property Name="ref_id" Type="nvarchar" MaxLength="200" />
           <Property Name="Type" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.HouseMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HouseMaster">
           <Key>
             <PropertyRef Name="houseId" />
@@ -242,6 +242,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.HouseMaster' d
           <Property Name="QRStatus" Type="bit" />
           <Property Name="QRStatusDate" Type="datetime" />
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.LiquidWasteDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -266,6 +267,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.LiquidWasteDet
           <Property Name="QRStatus" Type="bit" />
           <Property Name="QRStatusDate" Type="datetime" />
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Location' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -386,6 +388,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.QrEmployeeMast
           <Property Name="QRStatus" Type="bit" />
           <Property Name="QRStatusDate" Type="datetime" />
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <EntityType Name="SS_1_4_ANSWER">
           <Key>
@@ -464,6 +467,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.StreetSweeping
           <Property Name="QRStatus" Type="bit" />
           <Property Name="QRStatusDate" Type="datetime" />
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <EntityType Name="SWMMaster">
           <Key>
@@ -495,6 +499,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.StreetSweeping
           <Property Name="QRStatus" Type="bit" />
           <Property Name="QRStatusDate" Type="datetime" />
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.TeritoryMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -797,11 +802,19 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="WardNo" Type="int" Mode="In" />
           <Parameter Name="FilterType" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_CTPTScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_CurrentCTPTCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_Dashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_CTPTScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_CurrentCTPTCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Dashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_DumpYardDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_EmployeeHouseCollectionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_EmployeeHouseCollectionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_EmployeeLiquidCollectionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_EmployeeStreetCollectionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_EmployeeSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -902,7 +915,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="fdate" Type="date" Mode="In" />
           <Parameter Name="tdate" Type="date" Mode="In" />
         </Function>
-        <Function Name="SP_LiquidDashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_LiquidDashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_LiquidEmployeeTarget" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fdate" Type="date" Mode="In" />
           <Parameter Name="tdate" Type="date" Mode="In" />
@@ -954,7 +969,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="Emptype" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_SSweeping_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="SP_StreetDashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_StreetDashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_StreetEmployeeTarget" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fdate" Type="date" Mode="In" />
           <Parameter Name="tdate" Type="date" Mode="In" />
@@ -993,6 +1010,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
         <Function Name="SP_SWMScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_TotalHouseCollection_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="gcdate" Type="date" Mode="In" />
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
         </Function>
         <Function Name="Spbeatmapstatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
@@ -1004,6 +1022,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
         <EntityContainer Name="DevSwachhBharatNagpurModelStoreContainer">
           <EntitySet Name="CommercialMaster" EntityType="Self.CommercialMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommitteeMaster" EntityType="Self.CommitteeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SauchalayAddress" EntityType="Self.SauchalayAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SS_1_4_ANSWER" EntityType="Self.SS_1_4_ANSWER" Schema="dbo" Table="SS_1.4_ANSWER" store:Type="Tables" />
           <EntitySet Name="SS_1_4_QUESTION_13july" EntityType="Self.SS_1_4_QUESTION_13july" Schema="dbo" Table="SS_1.4_QUESTION_13july" store:Type="Tables" />
@@ -1013,30 +1033,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VehicleRegistration" EntityType="Self.VehicleRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WardNumber" EntityType="Self.WardNumber" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Daily_Attendance].[daID] AS [daID], 
-    [Daily_Attendance].[userId] AS [userId], 
-    [Daily_Attendance].[startLat] AS [startLat], 
-    [Daily_Attendance].[startLong] AS [startLong], 
-    [Daily_Attendance].[endLat] AS [endLat], 
-    [Daily_Attendance].[endLong] AS [endLong], 
-    [Daily_Attendance].[startTime] AS [startTime], 
-    [Daily_Attendance].[endTime] AS [endTime], 
-    [Daily_Attendance].[daDate] AS [daDate], 
-    [Daily_Attendance].[daEndDate] AS [daEndDate], 
-    [Daily_Attendance].[vtId] AS [vtId], 
-    [Daily_Attendance].[daStartNote] AS [daStartNote], 
-    [Daily_Attendance].[daEndNote] AS [daEndNote], 
-    [Daily_Attendance].[vehicleNumber] AS [vehicleNumber], 
-    [Daily_Attendance].[batteryStatus] AS [batteryStatus], 
-    [Daily_Attendance].[totalKm] AS [totalKm], 
-    [Daily_Attendance].[OutbatteryStatus] AS [OutbatteryStatus], 
-    [Daily_Attendance].[EmployeeType] AS [EmployeeType], 
-    [Daily_Attendance].[CType] AS [CType], 
-    [Daily_Attendance].[WardId] AS [WardId]
-    FROM [dbo].[Daily_Attendance] AS [Daily_Attendance]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="DumpYardDetails" EntityType="Self.DumpYardDetails" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [DumpYardDetails].[dyId] AS [dyId], 
@@ -1056,7 +1052,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [DumpYardDetails].[QRCodeImage] AS [QRCodeImage], 
     [DumpYardDetails].[QRStatus] AS [QRStatus], 
     [DumpYardDetails].[QRStatusDate] AS [QRStatusDate], 
-    [DumpYardDetails].[BinaryQrCodeImage] AS [BinaryQrCodeImage]
+    [DumpYardDetails].[BinaryQrCodeImage] AS [BinaryQrCodeImage], 
+    [DumpYardDetails].[PrabhagId] AS [PrabhagId]
     FROM [dbo].[DumpYardDetails] AS [DumpYardDetails]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="GamePlayerDetails" EntityType="Self.GamePlayerDetails" store:Type="Tables" store:Schema="dbo">
@@ -1118,7 +1115,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [GarbageCollectionDetails].[Domestic] AS [Domestic], 
     [GarbageCollectionDetails].[Sanitary] AS [Sanitary], 
     [GarbageCollectionDetails].[gpBeforImageTime] AS [gpBeforImageTime], 
-    [GarbageCollectionDetails].[gpAfterImageTime] AS [gpAfterImageTime]
+    [GarbageCollectionDetails].[gpAfterImageTime] AS [gpAfterImageTime], 
+    [GarbageCollectionDetails].[PrabhagId] AS [PrabhagId]
     FROM [dbo].[GarbageCollectionDetails] AS [GarbageCollectionDetails]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="GarbagePointDetails" EntityType="Self.GarbagePointDetails" store:Type="Tables" store:Schema="dbo">
@@ -1164,34 +1162,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [GramCleaningComplient].[Type] AS [Type]
     FROM [dbo].[GramCleaningComplient] AS [GramCleaningComplient]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [HouseMaster].[houseId] AS [houseId], 
-    [HouseMaster].[houseNumber] AS [houseNumber], 
-    [HouseMaster].[houseOwner] AS [houseOwner], 
-    [HouseMaster].[houseOwnerMar] AS [houseOwnerMar], 
-    [HouseMaster].[houseOwnerMobile] AS [houseOwnerMobile], 
-    [HouseMaster].[houseAddress] AS [houseAddress], 
-    [HouseMaster].[houseLat] AS [houseLat], 
-    [HouseMaster].[houseLong] AS [houseLong], 
-    [HouseMaster].[houseQRCode] AS [houseQRCode], 
-    [HouseMaster].[ZoneId] AS [ZoneId], 
-    [HouseMaster].[AreaId] AS [AreaId], 
-    [HouseMaster].[WardNo] AS [WardNo], 
-    [HouseMaster].[ReferanceId] AS [ReferanceId], 
-    [HouseMaster].[modified] AS [modified], 
-    [HouseMaster].[userId] AS [userId], 
-    [HouseMaster].[FCMID] AS [FCMID], 
-    [HouseMaster].[lastModifiedEntry] AS [lastModifiedEntry], 
-    [HouseMaster].[RFIDTagId] AS [RFIDTagId], 
-    [HouseMaster].[WasteType] AS [WasteType], 
-    [HouseMaster].[CType] AS [CType], 
-    [HouseMaster].[QRCodeImage] AS [QRCodeImage], 
-    [HouseMaster].[QRStatus] AS [QRStatus], 
-    [HouseMaster].[QRStatusDate] AS [QRStatusDate], 
-    [HouseMaster].[BinaryQrCodeImage] AS [BinaryQrCodeImage]
-    FROM [dbo].[HouseMaster] AS [HouseMaster]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="LiquidWasteDetails" EntityType="Self.LiquidWasteDetails" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [LiquidWasteDetails].[LWId] AS [LWId], 
@@ -1210,7 +1180,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [LiquidWasteDetails].[QRCodeImage] AS [QRCodeImage], 
     [LiquidWasteDetails].[QRStatus] AS [QRStatus], 
     [LiquidWasteDetails].[QRStatusDate] AS [QRStatusDate], 
-    [LiquidWasteDetails].[BinaryQrCodeImage] AS [BinaryQrCodeImage]
+    [LiquidWasteDetails].[BinaryQrCodeImage] AS [BinaryQrCodeImage], 
+    [LiquidWasteDetails].[PrabhagId] AS [PrabhagId]
     FROM [dbo].[LiquidWasteDetails] AS [LiquidWasteDetails]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Location" EntityType="Self.Location" store:Type="Tables" store:Schema="dbo">
@@ -1316,7 +1287,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [StreetSweepingDetails].[QRCodeImage] AS [QRCodeImage], 
     [StreetSweepingDetails].[QRStatus] AS [QRStatus], 
     [StreetSweepingDetails].[QRStatusDate] AS [QRStatusDate], 
-    [StreetSweepingDetails].[BinaryQrCodeImage] AS [BinaryQrCodeImage]
+    [StreetSweepingDetails].[BinaryQrCodeImage] AS [BinaryQrCodeImage], 
+    [StreetSweepingDetails].[PrabhagId] AS [PrabhagId]
     FROM [dbo].[StreetSweepingDetails] AS [StreetSweepingDetails]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="TeritoryMaster" EntityType="Self.TeritoryMaster" store:Type="Tables" store:Schema="dbo">
@@ -1559,8 +1531,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <FunctionImport Name="SP_EmployeeLiquidCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeLiquidCollectionType_Result)" />
           <FunctionImport Name="SP_EmployeeStreetCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeStreetCollectionType_Result)" />
-          <FunctionImport Name="SP_LiquidDashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidDashboard_Details_Result)" />
-          <FunctionImport Name="SP_StreetDashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_StreetDashboard_Details_Result)" />
           <FunctionImport Name="StreetCurrentAllUserLocationTest1" ReturnType="Collection(DevSwachhBharatNagpurModel.StreetCurrentAllUserLocationTest1_Result)" />
           <FunctionImport Name="HouseDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.HouseDetails_Result)" />
           <FunctionImport Name="CommercialDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.CommercialDetails_Result)" />
@@ -1589,7 +1559,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_CTPTScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPTScanify_Count_Result)" />
           <FunctionImport Name="SP_HouseScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMOnMapDetails_Result)">
@@ -1693,17 +1662,11 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="TDate" Mode="In" Type="DateTime" />
             <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)" />
           <FunctionImport Name="SP_EmployeeSummary" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeSummary_Result)">
             <Parameter Name="from" Mode="In" Type="DateTime" />
             <Parameter Name="to" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
-          <Parameter Name="gcdate" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)" />
-          <FunctionImport Name="SP_CurrentCTPTCount" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CurrentCTPTCount_Result)" />
           <FunctionImport Name="SP_GetHSHouseDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_GetHSHouseDetails_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
@@ -1715,7 +1678,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="SearchText" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_HouseScanifyDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanifyDetails_Result)" />
-          <EntitySet Name="HouseMasters" EntityType="DevSwachhBharatNagpurModel.HouseMaster" />
           <FunctionImport Name="SP_GetHSHouseDetailsById" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_GetHSHouseDetailsById_Result)">
           <Parameter Name="houseid" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1783,6 +1745,29 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="CommitteeMasters" EntityType="DevSwachhBharatNagpurModel.CommitteeMaster" />
           <EntitySet Name="WardNumbers" EntityType="DevSwachhBharatNagpurModel.WardNumber" />
           <EntitySet Name="UserMasters" EntityType="DevSwachhBharatNagpurModel.UserMaster" />
+          <FunctionImport Name="SP_CTPTScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPTScanify_Count_Result)">
+          <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)">
+          <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result)">
+            <Parameter Name="gcdate" Mode="In" Type="DateTime" />
+            <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CurrentCTPTCount" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CurrentCTPTCount_Result)">
+          <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result)">
+          <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="HouseMasters" EntityType="DevSwachhBharatNagpurModel.HouseMaster" />
+          <FunctionImport Name="SP_LiquidDashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidDashboard_Details_Result)">
+            <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_StreetDashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_StreetDashboard_Details_Result)">
+            <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2429,6 +2414,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="Domestic" Type="Int32" />
           <Property Name="gpBeforImageTime" Type="DateTime" Precision="3" />
           <Property Name="gpAfterImageTime" Type="DateTime" Precision="3" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <ComplexType Name="SP_LiquidEmployeeTarget_Result">
           <Property Type="Int32" Name="userId" Nullable="true" />
@@ -2467,20 +2453,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="StreetCollectionCount" Nullable="true" />
           <Property Type="Int32" Name="DryWaste" Nullable="true" />
           <Property Type="Int32" Name="WetWaste" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_LiquidDashboard_Details_Result">
-          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
-          <Property Type="Int32" Name="TotalLiquid" Nullable="true" />
-          <Property Type="Int32" Name="TotalDump" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_StreetDashboard_Details_Result">
-          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreet" Nullable="true" />
-          <Property Type="Int32" Name="TotalDump" Nullable="true" />
         </ComplexType>
         <ComplexType Name="StreetCurrentAllUserLocationTest1_Result">
           <Property Type="Int32" Name="userid" Nullable="true" />
@@ -2599,14 +2571,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="CommercialCount" Nullable="true" />
           <Property Type="Int32" Name="SWMCount" Nullable="true" />
           <Property Type="Int32" Name="CTPTCount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_CTPTScanify_Count_Result">
-          <Property Type="Int32" Name="TotalCTPTCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTPTScanCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalPTCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalUCount" Nullable="true" />
-          <Property Type="Int32" Name="TodayScanCTPTCount" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SP_HouseScanify_Count_Result">
           <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
@@ -2871,18 +2835,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="CTPTID" Nullable="true" MaxLength="350" />
           <Property Type="String" Name="CTPT_UserName" Nullable="true" MaxLength="500" />
         </ComplexType>
-        <ComplexType Name="SP_Dashboard_Details_Result">
-          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TodayCTPTAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTPTAttandence" Nullable="true" />
-          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
-          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
-          <Property Type="Int32" Name="TotalDump" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercialCurrent" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTPTCurrent" Nullable="true" />
-          <Property Type="Int32" Name="TotalSWMCurrent" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="SP_EmployeeSummary_Result">
           <Property Type="Int32" Name="daID" Nullable="true" />
           <Property Type="Int32" Name="userId" Nullable="false" />
@@ -2904,99 +2856,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalSLWM" Nullable="true" />
           <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
           <Property Type="Int64" Name="rownum" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_TotalHouseCollection_Count_Result">
-          <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
-          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalWetWaste" Nullable="true" />
-          <Property Type="Int32" Name="TotalDryWaste" Nullable="true" />
-          <Property Type="Int32" Name="MixedCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalDHW" Nullable="true" />
-          <Property Type="Int32" Name="TotalSW" Nullable="true" />
-          <Property Type="Int32" Name="NotCollected" Nullable="true" />
-          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
-          <Property Type="Int32" Name="TotalCDW" Nullable="true" />
-          <Property Type="Int32" Name="TotalHW" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercialCDW" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercialHW" Nullable="true" />
-          <Property Type="Int32" Name="TotalConstDemo" Nullable="true" />
-          <Property Type="Int32" Name="TotalHorticulture" Nullable="true" />
-          <Property Type="Int32" Name="TotalCW" Nullable="true" />
-          <Property Type="Decimal" Name="GcWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="DryWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="WetWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="TotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="TotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="TotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="LWGcWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="LWDryWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="LWWetWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="LWTotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="LWTotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="LWTotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="SSGcWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="SSDryWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="SSWetWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="SSTotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="SSTotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="SSTotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Int32" Name="TotalLiquidCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreetCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalLiquidPropertyCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreetPropertyCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalHousePropertyCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalDumpPropertyCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
-          <Property Type="Decimal" Name="GcHWWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="GcCDWWeightCount" Nullable="false" Precision="38" Scale="4" />
-          <Property Type="Int32" Name="TotalCommercialCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialSegregeted" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialMixCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialDryCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialWetCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialNotCollectedCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCommercialNotSpecifiedCount" Nullable="false" />
-          <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
-          <Property Type="Int32" Name="TotalSWM" Nullable="true" />
-          <Property Type="Int32" Name="TotalRBW" Nullable="true" />
-          <Property Type="Int32" Name="TotalRSW" Nullable="true" />
-          <Property Type="Int32" Name="RBWDailyScanCount" Nullable="false" />
-          <Property Type="Int32" Name="RSWDailyScanCount" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="SP_EmployeeHouseCollectionType_Result">
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="ComgcTarget" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="inTime" Nullable="true" MaxLength="200" />
-          <Property Type="Int32" Name="Count" Nullable="true" />
-          <Property Type="Int32" Name="MixedCount" Nullable="true" />
-          <Property Type="Int32" Name="Bifur" Nullable="true" />
-          <Property Type="Int32" Name="NotCollected" Nullable="true" />
-          <Property Type="Int32" Name="NotSpecidfied" Nullable="true" />
-          <Property Type="Int32" Name="CDW" Nullable="true" />
-          <Property Type="Int32" Name="HW" Nullable="true" />
-          <Property Type="Int32" Name="CommercialCDW" Nullable="true" />
-          <Property Type="Int32" Name="CommercialHW" Nullable="true" />
-          <Property Type="Int32" Name="CWNS" Nullable="true" />
-          <Property Type="Int32" Name="CWM" Nullable="true" />
-          <Property Type="Int32" Name="CWNR" Nullable="true" />
-          <Property Type="Int32" Name="CWW" Nullable="true" />
-          <Property Type="Int32" Name="CWD" Nullable="true" />
-          <Property Type="Int32" Name="CommercialSegregeted" Nullable="true" />
-          <Property Type="Int32" Name="WetWaste" Nullable="true" />
-          <Property Type="Int32" Name="DryWaste" Nullable="true" />
-          <Property Type="Int32" Name="DHW" Nullable="true" />
-          <Property Type="Int32" Name="SW" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_CurrentCTPTCount_Result">
-          <Property Type="Int32" Name="userId" Nullable="true" />
-          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
-          <Property Type="Int32" Name="TotalPTCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalCTCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalUCount" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SP_GetHSHouseDetails_Result">
           <Property Type="Int32" Name="userId" Nullable="true" />
@@ -3048,35 +2907,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="SWMMinutes" Nullable="true" />
           <Property Type="Int32" Name="CTPTMinutes" Nullable="true" />
         </ComplexType>
-        <EntityType Name="HouseMaster">
-          <Key>
-            <PropertyRef Name="houseId" />
-          </Key>
-          <Property Name="houseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="houseNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="houseOwner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="houseOwnerMar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="houseOwnerMobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="houseAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="houseLat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="houseLong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="houseQRCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ZoneId" Type="Int32" />
-          <Property Name="AreaId" Type="Int32" />
-          <Property Name="WardNo" Type="Int32" />
-          <Property Name="ReferanceId" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
-          <Property Name="modified" Type="DateTime" Precision="3" />
-          <Property Name="userId" Type="Int32" />
-          <Property Name="FCMID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="lastModifiedEntry" Type="DateTime" Precision="3" />
-          <Property Name="RFIDTagId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WasteType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="CType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="QRCodeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="QRStatus" Type="Boolean" />
-          <Property Name="QRStatusDate" Type="DateTime" Precision="3" />
-          <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <ComplexType Name="SP_GetHSHouseDetailsById_Result">
           <Property Type="Int32" Name="userId" Nullable="true" />
           <Property Type="Int32" Name="houseId" Nullable="false" />
@@ -3143,6 +2973,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="QRStatus" Type="Boolean" />
           <Property Name="QRStatusDate" Type="DateTime" Precision="3" />
           <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <EntityType Name="LiquidWasteDetail">
           <Key>
@@ -3165,6 +2996,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="QRStatus" Type="Boolean" />
           <Property Name="QRStatusDate" Type="DateTime" Precision="3" />
           <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <EntityType Name="SauchalayAddress">
           <Key>
@@ -3196,6 +3028,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="QRStatus" Type="Boolean" />
           <Property Name="QRStatusDate" Type="DateTime" Precision="3" />
           <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <EntityType Name="StreetSweepingDetail">
           <Key>
@@ -3218,6 +3051,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="QRStatus" Type="Boolean" />
           <Property Name="QRStatusDate" Type="DateTime" Precision="3" />
           <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <EntityType Name="SWMMaster">
           <Key>
@@ -3249,6 +3083,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="QRStatus" Type="Boolean" />
           <Property Name="QRStatusDate" Type="DateTime" Precision="3" />
           <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <ComplexType Name="Spbeatmapstatus_Result">
           <Property Type="Int64" Name="RowCounts" Nullable="true" />
@@ -3285,6 +3120,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="CType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="WardId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <ComplexType Name="SP_CTPTGarbageCollection_Result">
           <Property Type="Int32" Name="gcId" Nullable="false" />
@@ -3384,6 +3220,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="QRStatus" Type="Boolean" />
           <Property Name="QRStatusDate" Type="DateTime" Precision="3" />
           <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <EntityType Name="CommitteeMaster">
           <Key>
@@ -3427,6 +3264,163 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="ZoneId" Type="Int32" />
           <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
+        <ComplexType Name="SP_CTPTScanify_Count_Result">
+          <Property Type="Int32" Name="TotalCTPTCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTScanCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalPTCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalUCount" Nullable="true" />
+          <Property Type="Int32" Name="TodayScanCTPTCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_Dashboard_Details_Result">
+          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TodayCTPTAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
+          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
+          <Property Type="Int32" Name="TotalDump" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercialCurrent" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTPTCurrent" Nullable="true" />
+          <Property Type="Int32" Name="TotalSWMCurrent" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_TotalHouseCollection_Count_Result">
+          <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
+          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalWetWaste" Nullable="true" />
+          <Property Type="Int32" Name="TotalDryWaste" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalDHW" Nullable="true" />
+          <Property Type="Int32" Name="TotalSW" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
+          <Property Type="Int32" Name="TotalCDW" Nullable="true" />
+          <Property Type="Int32" Name="TotalHW" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercialCDW" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercialHW" Nullable="true" />
+          <Property Type="Int32" Name="TotalConstDemo" Nullable="true" />
+          <Property Type="Int32" Name="TotalHorticulture" Nullable="true" />
+          <Property Type="Int32" Name="TotalCW" Nullable="true" />
+          <Property Type="Decimal" Name="GcWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="DryWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="WetWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="LWGcWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="LWDryWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="LWWetWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="LWTotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="LWTotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="LWTotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SSGcWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SSDryWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SSWetWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SSTotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SSTotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SSTotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="TotalLiquidCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreetCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalLiquidPropertyCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreetPropertyCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalHousePropertyCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalDumpPropertyCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCommercial" Nullable="true" />
+          <Property Type="Decimal" Name="GcHWWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="GcCDWWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Int32" Name="TotalCommercialCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialSegregeted" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialMixCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialDryCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialWetCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialNotCollectedCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCommercialNotSpecifiedCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
+          <Property Type="Int32" Name="TotalSWM" Nullable="true" />
+          <Property Type="Int32" Name="TotalRBW" Nullable="true" />
+          <Property Type="Int32" Name="TotalRSW" Nullable="true" />
+          <Property Type="Int32" Name="RBWDailyScanCount" Nullable="false" />
+          <Property Type="Int32" Name="RSWDailyScanCount" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_CurrentCTPTCount_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="TotalPTCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCTCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalUCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_EmployeeHouseCollectionType_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ComgcTarget" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="inTime" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="Bifur" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecidfied" Nullable="true" />
+          <Property Type="Int32" Name="CDW" Nullable="true" />
+          <Property Type="Int32" Name="HW" Nullable="true" />
+          <Property Type="Int32" Name="CommercialCDW" Nullable="true" />
+          <Property Type="Int32" Name="CommercialHW" Nullable="true" />
+          <Property Type="Int32" Name="CWNS" Nullable="true" />
+          <Property Type="Int32" Name="CWM" Nullable="true" />
+          <Property Type="Int32" Name="CWNR" Nullable="true" />
+          <Property Type="Int32" Name="CWW" Nullable="true" />
+          <Property Type="Int32" Name="CWD" Nullable="true" />
+          <Property Type="Int32" Name="CommercialSegregeted" Nullable="true" />
+          <Property Type="Int32" Name="WetWaste" Nullable="true" />
+          <Property Type="Int32" Name="DryWaste" Nullable="true" />
+          <Property Type="Int32" Name="DHW" Nullable="true" />
+          <Property Type="Int32" Name="SW" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="HouseMaster">
+          <Key>
+            <PropertyRef Name="houseId" />
+          </Key>
+          <Property Name="houseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="houseNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="houseOwner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="houseOwnerMar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="houseOwnerMobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="houseAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="houseLat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="houseLong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="houseQRCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ZoneId" Type="Int32" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="WardNo" Type="Int32" />
+          <Property Name="ReferanceId" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="FCMID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="lastModifiedEntry" Type="DateTime" Precision="3" />
+          <Property Name="RFIDTagId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WasteType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="QRCodeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QRStatus" Type="Boolean" />
+          <Property Name="QRStatusDate" Type="DateTime" Precision="3" />
+          <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrabhagId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="SP_LiquidDashboard_Details_Result">
+          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
+          <Property Type="Int32" Name="TotalLiquid" Nullable="true" />
+          <Property Type="Int32" Name="TotalDump" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_StreetDashboard_Details_Result">
+          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreet" Nullable="true" />
+          <Property Type="Int32" Name="TotalDump" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4015,6 +4009,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="GarbageCollectionDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.GarbageCollectionDetail">
               <MappingFragment StoreEntitySet="GarbageCollectionDetails">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="gpAfterImageTime" ColumnName="gpAfterImageTime" />
                 <ScalarProperty Name="gpBeforImageTime" ColumnName="gpBeforImageTime" />
                 <ScalarProperty Name="Domestic" ColumnName="Domestic" />
@@ -4115,28 +4110,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="StreetCollectionCount" ColumnName="StreetCollectionCount" />
                 <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
                 <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_LiquidDashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_LiquidDashboard_Details">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_LiquidDashboard_Details_Result">
-                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
-                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
-                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
-                <ScalarProperty Name="TotalLiquid" ColumnName="TotalLiquid" />
-                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_StreetDashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_StreetDashboard_Details">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_StreetDashboard_Details_Result">
-                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
-                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
-                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
-                <ScalarProperty Name="TotalStreet" ColumnName="TotalStreet" />
-                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -4284,18 +4257,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="CommercialCount" ColumnName="CommercialCount" />
                 <ScalarProperty Name="SWMCount" ColumnName="SWMCount" />
                 <ScalarProperty Name="CTPTCount" ColumnName="CTPTCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_CTPTScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPTScanify_Count">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPTScanify_Count_Result">
-                <ScalarProperty Name="TotalCTPTCount" ColumnName="TotalCTPTCount" />
-                <ScalarProperty Name="TotalCTPTScanCount" ColumnName="TotalCTPTScanCount" />
-                <ScalarProperty Name="TotalPTCount" ColumnName="TotalPTCount" />
-                <ScalarProperty Name="TotalCTCount" ColumnName="TotalCTCount" />
-                <ScalarProperty Name="TotalUCount" ColumnName="TotalUCount" />
-                <ScalarProperty Name="TodayScanCTPTCount" ColumnName="TodayScanCTPTCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -4624,22 +4585,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_Dashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_Dashboard_Details">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result">
-                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
-                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
-                <ScalarProperty Name="TodayCTPTAttandence" ColumnName="TodayCTPTAttandence" />
-                <ScalarProperty Name="TotalCTPTAttandence" ColumnName="TotalCTPTAttandence" />
-                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
-                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
-                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
-                <ScalarProperty Name="TotalCommercialCurrent" ColumnName="TotalCommercialCurrent" />
-                <ScalarProperty Name="TotalCTPTCurrent" ColumnName="TotalCTPTCurrent" />
-                <ScalarProperty Name="TotalSWMCurrent" ColumnName="TotalSWMCurrent" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_EmployeeSummary" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeSummary">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeSummary_Result">
@@ -4663,111 +4608,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalSLWM" ColumnName="TotalSLWM" />
                 <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
                 <ScalarProperty Name="rownum" ColumnName="rownum" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_TotalHouseCollection_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_TotalHouseCollection_Count">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result">
-                <ScalarProperty Name="TotalHouseCount" ColumnName="TotalHouseCount" />
-                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
-                <ScalarProperty Name="TotalWetWaste" ColumnName="TotalWetWaste" />
-                <ScalarProperty Name="TotalDryWaste" ColumnName="TotalDryWaste" />
-                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
-                <ScalarProperty Name="TotalDHW" ColumnName="TotalDHW" />
-                <ScalarProperty Name="TotalSW" ColumnName="TotalSW" />
-                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
-                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
-                <ScalarProperty Name="TotalCDW" ColumnName="TotalCDW" />
-                <ScalarProperty Name="TotalHW" ColumnName="TotalHW" />
-                <ScalarProperty Name="TotalCommercialCDW" ColumnName="TotalCommercialCDW" />
-                <ScalarProperty Name="TotalCommercialHW" ColumnName="TotalCommercialHW" />
-                <ScalarProperty Name="TotalConstDemo" ColumnName="TotalConstDemo" />
-                <ScalarProperty Name="TotalHorticulture" ColumnName="TotalHorticulture" />
-                <ScalarProperty Name="TotalCW" ColumnName="TotalCW" />
-                <ScalarProperty Name="GcWeightCount" ColumnName="GcWeightCount" />
-                <ScalarProperty Name="DryWeightCount" ColumnName="DryWeightCount" />
-                <ScalarProperty Name="WetWeightCount" ColumnName="WetWeightCount" />
-                <ScalarProperty Name="TotalGcWeightCount" ColumnName="TotalGcWeightCount" />
-                <ScalarProperty Name="TotalDryWeightCount" ColumnName="TotalDryWeightCount" />
-                <ScalarProperty Name="TotalWetWeightCount" ColumnName="TotalWetWeightCount" />
-                <ScalarProperty Name="LWGcWeightCount" ColumnName="LWGcWeightCount" />
-                <ScalarProperty Name="LWDryWeightCount" ColumnName="LWDryWeightCount" />
-                <ScalarProperty Name="LWWetWeightCount" ColumnName="LWWetWeightCount" />
-                <ScalarProperty Name="LWTotalGcWeightCount" ColumnName="LWTotalGcWeightCount" />
-                <ScalarProperty Name="LWTotalDryWeightCount" ColumnName="LWTotalDryWeightCount" />
-                <ScalarProperty Name="LWTotalWetWeightCount" ColumnName="LWTotalWetWeightCount" />
-                <ScalarProperty Name="SSGcWeightCount" ColumnName="SSGcWeightCount" />
-                <ScalarProperty Name="SSDryWeightCount" ColumnName="SSDryWeightCount" />
-                <ScalarProperty Name="SSWetWeightCount" ColumnName="SSWetWeightCount" />
-                <ScalarProperty Name="SSTotalGcWeightCount" ColumnName="SSTotalGcWeightCount" />
-                <ScalarProperty Name="SSTotalDryWeightCount" ColumnName="SSTotalDryWeightCount" />
-                <ScalarProperty Name="SSTotalWetWeightCount" ColumnName="SSTotalWetWeightCount" />
-                <ScalarProperty Name="TotalLiquidCount" ColumnName="TotalLiquidCount" />
-                <ScalarProperty Name="TotalStreetCount" ColumnName="TotalStreetCount" />
-                <ScalarProperty Name="TotalLiquidPropertyCount" ColumnName="TotalLiquidPropertyCount" />
-                <ScalarProperty Name="TotalStreetPropertyCount" ColumnName="TotalStreetPropertyCount" />
-                <ScalarProperty Name="TotalHousePropertyCount" ColumnName="TotalHousePropertyCount" />
-                <ScalarProperty Name="TotalDumpPropertyCount" ColumnName="TotalDumpPropertyCount" />
-                <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
-                <ScalarProperty Name="GcHWWeightCount" ColumnName="GcHWWeightCount" />
-                <ScalarProperty Name="GcCDWWeightCount" ColumnName="GcCDWWeightCount" />
-                <ScalarProperty Name="TotalCommercialCount" ColumnName="TotalCommercialCount" />
-                <ScalarProperty Name="TotalCommercialSegregeted" ColumnName="TotalCommercialSegregeted" />
-                <ScalarProperty Name="TotalCommercialMixCount" ColumnName="TotalCommercialMixCount" />
-                <ScalarProperty Name="TotalCommercialDryCount" ColumnName="TotalCommercialDryCount" />
-                <ScalarProperty Name="TotalCommercialWetCount" ColumnName="TotalCommercialWetCount" />
-                <ScalarProperty Name="TotalCommercialNotCollectedCount" ColumnName="TotalCommercialNotCollectedCount" />
-                <ScalarProperty Name="TotalCommercialNotSpecifiedCount" ColumnName="TotalCommercialNotSpecifiedCount" />
-                <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
-                <ScalarProperty Name="TotalSWM" ColumnName="TotalSWM" />
-                <ScalarProperty Name="TotalRBW" ColumnName="TotalRBW" />
-                <ScalarProperty Name="TotalRSW" ColumnName="TotalRSW" />
-                <ScalarProperty Name="RBWDailyScanCount" ColumnName="RBWDailyScanCount" />
-                <ScalarProperty Name="RSWDailyScanCount" ColumnName="RSWDailyScanCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_EmployeeHouseCollectionType" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeHouseCollectionType">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
-                <ScalarProperty Name="ComgcTarget" ColumnName="ComgcTarget" />
-                <ScalarProperty Name="inTime" ColumnName="inTime" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
-                <ScalarProperty Name="Bifur" ColumnName="Bifur" />
-                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
-                <ScalarProperty Name="NotSpecidfied" ColumnName="NotSpecidfied" />
-                <ScalarProperty Name="CDW" ColumnName="CDW" />
-                <ScalarProperty Name="HW" ColumnName="HW" />
-                <ScalarProperty Name="CommercialCDW" ColumnName="CommercialCDW" />
-                <ScalarProperty Name="CommercialHW" ColumnName="CommercialHW" />
-                <ScalarProperty Name="CWNS" ColumnName="CWNS" />
-                <ScalarProperty Name="CWM" ColumnName="CWM" />
-                <ScalarProperty Name="CWNR" ColumnName="CWNR" />
-                <ScalarProperty Name="CWW" ColumnName="CWW" />
-                <ScalarProperty Name="CWD" ColumnName="CWD" />
-                <ScalarProperty Name="CommercialSegregeted" ColumnName="CommercialSegregeted" />
-                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
-                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
-                <ScalarProperty Name="DHW" ColumnName="DHW" />
-                <ScalarProperty Name="SW" ColumnName="SW" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_CurrentCTPTCount" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CurrentCTPTCount">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CurrentCTPTCount_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="TotalPTCount" ColumnName="TotalPTCount" />
-                <ScalarProperty Name="TotalCTCount" ColumnName="TotalCTCount" />
-                <ScalarProperty Name="TotalUCount" ColumnName="TotalUCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -4829,36 +4669,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="HouseMasters">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.HouseMaster">
-              <MappingFragment StoreEntitySet="HouseMaster">
-                <ScalarProperty Name="BinaryQrCodeImage" ColumnName="BinaryQrCodeImage" />
-                <ScalarProperty Name="QRStatusDate" ColumnName="QRStatusDate" />
-                <ScalarProperty Name="QRStatus" ColumnName="QRStatus" />
-                <ScalarProperty Name="QRCodeImage" ColumnName="QRCodeImage" />
-                <ScalarProperty Name="CType" ColumnName="CType" />
-                <ScalarProperty Name="WasteType" ColumnName="WasteType" />
-                <ScalarProperty Name="RFIDTagId" ColumnName="RFIDTagId" />
-                <ScalarProperty Name="lastModifiedEntry" ColumnName="lastModifiedEntry" />
-                <ScalarProperty Name="FCMID" ColumnName="FCMID" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="modified" ColumnName="modified" />
-                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
-                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
-                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
-                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
-                <ScalarProperty Name="houseQRCode" ColumnName="houseQRCode" />
-                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
-                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
-                <ScalarProperty Name="houseAddress" ColumnName="houseAddress" />
-                <ScalarProperty Name="houseOwnerMobile" ColumnName="houseOwnerMobile" />
-                <ScalarProperty Name="houseOwnerMar" ColumnName="houseOwnerMar" />
-                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
-                <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
-                <ScalarProperty Name="houseId" ColumnName="houseId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_GetHSHouseDetailsById" FunctionName="DevSwachhBharatNagpurModel.Store.SP_GetHSHouseDetailsById">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_GetHSHouseDetailsById_Result">
@@ -4913,6 +4723,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="CommercialMasters">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.CommercialMaster">
               <MappingFragment StoreEntitySet="CommercialMaster">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="BinaryQrCodeImage" ColumnName="BinaryQrCodeImage" />
                 <ScalarProperty Name="QRStatusDate" ColumnName="QRStatusDate" />
                 <ScalarProperty Name="QRStatus" ColumnName="QRStatus" />
@@ -4943,6 +4754,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="LiquidWasteDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.LiquidWasteDetail">
               <MappingFragment StoreEntitySet="LiquidWasteDetails">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="BinaryQrCodeImage" ColumnName="BinaryQrCodeImage" />
                 <ScalarProperty Name="QRStatusDate" ColumnName="QRStatusDate" />
                 <ScalarProperty Name="QRStatus" ColumnName="QRStatus" />
@@ -4966,6 +4778,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="SauchalayAddresses">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SauchalayAddress">
               <MappingFragment StoreEntitySet="SauchalayAddress">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="BinaryQrCodeImage" ColumnName="BinaryQrCodeImage" />
                 <ScalarProperty Name="QRStatusDate" ColumnName="QRStatusDate" />
                 <ScalarProperty Name="QRStatus" ColumnName="QRStatus" />
@@ -4998,6 +4811,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="StreetSweepingDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.StreetSweepingDetail">
               <MappingFragment StoreEntitySet="StreetSweepingDetails">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="BinaryQrCodeImage" ColumnName="BinaryQrCodeImage" />
                 <ScalarProperty Name="QRStatusDate" ColumnName="QRStatusDate" />
                 <ScalarProperty Name="QRStatus" ColumnName="QRStatus" />
@@ -5021,6 +4835,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="SWMMasters">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SWMMaster">
               <MappingFragment StoreEntitySet="SWMMaster">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="BinaryQrCodeImage" ColumnName="BinaryQrCodeImage" />
                 <ScalarProperty Name="QRStatusDate" ColumnName="QRStatusDate" />
                 <ScalarProperty Name="QRStatus" ColumnName="QRStatus" />
@@ -5068,6 +4883,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="Daily_Attendance">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.Daily_Attendance">
               <MappingFragment StoreEntitySet="Daily_Attendance">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="WardId" ColumnName="WardId" />
                 <ScalarProperty Name="CType" ColumnName="CType" />
                 <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
@@ -5164,6 +4980,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="DumpYardDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.DumpYardDetail">
               <MappingFragment StoreEntitySet="DumpYardDetails">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="BinaryQrCodeImage" ColumnName="BinaryQrCodeImage" />
                 <ScalarProperty Name="QRStatusDate" ColumnName="QRStatusDate" />
                 <ScalarProperty Name="QRStatus" ColumnName="QRStatus" />
@@ -5230,6 +5047,192 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_CTPTScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPTScanify_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPTScanify_Count_Result">
+                <ScalarProperty Name="TotalCTPTCount" ColumnName="TotalCTPTCount" />
+                <ScalarProperty Name="TotalCTPTScanCount" ColumnName="TotalCTPTScanCount" />
+                <ScalarProperty Name="TotalPTCount" ColumnName="TotalPTCount" />
+                <ScalarProperty Name="TotalCTCount" ColumnName="TotalCTCount" />
+                <ScalarProperty Name="TotalUCount" ColumnName="TotalUCount" />
+                <ScalarProperty Name="TodayScanCTPTCount" ColumnName="TodayScanCTPTCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Dashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_Dashboard_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result">
+                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
+                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
+                <ScalarProperty Name="TodayCTPTAttandence" ColumnName="TodayCTPTAttandence" />
+                <ScalarProperty Name="TotalCTPTAttandence" ColumnName="TotalCTPTAttandence" />
+                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
+                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
+                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
+                <ScalarProperty Name="TotalCommercialCurrent" ColumnName="TotalCommercialCurrent" />
+                <ScalarProperty Name="TotalCTPTCurrent" ColumnName="TotalCTPTCurrent" />
+                <ScalarProperty Name="TotalSWMCurrent" ColumnName="TotalSWMCurrent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TotalHouseCollection_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_TotalHouseCollection_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_TotalHouseCollection_Count_Result">
+                <ScalarProperty Name="TotalHouseCount" ColumnName="TotalHouseCount" />
+                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
+                <ScalarProperty Name="TotalWetWaste" ColumnName="TotalWetWaste" />
+                <ScalarProperty Name="TotalDryWaste" ColumnName="TotalDryWaste" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="TotalDHW" ColumnName="TotalDHW" />
+                <ScalarProperty Name="TotalSW" ColumnName="TotalSW" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
+                <ScalarProperty Name="TotalCDW" ColumnName="TotalCDW" />
+                <ScalarProperty Name="TotalHW" ColumnName="TotalHW" />
+                <ScalarProperty Name="TotalCommercialCDW" ColumnName="TotalCommercialCDW" />
+                <ScalarProperty Name="TotalCommercialHW" ColumnName="TotalCommercialHW" />
+                <ScalarProperty Name="TotalConstDemo" ColumnName="TotalConstDemo" />
+                <ScalarProperty Name="TotalHorticulture" ColumnName="TotalHorticulture" />
+                <ScalarProperty Name="TotalCW" ColumnName="TotalCW" />
+                <ScalarProperty Name="GcWeightCount" ColumnName="GcWeightCount" />
+                <ScalarProperty Name="DryWeightCount" ColumnName="DryWeightCount" />
+                <ScalarProperty Name="WetWeightCount" ColumnName="WetWeightCount" />
+                <ScalarProperty Name="TotalGcWeightCount" ColumnName="TotalGcWeightCount" />
+                <ScalarProperty Name="TotalDryWeightCount" ColumnName="TotalDryWeightCount" />
+                <ScalarProperty Name="TotalWetWeightCount" ColumnName="TotalWetWeightCount" />
+                <ScalarProperty Name="LWGcWeightCount" ColumnName="LWGcWeightCount" />
+                <ScalarProperty Name="LWDryWeightCount" ColumnName="LWDryWeightCount" />
+                <ScalarProperty Name="LWWetWeightCount" ColumnName="LWWetWeightCount" />
+                <ScalarProperty Name="LWTotalGcWeightCount" ColumnName="LWTotalGcWeightCount" />
+                <ScalarProperty Name="LWTotalDryWeightCount" ColumnName="LWTotalDryWeightCount" />
+                <ScalarProperty Name="LWTotalWetWeightCount" ColumnName="LWTotalWetWeightCount" />
+                <ScalarProperty Name="SSGcWeightCount" ColumnName="SSGcWeightCount" />
+                <ScalarProperty Name="SSDryWeightCount" ColumnName="SSDryWeightCount" />
+                <ScalarProperty Name="SSWetWeightCount" ColumnName="SSWetWeightCount" />
+                <ScalarProperty Name="SSTotalGcWeightCount" ColumnName="SSTotalGcWeightCount" />
+                <ScalarProperty Name="SSTotalDryWeightCount" ColumnName="SSTotalDryWeightCount" />
+                <ScalarProperty Name="SSTotalWetWeightCount" ColumnName="SSTotalWetWeightCount" />
+                <ScalarProperty Name="TotalLiquidCount" ColumnName="TotalLiquidCount" />
+                <ScalarProperty Name="TotalStreetCount" ColumnName="TotalStreetCount" />
+                <ScalarProperty Name="TotalLiquidPropertyCount" ColumnName="TotalLiquidPropertyCount" />
+                <ScalarProperty Name="TotalStreetPropertyCount" ColumnName="TotalStreetPropertyCount" />
+                <ScalarProperty Name="TotalHousePropertyCount" ColumnName="TotalHousePropertyCount" />
+                <ScalarProperty Name="TotalDumpPropertyCount" ColumnName="TotalDumpPropertyCount" />
+                <ScalarProperty Name="TotalCommercial" ColumnName="TotalCommercial" />
+                <ScalarProperty Name="GcHWWeightCount" ColumnName="GcHWWeightCount" />
+                <ScalarProperty Name="GcCDWWeightCount" ColumnName="GcCDWWeightCount" />
+                <ScalarProperty Name="TotalCommercialCount" ColumnName="TotalCommercialCount" />
+                <ScalarProperty Name="TotalCommercialSegregeted" ColumnName="TotalCommercialSegregeted" />
+                <ScalarProperty Name="TotalCommercialMixCount" ColumnName="TotalCommercialMixCount" />
+                <ScalarProperty Name="TotalCommercialDryCount" ColumnName="TotalCommercialDryCount" />
+                <ScalarProperty Name="TotalCommercialWetCount" ColumnName="TotalCommercialWetCount" />
+                <ScalarProperty Name="TotalCommercialNotCollectedCount" ColumnName="TotalCommercialNotCollectedCount" />
+                <ScalarProperty Name="TotalCommercialNotSpecifiedCount" ColumnName="TotalCommercialNotSpecifiedCount" />
+                <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
+                <ScalarProperty Name="TotalSWM" ColumnName="TotalSWM" />
+                <ScalarProperty Name="TotalRBW" ColumnName="TotalRBW" />
+                <ScalarProperty Name="TotalRSW" ColumnName="TotalRSW" />
+                <ScalarProperty Name="RBWDailyScanCount" ColumnName="RBWDailyScanCount" />
+                <ScalarProperty Name="RSWDailyScanCount" ColumnName="RSWDailyScanCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CurrentCTPTCount" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CurrentCTPTCount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CurrentCTPTCount_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="TotalPTCount" ColumnName="TotalPTCount" />
+                <ScalarProperty Name="TotalCTCount" ColumnName="TotalCTCount" />
+                <ScalarProperty Name="TotalUCount" ColumnName="TotalUCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EmployeeHouseCollectionType" FunctionName="DevSwachhBharatNagpurModel.Store.SP_EmployeeHouseCollectionType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_EmployeeHouseCollectionType_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
+                <ScalarProperty Name="ComgcTarget" ColumnName="ComgcTarget" />
+                <ScalarProperty Name="inTime" ColumnName="inTime" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="Bifur" ColumnName="Bifur" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecidfied" ColumnName="NotSpecidfied" />
+                <ScalarProperty Name="CDW" ColumnName="CDW" />
+                <ScalarProperty Name="HW" ColumnName="HW" />
+                <ScalarProperty Name="CommercialCDW" ColumnName="CommercialCDW" />
+                <ScalarProperty Name="CommercialHW" ColumnName="CommercialHW" />
+                <ScalarProperty Name="CWNS" ColumnName="CWNS" />
+                <ScalarProperty Name="CWM" ColumnName="CWM" />
+                <ScalarProperty Name="CWNR" ColumnName="CWNR" />
+                <ScalarProperty Name="CWW" ColumnName="CWW" />
+                <ScalarProperty Name="CWD" ColumnName="CWD" />
+                <ScalarProperty Name="CommercialSegregeted" ColumnName="CommercialSegregeted" />
+                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
+                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
+                <ScalarProperty Name="DHW" ColumnName="DHW" />
+                <ScalarProperty Name="SW" ColumnName="SW" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="HouseMasters">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.HouseMaster">
+              <MappingFragment StoreEntitySet="HouseMaster">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
+                <ScalarProperty Name="BinaryQrCodeImage" ColumnName="BinaryQrCodeImage" />
+                <ScalarProperty Name="QRStatusDate" ColumnName="QRStatusDate" />
+                <ScalarProperty Name="QRStatus" ColumnName="QRStatus" />
+                <ScalarProperty Name="QRCodeImage" ColumnName="QRCodeImage" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="WasteType" ColumnName="WasteType" />
+                <ScalarProperty Name="RFIDTagId" ColumnName="RFIDTagId" />
+                <ScalarProperty Name="lastModifiedEntry" ColumnName="lastModifiedEntry" />
+                <ScalarProperty Name="FCMID" ColumnName="FCMID" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="houseQRCode" ColumnName="houseQRCode" />
+                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
+                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
+                <ScalarProperty Name="houseAddress" ColumnName="houseAddress" />
+                <ScalarProperty Name="houseOwnerMobile" ColumnName="houseOwnerMobile" />
+                <ScalarProperty Name="houseOwnerMar" ColumnName="houseOwnerMar" />
+                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
+                <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_LiquidDashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_LiquidDashboard_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_LiquidDashboard_Details_Result">
+                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
+                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
+                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
+                <ScalarProperty Name="TotalLiquid" ColumnName="TotalLiquid" />
+                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_StreetDashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_StreetDashboard_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_StreetDashboard_Details_Result">
+                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
+                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
+                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
+                <ScalarProperty Name="TotalStreet" ColumnName="TotalStreet" />
+                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
          
         </EntityContainerMapping>
       </Mapping>

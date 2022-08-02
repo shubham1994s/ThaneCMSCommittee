@@ -157,6 +157,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         AddSessionSA(Result.ADUM_USER_CODE.ToString(), Result.AD_USER_TYPE_ID.ToString(), Result.ADUM_LOGIN_ID, Result.ADUM_USER_NAME, Result.APP_ID.ToString());
                         Session["UserID"] = Result.ADUM_USER_CODE.ToString();
                         Session["LoginId"] = Result.ADUM_LOGIN_ID.ToString();
+                        Session["PrabhagId"] = Result.PRABHAG_ID;
                         Session["UserProfile"] = Result;
                        
                        

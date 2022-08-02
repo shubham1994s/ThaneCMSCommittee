@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.country_states" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.state_districts" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.Subscription" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DevSwachhBharatMainModel.tehsil" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.UserInApp" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="DevSwachhBharatMainModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DevSwachhBharatMainModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
@@ -28,6 +27,7 @@
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AppDetail" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AppConnection" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AD_USER_MST_SA" Width="1.5" PointX="9.375" PointY="13.75" />
+        <EntityTypeShape EntityType="DevSwachhBharatMainModel.tehsil" Width="1.5" PointX="11.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
