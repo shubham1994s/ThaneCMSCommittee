@@ -241,9 +241,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         } 
 
 
-        public SBALUserLocationMapView GetLocation(int teamId,string Emptype)
+        public SBALUserLocationMapView GetLocation(int teamId,string Emptype,int PrabhagId)
         {
-            return screenService.GetLocationDetails(teamId, Emptype);
+            return screenService.GetLocationDetails(teamId, Emptype, PrabhagId);
         }
 
         public List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype)

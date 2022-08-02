@@ -4230,7 +4230,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAAttendenceGrid> GetAttendeceData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string Emptype)
+        public IEnumerable<SBAAttendenceGrid> GetAttendeceData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string Emptype,int PId)
         {
             List<SBAAttendenceGrid> obj = new List<SBAAttendenceGrid>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
@@ -4240,12 +4240,16 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     data = data.Where(c => (c.daDate == fdate || c.daEndDate == fdate || c.endTime == "")).ToList();
                 }
+               
                 else
                 {
 
                     data = data.Where(c => (c.daDate >= fdate && c.daDate <= tdate) || (c.daDate >= fdate && c.daDate <= tdate)).ToList();
                 }
-
+                if (PId > 0)
+                {
+                    data = data.Where(c => c.PrabhagId == PId).ToList();
+                }
                 foreach (var x in data)
                 {
                     int a = Convert.ToInt32(x.vtId.Trim());
@@ -4343,6 +4347,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     obj = model.ToList();
                 }
+             
                 //var d = obj.OrderByDescending(c => DateTime.Parse(c.daDateTIme)).ToList();
                 var d = obj.OrderByDescending(c => c.daID).ToList();
                 return d;

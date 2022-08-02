@@ -27,7 +27,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
          public string CType { get; set; }
 
         public string wardId { get; set; }
-
+        public int PrabhagId { get; set; }
 
     }
 }
