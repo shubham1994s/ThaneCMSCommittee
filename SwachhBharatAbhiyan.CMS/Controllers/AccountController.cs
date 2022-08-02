@@ -202,6 +202,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                             string UserRole = UserManager.GetRoles(UserId).FirstOrDefault();
                             string UserEmail = UserDetails.Email;
                             string UserName = identity.Name;
+                            Session["PrabhagId"] = 0;
 
                             Logger.WriteInfoMessage("User  " + model.Email + " is successfully login with user id :" + UserId + " ,User Role : " + UserRole + " ,Email ID :" + UserEmail);
 
@@ -254,6 +255,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         Session["UserID"] = Result.ADUM_USER_CODE.ToString();
                         Session["LoginId"] = Result.ADUM_LOGIN_ID.ToString();
                         Session["UserProfile"] = Result;
+                        Session["PrabhagId"] = 0;
                         return RedirectToLocalStreet(returnUrl);
 
                     case "LockedOut":
@@ -291,6 +293,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         Session["UserID"] = Result.ADUM_USER_CODE.ToString();
                         Session["LoginId"] = Result.ADUM_LOGIN_ID.ToString();
                         Session["UserProfile"] = Result;
+                        Session["PrabhagId"] = 0;
                         return RedirectToLocalLiquid(returnUrl);
 
                     case "LockedOut":
@@ -610,6 +613,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         public ActionResult LogOff()
         {
             Session["__MySession__"] = null; //it's my session variable
+            Session["PrabhagId"] = 0;
+            Session["LoginId"] = "";
             Session.Clear();
             Session.Abandon();
             FormsAuthentication.SignOut(); //you write this when you use FormsAuthentication
@@ -790,7 +795,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     SessionHandler.Current.UserEmail = null;
                     SessionHandler.Current.UserName = null;
                     SessionHandler.Current.AppId =0;
-                    SessionHandler.Current.PrabhagId =0;
+                    SessionHandler.Current.PrabhagId = PrabhagId;
                     SessionHandler.Current.AppName = null;
                     SessionHandler.Current.IsLoggedIn = false;
                     SessionHandler.Current.Type = null;

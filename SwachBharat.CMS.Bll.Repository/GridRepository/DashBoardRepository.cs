@@ -1544,7 +1544,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -1641,7 +1641,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -1729,7 +1729,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -1816,7 +1816,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -1903,7 +1903,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -1988,7 +1988,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2073,7 +2073,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2158,7 +2158,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2243,7 +2243,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = Convert.ToInt32(x.PrabhagId),
+                        PrabhagId = x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 

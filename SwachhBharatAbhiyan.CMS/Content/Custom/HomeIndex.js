@@ -1166,7 +1166,7 @@ $(document).ready(function () {
 
 // SWM Pie Chart
 $(document).ready(function () {
-    // debugger;
+     debugger;
 
     var TotalSWMCurrent = $('#tot_TotalSWMCurrent').val();
     var TotalSWM = $('#tot_TotalSWM').val();
