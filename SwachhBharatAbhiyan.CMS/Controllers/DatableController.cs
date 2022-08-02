@@ -302,17 +302,17 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "HouseDetail":
-                    gridRepository = new HouseDetailsGridRepository(0, searchString, appId);
+                    gridRepository = new HouseDetailsGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
                 case "SWMDetail":
-                    gridRepository = new SWMDetailsGridRepository(0, searchString, appId);
+                    gridRepository = new SWMDetailsGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
                 case "CommercialDetail":
-                    gridRepository = new CommercialDetailsGridRepository(0, searchString, appId);
+                    gridRepository = new CommercialDetailsGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
@@ -580,7 +580,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "SauchalayRegistration":
-                    gridRepository = new SauchalayRegistrationGridRepository(0, searchString, appId);
+                    gridRepository = new SauchalayRegistrationGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 

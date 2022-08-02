@@ -25,5 +25,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
         public string ReferanceId { get; set; }
         public string swmType { get; set; }
         public string swmSubType { get; set; }
+        public int PrabhagId { get; set; }
     }
 }

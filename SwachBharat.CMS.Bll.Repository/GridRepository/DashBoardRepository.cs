@@ -636,7 +636,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
             }
         }
-        public IEnumerable<SBAHouseDetailsGridRow> GetHouseDetailsData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBAHouseDetailsGridRow> GetHouseDetailsData(long wildcard, string SearchString, int appId,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -644,7 +644,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.HouseQRCode + "/";
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.HouseDetails().Select(x => new SBAHouseDetailsGridRow
+                var data = db.HouseDetails(PId).Select(x => new SBAHouseDetailsGridRow
                 {
                     houseId = x.houseId,
                     WardNo = x.Ward,
@@ -687,7 +687,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAHouseDetailsGridRow> GetCommercialDetailsData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBAHouseDetailsGridRow> GetCommercialDetailsData(long wildcard, string SearchString, int appId,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -695,7 +695,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.CommercialQRCode + "/";
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.CommercialDetails().Select(x => new SBAHouseDetailsGridRow
+                var data = db.CommercialDetails(PId).Select(x => new SBAHouseDetailsGridRow
                 {
                     houseId = x.commercialId,
                     WardNo = x.Ward,
@@ -2243,7 +2243,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = Convert.ToInt32(x.PrabhagId),
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -3465,7 +3465,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBASWMDetailsGridRow> GetSWMDetailsData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBASWMDetailsGridRow> GetSWMDetailsData(long wildcard, string SearchString, int appId,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -3473,7 +3473,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.SWMQRCode + "/";
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SWMDetails().Select(x => new SBASWMDetailsGridRow
+                var data = db.SWMDetails(PId).Select(x => new SBASWMDetailsGridRow
                 {
                     swmId = x.swmId,
                     WardNo = x.Ward,
@@ -7628,7 +7628,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         }
 
 
-        public IEnumerable<SauchalayRegistrationGridRow> GetSauchalayRegistrationDetailsData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SauchalayRegistrationGridRow> GetSauchalayRegistrationDetailsData(long wildcard, string SearchString, int appId,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();

@@ -14,9 +14,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
         IEnumerable<SBASWMDetailsGridRow> dataSet;
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public SWMDetailsGridRepository(long wildcard, string SearchString, int appId)
+        public SWMDetailsGridRepository(long wildcard, string SearchString, int appId,int PId)
         {
-            dataSet = objRep.GetSWMDetailsData(wildcard, SearchString, appId);
+            dataSet = objRep.GetSWMDetailsData(wildcard, SearchString, appId,PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)

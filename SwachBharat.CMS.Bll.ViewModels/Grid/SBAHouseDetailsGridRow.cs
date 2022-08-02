@@ -23,6 +23,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public Nullable<int> zoneId { get; set; }
         public string ReferanceId { get; set; }
         public string Category { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
 
     }
 }

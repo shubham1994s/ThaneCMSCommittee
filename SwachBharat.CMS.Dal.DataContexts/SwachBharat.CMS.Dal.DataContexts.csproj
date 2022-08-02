@@ -101,6 +101,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChildSwachBharatAbhiyan.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ChildSwachBharatAbhiyan1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+    </Compile>
     <Compile Include="CollecctionArea_Result.cs">
       <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
@@ -528,6 +533,7 @@
     <Content Include="ChildSwachBharatAbhiyan.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ChildSwachBharatAbhiyan.edmx</DependentUpon>
+      <LastGenOutput>ChildSwachBharatAbhiyan1.cs</LastGenOutput>
     </Content>
     <Content Include="MainSwachBharatAbhiyan.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -13,9 +13,9 @@ namespace SwachBharat.CMS.Bll.Repository.RepositoryGrid.Grid
         IEnumerable <SBAHouseDetailsGridRow> dataSet;
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public HouseDetailsGridRepository(long wildcard, string SearchString, int appId)
+        public HouseDetailsGridRepository(long wildcard, string SearchString, int appId,int PId)
         {
-            dataSet = objRep.GetHouseDetailsData(wildcard, SearchString, appId);
+            dataSet = objRep.GetHouseDetailsData(wildcard, SearchString, appId, PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)

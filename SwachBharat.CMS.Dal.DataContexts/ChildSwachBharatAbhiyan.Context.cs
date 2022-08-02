@@ -18,9 +18,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                : base(SwachBharatAppConnection.GetConnectionString(AppId))
+         : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -46,11 +47,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<VehicleRegistration> VehicleRegistrations { get; set; }
         public virtual DbSet<StreetSweepingBeat> StreetSweepingBeats { get; set; }
-        public virtual DbSet<CommercialMaster> CommercialMasters { get; set; }
         public virtual DbSet<LiquidWasteDetail> LiquidWasteDetails { get; set; }
         public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
         public virtual DbSet<StreetSweepingDetail> StreetSweepingDetails { get; set; }
-        public virtual DbSet<SWMMaster> SWMMasters { get; set; }
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
         public virtual DbSet<SS_1_4_ANSWER> SS_1_4_ANSWER { get; set; }
         public virtual DbSet<SS_1_4_QUESTION_13july> SS_1_4_QUESTION_13july { get; set; }
@@ -59,7 +58,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<DumpYardDetail> DumpYardDetails { get; set; }
         public virtual DbSet<CommitteeMaster> CommitteeMasters { get; set; }
         public virtual DbSet<WardNumber> WardNumbers { get; set; }
+        public virtual DbSet<CommercialMaster> CommercialMasters { get; set; }
         public virtual DbSet<HouseMaster> HouseMasters { get; set; }
+        public virtual DbSet<SWMMaster> SWMMasters { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
@@ -376,16 +377,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetCurrentAllUserLocationTest1_Result>("StreetCurrentAllUserLocationTest1");
         }
     
-        public virtual ObjectResult<HouseDetails_Result> HouseDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HouseDetails_Result>("HouseDetails");
-        }
-    
-        public virtual ObjectResult<CommercialDetails_Result> CommercialDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CommercialDetails_Result>("CommercialDetails");
-        }
-    
         public virtual ObjectResult<SP_CommercialScanify_Count_Result> SP_CommercialScanify_Count()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialScanify_Count_Result>("SP_CommercialScanify_Count");
@@ -696,11 +687,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("SegType", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialOnMapDetails_Result>("SP_CommercialOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter, segTypeParameter);
-        }
-    
-        public virtual ObjectResult<SWMDetails_Result> SWMDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SWMDetails_Result>("SWMDetails");
         }
     
         public virtual ObjectResult<SP_SWMGarbageCollection_Result> SP_SWMGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> wardNo, Nullable<int> areaId, Nullable<int> segid, Nullable<int> sWMTypeid)
@@ -1155,6 +1141,33 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("SegidSub", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ResidentialSlumGarbageCollection_Result>("SP_ResidentialSlumGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter, segidSubParameter);
+        }
+    
+        public virtual ObjectResult<CommercialDetails_Result> CommercialDetails(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CommercialDetails_Result>("CommercialDetails", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<HouseDetails_Result> HouseDetails(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HouseDetails_Result>("HouseDetails", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SWMDetails_Result> SWMDetails(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SWMDetails_Result>("SWMDetails", prabhagidParameter);
         }
     }
 }

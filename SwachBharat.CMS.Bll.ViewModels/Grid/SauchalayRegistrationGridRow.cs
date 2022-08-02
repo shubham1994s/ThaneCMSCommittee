@@ -24,6 +24,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.Grid
 
         public string TOC { get; set; }
 
+        public Nullable<int> PrabhagId { get; set; }
+
 
     }
 }

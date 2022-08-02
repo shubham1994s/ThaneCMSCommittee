@@ -13,9 +13,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public SauchalayRegistrationGridRepository(long wildcard, string SearchString, int appId)
+        public SauchalayRegistrationGridRepository(long wildcard, string SearchString, int appId,int PId)
         {
-            dataSet = objRep.GetSauchalayRegistrationDetailsData(wildcard, SearchString, appId);
+            dataSet = objRep.GetSauchalayRegistrationDetailsData(wildcard, SearchString, appId,PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)
