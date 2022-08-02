@@ -70,6 +70,8 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
 
         public Nullable<long> Row { get; set; }
 
+        public string PrabhagName { get; set; }
+
 
 
     }
