@@ -273,11 +273,11 @@
                                             <div class="form-group select">
                                                 @Html.DropDownList("AType", new List<SelectListItem>
                                                  {
-                                                   new SelectListItem { Text = "Admin", Value = "A" },
-                                                   new SelectListItem { Text = "Sub Admin", Value = "SA"},
+                                                   new SelectListItem { Text = "Super Admin", Value = "A" },
+                                                   new SelectListItem { Text = "Admin", Value = "SA"},
                                                 
-                                                   }, "Select Admin Type", new { @class = "input-material", @id = "AType" })
-                                                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger", style = "display:block;font-size:11px;margin-top:2px" })
+                                                   }, "Select  Admin Type", new { @class = "input-material", @id = "AType" })
+                                                @Html.ValidationMessageFor(model => model.AType, "", new { @class = "text-danger", style = "display:block;font-size:11px;margin-top:2px" })
                                             </div>
                                             <div class="form-group select">
                                                 @Html.DropDownList("Type", new List<SelectListItem>
