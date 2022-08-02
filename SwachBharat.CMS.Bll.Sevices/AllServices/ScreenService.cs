@@ -9031,7 +9031,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //    string json = new WebClient().DownloadString(appdetails.Grampanchayat_Pro + "/api/Get/Complaint?appId=" + appdetails.GramPanchyatAppID);
                     //    obj = JsonConvert.DeserializeObject<List<ComplaintVM>>(json).Where(c => Convert.ToDateTime(c.createdDate2).ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")).ToList();
                     //}
-                    var data = db.SP_LiquidDashboard_Details().First();
+                    var data = db.SP_LiquidDashboard_Details(PrabhagId).First();
 
                     var date = DateTime.Today;
                     var houseCount = db.SP_TotalHouseCollection_Count(date, PrabhagId).FirstOrDefault();
@@ -9099,7 +9099,7 @@ namespace SwachBharat.CMS.Bll.Services
                     DevSwachhBharatMainEntities dbm = new DevSwachhBharatMainEntities();
                     var appdetails = dbm.AppDetails.Where(c => c.AppId == AppID).FirstOrDefault();
                     List<ComplaintVM> obj = new List<ComplaintVM>();
-                    var data = db.SP_StreetDashboard_Details().First();
+                    var data = db.SP_StreetDashboard_Details(PrabhagId).First();
 
                     var date = DateTime.Today;
                     var houseCount = db.SP_TotalHouseCollection_Count(date, PrabhagId).FirstOrDefault();

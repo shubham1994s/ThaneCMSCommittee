@@ -946,6 +946,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == "L").ToList();
@@ -974,7 +976,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
-
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else
@@ -995,7 +1000,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
                                              (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
-                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation) + " " +
+                                             (string.IsNullOrEmpty(c.Zone) ? " " : c.Zone) + " " +
+                                             (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }
@@ -1024,6 +1031,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
+                        Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
+                        Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
                     }).Where(x => x.isActive == "True" && x.EmployeeType == "S").ToList();
@@ -1052,7 +1061,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             item.userNameMar = "";
                         if (item.userEmployeeNo == null && item.userEmployeeNo == "")
                             item.userEmployeeNo = "";
-
+                        if (item.Zone == null && item.Zone == "")
+                            item.Zone = "";
+                        if (item.Prabhag == null && item.Prabhag == "")
+                            item.Prabhag = "";
                         if (item.userProfileImage == null || item.userProfileImage == "")
                         { item.userProfileImage = "/Images/default_not_upload.png"; }
                         else
@@ -1073,7 +1085,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                              (string.IsNullOrEmpty(c.userAddress) ? " " : c.userAddress) + " " +
                                                  (string.IsNullOrEmpty(c.EmployeeType) ? " " : c.EmployeeType) + " " +
                                              (string.IsNullOrEmpty(c.userEmployeeNo) ? " " : c.userEmployeeNo) + " " +
-                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                                             (string.IsNullOrEmpty(c.userDesignation) ? " " : c.userDesignation) + " " +
+                                             (string.IsNullOrEmpty(c.Zone) ? " " : c.Zone) + " " +
+                                             (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                         data = model.ToList();
 
                     }

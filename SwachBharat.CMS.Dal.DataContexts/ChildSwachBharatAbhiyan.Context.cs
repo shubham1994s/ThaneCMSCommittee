@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-      : base(SwachBharatAppConnection.GetConnectionString(AppId))
+         : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -370,16 +370,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_EmployeeStreetCollectionType_Result> SP_EmployeeStreetCollectionType()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeStreetCollectionType_Result>("SP_EmployeeStreetCollectionType");
-        }
-    
-        public virtual ObjectResult<SP_LiquidDashboard_Details_Result> SP_LiquidDashboard_Details()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidDashboard_Details_Result>("SP_LiquidDashboard_Details");
-        }
-    
-        public virtual ObjectResult<SP_StreetDashboard_Details_Result> SP_StreetDashboard_Details()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetDashboard_Details_Result>("SP_StreetDashboard_Details");
         }
     
         public virtual ObjectResult<StreetCurrentAllUserLocationTest1_Result> StreetCurrentAllUserLocationTest1()
@@ -1148,6 +1138,24 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("prabhagid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeHouseCollectionType_Result>("SP_EmployeeHouseCollectionType", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_LiquidDashboard_Details_Result> SP_LiquidDashboard_Details(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidDashboard_Details_Result>("SP_LiquidDashboard_Details", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_StreetDashboard_Details_Result> SP_StreetDashboard_Details(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetDashboard_Details_Result>("SP_StreetDashboard_Details", prabhagidParameter);
         }
     }
 }
