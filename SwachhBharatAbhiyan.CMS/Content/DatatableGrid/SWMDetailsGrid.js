@@ -110,6 +110,7 @@
 
 
             { "data": "zone", "autoWidth": false },
+            { "data": "Prabhag", "name": "Prabhag", "autoWidth": false },
             { "data": "WardNo", "autoWidth": false },
             { "data": "Area", "name": "Area", "autoWidth": false },
             { "data": "ManagerName", "autoWidth": false },

@@ -36,6 +36,7 @@
 
 
             { "data": "zone", "autoWidth": false },
+            { "data": "prabhag", "name": "prabhag", "autoWidth": false },
             { "data": "WardNo", "autoWidth": false },
             { "data": "Area", "name": "Area", "autoWidth": false },
             { "data": "houseNo", "autoWidth": false },

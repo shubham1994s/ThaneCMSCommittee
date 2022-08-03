@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
@@ -12,6 +13,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> AreaId { get; set; }
         public Nullable<int> WardNo { get; set; }
         public Nullable<int> ZoneId { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
         public string houseNumber { get; set; }
         public string houseOwnerMar { get; set; }
         public string houseOwner { get; set; }
@@ -24,6 +26,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string JavascriptToRun { get; set; }
         public string areaName { get; set; }
         public string wardName { get; set; }
+        public string prabhagName { get; set; }
 
         public Nullable<int> userId { get; set; }
 
@@ -31,5 +34,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         public string WasteType { get; set; }
         public string houseCategory { get; set; }
+        public List<SelectListItem> PrabhagList { get; set; }
     }
 }

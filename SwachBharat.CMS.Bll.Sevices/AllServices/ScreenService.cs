@@ -924,15 +924,19 @@ namespace SwachBharat.CMS.Bll.Services
                     //house.WardList = ListWardNo();
                     //house.AreaList = ListArea();
 
+                    var PPP = new List<SelectListItem>();
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                    PPP.Insert(0, itemAddPPP);
+
                     var WWWW = new List<SelectListItem>();
-                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward / Prabhag", Value = "0" };
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward ", Value = "0" };
                     WWWW.Insert(0, itemAdd);
 
                     var ARRR = new List<SelectListItem>();
                     SelectListItem itemAddARR = new SelectListItem() { Text = "Select Area", Value = "0" };
                     ARRR.Insert(0, itemAddARR);
 
-
+                    house.PrabhagList = PPP;
                     house.WardList = WWWW;
                     house.AreaList = ARRR;
                     house.ZoneList = ListZone();
@@ -946,6 +950,7 @@ namespace SwachBharat.CMS.Bll.Services
                     string refer = "SWMSBA" + (number + id + 1);
                     house.ReferanceId = refer;
                     house.swmQRCode = "/Images/QRcode.png";
+                    house.PrabhagList = ListPrabhagNo();
                     house.WardList = ListWardNo();
                     house.AreaList = ListArea();
                     house.ZoneList = ListZone();
@@ -1037,15 +1042,19 @@ namespace SwachBharat.CMS.Bll.Services
                     //house.WardList = ListWardNo();
                     //house.AreaList = ListArea();
 
+                    var PPP = new List<SelectListItem>();
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                    PPP.Insert(0, itemAddPPP);
+
                     var WWWW = new List<SelectListItem>();
-                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward / Prabhag", Value = "0" };
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward ", Value = "0" };
                     WWWW.Insert(0, itemAdd);
 
                     var ARRR = new List<SelectListItem>();
                     SelectListItem itemAddARR = new SelectListItem() { Text = "Select Area", Value = "0" };
                     ARRR.Insert(0, itemAddARR);
 
-
+                    house.PrabhagList = PPP;
                     house.WardList = WWWW;
                     house.AreaList = ARRR;
                     house.ZoneList = ListZone();
@@ -1059,6 +1068,7 @@ namespace SwachBharat.CMS.Bll.Services
                     string refer = "CPSBA" + (number + id + 1);
                     house.ReferanceId = refer;
                     house.houseQRCode = "/Images/QRcode.png";
+                    house.PrabhagList = ListPrabhagNo();
                     house.WardList = ListWardNo();
                     house.AreaList = ListArea();
                     house.ZoneList = ListZone();
@@ -1395,6 +1405,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.swmLat = data.swmLat;
                             model.swmLong = data.swmLong;
                             model.ZoneId = data.ZoneId;
+                            model.PrabhagId = data.PrabhagId;
                             model.lastModifiedEntry = DateTime.Now;
                             model.swmType = (data.swmType == "RW") ? null : data.swmType;
                             model.swmSubType = data.swmSubType;
@@ -4463,6 +4474,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.swmId = data.swmId;
             model.WardNo = data.WardNo;
             model.AreaId = data.AreaId;
+            model.PrabhagId = data.PrabhagId;
             model.swmName = data.swmName;
             model.swmManager = data.swmManager;
             model.swmOwnerMar = data.swmOwnerMar;
@@ -4656,6 +4668,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.lastModifiedDateEntry = DateTime.Now;
             model.AreaId = data.AreaId;
             model.ZoneId = data.ZoneId;
+            model.PrabhagId = data.PrabhagId;
             model.WardNo = data.WardNo;
             model.TOEMC = data.TOEMC;
             model.TOC = data.TOC;
@@ -5167,6 +5180,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.WardNo = data.WardNo;
             model.AreaId = data.AreaId;
             model.ZoneId = data.ZoneId;
+            model.PrabhagId = data.PrabhagId;
             model.swmName = data.swmName;
             model.swmManager = data.swmManager;
             model.swmOwnerMar = data.swmOwnerMar;
@@ -5199,6 +5213,14 @@ namespace SwachBharat.CMS.Bll.Services
                 {
                     model.wardName = "";
                 }
+                if (data.PrabhagId > 0)
+                {
+                    model.prabhagName = db.CommitteeMasters.Where(c => c.Id == data.PrabhagId).FirstOrDefault().CommitteeName;
+                }
+                else
+                {
+                    model.prabhagName = "";
+                }
 
             }
 
@@ -5213,6 +5235,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.WardNo = data.WardNo;
             model.AreaId = data.AreaId;
             model.ZoneId = data.ZoneId;
+            model.PrabhagId = data.PrabhagId;
             model.houseOwner = data.commercialOwner;
             model.houseOwnerMar = data.commercialOwnerMar;
             model.houseAddress = data.commercialAddress;
@@ -5244,7 +5267,14 @@ namespace SwachBharat.CMS.Bll.Services
                     model.wardName = "";
                 }
 
-
+                if (data.PrabhagId > 0)
+                {
+                    model.prabhagName = db.CommitteeMasters.Where(c => c.Id == data.PrabhagId).FirstOrDefault().CommitteeName;
+                }
+                else
+                {
+                    model.prabhagName = "";
+                }
 
 
             }
@@ -5557,6 +5587,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.lastModifiedDateEntry = data.lastModifiedDateEntry;
             model.AreaId = data.AreaId;
             model.ZoneId = data.ZoneId;
+            model.PrabhagId = data.PrabhagId;
             model.WardNo = data.WardNo;
             model.userId = data.userId;
             model.TOEMC = data.TOEMC;
@@ -8327,15 +8358,19 @@ namespace SwachBharat.CMS.Bll.Services
                         data.SauchalayQRCode = "/Images/QRcode.png";
 
                     }
+                    var PPP = new List<SelectListItem>();
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                    PPP.Insert(0, itemAddPPP);
+
                     var WWWW = new List<SelectListItem>();
-                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward / Prabhag", Value = "0" };
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward ", Value = "0" };
                     WWWW.Insert(0, itemAdd);
 
                     var ARRR = new List<SelectListItem>();
                     SelectListItem itemAddARR = new SelectListItem() { Text = "Select Area", Value = "0" };
                     ARRR.Insert(0, itemAddARR);
 
-
+                    data.PrabhagList = PPP;
                     data.WardList = WWWW;
                     data.AreaList = ARRR;
                     data.ZoneList = ListZone();
@@ -8358,6 +8393,7 @@ namespace SwachBharat.CMS.Bll.Services
                         string refer = "CTPTSBA" + (number + 1);
                         data.ReferanceId = refer;
                         data.SauchalayQRCode = "/Images/QRcode.png";
+                        data.PrabhagList = ListPrabhagNo();
                         data.WardList = ListWardNo();
                         data.AreaList = ListArea();
                         data.ZoneList = ListZone();
@@ -8376,6 +8412,7 @@ namespace SwachBharat.CMS.Bll.Services
                         string refer = "CTPTSBA" + (number + (Convert.ToInt32(sId)) + 1);
                         data.ReferanceId = refer;
                         data.SauchalayQRCode = "/Images/QRcode.png";
+                        data.PrabhagList = ListPrabhagNo();
                         data.WardList = ListWardNo();
                         data.AreaList = ListArea();
                         data.ZoneList = ListZone();
@@ -8423,6 +8460,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.lastModifiedDateEntry = DateTime.Now;
                             model.AreaId = data.AreaId;
                             model.ZoneId = data.ZoneId;
+                            model.PrabhagId = data.PrabhagId;
                             model.WardNo = data.WardNo;
                             model.TOEMC = data.TOEMC;
                             model.TOC = data.TOC;
