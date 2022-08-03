@@ -899,7 +899,11 @@ namespace SwachBharat.CMS.Bll.Services
                                 house.SerielNo = s;
                             }
                         }
-                        catch (Exception e) { house.swmQRCode = "/Images/default_not_upload.png"; }
+                        catch (Exception e) {
+
+                            Console.WriteLine(e.Message);
+                            house.swmQRCode = "/Images/default_not_upload.png";
+                        }
 
                     }
                     else
