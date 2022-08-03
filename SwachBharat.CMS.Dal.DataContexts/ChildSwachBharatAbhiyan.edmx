@@ -3280,6 +3280,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="gcType" Nullable="true" />
           <Property Type="Int32" Name="Wet" Nullable="true" />
           <Property Type="Int32" Name="Dry" Nullable="true" />
+          <Property Type="String" Name="PrabhagName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="gpBeforImage" Nullable="true" />
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
@@ -3303,6 +3304,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="gpBeforImage" Nullable="true" />
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
+          <Property Type="String" Name="PrabhagName" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="SP_CTPTGarbageCollection_Result">
           <Property Type="Int32" Name="gcId" Nullable="false" />
@@ -5087,6 +5089,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="gcType" ColumnName="gcType" />
                 <ScalarProperty Name="Wet" ColumnName="Wet" />
                 <ScalarProperty Name="Dry" ColumnName="Dry" />
+                <ScalarProperty Name="PrabhagName" ColumnName="PrabhagName" />
                 <ScalarProperty Name="gpBeforImage" ColumnName="gpBeforImage" />
                 <ScalarProperty Name="gpAfterImage" ColumnName="gpAfterImage" />
                 <ScalarProperty Name="garbageType" ColumnName="garbageType" />
@@ -5114,6 +5117,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="gpBeforImage" ColumnName="gpBeforImage" />
                 <ScalarProperty Name="gpAfterImage" ColumnName="gpAfterImage" />
                 <ScalarProperty Name="garbageType" ColumnName="garbageType" />
+                <ScalarProperty Name="PrabhagName" ColumnName="PrabhagName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

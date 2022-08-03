@@ -30,6 +30,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<int> gcType { get; set; }
         public Nullable<int> Wet { get; set; }
         public Nullable<int> Dry { get; set; }
+        public string PrabhagName { get; set; }
         public string gpBeforImage { get; set; }
         public string gpAfterImage { get; set; }
         public Nullable<int> garbageType { get; set; }
