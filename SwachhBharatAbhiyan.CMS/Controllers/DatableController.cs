@@ -400,7 +400,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "UserIdel":
-                    gridRepository = new IdelGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new IdelGridRepository(0, searchString, fdate, tdate, userId, appId, PId);
                     return gridRepository;
                     break;
 

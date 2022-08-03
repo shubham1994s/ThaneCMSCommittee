@@ -7789,11 +7789,12 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Neha(12 July 2019)
         #region idleTime map
-        public List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string date)
+        public List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string date,int PId)
         {
             DateTime date1 = DateTime.ParseExact(date, "dd/MM/yyyy", null);
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
-            var data = db.SP_IdelTime(userId, date1, date1).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
+          
+            var data = db.SP_IdelTime(userId, date1, date1, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {
                 TimeSpan spWorkMin = TimeSpan.FromMinutes(Convert.ToDouble(x.IdelTime));
@@ -8823,7 +8824,7 @@ namespace SwachBharat.CMS.Bll.Services
             return _LogVM;
         }
 
-        public List<SBAEmplyeeIdelGrid> GetIdelTimeNotification()
+        public List<SBAEmplyeeIdelGrid> GetIdelTimeNotification(int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             // DateTime? fdate = null
@@ -8831,7 +8832,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime fdate = Convert.ToDateTime(dt + " " + "00:00:00");
             DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
 
-            var data = db.SP_IdelTime(0, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+            var data = db.SP_IdelTime(0, fdate, tdate, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
             //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {

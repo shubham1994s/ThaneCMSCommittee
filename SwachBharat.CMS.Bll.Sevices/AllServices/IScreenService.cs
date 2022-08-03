@@ -185,7 +185,7 @@ namespace SwachBharat.CMS.Bll.Services
         DashBoardVM GetStreetSweepingDetails();
 
         //Added By Neha (12 July 2019)
-        List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string Date);
+        List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string Date,int PId);
 
         OnePoint4VM GetTotalCountDetails(int ANS_ID);
 
@@ -239,7 +239,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         List<LogVM> GetLogString();
 
-        List<SBAEmplyeeIdelGrid> GetIdelTimeNotification();
+        List<SBAEmplyeeIdelGrid> GetIdelTimeNotification(int PId);
         List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification();
 
         List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification();

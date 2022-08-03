@@ -264,7 +264,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             {
 
                 List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
-                obj = childRepository.GetIdleTimeRoute(userId, Date);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                obj = childRepository.GetIdleTimeRoute(userId, Date, PId);
 
                 // return Json(obj);
                 return Json(obj, JsonRequestBehavior.AllowGet);
@@ -301,7 +302,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             
             {
                 List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
-                obj = childRepository.GetIdelTimeNotification();
+
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                obj = childRepository.GetIdelTimeNotification(PId);
 
                 //List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>()
                 //{
