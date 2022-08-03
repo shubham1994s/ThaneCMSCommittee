@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             @*@Html.Label("झोन / Zone")*@
                             @Html.Label("Zone")
@@ -133,8 +133,20 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
+                    <div class="col-md-3">
 
-                    <div class="col-md-4">
+                        <div class="form-group">
+                            @*@Html.Label("वार्ड क्रमांक / Ward No")*@
+                            @Html.Label("Prabhag")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopWard()"> + Add Ward </a>*@
+
+                            @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            @Html.ValidationMessageFor(model => model.PrabhagId, "", new { @class = "text-danger" })
+                            <span class="text-danger" id="err_ward"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
 
                         <div class="form-group">
                             @*@Html.Label("वार्ड क्रमांक / Ward No")*@
@@ -147,7 +159,7 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             @*@Html.Label("क्षेत्र / Area")*@
                             @Html.Label("Area")
@@ -427,14 +439,62 @@
         $('form').each(function () { this.reset() });
 
 
+        //$('#ZoneId').change(function () {
+        //    var selectedText = $(this).find("option:selected").text();
+        //    var selectedValue = $(this).val();
+
+        //    $.ajax({
+        //        type: "post",
+        //        url: "/HouseMaster/LoadWardNoList?",
+        //        data: { ZoneId: $('#ZoneId').val() },
+        //        datatype: "json",
+        //        traditional: true,
+        //        success: function (data) {
+        //            var ward;
+        //            for (var i = 0; i < data.length; i++) {
+        //                ward = ward + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+        //            }
+
+        //            $('#WardNo').html(ward);
+
+        //            $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+        //        }
+        //    });
+
+        //});
         $('#ZoneId').change(function () {
+            debugger;
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/LoadPrabhagNoList?",
+                data: { ZoneId: $('#ZoneId').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var prabhag;
+                    for (var i = 0; i < data.length; i++) {
+                        prabhag = prabhag + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+
+                    $('#PrabhagId').html(prabhag);
+
+
+                }
+            });
+
+        });
+
+        $('#PrabhagId').change(function () {
             var selectedText = $(this).find("option:selected").text();
             var selectedValue = $(this).val();
 
             $.ajax({
                 type: "post",
                 url: "/HouseMaster/LoadWardNoList?",
-                data: { ZoneId: $('#ZoneId').val() },
+                data: { PrabhagId: $('#PrabhagId').val() },
                 datatype: "json",
                 traditional: true,
                 success: function (data) {
@@ -450,7 +510,6 @@
             });
 
         });
-
         $('#WardNo').change(function () {
             var selectedText = $(this).find("option:selected").text();
             var selectedValue = $(this).val();
