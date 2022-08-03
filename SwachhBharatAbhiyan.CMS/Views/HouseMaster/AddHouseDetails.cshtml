@@ -133,12 +133,11 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
-
                     <div class="col-md-4">
 
                         <div class="form-group">
                             @*@Html.Label("वार्ड क्रमांक / Ward No")*@
-                            @Html.Label("Ward / Prabhag")
+                            @Html.Label("Ward")
                             @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopWard()"> + Add Ward </a>*@
 
                             @Html.DropDownListFor(model => model.WardNo, Model.WardList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
