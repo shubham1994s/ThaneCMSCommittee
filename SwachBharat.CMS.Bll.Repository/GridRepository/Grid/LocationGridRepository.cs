@@ -12,9 +12,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
         IEnumerable<SBALocationGridRow> dataSet;
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public LocationGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,string Emptype)
+        public LocationGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,string Emptype,int PId)
         {
-            dataSet = objRep.GetLocatioData(wildcard, SearchString, fdate, tdate, userId, appId, Emptype);
+            dataSet = objRep.GetLocatioData(wildcard, SearchString, fdate, tdate, userId, appId, Emptype, PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)

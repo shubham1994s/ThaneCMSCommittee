@@ -18,10 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-        : base(SwachBharatAppConnection.GetConnectionString(AppId))
+               : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -97,11 +96,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<PointDetails_Result> PointDetails()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PointDetails_Result>("PointDetails");
-        }
-    
-        public virtual ObjectResult<CurrentAllUserLocationTest1_Result> CurrentAllUserLocationTest1()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CurrentAllUserLocationTest1_Result>("CurrentAllUserLocationTest1");
         }
     
         public virtual ObjectResult<SP_Collection_Count_Result> SP_Collection_Count(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
@@ -1168,6 +1162,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("prabhagid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SWMDetails_Result>("SWMDetails", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<CurrentAllUserLocationTest1_Result> CurrentAllUserLocationTest1(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CurrentAllUserLocationTest1_Result>("CurrentAllUserLocationTest1", prabhagIdParameter);
         }
     }
 }

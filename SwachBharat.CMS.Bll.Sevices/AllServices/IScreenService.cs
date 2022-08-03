@@ -66,7 +66,7 @@ namespace SwachBharat.CMS.Bll.Services
         void DeletHouseDetails(int teamId);
 
         SBALUserLocationMapView GetLocationDetails(int teamId,string Emptype,int PrabhagId);
-        List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype);
+        List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype,int PId);
 
         List<SBALUserLocationMapView> GetAdminLocation();
         List<SBALUserLocationMapView> GetUserWiseLocation(int userId,string date, string Emptype);

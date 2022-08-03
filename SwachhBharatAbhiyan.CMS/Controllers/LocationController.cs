@@ -84,13 +84,14 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 if (date == null || date == "")
                 {
                     date = DateTime.Now.ToShortDateString();
                 }
          
             List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
-            obj = childRepository.GetAllUserLocation(date,null);
+            obj = childRepository.GetAllUserLocation(date,null,PId);
                 // return Json(obj);
                 if ( userid != null && userid != "null" && userid != "-1")
                 {
@@ -139,6 +140,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         } 
         public ActionResult UserCurrentLocation(int userId,string date)
         {
+            int PId = Convert.ToInt32(Session["PrabhagId"]);
             if (SessionHandler.Current.AppId != 0)
             {
                 if (date == null || date == "")
@@ -146,7 +148,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     date = DateTime.Now.ToShortDateString();
                 }
                 List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
-                obj = childRepository.GetAllUserLocation(date,null).Where(c => c.userId == userId).ToList();
+                obj = childRepository.GetAllUserLocation(date,null, PId).Where(c => c.userId == userId).ToList();
                 // return Json(obj);
                 return Json(obj, JsonRequestBehavior.AllowGet);
 
