@@ -2642,7 +2642,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                     if (PId > 0)
                     {
-                        var data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == "S")
+                         data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == "S")
                                      join t2 in db.UserMasters.Where(c => c.PrabhagId == PId) on t1.userId equals t2.userId
                                      select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                         

@@ -718,7 +718,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="prabhagid" Type="int" Mode="In" />
         </Function>
         <Function Name="CurrentAllUserLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="CurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrabhagId" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetAttendenceDetailsTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
@@ -1312,7 +1314,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <FunctionImport Name="CurrentAllUserLocation" ReturnType="Collection(DevSwachhBharatNagpurModel.CurrentAllUserLocation_Result3)" />
           <FunctionImport Name="PointDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.PointDetails_Result)" />
-          <FunctionImport Name="CurrentAllUserLocationTest1" ReturnType="Collection(DevSwachhBharatNagpurModel.CurrentAllUserLocationTest1_Result)" />
           <FunctionImport Name="SP_Collection_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Collection_Count_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
@@ -1644,6 +1645,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="prabhagid" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="SauchalayAddresses" EntityType="DevSwachhBharatNagpurModel.SauchalayAddress" />
+          <FunctionImport Name="CurrentAllUserLocationTest1" ReturnType="Collection(DevSwachhBharatNagpurModel.CurrentAllUserLocationTest1_Result)">
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -1700,16 +1704,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
           <Property Type="String" Name="Address" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="CurrentAllUserLocationTest1_Result">
-          <Property Type="Int32" Name="userid" Nullable="true" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="200" />
-          <Property Type="DateTime" Name="datt" Nullable="true" Precision="23" />
-          <Property Type="String" Name="addr" Nullable="true" />
-          <Property Type="String" Name="v" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="mobile" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="lat" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="lang" Nullable="true" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="houseCollection_Result">
           <Property Type="Int32" Name="gcId" Nullable="false" />
@@ -3299,6 +3293,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="BinaryQrCodeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
+        <ComplexType Name="CurrentAllUserLocationTest1_Result">
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="datt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="addr" Nullable="true" />
+          <Property Type="String" Name="v" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="lang" Nullable="true" MaxLength="200" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3351,20 +3355,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="Ward" ColumnName="Ward" />
                 <ScalarProperty Name="Area" ColumnName="Area" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="CurrentAllUserLocationTest1" FunctionName="DevSwachhBharatNagpurModel.Store.CurrentAllUserLocationTest1">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.CurrentAllUserLocationTest1_Result">
-                <ScalarProperty Name="userid" ColumnName="userid" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="datt" ColumnName="datt" />
-                <ScalarProperty Name="addr" ColumnName="addr" />
-                <ScalarProperty Name="v" ColumnName="v" />
-                <ScalarProperty Name="mobile" ColumnName="mobile" />
-                <ScalarProperty Name="lat" ColumnName="lat" />
-                <ScalarProperty Name="lang" ColumnName="lang" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -5113,6 +5103,20 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CurrentAllUserLocationTest1" FunctionName="DevSwachhBharatNagpurModel.Store.CurrentAllUserLocationTest1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.CurrentAllUserLocationTest1_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="datt" ColumnName="datt" />
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="v" ColumnName="v" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
          
         </EntityContainerMapping>
       </Mapping>

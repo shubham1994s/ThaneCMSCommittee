@@ -2031,13 +2031,13 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public List<SBALUserLocationMapView> GetAllUserLocation(string date, string Emptype)
+        public List<SBALUserLocationMapView> GetAllUserLocation(string date, string Emptype,int PrabhagId)
         {
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
 
             if (Emptype == null)
             {
-                var data = db.CurrentAllUserLocationTest1().ToList();
+                var data = db.CurrentAllUserLocationTest1(PrabhagId).ToList();
                 foreach (var x in data)
                 {
                     //string dat = Convert.ToDateTime(x.datetime).ToString("dd/MM/yyyy");
@@ -2142,7 +2142,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
             else
             {
-                var data = db.CurrentAllUserLocationTest1().ToList();
+                var data = db.CurrentAllUserLocationTest1(PrabhagId).ToList();
                 foreach (var x in data)
                 {
 
