@@ -64,7 +64,21 @@ function Employee() {
                         return "<img alt='Photo Not Found' onclick='noImageNotification()' src='/Images/default_not_upload.png' style='height:35px;width:35px;cursor:pointer;'></img>";
                     }
                 },
-            }
+                },
+                {
+                    "targets": [7],
+                    "visible": true,
+
+                    "render": function (data, type, full, meta) {
+                        if (full["EmployeeType"] == "" || full["EmployeeType"] == null) {
+                            return "Waste";
+                        }
+                        else {
+
+                            return "CTPT";
+                        }
+                    },
+                },
             ],
 
         "columns": [
@@ -75,6 +89,7 @@ function Employee() {
             { "data": "userEmployeeNo", "name": "userEmployeeNo", "width": "15%" },
             { "data": "userProfileImage", "name": "userProfileImage", "width": "15%" },
             { "data": "userAddress", "name": "userAddress", "width": "25%" },
+            { "data": "EmployeeType", "name": "EmployeeType", "width": "25%" },
             { "data": "bloodGroup", "name": "bloodGroup", "width": "25%" },
             { "data": "isActive", "name": "isActive", "width": "25%" },
             { "data": "gcTarget", "name": "gcTarget", "width": "25%" },
@@ -196,7 +211,21 @@ function NotActiveEmployee() {
                         return "<img alt='Photo Not Found' onclick='noImageNotification()' src='/Images/default_not_upload.png' style='height:35px;width:35px;cursor:pointer;'></img>";
                     }
                 },
-            }
+                },
+                {
+                    "targets": [7],
+                    "visible": true,
+
+                    "render": function (data, type, full, meta) {
+                        if (full["EmployeeType"] == "") {
+                            return "Waste";
+                        }
+                        else {
+
+                            return "CTPT";
+                        }
+                    },
+                },
             ],
 
         "columns": [
@@ -207,6 +236,7 @@ function NotActiveEmployee() {
             { "data": "userEmployeeNo", "name": "userEmployeeNo", "width": "15%" },
             { "data": "userProfileImage", "name": "userProfileImage", "width": "15%" },
             { "data": "userAddress", "name": "userAddress", "width": "25%" },
+            { "data": "EmployeeType", "name": "EmployeeType", "width": "25%" },
             { "data": "bloodGroup", "name": "bloodGroup", "width": "25%" },
             { "data": "isActive", "name": "isActive", "width": "25%" },
             { "data": "gcTarget", "name": "gcTarget", "width": "25%" },
