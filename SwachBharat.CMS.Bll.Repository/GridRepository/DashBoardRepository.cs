@@ -768,7 +768,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
-                    }).Where(x => x.isActive == "True" && x.EmployeeType == null).ToList();
+                    }).Where(x => x.isActive == "True" && (x.EmployeeType == null || x.EmployeeType == "CT")).ToList();
 
                     foreach (var item in data)
                     {
@@ -865,7 +865,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                    }).Where(x => x.isActive == "False" && x.EmployeeType == null).ToList();
+                    }).Where(x => x.isActive == "False" && (x.EmployeeType == null || x.EmployeeType == "CT")).ToList();
 
                     foreach (var item in data)
                     {
@@ -1549,7 +1549,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
-                    }).Where(x => x.isActive == "True" && x.EmployeeType == null && x.PrabhagId == PId).ToList();
+                    }).Where(x => x.isActive == "True" && (x.EmployeeType == null || x.EmployeeType == "CT") && x.PrabhagId == PId).ToList();
 
                     foreach (var item in data)
                     {
@@ -1647,7 +1647,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                    }).Where(x => x.isActive == "False" && x.EmployeeType == null && x.PrabhagId == PId).ToList();
+                    }).Where(x => x.isActive == "False" && (x.EmployeeType == null || x.EmployeeType == "CT") && x.PrabhagId == PId).ToList();
 
                     foreach (var item in data)
                     {
@@ -7636,42 +7636,88 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.CTPTQRCode + "/";
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-
-                var data = db.SauchalayAddresses.AsEnumerable().Select(x => new SauchalayRegistrationGridRow
+                if(PId > 0)
                 {
-                    Id = x.Id,
-                    SauchalayID = x.ReferanceId,
-                    Name = x.Name,
-                    Address = x.Address,
-                    Image = (string.IsNullOrEmpty(x.ImageUrl) ? "/Images/default_not_upload.png" : x.ImageUrl),
-                    QrImage = (string.IsNullOrEmpty(x.QrImageUrl) ? "/Images/default_not_upload.png" : x.QrImageUrl),
-                    Mobile = x.Mobile,
-                    CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
-                    Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : GetTot(x.Tot),
-                    Tns = x.Tns.HasValue ? x.Tns.ToString() : "",
-                    QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode,
-                    TOEMC = (string.IsNullOrEmpty(x.TOEMC)) ? "" : GetTot(x.TOEMC),
-                    TOC = (string.IsNullOrEmpty(x.TOC)) ? "" : GetTot(x.TOC),
+                    var data = db.SauchalayAddresses.AsEnumerable().Select(x => new SauchalayRegistrationGridRow
+                    {
+                        Id = x.Id,
+                        SauchalayID = x.ReferanceId,
+                        Name = x.Name,
+                        Address = x.Address,
+                        Image = (string.IsNullOrEmpty(x.ImageUrl) ? "/Images/default_not_upload.png" : x.ImageUrl),
+                        QrImage = (string.IsNullOrEmpty(x.QrImageUrl) ? "/Images/default_not_upload.png" : x.QrImageUrl),
+                        Mobile = x.Mobile,
+                        CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
+                        Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : GetTot(x.Tot),
+                        Tns = x.Tns.HasValue ? x.Tns.ToString() : "",
+                        QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode,
+                        TOEMC = (string.IsNullOrEmpty(x.TOEMC)) ? "" : GetTot(x.TOEMC),
+                        TOC = (string.IsNullOrEmpty(x.TOC)) ? "" : GetTot(x.TOC),
+                        Prabhag = (string.IsNullOrEmpty(x.PrabhagId.ToString())) ? "" : db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
+                        PrabhagId = x.PrabhagId
 
-                }).ToList();
-                if (!string.IsNullOrEmpty(SearchString))
-                {
-
-
-                    var model = data.Where(c => ((string.IsNullOrEmpty(c.SauchalayID) ? " " : c.SauchalayID) + " " +
-                                        (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
-                                         (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
-                                         (string.IsNullOrEmpty(c.TOEMC) ? " " : c.TOEMC) + " " +
-                                         (string.IsNullOrEmpty(c.TOC) ? " " : c.TOC) + " " +
-                                        (string.IsNullOrEmpty(c.Tot) ? " " : c.Tot)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                    }).Where(x=> x.PrabhagId == PId).ToList();
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
 
 
-                    data = model.ToList();
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.SauchalayID) ? " " : c.SauchalayID) + " " +
+                                            (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                                             (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                                             (string.IsNullOrEmpty(c.TOEMC) ? " " : c.TOEMC) + " " +
+                                             (string.IsNullOrEmpty(c.TOC) ? " " : c.TOC) + " " +
+                                            (string.IsNullOrEmpty(c.Tot) ? " " : c.Tot)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+
+                        data = model.ToList();
+                    }
+                    return data.OrderByDescending(c => c.SauchalayID);
                 }
-                return data.OrderByDescending(c => c.SauchalayID);
+                else
+                {
+                    var data = db.SauchalayAddresses.AsEnumerable().Select(x => new SauchalayRegistrationGridRow
+                    {
+                        Id = x.Id,
+                        SauchalayID = x.ReferanceId,
+                        Name = x.Name,
+                        Address = x.Address,
+                        Image = (string.IsNullOrEmpty(x.ImageUrl) ? "/Images/default_not_upload.png" : x.ImageUrl),
+                        QrImage = (string.IsNullOrEmpty(x.QrImageUrl) ? "/Images/default_not_upload.png" : x.QrImageUrl),
+                        Mobile = x.Mobile,
+                        CreatedDate = Convert.ToDateTime(x.CreatedDate).ToString("dd/MM/yyyy h:mm tt"),
+                        Tot = (string.IsNullOrEmpty(x.Tot)) ? "" : GetTot(x.Tot),
+                        Tns = x.Tns.HasValue ? x.Tns.ToString() : "",
+                        QRCode = ThumbnaiUrlCMS + x.SauchalayQRCode,
+                        TOEMC = (string.IsNullOrEmpty(x.TOEMC)) ? "" : GetTot(x.TOEMC),
+                        TOC = (string.IsNullOrEmpty(x.TOC)) ? "" : GetTot(x.TOC),
+                        Prabhag = (string.IsNullOrEmpty(x.PrabhagId.ToString())) ? "" : db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
+                        PrabhagId = x.PrabhagId
+
+                    }).ToList();
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.SauchalayID) ? " " : c.SauchalayID) + " " +
+                                            (string.IsNullOrEmpty(c.Address) ? " " : c.Address) + " " +
+                                             (string.IsNullOrEmpty(c.Name) ? " " : c.Name) + " " +
+                                             (string.IsNullOrEmpty(c.TOEMC) ? " " : c.TOEMC) + " " +
+                                             (string.IsNullOrEmpty(c.TOC) ? " " : c.TOC) + " " +
+                                            (string.IsNullOrEmpty(c.Tot) ? " " : c.Tot)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+
+                        data = model.ToList();
+                    }
+                    return data.OrderByDescending(c => c.SauchalayID);
+                }
+               
             }
         }
 
+        private bool IsNullOrEmpty(int? prabhagId)
+        {
+            throw new NotImplementedException();
+        }
 
         public string GetTot(string tot)
         {
