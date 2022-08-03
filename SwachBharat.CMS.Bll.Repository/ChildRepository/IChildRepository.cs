@@ -195,7 +195,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         HouseScanifyEmployeeDetailsVM GetUser(int teamId, string name);
 
         //Added By saurabh ( 02 July 2019)
-        DashBoardVM GetHouseOnMapDetails();
+        DashBoardVM GetHouseOnMapDetails(int PId);
         DashBoardVM GetCommercialOnMapDetails();
         DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 

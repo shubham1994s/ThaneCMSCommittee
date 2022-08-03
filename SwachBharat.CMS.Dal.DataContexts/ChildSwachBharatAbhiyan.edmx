@@ -895,7 +895,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="tdate" Type="date" Mode="In" />
           <Parameter Name="userid" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_HouseScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_HouseScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrabhagId" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_HouseScanifyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_IdelTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
@@ -1429,7 +1431,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_HouseScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMScanify_Count_Result)" />
           <FunctionImport Name="SP_SWMOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SWMOnMapDetails_Result)">
             <Parameter Name="gcDate" Mode="In" Type="DateTime" />
@@ -1649,6 +1650,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="to" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
             <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HouseScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result)">
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2411,28 +2415,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="CommercialCount" Nullable="true" />
           <Property Type="Int32" Name="SWMCount" Nullable="true" />
           <Property Type="Int32" Name="CTPTCount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_HouseScanify_Count_Result">
-          <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalHouseLatLongCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalRWLatLongCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalRBWLatLongCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalRSWLatLongCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalCWLatLongCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalScanHouseCount" Nullable="true" />
-          <Property Type="Int32" Name="MixedCount" Nullable="true" />
-          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
-          <Property Type="Int32" Name="NotCollected" Nullable="true" />
-          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
-          <Property Type="Int32" Name="ConstructionDemolition" Nullable="true" />
-          <Property Type="Int32" Name="Horticulture" Nullable="true" />
-          <Property Type="Int32" Name="WetWaste" Nullable="true" />
-          <Property Type="Int32" Name="DryWaste" Nullable="true" />
-          <Property Type="Int32" Name="DemosticHazardous" Nullable="true" />
-          <Property Type="Int32" Name="Sanitory" Nullable="true" />
-          <Property Type="Int32" Name="TotalLiquidLatLongCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalStreetLatLongCount" Nullable="true" />
-          <Property Type="Int32" Name="TotalDumpScanCount" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SP_SWMScanify_Count_Result">
           <Property Type="Int32" Name="TotalSWMCount" Nullable="true" />
@@ -3308,6 +3290,28 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalCTPT" Nullable="true" />
           <Property Type="Int64" Name="rownum" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="SP_HouseScanify_Count_Result">
+          <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouseLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalRWLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalRBWLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalRSWLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalCWLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalScanHouseCount" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
+          <Property Type="Int32" Name="ConstructionDemolition" Nullable="true" />
+          <Property Type="Int32" Name="Horticulture" Nullable="true" />
+          <Property Type="Int32" Name="WetWaste" Nullable="true" />
+          <Property Type="Int32" Name="DryWaste" Nullable="true" />
+          <Property Type="Int32" Name="DemosticHazardous" Nullable="true" />
+          <Property Type="Int32" Name="Sanitory" Nullable="true" />
+          <Property Type="Int32" Name="TotalLiquidLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalStreetLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalDumpScanCount" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4090,32 +4094,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="CommercialCount" ColumnName="CommercialCount" />
                 <ScalarProperty Name="SWMCount" ColumnName="SWMCount" />
                 <ScalarProperty Name="CTPTCount" ColumnName="CTPTCount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_HouseScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseScanify_Count">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result">
-                <ScalarProperty Name="TotalHouseCount" ColumnName="TotalHouseCount" />
-                <ScalarProperty Name="TotalHouseLatLongCount" ColumnName="TotalHouseLatLongCount" />
-                <ScalarProperty Name="TotalRWLatLongCount" ColumnName="TotalRWLatLongCount" />
-                <ScalarProperty Name="TotalRBWLatLongCount" ColumnName="TotalRBWLatLongCount" />
-                <ScalarProperty Name="TotalRSWLatLongCount" ColumnName="TotalRSWLatLongCount" />
-                <ScalarProperty Name="TotalCWLatLongCount" ColumnName="TotalCWLatLongCount" />
-                <ScalarProperty Name="TotalScanHouseCount" ColumnName="TotalScanHouseCount" />
-                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
-                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
-                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
-                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
-                <ScalarProperty Name="ConstructionDemolition" ColumnName="ConstructionDemolition" />
-                <ScalarProperty Name="Horticulture" ColumnName="Horticulture" />
-                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
-                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
-                <ScalarProperty Name="DemosticHazardous" ColumnName="DemosticHazardous" />
-                <ScalarProperty Name="Sanitory" ColumnName="Sanitory" />
-                <ScalarProperty Name="TotalLiquidLatLongCount" ColumnName="TotalLiquidLatLongCount" />
-                <ScalarProperty Name="TotalStreetLatLongCount" ColumnName="TotalStreetLatLongCount" />
-                <ScalarProperty Name="TotalDumpScanCount" ColumnName="TotalDumpScanCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -5122,6 +5100,32 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalSLWM" ColumnName="TotalSLWM" />
                 <ScalarProperty Name="TotalCTPT" ColumnName="TotalCTPT" />
                 <ScalarProperty Name="rownum" ColumnName="rownum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HouseScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseScanify_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseScanify_Count_Result">
+                <ScalarProperty Name="TotalHouseCount" ColumnName="TotalHouseCount" />
+                <ScalarProperty Name="TotalHouseLatLongCount" ColumnName="TotalHouseLatLongCount" />
+                <ScalarProperty Name="TotalRWLatLongCount" ColumnName="TotalRWLatLongCount" />
+                <ScalarProperty Name="TotalRBWLatLongCount" ColumnName="TotalRBWLatLongCount" />
+                <ScalarProperty Name="TotalRSWLatLongCount" ColumnName="TotalRSWLatLongCount" />
+                <ScalarProperty Name="TotalCWLatLongCount" ColumnName="TotalCWLatLongCount" />
+                <ScalarProperty Name="TotalScanHouseCount" ColumnName="TotalScanHouseCount" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
+                <ScalarProperty Name="ConstructionDemolition" ColumnName="ConstructionDemolition" />
+                <ScalarProperty Name="Horticulture" ColumnName="Horticulture" />
+                <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
+                <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
+                <ScalarProperty Name="DemosticHazardous" ColumnName="DemosticHazardous" />
+                <ScalarProperty Name="Sanitory" ColumnName="Sanitory" />
+                <ScalarProperty Name="TotalLiquidLatLongCount" ColumnName="TotalLiquidLatLongCount" />
+                <ScalarProperty Name="TotalStreetLatLongCount" ColumnName="TotalStreetLatLongCount" />
+                <ScalarProperty Name="TotalDumpScanCount" ColumnName="TotalDumpScanCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

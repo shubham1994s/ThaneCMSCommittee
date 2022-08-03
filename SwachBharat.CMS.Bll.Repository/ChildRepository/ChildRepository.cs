@@ -588,9 +588,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetUserDetails(teamId, name);
         }
 
-        public DashBoardVM GetHouseOnMapDetails()
+        public DashBoardVM GetHouseOnMapDetails(int PId)
         {
-            return screenService.GetHouseOnMapDetails();
+            return screenService.GetHouseOnMapDetails(PId);
 
         }
 
