@@ -3925,7 +3925,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                var data = db.SP_CommercialGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_CommercialGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -3994,7 +3994,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                var data = db.SP_ResidentialBuildingGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_ResidentialBuildingGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -4065,7 +4065,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                var data = db.SP_ResidentialSlumGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_ResidentialSlumGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -4133,7 +4133,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
             using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_SWMGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_SWMGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -4199,7 +4199,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                 var ctptcountdata = db.SP_CTPT_Collection(fdate, tdate, userId).Where(x => x.RowCounts == param1).FirstOrDefault();
                 param1 = null;
-                var data = db.SP_CTPTGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_CTPTGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, PId).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
