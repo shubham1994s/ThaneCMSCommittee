@@ -588,9 +588,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetUserDetails(teamId, name);
         }
 
-        public DashBoardVM GetHouseOnMapDetails()
+        public DashBoardVM GetHouseOnMapDetails(int PId)
         {
-            return screenService.GetHouseOnMapDetails();
+            return screenService.GetHouseOnMapDetails(PId);
 
         }
 
@@ -625,9 +625,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
 
         // Addded By neha (12 July 2019)
-        public List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string Date)
+        public List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string Date,int PId)
         {
-            return screenService.GetIdleTimeRoute(userId, Date);
+            return screenService.GetIdleTimeRoute(userId, Date,PId);
         }
         public void Save1Point4(List<OnePoint4VM> point)
         {
@@ -773,9 +773,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetLogString();
         }
 
-        public List<SBAEmplyeeIdelGrid> GetIdelTimeNotification()
+        public List<SBAEmplyeeIdelGrid> GetIdelTimeNotification(int PId)
         {
-            return screenService.GetIdelTimeNotification();
+            return screenService.GetIdelTimeNotification(PId);
         }
         public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification()
         {

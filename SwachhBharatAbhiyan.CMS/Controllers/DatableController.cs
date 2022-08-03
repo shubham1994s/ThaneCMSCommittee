@@ -322,24 +322,24 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "GarbageCommercial":
-                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
                     return gridRepository;
                     break;
                 case "GarbageResidentialBuilding":
-                    gridRepository = new ResBuildingGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    gridRepository = new ResBuildingGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
                     return gridRepository;
                     break;
                 case "GarbageResidentialSlum":
-                    gridRepository = new ResSlumGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    gridRepository = new ResSlumGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
                     return gridRepository;
                     break;
                 case "GarbageSWM":
-                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
                     return gridRepository;
                     break;
 
                 case "GarbageCTPT":
-                    gridRepository = new CTPTGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
+                    gridRepository = new CTPTGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, PId);
                     return gridRepository;
                     break;
                 case "GarbageCountCTPT":
@@ -400,7 +400,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "UserIdel":
-                    gridRepository = new IdelGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new IdelGridRepository(0, searchString, fdate, tdate, userId, appId, PId);
                     return gridRepository;
                     break;
 
@@ -462,18 +462,18 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "EmployeeSummary":
-                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, null);
+                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, null,PId);
                     return gridRepository;
                     break;
 
 
                 case "LiquidEmployeeSummary":
-                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "L");
+                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "L", PId);
                     return gridRepository;
                     break;
 
                 case "StreetEmployeeSummary":
-                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "S");
+                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "S",PId);
                     return gridRepository;
                     break;
 

@@ -195,7 +195,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         HouseScanifyEmployeeDetailsVM GetUser(int teamId, string name);
 
         //Added By saurabh ( 02 July 2019)
-        DashBoardVM GetHouseOnMapDetails();
+        DashBoardVM GetHouseOnMapDetails(int PId);
         DashBoardVM GetCommercialOnMapDetails();
         DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 
@@ -205,7 +205,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         DashBoardVM GetStreetSweepingDetails();
         //Added By Neha ( 12 July 2019)
-        List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string Date);
+        List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string Date,int PId);
         OnePoint4VM GetOnePointFourTotalCount(int ANS_ID);
 
         OnePoint4VM GetMaxINSERTID();
@@ -260,7 +260,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         List<LogVM> GetLogString();
 
-        List<SBAEmplyeeIdelGrid> GetIdelTimeNotification();
+        List<SBAEmplyeeIdelGrid> GetIdelTimeNotification(int PId);
 
         List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification();
 
