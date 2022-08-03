@@ -322,24 +322,24 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "GarbageCommercial":
-                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
                     return gridRepository;
                     break;
                 case "GarbageResidentialBuilding":
-                    gridRepository = new ResBuildingGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    gridRepository = new ResBuildingGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
                     return gridRepository;
                     break;
                 case "GarbageResidentialSlum":
-                    gridRepository = new ResSlumGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    gridRepository = new ResSlumGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
                     return gridRepository;
                     break;
                 case "GarbageSWM":
-                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
                     return gridRepository;
                     break;
 
                 case "GarbageCTPT":
-                    gridRepository = new CTPTGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4);
+                    gridRepository = new CTPTGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, PId);
                     return gridRepository;
                     break;
                 case "GarbageCountCTPT":
