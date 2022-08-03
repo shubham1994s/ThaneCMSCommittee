@@ -13,9 +13,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public ResSlumGarbageCollectionGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4, int? param5)
+        public ResSlumGarbageCollectionGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4, int? param5,int PId)
         {
-            dataSet = objRep.GetResSlumGarbageCollectionData(wildcard, SearchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5);
+            dataSet = objRep.GetResSlumGarbageCollectionData(wildcard, SearchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)
