@@ -191,6 +191,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 int user;
                 int area;
                 int ward;
@@ -243,7 +244,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 }
 
                 List<SBALHouseLocationMapView> obj = new List<SBALHouseLocationMapView>();
-                obj = childRepository.GetAllHouseLocation(date, user, area, ward, SearchString, GarbageType, FilterType, "S",null,0);
+                obj = childRepository.GetAllHouseLocation(date, user, area, ward, SearchString, GarbageType, FilterType, "S",null,0, PId);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
