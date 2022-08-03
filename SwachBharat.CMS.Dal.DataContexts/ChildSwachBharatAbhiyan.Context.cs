@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-       : base(SwachBharatAppConnection.GetConnectionString(AppId))
+               : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -457,11 +457,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("userid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Result>("SP_HouseScanify", fdateParameter, tdateParameter, useridParameter);
-        }
-    
-        public virtual ObjectResult<SP_HouseScanify_Count_Result> SP_HouseScanify_Count()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Count_Result>("SP_HouseScanify_Count");
         }
     
         public virtual ObjectResult<SP_SWMScanify_Count_Result> SP_SWMScanify_Count()
@@ -1175,6 +1170,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("prabhagid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeSummary_Result>("SP_EmployeeSummary", fromParameter, toParameter, useridParameter, prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_HouseScanify_Count_Result> SP_HouseScanify_Count(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Count_Result>("SP_HouseScanify_Count", prabhagIdParameter);
         }
     }
 }

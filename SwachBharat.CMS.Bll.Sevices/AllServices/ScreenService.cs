@@ -3921,7 +3921,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
         // Added By Saurabh (02 July 2019)
-        public DashBoardVM GetHouseOnMapDetails()
+        public DashBoardVM GetHouseOnMapDetails(int PId)
 
         {
             DashBoardVM model = new DashBoardVM();
@@ -3940,7 +3940,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //}
 
 
-                    var data = db.SP_HouseScanify_Count().First();
+                    var data = db.SP_HouseScanify_Count(PId).First();
 
                     //var date = DateTime.Today;
                     //var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();

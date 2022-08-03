@@ -175,7 +175,7 @@ namespace SwachBharat.CMS.Bll.Services
         HouseScanifyEmployeeDetailsVM GetUserDetails(int teamId, string Name);
 
         //Added By Saurabh (2 July 2019)
-        DashBoardVM GetHouseOnMapDetails();
+        DashBoardVM GetHouseOnMapDetails(int PId);
         DashBoardVM GetCommercialOnMapDetails();
         DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 

@@ -221,7 +221,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.AppName = SessionHandler.Current.AppName;
 
-                var details = childRepository.GetHouseOnMapDetails();
+                var details = childRepository.GetHouseOnMapDetails(PId);
                 return View(details);
             }
             else
