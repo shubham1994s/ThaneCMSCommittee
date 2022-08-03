@@ -21,7 +21,7 @@
             "searchable": false
             },
                 {
-                    "targets": [8],
+                    "targets": [9],
                     "visible": false,
                     "searchable": false
                 }],
@@ -39,11 +39,12 @@
               { "render": function (data, type, full, meta) { return '<input  class="btn btn-link" type="button" onclick="DownloadQRCode(' + full["houseId"] + ')" value="Download" />'; } },
 
               
-              { "data": "zone", "autoWidth": false },
-              { "data": "WardNo", "autoWidth": false },
-              { "data": "Area", "name": "Area", "autoWidth": false },
-              { "data": "houseNo", "autoWidth": false },
-              { "data": "Mobile", "autoWidth": false }, 
+            { "data": "zone", "autoWidth": false },
+            { "data": "prabhag", "name": "prabhag", "autoWidth": false },
+            { "data": "WardNo", "autoWidth": false },
+            { "data": "Area", "name": "Area", "autoWidth": false },
+            { "data": "houseNo", "autoWidth": false },
+            { "data": "Mobile", "autoWidth": false }, 
             { "data": "Address", "autoWidth": false },
             { "data": "Category", "name": "Category", "autoWidth": false },
 

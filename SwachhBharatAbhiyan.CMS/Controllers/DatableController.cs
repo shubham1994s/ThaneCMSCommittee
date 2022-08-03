@@ -462,18 +462,18 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "EmployeeSummary":
-                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, null);
+                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, null,PId);
                     return gridRepository;
                     break;
 
 
                 case "LiquidEmployeeSummary":
-                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "L");
+                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "L", PId);
                     return gridRepository;
                     break;
 
                 case "StreetEmployeeSummary":
-                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "S");
+                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "S",PId);
                     return gridRepository;
                     break;
 

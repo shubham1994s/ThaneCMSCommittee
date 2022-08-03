@@ -391,14 +391,31 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult LoadWardNoList(int ZoneId)
+        public ActionResult LoadPrabhagNoList(int ZoneId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                EmployeeDetailsVM obj = new EmployeeDetailsVM();
+                try
+                {
+                    obj.PrabhagList = childRepository.LoadListPrabhagNo(ZoneId);
+                }
+                catch (Exception ex) { throw ex; }
+
+                return Json(obj.PrabhagList, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+        public ActionResult LoadWardNoList(int PrabhagId)
         {
             if (SessionHandler.Current.AppId != 0)
             {
                 HouseDetailsVM obj = new HouseDetailsVM();
                 try
                 {
-                    obj.WardList = childRepository.LoadListWardNo(ZoneId);
+                    obj.WardList = childRepository.LoadListWardNo(PrabhagId);
                 }
                 catch (Exception ex) { throw ex; }
 

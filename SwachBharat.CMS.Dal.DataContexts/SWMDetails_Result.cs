@@ -20,6 +20,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string NameMar { get; set; }
         public string Images { get; set; }
         public string Zone { get; set; }
+        public string Prabhag { get; set; }
         public string Ward { get; set; }
         public string Area { get; set; }
         public string swmNumber { get; set; }
