@@ -26,6 +26,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string JavascriptToRun { get; set; }
         public string areaName { get; set; }
         public string wardName { get; set; }
+        public string prabhagName { get; set; }
 
         public Nullable<int> userId { get; set; }
 

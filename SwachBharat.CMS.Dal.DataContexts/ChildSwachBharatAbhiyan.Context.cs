@@ -18,9 +18,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+      : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -1137,6 +1138,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ResidentialSlumGarbageCollection_Result>("SP_ResidentialSlumGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter, segidSubParameter);
         }
     
+        public virtual ObjectResult<CurrentAllUserLocationTest1_Result> CurrentAllUserLocationTest1(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CurrentAllUserLocationTest1_Result>("CurrentAllUserLocationTest1", prabhagIdParameter);
+        }
+    
         public virtual ObjectResult<CommercialDetails_Result> CommercialDetails(Nullable<int> prabhagid)
         {
             var prabhagidParameter = prabhagid.HasValue ?
@@ -1162,15 +1172,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("prabhagid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SWMDetails_Result>("SWMDetails", prabhagidParameter);
-        }
-    
-        public virtual ObjectResult<CurrentAllUserLocationTest1_Result> CurrentAllUserLocationTest1(Nullable<int> prabhagId)
-        {
-            var prabhagIdParameter = prabhagId.HasValue ?
-                new ObjectParameter("PrabhagId", prabhagId) :
-                new ObjectParameter("PrabhagId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CurrentAllUserLocationTest1_Result>("CurrentAllUserLocationTest1", prabhagIdParameter);
         }
     }
 }

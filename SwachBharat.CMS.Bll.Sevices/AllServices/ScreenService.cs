@@ -5112,6 +5112,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.WardNo = data.WardNo;
             model.AreaId = data.AreaId;
             model.ZoneId = data.ZoneId;
+            model.PrabhagId = data.PrabhagId;
             model.houseOwner = data.houseOwner;
             model.houseOwnerMar = data.houseOwnerMar;
             model.houseAddress = data.houseAddress;
@@ -5143,7 +5144,14 @@ namespace SwachBharat.CMS.Bll.Services
                     model.wardName = "";
                 }
 
-
+                if (data.PrabhagId > 0)
+                {
+                    model.prabhagName = db.CommitteeMasters.Where(c => c.Id == data.PrabhagId).FirstOrDefault().CommitteeName;
+                }
+                else
+                {
+                    model.prabhagName = "";
+                }
 
 
             }
