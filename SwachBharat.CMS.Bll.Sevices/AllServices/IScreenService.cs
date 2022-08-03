@@ -66,7 +66,7 @@ namespace SwachBharat.CMS.Bll.Services
         void DeletHouseDetails(int teamId);
 
         SBALUserLocationMapView GetLocationDetails(int teamId,string Emptype,int PrabhagId);
-        List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype);
+        List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype,int PId);
 
         List<SBALUserLocationMapView> GetAdminLocation();
         List<SBALUserLocationMapView> GetUserWiseLocation(int userId,string date, string Emptype);
@@ -175,7 +175,7 @@ namespace SwachBharat.CMS.Bll.Services
         HouseScanifyEmployeeDetailsVM GetUserDetails(int teamId, string Name);
 
         //Added By Saurabh (2 July 2019)
-        DashBoardVM GetHouseOnMapDetails();
+        DashBoardVM GetHouseOnMapDetails(int PId);
         DashBoardVM GetCommercialOnMapDetails();
         DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 
@@ -214,7 +214,7 @@ namespace SwachBharat.CMS.Bll.Services
         List<OnePoint7QuestionVM> GetOnePointSevenAnswers(int INSERT_ID);
 
         void EditOnePointSeven(List<OnePoint7QuestionVM> OnePoint7QuestionVM);
-        List<SelectListItem> LoadListWardNo(int ZoneId);
+        List<SelectListItem> LoadListWardNo(int PrabhagId);
         List<SelectListItem> LoadListPrabhagNo(int ZoneId);
         List<SelectListItem> LoadListArea(int WardNo);
         //InfotainmentDetailsVW GetInfotainmentDetailsById(int ID);

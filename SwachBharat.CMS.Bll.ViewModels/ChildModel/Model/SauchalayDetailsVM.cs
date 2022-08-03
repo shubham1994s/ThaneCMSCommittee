@@ -30,6 +30,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string SerielNo { get; set; }
         public Nullable<System.DateTime> lastModifiedDateEntry { get; set; }
         public Nullable<int> userId { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
 
 
     }

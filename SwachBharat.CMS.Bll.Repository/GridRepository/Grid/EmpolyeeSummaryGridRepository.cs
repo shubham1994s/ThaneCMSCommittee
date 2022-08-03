@@ -14,9 +14,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public EmpolyeeSummaryGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string Emptype)
+        public EmpolyeeSummaryGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, string Emptype,int PId)
         {
-            dataset = objRep.GetEmployeeSummaryData(wildcard, SearchString, fdate, tdate, userId, appId, Emptype);
+            dataset = objRep.GetEmployeeSummaryData(wildcard, SearchString, fdate, tdate, userId, appId, Emptype, PId);
         }
 
 

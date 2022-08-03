@@ -246,9 +246,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetLocationDetails(teamId, Emptype, PrabhagId);
         }
 
-        public List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype)
+        public List<SBALUserLocationMapView> GetAllUserLocation(string date,string Emptype,int PId)
         {
-            return screenService.GetAllUserLocation(date, Emptype);
+            return screenService.GetAllUserLocation(date, Emptype, PId);
         }
 
         public List<SBALUserLocationMapView> GetAdminLocation()
@@ -588,9 +588,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetUserDetails(teamId, name);
         }
 
-        public DashBoardVM GetHouseOnMapDetails()
+        public DashBoardVM GetHouseOnMapDetails(int PId)
         {
-            return screenService.GetHouseOnMapDetails();
+            return screenService.GetHouseOnMapDetails(PId);
 
         }
 
@@ -689,9 +689,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetOnePointSevenAnswers(INSERT_ID);
         }
 
-        public List<SelectListItem> LoadListWardNo(int ZoneId)
+        public List<SelectListItem> LoadListWardNo(int PrabhagId)
         {
-            return screenService.LoadListWardNo(ZoneId);
+            return screenService.LoadListWardNo(PrabhagId);
         }
 
         public List<SelectListItem> LoadListPrabhagNo(int ZoneId)
