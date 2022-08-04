@@ -4159,7 +4159,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     los = x.los,
                     ctype = x.CType,
                     wastetype = x.WasteType,
-
+                    PrabhagName=x.PrabhagName
 
                 }).OrderByDescending(c => c.gcDate).ToList().ToList();
 
