@@ -179,7 +179,7 @@ namespace SwachBharat.CMS.Bll.Services
         DashBoardVM GetCommercialOnMapDetails(int PId);
         DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 
-        DashBoardVM GetSWMOnMapDetails();
+        DashBoardVM GetSWMOnMapDetails(int PId);
         DashBoardVM GetLiquidWasteDetails();
 
         DashBoardVM GetStreetSweepingDetails();
