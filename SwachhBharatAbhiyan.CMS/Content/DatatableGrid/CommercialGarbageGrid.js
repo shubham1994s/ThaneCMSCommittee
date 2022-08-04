@@ -195,6 +195,8 @@
                 }
             },
 
+            { "data": "PrabhagName", "name": "PrabhagName", "autoWidth": false },
+
         ]
     });
 
