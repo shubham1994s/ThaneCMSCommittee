@@ -528,6 +528,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     {
                         Id = x.Id,
                         WardNo = x.WardNo,
+                        PrabhagId = (int)x.PrabhagId,
                         Prabhag = db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
                     }).Where(x=> x.PrabhagId == PId).ToList();
                     foreach (var item in data)

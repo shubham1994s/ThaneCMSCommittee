@@ -45,7 +45,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
 
 
-        WardNumberVM GetWardNumber(int teamId,string name);
+        WardNumberVM GetWardNumber(int teamId,string name,int PId);
 
         CommitteeVM GetCommitteeName(int teamId, string name);
 
@@ -60,7 +60,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         void StreetSaveWardNumber(WardNumberVM type);
 
 
-        HouseDetailsVM GetHouseById(int teamId);
+        HouseDetailsVM GetHouseById(int teamId,int PId);
 
         SWMDetailsVM GetSWMById(int teamId);
 
@@ -71,7 +71,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId);
 
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
-        HouseDetailsVM SaveHouse(HouseDetailsVM data);
+        HouseDetailsVM SaveHouse(HouseDetailsVM data,int PId);
 
         SWMDetailsVM SaveSWM(SWMDetailsVM data);
 

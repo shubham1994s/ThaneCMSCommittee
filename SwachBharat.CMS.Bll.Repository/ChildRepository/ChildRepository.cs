@@ -119,9 +119,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             screenService.SaveVehicleRegDetails(type);
         }
 
-        public WardNumberVM GetWardNumber(int teamId,string name)
+        public WardNumberVM GetWardNumber(int teamId,string name,int PId)
         {
-            return screenService.GetWardNumberDetails(teamId,name);
+            return screenService.GetWardNumberDetails(teamId,name, PId);
         }
 
         public CommitteeVM GetCommitteeName(int teamId, string name)
@@ -175,9 +175,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         }
 
 
-        public HouseDetailsVM GetHouseById(int teamId)
+        public HouseDetailsVM GetHouseById(int teamId,int PId)
         {
-            return screenService.GetHouseDetails(teamId);
+            return screenService.GetHouseDetails(teamId, PId);
         }
 
         public SWMDetailsVM GetSWMById(int teamId)
@@ -205,13 +205,13 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetLiquidByIdforMap(teamId, daId, EmpType);
         }
 
-        public HouseDetailsVM SaveHouse(HouseDetailsVM data)
+        public HouseDetailsVM SaveHouse(HouseDetailsVM data,int PId)
         {
             if (data.houseId <= 0)
             {
                 data.houseId = 0;
             }
-            HouseDetailsVM dd =screenService.SaveHouseDetails(data);
+            HouseDetailsVM dd =screenService.SaveHouseDetails(data, PId);
             return dd;
         }
 
