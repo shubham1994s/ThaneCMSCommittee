@@ -31,5 +31,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string gpBeforImage { get; set; }
         public string gpAfterImage { get; set; }
         public Nullable<int> garbageType { get; set; }
+        public string PrabhagName { get; set; }
     }
 }
