@@ -50,7 +50,10 @@ namespace SwachBharat.CMS.Bll.Services
         void DeletWardNumberDetails(int teamId);
 
         HouseDetailsVM GetHouseDetails(int teamId);
+        List<SelectListItem> ZoneListPId(int PId);
+        List<SelectListItem> WardListPId(int PId);
 
+        List<SelectListItem> AreaLstPId(int PId);
         SWMDetailsVM GetSWMDetails(int teamId);
 
         CommercialDetailsVM GetCommercialDetails(int teamId);
@@ -215,6 +218,9 @@ namespace SwachBharat.CMS.Bll.Services
 
         void EditOnePointSeven(List<OnePoint7QuestionVM> OnePoint7QuestionVM);
         List<SelectListItem> LoadListWardNo(int PrabhagId);
+
+        List<SelectListItem> LoadListWardNoPId(int PId, int ZoneId);
+        List<SelectListItem> LoadAreaListPId(int PId, int WardNo);
         List<SelectListItem> LoadListPrabhagNo(int ZoneId);
         List<SelectListItem> LoadListArea(int WardNo);
         //InfotainmentDetailsVW GetInfotainmentDetailsById(int ID);

@@ -59,7 +59,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         void StreetSaveWardNumber(WardNumberVM type);
 
-
+        List<SelectListItem> ZoneListPId(int PId);
+        List<SelectListItem> WardListPId(int PId);
+        List<SelectListItem> AreaLstPId(int PId);
         HouseDetailsVM GetHouseById(int teamId);
 
         SWMDetailsVM GetSWMById(int teamId);
@@ -232,6 +234,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         void EditOnePointSeven(List<OnePoint7QuestionVM> OnePoint7);
 
         List<SelectListItem> LoadListWardNo(int PrabhagId);
+
+        List<SelectListItem> LoadListWardNoPId(int PId,int ZoneId);
+        List<SelectListItem> LoadAreaListPId(int PId, int WardNo);
         List<SelectListItem> LoadListPrabhagNo(int ZoneId);
 
         List<SelectListItem> LoadListArea(int WardNo);

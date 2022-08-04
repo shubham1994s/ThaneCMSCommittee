@@ -173,8 +173,19 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             }
             screenService.StreetSaveWardNumberDetails(type);
         }
+        public List<SelectListItem> ZoneListPId(int PId)
+        {
+            return screenService.ZoneListPId(PId);
+        }
+        public List<SelectListItem> WardListPId(int PId)
+        {
+            return screenService.WardListPId(PId);
+        }
 
-
+        public List<SelectListItem> AreaLstPId(int PId)
+        {
+            return screenService.AreaLstPId(PId);
+        }
         public HouseDetailsVM GetHouseById(int teamId)
         {
             return screenService.GetHouseDetails(teamId);
@@ -694,6 +705,14 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.LoadListWardNo(PrabhagId);
         }
 
+        public List<SelectListItem> LoadListWardNoPId(int PId, int ZoneId)
+        {
+            return screenService.LoadListWardNoPId(PId,ZoneId);
+        }
+        public List<SelectListItem> LoadAreaListPId(int PId, int WardNo)
+        {
+            return screenService.LoadAreaListPId(PId, WardNo);
+        }
         public List<SelectListItem> LoadListPrabhagNo(int ZoneId)
         {
             return screenService.LoadListPrabhagNo(ZoneId);
