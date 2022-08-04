@@ -88,8 +88,8 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetVehicleTypeDetails(teamId);
         }
 
-        public VehicleRegVM GetVehicleReg(int teamId) {
-            return screenService.GetVehicleDetails(teamId);
+        public VehicleRegVM GetVehicleReg(int teamId,int PId) {
+            return screenService.GetVehicleDetails(teamId, PId);
         }
 
         public StreetSweepVM GetBeat(int teamId)
@@ -190,14 +190,14 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetCommercialDetails(teamId, PId);
         }
 
-        public SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId)
+        public SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId,int PId)
         {
-            return screenService.GetHouseByIdforMap(teamId, daId);
+            return screenService.GetHouseByIdforMap(teamId, daId, PId);
         }
 
-        public SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId)
+        public SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId,int PId)
         {
-            return screenService.GetCTPTByIdforMap(teamId, daId);
+            return screenService.GetCTPTByIdforMap(teamId, daId, PId);
         }
 
         public SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType)
@@ -297,17 +297,17 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetStreetAttenRoute(daId, areaid);
         }
 
-        public GarbagePointDetailsVM GetGarbagePointById(int teamId)
+        public GarbagePointDetailsVM GetGarbagePointById(int teamId, int PId)
         {
-            return screenService.GetGarbagePointDetails(teamId);
+            return screenService.GetGarbagePointDetails(teamId, PId);
         }
-        public GarbagePointDetailsVM SaveGarbagePoint(GarbagePointDetailsVM data)
+        public GarbagePointDetailsVM SaveGarbagePoint(GarbagePointDetailsVM data,int PId)
         {
             if (data.gpId <= 0)
             {
                 data.gpId = 0;
             }
-            GarbagePointDetailsVM dd = screenService.SaveGarbagePointDetails(data);
+            GarbagePointDetailsVM dd = screenService.SaveGarbagePointDetails(data, PId);
             return dd;
         }
         public void DeletGarbagePoint(int teamId)
@@ -394,14 +394,14 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetDumpYardtDetails(teamId);
         }
 
-        public StreetSweepVM GetStreetSweepId(int teamId)
+        public StreetSweepVM GetStreetSweepId(int teamId,int PId)
         {
-            return screenService.GetStreetSweepDetails(teamId);
+            return screenService.GetStreetSweepDetails(teamId, PId);
         }
 
-        public LiquidWasteVM GetLiquidWasteId(int teamId)
+        public LiquidWasteVM GetLiquidWasteId(int teamId,int PId)
         {
-            return screenService.GetLiquidWasteDetails(teamId);
+            return screenService.GetLiquidWasteDetails(teamId, PId);
         }
 
         public DumpYardDetailsVM SaveDumpYard(DumpYardDetailsVM data,string Emptype)
@@ -413,22 +413,22 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             DumpYardDetailsVM dd = screenService.SaveDumpYardtDetails(data, Emptype);
             return dd;
         }
-        public LiquidWasteVM SaveLiquidWastes(LiquidWasteVM data)
+        public LiquidWasteVM SaveLiquidWastes(LiquidWasteVM data,int PId)
         {
             if (data.LWId <= 0)
             {
                 data.LWId = 0;
             }
-            LiquidWasteVM dd = screenService.SaveLiquidWasteDetails(data);
+            LiquidWasteVM dd = screenService.SaveLiquidWasteDetails(data, PId);
             return dd;
         }
-        public StreetSweepVM SaveStreetSweep(StreetSweepVM data)
+        public StreetSweepVM SaveStreetSweep(StreetSweepVM data,int PId)
         {
             if (data.SSId <= 0)
             {
                 data.SSId = 0;
             }
-            StreetSweepVM dd = screenService.SaveStreetSweepDetails(data);
+            StreetSweepVM dd = screenService.SaveStreetSweepDetails(data, PId);
             return dd;
         }
 

@@ -75,9 +75,11 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 ViewBag.daId = daId;
                 SBALUserLocationMapView obj = new SBALUserLocationMapView();
-                obj = childRepository.GetHouseByIdforMap(-1, daId);
+                obj = childRepository.GetHouseByIdforMap(-1, daId, PId);
                 return View(obj);
             }
             else
@@ -103,11 +105,12 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 ViewBag.daId = daId;
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 SBALUserLocationMapView obj = new SBALUserLocationMapView();
-                obj = childRepository.GetHouseByIdforMap(-1, daId);
+                obj = childRepository.GetHouseByIdforMap(-1, daId, PId);
                 return View(obj);
             }
             else

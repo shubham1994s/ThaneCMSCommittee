@@ -143,7 +143,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                StreetSweepVM dump = childRepository.GetStreetSweepId(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                StreetSweepVM dump = childRepository.GetStreetSweepId(teamId, PId);
                 return View(dump);
             }
             else
@@ -156,6 +158,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var guid = Guid.NewGuid().ToString().Split('-');
                 string image_Guid = DateTime.Now.ToString("MMddyyyymmss") + "_" + guid[1] + ".jpg";
@@ -186,7 +190,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 readStream.Close();
                 StreetSweep.SSQRCode = image_Guid;
 
-                StreetSweepVM pointDetails = childRepository.SaveStreetSweep(StreetSweep);
+                StreetSweepVM pointDetails = childRepository.SaveStreetSweep(StreetSweep, PId);
 
 
                 return Redirect("Index");
@@ -199,11 +203,12 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 string Filename = "", owner = "";
 
-                var details = childRepository.GetStreetSweepId(id);
+                var details = childRepository.GetStreetSweepId(id, PId);
                 string cdatetime = DateTime.Now.ToString("_ddmmyyyyhhmmss");
 
                 if (details.SSName != null)

@@ -34,7 +34,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         VehicleTypeVM GetVehicleType(int teamId);
 
-        VehicleRegVM GetVehicleReg(int teamId);
+        VehicleRegVM GetVehicleReg(int teamId,int PId);
 
         StreetSweepVM GetBeat(int teamId);
 
@@ -66,9 +66,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         CommercialDetailsVM GetCommercailById(int teamId,int PId);
 
-        SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId);
+        SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId,int PId);
 
-        SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId);
+        SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId,int PId);
 
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
         HouseDetailsVM SaveHouse(HouseDetailsVM data,int PId);
@@ -96,8 +96,8 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SBALUserLocationMapView> GetLiquidAttenRoute(int id, int areaid);
         List<SBALUserLocationMapView> GetStreetAttenRoute(int id, int areaid);
         
-        GarbagePointDetailsVM GetGarbagePointById(int teamId);
-        GarbagePointDetailsVM SaveGarbagePoint(GarbagePointDetailsVM data);
+        GarbagePointDetailsVM GetGarbagePointById(int teamId,int PId);
+        GarbagePointDetailsVM SaveGarbagePoint(GarbagePointDetailsVM data,int PId);
         void DeletGarbagePoint(int teamId);
 
         EmployeeDetailsVM GetEmployeeById(int teamId,int PId);
@@ -126,18 +126,18 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         DumpYardDetailsVM GetDumpYardById(int teamId);
 
-        StreetSweepVM GetStreetSweepId(int teamId);
+        StreetSweepVM GetStreetSweepId(int teamId,int PId);
 
-        LiquidWasteVM GetLiquidWasteId(int teamId);
+        LiquidWasteVM GetLiquidWasteId(int teamId,int PId);
 
         DumpYardDetailsVM SaveDumpYard(DumpYardDetailsVM data,string Emptype);
 
      
 
-        StreetSweepVM SaveStreetSweep(StreetSweepVM data);
+        StreetSweepVM SaveStreetSweep(StreetSweepVM data,int PId);
         StreetSweepVM SaveStreetBeat(StreetSweepVM data);
 
-        LiquidWasteVM SaveLiquidWastes(LiquidWasteVM data);
+        LiquidWasteVM SaveLiquidWastes(LiquidWasteVM data,int PId);
 
         #region HouseScanify
         void SaveHSQRStatusHouse(int houseId, string QRStatus);

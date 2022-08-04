@@ -55,7 +55,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                GarbagePointDetailsVM house = childRepository.GetGarbagePointById(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                GarbagePointDetailsVM house = childRepository.GetGarbagePointById(teamId, PId);
                 return View(house);
             }
             else
@@ -67,6 +68,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
            if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var guid = Guid.NewGuid().ToString().Split('-');
                 string image_Guid = DateTime.Now.ToString("MMddyyyymmss") + "_" + guid[1] + ".jpg";
@@ -97,7 +100,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 readStream.Close();
                 point.qrCode = image_Guid;
 
-                GarbagePointDetailsVM pointDetails =  childRepository.SaveGarbagePoint(point);
+                GarbagePointDetailsVM pointDetails =  childRepository.SaveGarbagePoint(point, PId);
                
                 
                 return Redirect("Index");
@@ -161,10 +164,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 string Filename = "",name="";
 
-                var details = childRepository.GetGarbagePointById(id);
+                var details = childRepository.GetGarbagePointById(id, PId);
                 string cdatetime = DateTime.Now.ToString("_ddmmyyyyhhmmss");
 
                 if (details.gpName != null && details.gpName != "")
@@ -266,6 +271,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         public void test(GarbagePointDetailsVM point)
         {
+            int PId = Convert.ToInt32(Session["PrabhagId"]);
 
             var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
             var guid = Guid.NewGuid().ToString().Split('-');
@@ -294,7 +300,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             readStream.Close();
             point.qrCode = image_Guid;
 
-            GarbagePointDetailsVM pointDetails = childRepository.SaveGarbagePoint(point);
+            GarbagePointDetailsVM pointDetails = childRepository.SaveGarbagePoint(point, PId);
 
             // generate pdf
             string Filename = "";
@@ -345,7 +351,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
             if (SessionHandler.Current.AppId != 0)
             {
-                GarbagePointDetailsVM house = childRepository.GetGarbagePointById(-1);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                GarbagePointDetailsVM house = childRepository.GetGarbagePointById(-1, PId);
                 List<string> list = new List<string>();
                 int n = house.gpId;
                 for (int i = 1; i <= zone.id; i++)
@@ -386,7 +394,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     house.qrCode = image_Guid;
                     house.ReferanceId = house.ReferanceId;
 
-                    GarbagePointDetailsVM pointDetails = childRepository.SaveGarbagePoint(house);
+                    GarbagePointDetailsVM pointDetails = childRepository.SaveGarbagePoint(house, PId);
 
                     // generate pdf
                     string Filename = "";

@@ -28,7 +28,7 @@ namespace SwachBharat.CMS.Bll.Services
 
 
         VehicleTypeVM GetVehicleTypeDetails(int teamId);
-        VehicleRegVM GetVehicleDetails(int teamId);
+        VehicleRegVM GetVehicleDetails(int teamId,int PId);
 
         StreetSweepVM GetBeatDetails(int teamId);
 
@@ -54,9 +54,9 @@ namespace SwachBharat.CMS.Bll.Services
         SWMDetailsVM GetSWMDetails(int teamId,int PId);
 
         CommercialDetailsVM GetCommercialDetails(int teamId,int PId);
-        SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId);
+        SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId,int PId);
 
-        SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId);
+        SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId,int PId);
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
         HouseDetailsVM SaveHouseDetails(HouseDetailsVM data,int PId);
 
@@ -82,8 +82,8 @@ namespace SwachBharat.CMS.Bll.Services
         List<SBALUserLocationMapView> GetLiquidAttenRoute(int userId, int areaid);
         List<SBALUserLocationMapView> GetStreetAttenRoute(int userId, int areaid);
 
-        GarbagePointDetailsVM GetGarbagePointDetails(int teamId);
-        GarbagePointDetailsVM SaveGarbagePointDetails(GarbagePointDetailsVM data);
+        GarbagePointDetailsVM GetGarbagePointDetails(int teamId,int PId);
+        GarbagePointDetailsVM SaveGarbagePointDetails(GarbagePointDetailsVM data,int PId);
         void DeletGarbagePointDetails(int teamId);
 
         EmployeeDetailsVM GetEmployeeDetails(int teamId,int PId);
@@ -110,15 +110,15 @@ namespace SwachBharat.CMS.Bll.Services
 
         DumpYardDetailsVM GetDumpYardtDetails(int teamId);
         //Added By Shubham
-        StreetSweepVM GetStreetSweepDetails(int teamId);
+        StreetSweepVM GetStreetSweepDetails(int teamId,int PId);
 
-        LiquidWasteVM GetLiquidWasteDetails(int teamId);
+        LiquidWasteVM GetLiquidWasteDetails(int teamId,int PId);
         DumpYardDetailsVM SaveDumpYardtDetails(DumpYardDetailsVM data,string Emptype);
 
-        StreetSweepVM SaveStreetSweepDetails(StreetSweepVM data);
+        StreetSweepVM SaveStreetSweepDetails(StreetSweepVM data,int PId);
         StreetSweepVM SaveStreetBeatDetails(StreetSweepVM data);
 
-        LiquidWasteVM SaveLiquidWasteDetails(LiquidWasteVM data);
+        LiquidWasteVM SaveLiquidWasteDetails(LiquidWasteVM data,int PId);
         void DeletDumpYardtDetails(int teamId);
 
         //Added By Saurabh (27 May 2019)

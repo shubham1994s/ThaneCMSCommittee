@@ -99,7 +99,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                LiquidWasteVM dump = childRepository.GetLiquidWasteId(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                LiquidWasteVM dump = childRepository.GetLiquidWasteId(teamId, PId);
                 return View(dump);
             }
             else
@@ -112,6 +114,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var guid = Guid.NewGuid().ToString().Split('-');
                 string image_Guid = DateTime.Now.ToString("MMddyyyymmss") + "_" + guid[1] + ".jpg";
@@ -142,7 +146,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
                 readStream.Close();
                 LiquidWaste.LWQRCode = image_Guid;
 
-                LiquidWasteVM pointDetails = childRepository.SaveLiquidWastes(LiquidWaste);
+                LiquidWasteVM pointDetails = childRepository.SaveLiquidWastes(LiquidWaste, PId);
 
 
                 return Redirect("Index");
@@ -156,11 +160,12 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 string Filename = "", owner = "";
 
-                var details = childRepository.GetLiquidWasteId(id);
+                var details = childRepository.GetLiquidWasteId(id, PId);
                 string cdatetime = DateTime.Now.ToString("_ddmmyyyyhhmmss");
 
                 if (details.LWName != null)
