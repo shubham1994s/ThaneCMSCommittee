@@ -210,6 +210,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         OnePoint4VM GetMaxINSERTID();
 
+        List<SelectListItem> ZoneListPId(int PId);
+        List<SelectListItem> WardListPId(int PId);
+        List<SelectListItem> AreaLstPId(int PId);
+        List<SelectListItem> LoadListWardNoPId(int PId,int ZoneId);
+        List<SelectListItem> LoadAreaListPId(int PId,int WardNo);
 
         void Save1Point4(List<OnePoint4VM> point);
 
