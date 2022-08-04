@@ -34,6 +34,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
         public string WasteType { get; set; }
         public string houseCategory { get; set; }
-        public List<SelectListItem> PrabhagList { get; set; }
+       // public List<SelectListItem> PrabhagList { get; set; }
     }
 }
