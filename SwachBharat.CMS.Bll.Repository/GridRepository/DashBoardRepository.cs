@@ -323,8 +323,10 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         Id = x.Id,
                         Name = x.Area,
                         NameMar = x.AreaMar,
+                        PrabhagId = (int)x.PrabhagId,
+                        Prabhag = db.CommitteeMasters.Where(p=> p.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
                         ward = db.WardNumbers.Where(v => v.Id == x.wardId).FirstOrDefault().WardNo
-                    }).ToList();
+                    }).Where(x=> x.PrabhagId == PId).ToList();
                     //  var result = data.SkipWhile(element => element.cId != element.reNewId); 
                     foreach (var item in data)
                     {
@@ -356,6 +358,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         Id = x.Id,
                         Name = x.Area,
                         NameMar = x.AreaMar,
+                        PrabhagId = (int)x.PrabhagId,
+                        Prabhag = db.CommitteeMasters.Where(p => p.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
                         ward = db.WardNumbers.Where(v => v.Id == x.wardId).FirstOrDefault().WardNo
                     }).ToList();
                     //  var result = data.SkipWhile(element => element.cId != element.reNewId); 

@@ -22,5 +22,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string ReferanceId { get; set; }
         public string LWAddress { get; set; }
         public Nullable<System.DateTime> lastModifiedDate { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
     }
 }

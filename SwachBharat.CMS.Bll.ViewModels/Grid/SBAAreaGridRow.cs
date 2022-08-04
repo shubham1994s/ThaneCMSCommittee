@@ -12,5 +12,9 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public string Name { get; set; }
         public string NameMar { get; set; }
         public string ward { get; set; }
+
+        public int PrabhagId { get; set; }
+
+        public string Prabhag { get; set; }
     }
 }

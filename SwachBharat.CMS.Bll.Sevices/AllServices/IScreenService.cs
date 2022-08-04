@@ -19,7 +19,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         DashBoardVM GetStreetDashBoardDetails(int PrabhagId);
         string Address(string location);
-        AreaVM GetAreaDetails(int teamId,string Name);
+        AreaVM GetAreaDetails(int teamId,string Name,int PId);
         void DeletAreaDetails(int teamId);
         void SaveAreaDetails(AreaVM area);
         void LiquidSaveAreaDetails(AreaVM area);
@@ -51,18 +51,18 @@ namespace SwachBharat.CMS.Bll.Services
 
         HouseDetailsVM GetHouseDetails(int teamId,int PId);
 
-        SWMDetailsVM GetSWMDetails(int teamId);
+        SWMDetailsVM GetSWMDetails(int teamId,int PId);
 
-        CommercialDetailsVM GetCommercialDetails(int teamId);
+        CommercialDetailsVM GetCommercialDetails(int teamId,int PId);
         SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId);
 
         SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId);
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
         HouseDetailsVM SaveHouseDetails(HouseDetailsVM data,int PId);
 
-        SWMDetailsVM SaveSWMDetails(SWMDetailsVM data);
+        SWMDetailsVM SaveSWMDetails(SWMDetailsVM data,int PId);
 
-        CommercialDetailsVM SaveCommercialDetails(CommercialDetailsVM data);
+        CommercialDetailsVM SaveCommercialDetails(CommercialDetailsVM data,int PId);
         void DeletHouseDetails(int teamId);
 
         SBALUserLocationMapView GetLocationDetails(int teamId,string Emptype,int PrabhagId);
@@ -86,7 +86,7 @@ namespace SwachBharat.CMS.Bll.Services
         GarbagePointDetailsVM SaveGarbagePointDetails(GarbagePointDetailsVM data);
         void DeletGarbagePointDetails(int teamId);
 
-        EmployeeDetailsVM GetEmployeeDetails(int teamId);
+        EmployeeDetailsVM GetEmployeeDetails(int teamId,int PId);
 
       
 
@@ -215,14 +215,14 @@ namespace SwachBharat.CMS.Bll.Services
 
         void EditOnePointSeven(List<OnePoint7QuestionVM> OnePoint7QuestionVM);
         List<SelectListItem> LoadListWardNo(int PrabhagId);
-        List<SelectListItem> LoadListPrabhagNo(int ZoneId);
+        List<SelectListItem> LoadListPrabhagNo(int ZoneId,int PId);
         List<SelectListItem> LoadListArea(int WardNo);
         //InfotainmentDetailsVW GetInfotainmentDetailsById(int ID);
         //void SaveGameDetails(InfotainmentDetailsVW data);
 
-        SauchalayDetailsVM GetSauchalayDetails(int teamId);
+        SauchalayDetailsVM GetSauchalayDetails(int teamId,int PId);
 
-        SauchalayDetailsVM SaveSauchalayDetails(SauchalayDetailsVM data);
+        SauchalayDetailsVM SaveSauchalayDetails(SauchalayDetailsVM data,int PId);
 
         List<SauchalayDetailsVM> GetCTPTLocation();
 

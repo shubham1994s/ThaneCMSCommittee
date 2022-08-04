@@ -53,7 +53,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                EmployeeDetailsVM house = childRepository.GetEmployeeById(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                EmployeeDetailsVM house = childRepository.GetEmployeeById(teamId, PId);
                 return View(house);
             }
             else

@@ -414,7 +414,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                AreaVM vehicle = childRepository.GetArea(teamId, "");
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                AreaVM vehicle = childRepository.GetArea(teamId, "", PId);
                 return View(vehicle);
             }
             else
@@ -427,6 +429,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
             if (SessionHandler.Current.AppId != 0)
             {
                 string area1 = "";
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 if (obj.Name != null)
                 {
@@ -437,7 +440,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                     area1 = obj.NameMar;
 
                 }
-                AreaVM area = childRepository.GetArea(0, area1);
+                AreaVM area = childRepository.GetArea(0, area1, PId);
 
 
 

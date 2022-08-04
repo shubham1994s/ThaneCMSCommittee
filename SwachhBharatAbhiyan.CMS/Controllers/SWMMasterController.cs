@@ -88,7 +88,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                SWMDetailsVM house = childRepository.GetSWMById(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                SWMDetailsVM house = childRepository.GetSWMById(teamId, PId);
                 return View(house);
             }
             else
@@ -100,9 +102,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 int teamId = house.swmId;
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
-                var houseId = childRepository.GetSWMById(teamId);
+                var houseId = childRepository.GetSWMById(teamId, PId);
                 if (houseId.swmQRCode == "/Images/QRcode.png" || houseId.swmQRCode == "/Images/default_not_upload.png")
                 {
                     houseId.swmQRCode = null;
@@ -162,7 +166,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     }
 
                 }
-                SWMDetailsVM swmDetails = childRepository.SaveSWM(house);
+                SWMDetailsVM swmDetails = childRepository.SaveSWM(house, PId);
                 return Redirect("Index");
             }
             else
@@ -225,11 +229,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 string Filename = "", owner = "";
 
-                var details = childRepository.GetSWMById(id);
+                var details = childRepository.GetSWMById(id, PId);
                 string cdatetime = DateTime.Now.ToString("_ddmmyyyyhhmmss");
 
                 if (details.swmName != null)
@@ -464,8 +469,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "", owner = "";
 
 
@@ -522,8 +526,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "", owner = "";
 
 
@@ -720,8 +723,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "";
 
 

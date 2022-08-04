@@ -17,6 +17,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string SSLong { get; set; }
         public string SSQRCode { get; set; }
         public Nullable<int> ZoneId { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
         public Nullable<int> WardNo { get; set; }
         public Nullable<int> areaId { get; set; }
         public string ReferanceId { get; set; }

@@ -47,9 +47,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.Address(location);
         }
-        public AreaVM GetArea(int teamId,string name)
+        public AreaVM GetArea(int teamId,string name,int PId)
         {
-            return screenService.GetAreaDetails(teamId,name);
+            return screenService.GetAreaDetails(teamId,name,PId);
         }
         public void DeletArea(int teamId)
         {
@@ -180,14 +180,14 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHouseDetails(teamId, PId);
         }
 
-        public SWMDetailsVM GetSWMById(int teamId)
+        public SWMDetailsVM GetSWMById(int teamId,int PId)
         {
-            return screenService.GetSWMDetails(teamId);
+            return screenService.GetSWMDetails(teamId, PId);
         }
 
-        public CommercialDetailsVM GetCommercailById(int teamId)
+        public CommercialDetailsVM GetCommercailById(int teamId,int PId)
         {
-            return screenService.GetCommercialDetails(teamId);
+            return screenService.GetCommercialDetails(teamId, PId);
         }
 
         public SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId)
@@ -216,23 +216,23 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         }
 
 
-        public CommercialDetailsVM SaveHouse(CommercialDetailsVM data)
+        public CommercialDetailsVM SaveHouse(CommercialDetailsVM data,int PId)
         {
             if (data.houseId <= 0)
             {
                 data.houseId = 0;
             }
-            CommercialDetailsVM dd = screenService.SaveCommercialDetails(data);
+            CommercialDetailsVM dd = screenService.SaveCommercialDetails(data,PId);
             return dd;
         }
 
-        public SWMDetailsVM SaveSWM(SWMDetailsVM data)
+        public SWMDetailsVM SaveSWM(SWMDetailsVM data,int PId)
         {
             if (data.swmId <= 0)
             {
                 data.swmId = 0;
             }
-            SWMDetailsVM dd = screenService.SaveSWMDetails(data);
+            SWMDetailsVM dd = screenService.SaveSWMDetails(data, PId);
             return dd;
         }
         public void DeletHouse(int teamId)
@@ -316,9 +316,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         }
 
         
-        public EmployeeDetailsVM GetEmployeeById(int teamId)
+        public EmployeeDetailsVM GetEmployeeById(int teamId,int PId)
         {
-           return screenService.GetEmployeeDetails(teamId);
+           return screenService.GetEmployeeDetails(teamId, PId);
         }
 
         //public EmployeeDetailsVM GetLiquidEmployeeById(int teamId)
@@ -694,9 +694,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.LoadListWardNo(PrabhagId);
         }
 
-        public List<SelectListItem> LoadListPrabhagNo(int ZoneId)
+        public List<SelectListItem> LoadListPrabhagNo(int ZoneId,int PId)
         {
-            return screenService.LoadListPrabhagNo(ZoneId);
+            return screenService.LoadListPrabhagNo(ZoneId,PId);
         }
         public List<SelectListItem> LoadListArea(int WardNo)
         {
@@ -717,18 +717,18 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         //    screenService.SaveGameDetails(data);
         //}
 
-        public SauchalayDetailsVM GetSauchalayById(int teamId)
+        public SauchalayDetailsVM GetSauchalayById(int teamId,int PId)
         {
-            return screenService.GetSauchalayDetails(teamId);
+            return screenService.GetSauchalayDetails(teamId, PId);
         }
 
-        public SauchalayDetailsVM SaveSauchalay(SauchalayDetailsVM data)
+        public SauchalayDetailsVM SaveSauchalay(SauchalayDetailsVM data,int PId)
         {
             if (data.Id <= 0)
             {
                 data.Id = 0;
             }
-            SauchalayDetailsVM dd = screenService.SaveSauchalayDetails(data);
+            SauchalayDetailsVM dd = screenService.SaveSauchalayDetails(data,PId);
             return dd;
         }
 

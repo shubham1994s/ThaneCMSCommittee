@@ -91,8 +91,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-               // HouseDetailsVM house = childRepository.GetHouseById(teamId);
-                CommercialDetailsVM house = childRepository.GetCommercailById(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                // HouseDetailsVM house = childRepository.GetHouseById(teamId);
+                CommercialDetailsVM house = childRepository.GetCommercailById(teamId, PId);
                 return View(house);
             }
             else
@@ -104,9 +105,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 int teamId = house.houseId;
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
-                var houseId = childRepository.GetCommercailById(teamId);
+                var houseId = childRepository.GetCommercailById(teamId, PId);
                 if (houseId.houseQRCode == "/Images/QRcode.png" || houseId.houseQRCode == "/Images/default_not_upload.png")
                 {
                     houseId.houseQRCode = null;
@@ -154,7 +157,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         house.houseQRCode = ii[6];
                     }
                 }
-                CommercialDetailsVM houseDetails = childRepository.SaveHouse(house);
+                CommercialDetailsVM houseDetails = childRepository.SaveHouse(house, PId);
                 return Redirect("Index");
             }
             else
@@ -217,11 +220,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 string Filename = "", owner = "";
 
-                var details = childRepository.GetCommercailById(id);
+                var details = childRepository.GetCommercailById(id, PId);
                 string cdatetime = DateTime.Now.ToString("_ddmmyyyyhhmmss");
 
                 if (details.houseOwner != null)
@@ -454,8 +458,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "", owner = "";
 
 
@@ -512,8 +515,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "", owner = "";
 
 
@@ -710,8 +712,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "";
 
 

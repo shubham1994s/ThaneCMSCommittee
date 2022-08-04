@@ -406,10 +406,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 EmployeeDetailsVM obj = new EmployeeDetailsVM();
                 try
                 {
-                    obj.PrabhagList = childRepository.LoadListPrabhagNo(ZoneId);
+                    obj.PrabhagList = childRepository.LoadListPrabhagNo(ZoneId, PId);
                 }
                 catch (Exception ex) { throw ex; }
 
@@ -509,8 +511,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "", owner = "";
 
 
@@ -567,8 +568,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "", owner = "";
 
 
@@ -765,8 +765,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
-                var area = childRepository.GetArea(Convert
-                    .ToInt32(Area), "");
+                var area = childRepository.GetArea(Convert.ToInt32(Area), "", PId);
                 string Filename = "";
 
 

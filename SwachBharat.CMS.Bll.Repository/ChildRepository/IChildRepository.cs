@@ -23,7 +23,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         DashBoardVM GetStreetDashBoardDetails(int PrabhagId);
         string Address(string location);
-        AreaVM GetArea(int teamId,string name);
+        AreaVM GetArea(int teamId,string name,int PId);
         void DeletArea(int teamId);
         void SaveArea(AreaVM area);
 
@@ -62,9 +62,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         HouseDetailsVM GetHouseById(int teamId,int PId);
 
-        SWMDetailsVM GetSWMById(int teamId);
+        SWMDetailsVM GetSWMById(int teamId,int PId);
 
-        CommercialDetailsVM GetCommercailById(int teamId);
+        CommercialDetailsVM GetCommercailById(int teamId,int PId);
 
         SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId);
 
@@ -73,9 +73,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
         HouseDetailsVM SaveHouse(HouseDetailsVM data,int PId);
 
-        SWMDetailsVM SaveSWM(SWMDetailsVM data);
+        SWMDetailsVM SaveSWM(SWMDetailsVM data,int PId);
 
-        CommercialDetailsVM SaveHouse(CommercialDetailsVM data);
+        CommercialDetailsVM SaveHouse(CommercialDetailsVM data,int PId);
         void DeletHouse(int teamId);
 
 
@@ -100,7 +100,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         GarbagePointDetailsVM SaveGarbagePoint(GarbagePointDetailsVM data);
         void DeletGarbagePoint(int teamId);
 
-        EmployeeDetailsVM GetEmployeeById(int teamId);
+        EmployeeDetailsVM GetEmployeeById(int teamId,int PId);
 
         //EmployeeDetailsVM GetLiquidEmployeeById(int teamId);
 
@@ -232,16 +232,16 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         void EditOnePointSeven(List<OnePoint7QuestionVM> OnePoint7);
 
         List<SelectListItem> LoadListWardNo(int PrabhagId);
-        List<SelectListItem> LoadListPrabhagNo(int ZoneId);
+        List<SelectListItem> LoadListPrabhagNo(int ZoneId,int PId);
 
         List<SelectListItem> LoadListArea(int WardNo);
 
         //InfotainmentDetailsVW GetInfotainmentDetailsById(int ID);
         //void SaveGameDetails(InfotainmentDetailsVW data);
 
-        SauchalayDetailsVM GetSauchalayById(int teamId);
+        SauchalayDetailsVM GetSauchalayById(int teamId,int PId);
 
-        SauchalayDetailsVM SaveSauchalay(SauchalayDetailsVM data);
+        SauchalayDetailsVM SaveSauchalay(SauchalayDetailsVM data,int PId);
 
         List<SauchalayDetailsVM> GetCTPTLocation();
 
