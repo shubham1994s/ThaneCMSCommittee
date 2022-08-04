@@ -523,7 +523,7 @@ namespace SwachBharat.CMS.Bll.Services
 
 
         #region Ward Number
-        public WardNumberVM GetWardNumberDetails(int teamId, string name)
+        public WardNumberVM GetWardNumberDetails(int teamId, string name,int PId)
         {
             try
             {
@@ -533,13 +533,13 @@ namespace SwachBharat.CMS.Bll.Services
                     if (Details != null)
                     {
                         WardNumberVM type = FillWardViewModel(Details);
-                        type.PrabhagList = ListPrabhag();
+                        type.PrabhagList = ListPrabhag(PId);
                         return type;
                     }
                     else
                     {
                         WardNumberVM type = new WardNumberVM();
-                        type.PrabhagList = ListPrabhag();
+                        type.PrabhagList = ListPrabhag(PId);
                         return type;
                     }
                 }
@@ -728,7 +728,7 @@ namespace SwachBharat.CMS.Bll.Services
         #endregion
 
         #region House Details
-        public HouseDetailsVM GetHouseDetails(int teamId)
+        public HouseDetailsVM GetHouseDetails(int teamId,int PId)
         {
             try
             {
@@ -835,7 +835,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.WardList = ListWardNo();
                     house.AreaList = ListArea();
                     house.ZoneList = ListZone();
-                    house.PrabhagList = ListPrabhag();
+                    house.PrabhagList = ListPrabhag(PId);
                     house.houseId = id;
                     return house;
                 }
@@ -1328,7 +1328,7 @@ namespace SwachBharat.CMS.Bll.Services
                 throw;
             }
         }
-        public HouseDetailsVM SaveHouseDetails(HouseDetailsVM data)
+        public HouseDetailsVM SaveHouseDetails(HouseDetailsVM data,int PId)
         {
             try
             {
@@ -1377,7 +1377,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
                 }
                 var houseid = db.HouseMasters.OrderByDescending(x => x.houseId).Select(x => x.houseId).FirstOrDefault();
-                HouseDetailsVM vv = GetHouseDetails(houseid);
+                HouseDetailsVM vv = GetHouseDetails(houseid,PId);
                 return vv;
             }
             catch (Exception ex)
@@ -4830,25 +4830,49 @@ namespace SwachBharat.CMS.Bll.Services
             return Zone;
         }
 
-        public List<SelectListItem> ListPrabhag()
+        public List<SelectListItem> ListPrabhag(int PId)
         {
-            var Committee = new List<SelectListItem>();
-            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Samitee--", Value = "0" };
-
-            try
+            if(PId > 0)
             {
-                Committee = db.CommitteeMasters.ToList()
-                    .Select(x => new SelectListItem
-                    {
-                        Text = x.CommitteeName,
-                        Value = x.Id.ToString()
-                    }).OrderBy(t => t.Text).ToList();
+                var Committee = new List<SelectListItem>();
+                SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Samitee--", Value = "0" };
 
-                Committee.Insert(0, itemAdd);
+                try
+                {
+                    Committee = db.CommitteeMasters.Where(x=> x.Id == PId).ToList()
+                        .Select(x => new SelectListItem
+                        {
+                            Text = x.CommitteeName,
+                            Value = x.Id.ToString()
+                        }).OrderBy(t => t.Text).ToList();
+
+                    Committee.Insert(0, itemAdd);
+                }
+                catch (Exception ex) { throw ex; }
+
+                return Committee;
             }
-            catch (Exception ex) { throw ex; }
+            else
+            {
+                var Committee = new List<SelectListItem>();
+                SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Samitee--", Value = "0" };
 
-            return Committee;
+                try
+                {
+                    Committee = db.CommitteeMasters.ToList()
+                        .Select(x => new SelectListItem
+                        {
+                            Text = x.CommitteeName,
+                            Value = x.Id.ToString()
+                        }).OrderBy(t => t.Text).ToList();
+
+                    Committee.Insert(0, itemAdd);
+                }
+                catch (Exception ex) { throw ex; }
+
+                return Committee;
+            }
+        
         }
         public List<SelectListItem> ListUser(string Emptype,int PId)
         {

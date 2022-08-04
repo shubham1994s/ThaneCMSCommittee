@@ -36,7 +36,7 @@ namespace SwachBharat.CMS.Bll.Services
         void SaveVehicleTypeDetails(VehicleTypeVM type);
         void SaveVehicleRegDetails(VehicleRegVM type);
 
-        WardNumberVM GetWardNumberDetails(int teamId,string name);
+        WardNumberVM GetWardNumberDetails(int teamId,string name,int PId);
 
         CommitteeVM GetCommitteeNameDetails(int teamId, string name);
         void SaveWardNumberDetails(WardNumberVM data);
@@ -49,7 +49,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         void DeletWardNumberDetails(int teamId);
 
-        HouseDetailsVM GetHouseDetails(int teamId);
+        HouseDetailsVM GetHouseDetails(int teamId,int PId);
 
         SWMDetailsVM GetSWMDetails(int teamId);
 
@@ -58,7 +58,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId);
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
-        HouseDetailsVM SaveHouseDetails(HouseDetailsVM data);
+        HouseDetailsVM SaveHouseDetails(HouseDetailsVM data,int PId);
 
         SWMDetailsVM SaveSWMDetails(SWMDetailsVM data);
 

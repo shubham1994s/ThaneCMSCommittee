@@ -332,9 +332,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 HouseDetailsVM obj = new HouseDetailsVM();
 
-                obj = childRepository.GetHouseById(-1);
+                obj = childRepository.GetHouseById(-1, PId);
                 return Json(obj.AreaList, JsonRequestBehavior.AllowGet);
             }
             else
@@ -346,9 +348,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 HouseDetailsVM obj = new HouseDetailsVM();
 
-                obj = childRepository.GetHouseById(-1);
+                obj = childRepository.GetHouseById(-1, PId);
                 return Json(obj.WardList, JsonRequestBehavior.AllowGet);
             }
             else
@@ -359,9 +363,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 HouseDetailsVM obj = new HouseDetailsVM();
 
-                obj = childRepository.GetHouseById(-1);
+                obj = childRepository.GetHouseById(-1, PId);
                 return Json(obj.ZoneList, JsonRequestBehavior.AllowGet);
             }
             else
@@ -454,9 +460,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0 && name != null && number != null && ReferanceId != null)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
-                var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "");
+                var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
                 var area = childRepository.GetArea(Convert
                     .ToInt32(Area), "");
                 string Filename = "", owner = "";
@@ -511,9 +518,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0 && name != null && number != null && ReferanceId != null)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
-                var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "");
+                var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
                 var area = childRepository.GetArea(Convert
                     .ToInt32(Area), "");
                 string Filename = "", owner = "";
@@ -708,9 +716,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
-                var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "");
+                var ward = childRepository.GetWardNumber(Convert.ToInt32(Ward), "", PId);
                 var area = childRepository.GetArea(Convert
                     .ToInt32(Area), "");
                 string Filename = "";
@@ -761,11 +770,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 string Filename = "";
 
-                var details = childRepository.GetHouseById(id);
+                var details = childRepository.GetHouseById(id, PId);
                 string cdatetime = DateTime.Now.ToString("_ddmmyyyyhhmmss");
 
                 Filename = details.houseOwner + cdatetime + ".pdf";
@@ -819,6 +829,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         public void test(HouseDetailsVM house)
         {
+            int PId = Convert.ToInt32(Session["PrabhagId"]);
 
             var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
             var guid = Guid.NewGuid().ToString().Split('-');
@@ -847,7 +858,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             readStream.Close();
             house.houseQRCode = image_Guid;
 
-            HouseDetailsVM houseDetails = childRepository.SaveHouse(house);
+            HouseDetailsVM houseDetails = childRepository.SaveHouse(house, PId);
 
             // generate pdf
             string Filename = "";
@@ -900,7 +911,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
             if (SessionHandler.Current.AppId != 0)
             {
-                HouseDetailsVM house = childRepository.GetHouseById(-1);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                HouseDetailsVM house = childRepository.GetHouseById(-1, PId);
                 List<string> list = new List<string>();
                 int n = house.houseId;
                 for (int i = 1; i <= zone.id; i++)
@@ -962,7 +975,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     readStream.Close();
                     house.houseQRCode = image_Guid;
                     house.ReferanceId = house.ReferanceId;
-                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house);
+                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house, PId);
 
                     // generate pdf
                     string Filename = "";
@@ -1066,7 +1079,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
             if (SessionHandler.Current.AppId != 0)
             {
-                HouseDetailsVM house = childRepository.GetHouseById(-1);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                HouseDetailsVM house = childRepository.GetHouseById(-1, PId);
                 List<string> list = new List<string>();
                 double n = house.houseId;
 
@@ -1134,7 +1149,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     readStream.Close();
                     house.houseQRCode = image_Guid;
                     house.ReferanceId = house.ReferanceId;
-                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house);
+                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house, PId);
 
                     // generate pdf
                     string Filename = "";
@@ -1230,7 +1245,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
             if (SessionHandler.Current.AppId != 0)
             {
-                HouseDetailsVM house = childRepository.GetHouseById(-1);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                HouseDetailsVM house = childRepository.GetHouseById(-1, PId);
                 List<string> list = new List<string>();
                 double n = house.houseId;
 
@@ -1298,7 +1315,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     readStream.Close();
                     house.houseQRCode = image_Guid;
                     house.ReferanceId = house.ReferanceId;
-                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house);
+                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house, PId);
 
                     // generate pdf
                     string Filename = "";
@@ -1368,7 +1385,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
             if (SessionHandler.Current.AppId != 0)
             {
-                HouseDetailsVM house = childRepository.GetHouseById(-1);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                HouseDetailsVM house = childRepository.GetHouseById(-1, PId);
                 List<string> list = new List<string>();
                 double n = house.houseId;
 
@@ -1436,7 +1455,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     readStream.Close();
                     house.houseQRCode = image_Guid;
                     house.ReferanceId = house.ReferanceId;
-                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house);
+                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house, PId);
 
                     // generate pdf
                     string Filename = "";
@@ -1506,7 +1525,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
             if (SessionHandler.Current.AppId != 0)
             {
-                HouseDetailsVM house = childRepository.GetHouseById(-1);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                HouseDetailsVM house = childRepository.GetHouseById(-1, PId);
                 List<string> list = new List<string>();
                 double n = house.houseId;
 
@@ -1575,7 +1596,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     house.houseQRCode = image_Guid;
                     house.ReferanceId = house.ReferanceId;
                     house.WasteType = "DW";
-                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house);
+                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house, PId);
 
                     // generate pdf
                     string Filename = "";
@@ -1646,7 +1667,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
             if (SessionHandler.Current.AppId != 0)
             {
-                HouseDetailsVM house = childRepository.GetHouseById(-1);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                HouseDetailsVM house = childRepository.GetHouseById(-1, PId);
                 List<string> list = new List<string>();
                 double n = house.houseId;
 
@@ -1715,7 +1738,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     house.houseQRCode = image_Guid;
                     house.ReferanceId = house.ReferanceId;
                     house.WasteType = "WW";
-                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house);
+                    HouseDetailsVM houseDetails = childRepository.SaveHouse(house, PId);
 
                     // generate pdf
                     string Filename = "";
