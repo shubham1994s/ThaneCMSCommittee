@@ -3,13 +3,9 @@
     debugger;
     var UserId = $('#selectnumber').val();
 
-
-
-
-
     $.ajax({
         type: "post",
-        url: "/Location/UserList",
+        url: "/Location/UserList?rn=CT",
         data: { userId: UserId, },
         datatype: "json",
         traditional: true,
