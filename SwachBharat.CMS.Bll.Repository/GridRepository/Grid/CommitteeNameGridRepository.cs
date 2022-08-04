@@ -15,9 +15,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
         IEnumerable<SBACommitteeGridRow> dataSet;
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public CommitteeNameGridRepository(long wildcard, string SearchString, int AppId)
+        public CommitteeNameGridRepository(long wildcard, string SearchString, int AppId,int PId)
         {
-            dataSet = objRep.GetCommitteeNameData(wildcard, SearchString, AppId);
+            dataSet = objRep.GetCommitteeNameData(wildcard, SearchString, AppId, PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)

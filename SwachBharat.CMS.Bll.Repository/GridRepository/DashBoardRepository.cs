@@ -312,38 +312,75 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
             }
         }
-        public IEnumerable<SBAAreaGridRow> GetAreaData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBAAreaGridRow> GetAreaData(long wildcard, string SearchString, int appId,int PId)
         {
-            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            if(PId > 0)
             {
-                var data = db.TeritoryMasters.Select(x => new SBAAreaGridRow
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
-                    Id = x.Id,
-                    Name = x.Area,
-                    NameMar = x.AreaMar,
-                    ward = db.WardNumbers.Where(v => v.Id == x.wardId).FirstOrDefault().WardNo
-                }).ToList();
-                //  var result = data.SkipWhile(element => element.cId != element.reNewId); 
-                foreach (var item in data)
-                {
-                    item.Name = checkNull(item.Name);
-                    item.NameMar = checkNull(item.NameMar);
-                    item.ward = checkNull(item.ward);
-                    int wa = Convert.ToInt32(db.WardNumbers.Where(c => c.WardNo == item.ward).FirstOrDefault().zoneId);
-                    string zone = db.ZoneMasters.Where(c => c.zoneId == wa).FirstOrDefault().name;
-                    item.ward = item.ward + " (" + zone + ")";
+                    var data = db.TeritoryMasters.Select(x => new SBAAreaGridRow
+                    {
+                        Id = x.Id,
+                        Name = x.Area,
+                        NameMar = x.AreaMar,
+                        ward = db.WardNumbers.Where(v => v.Id == x.wardId).FirstOrDefault().WardNo
+                    }).ToList();
+                    //  var result = data.SkipWhile(element => element.cId != element.reNewId); 
+                    foreach (var item in data)
+                    {
+                        item.Name = checkNull(item.Name);
+                        item.NameMar = checkNull(item.NameMar);
+                        item.ward = checkNull(item.ward);
+                        int wa = Convert.ToInt32(db.WardNumbers.Where(c => c.WardNo == item.ward).FirstOrDefault().zoneId);
+                        string zone = db.ZoneMasters.Where(c => c.zoneId == wa).FirstOrDefault().name;
+                        item.ward = item.ward + " (" + zone + ")";
 
-                }
-                if (!string.IsNullOrEmpty(SearchString))
-                {
-                    var model = data.Where(c => c.Name.ToUpper().ToString().Contains(SearchString) || c.NameMar.ToString().ToUpper().ToString().Contains(SearchString) ||
-                     c.NameMar.ToString().ToLower().Contains(SearchString) || c.Name.ToString().ToLower().ToString().Contains(SearchString) ||
-                     c.Name.ToString().Contains(SearchString) || c.NameMar.ToString().ToString().Contains(SearchString) || c.ward.ToString().Contains(SearchString)).ToList();
+                    }
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        var model = data.Where(c => c.Name.ToUpper().ToString().Contains(SearchString) || c.NameMar.ToString().ToUpper().ToString().Contains(SearchString) ||
+                         c.NameMar.ToString().ToLower().Contains(SearchString) || c.Name.ToString().ToLower().ToString().Contains(SearchString) ||
+                         c.Name.ToString().Contains(SearchString) || c.NameMar.ToString().ToString().Contains(SearchString) || c.ward.ToString().Contains(SearchString)).ToList();
 
-                    data = model.ToList();
+                        data = model.ToList();
+                    }
+                    return data.OrderByDescending(c => c.Id);
                 }
-                return data.OrderByDescending(c => c.Id);
             }
+            else
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+                    var data = db.TeritoryMasters.Select(x => new SBAAreaGridRow
+                    {
+                        Id = x.Id,
+                        Name = x.Area,
+                        NameMar = x.AreaMar,
+                        ward = db.WardNumbers.Where(v => v.Id == x.wardId).FirstOrDefault().WardNo
+                    }).ToList();
+                    //  var result = data.SkipWhile(element => element.cId != element.reNewId); 
+                    foreach (var item in data)
+                    {
+                        item.Name = checkNull(item.Name);
+                        item.NameMar = checkNull(item.NameMar);
+                        item.ward = checkNull(item.ward);
+                        int wa = Convert.ToInt32(db.WardNumbers.Where(c => c.WardNo == item.ward).FirstOrDefault().zoneId);
+                        string zone = db.ZoneMasters.Where(c => c.zoneId == wa).FirstOrDefault().name;
+                        item.ward = item.ward + " (" + zone + ")";
+
+                    }
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        var model = data.Where(c => c.Name.ToUpper().ToString().Contains(SearchString) || c.NameMar.ToString().ToUpper().ToString().Contains(SearchString) ||
+                         c.NameMar.ToString().ToLower().Contains(SearchString) || c.Name.ToString().ToLower().ToString().Contains(SearchString) ||
+                         c.Name.ToString().Contains(SearchString) || c.NameMar.ToString().ToString().Contains(SearchString) || c.ward.ToString().Contains(SearchString)).ToList();
+
+                        data = model.ToList();
+                    }
+                    return data.OrderByDescending(c => c.Id);
+                }
+            }
+            
         }
         public IEnumerable<SBAZoneGridRow> GetZoneData(long wildcard, string SearchString, int appId)
         {
@@ -481,57 +518,113 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
         }
 
-        public IEnumerable<SBAWardNumberGridRow> GetWardNoData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBAWardNumberGridRow> GetWardNoData(long wildcard, string SearchString, int appId,int PId)
         {
-            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            if(PId > 0)
             {
-                var data = db.WardNumbers.Select(x => new SBAWardNumberGridRow
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
-                    Id = x.Id,
-                    WardNo = x.WardNo,
-                    Prabhag = db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
-                }).ToList();
-                foreach (var item in data)
-                {
-                    item.WardNo = checkNull(item.WardNo);
-                    item.Prabhag = checkNull(item.Prabhag);
+                    var data = db.WardNumbers.Select(x => new SBAWardNumberGridRow
+                    {
+                        Id = x.Id,
+                        WardNo = x.WardNo,
+                        Prabhag = db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
+                    }).Where(x=> x.PrabhagId == PId).ToList();
+                    foreach (var item in data)
+                    {
+                        item.WardNo = checkNull(item.WardNo);
+                        item.Prabhag = checkNull(item.Prabhag);
 
 
+                    }
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        var model = data.Where(c => c.WardNo.ToUpper().ToString().Contains(SearchString) || c.WardNo.ToString().ToLower().ToString().Contains(SearchString) || c.WardNo.ToString().Contains(SearchString) || c.Prabhag.ToString().Contains(SearchString) || c.Prabhag.ToUpper().ToString().Contains(SearchString) || c.Prabhag.ToLower().ToString().Contains(SearchString)).ToList();
+
+                        data = model.ToList();
+                    }
+                    return data.OrderByDescending(c => c.Id);
                 }
-                if (!string.IsNullOrEmpty(SearchString))
-                {
-                    var model = data.Where(c => c.WardNo.ToUpper().ToString().Contains(SearchString) || c.WardNo.ToString().ToLower().ToString().Contains(SearchString) || c.WardNo.ToString().Contains(SearchString) || c.Prabhag.ToString().Contains(SearchString) || c.Prabhag.ToUpper().ToString().Contains(SearchString) || c.Prabhag.ToLower().ToString().Contains(SearchString)).ToList();
-
-                    data = model.ToList();
-                }
-                return data.OrderByDescending(c => c.Id);
             }
+            else
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+                    var data = db.WardNumbers.Select(x => new SBAWardNumberGridRow
+                    {
+                        Id = x.Id,
+                        WardNo = x.WardNo,
+                        Prabhag = db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
+                    }).ToList();
+                    foreach (var item in data)
+                    {
+                        item.WardNo = checkNull(item.WardNo);
+                        item.Prabhag = checkNull(item.Prabhag);
+
+
+                    }
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        var model = data.Where(c => c.WardNo.ToUpper().ToString().Contains(SearchString) || c.WardNo.ToString().ToLower().ToString().Contains(SearchString) || c.WardNo.ToString().Contains(SearchString) || c.Prabhag.ToString().Contains(SearchString) || c.Prabhag.ToUpper().ToString().Contains(SearchString) || c.Prabhag.ToLower().ToString().Contains(SearchString)).ToList();
+
+                        data = model.ToList();
+                    }
+                    return data.OrderByDescending(c => c.Id);
+                }
+            }
+           
         }
 
-        public IEnumerable<SBACommitteeGridRow> GetCommitteeNameData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBACommitteeGridRow> GetCommitteeNameData(long wildcard, string SearchString, int appId,int PId)
         {
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.CommitteeMasters.Select(x => new SBACommitteeGridRow
+                if(PId > 0)
                 {
-                    Id = x.Id,
-                    CommitteeNo = x.CommitteeName,
-                    zone = db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name,
-                }).ToList();
-                foreach (var item in data)
-                {
-                    item.CommitteeNo = checkNull(item.CommitteeNo);
-                    item.zone = checkNull(item.zone);
+                    var data = db.CommitteeMasters.Select(x => new SBACommitteeGridRow
+                    {
+                        Id = x.Id,
+                        CommitteeNo = x.CommitteeName,
+                        zone = db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name,
+                    }).Where(x => x.Id == PId).ToList();
+                    foreach (var item in data)
+                    {
+                        item.CommitteeNo = checkNull(item.CommitteeNo);
+                        item.zone = checkNull(item.zone);
 
 
+                    }
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        var model = data.Where(c => c.CommitteeNo.ToUpper().ToString().Contains(SearchString) || c.CommitteeNo.ToString().ToLower().ToString().Contains(SearchString) || c.CommitteeNo.ToString().Contains(SearchString) || c.zone.ToString().Contains(SearchString) || c.zone.ToUpper().ToString().Contains(SearchString) || c.zone.ToLower().ToString().Contains(SearchString)).ToList();
+
+                        data = model.ToList();
+                    }
+                    return data.OrderByDescending(c => c.Id);
                 }
-                if (!string.IsNullOrEmpty(SearchString))
+                else
                 {
-                    var model = data.Where(c => c.CommitteeNo.ToUpper().ToString().Contains(SearchString) || c.CommitteeNo.ToString().ToLower().ToString().Contains(SearchString) || c.CommitteeNo.ToString().Contains(SearchString) || c.zone.ToString().Contains(SearchString) || c.zone.ToUpper().ToString().Contains(SearchString) || c.zone.ToLower().ToString().Contains(SearchString)).ToList();
+                    var data = db.CommitteeMasters.Select(x => new SBACommitteeGridRow
+                    {
+                        Id = x.Id,
+                        CommitteeNo = x.CommitteeName,
+                        zone = db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name,
+                    }).ToList();
+                    foreach (var item in data)
+                    {
+                        item.CommitteeNo = checkNull(item.CommitteeNo);
+                        item.zone = checkNull(item.zone);
 
-                    data = model.ToList();
+
+                    }
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        var model = data.Where(c => c.CommitteeNo.ToUpper().ToString().Contains(SearchString) || c.CommitteeNo.ToString().ToLower().ToString().Contains(SearchString) || c.CommitteeNo.ToString().Contains(SearchString) || c.zone.ToString().Contains(SearchString) || c.zone.ToUpper().ToString().Contains(SearchString) || c.zone.ToLower().ToString().Contains(SearchString)).ToList();
+
+                        data = model.ToList();
+                    }
+                    return data.OrderByDescending(c => c.Id);
                 }
-                return data.OrderByDescending(c => c.Id);
             }
         }
 

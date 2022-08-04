@@ -15,9 +15,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
         IEnumerable<SBAWardNumberGridRow> dataSet; 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public WardNumberGridRepository(long wildcard, string SearchString, int AppId)
+        public WardNumberGridRepository(long wildcard, string SearchString, int AppId,int PId)
         {
-            dataSet = objRep.GetWardNoData(wildcard, SearchString, AppId);
+            dataSet = objRep.GetWardNoData(wildcard, SearchString, AppId, PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)
