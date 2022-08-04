@@ -271,7 +271,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 return data.OrderByDescending(c => c.Id);
             }
         }
-        public IEnumerable<SBAGrabageCollectionGridRow> GetCTPTContGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAGrabageCollectionGridRow> GetCTPTContGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -282,7 +282,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                var data = db.SP_CTPT_Collection(fdate, tdate, userId).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_CTPT_Collection(fdate, tdate, userId,PId).Select(x => new SBAGrabageCollectionGridRow
                 {
 
                     userId = x.userid,
@@ -4197,9 +4197,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
-                var ctptcountdata = db.SP_CTPT_Collection(fdate, tdate, userId).Where(x => x.RowCounts == param1).FirstOrDefault();
+                var ctptcountdata = db.SP_CTPT_Collection(fdate, tdate, userId,PId).Where(x => x.RowCounts == param1).FirstOrDefault();
                 param1 = null;
-                var data = db.SP_CTPTGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, PId).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_CTPTGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,

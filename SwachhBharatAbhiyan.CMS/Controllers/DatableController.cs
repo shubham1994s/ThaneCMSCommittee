@@ -343,7 +343,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "GarbageCountCTPT":
-                    gridRepository = new CTPTCountGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new CTPTCountGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId,PId);
                     return gridRepository;
                     break;
                 case "GarbagePoint":

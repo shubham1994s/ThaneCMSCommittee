@@ -13,9 +13,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public CTPTCountGarbageCollectionGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public CTPTCountGarbageCollectionGridRepository(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,int PId)
         {
-            dataSet = objRep.GetCTPTContGarbageCollectionData(wildcard, SearchString, fdate, tdate, userId, appId);
+            dataSet = objRep.GetCTPTContGarbageCollectionData(wildcard, SearchString, fdate, tdate, userId, appId, PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)
