@@ -4199,7 +4199,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                 var ctptcountdata = db.SP_CTPT_Collection(fdate, tdate, userId).Where(x => x.RowCounts == param1).FirstOrDefault();
                 param1 = null;
-                var data = db.SP_CTPTGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, PId).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_CTPTGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,

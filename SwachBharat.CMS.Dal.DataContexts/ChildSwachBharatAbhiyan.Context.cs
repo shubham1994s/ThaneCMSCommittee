@@ -18,9 +18,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-      : base(SwachBharatAppConnection.GetConnectionString(AppId))
+               : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -1167,7 +1168,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMGarbageCollection_Result>("SP_SWMGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, wardNoParameter, areaIdParameter, segidParameter, sWMTypeidParameter, prabhagidParameter);
         }
     
-        public virtual ObjectResult<SP_CTPTGarbageCollection_Result> SP_CTPTGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid, Nullable<int> prabhagid)
+        public virtual ObjectResult<SP_CTPTGarbageCollection_Result> SP_CTPTGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
         {
             var appIdParameter = appId.HasValue ?
                 new ObjectParameter("appId", appId) :
@@ -1201,11 +1202,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("Segid", segid) :
                 new ObjectParameter("Segid", typeof(int));
     
-            var prabhagidParameter = prabhagid.HasValue ?
-                new ObjectParameter("prabhagid", prabhagid) :
-                new ObjectParameter("prabhagid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTGarbageCollection_Result>("SP_CTPTGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter, prabhagidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTGarbageCollection_Result>("SP_CTPTGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
         }
     }
 }
