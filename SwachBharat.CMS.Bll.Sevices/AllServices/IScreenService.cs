@@ -164,7 +164,7 @@ namespace SwachBharat.CMS.Bll.Services
         List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype,int SegType,int PId);
 
 
-        List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType);
+        List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType,int PId );
         List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype);
 
         List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype);
@@ -176,7 +176,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         //Added By Saurabh (2 July 2019)
         DashBoardVM GetHouseOnMapDetails(int PId);
-        DashBoardVM GetCommercialOnMapDetails();
+        DashBoardVM GetCommercialOnMapDetails(int PId);
         DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 
         DashBoardVM GetSWMOnMapDetails();

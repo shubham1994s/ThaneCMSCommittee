@@ -18,12 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-        : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
-
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,7 +36,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<WM_Garbage_Details> WM_Garbage_Details { get; set; }
         public virtual DbSet<WM_Garbage_Summary> WM_Garbage_Summary { get; set; }
         public virtual DbSet<ZoneMaster> ZoneMasters { get; set; }
-        public virtual DbSet<TeritoryMaster> TeritoryMasters { get; set; }
         public virtual DbSet<QrEmployeeMaster> QrEmployeeMasters { get; set; }
         public virtual DbSet<GramCleaningComplient> GramCleaningComplients { get; set; }
         public virtual DbSet<WM_Garbage_Sales> WM_Garbage_Sales { get; set; }
@@ -64,6 +60,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<SWMMaster> SWMMasters { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
+        public virtual DbSet<TeritoryMaster> TeritoryMasters { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -357,11 +354,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetCurrentAllUserLocationTest1_Result>("StreetCurrentAllUserLocationTest1");
         }
     
-        public virtual ObjectResult<SP_CommercialScanify_Count_Result> SP_CommercialScanify_Count()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialScanify_Count_Result>("SP_CommercialScanify_Count");
-        }
-    
         public virtual ObjectResult<SP_LiquidWasteOnMapDetails_Result> SP_LiquidWasteOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType)
         {
             var gcDateParameter = gcDate.HasValue ?
@@ -588,43 +580,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseOnMapDetails_Result>("SP_HouseOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter, segTypeParameter, prabhagIdParameter);
-        }
-    
-        public virtual ObjectResult<SP_CommercialOnMapDetails_Result> SP_CommercialOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> garbageType, Nullable<int> filterType, Nullable<int> segType)
-        {
-            var gcDateParameter = gcDate.HasValue ?
-                new ObjectParameter("gcDate", gcDate) :
-                new ObjectParameter("gcDate", typeof(System.DateTime));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            var zoneIdParameter = zoneId.HasValue ?
-                new ObjectParameter("ZoneId", zoneId) :
-                new ObjectParameter("ZoneId", typeof(int));
-    
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("AreaId", areaId) :
-                new ObjectParameter("AreaId", typeof(int));
-    
-            var wardNoParameter = wardNo.HasValue ?
-                new ObjectParameter("WardNo", wardNo) :
-                new ObjectParameter("WardNo", typeof(int));
-    
-            var garbageTypeParameter = garbageType.HasValue ?
-                new ObjectParameter("GarbageType", garbageType) :
-                new ObjectParameter("GarbageType", typeof(int));
-    
-            var filterTypeParameter = filterType.HasValue ?
-                new ObjectParameter("FilterType", filterType) :
-                new ObjectParameter("FilterType", typeof(int));
-    
-            var segTypeParameter = segType.HasValue ?
-                new ObjectParameter("SegType", segType) :
-                new ObjectParameter("SegType", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialOnMapDetails_Result>("SP_CommercialOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter, segTypeParameter);
         }
     
         public virtual ObjectResult<GetVehicleDetails_Result> GetVehicleDetails()
@@ -1210,6 +1165,56 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("prabhagid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPT_Collection_Result>("SP_CTPT_Collection", fDateParameter, tDateParameter, userIdParameter, prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_CommercialOnMapDetails_Result> SP_CommercialOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> garbageType, Nullable<int> filterType, Nullable<int> segType, Nullable<int> prabhagId)
+        {
+            var gcDateParameter = gcDate.HasValue ?
+                new ObjectParameter("gcDate", gcDate) :
+                new ObjectParameter("gcDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var garbageTypeParameter = garbageType.HasValue ?
+                new ObjectParameter("GarbageType", garbageType) :
+                new ObjectParameter("GarbageType", typeof(int));
+    
+            var filterTypeParameter = filterType.HasValue ?
+                new ObjectParameter("FilterType", filterType) :
+                new ObjectParameter("FilterType", typeof(int));
+    
+            var segTypeParameter = segType.HasValue ?
+                new ObjectParameter("SegType", segType) :
+                new ObjectParameter("SegType", typeof(int));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialOnMapDetails_Result>("SP_CommercialOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, garbageTypeParameter, filterTypeParameter, segTypeParameter, prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_CommercialScanify_Count_Result> SP_CommercialScanify_Count(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialScanify_Count_Result>("SP_CommercialScanify_Count", prabhagIdParameter);
         }
     }
 }

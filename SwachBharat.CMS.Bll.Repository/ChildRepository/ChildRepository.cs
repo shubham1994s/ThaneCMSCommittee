@@ -562,9 +562,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetAllHouseLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype, SegType, PId);
         }
 
-        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType)
+        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId)
         {
-            return screenService.GetAllCommercialLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype, SegType);
+            return screenService.GetAllCommercialLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype, SegType, PId);
         }
 
         public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype)
@@ -594,9 +594,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         }
 
-        public DashBoardVM GetCommercialOnMapDetails()
+        public DashBoardVM GetCommercialOnMapDetails(int PId)
         {
-            return screenService.GetCommercialOnMapDetails();
+            return screenService.GetCommercialOnMapDetails(PId);
 
         }
         public DashBoardVM GetCTPTOnMapDetails(int PrabhagId)

@@ -3645,7 +3645,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType)
+        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType,int PId)
         {
 
             List<SBALCommercialLocationMapView> houseLocation = new List<SBALCommercialLocationMapView>();
@@ -3653,7 +3653,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_CommercialOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, SegType).ToList();
+                var data = db.SP_CommercialOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -4002,7 +4002,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public DashBoardVM GetCommercialOnMapDetails()
+        public DashBoardVM GetCommercialOnMapDetails(int PId)
 
         {
             DashBoardVM model = new DashBoardVM();
@@ -4021,7 +4021,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //}
 
 
-                    var data = db.SP_CommercialScanify_Count().First();
+                    var data = db.SP_CommercialScanify_Count(PId).First();
 
                     //var date = DateTime.Today;
                     //var houseCount = db.SP_TotalHouseCollection_Count(date).FirstOrDefault();
