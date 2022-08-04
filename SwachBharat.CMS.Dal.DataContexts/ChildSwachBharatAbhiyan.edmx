@@ -780,6 +780,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="FDate" Type="datetime" Mode="In" />
           <Parameter Name="TDate" Type="datetime" Mode="In" />
           <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_CTPTGarbageCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="appId" Type="int" Mode="In" />
@@ -1485,11 +1486,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <FunctionImport Name="GetVehicleDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.GetVehicleDetails_Result)" />
           <FunctionImport Name="SP_StreetSweepList" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_StreetSweepList_Result)" />
           <EntitySet Name="StreetSweepingBeats" EntityType="DevSwachhBharatNagpurModel.StreetSweepingBeat" />
-          <FunctionImport Name="SP_CTPT_Collection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPT_Collection_Result)">
-            <Parameter Name="FDate" Mode="In" Type="DateTime" />
-            <Parameter Name="TDate" Mode="In" Type="DateTime" />
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_GetHSHouseDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_GetHSHouseDetails_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
@@ -1665,6 +1661,12 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="AreaId" Mode="In" Type="Int32" />
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
             <Parameter Name="Segid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CTPT_Collection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPT_Collection_Result)">
+            <Parameter Name="FDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="prabhagid" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2539,14 +2541,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="ReferanceId4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ReferanceId5" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
-        <ComplexType Name="SP_CTPT_Collection_Result">
-          <Property Type="Int64" Name="RowCounts" Nullable="true" />
-          <Property Type="Int32" Name="today_ctpt_count" Nullable="true" />
-          <Property Type="Int32" Name="userid" Nullable="true" />
-          <Property Type="DateTime" Name="Date" Nullable="true" />
-          <Property Type="String" Name="CTPTID" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="CTPT_UserName" Nullable="true" MaxLength="500" />
-        </ComplexType>
         <ComplexType Name="SP_GetHSHouseDetails_Result">
           <Property Type="Int32" Name="userId" Nullable="true" />
           <Property Type="Int32" Name="houseId" Nullable="false" />
@@ -3325,6 +3319,14 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="TimeSpan" Nullable="true" MaxLength="28" />
           <Property Type="String" Name="gpBeforImage" Nullable="true" />
           <Property Type="String" Name="gpAfterImage" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_CTPT_Collection_Result">
+          <Property Type="Int64" Name="RowCounts" Nullable="true" />
+          <Property Type="Int32" Name="today_ctpt_count" Nullable="true" />
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="String" Name="CTPTID" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="CTPT_UserName" Nullable="true" MaxLength="500" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4252,18 +4254,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_CTPT_Collection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPT_Collection">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPT_Collection_Result">
-                <ScalarProperty Name="RowCounts" ColumnName="RowCounts" />
-                <ScalarProperty Name="today_ctpt_count" ColumnName="today_ctpt_count" />
-                <ScalarProperty Name="userid" ColumnName="userid" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="CTPTID" ColumnName="CTPTID" />
-                <ScalarProperty Name="CTPT_UserName" ColumnName="CTPT_UserName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_GetHSHouseDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_GetHSHouseDetails">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_GetHSHouseDetails_Result">
@@ -5142,6 +5132,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TimeSpan" ColumnName="TimeSpan" />
                 <ScalarProperty Name="gpBeforImage" ColumnName="gpBeforImage" />
                 <ScalarProperty Name="gpAfterImage" ColumnName="gpAfterImage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CTPT_Collection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPT_Collection">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPT_Collection_Result">
+                <ScalarProperty Name="RowCounts" ColumnName="RowCounts" />
+                <ScalarProperty Name="today_ctpt_count" ColumnName="today_ctpt_count" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CTPTID" ColumnName="CTPTID" />
+                <ScalarProperty Name="CTPT_UserName" ColumnName="CTPT_UserName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
