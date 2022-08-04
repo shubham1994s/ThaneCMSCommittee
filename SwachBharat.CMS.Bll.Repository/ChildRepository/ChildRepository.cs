@@ -625,9 +625,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         }
 
-        public DashBoardVM GetSWMOnMapDetails()
+        public DashBoardVM GetSWMOnMapDetails(int PId)
         {
-            return screenService.GetSWMOnMapDetails();
+            return screenService.GetSWMOnMapDetails(PId);
 
         }
 

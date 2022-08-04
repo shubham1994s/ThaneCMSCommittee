@@ -264,11 +264,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.AppName = SessionHandler.Current.AppName;
 
-                var details = childRepository.GetSWMOnMapDetails();
+                var details = childRepository.GetSWMOnMapDetails(PId);
                 return View(details);
             }
             else
@@ -504,6 +505,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 int user;
                 int area;
                 int ward;
@@ -564,12 +566,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-
-
         public ActionResult SWMLocationList(string date, string userid, string areaId, string wardNo, string SearchString, string filterType, string ctype)
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 int user;
                 int area;
                 int ward;

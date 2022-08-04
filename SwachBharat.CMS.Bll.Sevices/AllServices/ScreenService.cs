@@ -4122,8 +4122,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public DashBoardVM GetSWMOnMapDetails()
-
+        public DashBoardVM GetSWMOnMapDetails(int PId)
         {
             DashBoardVM model = new DashBoardVM();
             try
