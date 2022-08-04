@@ -14,9 +14,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
     {
         DashBoardRepository objRep = new DashBoardRepository();
         IEnumerable<SBAAreaGridRow> dataset;
-         public AreaGridRepository(long wildcard, string SearchString, int AppId)
+         public AreaGridRepository(long wildcard, string SearchString, int AppId,int PId)
         {
- dataset = objRep.GetAreaData(wildcard, SearchString, AppId);
+                dataset = objRep.GetAreaData(wildcard, SearchString, AppId, PId);
         }
 
     

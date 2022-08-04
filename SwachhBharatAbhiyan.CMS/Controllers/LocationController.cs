@@ -232,11 +232,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.AppName = SessionHandler.Current.AppName;
 
-                var details = childRepository.GetCommercialOnMapDetails();
+                var details = childRepository.GetCommercialOnMapDetails(PId);
                 return View(details);
             }
             else
@@ -420,6 +421,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 int user;
                 int area;
                 int ward;
@@ -482,7 +484,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 }
 
                 List<SBALCommercialLocationMapView> obj = new List<SBALCommercialLocationMapView>();
-                obj = childRepository.GetAllCommercialLocation(date, user, area, ward, SearchString, GarbageType, FilterType, null, ctype, SegType);
+                obj = childRepository.GetAllCommercialLocation(date, user, area, ward, SearchString, GarbageType, FilterType, null, ctype, SegType,PId);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{

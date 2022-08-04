@@ -23,7 +23,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         DashBoardVM GetStreetDashBoardDetails(int PrabhagId);
         string Address(string location);
-        AreaVM GetArea(int teamId,string name);
+        AreaVM GetArea(int teamId,string name,int PId);
         void DeletArea(int teamId);
         void SaveArea(AreaVM area);
 
@@ -45,7 +45,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
 
 
-        WardNumberVM GetWardNumber(int teamId,string name);
+        WardNumberVM GetWardNumber(int teamId,string name,int PId);
 
         CommitteeVM GetCommitteeName(int teamId, string name);
 
@@ -59,25 +59,23 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         void StreetSaveWardNumber(WardNumberVM type);
 
-        List<SelectListItem> ZoneListPId(int PId);
-        List<SelectListItem> WardListPId(int PId);
-        List<SelectListItem> AreaLstPId(int PId);
-        HouseDetailsVM GetHouseById(int teamId);
 
-        SWMDetailsVM GetSWMById(int teamId);
+        HouseDetailsVM GetHouseById(int teamId,int PId);
 
-        CommercialDetailsVM GetCommercailById(int teamId);
+        SWMDetailsVM GetSWMById(int teamId,int PId);
+
+        CommercialDetailsVM GetCommercailById(int teamId,int PId);
 
         SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId);
 
         SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId);
 
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
-        HouseDetailsVM SaveHouse(HouseDetailsVM data);
+        HouseDetailsVM SaveHouse(HouseDetailsVM data,int PId);
 
-        SWMDetailsVM SaveSWM(SWMDetailsVM data);
+        SWMDetailsVM SaveSWM(SWMDetailsVM data,int PId);
 
-        CommercialDetailsVM SaveHouse(CommercialDetailsVM data);
+        CommercialDetailsVM SaveHouse(CommercialDetailsVM data,int PId);
         void DeletHouse(int teamId);
 
 
@@ -102,7 +100,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         GarbagePointDetailsVM SaveGarbagePoint(GarbagePointDetailsVM data);
         void DeletGarbagePoint(int teamId);
 
-        EmployeeDetailsVM GetEmployeeById(int teamId);
+        EmployeeDetailsVM GetEmployeeById(int teamId,int PId);
 
         //EmployeeDetailsVM GetLiquidEmployeeById(int teamId);
 
@@ -185,7 +183,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype,int SegType,int PId);
 
-        List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType);
+        List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType,int PId);
         List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype);
 
         List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype);
@@ -198,7 +196,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         //Added By saurabh ( 02 July 2019)
         DashBoardVM GetHouseOnMapDetails(int PId);
-        DashBoardVM GetCommercialOnMapDetails();
+        DashBoardVM GetCommercialOnMapDetails(int PId);
         DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 
         DashBoardVM GetSWMOnMapDetails();
@@ -234,19 +232,16 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         void EditOnePointSeven(List<OnePoint7QuestionVM> OnePoint7);
 
         List<SelectListItem> LoadListWardNo(int PrabhagId);
-
-        List<SelectListItem> LoadListWardNoPId(int PId,int ZoneId);
-        List<SelectListItem> LoadAreaListPId(int PId, int WardNo);
-        List<SelectListItem> LoadListPrabhagNo(int ZoneId);
+        List<SelectListItem> LoadListPrabhagNo(int ZoneId,int PId);
 
         List<SelectListItem> LoadListArea(int WardNo);
 
         //InfotainmentDetailsVW GetInfotainmentDetailsById(int ID);
         //void SaveGameDetails(InfotainmentDetailsVW data);
 
-        SauchalayDetailsVM GetSauchalayById(int teamId);
+        SauchalayDetailsVM GetSauchalayById(int teamId,int PId);
 
-        SauchalayDetailsVM SaveSauchalay(SauchalayDetailsVM data);
+        SauchalayDetailsVM SaveSauchalay(SauchalayDetailsVM data,int PId);
 
         List<SauchalayDetailsVM> GetCTPTLocation();
 

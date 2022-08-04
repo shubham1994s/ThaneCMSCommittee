@@ -276,16 +276,16 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "AreaDetail":
-                    gridRepository = new AreaGridRepository(0, searchString, appId);
+                    gridRepository = new AreaGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
                 case "WardDetail":
-                    gridRepository = new WardNumberGridRepository(0, searchString, appId);
+                    gridRepository = new WardNumberGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
                 case "CommitteeDetail":
-                    gridRepository = new CommitteeNameGridRepository(0, searchString, appId);
+                    gridRepository = new CommitteeNameGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
@@ -343,7 +343,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "GarbageCountCTPT":
-                    gridRepository = new CTPTCountGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new CTPTCountGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId,PId);
                     return gridRepository;
                     break;
                 case "GarbagePoint":

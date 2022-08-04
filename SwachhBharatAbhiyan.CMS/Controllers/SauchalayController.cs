@@ -77,7 +77,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                SauchalayDetailsVM details = childRepository.GetSauchalayById(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                SauchalayDetailsVM details = childRepository.GetSauchalayById(teamId, PId);
                 
                 return View(details);
 
@@ -91,6 +93,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 string baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
@@ -134,9 +138,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 }
 
                 int teamId = data.Id;
-                var houseId = childRepository.GetSauchalayById(teamId);
+                var houseId = childRepository.GetSauchalayById(teamId, PId);
 
-                SauchalayDetailsVM sauchalayDetails = childRepository.SaveSauchalay(data);
+                SauchalayDetailsVM sauchalayDetails = childRepository.SaveSauchalay(data, PId);
                 return Redirect("SauchalayRegistrationIndex");
             }
             else
@@ -151,6 +155,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 string baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
@@ -158,7 +164,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 string path = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
 
                 int teamId = data.Id;
-                var ctptId = childRepository.GetSauchalayById(teamId);
+                var ctptId = childRepository.GetSauchalayById(teamId, PId);
 
                 if (ctptId.SauchalayQRCode == "/Images/QRcode.png" || ctptId.SauchalayQRCode == "/Images/default_not_upload.png")
                 {
@@ -209,7 +215,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 }
 
 
-                SauchalayDetailsVM sauchalayDetails = childRepository.SaveSauchalay(data);
+                SauchalayDetailsVM sauchalayDetails = childRepository.SaveSauchalay(data, PId);
                 return Redirect("SauchalayRegistrationIndex");
             }
             else
@@ -249,8 +255,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 string Filename = "", owner = "";
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
-                var details = childRepository.GetSauchalayById(id);
+                var details = childRepository.GetSauchalayById(id,PId);
                 string cdatetime = DateTime.Now.ToString("_ddmmyyyyhhmmss");
                 if (!string.IsNullOrEmpty(details.Name))
                 {

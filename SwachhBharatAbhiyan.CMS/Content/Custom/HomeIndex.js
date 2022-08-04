@@ -1193,7 +1193,10 @@ $(document).ready(function () {
     var res_swm_count1 = (TotalSWM) - (TotalSWMCurrent);
     var res_swm_count = (res_swm_count1) * 100 / (TotalSWMCount);
 
-
+    if (TotalSWMCurrent == 0) {
+        res_swm_count = 0;
+        remSWMCount = 0;
+    }
 
 
     var ary3 = []

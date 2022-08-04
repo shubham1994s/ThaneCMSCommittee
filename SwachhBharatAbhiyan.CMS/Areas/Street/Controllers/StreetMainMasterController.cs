@@ -305,8 +305,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
-                WardNumberVM area = childRepository.GetWardNumber(0, obj.WardNo);
+                WardNumberVM area = childRepository.GetWardNumber(0, obj.WardNo, PId);
 
 
                 if (obj.Id > 0)
@@ -413,7 +414,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                AreaVM vehicle = childRepository.GetArea(teamId, "");
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                AreaVM vehicle = childRepository.GetArea(teamId, "", PId);
                 return View(vehicle);
             }
             else
@@ -426,6 +429,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
             if (SessionHandler.Current.AppId != 0)
             {
                 string area1 = "";
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 if (obj.Name != null)
                 {
@@ -436,7 +440,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                     area1 = obj.NameMar;
 
                 }
-                AreaVM area = childRepository.GetArea(0, area1);
+                AreaVM area = childRepository.GetArea(0, area1, PId);
 
 
 
@@ -522,7 +526,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                WardNumberVM vehicle = childRepository.GetWardNumber(teamId, "");
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                WardNumberVM vehicle = childRepository.GetWardNumber(teamId, "", PId);
                 return View(vehicle);
             }
             else
@@ -559,8 +565,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
-                WardNumberVM area = childRepository.GetWardNumber(0, obj.WardNo);
+                WardNumberVM area = childRepository.GetWardNumber(0, obj.WardNo, PId);
 
 
                 if (obj.Id > 0)

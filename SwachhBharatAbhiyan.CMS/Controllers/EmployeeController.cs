@@ -54,7 +54,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                EmployeeDetailsVM house = childRepository.GetEmployeeById(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                EmployeeDetailsVM house = childRepository.GetEmployeeById(teamId, PId);
                 return View(house);
             }
             else
@@ -131,7 +132,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 EmployeeDetailsVM obj = new EmployeeDetailsVM();
                 try
                 {
-                    obj.PrabhagList = childRepository.LoadListPrabhagNo(ZoneId);
+                    int PId = Convert.ToInt32(Session["PrabhagId"]);
+                    obj.PrabhagList = childRepository.LoadListPrabhagNo(ZoneId, PId);
                 }
                 catch (Exception ex) { throw ex; }
 

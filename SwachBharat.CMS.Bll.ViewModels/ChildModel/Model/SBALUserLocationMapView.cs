@@ -44,6 +44,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> AreaId { get; set; }
         public Nullable<int> WardNo { get; set; }
         public Nullable<int> ZoneId { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
         public string houseNumber { get; set; }
         public string houseOwnerMar { get; set; }
         public string houseOwner { get; set; }
