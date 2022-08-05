@@ -184,9 +184,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType,string Emptype,string ctype,int SegType,int PId);
 
         List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType,int PId);
-        List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype);
+        List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype, int PId);
 
-        List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype);
+        List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype, int PId);
         //Code Optimization (code)
         //SBALHouseLocationMapView1 GetAllHouseLocation(string date, int userid,int areaid,int wardNo, string SearchString, string start);
 
@@ -242,7 +242,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SelectListItem> LoadListWardNo(int PrabhagId);
         List<SelectListItem> LoadListPrabhagNo(int ZoneId,int PId);
 
-        List<SelectListItem> LoadListArea(int WardNo);
+        List<SelectListItem> LoadListArea(int WardNo, int PId);
 
         //InfotainmentDetailsVW GetInfotainmentDetailsById(int ID);
         //void SaveGameDetails(InfotainmentDetailsVW data);

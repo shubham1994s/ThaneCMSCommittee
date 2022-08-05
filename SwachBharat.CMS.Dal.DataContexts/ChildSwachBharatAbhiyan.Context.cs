@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                : base(SwachBharatAppConnection.GetConnectionString(AppId))
+               : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -435,69 +435,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("userid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanify_Result>("SP_HouseScanify", fdateParameter, tdateParameter, useridParameter);
-        }
-    
-        public virtual ObjectResult<SP_SWMScanify_Count_Result> SP_SWMScanify_Count()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMScanify_Count_Result>("SP_SWMScanify_Count");
-        }
-    
-        public virtual ObjectResult<SP_SWMOnMapDetails_Result> SP_SWMOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> filterType)
-        {
-            var gcDateParameter = gcDate.HasValue ?
-                new ObjectParameter("gcDate", gcDate) :
-                new ObjectParameter("gcDate", typeof(System.DateTime));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            var zoneIdParameter = zoneId.HasValue ?
-                new ObjectParameter("ZoneId", zoneId) :
-                new ObjectParameter("ZoneId", typeof(int));
-    
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("AreaId", areaId) :
-                new ObjectParameter("AreaId", typeof(int));
-    
-            var wardNoParameter = wardNo.HasValue ?
-                new ObjectParameter("WardNo", wardNo) :
-                new ObjectParameter("WardNo", typeof(int));
-    
-            var filterTypeParameter = filterType.HasValue ?
-                new ObjectParameter("FilterType", filterType) :
-                new ObjectParameter("FilterType", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMOnMapDetails_Result>("SP_SWMOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, filterTypeParameter);
-        }
-    
-        public virtual ObjectResult<SP_CTPTOnMapDetails_Result> SP_CTPTOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> filterType)
-        {
-            var gcDateParameter = gcDate.HasValue ?
-                new ObjectParameter("gcDate", gcDate) :
-                new ObjectParameter("gcDate", typeof(System.DateTime));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            var zoneIdParameter = zoneId.HasValue ?
-                new ObjectParameter("ZoneId", zoneId) :
-                new ObjectParameter("ZoneId", typeof(int));
-    
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("AreaId", areaId) :
-                new ObjectParameter("AreaId", typeof(int));
-    
-            var wardNoParameter = wardNo.HasValue ?
-                new ObjectParameter("WardNo", wardNo) :
-                new ObjectParameter("WardNo", typeof(int));
-    
-            var filterTypeParameter = filterType.HasValue ?
-                new ObjectParameter("FilterType", filterType) :
-                new ObjectParameter("FilterType", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTOnMapDetails_Result>("SP_CTPTOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, filterTypeParameter);
         }
     
         public virtual ObjectResult<SP_GarbageCollection_Result> SP_GarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid, Nullable<int> segidSub)
@@ -1215,6 +1152,81 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CommercialScanify_Count_Result>("SP_CommercialScanify_Count", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_SWMScanify_Count_Result> SP_SWMScanify_Count(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMScanify_Count_Result>("SP_SWMScanify_Count", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_SWMOnMapDetails_Result> SP_SWMOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> filterType, Nullable<int> prabhagId)
+        {
+            var gcDateParameter = gcDate.HasValue ?
+                new ObjectParameter("gcDate", gcDate) :
+                new ObjectParameter("gcDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var filterTypeParameter = filterType.HasValue ?
+                new ObjectParameter("FilterType", filterType) :
+                new ObjectParameter("FilterType", typeof(int));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMOnMapDetails_Result>("SP_SWMOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, filterTypeParameter, prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_CTPTOnMapDetails_Result> SP_CTPTOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> filterType, Nullable<int> prabhagId)
+        {
+            var gcDateParameter = gcDate.HasValue ?
+                new ObjectParameter("gcDate", gcDate) :
+                new ObjectParameter("gcDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var filterTypeParameter = filterType.HasValue ?
+                new ObjectParameter("FilterType", filterType) :
+                new ObjectParameter("FilterType", typeof(int));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTOnMapDetails_Result>("SP_CTPTOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, filterTypeParameter, prabhagIdParameter);
         }
     }
 }

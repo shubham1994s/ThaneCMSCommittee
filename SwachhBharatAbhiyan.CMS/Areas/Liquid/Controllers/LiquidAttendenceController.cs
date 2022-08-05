@@ -206,10 +206,12 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 HouseDetailsVM obj = new HouseDetailsVM();
                 try
                 {
-                    obj.AreaList = childRepository.LoadListArea(WardNo);
+                    obj.AreaList = childRepository.LoadListArea(WardNo, PId);
                 }
                 catch (Exception ex) { throw ex; }
 

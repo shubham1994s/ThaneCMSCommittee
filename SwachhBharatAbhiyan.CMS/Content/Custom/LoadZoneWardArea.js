@@ -1,22 +1,48 @@
 ﻿$(document).ready(function () {
     zone();
+    prabhag();
     ward();
     area();
+
+   
+
     $('#ZoneId').change(function () {
+        debugger;
         var selectedText = $(this).find("option:selected").text();
         var selectedValue = $(this).val();
 
-        //if(selectedValue==0){
-        //    ward();
-        //}
         if (selectedValue == 0) {
             area();
         }
 
         $.ajax({
             type: "post",
-            url: "/HouseMaster/LoadWardNoList?",
+            url: "/HouseMaster/LoadPrabhagNoList?",
             data: { ZoneId: $('#ZoneId').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                var prabhag;
+                for (var i = 0; i < data.length; i++) {
+                    prabhag = prabhag + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                }
+
+                $('#PrabhagId').html(prabhag);
+
+
+            }
+        });
+
+    });
+
+    $('#PrabhagId').change(function () {
+        var selectedText = $(this).find("option:selected").text();
+        var selectedValue = $(this).val();
+
+        $.ajax({
+            type: "post",
+            url: "/HouseMaster/LoadWardNoList?",
+            data: { PrabhagId: $('#PrabhagId').val() },
             datatype: "json",
             traditional: true,
             success: function (data) {
@@ -32,7 +58,6 @@
         });
 
     });
-
     $('#WardNo').change(function () {
         var selectedText = $(this).find("option:selected").text();
         var selectedValue = $(this).val();
@@ -108,6 +133,30 @@ function area() {
 
 }
 
+function prabhag() {
+
+    var UserId = $('#PrabhagId').val();
+    $.ajax({
+        type: "post",
+        url: "/HouseMaster/PrabhagList",
+        data: { userId: UserId },
+        datatype: "json",
+        traditional: true,
+        success: function (data) {
+            var district;
+            for (var i = 0; i < data.length; i++) {
+
+                if (data[i].Value == $('#PrabhagId').val()) {
+                    district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+            }
+            //district = district + '</select>';
+            $('#PrabhagId').html(district);
+        }
+    });
+
+
+}
 function ward() {
 
     var UserId = $('#WardNo').val();
