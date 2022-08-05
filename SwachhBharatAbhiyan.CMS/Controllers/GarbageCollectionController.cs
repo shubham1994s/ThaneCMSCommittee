@@ -357,6 +357,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
+
         public ActionResult LoadWardNoList(int ZoneId)
         {
             if (SessionHandler.Current.AppId != 0)

@@ -132,3 +132,28 @@ function ward() {
 
 
 }
+
+function prabhag() {
+
+    var UserId = $('#PrabhagNo').val();
+    $.ajax({
+        type: "post",
+        url: "/GarbageCollection/PrabhagList",
+        data: { userId: UserId },
+        datatype: "json",
+        traditional: true,
+        success: function (data) {
+            var district;
+            for (var i = 0; i < data.length; i++) {
+
+                if (data[i].Value == $('#PrabhagNo').val()) {
+                    district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+            }
+            //district = district + '</select>';
+            $('#PrabhagNo').html(district);
+        }
+    });
+
+
+}
