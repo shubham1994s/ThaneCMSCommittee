@@ -204,7 +204,7 @@ namespace SwachBharat.CMS.Bll.Services
         #endregion
 
         #region Area
-        public AreaVM GetAreaDetails(int teamId, string name,int PId)
+        public AreaVM GetAreaDetails(int teamId, string name, int PId)
         {
             try
             {
@@ -526,7 +526,7 @@ namespace SwachBharat.CMS.Bll.Services
 
 
         #region Ward Number
-        public WardNumberVM GetWardNumberDetails(int teamId, string name,int PId)
+        public WardNumberVM GetWardNumberDetails(int teamId, string name, int PId)
         {
             try
             {
@@ -562,16 +562,16 @@ namespace SwachBharat.CMS.Bll.Services
                     {
                         var model = db.WardNumbers.Where(x => x.Id == data.Id).FirstOrDefault();
 
-                        
+
                         if (model != null)
                         {
                             var zone = db.CommitteeMasters.Where(x => x.Id == model.PrabhagId).FirstOrDefault();
                             model.Id = data.Id;
                             model.WardNo = data.WardNo;
                             model.PrabhagId = data.PrabhagId;
-                            if(zone!=null)
-                            { 
-                            model.zoneId = zone.zoneId;
+                            if (zone != null)
+                            {
+                                model.zoneId = zone.zoneId;
                             }
                             db.SaveChanges();
                         }
@@ -731,7 +731,7 @@ namespace SwachBharat.CMS.Bll.Services
         #endregion
 
         #region House Details
-        public HouseDetailsVM GetHouseDetails(int teamId,int PId)
+        public HouseDetailsVM GetHouseDetails(int teamId, int PId)
         {
             try
             {
@@ -795,7 +795,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
                     house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
                     house.ZoneList = ListZone();
-                   
+
                     return house;
                 }
                 else if (teamId == -2)
@@ -850,7 +850,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public SWMDetailsVM GetSWMDetails(int teamId,int PId)
+        public SWMDetailsVM GetSWMDetails(int teamId, int PId)
         {
             try
             {
@@ -902,7 +902,8 @@ namespace SwachBharat.CMS.Bll.Services
                                 house.SerielNo = s;
                             }
                         }
-                        catch (Exception e) {
+                        catch (Exception e)
+                        {
 
                             Console.WriteLine(e.Message);
                             house.swmQRCode = "/Images/default_not_upload.png";
@@ -972,7 +973,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public CommercialDetailsVM GetCommercialDetails(int teamId,int PId)
+        public CommercialDetailsVM GetCommercialDetails(int teamId, int PId)
         {
             try
             {
@@ -1331,7 +1332,7 @@ namespace SwachBharat.CMS.Bll.Services
                 throw;
             }
         }
-        public HouseDetailsVM SaveHouseDetails(HouseDetailsVM data,int PId)
+        public HouseDetailsVM SaveHouseDetails(HouseDetailsVM data, int PId)
         {
             try
             {
@@ -1380,7 +1381,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
                 }
                 var houseid = db.HouseMasters.OrderByDescending(x => x.houseId).Select(x => x.houseId).FirstOrDefault();
-                HouseDetailsVM vv = GetHouseDetails(houseid,PId);
+                HouseDetailsVM vv = GetHouseDetails(houseid, PId);
                 return vv;
             }
             catch (Exception ex)
@@ -1389,7 +1390,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public SWMDetailsVM SaveSWMDetails(SWMDetailsVM data,int PId)
+        public SWMDetailsVM SaveSWMDetails(SWMDetailsVM data, int PId)
         {
             try
             {
@@ -1449,7 +1450,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public CommercialDetailsVM SaveCommercialDetails(CommercialDetailsVM data,int PId)
+        public CommercialDetailsVM SaveCommercialDetails(CommercialDetailsVM data, int PId)
         {
             try
             {
@@ -1527,7 +1528,7 @@ namespace SwachBharat.CMS.Bll.Services
         #endregion
 
         #region Employee
-        public EmployeeDetailsVM GetEmployeeDetails(int teamId,int PId)
+        public EmployeeDetailsVM GetEmployeeDetails(int teamId, int PId)
         {
             try
             {
@@ -1836,7 +1837,7 @@ namespace SwachBharat.CMS.Bll.Services
 
 
         }
-        public SBALUserLocationMapView GetLocationDetails(int teamId, string Emptype,int PrabhagId)
+        public SBALUserLocationMapView GetLocationDetails(int teamId, string Emptype, int PrabhagId)
         {
             try
             {
@@ -1857,7 +1858,7 @@ namespace SwachBharat.CMS.Bll.Services
                             //var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId && c.EmployeeType == null).FirstOrDefault();
 
                             var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId).FirstOrDefault();
-                            if(PrabhagId > 0)
+                            if (PrabhagId > 0)
                             {
                                 atten = db.Daily_Attendance.Where(c => c.PrabhagId == PrabhagId).FirstOrDefault();
                             }
@@ -1870,7 +1871,7 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.address = checkNull(Details.address).Replace("Unnamed Road, ", "");
                             loc.lat = Details.lat;
                             loc.log = Details.@long;
-                            loc.UserList = ListUser(null,PrabhagId);
+                            loc.UserList = ListUser(null, PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
                             try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
@@ -2068,7 +2069,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public List<SBALUserLocationMapView> GetAllUserLocation(string date, string Emptype,int PrabhagId)
+        public List<SBALUserLocationMapView> GetAllUserLocation(string date, string Emptype, int PrabhagId)
         {
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
 
@@ -3474,7 +3475,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Saurabh (06 June 2019)
 
-        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType,int PId)
+        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId)
         {
 
             List<SBALHouseLocationMapView> houseLocation = new List<SBALHouseLocationMapView>();
@@ -3648,7 +3649,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType,int PId)
+        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId)
         {
 
             List<SBALCommercialLocationMapView> houseLocation = new List<SBALCommercialLocationMapView>();
@@ -4842,7 +4843,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         public List<SelectListItem> ListPrabhagNo(int PId)
         {
-            if(PId > 0)
+            if (PId > 0)
             {
                 var WardNo = new List<SelectListItem>();
                 SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
@@ -4850,7 +4851,7 @@ namespace SwachBharat.CMS.Bll.Services
                 try
                 {
 
-                    WardNo = db.CommitteeMasters.Where(x=> x.Id == PId).ToList()
+                    WardNo = db.CommitteeMasters.Where(x => x.Id == PId).ToList()
                         .Select(x => new SelectListItem
                         {
                             Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
@@ -4884,7 +4885,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                 return WardNo;
             }
-          
+
         }
         public List<SelectListItem> ListZone()
         {
@@ -4909,14 +4910,14 @@ namespace SwachBharat.CMS.Bll.Services
 
         public List<SelectListItem> ListPrabhag(int PId)
         {
-            if(PId > 0)
+            if (PId > 0)
             {
                 var Committee = new List<SelectListItem>();
                 SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
 
                 try
                 {
-                    Committee = db.CommitteeMasters.Where(x=> x.Id == PId).ToList()
+                    Committee = db.CommitteeMasters.Where(x => x.Id == PId).ToList()
                         .Select(x => new SelectListItem
                         {
                             Text = x.CommitteeName,
@@ -4949,9 +4950,9 @@ namespace SwachBharat.CMS.Bll.Services
 
                 return Committee;
             }
-        
+
         }
-        public List<SelectListItem> ListUser(string Emptype,int PId)
+        public List<SelectListItem> ListUser(string Emptype, int PId)
         {
             var user = new List<SelectListItem>();
             SelectListItem itemAdd = new SelectListItem() { Text = "Select Employee", Value = "0" };
@@ -4979,8 +4980,8 @@ namespace SwachBharat.CMS.Bll.Services
                          Text = x.userName,
                          Value = x.userId.ToString()
                      }).OrderBy(t => t.Text).ToList();
-                    }
-             
+                }
+
 
             }
             catch (Exception ex) { throw ex; }
@@ -5024,7 +5025,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                          }).OrderBy(t => t.Text).Distinct().ToList();
                 }
-                  
+
                 //    user = new SelectList(new List<SelectListItem>{
                 //from u in db.UserMasters
                 //    join b in db.GarbageCollectionDetails
@@ -5071,7 +5072,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public List<SelectListItem> LoadListPrabhagNo(Int32 ZoneId,Int32 PId)
+        public List<SelectListItem> LoadListPrabhagNo(Int32 ZoneId, Int32 PId)
         {
             var WardNo = new List<SelectListItem>();
             if (ZoneId == 0)
@@ -6819,7 +6820,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                         if (QrStatus == "3")
                         {
-                            data = db.HouseMasters.Where(a => (a.QRStatus==null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
+                            data = db.HouseMasters.Where(a => (a.QRStatus == null) && (a.modified >= fDate && a.modified <= tDate) && !string.IsNullOrEmpty(a.houseLat) && !string.IsNullOrEmpty(a.houseLong) && ((UserId > 0 && a.userId == UserId) || UserId <= 0) && (a.BinaryQrCodeImage != null)).Select(x => new SBAHSHouseDetailsGrid
                             {
                                 houseId = x.houseId,
                                 Name = x.houseOwner,
@@ -6875,7 +6876,7 @@ namespace SwachBharat.CMS.Bll.Services
                             }).OrderBy(a => a.houseId).ToList();
                         }
 
-                      
+
                     }
                     else if (type == 2)
                     {
@@ -6907,7 +6908,7 @@ namespace SwachBharat.CMS.Bll.Services
                             }).OrderBy(a => a.houseId).ToList();
                         }
 
-                           
+
                     }
                     else if (type == 3)
                     {
@@ -6938,7 +6939,7 @@ namespace SwachBharat.CMS.Bll.Services
                             }).OrderBy(a => a.houseId).ToList();
                         }
 
-                           
+
                     }
                     else if (type == 4)
                     {
@@ -6968,7 +6969,7 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-                       
+
                     }
                     else if (type == 5)
                     {
@@ -6998,7 +6999,7 @@ namespace SwachBharat.CMS.Bll.Services
                                 ReferanceId = x.ReferanceId
                             }).OrderBy(a => a.houseId).ToList();
                         }
-                       
+
                     }
 
                 }
@@ -7953,11 +7954,11 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Neha(12 July 2019)
         #region idleTime map
-        public List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string date,int PId)
+        public List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string date, int PId)
         {
             DateTime date1 = DateTime.ParseExact(date, "dd/MM/yyyy", null);
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
-          
+
             var data = db.SP_IdelTime(userId, date1, date1, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {
@@ -8362,7 +8363,7 @@ namespace SwachBharat.CMS.Bll.Services
                 throw;
             }
         }
-        public SauchalayDetailsVM GetSauchalayDetails(int teamId,int PId)
+        public SauchalayDetailsVM GetSauchalayDetails(int teamId, int PId)
         {
             try
             {
@@ -8561,7 +8562,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public SauchalayDetailsVM SaveSauchalayDetails(SauchalayDetailsVM data,int PId)
+        public SauchalayDetailsVM SaveSauchalayDetails(SauchalayDetailsVM data, int PId)
         {
             try
             {
@@ -9410,5 +9411,164 @@ namespace SwachBharat.CMS.Bll.Services
                 return model;
             }
         }
+
+
+
+        public List<SelectListItem> ZoneListPId(int PId)
+        {
+            var Zone = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Zone--", Value = "0" };
+
+            try
+            {
+                Zone = db.ZoneMasters.Where(z => (PId != 0 && z.zoneId == db.CommitteeMasters.Where(a => a.Id == PId).Select(b => b.zoneId).FirstOrDefault()) || PId == 0).ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.name,
+                        Value = x.zoneId.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                Zone.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return Zone;
+        }
+
+
+        public List<SelectListItem> WardListPId(int PId)
+        {
+            var WardNo = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward", Value = "0" };
+
+            try
+            {
+
+                WardNo = db.WardNumbers.Where(a => ((PId != 0 && a.PrabhagId == PId)) || PId == 0).ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        //Text = x.WardNo + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                        Text = x.WardNo + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                WardNo.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return WardNo;
+        }
+
+        public List<SelectListItem> PrabhagListPId(int PId)
+        {
+            var PrabhagNo = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+
+            try
+            {
+                PrabhagNo = db.CommitteeMasters.Where(a => ((PId != 0 && a.Id == PId) || PId == 0))
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                PrabhagNo.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return PrabhagNo;
+        }
+
+
+
+        public List<SelectListItem> AreaLstPId(int PId)
+        {
+            var Area = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Area", Value = "0" };
+
+            try
+            {
+                Area = db.TeritoryMasters.Where(a => db.WardNumbers.Where(b => (PId != 0 && b.PrabhagId == PId) || PId == 0).Select(c => c.Id).ToList().Contains(a.wardId ?? 0)).ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.Area,
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                Area.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return Area;
+        }
+
+        public List<SelectListItem> LoadPrabhagNoListPId(int PId, int ZoneId)
+        {
+            var PrabhagNo = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+
+            try
+            {
+                PrabhagNo = db.CommitteeMasters.Where(a =>((PId != 0 && a.Id == PId) || PId ==0) && a.zoneId == ZoneId)
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                PrabhagNo.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return PrabhagNo;
+        }
+
+
+        public List<SelectListItem> LoadListWardNoPId(int PId, int PrabhagId)
+        {
+            var WardNo = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward", Value = "0" };
+
+            try
+            {
+
+                WardNo = db.WardNumbers.Where(a => a.PrabhagId == PrabhagId).ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.WardNo + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                WardNo.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return WardNo;
+        }
+
+
+
+        public List<SelectListItem> LoadAreaListPId(int PId, int WardNo)
+        {
+            var Area = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Area", Value = "0" };
+            string strWardNo = WardNo.ToString();
+            try
+            {
+                Area = db.TeritoryMasters.Where(a => db.WardNumbers.Where(b => ((PId != 0 && b.PrabhagId == PId) || PId == 0) && ((WardNo != 0 && b.Id == WardNo) || WardNo == 0)).Select(c => c.Id).ToList().Contains(a.wardId ?? 0)).ToList()
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.Area,
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                Area.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return Area;
+        }
+
     }
 }

@@ -8,7 +8,9 @@
 
 @Scripts.Render("~/Scripts/IndexScript")
 <script src="~/Content/DatatableGrid/ResidentialBuildingGarbageGrid.js"></script>
-<script src="~/Content/Custom/LoadZoneWardArea.js"></script>
+@*<script src="~/Content/Custom/LoadZoneWardArea.js"></script>*@
+<script src="~/Content/Custom/LoadZoneWardAreaPId.js"></script>
+
 <body>
     <div class="container" style="padding-top:8px">
         <div class="row">
@@ -36,51 +38,63 @@
                 <label>Select Zone</label>
                 <select id="ZoneId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-3">
-                @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Prabhag</label>
-                <select id="PrabhagId" class="form-control form-control form-control-sm"></select>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-4">
+                        @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                        <label>Select Prabhag</label>
+                        <select id="PrabhagNo" class="form-control form-control form-control-sm"></select>
+                    </div>
+                    <div class="col-sm-4">
+                        @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                        <label>Select Ward</label>
+                        <select id="WardNo" class="form-control form-control form-control-sm"></select>
+                    </div>
+                    <div class="col-sm-4">
+                        @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                        <label>Select Area</label>
+                        <select id="AreaId" class="form-control form-control form-control-sm"></select>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-3">
-                @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Ward</label>
-                <select id="WardNo" class="form-control form-control form-control-sm"></select>
-            </div>
-            <div class="col-sm-3">
-                @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Area</label>
-                <select id="AreaId" class="form-control form-control form-control-sm"></select>
-            </div>
-            <div class="col-sm-3">
-                @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Garbage Type</label>
-                <select id="Segid" class="form-control form-control form-control-sm">
-                    <option value="">All Garbage Type</option>
-                    <option value="1"> Segregated </option>
-                    <option value="0"> Mixed Garbage </option>
+
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                        <label>Select Garbage Type</label>
+                        <select id="Segid" class="form-control form-control form-control-sm">
+                            <option value="">All Garbage Type</option>
+                            <option value="1"> Segregated </option>
+                            <option value="0"> Mixed Garbage </option>
 
                     @*<option value="6"> Wet Waste </option>
-                <option value="7"> Dry Waste </option>*@
+        <option value="7"> Dry Waste </option>*@
                     <option value="4"> Construction And Demolition Waste </option>
                     <option value="5"> Horticulture Waste </option>
                     <option value="2"> Not Received </option>
                     <option value="-1"> Not Specified </option>
 
-                </select>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6" id="stype" style="display:none">
+                        @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                        <label>Select Segragation Type</label>
+                        <select id="SegidSub" class="form-control form-control form-control-sm">
+                            <option value="">Select All</option>
+                            <option value="1"> Wet Waste</option>
+                            <option value="2"> Dry Waste</option>
+                            <option value="3"> Sanitary Waste</option>
+                            <option value="4"> Domestic Waste</option>
+                        </select>
+
+                    </div>
+                </div>
             </div>
 
-            <div class="col-sm-4" id="stype" style="display:none">
-                @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Segragation Type</label>
-                <select id="SegidSub" class="form-control form-control form-control-sm">
-                    <option value="">Select All</option>
-                    <option value="1"> Wet Waste</option>
-                    <option value="2"> Dry Waste</option>
-                    <option value="3"> Sanitary Waste</option>
-                    <option value="4"> Domestic Waste</option>
-                </select>
-
-            </div>
 
         </div>
         <div class="row">

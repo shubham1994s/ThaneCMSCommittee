@@ -1684,6 +1684,7 @@
     <Content Include="Content\Custom\innerAddPlaces.js" />
     <Content Include="Content\Custom\innerEditPlaces.js" />
     <Content Include="Content\Custom\LoadZoneWardArea.js" />
+    <Content Include="Content\Custom\LoadZoneWardAreaPId.js" />
     <Content Include="Content\Custom\style.css" />
     <Content Include="Content\Custom\timepicker.css" />
     <Content Include="Content\Datatable-assets\css\bootstrap.css" />
