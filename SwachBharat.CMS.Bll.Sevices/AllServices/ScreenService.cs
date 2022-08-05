@@ -3813,7 +3813,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         }
 
-        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype)
+        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype,int PId)
         {
 
             List<SBALCTPTLocationMapView> houseLocation = new List<SBALCTPTLocationMapView>();
@@ -3886,7 +3886,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype)
+        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype, int PId)
         {
 
             List<SBALSWMLocationMapView> houseLocation = new List<SBALSWMLocationMapView>();
@@ -3894,7 +3894,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_SWMOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, FilterType).ToList();
+                var data = db.SP_SWMOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -4132,7 +4132,7 @@ namespace SwachBharat.CMS.Bll.Services
                     DevSwachhBharatMainEntities dbm = new DevSwachhBharatMainEntities();
 
 
-                    var data = db.SP_SWMScanify_Count().First();
+                    var data = db.SP_SWMScanify_Count(PId).First();
 
 
                     if (data != null)

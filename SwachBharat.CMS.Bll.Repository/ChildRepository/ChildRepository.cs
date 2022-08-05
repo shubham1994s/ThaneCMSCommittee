@@ -567,14 +567,14 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetAllCommercialLocation(date, userid, areaid, wardNo, SearchString, GarbageType, FilterType, Emptype, ctype, SegType, PId);
         }
 
-        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype)
+        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString,  int FilterType, string Emptype, int PId)
         {
-            return screenService.GetAllCTPTLocation(date, userid, areaid, wardNo, SearchString, FilterType, Emptype);
+            return screenService.GetAllCTPTLocation(date, userid, areaid, wardNo, SearchString, FilterType, Emptype, PId);
         }
 
-        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype)
+        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype, int PId)
         {
-            return screenService.GetAllSWMLocation(date, userid, areaid, wardNo, SearchString, FilterType, Emptype);
+            return screenService.GetAllSWMLocation(date, userid, areaid, wardNo, SearchString, FilterType, Emptype, PId);
         }
         //Code Optimization (code)
         //public SBALHouseLocationMapView1 GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, string start)

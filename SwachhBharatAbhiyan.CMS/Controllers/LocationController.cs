@@ -550,7 +550,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 }
 
                 List<SBALCTPTLocationMapView> obj = new List<SBALCTPTLocationMapView>();
-                obj = childRepository.GetAllCTPTLocation(date, user, area, ward, SearchString,  FilterType, null);
+                obj = childRepository.GetAllCTPTLocation(date, user, area, ward, SearchString,  FilterType, null, PId);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
@@ -615,7 +615,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 }
 
                 List<SBALSWMLocationMapView> obj = new List<SBALSWMLocationMapView>();
-                obj = childRepository.GetAllSWMLocation(date, user, area, ward, SearchString, FilterType, null);
+                obj = childRepository.GetAllSWMLocation(date, user, area, ward, SearchString, FilterType, null, PId);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
