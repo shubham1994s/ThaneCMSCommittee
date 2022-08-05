@@ -307,6 +307,7 @@ function Search() {
     ZoneId = $('#ZoneId').val();
     WardId = $('#WardNo').val();
     AreaId = $('#AreaId').val();
+    PrabhagId = $('#PrabhagNo').val();
     Segid = $('#Segid').val();
     SWMTypeid = $('#SWMTypeid').val();
     S = $('#s').val();
@@ -314,7 +315,7 @@ function Search() {
     NesEvent = " ";
     var Product = "";
     var catProduct = "";
-    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + ZoneId + "," + WardId + "," + AreaId + "," + Segid + "," + SWMTypeid;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + ZoneId + "," + WardId + "," + AreaId + "," + Segid + "," + SWMTypeid + "," + PrabhagId;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
     // alert(value );
     oTable = $('#demoGrid').DataTable();
     oTable.search(value).draw();
