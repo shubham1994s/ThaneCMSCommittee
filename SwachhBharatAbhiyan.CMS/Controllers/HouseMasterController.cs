@@ -386,7 +386,20 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             else
                 return Redirect("/Account/Login");
         }
+        public ActionResult PrabhagList()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
+                HouseDetailsVM obj = new HouseDetailsVM();
+
+                obj = childRepository.GetHouseById(-1, PId);
+                return Json(obj.PrabhagList, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+        }
         public ActionResult ZoneList()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -444,10 +457,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 HouseDetailsVM obj = new HouseDetailsVM();
                 try
                 {
-                    obj.AreaList = childRepository.LoadListArea(WardNo);
+                    obj.AreaList = childRepository.LoadListArea(WardNo, PId);
                 }
                 catch (Exception ex) { throw ex; }
 

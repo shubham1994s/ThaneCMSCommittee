@@ -698,9 +698,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.LoadListPrabhagNo(ZoneId,PId);
         }
-        public List<SelectListItem> LoadListArea(int WardNo)
+        public List<SelectListItem> LoadListArea(int WardNo, int PId)
         {
-            return screenService.LoadListArea(WardNo);
+            return screenService.LoadListArea(WardNo,PId);
         }
 
         //public InfotainmentDetailsVW GetInfotainmentDetailsById(int ID)

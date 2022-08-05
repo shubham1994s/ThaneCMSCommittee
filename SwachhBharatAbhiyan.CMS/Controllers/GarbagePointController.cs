@@ -479,10 +479,12 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 GarbagePointDetailsVM obj = new GarbagePointDetailsVM();
                 try
                 {
-                    obj.AreaList = childRepository.LoadListArea(WardNo);
+                    obj.AreaList = childRepository.LoadListArea(WardNo, PId);
                 }
                 catch (Exception ex) { throw ex; }
 

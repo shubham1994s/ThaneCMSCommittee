@@ -438,7 +438,7 @@ namespace SwachBharat.CMS.Bll.Services
                     if (Details != null)
                     {
                         VehicleRegVM vechile = FillVehicleTegViewModel(Details);
-                        vechile.AreaList = ListArea();
+                        vechile.AreaList = ListArea(PId);
                         vechile.WardList = ListWardNo(PId);
                         vechile.VehicleList = ListVehicle();
                         return vechile;
@@ -446,7 +446,7 @@ namespace SwachBharat.CMS.Bll.Services
                     else
                     {
                         VehicleRegVM vechile = new VehicleRegVM();
-                        vechile.AreaList = ListArea();
+                        vechile.AreaList = ListArea(PId);
                         vechile.WardList = ListWardNo(PId);
                         vechile.VehicleList = ListVehicle();
                         return vechile;
@@ -793,7 +793,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
-                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo)); //ListArea();
+                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
                     house.ZoneList = ListZone();
                    
                     return house;
@@ -809,7 +809,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //house.AreaList = ListArea();
 
                     var PPP = new List<SelectListItem>();
-                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
                     PPP.Insert(0, itemAddPPP);
 
                     var WWWW = new List<SelectListItem>();
@@ -836,7 +836,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.ReferanceId = refer;
                     house.houseQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo(PId);
-                    house.AreaList = ListArea();
+                    house.AreaList = ListArea(PId);
                     house.ZoneList = ListZone();
                     house.PrabhagList = ListPrabhag(PId);
                     house.houseId = id;
@@ -917,7 +917,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo( Convert.ToInt32(house.PrabhagId)); //ListWardNo();
-                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo)); //ListArea();
+                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
                     house.ZoneList = ListZone();
                     return house;
                 }
@@ -932,7 +932,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //house.AreaList = ListArea();
 
                     var PPP = new List<SelectListItem>();
-                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
                     PPP.Insert(0, itemAddPPP);
 
                     var WWWW = new List<SelectListItem>();
@@ -959,7 +959,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.swmQRCode = "/Images/QRcode.png";
                     house.PrabhagList = ListPrabhagNo(PId);
                     house.WardList = ListWardNo(PId);
-                    house.AreaList = ListArea();
+                    house.AreaList = ListArea(PId);
                     house.ZoneList = ListZone();
                     house.swmId = id;
                     return house;
@@ -1035,7 +1035,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
-                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo)); //ListArea();
+                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
                     house.ZoneList = ListZone();
                     return house;
                 }
@@ -1050,7 +1050,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //house.AreaList = ListArea();
 
                     var PPP = new List<SelectListItem>();
-                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
                     PPP.Insert(0, itemAddPPP);
 
                     var WWWW = new List<SelectListItem>();
@@ -1077,7 +1077,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.houseQRCode = "/Images/QRcode.png";
                     house.PrabhagList = ListPrabhagNo(PId);
                     house.WardList = ListWardNo(PId);
-                    house.AreaList = ListArea();
+                    house.AreaList = ListArea(PId);
                     house.ZoneList = ListZone();
                     house.houseId = id;
                     return house;
@@ -1136,7 +1136,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
-                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo)); //ListArea();
+                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
                     house.ZoneList = ListZone();
                     return house;
                 }
@@ -1156,7 +1156,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.ReferanceId = refer;
                     house.houseQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo(PId);
-                    house.AreaList = ListArea();
+                    house.AreaList = ListArea(PId);
                     house.ZoneList = ListZone();
                     house.houseId = id;
                     return house;
@@ -1217,7 +1217,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
-                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo)); //ListArea();
+                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
                     house.ZoneList = ListZone();
                     return house;
                 }
@@ -1237,7 +1237,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.ReferanceId = refer;
                     house.houseQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo(PId);
-                    house.AreaList = ListArea();
+                    house.AreaList = ListArea(PId);
                     house.ZoneList = ListZone();
                     house.houseId = id;
                     return house;
@@ -1298,7 +1298,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
-                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo)); //ListArea();
+                    house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
                     house.ZoneList = ListZone();
                     return house;
                 }
@@ -1318,7 +1318,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.ReferanceId = refer;
                     house.houseQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo(0);
-                    house.AreaList = ListArea();
+                    house.AreaList = ListArea(0);
                     house.ZoneList = ListZone();
                     house.houseId = id;
                     return house;
@@ -4263,7 +4263,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
 
                     // house.WardList = ListWardNo();
-                    point.AreaList = LoadListArea(Convert.ToInt32(point.WardNo)); //ListArea();
+                    point.AreaList = LoadListArea(Convert.ToInt32(point.WardNo), Convert.ToInt32(point.PrabhagId)); //ListArea();
                     point.ZoneList = ListZone();
                     point.WardList = LoadListWardNo(Convert.ToInt32(point.PrabhagId)); //ListWardNo();
                     point.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(point.ZoneId), Convert.ToInt32(point.PrabhagId));
@@ -4278,7 +4278,7 @@ namespace SwachBharat.CMS.Bll.Services
                     point.ReferanceId = refer;
                     point.qrCode = "/Images/QRcode.png";
                     point.WardList = ListWardNo(PId);
-                    point.AreaList = ListArea();
+                    point.AreaList = ListArea(PId);
                     point.ZoneList = ListZone();
                     return point;
                 }
@@ -4706,25 +4706,49 @@ namespace SwachBharat.CMS.Bll.Services
 
         //    return lstLanguage;
         //}
-        public List<SelectListItem> ListArea()
+        public List<SelectListItem> ListArea(int PId)
         {
-            var Area = new List<SelectListItem>();
-            SelectListItem itemAdd = new SelectListItem() { Text = "Select Area", Value = "0" };
-
-            try
+            if(PId > 0)
             {
-                Area = db.TeritoryMasters.ToList()
-                    .Select(x => new SelectListItem
-                    {
-                        Text = x.Area,
-                        Value = x.Id.ToString()
-                    }).OrderBy(t => t.Text).ToList();
+                var Area = new List<SelectListItem>();
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Area", Value = "0" };
 
-                Area.Insert(0, itemAdd);
+                try
+                {
+                    Area = db.TeritoryMasters.Where(x=> x.PrabhagId == PId).ToList()
+                        .Select(x => new SelectListItem
+                        {
+                            Text = x.Area,
+                            Value = x.Id.ToString()
+                        }).OrderBy(t => t.Text).ToList();
+
+                    Area.Insert(0, itemAdd);
+                }
+                catch (Exception ex) { throw ex; }
+
+                return Area;
             }
-            catch (Exception ex) { throw ex; }
+            else
+            {
+                var Area = new List<SelectListItem>();
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Area", Value = "0" };
 
-            return Area;
+                try
+                {
+                    Area = db.TeritoryMasters.ToList()
+                        .Select(x => new SelectListItem
+                        {
+                            Text = x.Area,
+                            Value = x.Id.ToString()
+                        }).OrderBy(t => t.Text).ToList();
+
+                    Area.Insert(0, itemAdd);
+                }
+                catch (Exception ex) { throw ex; }
+
+                return Area;
+            }
+           
         }
         public List<SelectListItem> ListVehicle()
         {
@@ -4821,7 +4845,7 @@ namespace SwachBharat.CMS.Bll.Services
             if(PId > 0)
             {
                 var WardNo = new List<SelectListItem>();
-                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
 
                 try
                 {
@@ -4842,7 +4866,7 @@ namespace SwachBharat.CMS.Bll.Services
             else
             {
                 var WardNo = new List<SelectListItem>();
-                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
 
                 try
                 {
@@ -4865,7 +4889,7 @@ namespace SwachBharat.CMS.Bll.Services
         public List<SelectListItem> ListZone()
         {
             var Zone = new List<SelectListItem>();
-            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Zone--", Value = "0" };
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Zone", Value = "0" };
 
             try
             {
@@ -4888,7 +4912,7 @@ namespace SwachBharat.CMS.Bll.Services
             if(PId > 0)
             {
                 var Committee = new List<SelectListItem>();
-                SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Samitee--", Value = "0" };
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
 
                 try
                 {
@@ -4908,7 +4932,7 @@ namespace SwachBharat.CMS.Bll.Services
             else
             {
                 var Committee = new List<SelectListItem>();
-                SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Samitee--", Value = "0" };
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
 
                 try
                 {
@@ -4930,7 +4954,7 @@ namespace SwachBharat.CMS.Bll.Services
         public List<SelectListItem> ListUser(string Emptype,int PId)
         {
             var user = new List<SelectListItem>();
-            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Employee--", Value = "0" };
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Employee", Value = "0" };
 
             try
             {
@@ -4967,7 +4991,7 @@ namespace SwachBharat.CMS.Bll.Services
         public List<SelectListItem> CTPTListUser(string Emptype, int PId)
         {
             var user = new List<SelectListItem>();
-            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Employee--", Value = "0" };
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Employee", Value = "0" };
 
             try
             {
@@ -5033,7 +5057,7 @@ namespace SwachBharat.CMS.Bll.Services
             {
                 try
                 {
-                    SelectListItem itemAdd = new SelectListItem() { Text = "--Select Ward No.--", Value = "0" };
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward No/Name", Value = "0" };
                     WardNo = db.WardNumbers.Where(c => c.PrabhagId == PrabhagId).ToList()
                         .Select(x => new SelectListItem
                         {
@@ -5055,11 +5079,16 @@ namespace SwachBharat.CMS.Bll.Services
                 WardNo = ListPrabhagNo(PId);
                 return WardNo;
             }
+            else if(ZoneId > 0 && PId > 0)
+            {
+                WardNo = ListPrabhagNo(PId);
+                return WardNo;
+            }
             else
             {
                 try
                 {
-                    SelectListItem itemAdd = new SelectListItem() { Text = "--Select Prabhag Name.--", Value = "0" };
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
                     WardNo = db.CommitteeMasters.Where(c => c.zoneId == ZoneId).ToList()
                         .Select(x => new SelectListItem
                         {
@@ -5073,19 +5102,35 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public List<SelectListItem> LoadListArea(Int32 WardNo)
+        public List<SelectListItem> LoadListArea(Int32 WardNo,Int32 PId)
         {
             var Area = new List<SelectListItem>();
             if (WardNo == 0)
             {
-                Area = ListArea();
+                Area = ListArea(PId);
+                return Area;
+            }
+            else if(WardNo > 0 && PId > 0)
+            {
+                try
+                {
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Area", Value = "0" };
+                    Area = db.TeritoryMasters.Where(c => c.wardId == WardNo && c.PrabhagId == PId).ToList()
+                        .Select(x => new SelectListItem
+                        {
+                            Text = x.Area,
+                            Value = x.Id.ToString()
+                        }).OrderBy(t => t.Text).ToList();
+                    Area.Insert(0, itemAdd);
+                }
+                catch (Exception ex) { throw ex; }
                 return Area;
             }
             else
             {
                 try
                 {
-                    SelectListItem itemAdd = new SelectListItem() { Text = "--Select Area--", Value = "0" };
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Area", Value = "0" };
                     Area = db.TeritoryMasters.Where(c => c.wardId == WardNo).ToList()
                         .Select(x => new SelectListItem
                         {
@@ -5869,7 +5914,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
 
                     // house.WardList = ListWardNo();
-                    dumpYard.AreaList = LoadListArea(Convert.ToInt32(dumpYard.WardNo));//ListArea();
+                    dumpYard.AreaList = LoadListArea(Convert.ToInt32(dumpYard.WardNo), Convert.ToInt32(dumpYard.PrabhagId));//ListArea();
                     dumpYard.ZoneList = ListZone();
                     dumpYard.WardList = LoadListWardNo(Convert.ToInt32(dumpYard.PrabhagId));//ListWardNo();
                     dumpYard.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(dumpYard.ZoneId), Convert.ToInt32(dumpYard.PrabhagId));
@@ -5884,7 +5929,7 @@ namespace SwachBharat.CMS.Bll.Services
                     dumpYard.ReferanceId = refer;
                     dumpYard.dyQRCode = "/Images/QRcode.png";
                     dumpYard.WardList = ListWardNo(0);
-                    dumpYard.AreaList = ListArea();
+                    dumpYard.AreaList = ListArea(0);
                     dumpYard.ZoneList = ListZone();
                     return dumpYard;
                 }
@@ -5959,7 +6004,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
 
                     // house.WardList = ListWardNo();
-                    StreetSweep.AreaList = LoadListArea(Convert.ToInt32(StreetSweep.WardNo));//ListArea();
+                    StreetSweep.AreaList = LoadListArea(Convert.ToInt32(StreetSweep.WardNo), Convert.ToInt32(StreetSweep.PrabhagId));//ListArea();
                     StreetSweep.ZoneList = ListZone();
                     StreetSweep.WardList = LoadListWardNo(Convert.ToInt32(StreetSweep.PrabhagId));//ListWardNo();
                     StreetSweep.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(StreetSweep.ZoneId), Convert.ToInt32(StreetSweep.PrabhagId));
@@ -5974,7 +6019,7 @@ namespace SwachBharat.CMS.Bll.Services
                     StreetSweep.ReferanceId = refer;
                     StreetSweep.SSQRCode = "/Images/QRcode.png";
                     StreetSweep.WardList = ListWardNo(PId);
-                    StreetSweep.AreaList = ListArea();
+                    StreetSweep.AreaList = ListArea(PId);
                     StreetSweep.ZoneList = ListZone();
                     return StreetSweep;
                 }
@@ -6048,7 +6093,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
 
                     // house.WardList = ListWardNo();
-                    LiquidWaste.AreaList = LoadListArea(Convert.ToInt32(LiquidWaste.WardNo));//ListArea();
+                    LiquidWaste.AreaList = LoadListArea(Convert.ToInt32(LiquidWaste.WardNo), Convert.ToInt32(LiquidWaste.PrabhagId));//ListArea();
                     LiquidWaste.ZoneList = ListZone();
                     LiquidWaste.WardList = LoadListWardNo(Convert.ToInt32(LiquidWaste.PrabhagId));//ListWardNo();
                     LiquidWaste.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(LiquidWaste.ZoneId), Convert.ToInt32(LiquidWaste.PrabhagId));
@@ -6063,7 +6108,7 @@ namespace SwachBharat.CMS.Bll.Services
                     LiquidWaste.ReferanceId = refer;
                     LiquidWaste.LWQRCode = "/Images/QRcode.png";
                     LiquidWaste.WardList = ListWardNo(PId);
-                    LiquidWaste.AreaList = ListArea();
+                    LiquidWaste.AreaList = ListArea(PId);
                     LiquidWaste.ZoneList = ListZone();
                     return LiquidWaste;
                 }
@@ -8412,7 +8457,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
                     data.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(data.ZoneId), Convert.ToInt32(data.PrabhagId));
                     data.WardList = LoadListWardNo(Convert.ToInt32(data.PrabhagId)); //ListWardNo();
-                    data.AreaList = LoadListArea(Convert.ToInt32(data.WardNo)); //ListArea();
+                    data.AreaList = LoadListArea(Convert.ToInt32(data.WardNo), Convert.ToInt32(data.PrabhagId)); //ListArea();
                     data.ZoneList = ListZone();
                     return data;
                 }
@@ -8448,7 +8493,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     }
                     var PPP = new List<SelectListItem>();
-                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
                     PPP.Insert(0, itemAddPPP);
 
                     var WWWW = new List<SelectListItem>();
@@ -8484,7 +8529,7 @@ namespace SwachBharat.CMS.Bll.Services
                         data.SauchalayQRCode = "/Images/QRcode.png";
                         data.PrabhagList = ListPrabhagNo(PId);
                         data.WardList = ListWardNo(PId);
-                        data.AreaList = ListArea();
+                        data.AreaList = ListArea(PId);
                         data.ZoneList = ListZone();
                     }
                     else
@@ -8503,7 +8548,7 @@ namespace SwachBharat.CMS.Bll.Services
                         data.SauchalayQRCode = "/Images/QRcode.png";
                         data.PrabhagList = ListPrabhagNo(PId);
                         data.WardList = ListWardNo(PId);
-                        data.AreaList = ListArea();
+                        data.AreaList = ListArea(PId);
                         data.ZoneList = ListZone();
                     }
                     return data;

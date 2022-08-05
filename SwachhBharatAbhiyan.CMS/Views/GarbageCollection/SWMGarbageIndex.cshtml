@@ -26,15 +26,20 @@
                     <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Employee</label>
                 <select id="selectnumber" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Zone</label>
                 <select id="ZoneId" class="form-control form-control form-control-sm"></select>
+            </div>
+            <div class="col-sm-3">
+                @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                <label>Select Prabhag</label>
+                <select id="PrabhagId" class="form-control form-control form-control-sm"></select>
             </div>
             <div class="col-sm-3">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
@@ -49,7 +54,7 @@
 
             <div class="col-sm-3">
                 <label>Select SWM Facility</label>
-                <select id="SWMTypeid" class="form-control form-control form-control-sm" onchange = "changeddl(this)">
+                <select id="SWMTypeid" class="form-control form-control form-control-sm" onchange="changeddl(this)">
                     <option value="0">Select Facility Type</option>
                     <option value="1">Transfer Station</option>
                     <option value="2">Wet Waste Processing Facility</option>
