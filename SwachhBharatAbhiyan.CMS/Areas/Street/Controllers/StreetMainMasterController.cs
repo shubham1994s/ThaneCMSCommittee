@@ -358,7 +358,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                VehicleRegVM vehicle = childRepository.GetVehicleReg(teamId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                VehicleRegVM vehicle = childRepository.GetVehicleReg(teamId, PId);
                 return View(vehicle);
             }
             else
