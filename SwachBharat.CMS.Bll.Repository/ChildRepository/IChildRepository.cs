@@ -212,8 +212,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         List<SelectListItem> ZoneListPId(int PId);
         List<SelectListItem> WardListPId(int PId);
+        List<SelectListItem> PrabhagListPId(int PId);
         List<SelectListItem> AreaLstPId(int PId);
-        List<SelectListItem> LoadListWardNoPId(int PId,int ZoneId);
+        List<SelectListItem> LoadListWardNoPId(int PId,int PrabhagId);
+        List<SelectListItem> LoadPrabhagNoListPId(int PId, int ZoneId);
+
         List<SelectListItem> LoadAreaListPId(int PId,int WardNo);
 
         void Save1Point4(List<OnePoint4VM> point);

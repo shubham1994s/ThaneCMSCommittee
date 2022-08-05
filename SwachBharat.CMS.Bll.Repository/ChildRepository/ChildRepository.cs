@@ -181,14 +181,21 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.WardListPId(PId);
         }
-
+        public List<SelectListItem> PrabhagListPId(int PId)
+        {
+            return screenService.PrabhagListPId(PId);
+        }
         public List<SelectListItem> AreaLstPId(int PId)
         {
             return screenService.AreaLstPId(PId);
         }
-        public List<SelectListItem> LoadListWardNoPId(int PId,int ZoneId)
+        public List<SelectListItem> LoadListWardNoPId(int PId,int PrabhagId)
         {
-            return screenService.LoadListWardNoPId(PId, ZoneId);
+            return screenService.LoadListWardNoPId(PId, PrabhagId);
+        }
+        public List<SelectListItem> LoadPrabhagNoListPId(int PId, int ZoneId)
+        {
+            return screenService.LoadPrabhagNoListPId(PId, ZoneId);
         }
         public List<SelectListItem> LoadAreaListPId(int PId,int WardNo)
         {

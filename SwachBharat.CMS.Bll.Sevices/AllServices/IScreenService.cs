@@ -218,9 +218,11 @@ namespace SwachBharat.CMS.Bll.Services
 
         List<SelectListItem> ZoneListPId(int PId);
         List<SelectListItem> WardListPId(int PId);
-
+        List<SelectListItem> PrabhagListPId(int PId);
         List<SelectListItem> AreaLstPId(int PId);
-        List<SelectListItem> LoadListWardNoPId(int PId,int ZoneId);
+        List<SelectListItem> LoadListWardNoPId(int PId,int PrabhagId);
+        List<SelectListItem> LoadPrabhagNoListPId(int PId, int ZoneId);
+
         List<SelectListItem> LoadAreaListPId(int PId, int WardNo);
 
         List<SelectListItem> LoadListWardNo(int PrabhagId);

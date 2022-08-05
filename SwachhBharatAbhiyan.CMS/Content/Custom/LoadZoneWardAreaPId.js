@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     zone();
+    prabhag();
     ward();
     area();
     $('#ZoneId').change(function () {
@@ -15,8 +16,40 @@
 
         $.ajax({
             type: "post",
-            url: "/GarbageCollection/LoadWardNoList?",
+            url: "/GarbageCollection/LoadPrabhagNoList?",
             data: { ZoneId: $('#ZoneId').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                var prabhag;
+                for (var i = 0; i < data.length; i++) {
+                    prabhag = prabhag + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                }
+
+                $('#PrabhagNo').html(prabhag);
+
+                $('#WardNo').find('option').remove().end().append('<option value="0">--Select Ward--</option>');
+
+                $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+            }
+        });
+
+    });
+    $('#PrabhagNo').change(function () {
+        var selectedText = $(this).find("option:selected").text();
+        var selectedValue = $(this).val();
+
+        //if(selectedValue==0){
+        //    ward();
+        //}
+        if (selectedValue == 0) {
+            area();
+        }
+
+        $.ajax({
+            type: "post",
+            url: "/GarbageCollection/LoadWardNoList?",
+            data: { PrabhagId: $('#PrabhagNo').val() },
             datatype: "json",
             traditional: true,
             success: function (data) {

@@ -344,6 +344,18 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
+        public ActionResult PrabhagList()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                List<SelectListItem> PrabhagLst = new List<SelectListItem>();
+                PrabhagLst = childRepository.PrabhagListPId(PId);
+                return Json(PrabhagLst, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+        }
         public ActionResult AreaList()
         {
             if (SessionHandler.Current.AppId != 0)
@@ -358,14 +370,30 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         }
 
 
-        public ActionResult LoadWardNoList(int ZoneId)
+        public ActionResult LoadPrabhagNoList(int ZoneId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                List<SelectListItem> PrabhagLst = new List<SelectListItem>();
+
+                PrabhagLst = childRepository.LoadPrabhagNoListPId(PId, ZoneId);
+                return Json(PrabhagLst, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
+
+        public ActionResult LoadWardNoList(int PrabhagId)
         {
             if (SessionHandler.Current.AppId != 0)
             {
                 int PId = Convert.ToInt32(Session["PrabhagId"]);
                 List<SelectListItem> WardLst = new List<SelectListItem>();
 
-                WardLst = childRepository.LoadListWardNoPId(PId,ZoneId);
+                WardLst = childRepository.LoadListWardNoPId(PId, PrabhagId);
                 return Json(WardLst, JsonRequestBehavior.AllowGet);
             }
             else

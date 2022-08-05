@@ -9394,7 +9394,7 @@ namespace SwachBharat.CMS.Bll.Services
         public List<SelectListItem> WardListPId(int PId)
         {
             var WardNo = new List<SelectListItem>();
-            SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward / Prabhag", Value = "0" };
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward", Value = "0" };
 
             try
             {
@@ -9402,6 +9402,7 @@ namespace SwachBharat.CMS.Bll.Services
                 WardNo = db.WardNumbers.Where(a => ((PId != 0 && a.PrabhagId == PId)) || PId == 0).ToList()
                     .Select(x => new SelectListItem
                     {
+                        //Text = x.WardNo + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
                         Text = x.WardNo + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
                         Value = x.Id.ToString()
                     }).OrderBy(t => t.Text).ToList();
@@ -9411,6 +9412,27 @@ namespace SwachBharat.CMS.Bll.Services
             catch (Exception ex) { throw ex; }
 
             return WardNo;
+        }
+
+        public List<SelectListItem> PrabhagListPId(int PId)
+        {
+            var PrabhagNo = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+
+            try
+            {
+                PrabhagNo = db.CommitteeMasters.Where(a => ((PId != 0 && a.Id == PId) || PId == 0))
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                PrabhagNo.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return PrabhagNo;
         }
 
 
@@ -9436,17 +9458,37 @@ namespace SwachBharat.CMS.Bll.Services
             return Area;
         }
 
+        public List<SelectListItem> LoadPrabhagNoListPId(int PId, int ZoneId)
+        {
+            var PrabhagNo = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag", Value = "0" };
+
+            try
+            {
+                PrabhagNo = db.CommitteeMasters.Where(a =>((PId != 0 && a.Id == PId) || PId ==0) && a.zoneId == ZoneId)
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
+                        Value = x.Id.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+                PrabhagNo.Insert(0, itemAdd);
+            }
+            catch (Exception ex) { throw ex; }
+
+            return PrabhagNo;
+        }
 
 
-        public List<SelectListItem> LoadListWardNoPId(int PId, int ZoneId)
+        public List<SelectListItem> LoadListWardNoPId(int PId, int PrabhagId)
         {
             var WardNo = new List<SelectListItem>();
-            SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward / Prabhag", Value = "0" };
+            SelectListItem itemAdd = new SelectListItem() { Text = "Select Ward", Value = "0" };
 
             try
             {
 
-                WardNo = db.WardNumbers.Where(a => (((PId != 0 && a.PrabhagId == PId)) || PId == 0) && ((ZoneId != 0 && a.zoneId == ZoneId) || ZoneId == 0)).ToList()
+                WardNo = db.WardNumbers.Where(a => a.PrabhagId == PrabhagId).ToList()
                     .Select(x => new SelectListItem
                     {
                         Text = x.WardNo + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
