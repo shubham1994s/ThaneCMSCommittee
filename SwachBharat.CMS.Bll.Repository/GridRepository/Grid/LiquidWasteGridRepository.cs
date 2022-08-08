@@ -14,9 +14,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
 
-        public LiquidWasteGridRepository(long wildcard, string SearchString, int AppId)
+        public LiquidWasteGridRepository(long wildcard, string SearchString, int AppId,int PId)
         {
-            dataset = objRep.GetLiquidWasteData(wildcard, SearchString, AppId);
+            dataset = objRep.GetLiquidWasteData(wildcard, SearchString, AppId, PId);
         }
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)
         {

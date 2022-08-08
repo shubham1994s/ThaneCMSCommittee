@@ -1645,7 +1645,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -1742,7 +1742,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -1830,7 +1830,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -1917,7 +1917,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2004,7 +2004,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2089,7 +2089,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2174,7 +2174,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2259,7 +2259,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2344,7 +2344,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -2429,7 +2429,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         ComgcTarget = x.ComgcTarget,
                         EmployeeType = x.EmployeeType,
                         userDesignation = x.userDesignation,
-                        PrabhagId = x.PrabhagId,
+                        PrabhagId = (int)x.PrabhagId,
                         Zone = db.ZoneMasters.FirstOrDefault(c => c.zoneId == x.ZoneId).name,
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
@@ -3371,7 +3371,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                .Where(g => g.gcType == 5 & (DbFunctions.TruncateTime(g.gcDate)) >= DbFunctions.TruncateTime(ctptcountdata.Date) & (DbFunctions.TruncateTime(g.gcDate)) <= DbFunctions.TruncateTime(ctptcountdata.Date) & g.EmployeeType == "S")
 
                                  join t2 in db.UserMasters on t1.userId equals t2.userId
-                                 join gp in db.StreetSweepingDetails on t1.SSId equals gp.SSId into gpp
+                                 join gp in db.StreetSweepingDetails on t1.SSId equals gp.SSId  into gpp
                                  from t3 in gpp.DefaultIfEmpty()
                                  join zm in db.ZoneMasters on t3.zoneId equals zm.zoneId into zm
                                  from t4 in zm.DefaultIfEmpty()
@@ -3379,7 +3379,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                  from t5 in wm.DefaultIfEmpty()
                                  join tm in db.TeritoryMasters on t3.areaId equals tm.Id into tm
                                  from t6 in tm.DefaultIfEmpty()
-                                 where (t4.zoneId == param1 || param1 == 0 || param1 == null) && (t3.wardId == param2 || param2 == 0 || param2 == null) && (t3.areaId == param3 || param3 == 0 || param3 == null)
+                                 where (t4.zoneId == param1 || param1 == 0 || param1 == null) && (t3.wardId == param2 || param2 == 0 || param2 == null) && (t3.areaId == param3 || param3 == 0 || param3 == null) && (t3.ReferanceId == ctptcountdata.ReferanceId1 || t3.ReferanceId == ctptcountdata.ReferanceId2 || t3.ReferanceId == ctptcountdata.ReferanceId3)
 
                                  select new
                                  {
@@ -4868,7 +4868,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAStreeSweepDetailsGridRow> GetStreetSweepData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBAStreeSweepDetailsGridRow> GetStreetSweepData(long wildcard, string SearchString, int appId,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -4876,7 +4876,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.StreetQRCode + "/";
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_StreetSweepDetails().Select(x => new SBAStreeSweepDetailsGridRow
+                var data = db.SP_StreetSweepDetails(PId).Select(x => new SBAStreeSweepDetailsGridRow
                 {
 
                     Zone = x.Zone,
@@ -4949,7 +4949,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBALiquidWasteGridRow> GetLiquidWasteData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBALiquidWasteGridRow> GetLiquidWasteData(long wildcard, string SearchString, int appId,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -4957,7 +4957,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.LiquidQRCode + "/";
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_LiquidWasteDetails().Select(x => new SBALiquidWasteGridRow
+                var data = db.SP_LiquidWasteDetails(PId).Select(x => new SBALiquidWasteGridRow
                 {
 
                     Zone = x.Zone,

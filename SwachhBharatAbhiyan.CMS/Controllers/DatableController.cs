@@ -428,7 +428,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "StreetSweep":
-                    gridRepository = new StreetSweepGrid(0, searchString, appId);
+                    gridRepository = new StreetSweepGrid(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
@@ -443,7 +443,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "LiquidWaste":
-                    gridRepository = new LiquidWasteGridRepository(0, searchString, appId);
+                    gridRepository = new LiquidWasteGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
