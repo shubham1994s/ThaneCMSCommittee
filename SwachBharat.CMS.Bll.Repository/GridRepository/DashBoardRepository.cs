@@ -4023,7 +4023,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                var data = db.SP_CommercialGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_CommercialGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId, param6).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -4092,7 +4092,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                var data = db.SP_ResidentialBuildingGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_ResidentialBuildingGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId, param6).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -4163,7 +4163,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                var data = db.SP_ResidentialSlumGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_ResidentialSlumGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId, param6).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
@@ -4231,7 +4231,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
             using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_SWMGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId).Select(x => new SBAGrabageCollectionGridRow
+                var data = db.SP_SWMGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, param4, param5, PId, param6).Select(x => new SBAGrabageCollectionGridRow
                 {
                     Id = x.gcId,
                     userId = x.userId,
