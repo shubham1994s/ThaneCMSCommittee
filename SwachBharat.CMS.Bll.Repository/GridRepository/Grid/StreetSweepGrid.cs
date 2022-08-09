@@ -14,9 +14,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
 
         DashBoardRepository objRep = new DashBoardRepository();
         
-        public StreetSweepGrid(long wildcard, string SearchString, int AppId)
+        public StreetSweepGrid(long wildcard, string SearchString, int AppId,int PId)
         {
-            dataset = objRep.GetStreetSweepData(wildcard, SearchString, AppId);
+            dataset = objRep.GetStreetSweepData(wildcard, SearchString, AppId,PId);
         }
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)
         {

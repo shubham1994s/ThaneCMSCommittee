@@ -3562,7 +3562,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
             else if (Emptype == "L")
             {
-                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
+                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3604,7 +3604,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             else if (Emptype == "S")
             {
-                var data = db.SP_StreetSweepingOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
+                var data = db.SP_StreetSweepingOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3729,7 +3729,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
             else if (Emptype == "L")
             {
-                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
+                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3771,7 +3771,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             else if (Emptype == "S")
             {
-                var data = db.SP_StreetSweepingOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType).ToList();
+                var data = db.SP_StreetSweepingOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -4157,7 +4157,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public DashBoardVM GetLiquidWasteDetails()
+        public DashBoardVM GetLiquidWasteDetails(int PId)
         {
             DashBoardVM model = new DashBoardVM();
             try
@@ -4165,7 +4165,7 @@ namespace SwachBharat.CMS.Bll.Services
                 using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
                 {
                     DevSwachhBharatMainEntities dbm = new DevSwachhBharatMainEntities();
-                    var data = db.SP_LWaste_Count().First();
+                    var data = db.SP_LWaste_Count(PId).First();
                     if (data != null)
                     {
                         model.LiquidWasteCollection = data.TotalLiquidLatLongCount;
@@ -4190,7 +4190,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public DashBoardVM GetStreetSweepingDetails()
+        public DashBoardVM GetStreetSweepingDetails(int PId)
         {
             DashBoardVM model = new DashBoardVM();
             try
@@ -4198,7 +4198,7 @@ namespace SwachBharat.CMS.Bll.Services
                 using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
                 {
                     DevSwachhBharatMainEntities dbm = new DevSwachhBharatMainEntities();
-                    var data = db.SP_SSweeping_Count().First();
+                    var data = db.SP_SSweeping_Count(PId).First();
                     if (data != null)
                     {
                         model.StreetWasteCollection = data.TotalStreetLatLongCount;

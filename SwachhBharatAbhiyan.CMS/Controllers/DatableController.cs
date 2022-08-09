@@ -155,14 +155,14 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                         else param5 = null;
                     }
 
-                    //if (arr.Length > 9)
-                    //{
-                    //    if (arr[9].ToString() != null && arr[9].ToString() != "null" && arr[9] != " " && arr[9].ToString() != string.Empty)
-                    //    {
-                    //        param6 = Convert.ToInt32(arr[9]);
-                    //    }
-                    //    else param6 = null;
-                    //}
+                    if (arr.Length > 9)
+                    {
+                        if (arr[9].ToString() != null && arr[9].ToString() != "null" && arr[9] != " " && arr[9].ToString() != string.Empty)
+                        {
+                            param6 = Convert.ToInt32(arr[9]);
+                        }
+                        else param6 = null;
+                    }
 
                     //if (arr[3].ToString() != null && arr[3] != " ")
                     //{ clientId = arr[3]; }
@@ -193,6 +193,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     param3 = null;
                     param4 = null;
                     param5 = null;
+                    param6 = null;
                     // searchString = "";
                 }
             }
@@ -322,19 +323,19 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "GarbageCommercial":
-                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
+                    gridRepository = new CommGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, param6, PId);
                     return gridRepository;
                     break;
                 case "GarbageResidentialBuilding":
-                    gridRepository = new ResBuildingGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
+                    gridRepository = new ResBuildingGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, param6, PId);
                     return gridRepository;
                     break;
                 case "GarbageResidentialSlum":
-                    gridRepository = new ResSlumGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
+                    gridRepository = new ResSlumGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, param6, PId);
                     return gridRepository;
                     break;
                 case "GarbageSWM":
-                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, PId);
+                    gridRepository = new SWMGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, param6, PId);
                     return gridRepository;
                     break;
 
@@ -427,7 +428,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "StreetSweep":
-                    gridRepository = new StreetSweepGrid(0, searchString, appId);
+                    gridRepository = new StreetSweepGrid(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
@@ -442,7 +443,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "LiquidWaste":
-                    gridRepository = new LiquidWasteGridRepository(0, searchString, appId);
+                    gridRepository = new LiquidWasteGridRepository(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 
