@@ -590,7 +590,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public CommitteeVM GetCommitteeNameDetails(int teamId, string name)
+        public CommitteeVM GetCommitteeNameDetails(int teamId, string name,int PId)
         {
             try
             {
@@ -600,13 +600,13 @@ namespace SwachBharat.CMS.Bll.Services
                     if (Details != null)
                     {
                         CommitteeVM type = FillCommitteeViewModel(Details);
-                        type.ZoneList = ListZone();
+                        type.ZoneList = ListZone(PId);
                         return type;
                     }
                     else
                     {
                         CommitteeVM type = new CommitteeVM();
-                        type.ZoneList = ListZone();
+                        type.ZoneList = ListZone(PId);
                         return type;
                     }
                 }
@@ -794,7 +794,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
                     house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
 
                     return house;
                 }
@@ -823,7 +823,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     house.WardList = WWWW;
                     house.AreaList = ARRR;
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     house.PrabhagList = PPP;
                     house.houseId = 0;
                     return house;
@@ -837,7 +837,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.houseQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo(PId);
                     house.AreaList = ListArea(PId);
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     house.PrabhagList = ListPrabhag(PId);
                     house.houseId = id;
                     return house;
@@ -919,7 +919,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo( Convert.ToInt32(house.PrabhagId)); //ListWardNo();
                     house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     return house;
                 }
                 else if (teamId == -2)
@@ -947,7 +947,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = PPP;
                     house.WardList = WWWW;
                     house.AreaList = ARRR;
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     house.swmId = 0;
                     return house;
                 }
@@ -961,7 +961,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = ListPrabhagNo(PId);
                     house.WardList = ListWardNo(PId);
                     house.AreaList = ListArea(PId);
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     house.swmId = id;
                     return house;
                 }
@@ -1037,7 +1037,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
                     house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     return house;
                 }
                 else if (teamId == -2)
@@ -1065,7 +1065,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = PPP;
                     house.WardList = WWWW;
                     house.AreaList = ARRR;
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     house.houseId = 0;
                     return house;
                 }
@@ -1079,7 +1079,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = ListPrabhagNo(PId);
                     house.WardList = ListWardNo(PId);
                     house.AreaList = ListArea(PId);
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     house.houseId = id;
                     return house;
                 }
@@ -1138,7 +1138,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
                     house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     return house;
                 }
 
@@ -1158,7 +1158,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.houseQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo(PId);
                     house.AreaList = ListArea(PId);
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     house.houseId = id;
                     return house;
                 }
@@ -1219,7 +1219,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
                     house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     return house;
                 }
 
@@ -1239,7 +1239,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.houseQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo(PId);
                     house.AreaList = ListArea(PId);
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(PId);
                     house.houseId = id;
                     return house;
                 }
@@ -1300,7 +1300,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(house.ZoneId), Convert.ToInt32(house.PrabhagId));
                     house.WardList = LoadListWardNo(Convert.ToInt32(house.PrabhagId)); //ListWardNo();
                     house.AreaList = LoadListArea(Convert.ToInt32(house.WardNo), Convert.ToInt32(house.PrabhagId)); //ListArea();
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(Convert.ToInt32(house.PrabhagId));
                     return house;
                 }
 
@@ -1320,7 +1320,7 @@ namespace SwachBharat.CMS.Bll.Services
                     house.houseQRCode = "/Images/QRcode.png";
                     house.WardList = ListWardNo(0);
                     house.AreaList = ListArea(0);
-                    house.ZoneList = ListZone();
+                    house.ZoneList = ListZone(0);
                     house.houseId = id;
                     return house;
                 }
@@ -1553,14 +1553,14 @@ namespace SwachBharat.CMS.Bll.Services
                         }
 
                         type.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(type.ZoneId), Convert.ToInt32(type.PrabhagId)); //ListWardNo();
-                        type.ZoneList = ListZone();
+                        type.ZoneList = ListZone(PId);
                         return type;
                     }
                     else
                     {
                         type.userProfileImage = "/Images/add_image_square.png";
                         type.PrabhagList = ListPrabhagNo(PId);
-                        type.ZoneList = ListZone();
+                        type.ZoneList = ListZone(PId);
                         return type;
                     }
                 }
@@ -2647,7 +2647,7 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
         // Added By Saurabh (11 July 2019)
-        public List<SBALUserLocationMapView> GetHouseAttenRoute(int daId, int areaid)
+        public List<SBALUserLocationMapView> GetHouseAttenRoute(int daId, int areaid,int PId)
         {
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             DateTime newdate = DateTime.Now.Date;
@@ -2721,7 +2721,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         WasteType = d.garbageType.ToString(),
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
-                                        ZoneList = ListZone(),
+                                        ZoneList = ListZone(PId),
 
                                     });
                                 }
@@ -2751,7 +2751,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     WasteType = d.garbageType.ToString(),
                                     gpBeforImage = d.gpBeforImage,
                                     gpAfterImage = d.gpAfterImage,
-                                    ZoneList = ListZone(),
+                                    ZoneList = ListZone(PId),
 
                                 });
                             }
@@ -2786,7 +2786,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         WasteType = d.garbageType.ToString(),
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
-                                        ZoneList = ListZone(),
+                                        ZoneList = ListZone(PId),
 
                                     });
                                 }
@@ -2816,7 +2816,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     WasteType = d.garbageType.ToString(),
                                     gpBeforImage = d.gpBeforImage,
                                     gpAfterImage = d.gpAfterImage,
-                                    ZoneList = ListZone(),
+                                    ZoneList = ListZone(PId),
 
                                 });
                             }
@@ -2854,7 +2854,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         DryWaste = d.totalDryWeight.ToString(),
                                         WetWaste = d.totalWetWeight.ToString(),
                                         TotWaste = d.totalGcWeight.ToString(),
-                                        ZoneList = ListZone(),
+                                        ZoneList = ListZone(PId),
 
                                     });
                                 }
@@ -2887,7 +2887,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     DryWaste = d.totalDryWeight.ToString(),
                                     WetWaste = d.totalWetWeight.ToString(),
                                     TotWaste = d.totalGcWeight.ToString(),
-                                    ZoneList = ListZone(),
+                                    ZoneList = ListZone(PId),
 
                                 });
                             }
@@ -2902,7 +2902,7 @@ namespace SwachBharat.CMS.Bll.Services
             return userLocation;
         }
 
-        public List<SBALUserLocationMapView> GetCTPTAttenRoute(int daId, int areaid)
+        public List<SBALUserLocationMapView> GetCTPTAttenRoute(int daId, int areaid,int PId)
         {
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             DateTime newdate = DateTime.Now.Date;
@@ -2977,7 +2977,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         //WasteType = "",
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
-                                        ZoneList = ListZone(),
+                                        ZoneList = ListZone(PId),
 
                                     });
                                 }
@@ -3009,7 +3009,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     //WasteType = "",
                                     gpBeforImage = d.gpBeforImage,
                                     gpAfterImage = d.gpAfterImage,
-                                    ZoneList = ListZone(),
+                                    ZoneList = ListZone(PId),
 
                                 });
                             }
@@ -3046,7 +3046,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         DryWaste = d.totalDryWeight.ToString(),
                                         WetWaste = d.totalWetWeight.ToString(),
                                         TotWaste = d.totalGcWeight.ToString(),
-                                        ZoneList = ListZone(),
+                                        ZoneList = ListZone(PId),
 
                                     });
                                 }
@@ -3078,7 +3078,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     DryWaste = d.totalDryWeight.ToString(),
                                     WetWaste = d.totalWetWeight.ToString(),
                                     TotWaste = d.totalGcWeight.ToString(),
-                                    ZoneList = ListZone(),
+                                    ZoneList = ListZone(PId),
 
                                 });
                             }
@@ -3094,7 +3094,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             return userLocation;
         }
-        public List<SBALUserLocationMapView> GetLiquidAttenRoute(int daId, int areaid)
+        public List<SBALUserLocationMapView> GetLiquidAttenRoute(int daId, int areaid,int PId)
         {
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             DateTime newdate = DateTime.Now.Date;
@@ -3166,7 +3166,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         WasteType = d.gcType.ToString(),
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
-                                        ZoneList = ListZone(),
+                                        ZoneList = ListZone(PId),
 
                                     });
                                 }
@@ -3194,7 +3194,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     WasteType = d.gcType.ToString(),
                                     gpBeforImage = d.gpBeforImage,
                                     gpAfterImage = d.gpAfterImage,
-                                    ZoneList = ListZone(),
+                                    ZoneList = ListZone(PId),
 
                                 });
                             }
@@ -3287,7 +3287,7 @@ namespace SwachBharat.CMS.Bll.Services
             return userLocation;
         }
 
-        public List<SBALUserLocationMapView> GetStreetAttenRoute(int daId, int areaid)
+        public List<SBALUserLocationMapView> GetStreetAttenRoute(int daId, int areaid,int PId)
         {
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             DateTime newdate = DateTime.Now.Date;
@@ -3359,7 +3359,7 @@ namespace SwachBharat.CMS.Bll.Services
                                         WasteType = d.gcType.ToString(),
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
-                                        ZoneList = ListZone(),
+                                        ZoneList = ListZone(PId),
 
                                     });
                                 }
@@ -3387,7 +3387,7 @@ namespace SwachBharat.CMS.Bll.Services
                                     WasteType = d.gcType.ToString(),
                                     gpBeforImage = d.gpBeforImage,
                                     gpAfterImage = d.gpAfterImage,
-                                    ZoneList = ListZone(),
+                                    ZoneList = ListZone(PId),
 
                                 });
                             }
@@ -4265,7 +4265,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     // house.WardList = ListWardNo();
                     point.AreaList = LoadListArea(Convert.ToInt32(point.WardNo), Convert.ToInt32(point.PrabhagId)); //ListArea();
-                    point.ZoneList = ListZone();
+                    point.ZoneList = ListZone(PId);
                     point.WardList = LoadListWardNo(Convert.ToInt32(point.PrabhagId)); //ListWardNo();
                     point.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(point.ZoneId), Convert.ToInt32(point.PrabhagId));
 
@@ -4280,7 +4280,7 @@ namespace SwachBharat.CMS.Bll.Services
                     point.qrCode = "/Images/QRcode.png";
                     point.WardList = ListWardNo(PId);
                     point.AreaList = ListArea(PId);
-                    point.ZoneList = ListZone();
+                    point.ZoneList = ListZone(PId);
                     return point;
                 }
 
@@ -4565,7 +4565,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.ComgcTarget = data.ComgcTarget;
             model.EmployeeType = Emptype;
             model.userDesignation = data.userDesignation;
-            model.ZoneId = data.PrabhagId;
+            model.ZoneId = data.ZoneId;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 
@@ -4887,19 +4888,28 @@ namespace SwachBharat.CMS.Bll.Services
             }
 
         }
-        public List<SelectListItem> ListZone()
+        public List<SelectListItem> ListZone(int PId)
         {
             var Zone = new List<SelectListItem>();
             SelectListItem itemAdd = new SelectListItem() { Text = "Select Zone", Value = "0" };
 
             try
             {
-                Zone = db.ZoneMasters.ToList()
-                    .Select(x => new SelectListItem
-                    {
-                        Text = x.name,
-                        Value = x.zoneId.ToString()
-                    }).OrderBy(t => t.Text).ToList();
+                //Zone = db.ZoneMasters.ToList()
+                //    .Select(x => new SelectListItem
+                //    {
+                //        Text = x.name,
+                //        Value = x.zoneId.ToString()
+                //    }).OrderBy(t => t.Text).ToList();
+
+                //Zone.Insert(0, itemAdd);
+
+                Zone = db.ZoneMasters.Where(z => (PId != 0 && z.zoneId == db.CommitteeMasters.Where(a => a.Id == PId).Select(b => b.zoneId).FirstOrDefault()) || PId == 0).ToList()
+                   .Select(x => new SelectListItem
+                   {
+                       Text = x.name,
+                       Value = x.zoneId.ToString()
+                   }).OrderBy(t => t.Text).ToList();
 
                 Zone.Insert(0, itemAdd);
             }
@@ -5916,7 +5926,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     // house.WardList = ListWardNo();
                     dumpYard.AreaList = LoadListArea(Convert.ToInt32(dumpYard.WardNo), Convert.ToInt32(dumpYard.PrabhagId));//ListArea();
-                    dumpYard.ZoneList = ListZone();
+                    dumpYard.ZoneList = ListZone(Convert.ToInt32(dumpYard.PrabhagId));
                     dumpYard.WardList = LoadListWardNo(Convert.ToInt32(dumpYard.PrabhagId));//ListWardNo();
                     dumpYard.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(dumpYard.ZoneId), Convert.ToInt32(dumpYard.PrabhagId));
 
@@ -5931,7 +5941,7 @@ namespace SwachBharat.CMS.Bll.Services
                     dumpYard.dyQRCode = "/Images/QRcode.png";
                     dumpYard.WardList = ListWardNo(0);
                     dumpYard.AreaList = ListArea(0);
-                    dumpYard.ZoneList = ListZone();
+                    dumpYard.ZoneList = ListZone(0);
                     return dumpYard;
                 }
 
@@ -6006,7 +6016,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     // house.WardList = ListWardNo();
                     StreetSweep.AreaList = LoadListArea(Convert.ToInt32(StreetSweep.WardNo), Convert.ToInt32(StreetSweep.PrabhagId));//ListArea();
-                    StreetSweep.ZoneList = ListZone();
+                    StreetSweep.ZoneList = ListZone(PId);
                     StreetSweep.WardList = LoadListWardNo(Convert.ToInt32(StreetSweep.PrabhagId));//ListWardNo();
                     StreetSweep.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(StreetSweep.ZoneId), Convert.ToInt32(StreetSweep.PrabhagId));
 
@@ -6021,7 +6031,7 @@ namespace SwachBharat.CMS.Bll.Services
                     StreetSweep.SSQRCode = "/Images/QRcode.png";
                     StreetSweep.WardList = ListWardNo(PId);
                     StreetSweep.AreaList = ListArea(PId);
-                    StreetSweep.ZoneList = ListZone();
+                    StreetSweep.ZoneList = ListZone(PId);
                     return StreetSweep;
                 }
 
@@ -6095,7 +6105,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     // house.WardList = ListWardNo();
                     LiquidWaste.AreaList = LoadListArea(Convert.ToInt32(LiquidWaste.WardNo), Convert.ToInt32(LiquidWaste.PrabhagId));//ListArea();
-                    LiquidWaste.ZoneList = ListZone();
+                    LiquidWaste.ZoneList = ListZone(PId);
                     LiquidWaste.WardList = LoadListWardNo(Convert.ToInt32(LiquidWaste.PrabhagId));//ListWardNo();
                     LiquidWaste.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(LiquidWaste.ZoneId), Convert.ToInt32(LiquidWaste.PrabhagId));
 
@@ -6110,7 +6120,7 @@ namespace SwachBharat.CMS.Bll.Services
                     LiquidWaste.LWQRCode = "/Images/QRcode.png";
                     LiquidWaste.WardList = ListWardNo(PId);
                     LiquidWaste.AreaList = ListArea(PId);
-                    LiquidWaste.ZoneList = ListZone();
+                    LiquidWaste.ZoneList = ListZone(PId);
                     return LiquidWaste;
                 }
 
@@ -8459,7 +8469,7 @@ namespace SwachBharat.CMS.Bll.Services
                     data.PrabhagList = LoadListPrabhagNo(Convert.ToInt32(data.ZoneId), Convert.ToInt32(data.PrabhagId));
                     data.WardList = LoadListWardNo(Convert.ToInt32(data.PrabhagId)); //ListWardNo();
                     data.AreaList = LoadListArea(Convert.ToInt32(data.WardNo), Convert.ToInt32(data.PrabhagId)); //ListArea();
-                    data.ZoneList = ListZone();
+                    data.ZoneList = ListZone(PId);
                     return data;
                 }
                 else if (teamId == -2)
@@ -8508,7 +8518,7 @@ namespace SwachBharat.CMS.Bll.Services
                     data.PrabhagList = PPP;
                     data.WardList = WWWW;
                     data.AreaList = ARRR;
-                    data.ZoneList = ListZone();
+                    data.ZoneList = ListZone(PId);
                     return data;
                 }
                 else
@@ -8531,7 +8541,7 @@ namespace SwachBharat.CMS.Bll.Services
                         data.PrabhagList = ListPrabhagNo(PId);
                         data.WardList = ListWardNo(PId);
                         data.AreaList = ListArea(PId);
-                        data.ZoneList = ListZone();
+                        data.ZoneList = ListZone(PId);
                     }
                     else
                     {
@@ -8550,7 +8560,7 @@ namespace SwachBharat.CMS.Bll.Services
                         data.PrabhagList = ListPrabhagNo(PId);
                         data.WardList = ListWardNo(PId);
                         data.AreaList = ListArea(PId);
-                        data.ZoneList = ListZone();
+                        data.ZoneList = ListZone(PId);
                     }
                     return data;
                 }
@@ -9201,7 +9211,7 @@ namespace SwachBharat.CMS.Bll.Services
             return userLocation;
         }
 
-        public List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string adate = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null)
+        public List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string adate = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null,int? PId = null)
         {
             DateTime dateTime = new DateTime();
             var dateAndTime = DateTime.Now;
@@ -9256,7 +9266,7 @@ namespace SwachBharat.CMS.Bll.Services
                     WasteType = d.garbageType.ToString(),
                     gpBeforImage = d.gpBeforImage,
                     gpAfterImage = d.gpAfterImage,
-                    ZoneList = ListZone(),
+                    ZoneList = ListZone(Convert.ToInt32(PId)),
 
                 });
 

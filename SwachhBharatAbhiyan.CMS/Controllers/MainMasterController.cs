@@ -757,7 +757,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                CommitteeVM vehicle = childRepository.GetComitteeName(teamId, "");
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                CommitteeVM vehicle = childRepository.GetComitteeName(teamId, "", PId);
                 return View(vehicle);
             }
             else
@@ -794,8 +796,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
-                CommitteeVM area = childRepository.GetCommitteeName(0, obj.CommitteeNo);
+                CommitteeVM area = childRepository.GetCommitteeName(0, obj.CommitteeNo, PId);
 
 
                 if (obj.Id > 0)

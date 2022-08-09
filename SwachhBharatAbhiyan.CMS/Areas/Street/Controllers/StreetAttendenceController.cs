@@ -124,9 +124,10 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
-                obj = childRepository.GetStreetAttenRoute(daId, areaid);
+                obj = childRepository.GetStreetAttenRoute(daId, areaid, PId);
                 // return Json(obj);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }

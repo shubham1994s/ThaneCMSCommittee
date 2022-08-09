@@ -38,7 +38,7 @@ namespace SwachBharat.CMS.Bll.Services
 
         WardNumberVM GetWardNumberDetails(int teamId,string name,int PId);
 
-        CommitteeVM GetCommitteeNameDetails(int teamId, string name);
+        CommitteeVM GetCommitteeNameDetails(int teamId, string name,int PId);
         void SaveWardNumberDetails(WardNumberVM data);
 
         void SaveCommitteeDetails(CommitteeVM data);
@@ -76,11 +76,11 @@ namespace SwachBharat.CMS.Bll.Services
         List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int userId);
 
         //Added By Saurabh(11 July 2019)
-        List<SBALUserLocationMapView> GetHouseAttenRoute(int userId,int areaid);
+        List<SBALUserLocationMapView> GetHouseAttenRoute(int userId,int areaid,int PId);
 
-        List<SBALUserLocationMapView> GetCTPTAttenRoute(int userId, int areaid);
-        List<SBALUserLocationMapView> GetLiquidAttenRoute(int userId, int areaid);
-        List<SBALUserLocationMapView> GetStreetAttenRoute(int userId, int areaid);
+        List<SBALUserLocationMapView> GetCTPTAttenRoute(int userId, int areaid,int PId);
+        List<SBALUserLocationMapView> GetLiquidAttenRoute(int userId, int areaid,int PId);
+        List<SBALUserLocationMapView> GetStreetAttenRoute(int userId, int areaid,int PId);
 
         GarbagePointDetailsVM GetGarbagePointDetails(int teamId,int PId);
         GarbagePointDetailsVM SaveGarbagePointDetails(GarbagePointDetailsVM data,int PId);
@@ -256,6 +256,6 @@ namespace SwachBharat.CMS.Bll.Services
         List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification();
         List<SBALUserLocationMapView> GetUserTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null);
 
-        List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null);
+        List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null,int? PId = null);
     }
 }
