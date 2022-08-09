@@ -1653,7 +1653,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.userDesignation = data.userDesignation;
                             model.ZoneId = data.ZoneId;
                             model.PrabhagId = (int)data.PrabhagId;
-                            //model.EmployeeType = Emptype;
+                            model.EmployeeType = data.EmployeeType == "Waste" ? null: data.EmployeeType;
                             db.SaveChanges();
                         }
                     }
@@ -4563,7 +4563,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.isActive = data.isActive;
             model.gcTarget = data.gcTarget;
             model.ComgcTarget = data.ComgcTarget;
-            model.EmployeeType = Emptype;
+            model.EmployeeType = data.EmployeeType == "Waste" ? null : data.EmployeeType;
             model.userDesignation = data.userDesignation;
             model.ZoneId = data.ZoneId;
             model.PrabhagId = data.PrabhagId;
@@ -5543,7 +5543,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.bloodGroup = data.bloodGroup;
             model.gcTarget = data.gcTarget;
             model.ComgcTarget = data.ComgcTarget;
-            model.EmployeeType = data.EmployeeType;
+            model.EmployeeType = data.EmployeeType == null ? "Waste" : data.EmployeeType;
             model.userDesignation = data.userDesignation;
             model.ZoneId = data.ZoneId;
             model.PrabhagId = data.PrabhagId;
