@@ -93,7 +93,7 @@ namespace SwachhBharatAbhiyan.CMS
                     rptViewer.ProcessingMode = ProcessingMode.Remote;
 
                     rptViewer.ServerReport.ReportServerUrl = new Uri(urlReportServer);
-                    rptViewer.ServerReport.ReportPath = "/Thane_ICTSBM/" + ReportName;
+                    rptViewer.ServerReport.ReportPath = "/Thane_Committee_ICTSBM/" + ReportName;
                     rptViewer.ShowToolBar = true;
                     rptViewer.BackColor = System.Drawing.Color.White;
                     //rptViewer.Parent.ResolveClientUrl.
