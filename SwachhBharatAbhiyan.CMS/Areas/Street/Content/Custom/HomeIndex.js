@@ -444,6 +444,10 @@ $(document).ready(function () {
     var res_TotalStreetProperty_Count1 = tot_house_coll - TotalStreet_Count;
     var res_TotalStreetProperty_Count = res_TotalStreetProperty_Count1 * 100 / tot_house_coll
 
+    if (TotalStreet_Count == 0) {
+        res_TotalStreetProperty_Count = 0;
+        res_TotalStreetProperty_Count1 = 0;
+    }
 
     var ary3 = []
     //ary3.push({ v: bif_coll });

@@ -47,9 +47,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         WardNumberVM GetWardNumber(int teamId,string name,int PId);
 
-        CommitteeVM GetCommitteeName(int teamId, string name);
+        CommitteeVM GetCommitteeName(int teamId, string name,int PId);
 
-        CommitteeVM GetComitteeName(int teamId, string name);
+        CommitteeVM GetComitteeName(int teamId, string name,int PId);
         void DeleteWardNumber(int teamId);
         void SaveWardNumber(WardNumberVM type);
 
@@ -90,11 +90,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int id);
 
         //Added By Saurabh (11 July 2019)
-        List<SBALUserLocationMapView> GetHouseAttenRoute(int id,int areaid);
+        List<SBALUserLocationMapView> GetHouseAttenRoute(int id,int areaid,int PId);
 
-        List<SBALUserLocationMapView> GetCTPTAttenRoute(int id, int areaid);
-        List<SBALUserLocationMapView> GetLiquidAttenRoute(int id, int areaid);
-        List<SBALUserLocationMapView> GetStreetAttenRoute(int id, int areaid);
+        List<SBALUserLocationMapView> GetCTPTAttenRoute(int id, int areaid,int PId);
+        List<SBALUserLocationMapView> GetLiquidAttenRoute(int id, int areaid,int PId);
+        List<SBALUserLocationMapView> GetStreetAttenRoute(int id, int areaid,int PId);
         
         GarbagePointDetailsVM GetGarbagePointById(int teamId,int PId);
         GarbagePointDetailsVM SaveGarbagePoint(GarbagePointDetailsVM data,int PId);
@@ -276,6 +276,6 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         List<SBALUserLocationMapView> GetUserTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null);
 
-        List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null);
+        List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null,int? PId = null);
     }
 }

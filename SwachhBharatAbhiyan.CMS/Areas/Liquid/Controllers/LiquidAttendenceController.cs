@@ -122,9 +122,10 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
-                obj = childRepository.GetLiquidAttenRoute(daId, areaid);
+                obj = childRepository.GetLiquidAttenRoute(daId, areaid, PId);
                 // return Json(obj);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }

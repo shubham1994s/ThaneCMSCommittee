@@ -192,9 +192,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
-                obj = childRepository.GetHouseAttenRoute(daId, areaid);
+                obj = childRepository.GetHouseAttenRoute(daId, areaid, PId);
                 // return Json(obj);
                
                 return Json(obj, JsonRequestBehavior.AllowGet);
@@ -208,9 +209,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
 
                 List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
-                obj = childRepository.GetCTPTAttenRoute(daId, areaid);
+                obj = childRepository.GetCTPTAttenRoute(daId, areaid, PId);
                 // return Json(obj);
 
                 return Json(obj, JsonRequestBehavior.AllowGet);
@@ -239,8 +241,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
-                obj = childRepository.GetHouseTimeWiseRoute(date, fTime, tTime, userId);
+                obj = childRepository.GetHouseTimeWiseRoute(date, fTime, tTime, userId, PId);
                 // return Json(obj);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }

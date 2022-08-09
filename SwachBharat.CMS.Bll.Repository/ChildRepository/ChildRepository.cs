@@ -124,14 +124,14 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetWardNumberDetails(teamId,name, PId);
         }
 
-        public CommitteeVM GetCommitteeName(int teamId, string name)
+        public CommitteeVM GetCommitteeName(int teamId, string name,int PId)
         {
-            return screenService.GetCommitteeNameDetails(teamId, name);
+            return screenService.GetCommitteeNameDetails(teamId, name,PId);
         }
 
-        public CommitteeVM GetComitteeName(int teamId, string name)
+        public CommitteeVM GetComitteeName(int teamId, string name,int PId)
         {
-            return screenService.GetCommitteeNameDetails(teamId, name);
+            return screenService.GetCommitteeNameDetails(teamId, name, PId);
         }
         public void DeleteWardNumber(int teamId)
         {
@@ -304,24 +304,24 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         }
 
         //Added By Saurabh(11 July 2019)
-        public List<SBALUserLocationMapView> GetHouseAttenRoute(int daId,int areaid)
+        public List<SBALUserLocationMapView> GetHouseAttenRoute(int daId,int areaid,int PId)
         {
-            return screenService.GetHouseAttenRoute(daId,areaid);
+            return screenService.GetHouseAttenRoute(daId,areaid, PId);
         }
 
-        public List<SBALUserLocationMapView> GetCTPTAttenRoute(int daId, int areaid)
+        public List<SBALUserLocationMapView> GetCTPTAttenRoute(int daId, int areaid,int PId)
         {
-            return screenService.GetCTPTAttenRoute(daId, areaid);
+            return screenService.GetCTPTAttenRoute(daId, areaid, PId);
         } 
 
-        public List<SBALUserLocationMapView> GetLiquidAttenRoute(int daId, int areaid)
+        public List<SBALUserLocationMapView> GetLiquidAttenRoute(int daId, int areaid,int PId)
         {
-            return screenService.GetLiquidAttenRoute(daId, areaid);
+            return screenService.GetLiquidAttenRoute(daId, areaid, PId);
         }
 
-        public List<SBALUserLocationMapView> GetStreetAttenRoute(int daId, int areaid)
+        public List<SBALUserLocationMapView> GetStreetAttenRoute(int daId, int areaid,int PId)
         {
-            return screenService.GetStreetAttenRoute(daId, areaid);
+            return screenService.GetStreetAttenRoute(daId, areaid, PId);
         }
 
         public GarbagePointDetailsVM GetGarbagePointById(int teamId, int PId)
@@ -821,9 +821,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetUserTimeWiseRoute(date,fTime, tTime, userId);
         }
 
-        public List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null)
+        public List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null,int? PId = null)
         {
-            return screenService.GetHouseTimeWiseRoute(date, fTime, tTime, userId);
+            return screenService.GetHouseTimeWiseRoute(date, fTime, tTime, userId, PId);
         }
 
 

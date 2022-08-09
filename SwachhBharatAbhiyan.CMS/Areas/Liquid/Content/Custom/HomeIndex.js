@@ -630,6 +630,10 @@ $(document).ready(function () {
     var res_TotalLiquidProperty_Count1 = tot_house_coll - TotalLiquid_Count;
     var res_TotalLiquidProperty_Count = res_TotalLiquidProperty_Count1 * 100 / tot_house_coll
 
+    if (TotalLiquid_Count == 0) {
+        res_TotalLiquidProperty_Count = 0;
+        res_TotalLiquidProperty_Count1 = 0;
+    }
 
     var ary3 = []
     
