@@ -206,7 +206,7 @@
                 <span class="checkmark"></span>
             </label>
         </div>
-        <div class="row" style="margin-bottom:4%;">
+        <div class="row" style="margin-bottom:0%;">
             <div class="col-sm-2">
                 <div class="controls">
                     <input type="hidden" value="@ViewBag.lat" id="deflat" />
@@ -221,12 +221,17 @@
                 <label>Select Employee</label>
                 <select id="selectnumber" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
             </div>
-
-
-
+            <div class="col-sm-2">
+                <label>Select Zone</label>
+                <select id="ZoneId" class="form-control form-control form-control-sm"></select>
+            </div>
+            <div class="col-sm-2">
+                <label>Select Prabhag</label>
+                <select id="PrabhagNo" class="form-control form-control form-control-sm"></select>
+            </div>
             <div class="col-sm-2">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Ward / Prabhag</label>
+                <label>Select Ward</label>
                 <select id="selectWard" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
             </div>
             <div class="col-sm-2">
@@ -234,10 +239,12 @@
                 <label>Select Area</label>
                 <select id="selectArea" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
             </div>
-            <div class="col-sm-2">
+        </div>
+        <div class="row">
+            <div class="col-sm-2 pull-right">
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
-            <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
+                        <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
                     <a id="filter" onclick="Search()" style="margin-top: 25px; margin-left: 30%;" class="btn btn-sm btn-success filter-button-style">Search</a>
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>*@
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
@@ -252,14 +259,14 @@
             <div class="col-sm-1 pull-right">
                 <label>&nbsp;</label>
                 <div class="controls">-->
-                    @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
-                        <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
-                    <!--<a id="filter" onclick="Search()" style="margin-top: 5px; margin-left: 61%;" class="btn btn-sm btn-success filter-button-style">Search</a>-->
-                    @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>*@
-                    @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
+        @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
+            <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
+        <!--<a id="filter" onclick="Search()" style="margin-top: 5px; margin-left: 61%;" class="btn btn-sm btn-success filter-button-style">Search</a>-->
+        @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>*@
+        @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
 
 
-                <!--</div>
+        <!--</div>
             </div>
         </div>-->
         <div class="row">
@@ -322,6 +329,392 @@
     </div>
 
     <script>
+        $(document).ready(function () {
+
+            // For loading all Zone
+
+            $.ajax({
+                type: "post",
+                url: "/GarbageCollection/ZoneList",
+                data: {},
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district;
+                    for (var i = 0; i < data.length; i++) {
+
+                        if (data[i].Value == $('#ZoneId').val()) {
+                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+
+                    }
+                    //district = district + '</select>';
+                    $('#ZoneId').html(district);
+                }
+            });
+
+
+            // For loading all Prabhag
+            $.ajax({
+                type: "post",
+                url: "/GarbageCollection/PrabhagList",
+                data: {},
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district;
+                    for (var i = 0; i < data.length; i++) {
+
+                        if (data[i].Value == $('#PrabhagNo').val()) {
+                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+                    }
+                    //district = district + '</select>';
+                    $('#PrabhagNo').html(district);
+                }
+            });
+
+
+            // For loading all Ward
+            $.ajax({
+                type: "post",
+                url: "/GarbageCollection/WardList",
+                data: {},
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district;
+                    for (var i = 0; i < data.length; i++) {
+
+                        if (data[i].Value == $('#selectWard').val()) {
+                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+                    }
+                    //district = district + '</select>';
+                    $('#selectWard').html(district);
+                }
+            });
+
+
+
+            // For loading all Area
+
+            $.ajax({
+                type: "post",
+                url: "/GarbageCollection/AreaList",
+                data: {},
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district;
+                    for (var i = 0; i < data.length; i++) {
+
+                        if (data[i].Value == $('#selectArea').val()) {
+                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+
+                    }
+                    //district = district + '</select>';
+                    $('#selectArea').html(district);
+                }
+            });
+
+
+
+
+            $.ajax({
+                type: "post",
+                url: "/Location/UserList",
+                data: { stateId: $('#ddlState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    district = '<option value="-1">Select Employee</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    //district = district + '</select>';
+                    $('#selectnumber').html(district);
+                }
+            });
+        });
+
+
+
+        $('input[type=radio][name=radio]').change(function () {
+            myMap();
+        })
+        $('#ZoneId').change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            //if(selectedValue==0){
+            //    ward();
+            //}
+
+            $.ajax({
+                type: "post",
+                url: "/GarbageCollection/LoadPrabhagNoList?",
+                data: { ZoneId: $('#ZoneId').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var prabhag;
+                    for (var i = 0; i < data.length; i++) {
+                        prabhag = prabhag + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+
+                    $('#PrabhagNo').html(prabhag);
+
+                    $('#selectWard').find('option').remove().end().append('<option value="0">--Select Ward--</option>');
+
+                    $('#selectArea').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+                }
+            });
+
+        });
+
+        // for loading Prabhag wise ward
+        $('#PrabhagNo').change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            //if(selectedValue==0){
+            //    ward();
+            //}
+
+            $.ajax({
+                type: "post",
+                url: "/GarbageCollection/LoadWardNoList?",
+                data: { PrabhagId: $('#PrabhagNo').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var ward;
+                    for (var i = 0; i < data.length; i++) {
+                        ward = ward + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+
+                    $('#selectWard').html(ward);
+
+                    $('#selectArea').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+                }
+            });
+
+        });
+
+        // for loading ward wise area
+        $('#selectWard').change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "/GarbageCollection/LoadAreaList?",
+                data: { WardNo: $('#selectWard').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var area;
+                    for (var i = 0; i < data.length; i++) {
+                        area = area + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    $('#selectArea').html(area);
+                }
+            });
+
+        });
+
+
+
+
+
+        //User Wise Location
+        // All User On Map
+
+        function myMap() {
+            var RadioValue = $("input[name='radio']:checked").val();
+            if (RadioValue == 0) {
+                document.getElementById('txt_fdate').value = today;
+                $('#selectnumber').val(-1);
+                $('#seg_type').val(-1);
+                $('#txt_fdate').prop('disabled', 'disabled');
+                $('#selectnumber').prop('disabled', 'disabled');
+                $('#seg_type').prop('disabled', 'disabled');
+
+            } else {
+                $('#txt_fdate').prop('disabled', false);
+                $('#selectnumber').prop('disabled', false);
+                $('#seg_type').prop('disabled', false);
+            }
+            $("#wait").css("display", "block");
+            $("#googleMap").css("display", "none");
+            $.ajax({
+
+                type: "post",
+                url: "/Location/CTPTLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue,
+                //url: "/Location/HouseLocationList",
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    $("#wait").css("display", "none");
+                    $("#googleMap").css("display", "block");
+                    if (data.length == 0)
+                        $('#\\#myModal').modal('show');
+                    debugger;
+                    {
+                        var map = new google.maps.Map(document.getElementById('googleMap'), {
+                            zoom: 12,
+                            center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+
+                    }
+                    var map = new google.maps.Map(document.getElementById('googleMap'), {
+                        zoom: 25,
+                        center: new google.maps.LatLng(data[0].CTPTLat, data[0].CTPTLong),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+
+                    var infowindow = new google.maps.InfoWindow();
+                    bounds = new google.maps.LatLngBounds();
+                    var marker, i;
+                    // alert(data.length);
+                    // Get Addres
+                    var gar_type;
+                    for (i = 0; i < data.length; i++) {
+
+                        if (data[i].CTPTAddress == null) {
+                            data[i].CTPTAddress = '';
+                        }
+
+
+                        /* var mUrl = "../Content/images/img/segregationImg/icon_commercial.png";*/
+                        //var mUrl = "../Content/images/img/segregationImg/commercial.png";
+                        if (data[i].CTPTId != 0) {
+                            debugger;
+                            var mUrl = "../Content/images/img/segregationImg/CTPT_icn.png";
+                        }
+                        if (data[i].TOT == 'CT') {
+                            debugger;
+                            var mUrl = "../Content/images/img/segregationImg/cumulative_toilet.png";
+                        }
+
+                        if (data[i].TOT == 'PT') {
+                            debugger;
+                            var mUrl = "../Content/images/img/segregationImg/Public-Toilet.png";
+                        }
+                        if (data[i].TOT == 'U') {
+                            debugger;
+                            var mUrl = "../Content/images/img/segregationImg/Urinal-Toilet.png";
+                        }
+                        if (data[i].TOT == '') {
+                            debugger;
+                            var mUrl = "../Content/images/img/segregationImg/CTPT_icn.png";
+                        }
+
+                        //if (data[i].lwid != 0) {
+                        //    debugger;
+                        //    var mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png";
+                        //}
+                        //if (data[i].ssid != 0) {
+                        //    debugger;
+                        //    var mUrl = "../../Areas/Street/Content/images/img/segregationImg/Street_Sweep.png";
+                        //}
+
+
+                        //switch (gar_type) {
+
+                        //    case 0:
+                        //        mUrl = "../Content/images/img/segregationImg/commercial_mixed.png"
+                        //        break;
+                        //    case 6:
+                        //        mUrl = "../Content/images/img/segregationImg/commercial_wet.png"
+                        //        break;
+                        //    case 7:
+                        //        mUrl = "../Content/images/img/segregationImg/commercial_dry.png"
+                        //        break;
+                        //    case 3:
+                        //        mUrl = "../Content/images/img/segregationImg/icn_not_specified.png"
+                        //        break;
+                        //}
+
+
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(data[i].CTPTLat, data[i].CTPTLong),
+                            map: map,
+
+                            icon: {
+                                // labelOrigin: new google.maps.Point(16, 65),
+                                url: mUrl
+                            }
+
+                        });
+
+                        //loc = new google.maps.LatLng(data[i].commercialLat, data[i].commercialLong);
+                        loc = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
+
+                        bounds.extend(loc);
+
+                        if (gar_type != null) {
+                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                return function () {
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].CTPTName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>';
+                                    //if (data[i].commercialOwnerMobile != '') {
+                                    //    poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
+                                    //}
+                                    if (data[i].CTPTAddress != '') {
+                                        poptext = poptext + '<p style="text-transform: capitalize;"><b>Address: </b>' + data[i].CTPTAddress + '<p>';
+                                    }
+                                    poptext = poptext + '<b>Date: </b>' + data[i].gcDate + '</p><div style="height:auto; width:150px"><p><b>Time: </b>' + data[i].gcTime + '</p></div></div>';
+                                    infowindow.setContent(poptext);
+                                    infowindow.open(map, marker);
+                                }
+                            })(marker, i));
+                        }
+
+
+                        else {
+                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                return function () {
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].CTPTName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>'
+                                    //if (data[i].commercialOwnerMobile != '') {
+                                    //    poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
+                                    //}
+                                    if (data[i].CTPTAddress != '') {
+                                        poptext = poptext + '<p style="text-transform: capitalize;"><b>Address: </b>' + data[i].CTPTAddress + '</p>';
+                                    }
+                                    poptext = poptext + '</div>';
+                                    infowindow.setContent(poptext);
+                                    infowindow.open(map, marker);
+                                }
+                            })(marker, i));
+                        }
+
+
+                    }
+                    map.fitBounds(bounds);
+                    map.panToBounds(bounds);
+
+                }
+
+            });
+        }
+
+
+
+
+        function Search() {
+            $("#houseId_filter").val("");
+            myMap();
+        }
+
+        function Search_string() {
+            myMap();
+        }
+    </script>
+
+    @*<script>
         $(document).ready(function () {
 
             // For loading all Area
@@ -421,7 +814,7 @@
             $.ajax({
 
                 type: "post",
-                url: "/Location/CTPTLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue ,
+                url: "/Location/CTPTLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue,
                 //url: "/Location/HouseLocationList",
                 datatype: "json",
                 traditional: true,
@@ -452,11 +845,11 @@
                     // Get Addres
                     var gar_type;
                     for (i = 0; i < data.length; i++) {
-                       
+
                         if (data[i].CTPTAddress == null) {
                             data[i].CTPTAddress = '';
                         }
-                      
+
 
                         /* var mUrl = "../Content/images/img/segregationImg/icon_commercial.png";*/
                         //var mUrl = "../Content/images/img/segregationImg/commercial.png";
@@ -481,7 +874,7 @@
                             debugger;
                             var mUrl = "../Content/images/img/segregationImg/CTPT_icn.png";
                         }
-                       
+
                         //if (data[i].lwid != 0) {
                         //    debugger;
                         //    var mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste_Marker.png";
@@ -541,8 +934,8 @@
                                 }
                             })(marker, i));
                         }
-                        
-                       
+
+
                         else {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
@@ -581,8 +974,7 @@
         function Search_string() {
             myMap();
         }
-    </script>
-
+    </script>*@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>
 
     @*Paid API*@

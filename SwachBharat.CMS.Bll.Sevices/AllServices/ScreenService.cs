@@ -9543,7 +9543,7 @@ namespace SwachBharat.CMS.Bll.Services
             try
             {
 
-                WardNo = db.WardNumbers.Where(a => a.PrabhagId == PrabhagId).ToList()
+                WardNo = db.WardNumbers.Where(a => a.PrabhagId == PrabhagId && a.zoneId == db.CommitteeMasters.Where(b => b.Id == PrabhagId).Select(b => b.zoneId).FirstOrDefault()).ToList()
                     .Select(x => new SelectListItem
                     {
                         Text = x.WardNo + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",

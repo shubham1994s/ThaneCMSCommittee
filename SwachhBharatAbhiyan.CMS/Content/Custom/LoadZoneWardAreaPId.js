@@ -10,9 +10,9 @@
         //if(selectedValue==0){
         //    ward();
         //}
-        if (selectedValue == 0) {
-            area();
-        }
+        //if (selectedValue == 0) {
+        //    area();
+        //}
 
         $.ajax({
             type: "post",
@@ -42,9 +42,9 @@
         //if(selectedValue==0){
         //    ward();
         //}
-        if (selectedValue == 0) {
-            area();
-        }
+        //if (selectedValue == 0) {
+        //    area();
+        //}
 
         $.ajax({
             type: "post",
