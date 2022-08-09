@@ -18,9 +18,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-              : base(SwachBharatAppConnection.GetConnectionString(AppId))
+     : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -204,16 +205,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetLiveTracking_Result>("SP_GetLiveTracking");
         }
     
-        public virtual ObjectResult<SP_LiquidWasteDetails_Result> SP_LiquidWasteDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidWasteDetails_Result>("SP_LiquidWasteDetails");
-        }
-    
-        public virtual ObjectResult<SP_StreetSweepDetails_Result> SP_StreetSweepDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepDetails_Result>("SP_StreetSweepDetails");
-        }
-    
         public virtual ObjectResult<SP_LSEmployeeSummary_Result> SP_LSEmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid, string emptype)
         {
             var fromParameter = from.HasValue ?
@@ -257,11 +248,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LiquidCurrentAllUserLocationTest1_Result>("LiquidCurrentAllUserLocationTest1");
         }
     
-        public virtual ObjectResult<SP_LWaste_Count_Result> SP_LWaste_Count()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LWaste_Count_Result>("SP_LWaste_Count");
-        }
-    
         public virtual ObjectResult<SP_SSEmployeeSummary_Result> SP_SSEmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid, string emptype)
         {
             var fromParameter = from.HasValue ?
@@ -298,11 +284,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("tdate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimestreet_Result>("SP_IdelTimestreet", userIdParameter, fdateParameter, tdateParameter);
-        }
-    
-        public virtual ObjectResult<SP_SSweeping_Count_Result> SP_SSweeping_Count()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SSweeping_Count_Result>("SP_SSweeping_Count");
         }
     
         public virtual ObjectResult<SP_LiquidEmployeeTarget_Result> SP_LiquidEmployeeTarget(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
@@ -354,7 +335,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetCurrentAllUserLocationTest1_Result>("StreetCurrentAllUserLocationTest1");
         }
     
-        public virtual ObjectResult<SP_LiquidWasteOnMapDetails_Result> SP_LiquidWasteOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType)
+        public virtual ObjectResult<SP_LiquidWasteOnMapDetails_Result> SP_LiquidWasteOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType, Nullable<int> prabhagId)
         {
             var gcDateParameter = gcDate.HasValue ?
                 new ObjectParameter("gcDate", gcDate) :
@@ -384,40 +365,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("FilterType", filterType) :
                 new ObjectParameter("FilterType", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidWasteOnMapDetails_Result>("SP_LiquidWasteOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter);
-        }
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
     
-        public virtual ObjectResult<SP_StreetSweepingOnMapDetails_Result> SP_StreetSweepingOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType)
-        {
-            var gcDateParameter = gcDate.HasValue ?
-                new ObjectParameter("gcDate", gcDate) :
-                new ObjectParameter("gcDate", typeof(System.DateTime));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            var zoneIdParameter = zoneId.HasValue ?
-                new ObjectParameter("ZoneId", zoneId) :
-                new ObjectParameter("ZoneId", typeof(int));
-    
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("AreaId", areaId) :
-                new ObjectParameter("AreaId", typeof(int));
-    
-            var wardNoParameter = wardNo.HasValue ?
-                new ObjectParameter("WardNo", wardNo) :
-                new ObjectParameter("WardNo", typeof(int));
-    
-            var gcTypeParameter = gcType.HasValue ?
-                new ObjectParameter("gcType", gcType) :
-                new ObjectParameter("gcType", typeof(int));
-    
-            var filterTypeParameter = filterType.HasValue ?
-                new ObjectParameter("FilterType", filterType) :
-                new ObjectParameter("FilterType", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidWasteOnMapDetails_Result>("SP_LiquidWasteOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter, prabhagIdParameter);
         }
     
         public virtual ObjectResult<SP_HouseScanify_Result> SP_HouseScanify(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
@@ -1243,6 +1195,79 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagNo", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SWMGarbageCollection_Result>("SP_SWMGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, wardNoParameter, areaIdParameter, segidParameter, sWMTypeidParameter, prabhagidParameter, prabhagNoParameter);
+        }
+    
+        public virtual ObjectResult<SP_LWaste_Count_Result> SP_LWaste_Count(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LWaste_Count_Result>("SP_LWaste_Count", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_SSweeping_Count_Result> SP_SSweeping_Count(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SSweeping_Count_Result>("SP_SSweeping_Count", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_StreetSweepingOnMapDetails_Result> SP_StreetSweepingOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType, Nullable<int> prabhagId)
+        {
+            var gcDateParameter = gcDate.HasValue ?
+                new ObjectParameter("gcDate", gcDate) :
+                new ObjectParameter("gcDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var gcTypeParameter = gcType.HasValue ?
+                new ObjectParameter("gcType", gcType) :
+                new ObjectParameter("gcType", typeof(int));
+    
+            var filterTypeParameter = filterType.HasValue ?
+                new ObjectParameter("FilterType", filterType) :
+                new ObjectParameter("FilterType", typeof(int));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter, prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_LiquidWasteDetails_Result> SP_LiquidWasteDetails(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidWasteDetails_Result>("SP_LiquidWasteDetails", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_StreetSweepDetails_Result> SP_StreetSweepDetails(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepDetails_Result>("SP_StreetSweepDetails", prabhagIdParameter);
         }
     }
 }

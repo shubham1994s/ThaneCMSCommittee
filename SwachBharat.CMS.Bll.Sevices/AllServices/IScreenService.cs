@@ -180,9 +180,9 @@ namespace SwachBharat.CMS.Bll.Services
         DashBoardVM GetCTPTOnMapDetails(int PrabhagId);
 
         DashBoardVM GetSWMOnMapDetails(int PId);
-        DashBoardVM GetLiquidWasteDetails();
+        DashBoardVM GetLiquidWasteDetails(int PId);
 
-        DashBoardVM GetStreetSweepingDetails();
+        DashBoardVM GetStreetSweepingDetails(int PId);
 
         //Added By Neha (12 July 2019)
         List<SBAEmplyeeIdelGrid> GetIdleTimeRoute(int userId, string Date,int PId);

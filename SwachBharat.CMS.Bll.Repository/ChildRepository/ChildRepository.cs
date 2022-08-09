@@ -638,15 +638,15 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         }
 
-        public DashBoardVM GetLiquidWasteDetails()
+        public DashBoardVM GetLiquidWasteDetails(int PId)
         {
-            return screenService.GetLiquidWasteDetails();
+            return screenService.GetLiquidWasteDetails(PId);
 
         }
 
-        public DashBoardVM GetStreetSweepingDetails()
+        public DashBoardVM GetStreetSweepingDetails(int PId)
         {
-            return screenService.GetStreetSweepingDetails();
+            return screenService.GetStreetSweepingDetails(PId);
 
         }
 

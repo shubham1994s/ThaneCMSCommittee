@@ -221,11 +221,12 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.AppName = SessionHandler.Current.AppName;
 
-                var details = childRepository.GetLiquidWasteDetails();
+                var details = childRepository.GetLiquidWasteDetails(PId);
                 return View(details);
             }
             else
@@ -236,11 +237,13 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
                 ViewBag.lat = SessionHandler.Current.Latitude;
                 ViewBag.lang = SessionHandler.Current.Logitude;
                 ViewBag.AppName = SessionHandler.Current.AppName;
 
-                var details = childRepository.GetLiquidWasteDetails();
+                var details = childRepository.GetLiquidWasteDetails(PId);
                 return View(details);
             }
             else
