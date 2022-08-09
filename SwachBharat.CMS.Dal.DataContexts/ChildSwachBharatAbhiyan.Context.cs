@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-     : base(SwachBharatAppConnection.GetConnectionString(AppId))
+      : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -647,23 +647,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetHSHouseDetails1_Result>("SP_GetHSHouseDetails1", fdateParameter, tdateParameter, useridParameter, qrStatusParameter, sortColumnParameter, sortOrderParameter, offsetValueParameter, pagingSizeParameter, searchTextParameter);
         }
     
-        public virtual ObjectResult<Spbeatmapstatus_Result> Spbeatmapstatus(Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate)
-        {
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(int));
-    
-            var fdateParameter = fdate.HasValue ?
-                new ObjectParameter("fdate", fdate) :
-                new ObjectParameter("fdate", typeof(System.DateTime));
-    
-            var tdateParameter = tdate.HasValue ?
-                new ObjectParameter("tdate", tdate) :
-                new ObjectParameter("tdate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Spbeatmapstatus_Result>("Spbeatmapstatus", useridParameter, fdateParameter, tdateParameter);
-        }
-    
         public virtual ObjectResult<SP_CTPTScanify_Count_Result> SP_CTPTScanify_Count(Nullable<int> prabhagid)
         {
             var prabhagidParameter = prabhagid.HasValue ?
@@ -1268,6 +1251,27 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepDetails_Result>("SP_StreetSweepDetails", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<Spbeatmapstatus_Result> Spbeatmapstatus(Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> prabhagId)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Spbeatmapstatus_Result>("Spbeatmapstatus", useridParameter, fdateParameter, tdateParameter, prabhagIdParameter);
         }
     }
 }

@@ -353,7 +353,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "LiquidGarbage":
-                    gridRepository = new LGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3);
+                    gridRepository = new LGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3,PId);
                     return gridRepository;
                     break;
                 case "StreetGarbage":
@@ -362,7 +362,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "StreetGarbageBeat":
-                    gridRepository = new SSCollectionGridRepositoryBeat(0, searchString, fdate, tdate, userId, appId, param1, param2, param3);
+                    gridRepository = new SSCollectionGridRepositoryBeat(0, searchString, fdate, tdate, userId, appId, param1, param2, param3,PId);
                     return gridRepository;
                     break;
 
@@ -438,7 +438,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "StreetSweepBeatMap":
-                    gridRepository = new StreetSweepBeatPointGrid(0, fdate, tdate, userId, searchString, appId);
+                    gridRepository = new StreetSweepBeatPointGrid(0, fdate, tdate, userId, searchString, appId,PId);
                     return gridRepository;
                     break;
 

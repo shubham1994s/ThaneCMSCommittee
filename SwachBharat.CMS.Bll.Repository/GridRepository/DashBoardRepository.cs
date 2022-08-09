@@ -3085,7 +3085,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         }
 
 
-        public IEnumerable<SBAGrabageCollectionGridRow> GetLiquidGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3)
+        public IEnumerable<SBAGrabageCollectionGridRow> GetLiquidGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3,int PId)
         {
             {
                 DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
@@ -3097,7 +3097,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                    var data1 = (from t1 in db.GarbageCollectionDetails.Where(g => g.gcType == 4 & g.gcDate >= fdate & g.gcDate <= tdate & g.EmployeeType == "L")
+                    var data1 = (from t1 in db.GarbageCollectionDetails.Where(g => g.gcType == 4 & g.gcDate >= fdate & g.gcDate <= tdate & g.EmployeeType == "L" & g.PrabhagId == PId)
                                  join t2 in db.UserMasters on t1.userId equals t2.userId
                                  join gp in db.LiquidWasteDetails on t1.LWId equals gp.LWId into gpp
                                  from t3 in gpp.DefaultIfEmpty()
@@ -3354,7 +3354,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAGrabageCollectionGridRow> GetSSCollectionData_beat(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3)
+        public IEnumerable<SBAGrabageCollectionGridRow> GetSSCollectionData_beat(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3,int PId)
         {
             {
                 DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
@@ -3364,7 +3364,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
 
-                    var ctptcountdata = db.Spbeatmapstatus(userId, fdate, tdate).Where(x => x.RowCounts == param1).FirstOrDefault();
+                    var ctptcountdata = db.Spbeatmapstatus(userId, fdate, tdate, PId).Where(x => x.RowCounts == param1).FirstOrDefault();
                     param1 = null;
 
                     var data1 = (from t1 in db.GarbageCollectionDetails
@@ -4913,7 +4913,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         }
 
 
-        public IEnumerable<SBAStreeSweepBeatDetailsGridRowNew> GetStreetBeatSweepData(long wildcard, DateTime? fdate, DateTime? tdate, int? userId, string SearchString, int appId)
+        public IEnumerable<SBAStreeSweepBeatDetailsGridRowNew> GetStreetBeatSweepData(long wildcard, DateTime? fdate, DateTime? tdate, int? userId, string SearchString, int appId,int PId)
         {
             DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
             var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
@@ -4921,7 +4921,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             string ThumbnaiUrlCMS = appDetails.baseImageUrlCMS + appDetails.basePath + appDetails.StreetQRCode + "/";
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.Spbeatmapstatus(userId <= 0 ? null : userId, fdate, tdate).Select(x => new SBAStreeSweepBeatDetailsGridRowNew
+                var data = db.Spbeatmapstatus(userId <= 0 ? null : userId, fdate, tdate, PId).Select(x => new SBAStreeSweepBeatDetailsGridRowNew
                 {
                     userId = x.userId,
                     RowCounts = x.RowCounts,
