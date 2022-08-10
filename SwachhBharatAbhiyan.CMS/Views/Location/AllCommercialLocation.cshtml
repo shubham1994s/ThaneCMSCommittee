@@ -690,7 +690,7 @@
             $.ajax({
 
                 type: "post",
-                url: "/Location/CommercialLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue + "&ctype=" + $("#c_type").val() + "&SegType=" + $('#seg_typeNew').val(),
+                url: "/Location/CommercialLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue + "&ctype=" + $("#c_type").val() + "&SegType=" + $('#seg_typeNew').val() + "&ZoneId=" + $('#ZoneId').val() + "&PrabhagNo=" + $('#PrabhagNo').val(),
                 //url: "/Location/HouseLocationList",
                 datatype: "json",
                 traditional: true,
