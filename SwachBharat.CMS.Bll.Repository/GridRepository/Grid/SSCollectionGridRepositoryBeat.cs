@@ -14,9 +14,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
         DashBoardRepository objRep = new DashBoardRepository();
 
 
-        public SSCollectionGridRepositoryBeat(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3)
+        public SSCollectionGridRepositoryBeat(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3,int PId)
         {
-            dataSet = objRep.GetSSCollectionData_beat(wildcard, SearchString, fdate, tdate, userId, appId, param1, param2, param3);
+            dataSet = objRep.GetSSCollectionData_beat(wildcard, SearchString, fdate, tdate, userId, appId, param1, param2, param3, PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)

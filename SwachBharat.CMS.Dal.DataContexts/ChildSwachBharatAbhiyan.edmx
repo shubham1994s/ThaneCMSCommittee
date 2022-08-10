@@ -1045,6 +1045,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="userid" Type="int" Mode="In" />
           <Parameter Name="fdate" Type="date" Mode="In" />
           <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="PrabhagId" Type="int" Mode="In" />
         </Function>
         <Function Name="StreetCurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SWMDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1517,11 +1518,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <EntitySet Name="LiquidWasteDetails" EntityType="DevSwachhBharatNagpurModel.LiquidWasteDetail" />
           <EntitySet Name="StreetSweepingDetails" EntityType="DevSwachhBharatNagpurModel.StreetSweepingDetail" />
-          <FunctionImport Name="Spbeatmapstatus" ReturnType="Collection(DevSwachhBharatNagpurModel.Spbeatmapstatus_Result)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
-            <Parameter Name="fdate" Mode="In" Type="DateTime" />
-            <Parameter Name="tdate" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="Daily_Attendance" EntityType="DevSwachhBharatNagpurModel.Daily_Attendance" />
           <EntitySet Name="SS_1_4_ANSWER" EntityType="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" />
           <EntitySet Name="SS_1_4_QUESTION_13july" EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION_13july" />
@@ -1709,9 +1705,15 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_LiquidWasteDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidWasteDetails_Result)">
-            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
+          <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_StreetSweepDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_StreetSweepDetails_Result)">
+          <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Spbeatmapstatus" ReturnType="Collection(DevSwachhBharatNagpurModel.Spbeatmapstatus_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
             <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
          
@@ -2591,17 +2593,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="PrabhagId" Type="Int32" />
           <Property Name="BeatId" Type="Int32" />
         </EntityType>
-        <ComplexType Name="Spbeatmapstatus_Result">
-          <Property Type="Int64" Name="RowCounts" Nullable="true" />
-          <Property Type="Int32" Name="userId" Nullable="true" />
-          <Property Type="String" Name="EmpName" Nullable="true" MaxLength="500" />
-          <Property Type="DateTime" Name="Date" Nullable="true" />
-          <Property Type="Int32" Name="BeatId" Nullable="true" />
-          <Property Type="String" Name="ReferanceId1" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="ReferanceId2" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="ReferanceId3" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Status" Nullable="false" MaxLength="19" />
-        </ComplexType>
         <EntityType Name="Daily_Attendance">
           <Key>
             <PropertyRef Name="daID" />
@@ -3376,6 +3367,17 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="Address" Nullable="false" />
           <Property Type="String" Name="SSLat" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="SSLong" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="Spbeatmapstatus_Result">
+          <Property Type="Int64" Name="RowCounts" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="String" Name="EmpName" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="Int32" Name="BeatId" Nullable="true" />
+          <Property Type="String" Name="ReferanceId1" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ReferanceId2" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ReferanceId3" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="19" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4289,21 +4291,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Spbeatmapstatus" FunctionName="DevSwachhBharatNagpurModel.Store.Spbeatmapstatus">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.Spbeatmapstatus_Result">
-                <ScalarProperty Name="RowCounts" ColumnName="RowCounts" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="BeatId" ColumnName="BeatId" />
-                <ScalarProperty Name="ReferanceId1" ColumnName="ReferanceId1" />
-                <ScalarProperty Name="ReferanceId2" ColumnName="ReferanceId2" />
-                <ScalarProperty Name="ReferanceId3" ColumnName="ReferanceId3" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="Daily_Attendance">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.Daily_Attendance">
               <MappingFragment StoreEntitySet="Daily_Attendance">
@@ -5196,6 +5183,21 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="SSLat" ColumnName="SSLat" />
                 <ScalarProperty Name="SSLong" ColumnName="SSLong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Spbeatmapstatus" FunctionName="DevSwachhBharatNagpurModel.Store.Spbeatmapstatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.Spbeatmapstatus_Result">
+                <ScalarProperty Name="RowCounts" ColumnName="RowCounts" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BeatId" ColumnName="BeatId" />
+                <ScalarProperty Name="ReferanceId1" ColumnName="ReferanceId1" />
+                <ScalarProperty Name="ReferanceId2" ColumnName="ReferanceId2" />
+                <ScalarProperty Name="ReferanceId3" ColumnName="ReferanceId3" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

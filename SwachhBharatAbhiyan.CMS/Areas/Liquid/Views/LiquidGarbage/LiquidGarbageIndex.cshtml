@@ -7,41 +7,50 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
 @Scripts.Render("~/Scripts/IndexScript")
-<script src="~/Content/Custom/LoadZoneWardArea.js"></script>
+@*<script src="~/Content/Custom/LoadZoneWardArea.js"></script>*@
+<script src="~/Content/Custom/LoadZoneWardAreaPId.js"></script>
 <script src="~/Areas/Liquid/Content/Script/DatatableGrid/LiquidGarbageGrid.js"></script>
 <body>
     <div class="container" style="padding-top:8px">
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-4">
                 <div class="controls">
                     @*<label>तारखेपासून / From Date</label>*@
                     <label>From Date</label>
                     <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
                 <div class="controls">
                     @*<label>तारीख पर्यंत / To Date</label>*@
                     <label>To Date</label>
                     <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
                 </div>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Employee</label>
                 <select id="selectnumber" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-2">
+            
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Zone</label>
                 <select id="ZoneId" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Ward/Prabhag</label>
+                <label>Select Prabhag</label>
+                <select id="PrabhagNo" class="form-control form-control form-control-sm"></select>
+            </div>
+            <div class="col-sm-3">
+                @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                <label>Select Ward</label>
                 <select id="WardNo" class="form-control form-control form-control-sm"></select>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Area</label>
                 <select id="AreaId" class="form-control form-control form-control-sm"></select>
