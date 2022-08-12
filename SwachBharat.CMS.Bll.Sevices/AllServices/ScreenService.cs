@@ -1463,6 +1463,7 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             model.WardNo = data.WardNo;
                             model.AreaId = data.AreaId;
+                            model.PrabhagId = data.PrabhagId;
                             model.commercialOwner = data.houseOwner;
                             model.commercialOwnerMar = data.houseOwnerMar;
                             model.commercialAddress = data.houseAddress;
@@ -4507,6 +4508,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.commercialId = data.houseId;
             model.WardNo = data.WardNo;
             model.AreaId = data.AreaId;
+            model.PrabhagId = data.PrabhagId;
             model.commercialOwner = data.houseOwner;
             model.commercialOwnerMar = data.houseOwnerMar;
             model.commercialAddress = data.houseAddress;

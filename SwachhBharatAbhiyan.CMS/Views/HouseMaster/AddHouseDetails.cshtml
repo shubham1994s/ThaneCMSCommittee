@@ -30,6 +30,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.houseId);
+    @Html.HiddenFor(model => model.houseCategory);
 
     <div class="container">
         @*<a onclick="location.reload();" style="color:#3ab59e;margin-right:7%;cursor:pointer" class="pull-right">Refresh</a>*@

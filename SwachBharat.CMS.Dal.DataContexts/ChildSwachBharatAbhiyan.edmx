@@ -492,8 +492,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.StreetSweeping
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
           <Property Name="PrabhagId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.TeritoryMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TeritoryMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -1071,6 +1069,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="SS_1_7_ANSWER" EntityType="Self.SS_1_7_ANSWER" Schema="dbo" Table="SS_1.7_ANSWER" store:Type="Tables" />
           <EntitySet Name="StreetSweepingBeat" EntityType="Self.StreetSweepingBeat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SWMMaster" EntityType="Self.SWMMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeritoryMaster" EntityType="Self.TeritoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VehicleRegistration" EntityType="Self.VehicleRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WardNumber" EntityType="Self.WardNumber" Schema="dbo" store:Type="Tables" />
@@ -1201,15 +1200,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [StreetSweepingDetails].[PrabhagId] AS [PrabhagId], 
     [StreetSweepingDetails].[BeatId] AS [BeatId]
     FROM [dbo].[StreetSweepingDetails] AS [StreetSweepingDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TeritoryMaster" EntityType="Self.TeritoryMaster" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TeritoryMaster].[Id] AS [Id], 
-    [TeritoryMaster].[Area] AS [Area], 
-    [TeritoryMaster].[AreaMar] AS [AreaMar], 
-    [TeritoryMaster].[wardId] AS [wardId], 
-    [TeritoryMaster].[PrabhagId] AS [PrabhagId]
-    FROM [dbo].[TeritoryMaster] AS [TeritoryMaster]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="UserMaster_Liquid" EntityType="Self.UserMaster_Liquid" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1593,7 +1583,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="UserId" Mode="In" Type="Int32" />
             <Parameter Name="prabhagid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="TeritoryMasters" EntityType="DevSwachhBharatNagpurModel.TeritoryMaster" />
           <FunctionImport Name="SP_CommercialScanify_Count" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CommercialScanify_Count_Result)">
           <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1724,6 +1713,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
             <Parameter Name="PId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="TeritoryMasters" EntityType="DevSwachhBharatNagpurModel.TeritoryMaster" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -3129,16 +3119,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="CTPTID" Nullable="true" MaxLength="350" />
           <Property Type="String" Name="CTPT_UserName" Nullable="true" MaxLength="500" />
         </ComplexType>
-        <EntityType Name="TeritoryMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Area" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="AreaMar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="wardId" Type="Int32" />
-          <Property Name="PrabhagId" Type="Int32" />
-        </EntityType>
         <ComplexType Name="SP_CommercialScanify_Count_Result">
           <Property Type="Int32" Name="TotalcommercialCount" Nullable="true" />
           <Property Type="Int32" Name="TotalcommercialLatLongCount" Nullable="true" />
@@ -3388,6 +3368,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="tot" Nullable="false" MaxLength="1" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
         </ComplexType>
+        <EntityType Name="TeritoryMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AreaMar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="wardId" Type="Int32" />
+          <Property Name="PrabhagId" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4887,17 +4877,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="TeritoryMasters">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.TeritoryMaster">
-              <MappingFragment StoreEntitySet="TeritoryMaster">
-                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
-                <ScalarProperty Name="wardId" ColumnName="wardId" />
-                <ScalarProperty Name="AreaMar" ColumnName="AreaMar" />
-                <ScalarProperty Name="Area" ColumnName="Area" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_CommercialScanify_Count" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CommercialScanify_Count">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CommercialScanify_Count_Result">
@@ -5211,6 +5190,17 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="TeritoryMasters">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.TeritoryMaster">
+              <MappingFragment StoreEntitySet="TeritoryMaster">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
+                <ScalarProperty Name="wardId" ColumnName="wardId" />
+                <ScalarProperty Name="AreaMar" ColumnName="AreaMar" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
          
         </EntityContainerMapping>
       </Mapping>

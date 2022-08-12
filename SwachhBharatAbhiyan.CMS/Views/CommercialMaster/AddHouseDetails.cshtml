@@ -474,6 +474,29 @@
 
         });
 
+        $('#WardNo').change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/LoadAreaList?",
+                data: { WardNo: $('#WardNo').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var area;
+                    for (var i = 0; i < data.length; i++) {
+                        area = area + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+
+                    $('#AreaId').html(area);
+
+                   // $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+                }
+            });
+
+        });
                 //$('#houseAddress').change(function () {
                 //    var Addr = $("#houseAddress").val();
                 //    numberOfLineBreaks = (Addr.match(/\n/g) || []).length;
