@@ -3315,7 +3315,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="houseOwnerMobile" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="houseAddress" Nullable="true" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
-          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" />
           <Property Type="String" Name="houseLat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="houseLong" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
@@ -3336,7 +3336,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="commercialOwnerMobile" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="commercialAddress" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="garbageType" Nullable="true" />
-          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" />
           <Property Type="String" Name="commercialLat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="commercialLong" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="CType" Nullable="true" MaxLength="10" />
@@ -3350,7 +3350,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="swmOwnerMobile" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
           <Property Type="String" Name="swmAddress" Nullable="true" MaxLength="500" />
-          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" />
           <Property Type="String" Name="swmLat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="swmLong" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="swmType" Nullable="false" MaxLength="1" />
