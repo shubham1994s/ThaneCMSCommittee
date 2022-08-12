@@ -1463,6 +1463,7 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             model.WardNo = data.WardNo;
                             model.AreaId = data.AreaId;
+                            model.PrabhagId = data.PrabhagId;
                             model.commercialOwner = data.houseOwner;
                             model.commercialOwnerMar = data.houseOwnerMar;
                             model.commercialAddress = data.houseAddress;
@@ -2006,7 +2007,14 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.UserList = CTPTListUser(Emptype, PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
-                            try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
+                            if(atten != null)
+                            {
+                                try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
+                            }
+                            else
+                            {
+                                loc.vehcileNumber = "";
+                            }
 
                             return loc;
                         }
@@ -3910,7 +3918,8 @@ namespace SwachBharat.CMS.Bll.Services
                         swmOwnerMobile = x.swmOwnerMobile,
                         SWMAddress = checkNull(x.swmAddress).Replace("Unnamed Road, ", ""),
                         //    gcDate = dt.ToString("dd-MM-yyyy"),
-                        gcDate = dt,
+                        gcDate = dt.ToString("dd-MM-yyyy"),
+                        //gcDate = dt,
                         gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock                                               
                         SWMLat = x.swmLat,
                         SWMLong = x.swmLong,
@@ -4507,6 +4516,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.commercialId = data.houseId;
             model.WardNo = data.WardNo;
             model.AreaId = data.AreaId;
+            model.PrabhagId = data.PrabhagId;
             model.commercialOwner = data.houseOwner;
             model.commercialOwnerMar = data.houseOwnerMar;
             model.commercialAddress = data.houseAddress;

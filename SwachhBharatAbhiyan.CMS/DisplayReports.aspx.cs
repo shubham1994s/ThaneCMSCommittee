@@ -36,6 +36,7 @@ namespace SwachhBharatAbhiyan.CMS
                     var DyId = Request.QueryString["DyId"];
                     var garbageType = Request.QueryString["Type"];
                     var wastetype = Request.QueryString["Type"];
+                    var PId = Convert.ToString(Session["PrabhagId"]);
 
                     if (UserId == "-1")
                     {
@@ -97,7 +98,7 @@ namespace SwachhBharatAbhiyan.CMS
                     rptViewer.ShowToolBar = true;
                     rptViewer.BackColor = System.Drawing.Color.White;
                     //rptViewer.Parent.ResolveClientUrl.
-
+                   
 
                     if (ReportName == "Ghar Sankalan Tapashil")
                     {
@@ -113,7 +114,7 @@ namespace SwachhBharatAbhiyan.CMS
                     }
                     else if (ReportName == "Ghar Sankalan Tapashil_New")
                     {
-                        ReportParameter[] param = new ReportParameter[7];
+                        ReportParameter[] param = new ReportParameter[8];
                         //param[0] = new ReportParameter("Appid", AppID);
                         param[0] = new ReportParameter("from", FromDate);
                         param[1] = new ReportParameter("to", ToDate);
@@ -122,6 +123,7 @@ namespace SwachhBharatAbhiyan.CMS
                         param[4] = new ReportParameter("DBName", DB_Name);
                         param[5] = new ReportParameter("wastetype", wastetype);
                         param[6] = new ReportParameter("id", AppID);
+                        param[7] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
 
                         // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
