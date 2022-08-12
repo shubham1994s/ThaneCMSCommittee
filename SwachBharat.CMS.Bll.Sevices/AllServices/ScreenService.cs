@@ -2007,7 +2007,14 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.UserList = CTPTListUser(Emptype, PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
-                            try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
+                            if(atten != null)
+                            {
+                                try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
+                            }
+                            else
+                            {
+                                loc.vehcileNumber = "";
+                            }
 
                             return loc;
                         }
