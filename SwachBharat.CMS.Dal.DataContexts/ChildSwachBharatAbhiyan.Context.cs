@@ -1252,15 +1252,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTOnMapDetails_Result>("SP_CTPTOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, prabhagIdParameter, areaIdParameter, wardNoParameter, filterTypeParameter, pIdParameter);
         }
     
-        public virtual ObjectResult<CTPTDetails_Result> CTPTDetails(Nullable<int> prabhagid)
-        {
-            var prabhagidParameter = prabhagid.HasValue ?
-                new ObjectParameter("prabhagid", prabhagid) :
-                new ObjectParameter("prabhagid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CTPTDetails_Result>("CTPTDetails", prabhagidParameter);
-        }
-    
         public virtual ObjectResult<SP_CTPTGarbageCollection_Result> SP_CTPTGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
         {
             var appIdParameter = appId.HasValue ?
@@ -1296,6 +1287,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("Segid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTGarbageCollection_Result>("SP_CTPTGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
+        }
+    
+        public virtual ObjectResult<CTPTDetails_Result> CTPTDetails(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CTPTDetails_Result>("CTPTDetails", prabhagidParameter);
         }
     }
 }
