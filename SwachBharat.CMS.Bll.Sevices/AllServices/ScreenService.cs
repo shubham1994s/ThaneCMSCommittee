@@ -3911,7 +3911,8 @@ namespace SwachBharat.CMS.Bll.Services
                         swmOwnerMobile = x.swmOwnerMobile,
                         SWMAddress = checkNull(x.swmAddress).Replace("Unnamed Road, ", ""),
                         //    gcDate = dt.ToString("dd-MM-yyyy"),
-                        gcDate = dt,
+                        gcDate = dt.ToString("dd-MM-yyyy"),
+                        //gcDate = dt,
                         gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock                                               
                         SWMLat = x.swmLat,
                         SWMLong = x.swmLong,
