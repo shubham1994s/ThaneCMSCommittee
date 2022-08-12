@@ -131,7 +131,7 @@ namespace SwachhBharatAbhiyan.CMS
 
                    else if (ReportName == "Commercial Ghar Sankalan Tapashil_New")
                     {
-                        ReportParameter[] param = new ReportParameter[7];
+                        ReportParameter[] param = new ReportParameter[8];
                         //param[0] = new ReportParameter("Appid", AppID);
                         param[0] = new ReportParameter("from", FromDate);
                         param[1] = new ReportParameter("to", ToDate);
@@ -140,6 +140,7 @@ namespace SwachhBharatAbhiyan.CMS
                         param[4] = new ReportParameter("DBName", DB_Name);
                         param[5] = new ReportParameter("wastetype", wastetype);
                         param[6] = new ReportParameter("id", AppID);
+                        param[7] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
 
                         // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
@@ -582,26 +583,28 @@ namespace SwachhBharatAbhiyan.CMS
 
                     else if (ReportName == "CTPT_Details")
                     {
-                        ReportParameter[] param = new ReportParameter[5];
+                        ReportParameter[] param = new ReportParameter[6];
                       
                         param[0] = new ReportParameter("from", FromDate);
                         param[1] = new ReportParameter("to", ToDate);
                         param[2] = new ReportParameter("userid", UserId);
                         param[3] = new ReportParameter("DBName", DB_Name);
                         param[4] = new ReportParameter("id", AppID);
+                        param[5] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
 
                         // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
                     }
                     else if (ReportName == "SWM_Details")
                     {
-                        ReportParameter[] param = new ReportParameter[5];
+                        ReportParameter[] param = new ReportParameter[6];
 
                         param[0] = new ReportParameter("from", FromDate);
                         param[1] = new ReportParameter("to", ToDate);
                         param[2] = new ReportParameter("userid", UserId);
                         param[3] = new ReportParameter("DBName", DB_Name);
                         param[4] = new ReportParameter("id", AppID);
+                        param[5] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
 
                         // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
