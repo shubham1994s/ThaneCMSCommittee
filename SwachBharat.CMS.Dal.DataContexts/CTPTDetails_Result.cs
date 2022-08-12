@@ -29,7 +29,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string SauchalayQRCode { get; set; }
         public string TOEMC { get; set; }
         public string TOC { get; set; }
-        public Nullable<int> Id1 { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
     }
 }

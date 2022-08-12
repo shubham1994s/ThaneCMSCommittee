@@ -232,31 +232,37 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
 
-                case "ActiveEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "", PId);
+                case "ActiveEmployeeW":
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "","W", PId);
                     return gridRepository;
                     break;
-
+                case "ActiveEmployeeCT":
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "","CT", PId);
+                    return gridRepository;
+                    break;
                 case "LiquidActiveEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "L", PId);
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "L","", PId);
                     return gridRepository;
                     break;
                 case "StreetActiveEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "S", PId);
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "S", "", PId);
                     return gridRepository;
                     break;
 
-                case "NotActiveEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "", PId);
+                case "NotActiveEmployeeW":
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "", "W", PId);
                     return gridRepository;
                     break;
-
+                case "NotActiveEmployeeCT":
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "", "CT", PId);
+                    return gridRepository;
+                    break;
                 case "NotActiveLiquidEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "L", PId);
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "L", "", PId);
                     return gridRepository;
                     break;
                 case "NotActiveStreetEmployee":
-                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "S", PId);
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "S", "", PId);
                     return gridRepository;
                     break;
 
@@ -353,7 +359,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "LiquidGarbage":
-                    gridRepository = new LGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3,PId);
+                    gridRepository = new LGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3,param4,PId);
                     return gridRepository;
                     break;
                 case "StreetGarbage":
