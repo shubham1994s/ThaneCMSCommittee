@@ -19,7 +19,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string swmOwnerMobile { get; set; }
         public string ReferanceId { get; set; }
         public string swmAddress { get; set; }
-        public Nullable<System.DateTime> gcDate { get; set; }
+        public Nullable<int> gcDate { get; set; }
         public string swmLat { get; set; }
         public string swmLong { get; set; }
         public string swmType { get; set; }

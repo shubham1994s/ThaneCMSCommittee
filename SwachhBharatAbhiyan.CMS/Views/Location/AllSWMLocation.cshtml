@@ -199,7 +199,7 @@
             </div>
             <div class="col-sm-2">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Ward / Prabhag</label>
+                <label>Select Ward</label>
                 <select id="selectWard" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
             </div>
             <div class="col-sm-2">
@@ -519,7 +519,7 @@
             $.ajax({
 
                 type: "post",
-                url: "/Location/SWMLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue,
+                url: "/Location/SWMLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue + "&ZoneId=" + $('#ZoneId').val() + "&PrabhagNo=" + $('#PrabhagNo').val(),
                 //url: "/Location/HouseLocationList",
                 datatype: "json",
                 traditional: true,

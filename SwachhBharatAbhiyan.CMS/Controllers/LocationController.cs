@@ -350,7 +350,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         //        return Redirect("/Account/Login");
         //}
 
-        public ActionResult HouseLocationList(string date, string userid, string areaId, string wardNo, string SearchString,string garbageType,string filterType,string ctype,int SegType)
+        public ActionResult HouseLocationList(string date, string userid, string areaId, string wardNo, string SearchString,string garbageType,string filterType,string ctype,int SegType,string ZoneId,string PrabhagNo)
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -358,6 +358,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 int user;
                 int area;
                 int ward;
+                int zone;
+                int prabhag;
                 int ? GarbageType;
                 int FilterType;
                 if (userid == "-1" || userid == "0" || userid == "null")
@@ -400,9 +402,24 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 {
                     date = DateTime.Now.ToShortDateString();
                 }
-
+                if (ZoneId == "-1" || ZoneId == "0" || ZoneId == "null")
+                {
+                    zone = 0;
+                }
+                else
+                {
+                    zone = Convert.ToInt32(ZoneId);
+                }
+                if (PrabhagNo == "-1" || PrabhagNo == "0" || PrabhagNo == "null")
+                {
+                    prabhag = 0;
+                }
+                else
+                {
+                    prabhag = Convert.ToInt32(PrabhagNo);
+                }
                 List<SBALHouseLocationMapView> obj = new List<SBALHouseLocationMapView>();
-                obj = childRepository.GetAllHouseLocation(date, user, area, ward, SearchString, GarbageType, FilterType,null,ctype, SegType,PId);
+                obj = childRepository.GetAllHouseLocation(date, user, area, ward, SearchString, GarbageType, FilterType,null,ctype, SegType,PId,zone,prabhag);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
@@ -418,7 +435,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult CommercialLocationList(string date, string userid, string areaId, string wardNo, string SearchString, string garbageType, string filterType, string ctype, int SegType)
+        public ActionResult CommercialLocationList(string date, string userid, string areaId, string wardNo, string SearchString, string garbageType, string filterType, string ctype, int SegType, string ZoneId, string PrabhagNo)
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -426,6 +443,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 int user;
                 int area;
                 int ward;
+                int zone;
+                int prabhag;
                 int? GarbageType;
                 int FilterType;
                 if (userid == "-1" || userid == "0" || userid == "null")
@@ -483,9 +502,24 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 {
                     date = DateTime.Now.ToShortDateString();
                 }
-
+                if (ZoneId == "-1" || ZoneId == "0" || ZoneId == "null")
+                {
+                    zone = 0;
+                }
+                else
+                {
+                    zone = Convert.ToInt32(ZoneId);
+                }
+                if (PrabhagNo == "-1" || PrabhagNo == "0" || PrabhagNo == "null")
+                {
+                    prabhag = 0;
+                }
+                else
+                {
+                    prabhag = Convert.ToInt32(PrabhagNo);
+                }
                 List<SBALCommercialLocationMapView> obj = new List<SBALCommercialLocationMapView>();
-                obj = childRepository.GetAllCommercialLocation(date, user, area, ward, SearchString, GarbageType, FilterType, null, ctype, SegType,PId);
+                obj = childRepository.GetAllCommercialLocation(date, user, area, ward, SearchString, GarbageType, FilterType, null, ctype, SegType,PId, zone, prabhag);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
@@ -501,7 +535,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult CTPTLocationList(string date, string userid, string areaId, string wardNo, string SearchString,  string filterType, string ctype)
+        public ActionResult CTPTLocationList(string date, string userid, string areaId, string wardNo, string SearchString,  string filterType, string ctype, string ZoneId, string PrabhagNo)
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -510,6 +544,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 int area;
                 int ward;
                 int FilterType;
+                int zone;
+                int prabhag;
                 if (userid == "-1" || userid == "0" || userid == "null")
                 {
                     user = 0;
@@ -548,9 +584,24 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 {
                     date = DateTime.Now.ToShortDateString();
                 }
-
+                if (ZoneId == "-1" || ZoneId == "0" || ZoneId == "null")
+                {
+                    zone = 0;
+                }
+                else
+                {
+                    zone = Convert.ToInt32(ZoneId);
+                }
+                if (PrabhagNo == "-1" || PrabhagNo == "0" || PrabhagNo == "null")
+                {
+                    prabhag = 0;
+                }
+                else
+                {
+                    prabhag = Convert.ToInt32(PrabhagNo);
+                }
                 List<SBALCTPTLocationMapView> obj = new List<SBALCTPTLocationMapView>();
-                obj = childRepository.GetAllCTPTLocation(date, user, area, ward, SearchString,  FilterType, null, PId);
+                obj = childRepository.GetAllCTPTLocation(date, user, area, ward, SearchString,  FilterType, null, PId, zone, prabhag);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
@@ -566,7 +617,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
-        public ActionResult SWMLocationList(string date, string userid, string areaId, string wardNo, string SearchString, string filterType, string ctype)
+        public ActionResult SWMLocationList(string date, string userid, string areaId, string wardNo, string SearchString, string filterType, string ctype, string ZoneId, string PrabhagNo)
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -575,6 +626,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 int area;
                 int ward;
                 int FilterType;
+                int zone;
+                int prabhag;
                 if (userid == "-1" || userid == "0" || userid == "null")
                 {
                     user = 0;
@@ -613,9 +666,24 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 {
                     date = DateTime.Now.ToShortDateString();
                 }
-
+                if (ZoneId == "-1" || ZoneId == "0" || ZoneId == "null")
+                {
+                    zone = 0;
+                }
+                else
+                {
+                    zone = Convert.ToInt32(ZoneId);
+                }
+                if (PrabhagNo == "-1" || PrabhagNo == "0" || PrabhagNo == "null")
+                {
+                    prabhag = 0;
+                }
+                else
+                {
+                    prabhag = Convert.ToInt32(PrabhagNo);
+                }
                 List<SBALSWMLocationMapView> obj = new List<SBALSWMLocationMapView>();
-                obj = childRepository.GetAllSWMLocation(date, user, area, ward, SearchString, FilterType, null, PId);
+                obj = childRepository.GetAllSWMLocation(date, user, area, ward, SearchString, FilterType, null, PId, zone, prabhag);
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{

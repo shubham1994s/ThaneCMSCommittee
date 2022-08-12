@@ -3475,15 +3475,15 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Saurabh (06 June 2019)
 
-        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId)
+        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId, int zoneId, int prabhagId)
         {
 
             List<SBALHouseLocationMapView> houseLocation = new List<SBALHouseLocationMapView>();
-            var zoneId = 0;
+            //var zoneId = 0;
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
+                var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3649,15 +3649,15 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId)
+        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId, int zoneId, int prabhagId)
         {
 
             List<SBALCommercialLocationMapView> houseLocation = new List<SBALCommercialLocationMapView>();
-            var zoneId = 0;
+            //var zoneId = 0;
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_CommercialOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
+                var data = db.SP_CommercialOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3814,15 +3814,15 @@ namespace SwachBharat.CMS.Bll.Services
 
         }
 
-        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype,int PId)
+        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype,int PId, int zoneId, int prabhagId)
         {
 
             List<SBALCTPTLocationMapView> houseLocation = new List<SBALCTPTLocationMapView>();
-            var zoneId = 0;
+            //var zoneId = 0;
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_CTPTOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, FilterType,PId).ToList();
+                var data = db.SP_CTPTOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, FilterType,PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3887,15 +3887,15 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype, int PId)
+        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype, int PId, int zoneId, int prabhagId)
         {
 
             List<SBALSWMLocationMapView> houseLocation = new List<SBALSWMLocationMapView>();
-            var zoneId = 0;
+            //var zoneId = 0;
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_SWMOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, FilterType, PId).ToList();
+                var data = db.SP_SWMOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3910,7 +3910,7 @@ namespace SwachBharat.CMS.Bll.Services
                         swmOwnerMobile = x.swmOwnerMobile,
                         SWMAddress = checkNull(x.swmAddress).Replace("Unnamed Road, ", ""),
                         //    gcDate = dt.ToString("dd-MM-yyyy"),
-                        gcDate = x.gcDate,
+                        gcDate = dt,
                         gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock                                               
                         SWMLat = x.swmLat,
                         SWMLong = x.swmLong,
