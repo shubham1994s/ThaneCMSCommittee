@@ -504,12 +504,32 @@
 
                     $('#WardNo').html(ward);
 
-                    $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+                   // $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
                 }
             });
 
         });
 
+        $('#WardNo').change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/LoadAreaList?",
+                data: { WardNo: $('#WardNo').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var area;
+                    for (var i = 0; i < data.length; i++) {
+                        area = area + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    $('#AreaId').html(area);
+                }
+            });
+
+        });
         $('#SauchalayID').val($('#n').val());
         // alert($('#SauchalayID').val());
         var id = $('#Id').val();

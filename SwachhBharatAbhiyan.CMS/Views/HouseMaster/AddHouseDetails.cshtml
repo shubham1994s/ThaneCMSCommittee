@@ -506,11 +506,12 @@
 
                     $('#WardNo').html(ward);
 
-                    $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+                   // $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
                 }
             });
 
         });
+
         $('#WardNo').change(function () {
             var selectedText = $(this).find("option:selected").text();
             var selectedValue = $(this).val();
