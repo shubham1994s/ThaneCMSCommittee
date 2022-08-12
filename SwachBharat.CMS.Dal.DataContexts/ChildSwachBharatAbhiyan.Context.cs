@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -759,43 +759,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTime_Result>("SP_IdelTime", userIdParameter, fdateParameter, tdateParameter, prabhagidParameter);
         }
     
-        public virtual ObjectResult<SP_CTPTGarbageCollection_Result> SP_CTPTGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
-        {
-            var appIdParameter = appId.HasValue ?
-                new ObjectParameter("appId", appId) :
-                new ObjectParameter("appId", typeof(int));
-    
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(int));
-    
-            var fdateParameter = fdate.HasValue ?
-                new ObjectParameter("fdate", fdate) :
-                new ObjectParameter("fdate", typeof(System.DateTime));
-    
-            var tdateParameter = tdate.HasValue ?
-                new ObjectParameter("tdate", tdate) :
-                new ObjectParameter("tdate", typeof(System.DateTime));
-    
-            var zoneIdParameter = zoneId.HasValue ?
-                new ObjectParameter("ZoneId", zoneId) :
-                new ObjectParameter("ZoneId", typeof(int));
-    
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("AreaId", areaId) :
-                new ObjectParameter("AreaId", typeof(int));
-    
-            var wardNoParameter = wardNo.HasValue ?
-                new ObjectParameter("WardNo", wardNo) :
-                new ObjectParameter("WardNo", typeof(int));
-    
-            var segidParameter = segid.HasValue ?
-                new ObjectParameter("Segid", segid) :
-                new ObjectParameter("Segid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTGarbageCollection_Result>("SP_CTPTGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
-        }
-    
         public virtual ObjectResult<SP_CTPT_Collection_Result> SP_CTPT_Collection(Nullable<System.DateTime> fDate, Nullable<System.DateTime> tDate, Nullable<int> userId, Nullable<int> prabhagid)
         {
             var fDateParameter = fDate.HasValue ?
@@ -1287,6 +1250,52 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTOnMapDetails_Result>("SP_CTPTOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, prabhagIdParameter, areaIdParameter, wardNoParameter, filterTypeParameter, pIdParameter);
+        }
+    
+        public virtual ObjectResult<CTPTDetails_Result> CTPTDetails(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CTPTDetails_Result>("CTPTDetails", prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_CTPTGarbageCollection_Result> SP_CTPTGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> segid)
+        {
+            var appIdParameter = appId.HasValue ?
+                new ObjectParameter("appId", appId) :
+                new ObjectParameter("appId", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var segidParameter = segid.HasValue ?
+                new ObjectParameter("Segid", segid) :
+                new ObjectParameter("Segid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTGarbageCollection_Result>("SP_CTPTGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, segidParameter);
         }
     }
 }

@@ -33,5 +33,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string TimeSpan { get; set; }
         public string gpBeforImage { get; set; }
         public string gpAfterImage { get; set; }
+        public string PrabhagName { get; set; }
     }
 }
