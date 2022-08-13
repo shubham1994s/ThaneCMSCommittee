@@ -19,8 +19,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string LWName { get; set; }
         public string LWAddreLW { get; set; }
         public Nullable<int> gcType { get; set; }
-        public Nullable<System.DateTime> gcDate { get; set; }
+        public Nullable<int> gcDate { get; set; }
         public string LWLat { get; set; }
         public string LWLong { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
     }
 }
