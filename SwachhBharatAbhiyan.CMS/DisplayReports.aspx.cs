@@ -148,13 +148,14 @@ namespace SwachhBharatAbhiyan.CMS
 
                     else if (ReportName == "single Employee collection")
                     {
-                        ReportParameter[] param = new ReportParameter[5];
+                        ReportParameter[] param = new ReportParameter[6];
                         param[0] = new ReportParameter("appid", AppID);
                         param[1] = new ReportParameter("from", FromDate);
                         param[2] = new ReportParameter("to", ToDate);
                         param[3] = new ReportParameter("userid", UserId);
                         //param[4] = new ReportParameter("gartype", garbageType);
                         param[4] = new ReportParameter("DBName", DB_Name);
+                        param[5] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
                     }
                     else if (ReportName == "Dumpyard_Employeeswise")

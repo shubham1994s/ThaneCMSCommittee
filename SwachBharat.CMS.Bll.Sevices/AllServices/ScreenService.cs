@@ -2025,7 +2025,49 @@ namespace SwachBharat.CMS.Bll.Services
 
                     }
                 }
+                else if (Emptype == "WCT")
+                {
+                    using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                    {
+                        //var Details = db.Locations.Where(c => c.EmployeeType == Emptype).FirstOrDefault();
+                        var Details = db.Locations.FirstOrDefault();
 
+                        if (teamId > 0)
+                        {
+                            // Details = db.Locations.Where(c => c.locId == teamId && c.EmployeeType == Emptype).FirstOrDefault();
+                            Details = db.Locations.Where(c => c.locId == teamId).FirstOrDefault();
+                        }
+
+                        if (Details != null)
+                        {
+                            //var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId && c.EmployeeType == Emptype).FirstOrDefault();
+                            var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId).FirstOrDefault();
+                            if (PrabhagId > 0)
+                            {
+                                atten = db.Daily_Attendance.Where(c => c.PrabhagId == PrabhagId).FirstOrDefault();
+                            }
+                            SBALUserLocationMapView loc = new SBALUserLocationMapView();
+                            var user = db.UserMasters.Where(c => c.userId == Details.userId).FirstOrDefault();
+                            loc.userName = user.userName;
+                            loc.date = Convert.ToDateTime(Details.datetime).ToString("dd/MM/yyyy");
+                            loc.time = Convert.ToDateTime(Details.datetime).ToString("hh:mm tt");
+                            loc.address = checkNull(Details.address).Replace("Unnamed Road, ", "");
+                            loc.lat = Details.lat;
+                            loc.log = Details.@long;
+                            loc.UserList = ListUser(Emptype, PrabhagId);
+                            loc.userMobile = user.userMobileNumber;
+                            loc.type = Convert.ToInt32(user.Type);
+                            try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
+
+                            return loc;
+                        }
+                        else
+                        {
+                            return new SBALUserLocationMapView();
+                        }
+
+                    }
+                }
                 else
                 {
                     using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
@@ -4981,25 +5023,55 @@ namespace SwachBharat.CMS.Bll.Services
             {
                 if (PId > 0)
                 {
-                    user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype && c.PrabhagId == PId).ToList()
+                    if(Emptype == "WCT")
+                    {
+                        user = db.UserMasters.Where(c => c.isActive == true && (c.EmployeeType == "CT" || c.EmployeeType == "" || c.EmployeeType == null) && c.PrabhagId == PId).ToList()
 
-                  //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
-                  .Select(x => new SelectListItem
-                  {
-                      Text = x.userName,
-                      Value = x.userId.ToString()
-                  }).OrderBy(t => t.Text).ToList();
+                        //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                        .Select(x => new SelectListItem
+                        {
+                            Text = x.userName,
+                            Value = x.userId.ToString()
+                        }).OrderBy(t => t.Text).ToList();
+                    }
+                    else
+                    {
+                        user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype && c.PrabhagId == PId).ToList()
+
+                       //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                       .Select(x => new SelectListItem
+                       {
+                           Text = x.userName,
+                           Value = x.userId.ToString()
+                       }).OrderBy(t => t.Text).ToList();
+                    }
+             
                 }
                 else
                 {
-                    user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype).ToList()
+                    if (Emptype == "WCT")
+                    {
+                        user = db.UserMasters.Where(c => c.isActive == true && (c.EmployeeType == "CT" || c.EmployeeType == "" || c.EmployeeType == null)).ToList()
 
-                     //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
-                     .Select(x => new SelectListItem
-                     {
-                         Text = x.userName,
-                         Value = x.userId.ToString()
-                     }).OrderBy(t => t.Text).ToList();
+                         //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                         .Select(x => new SelectListItem
+                         {
+                             Text = x.userName,
+                             Value = x.userId.ToString()
+                         }).OrderBy(t => t.Text).ToList();
+                    }
+                    else
+                    {
+                        user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype).ToList()
+
+                         //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                         .Select(x => new SelectListItem
+                         {
+                             Text = x.userName,
+                             Value = x.userId.ToString()
+                         }).OrderBy(t => t.Text).ToList();
+                    }
+                    
                 }
 
 

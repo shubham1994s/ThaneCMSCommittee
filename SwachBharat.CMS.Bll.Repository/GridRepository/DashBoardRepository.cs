@@ -4395,7 +4395,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         int b = Convert.ToInt32(x.WardId.Trim());
                         if (b != 0)
                         {
-                            try { ward = db.WardNumbers.Where(c => c.Id == a).FirstOrDefault().WardNo; }
+                            try { ward = db.WardNumbers.Where(c => c.Id == b).FirstOrDefault().WardNo; }
                             catch { ward = ""; }
                         }
                     }
