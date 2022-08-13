@@ -3612,7 +3612,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
             else if (Emptype == "L")
             {
-                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
+                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3779,7 +3779,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
             else if (Emptype == "L")
             {
-                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
+                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 

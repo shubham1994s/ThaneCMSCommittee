@@ -944,11 +944,12 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="gcDate" Type="datetime" Mode="In" />
           <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="ZoneId" Type="int" Mode="In" />
+          <Parameter Name="PrabhagId" Type="int" Mode="In" />
           <Parameter Name="AreaId" Type="int" Mode="In" />
           <Parameter Name="WardNo" Type="int" Mode="In" />
           <Parameter Name="gcType" Type="int" Mode="In" />
           <Parameter Name="FilterType" Type="int" Mode="In" />
-          <Parameter Name="PrabhagId" Type="int" Mode="In" />
+          <Parameter Name="PId" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_LSEmployeeSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from" Type="date" Mode="In" />
@@ -1426,16 +1427,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <FunctionImport Name="SP_EmployeeLiquidCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeLiquidCollectionType_Result)" />
           <FunctionImport Name="SP_EmployeeStreetCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeStreetCollectionType_Result)" />
           <FunctionImport Name="StreetCurrentAllUserLocationTest1" ReturnType="Collection(DevSwachhBharatNagpurModel.StreetCurrentAllUserLocationTest1_Result)" />
-          <FunctionImport Name="SP_LiquidWasteOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidWasteOnMapDetails_Result)">
-            <Parameter Name="gcDate" Mode="In" Type="DateTime" />
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
-            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
-            <Parameter Name="AreaId" Mode="In" Type="Int32" />
-            <Parameter Name="WardNo" Mode="In" Type="Int32" />
-            <Parameter Name="gcType" Mode="In" Type="Int32" />
-            <Parameter Name="FilterType" Mode="In" Type="Int32" />
-            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="VehicleTypes" EntityType="DevSwachhBharatNagpurModel.VehicleType" />
           <FunctionImport Name="SP_HouseScanify" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
@@ -1718,7 +1709,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="Segid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="CTPTDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.CTPTDetails_Result)">
-            <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LiquidWasteOnMapDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidWasteOnMapDetails_Result)">
+            <Parameter Name="gcDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
+            <Parameter Name="gcType" Mode="In" Type="Int32" />
+            <Parameter Name="FilterType" Mode="In" Type="Int32" />
+            <Parameter Name="PId" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2340,17 +2342,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="mobile" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="lat" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="lang" Nullable="true" MaxLength="200" />
-        </ComplexType>
-        <ComplexType Name="SP_LiquidWasteOnMapDetails_Result">
-          <Property Type="Int32" Name="userId" Nullable="true" />
-          <Property Type="Int32" Name="LWId" Nullable="false" />
-          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="LWName" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="LWAddreLW" Nullable="true" />
-          <Property Type="Int32" Name="gcType" Nullable="true" />
-          <Property Type="DateTime" Name="gcDate" Nullable="true" />
-          <Property Type="String" Name="LWLat" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="LWLong" Nullable="true" MaxLength="500" />
         </ComplexType>
         <EntityType Name="VehicleType">
           <Key>
@@ -3405,6 +3396,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="PrabhagId" Nullable="true" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
         </ComplexType>
+        <ComplexType Name="SP_LiquidWasteOnMapDetails_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Int32" Name="LWId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LWName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LWAddreLW" Nullable="true" />
+          <Property Type="Int32" Name="gcType" Nullable="true" />
+          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="String" Name="LWLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="LWLong" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="PrabhagId" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4008,21 +4011,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="mobile" ColumnName="mobile" />
                 <ScalarProperty Name="lat" ColumnName="lat" />
                 <ScalarProperty Name="lang" ColumnName="lang" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_LiquidWasteOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_LiquidWasteOnMapDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_LiquidWasteOnMapDetails_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="LWId" ColumnName="LWId" />
-                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
-                <ScalarProperty Name="LWName" ColumnName="LWName" />
-                <ScalarProperty Name="LWAddreLW" ColumnName="LWAddreLW" />
-                <ScalarProperty Name="gcType" ColumnName="gcType" />
-                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
-                <ScalarProperty Name="LWLat" ColumnName="LWLat" />
-                <ScalarProperty Name="LWLong" ColumnName="LWLong" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -5250,6 +5238,22 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TOC" ColumnName="TOC" />
                 <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_LiquidWasteOnMapDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_LiquidWasteOnMapDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_LiquidWasteOnMapDetails_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="LWId" ColumnName="LWId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="LWName" ColumnName="LWName" />
+                <ScalarProperty Name="LWAddreLW" ColumnName="LWAddreLW" />
+                <ScalarProperty Name="gcType" ColumnName="gcType" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="LWLat" ColumnName="LWLat" />
+                <ScalarProperty Name="LWLong" ColumnName="LWLong" />
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
