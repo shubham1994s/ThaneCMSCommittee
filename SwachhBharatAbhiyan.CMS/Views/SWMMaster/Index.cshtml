@@ -6,8 +6,34 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
 @Scripts.Render("~/Scripts/IndexScript")
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script src="~/Content/DatatableGrid/SWMDetailsGrid.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.12.1/pagination/input.js"></script>
+    <style>
+        .paginate_input {
+            width: 10%;
+            text-align: center;
+        }
 
+        .dataTables_length select {
+            padding: 2px 1.8rem 1px 8px !important
+        }
+
+        .paginate_button:hover {
+            border: 1px solid #0973cb !important;
+            color: #fff;
+            background: #189cdf !important;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+            cursor: default;
+            color: #666 !important;
+            border: 1px solid transparent !important;
+            background: transparent !important;
+            box-shadow: none;
+            /*  padding:1%*/
+        }
+    </style>
 <body>
 
     <div class="container">
