@@ -2167,7 +2167,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
             else if (Emptype == "L")
             {
-                var data = db.LiquidCurrentAllUserLocationTest1().ToList();
+                var data = db.LiquidCurrentAllUserLocationTest1(PrabhagId).ToList();
                 foreach (var x in data)
                 {
                     //string dat = Convert.ToDateTime(x.datetime).ToString("dd/MM/yyyy");
@@ -2210,7 +2210,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             else if (Emptype == "S")
             {
-                var data = db.StreetCurrentAllUserLocationTest1().ToList();
+                var data = db.StreetCurrentAllUserLocationTest1(PrabhagId).ToList();
                 foreach (var x in data)
                 {
 
