@@ -280,6 +280,7 @@
     <Compile Include="Controllers\ComplaintController.cs" />
     <Compile Include="Controllers\DatableController.cs" />
     <Compile Include="Controllers\DumpYardController.cs" />
+    <Compile Include="Controllers\EmpBeatMapController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GarbageCollectionController.cs" />
     <Compile Include="Controllers\GarbagePointController.cs" />
@@ -1711,6 +1712,7 @@
     <Content Include="Content\DatatableGrid\District.js" />
     <Content Include="Content\DatatableGrid\DumpYardDetailGrid.js" />
     <Content Include="Content\DatatableGrid\DumpYardGrid.js" />
+    <Content Include="Content\DatatableGrid\EmpBeatMapGrid.js" />
     <Content Include="Content\DatatableGrid\EmployeeDetailsGrid.js" />
     <Content Include="Content\DatatableGrid\EmployeeSummaryGrid.js" />
     <Content Include="Content\DatatableGrid\GarbageCountGrid.js" />
@@ -3292,6 +3294,9 @@
     <Content Include="Views\MainMaster\MenuCommitteeIndex.cshtml" />
     <Content Include="Views\MainMaster\CommitteeIndex.cshtml" />
     <Content Include="Views\MainMaster\AddCommitteeDetails.cshtml" />
+    <Content Include="Views\EmpBeatMap\MenuIndex.cshtml" />
+    <Content Include="Views\EmpBeatMap\Index.cshtml" />
+    <Content Include="Views\EmpBeatMap\AddEmpBeatMap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

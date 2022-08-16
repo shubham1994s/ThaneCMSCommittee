@@ -826,7 +826,20 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHouseTimeWiseRoute(date, fTime, tTime, userId, PId);
         }
 
+        public EmpBeatMapVM GetEmpBeatMap(int ebmId)
+        {
+            return screenService.GetEmpBeatMap(ebmId);
+        }
 
+        public void SaveEmpBeatMap(EmpBeatMapVM data)
+        {
+            screenService.SaveEmpBeatMap(data);
+        }
+
+        public List<SelectListItem> ListUserBeatMap(string Emptype)
+        {
+            return screenService.ListUserBeatMap(Emptype);
+        }
     }
 }
 

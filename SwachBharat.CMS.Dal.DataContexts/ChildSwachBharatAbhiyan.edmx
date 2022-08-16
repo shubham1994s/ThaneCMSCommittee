@@ -93,6 +93,15 @@
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
           <Property Name="PrabhagId" Type="int" />
         </EntityType>
+        <EntityType Name="EmpBeatMap">
+          <Key>
+            <PropertyRef Name="ebmId" />
+          </Key>
+          <Property Name="ebmId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="ebmLatLong" Type="nvarchar(max)" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GamePlayerDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GamePlayerDetails">
@@ -736,7 +745,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
         <Function Name="HouseDetails_ReferanceId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ReferanceId" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="LiquidCurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="LiquidCurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrabhagId" Type="int" Mode="In" />
+        </Function>
         <Function Name="PointDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="RPT_1POINT7_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="INSERT_ID" Type="int" Mode="In" />
@@ -1053,7 +1064,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="tdate" Type="date" Mode="In" />
           <Parameter Name="PrabhagId" Type="int" Mode="In" />
         </Function>
-        <Function Name="StreetCurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StreetCurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrabhagId" Type="int" Mode="In" />
+        </Function>
         <Function Name="SWMDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prabhagid" Type="int" Mode="In" />
         </Function>
@@ -1062,6 +1075,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="CommitteeMaster" EntityType="Self.CommitteeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DumpYardDetails" EntityType="Self.DumpYardDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpBeatMap" EntityType="Self.EmpBeatMap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GarbageCollectionDetails" EntityType="Self.GarbageCollectionDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
@@ -1401,7 +1415,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="LiquidCurrentAllUserLocationTest1" ReturnType="Collection(DevSwachhBharatNagpurModel.LiquidCurrentAllUserLocationTest1_Result)" />
           <FunctionImport Name="SP_SSEmployeeSummary" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_SSEmployeeSummary_Result)">
             <Parameter Name="from" Mode="In" Type="DateTime" />
             <Parameter Name="to" Mode="In" Type="DateTime" />
@@ -1426,7 +1439,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <FunctionImport Name="SP_EmployeeLiquidCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeLiquidCollectionType_Result)" />
           <FunctionImport Name="SP_EmployeeStreetCollectionType" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_EmployeeStreetCollectionType_Result)" />
-          <FunctionImport Name="StreetCurrentAllUserLocationTest1" ReturnType="Collection(DevSwachhBharatNagpurModel.StreetCurrentAllUserLocationTest1_Result)" />
           <EntitySet Name="VehicleTypes" EntityType="DevSwachhBharatNagpurModel.VehicleType" />
           <FunctionImport Name="SP_HouseScanify" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
@@ -1721,6 +1733,13 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="gcType" Mode="In" Type="Int32" />
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
             <Parameter Name="PId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="EmpBeatMaps" EntityType="DevSwachhBharatNagpurModel.EmpBeatMap" />
+          <FunctionImport Name="LiquidCurrentAllUserLocationTest1" ReturnType="Collection(DevSwachhBharatNagpurModel.LiquidCurrentAllUserLocationTest1_Result)">
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StreetCurrentAllUserLocationTest1" ReturnType="Collection(DevSwachhBharatNagpurModel.StreetCurrentAllUserLocationTest1_Result)">
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2204,16 +2223,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
         </ComplexType>
-        <ComplexType Name="LiquidCurrentAllUserLocationTest1_Result">
-          <Property Type="Int32" Name="userid" Nullable="true" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="200" />
-          <Property Type="DateTime" Name="datt" Nullable="true" Precision="23" />
-          <Property Type="String" Name="addr" Nullable="true" />
-          <Property Type="String" Name="v" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="mobile" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="lat" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="lang" Nullable="true" MaxLength="200" />
-        </ComplexType>
         <ComplexType Name="SP_SSEmployeeSummary_Result">
           <Property Type="Int32" Name="daID" Nullable="true" />
           <Property Type="Int32" Name="userId" Nullable="false" />
@@ -2332,16 +2341,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="StreetCollectionCount" Nullable="true" />
           <Property Type="Int32" Name="DryWaste" Nullable="true" />
           <Property Type="Int32" Name="WetWaste" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="StreetCurrentAllUserLocationTest1_Result">
-          <Property Type="Int32" Name="userid" Nullable="true" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="200" />
-          <Property Type="DateTime" Name="datt" Nullable="true" Precision="23" />
-          <Property Type="String" Name="addr" Nullable="true" />
-          <Property Type="String" Name="v" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="mobile" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="lat" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="lang" Nullable="true" MaxLength="200" />
         </ComplexType>
         <EntityType Name="VehicleType">
           <Key>
@@ -3408,6 +3407,35 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="LWLong" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="PrabhagId" Nullable="true" />
         </ComplexType>
+        <EntityType Name="EmpBeatMap">
+          <Key>
+            <PropertyRef Name="ebmId" />
+          </Key>
+          <Property Name="ebmId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="ebmLatLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="LiquidCurrentAllUserLocationTest1_Result">
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="datt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="addr" Nullable="true" />
+          <Property Type="String" Name="v" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="lang" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="StreetCurrentAllUserLocationTest1_Result">
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="datt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="addr" Nullable="true" />
+          <Property Type="String" Name="v" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="lang" Nullable="true" MaxLength="200" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3842,20 +3870,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="LiquidCurrentAllUserLocationTest1" FunctionName="DevSwachhBharatNagpurModel.Store.LiquidCurrentAllUserLocationTest1">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.LiquidCurrentAllUserLocationTest1_Result">
-                <ScalarProperty Name="userid" ColumnName="userid" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="datt" ColumnName="datt" />
-                <ScalarProperty Name="addr" ColumnName="addr" />
-                <ScalarProperty Name="v" ColumnName="v" />
-                <ScalarProperty Name="mobile" ColumnName="mobile" />
-                <ScalarProperty Name="lat" ColumnName="lat" />
-                <ScalarProperty Name="lang" ColumnName="lang" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_SSEmployeeSummary" FunctionName="DevSwachhBharatNagpurModel.Store.SP_SSEmployeeSummary">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_SSEmployeeSummary_Result">
@@ -3997,20 +4011,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="StreetCollectionCount" ColumnName="StreetCollectionCount" />
                 <ScalarProperty Name="DryWaste" ColumnName="DryWaste" />
                 <ScalarProperty Name="WetWaste" ColumnName="WetWaste" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="StreetCurrentAllUserLocationTest1" FunctionName="DevSwachhBharatNagpurModel.Store.StreetCurrentAllUserLocationTest1">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.StreetCurrentAllUserLocationTest1_Result">
-                <ScalarProperty Name="userid" ColumnName="userid" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="datt" ColumnName="datt" />
-                <ScalarProperty Name="addr" ColumnName="addr" />
-                <ScalarProperty Name="v" ColumnName="v" />
-                <ScalarProperty Name="mobile" ColumnName="mobile" />
-                <ScalarProperty Name="lat" ColumnName="lat" />
-                <ScalarProperty Name="lang" ColumnName="lang" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -5254,6 +5254,44 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="LWLat" ColumnName="LWLat" />
                 <ScalarProperty Name="LWLong" ColumnName="LWLong" />
                 <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="EmpBeatMaps">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.EmpBeatMap">
+              <MappingFragment StoreEntitySet="EmpBeatMap">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ebmLatLong" ColumnName="ebmLatLong" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="ebmId" ColumnName="ebmId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="LiquidCurrentAllUserLocationTest1" FunctionName="DevSwachhBharatNagpurModel.Store.LiquidCurrentAllUserLocationTest1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.LiquidCurrentAllUserLocationTest1_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="datt" ColumnName="datt" />
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="v" ColumnName="v" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StreetCurrentAllUserLocationTest1" FunctionName="DevSwachhBharatNagpurModel.Store.StreetCurrentAllUserLocationTest1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.StreetCurrentAllUserLocationTest1_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="datt" ColumnName="datt" />
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="v" ColumnName="v" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
