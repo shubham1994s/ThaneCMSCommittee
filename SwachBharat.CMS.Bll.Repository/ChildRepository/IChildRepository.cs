@@ -277,5 +277,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SBALUserLocationMapView> GetUserTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null);
 
         List<SBALUserLocationMapView> GetHouseTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null,int? PId = null);
+
+        EmpBeatMapVM GetEmpBeatMap(int ebmId);
+        void SaveEmpBeatMap(EmpBeatMapVM data);
+        List<SelectListItem> ListUserBeatMap(string Emptype);
+
+
     }
 }

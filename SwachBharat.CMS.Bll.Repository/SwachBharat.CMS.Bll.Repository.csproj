@@ -85,6 +85,7 @@
     <Compile Include="GridRepository\Grid\DumpYardCollectionGridRepository.cs" />
     <Compile Include="GridRepository\Grid\DumpYardGridRepository.cs" />
     <Compile Include="GridRepository\Grid\EmloyeeGridRepository.cs" />
+    <Compile Include="GridRepository\Grid\EmpBeatMapsGridRepository.cs" />
     <Compile Include="GridRepository\Grid\EmpolyeeSummaryGridRepository.cs" />
     <Compile Include="GridRepository\Grid\GarbageCountGridRepository.cs" />
     <Compile Include="GridRepository\Grid\HGarbageCotectionGridRepository.cs" />

@@ -8355,6 +8355,33 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
         #endregion
+
+
+
+        public IEnumerable<SBAEmpBeatMapGridRow> EmpBeatMapsData(long wildcard, string SearchString, int appId)
+        {
+
+            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+                var data = db.EmpBeatMaps.Select(x => new SBAEmpBeatMapGridRow
+                {
+                    ebmId = x.ebmId,
+                    userId = x.userId ?? 0,
+                    Type = x.Type,
+                    userName = db.UserMasters.Where(a => a.userId == x.userId).Select(b => b.userName).FirstOrDefault()
+                }).ToList();
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    var model = data.Where(c => (
+                                        (string.IsNullOrEmpty(c.userName) ? " " : c.userName)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+                    data = model.ToList();
+                }
+
+                return data.OrderByDescending(c => c.userId);
+            }
+        }
+
     }
 }
 #region old Code
