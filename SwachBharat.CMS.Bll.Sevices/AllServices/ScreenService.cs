@@ -4615,7 +4615,8 @@ namespace SwachBharat.CMS.Bll.Services
             model.isActive = data.isActive;
             model.gcTarget = data.gcTarget;
             model.ComgcTarget = data.ComgcTarget;
-            model.EmployeeType = data.EmployeeType == "Waste" ? null : data.EmployeeType;
+          //model.EmployeeType = data.EmployeeType == "Waste" ? null : data.EmployeeType;
+            model.EmployeeType = Emptype;
             model.userDesignation = data.userDesignation;
             model.ZoneId = data.ZoneId;
             model.PrabhagId = data.PrabhagId;
