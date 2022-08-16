@@ -554,7 +554,7 @@
             $.ajax({
                 type: "post",
                 //url: "/LiquidLocation/HouseLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() +  "&garbageType=" + $("#seg_type").val() + "&FilterType=" + RadioValue,
-                url: "/LiquidLocation/HouseLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&FilterType=" + RadioValue,
+                url: "/LiquidLocation/HouseLocationList?date=" + $('#txt_fdate').val() + "&userId=" + $("#selectnumber").val() + "&areaId=" + $("#selectArea").val() + "&wardNo=" + $("#selectWard").val() + "&searchstring=" + $("#houseId_filter").val() + "&FilterType=" + RadioValue + "&ZoneId=" + $('#ZoneId').val() + "&PrabhagNo=" + $('#PrabhagNo').val(),
                 //url: "/Location/HouseLocationList",
                 datatype: "json",
                 traditional: true,

@@ -1463,6 +1463,7 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             model.WardNo = data.WardNo;
                             model.AreaId = data.AreaId;
+                            model.PrabhagId = data.PrabhagId;
                             model.commercialOwner = data.houseOwner;
                             model.commercialOwnerMar = data.houseOwnerMar;
                             model.commercialAddress = data.houseAddress;
@@ -2006,6 +2007,56 @@ namespace SwachBharat.CMS.Bll.Services
                             loc.UserList = CTPTListUser(Emptype, PrabhagId);
                             loc.userMobile = user.userMobileNumber;
                             loc.type = Convert.ToInt32(user.Type);
+                            if(atten != null)
+                            {
+                                try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
+                            }
+                            else
+                            {
+                                loc.vehcileNumber = "";
+                            }
+
+                            return loc;
+                        }
+                        else
+                        {
+                            return new SBALUserLocationMapView();
+                        }
+
+                    }
+                }
+                else if (Emptype == "WCT")
+                {
+                    using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                    {
+                        //var Details = db.Locations.Where(c => c.EmployeeType == Emptype).FirstOrDefault();
+                        var Details = db.Locations.FirstOrDefault();
+
+                        if (teamId > 0)
+                        {
+                            // Details = db.Locations.Where(c => c.locId == teamId && c.EmployeeType == Emptype).FirstOrDefault();
+                            Details = db.Locations.Where(c => c.locId == teamId).FirstOrDefault();
+                        }
+
+                        if (Details != null)
+                        {
+                            //var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId && c.EmployeeType == Emptype).FirstOrDefault();
+                            var atten = db.Daily_Attendance.Where(c => c.daDate == EntityFunctions.TruncateTime(Details.datetime) && c.userId == Details.userId).FirstOrDefault();
+                            if (PrabhagId > 0)
+                            {
+                                atten = db.Daily_Attendance.Where(c => c.PrabhagId == PrabhagId).FirstOrDefault();
+                            }
+                            SBALUserLocationMapView loc = new SBALUserLocationMapView();
+                            var user = db.UserMasters.Where(c => c.userId == Details.userId).FirstOrDefault();
+                            loc.userName = user.userName;
+                            loc.date = Convert.ToDateTime(Details.datetime).ToString("dd/MM/yyyy");
+                            loc.time = Convert.ToDateTime(Details.datetime).ToString("hh:mm tt");
+                            loc.address = checkNull(Details.address).Replace("Unnamed Road, ", "");
+                            loc.lat = Details.lat;
+                            loc.log = Details.@long;
+                            loc.UserList = ListUser(Emptype, PrabhagId);
+                            loc.userMobile = user.userMobileNumber;
+                            loc.type = Convert.ToInt32(user.Type);
                             try { loc.vehcileNumber = atten.vehicleNumber; } catch { loc.vehcileNumber = ""; }
 
                             return loc;
@@ -2017,7 +2068,6 @@ namespace SwachBharat.CMS.Bll.Services
 
                     }
                 }
-
                 else
                 {
                     using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
@@ -3475,15 +3525,15 @@ namespace SwachBharat.CMS.Bll.Services
 
         // Added By Saurabh (06 June 2019)
 
-        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId)
+        public List<SBALHouseLocationMapView> GetAllHouseLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId, int zoneId, int prabhagId)
         {
 
             List<SBALHouseLocationMapView> houseLocation = new List<SBALHouseLocationMapView>();
-            var zoneId = 0;
+            //var zoneId = 0;
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
+                var data = db.SP_HouseOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3562,7 +3612,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
             else if (Emptype == "L")
             {
-                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
+                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3649,15 +3699,15 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId)
+        public List<SBALCommercialLocationMapView> GetAllCommercialLocation(string date, int userid, int areaid, int wardNo, string SearchString, int? GarbageType, int FilterType, string Emptype, string ctype, int SegType, int PId, int zoneId, int prabhagId)
         {
 
             List<SBALCommercialLocationMapView> houseLocation = new List<SBALCommercialLocationMapView>();
-            var zoneId = 0;
+            //var zoneId = 0;
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_CommercialOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
+                var data = db.SP_CommercialOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, SegType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3729,7 +3779,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
             else if (Emptype == "L")
             {
-                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
+                var data = db.SP_LiquidWasteOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3814,15 +3864,15 @@ namespace SwachBharat.CMS.Bll.Services
 
         }
 
-        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype,int PId)
+        public List<SBALCTPTLocationMapView> GetAllCTPTLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype,int PId, int zoneId, int prabhagId)
         {
 
             List<SBALCTPTLocationMapView> houseLocation = new List<SBALCTPTLocationMapView>();
-            var zoneId = 0;
+            //var zoneId = 0;
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_CTPTOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, FilterType,PId).ToList();
+                var data = db.SP_CTPTOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, FilterType,PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3887,15 +3937,15 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype, int PId)
+        public List<SBALSWMLocationMapView> GetAllSWMLocation(string date, int userid, int areaid, int wardNo, string SearchString, int FilterType, string Emptype, int PId, int zoneId, int prabhagId)
         {
 
             List<SBALSWMLocationMapView> houseLocation = new List<SBALSWMLocationMapView>();
-            var zoneId = 0;
+            //var zoneId = 0;
             DateTime dt1 = DateTime.ParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture);
             if (Emptype == null)
             {
-                var data = db.SP_SWMOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, FilterType, PId).ToList();
+                var data = db.SP_SWMOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -3910,7 +3960,8 @@ namespace SwachBharat.CMS.Bll.Services
                         swmOwnerMobile = x.swmOwnerMobile,
                         SWMAddress = checkNull(x.swmAddress).Replace("Unnamed Road, ", ""),
                         //    gcDate = dt.ToString("dd-MM-yyyy"),
-                        gcDate = x.gcDate,
+                        gcDate = dt.ToString("dd-MM-yyyy"),
+                        //gcDate = dt,
                         gcTime = dt.ToString("h:mm tt"), // 7:00 AM // 12 hour clock                                               
                         SWMLat = x.swmLat,
                         SWMLong = x.swmLong,
@@ -4507,6 +4558,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.commercialId = data.houseId;
             model.WardNo = data.WardNo;
             model.AreaId = data.AreaId;
+            model.PrabhagId = data.PrabhagId;
             model.commercialOwner = data.houseOwner;
             model.commercialOwnerMar = data.houseOwnerMar;
             model.commercialAddress = data.houseAddress;
@@ -4971,25 +5023,55 @@ namespace SwachBharat.CMS.Bll.Services
             {
                 if (PId > 0)
                 {
-                    user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype && c.PrabhagId == PId).ToList()
+                    if(Emptype == "WCT")
+                    {
+                        user = db.UserMasters.Where(c => c.isActive == true && (c.EmployeeType == "CT" || c.EmployeeType == "" || c.EmployeeType == null) && c.PrabhagId == PId).ToList()
 
-                  //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
-                  .Select(x => new SelectListItem
-                  {
-                      Text = x.userName,
-                      Value = x.userId.ToString()
-                  }).OrderBy(t => t.Text).ToList();
+                        //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                        .Select(x => new SelectListItem
+                        {
+                            Text = x.userName,
+                            Value = x.userId.ToString()
+                        }).OrderBy(t => t.Text).ToList();
+                    }
+                    else
+                    {
+                        user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype && c.PrabhagId == PId).ToList()
+
+                       //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                       .Select(x => new SelectListItem
+                       {
+                           Text = x.userName,
+                           Value = x.userId.ToString()
+                       }).OrderBy(t => t.Text).ToList();
+                    }
+             
                 }
                 else
                 {
-                    user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype).ToList()
+                    if (Emptype == "WCT")
+                    {
+                        user = db.UserMasters.Where(c => c.isActive == true && (c.EmployeeType == "CT" || c.EmployeeType == "" || c.EmployeeType == null)).ToList()
 
-                     //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
-                     .Select(x => new SelectListItem
-                     {
-                         Text = x.userName,
-                         Value = x.userId.ToString()
-                     }).OrderBy(t => t.Text).ToList();
+                         //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                         .Select(x => new SelectListItem
+                         {
+                             Text = x.userName,
+                             Value = x.userId.ToString()
+                         }).OrderBy(t => t.Text).ToList();
+                    }
+                    else
+                    {
+                        user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype).ToList()
+
+                         //user=  from UserMasters in db.UserMasters join garbage in db.GarbageCollectionDetails on UserMasters.userId equals garbage.userId where garbage.EmployeeType=="CT"
+                         .Select(x => new SelectListItem
+                         {
+                             Text = x.userName,
+                             Value = x.userId.ToString()
+                         }).OrderBy(t => t.Text).ToList();
+                    }
+                    
                 }
 
 

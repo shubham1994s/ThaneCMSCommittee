@@ -30,6 +30,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.houseId);
+    @Html.HiddenFor(model => model.houseCategory);
 
     <div class="container">
         @*<a onclick="location.reload();" style="color:#3ab59e;margin-right:7%;cursor:pointer" class="pull-right">Refresh</a>*@
@@ -505,11 +506,12 @@
 
                     $('#WardNo').html(ward);
 
-                    $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+                   // $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
                 }
             });
 
         });
+
         $('#WardNo').change(function () {
             var selectedText = $(this).find("option:selected").text();
             var selectedValue = $(this).val();

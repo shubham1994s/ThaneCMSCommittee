@@ -400,7 +400,15 @@
 
   //  var today = day + "/" + month + "/" + year;
 
-    var today = month + "/" + day + "/" + year;
+    var url = window.location.hostname;
+    if (url == "localhost") {
+
+        var today = month + "/" + day + "/" + year;
+
+    }
+    else {
+        var today = day + "/" + month + "/" + year;
+    }
 
         document.getElementById('txt_fdate').value = today;
         document.getElementById('txt_tdate').value = today;
@@ -476,7 +484,7 @@
     }
 
   $('.datepicker').datepicker({
-      format: 'dd/mm/yyyy',
+      format: 'mm/dd/yyyy',
       weekStart: 1,
       color: 'red',
       pickTime: false,
