@@ -93,6 +93,15 @@
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
           <Property Name="PrabhagId" Type="int" />
         </EntityType>
+        <EntityType Name="EmpBeatMap">
+          <Key>
+            <PropertyRef Name="ebmId" />
+          </Key>
+          <Property Name="ebmId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="ebmLatLong" Type="nvarchar(max)" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GamePlayerDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GamePlayerDetails">
@@ -1062,6 +1071,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="CommitteeMaster" EntityType="Self.CommitteeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DumpYardDetails" EntityType="Self.DumpYardDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpBeatMap" EntityType="Self.EmpBeatMap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GarbageCollectionDetails" EntityType="Self.GarbageCollectionDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
@@ -1722,6 +1732,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
             <Parameter Name="PId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="EmpBeatMaps" EntityType="DevSwachhBharatNagpurModel.EmpBeatMap" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -3408,6 +3419,15 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="LWLong" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="PrabhagId" Nullable="true" />
         </ComplexType>
+        <EntityType Name="EmpBeatMap">
+          <Key>
+            <PropertyRef Name="ebmId" />
+          </Key>
+          <Property Name="ebmId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="ebmLatLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5257,6 +5277,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="EmpBeatMaps">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.EmpBeatMap">
+              <MappingFragment StoreEntitySet="EmpBeatMap">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ebmLatLong" ColumnName="ebmLatLong" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="ebmId" ColumnName="ebmId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
          
         </EntityContainerMapping>
       </Mapping>

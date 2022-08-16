@@ -9662,5 +9662,163 @@ namespace SwachBharat.CMS.Bll.Services
             return Area;
         }
 
+
+        public EmpBeatMapVM GetEmpBeatMap(int ebmId)
+        {
+            EmpBeatMapVM empBeatMap = new EmpBeatMapVM();
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (ebmId > 0)
+                    {
+                        var model = db.EmpBeatMaps.Where(x => x.ebmId == ebmId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            empBeatMap = fillEmpBeatMapVM(model);
+                        }
+                        else
+                        {
+                            empBeatMap.ebmId = -1;
+                            empBeatMap.userId = -1;
+                        }
+                    }
+                    else
+                    {
+                        empBeatMap.ebmId = -1;
+                        empBeatMap.userId = -1;
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return empBeatMap;
+            }
+
+            return empBeatMap;
+        }
+
+        private EmpBeatMapVM fillEmpBeatMapVM(EmpBeatMap data)
+        {
+            EmpBeatMapVM model = new EmpBeatMapVM();
+            model.ebmId = data.ebmId;
+            model.userId = data.userId;
+            model.Type = data.Type;
+            model.userName = db.UserMasters.Where(x => x.userId == data.userId).Select(x => x.userName).FirstOrDefault();
+            model.ebmLatLong = ConvertStringToLatLong(data.ebmLatLong);
+
+            return model;
+        }
+
+        public List<List<coordinates>> ConvertStringToLatLong(string strCord)
+        {
+            List<List<coordinates>> lstCord = new List<List<coordinates>>();
+            string[] lstPoly = strCord.Split(':');
+            if (lstPoly.Length > 0)
+            {
+                for (var i = 0; i < lstPoly.Length; i++)
+                {
+                    List<coordinates> poly = new List<coordinates>();
+                    string[] lstLatLong = lstPoly[i].Split(';');
+                    if (lstLatLong.Length > 0)
+                    {
+                        for (var j = 0; j < lstLatLong.Length; j++)
+                        {
+                            coordinates cord = new coordinates();
+                            string[] strLatLong = lstLatLong[j].Split(',');
+                            if (strLatLong.Length == 2)
+                            {
+                                cord.lat = Convert.ToDouble(strLatLong[0]);
+                                cord.lng = Convert.ToDouble(strLatLong[1]);
+                            }
+                            poly.Add(cord);
+                        }
+
+                    }
+                    lstCord.Add(poly);
+                }
+            }
+            return lstCord;
+        }
+
+
+        public void SaveEmpBeatMap(EmpBeatMapVM data)
+        {
+            try
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
+                {
+                    if (data.ebmId > 0)
+                    {
+                        var model = db.EmpBeatMaps.Where(x => x.ebmId == data.ebmId).FirstOrDefault();
+                        if (model != null)
+                        {
+                            model.userId = data.userId;
+                            model.Type = data.Type;
+                            model.ebmLatLong = ConvertLatLongToString(data.ebmLatLong);
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        var type = fillEmpBeatMap(data);
+                        db.EmpBeatMaps.Add(type);
+                        db.SaveChanges();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private EmpBeatMap fillEmpBeatMap(EmpBeatMapVM data)
+        {
+            EmpBeatMap model = new EmpBeatMap();
+            model.userId = data.userId;
+            model.Type = data.Type;
+            model.ebmLatLong = ConvertLatLongToString(data.ebmLatLong);
+
+            return model;
+        }
+
+        public string ConvertLatLongToString(List<List<coordinates>> lstCord)
+        {
+            List<string> lstPoly = new List<string>();
+            foreach (var p in lstCord)
+            {
+                List<string> lstLatLong = new List<string>();
+                foreach (var s in p)
+                {
+                    lstLatLong.Add(s.lat + "," + s.lng);
+                }
+                lstPoly.Add(string.Join(";", lstLatLong));
+            }
+            return string.Join(":", lstPoly);
+        }
+
+        public List<SelectListItem> ListUserBeatMap(string Emptype)
+        {
+            var user = new List<SelectListItem>();
+            SelectListItem itemAdd = new SelectListItem() { Text = "--Select Employee--", Value = "0" };
+
+            try
+            {
+                user = db.UserMasters.Where(c => c.isActive == true && c.EmployeeType == Emptype).Where(c => !db.EmpBeatMaps.Any(d => d.userId == c.userId))
+                    .Select(x => new SelectListItem
+                    {
+                        Text = x.userName,
+                        Value = x.userId.ToString()
+                    }).OrderBy(t => t.Text).ToList();
+
+            }
+            catch (Exception ex) { throw ex; }
+
+            return user;
+        }
+
     }
 }

@@ -18,10 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -62,6 +61,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
         public virtual DbSet<TeritoryMaster> TeritoryMasters { get; set; }
+        public virtual DbSet<EmpBeatMap> EmpBeatMaps { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
