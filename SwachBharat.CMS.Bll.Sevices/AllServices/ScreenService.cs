@@ -4673,6 +4673,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.ReferanceId3 = data.SSBeatthree;
             model.ReferanceId4 = data.SSBeatfour;
             model.ReferanceId5 = data.SSBeatfive;
+            model.PrabhagId = data.PrabhagId;
 
             return model;
         }
@@ -4973,7 +4974,7 @@ namespace SwachBharat.CMS.Bll.Services
             return Zone;
         }
 
-        public List<SelectListItem> ListPrabhag(int PId)
+        public List<SelectListItem> ListPrabhag(int ? PId)
         {
             if (PId > 0)
             {
@@ -6318,7 +6319,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.ReferanceId3 = data.SSBeatthree;
                             model.ReferanceId4 = data.SSBeatfour;
                             model.ReferanceId5 = data.SSBeatfive;
-
+                            model.PrabhagId = data.PrabhagId;
                             db.SaveChanges();
                         }
                     }

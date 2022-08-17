@@ -86,7 +86,11 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         public ActionResult AddStreetBeat(int teamId = -1,int ? PrabhagId=0)
         {
             if (SessionHandler.Current.AppId != 0)
-            {
+            { 
+                if(PrabhagId==0)
+                { 
+                PrabhagId = Convert.ToInt32(Session["PrabhagId"]);
+                }
                 StreetSweepVM vehicle = childRepository.GetBeat(teamId,PrabhagId);
                 return View(vehicle);
             }
@@ -101,9 +105,11 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
             if (SessionHandler.Current.AppId != 0)
             {
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
-               
 
-
+                if(StreetSweep.PrabhagId==0 || StreetSweep.PrabhagId == null)
+                { 
+                StreetSweep.PrabhagId= Convert.ToInt32(Session["PrabhagId"]);
+                }
                 StreetSweepVM pointDetails = childRepository.SaveStreetBeat(StreetSweep);
 
 

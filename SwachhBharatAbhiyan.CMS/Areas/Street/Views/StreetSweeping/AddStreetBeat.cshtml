@@ -8,82 +8,154 @@
 @Scripts.Render("~/Scripts/AddEditScript")
 @Scripts.Render("~/bundles/modernizr")
 
-@using (Html.BeginForm("AddStreetBeat", "StreetSweeping", FormMethod.Post, new { enctype = "multipart/form-data", data_toggle = "validator", role = "form" }))
+
+@if (@HttpContext.Current.Session["PrabhagId"].ToString() == "0")
+{
+using (Html.BeginForm("AddStreetBeat", "StreetSweeping", FormMethod.Post, new { enctype = "multipart/form-data", data_toggle = "validator", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.BeatId);
 
 
-<div class="container">
-    <div class="row">
-        <span class="backk">
+    <div class="container">
+        <div class="row">
+            <span class="backk">
 
-            <a href="@Url.Action("StreetBeatIndex", "StreetSweeping")" id="btnBack" class="btn"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
-        </span>
-        <h1 class="add-edit-h1 title_change"> </h1>
-        <div class="panel panel-warning col-sm-12 ">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="row">
+                <a href="@Url.Action("StreetBeatIndex", "StreetSweeping")" id="btnBack" class="btn"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
+            </span>
+            <h1 class="add-edit-h1 title_change"> </h1>
+            <div class="panel panel-warning col-sm-12 ">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
 
-                <div class="col-md-3">
-                    <div class="form-group">
-                        @*@Html.Label("झोन / Zone")*@
-                        @Html.Label("Select Prabhag Samitee")
-                        @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                        @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-                        <span class="text-danger" id="err_vtype"></span>
-                        <span class="help-block with-errors"></span>
+                    <div class="col-md-3" id="divp">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("Select Prabhag Samitee")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_vtype"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("Start Beat")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.SSBeatone, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_vtype"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("Mid Beat")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.SSBeattwo, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_vtype"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("End Beat")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.SSBeatthree, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_vtype"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        @*@Html.Label("झोन / Zone")*@
-                        @Html.Label("Start Beat")
-                        @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                        @Html.DropDownListFor(model => model.SSBeatone, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-                        <span class="text-danger" id="err_vtype"></span>
-                        <span class="help-block with-errors"></span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        @*@Html.Label("झोन / Zone")*@
-                        @Html.Label("Mid Beat")
-                        @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                        @Html.DropDownListFor(model => model.SSBeattwo, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-                        <span class="text-danger" id="err_vtype"></span>
-                        <span class="help-block with-errors"></span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        @*@Html.Label("झोन / Zone")*@
-                        @Html.Label("End Beat")
-                        @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                        @Html.DropDownListFor(model => model.SSBeatthree, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
-                        <span class="text-danger" id="err_vtype"></span>
-                        <span class="help-block with-errors"></span>
-                    </div>
-                </div>
+
             </div>
+        </div>
+        <br /><br />
+        <div class="row">
 
+            <div class="form-group1">
+                <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
+
+                    <span class="glyphicon glyphicon-saved"></span>
+                    <span id="buttonName">Save</span>
+                </button><br /><br>
+            </div>
         </div>
     </div>
-    <br/><br/>
-    <div class="row">
-
-        <div class="form-group1">
-            <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
-
-                <span class="glyphicon glyphicon-saved"></span>
-                <span id="buttonName">Save</span>
-            </button><br /><br>
-        </div>
-    </div>
-</div>
 
 }
+}
+else
+{
+using (Html.BeginForm("AddStreetBeat", "StreetSweeping", FormMethod.Post, new { enctype = "multipart/form-data", data_toggle = "validator", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.BeatId);
 
+
+    <div class="container">
+        <div class="row">
+            <span class="backk">
+
+                <a href="@Url.Action("StreetBeatIndex", "StreetSweeping")" id="btnBack" class="btn"><span class="glyphicon glyphicon-circle-arrow-left"></span>  Back</a>
+            </span>
+            <h1 class="add-edit-h1 title_change"> </h1>
+            <div class="panel panel-warning col-sm-12 ">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+
+                  
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("Start Beat")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.SSBeatone, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_vtype"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("Mid Beat")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.SSBeattwo, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_vtype"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("End Beat")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.SSBeatthree, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            <span class="text-danger" id="err_vtype"></span>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br /><br />
+        <div class="row">
+
+            <div class="form-group1">
+                <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
+
+                    <span class="glyphicon glyphicon-saved"></span>
+                    <span id="buttonName">Save</span>
+                </button><br /><br>
+            </div>
+        </div>
+    </div>
+
+}
+}
 <script>
     $(document).ready(function () {
         var id = $('#Id').val();
@@ -109,13 +181,13 @@
             datatype: "json",
             traditional: true,
             success: function (data) {
-                
+
 
             }
         });
 
         window.location.href = "/Street/StreetSweeping/AddStreetBeat?PrabhagId=" + selectedValue;
-        
+
     });
-   
+
 </script>
