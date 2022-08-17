@@ -4,9 +4,37 @@
 }
 @Styles.Render("~/Content/IndexCSS")
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
 @Scripts.Render("~/Scripts/IndexScript")
 <script src="~/Content/DatatableGrid/SauchalayRegistrationGrid.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.12.1/pagination/input.js"></script>
+
+<style>
+    .paginate_input {
+        width: 10%;
+        text-align: center;
+    }
+
+    .dataTables_length select {
+        padding: 2px 1.8rem 1px 8px !important
+    }
+
+    .paginate_button:hover {
+        border: 1px solid #0973cb !important;
+        color: #fff;
+        background: #189cdf !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+        cursor: default;
+        color: #666 !important;
+        border: 1px solid transparent !important;
+        background: transparent !important;
+        box-shadow: none;
+        /*  padding:1%*/
+    }
+</style>
+
 
 <body>
 
@@ -72,7 +100,7 @@
                         <img class="img-responsive" id="imggg" alt="Photo Not Found">
                         <br />
                         <p> <b id="hide_date">Date: </b><span id="dateData"></span></p>
-                            <p> <b id="hide_add">Address: </b><span id="latlongData"></span></p>
+                        <p> <b id="hide_add">Address: </b><span id="latlongData"></span></p>
                     </center>
 
                     <div class="modal-footer">
