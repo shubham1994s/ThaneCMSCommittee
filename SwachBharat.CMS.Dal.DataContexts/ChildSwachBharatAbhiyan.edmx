@@ -1656,12 +1656,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="FilterType" Mode="In" Type="Int32" />
             <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_LiquidWasteDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidWasteDetails_Result)">
-          <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_StreetSweepDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_StreetSweepDetails_Result)">
-          <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="Spbeatmapstatus" ReturnType="Collection(DevSwachhBharatNagpurModel.Spbeatmapstatus_Result)">
             <Parameter Name="userid" Mode="In" Type="Int32" />
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
@@ -1748,6 +1742,12 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="StreetSweepingBeats" EntityType="DevSwachhBharatNagpurModel.StreetSweepingBeat" />
+          <FunctionImport Name="SP_LiquidWasteDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidWasteDetails_Result)">
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_StreetSweepDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_StreetSweepDetails_Result)">
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -3232,32 +3232,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="SSLong" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="PrabhagId" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="SP_LiquidWasteDetails_Result">
-          <Property Type="Int32" Name="LWId" Nullable="false" />
-          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Images" Nullable="false" />
-          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="Address" Nullable="false" />
-          <Property Type="String" Name="LWLat" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="LWLong" Nullable="false" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="SP_StreetSweepDetails_Result">
-          <Property Type="Int32" Name="SSId" Nullable="false" />
-          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Images" Nullable="false" />
-          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="Address" Nullable="false" />
-          <Property Type="String" Name="SSLat" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="SSLong" Nullable="false" MaxLength="500" />
-        </ComplexType>
         <ComplexType Name="Spbeatmapstatus_Result">
           <Property Type="Int64" Name="RowCounts" Nullable="true" />
           <Property Type="Int32" Name="userId" Nullable="true" />
@@ -3445,6 +3419,34 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="ReferanceId5" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
+        <ComplexType Name="SP_LiquidWasteDetails_Result">
+          <Property Type="Int32" Name="LWId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Images" Nullable="false" />
+          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Prabhag" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="String" Name="LWLat" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="LWLong" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_StreetSweepDetails_Result">
+          <Property Type="Int32" Name="SSId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Images" Nullable="false" />
+          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Prabhag" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="String" Name="SSLat" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="SSLong" Nullable="false" MaxLength="500" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5038,40 +5040,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_LiquidWasteDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_LiquidWasteDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_LiquidWasteDetails_Result">
-                <ScalarProperty Name="LWId" ColumnName="LWId" />
-                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
-                <ScalarProperty Name="Images" ColumnName="Images" />
-                <ScalarProperty Name="Zone" ColumnName="Zone" />
-                <ScalarProperty Name="Ward" ColumnName="Ward" />
-                <ScalarProperty Name="Area" ColumnName="Area" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="LWLat" ColumnName="LWLat" />
-                <ScalarProperty Name="LWLong" ColumnName="LWLong" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_StreetSweepDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_StreetSweepDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_StreetSweepDetails_Result">
-                <ScalarProperty Name="SSId" ColumnName="SSId" />
-                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
-                <ScalarProperty Name="Images" ColumnName="Images" />
-                <ScalarProperty Name="Zone" ColumnName="Zone" />
-                <ScalarProperty Name="Ward" ColumnName="Ward" />
-                <ScalarProperty Name="Area" ColumnName="Area" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="SSLat" ColumnName="SSLat" />
-                <ScalarProperty Name="SSLong" ColumnName="SSLong" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Spbeatmapstatus" FunctionName="DevSwachhBharatNagpurModel.Store.Spbeatmapstatus">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.Spbeatmapstatus_Result">
@@ -5306,6 +5274,42 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_LiquidWasteDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_LiquidWasteDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_LiquidWasteDetails_Result">
+                <ScalarProperty Name="LWId" ColumnName="LWId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Prabhag" ColumnName="Prabhag" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LWLat" ColumnName="LWLat" />
+                <ScalarProperty Name="LWLong" ColumnName="LWLong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_StreetSweepDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_StreetSweepDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_StreetSweepDetails_Result">
+                <ScalarProperty Name="SSId" ColumnName="SSId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Prabhag" ColumnName="Prabhag" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SSLat" ColumnName="SSLat" />
+                <ScalarProperty Name="SSLong" ColumnName="SSLong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
          
         </EntityContainerMapping>
       </Mapping>
