@@ -4066,7 +4066,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
                     //   ).ToList();
-                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + 
+                    (c.HouseNumber == null ? " " : c.HouseNumber) + " " + 
+                    (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + 
+                    (c.ReferanceId == null ? "" : c.ReferanceId) + " " + 
+                    (c.Address == null ? " " : c.Address) + " " + 
+                    (c.Employee == null ? " " : c.Employee) + " " + 
+                    (c.attandDate == null ? " " : c.attandDate) + " " +
+                    (c.PrabhagName == null ? " " : c.PrabhagName) + " " +
+                    (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
                        ).ToList();
 
 
@@ -4138,7 +4146,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
                     //   ).ToList();
-                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + 
+                    (c.HouseNumber == null ? " " : c.HouseNumber) + " " + 
+                    (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + 
+                    (c.ReferanceId == null ? "" : c.ReferanceId) + " " + 
+                    (c.Address == null ? " " : c.Address) + " " + 
+                    (c.Employee == null ? " " : c.Employee) + " " + 
+                    (c.attandDate == null ? " " : c.attandDate) + " " +
+                     (c.PrabhagName == null ? " " : c.PrabhagName) + " " +
+                    (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
                        ).ToList();
 
 
@@ -4208,7 +4224,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
                     //   ).ToList();
-                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + 
+                    (c.HouseNumber == null ? " " : c.HouseNumber) + " " + 
+                    (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + 
+                    (c.ReferanceId == null ? "" : c.ReferanceId) + " " + 
+                    (c.Address == null ? " " : c.Address) + " " + 
+                    (c.Employee == null ? " " : c.Employee) + " " + 
+                    (c.attandDate == null ? " " : c.attandDate) + " " +
+                     (c.PrabhagName == null ? " " : c.PrabhagName) + " " +
+                    (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
                        ).ToList();
 
 
@@ -4273,7 +4297,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
                     //   ).ToList();
-                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + 
+                    (c.HouseNumber == null ? " " : c.HouseNumber) + " " + 
+                    (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + 
+                    (c.ReferanceId == null ? "" : c.ReferanceId) + " " + 
+                    (c.Address == null ? " " : c.Address) + " " + 
+                    (c.Employee == null ? " " : c.Employee) + " " + 
+                    (c.attandDate == null ? " " : c.attandDate) + " " +
+                    (c.PrabhagName == null ? " " : c.PrabhagName) + " " +
+                    (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
                        ).ToList();
 
 
@@ -4341,7 +4373,15 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
                     //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
                     //   ).ToList();
-                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + (c.HouseNumber == null ? " " : c.HouseNumber) + " " + (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + (c.ReferanceId == null ? "" : c.ReferanceId) + " " + (c.Address == null ? " " : c.Address) + " " + (c.Employee == null ? " " : c.Employee) + " " + (c.attandDate == null ? " " : c.attandDate) + " " + (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " + 
+                    (c.HouseNumber == null ? " " : c.HouseNumber) + " " + 
+                    (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " + 
+                    (c.ReferanceId == null ? "" : c.ReferanceId) + " " + 
+                    (c.Address == null ? " " : c.Address) + " " + 
+                    (c.Employee == null ? " " : c.Employee) + " " + 
+                    (c.attandDate == null ? " " : c.attandDate) + " " +
+                    (c.PrabhagName == null ? " " : c.PrabhagName) + " " +
+                    (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
                        ).ToList();
 
 
