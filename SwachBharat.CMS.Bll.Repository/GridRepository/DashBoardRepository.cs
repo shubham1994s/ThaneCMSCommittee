@@ -8401,6 +8401,18 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 {
                     data = data.Where(x => x.PrabhagId == PId).ToList();
                 }
+
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                   
+                    var model = data.Where(c => ((string.IsNullOrEmpty(c.ReferanceId1) ? " " : c.ReferanceId1) + " " +
+                                      (string.IsNullOrEmpty(c.ReferanceId2) ? " " : c.ReferanceId2) + " " +
+                                      (string.IsNullOrEmpty(c.ReferanceId3) ? " " : c.ReferanceId3) + " " +
+                                      (string.IsNullOrEmpty(c.PrabhagName) ? " " : c.PrabhagName)).ToUpper().Contains(searchString.ToUpper())).ToList();
+
+
+                    data = model.ToList();
+                }
                 return data.OrderByDescending(c => c.Id).ToList();
             }
         }
