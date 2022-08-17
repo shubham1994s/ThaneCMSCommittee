@@ -18,10 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-          : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -1003,24 +1002,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter, prabhagIdParameter);
         }
     
-        public virtual ObjectResult<SP_LiquidWasteDetails_Result> SP_LiquidWasteDetails(Nullable<int> prabhagId)
-        {
-            var prabhagIdParameter = prabhagId.HasValue ?
-                new ObjectParameter("PrabhagId", prabhagId) :
-                new ObjectParameter("PrabhagId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidWasteDetails_Result>("SP_LiquidWasteDetails", prabhagIdParameter);
-        }
-    
-        public virtual ObjectResult<SP_StreetSweepDetails_Result> SP_StreetSweepDetails(Nullable<int> prabhagId)
-        {
-            var prabhagIdParameter = prabhagId.HasValue ?
-                new ObjectParameter("PrabhagId", prabhagId) :
-                new ObjectParameter("PrabhagId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepDetails_Result>("SP_StreetSweepDetails", prabhagIdParameter);
-        }
-    
         public virtual ObjectResult<Spbeatmapstatus_Result> Spbeatmapstatus(Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> prabhagId)
         {
             var useridParameter = userid.HasValue ?
@@ -1318,6 +1299,24 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepList_Result>("SP_StreetSweepList", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_LiquidWasteDetails_Result> SP_LiquidWasteDetails(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LiquidWasteDetails_Result>("SP_LiquidWasteDetails", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_StreetSweepDetails_Result> SP_StreetSweepDetails(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepDetails_Result>("SP_StreetSweepDetails", prabhagIdParameter);
         }
     }
 }
