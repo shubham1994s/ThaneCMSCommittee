@@ -104,10 +104,10 @@
     }
 
     .btn-r {
-        margin-top: 5px;
+        margin-top: -5px !important;
         margin-left: 61%;
         position: absolute !important;
-        bottom: 117%;
+       /* bottom: 117%;*/
         right: 5%;
         float: right !important;
     }
@@ -290,7 +290,7 @@
         <div class="row" id="SearchRow">
             <div class="col-sm-12">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="controls">
                             <input type="hidden" value="@ViewBag.lat" id="deflat" />
                             <input type="hidden" value="@ViewBag.lang" id="deflang" />
@@ -299,23 +299,23 @@
                             <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         @*<label>कर्मचारी निवडा / Select Employee</label>*@
                         <label>Select Employee</label>
                         <select id="selectnumber" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
                     </div>
                     @*<div class="col-sm-2">
-                            <label>कर्मचारी निवडा / Select Employee</label>
-                            <label>Select Segregation </label>
-                            <select id="seg_type" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
-                                <option value="-1"> All Records</option>
-                                <option value="0"> Mixed Garbage</option>
-                                <option value="6">Wet Waste</option>
-                                <option value="7"> Dry Waste</option>
-                            </select>
-                        </div>*@
+            <label>कर्मचारी निवडा / Select Employee</label>
+            <label>Select Segregation </label>
+            <select id="seg_type" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
+                <option value="-1"> All Records</option>
+                <option value="0"> Mixed Garbage</option>
+                <option value="6">Wet Waste</option>
+                <option value="7"> Dry Waste</option>
+            </select>
+        </div>*@
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         @*<label>कर्मचारी निवडा / Select Employee</label>*@
                         <label>Select Garbage Type </label>
                         <select id="seg_type" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
@@ -328,12 +328,13 @@
                             <option value="-1">Garbage Type Not Specified</option>
                         </select>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-sm-3">
                         <label>Select Zone</label>
                         <select id="ZoneId" class="form-control form-control form-control-sm"></select>
                     </div>
+                </div>
+                <div class="row">
+                    
                     <div class="col-sm-3">
                         <label>Select Prabhag</label>
                         <select id="PrabhagNo" class="form-control form-control form-control-sm"></select>
@@ -370,7 +371,7 @@
                 <div class="controls">
                     @*<input data-background-color="filter-button-box-color" style="margin-top:25px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Search" id="filter" onclick="Search()" />
                         <button id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">User Wise Route</button>*@
-                    <a id="filter" onclick="Search()" style="margin-top: 5px; margin-left: 61%;" class="btn btn-sm btn-success filter-button-style">Search</a>
+                    <a id="filter" onclick="Search()" style="margin-top: 5px;" class="btn btn-sm btn-success filter-button-style">Search</a>
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" onclick="userroute()">Route</a>*@
                     @*<a id="drop" style="margin-top:25px" class="btn btn-sm btn-success filter-button-style" href="~/Location/ShowGrid">Back</a>*@
 
