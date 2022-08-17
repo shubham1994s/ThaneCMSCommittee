@@ -83,11 +83,11 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         }
 
 
-        public ActionResult AddStreetBeat(int teamId = -1)
+        public ActionResult AddStreetBeat(int teamId = -1,int ? PrabhagId=0)
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                StreetSweepVM vehicle = childRepository.GetBeat(teamId);
+                StreetSweepVM vehicle = childRepository.GetBeat(teamId,PrabhagId);
                 return View(vehicle);
             }
             else

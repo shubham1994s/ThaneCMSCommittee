@@ -30,7 +30,7 @@ namespace SwachBharat.CMS.Bll.Services
         VehicleTypeVM GetVehicleTypeDetails(int teamId);
         VehicleRegVM GetVehicleDetails(int teamId,int PId);
 
-        StreetSweepVM GetBeatDetails(int teamId);
+        StreetSweepVM GetBeatDetails(int teamId, int ? PId);
 
         void DeletVehicleTypeDetails(int teamId);
         void SaveVehicleTypeDetails(VehicleTypeVM type);

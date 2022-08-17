@@ -18,9 +18,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-       : base(SwachBharatAppConnection.GetConnectionString(AppId))
+          : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -44,7 +45,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<GarbageCollectionDetail> GarbageCollectionDetails { get; set; }
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<VehicleRegistration> VehicleRegistrations { get; set; }
-        public virtual DbSet<StreetSweepingBeat> StreetSweepingBeats { get; set; }
         public virtual DbSet<LiquidWasteDetail> LiquidWasteDetails { get; set; }
         public virtual DbSet<StreetSweepingDetail> StreetSweepingDetails { get; set; }
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
@@ -62,6 +62,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<SauchalayAddress> SauchalayAddresses { get; set; }
         public virtual DbSet<TeritoryMaster> TeritoryMasters { get; set; }
         public virtual DbSet<EmpBeatMap> EmpBeatMaps { get; set; }
+        public virtual DbSet<StreetSweepingBeat> StreetSweepingBeats { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -80,13 +81,17 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAttendenceDetailsTotal_Result>("GetAttendenceDetailsTotal", userIdParameter, yearParameter, monthParameter);
         }
     
-        public virtual ObjectResult<CollecctionArea_Result> CollecctionArea(Nullable<int> type)
+        public virtual ObjectResult<CollecctionArea_Result> CollecctionArea(Nullable<int> type, Nullable<int> prabhagId)
         {
             var typeParameter = type.HasValue ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CollecctionArea_Result>("CollecctionArea", typeParameter);
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CollecctionArea_Result>("CollecctionArea", typeParameter, prabhagIdParameter);
         }
     
         public virtual ObjectResult<CurrentAllUserLocation_Result3> CurrentAllUserLocation()
@@ -386,11 +391,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<GetVehicleDetails_Result> GetVehicleDetails()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetVehicleDetails_Result>("GetVehicleDetails");
-        }
-    
-        public virtual ObjectResult<SP_StreetSweepList_Result> SP_StreetSweepList()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepList_Result>("SP_StreetSweepList");
         }
     
         public virtual ObjectResult<SP_GetHSHouseDetails_Result> SP_GetHSHouseDetails(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid, string sortColumn, string sortOrder, Nullable<int> offsetValue, Nullable<int> pagingSize, string searchText)
@@ -1309,6 +1309,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StreetCurrentAllUserLocationTest1_Result>("StreetCurrentAllUserLocationTest1", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_StreetSweepList_Result> SP_StreetSweepList(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepList_Result>("SP_StreetSweepList", prabhagIdParameter);
         }
     }
 }

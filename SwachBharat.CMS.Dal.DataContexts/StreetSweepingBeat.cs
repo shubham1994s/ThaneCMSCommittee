@@ -21,5 +21,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string ReferanceId3 { get; set; }
         public string ReferanceId4 { get; set; }
         public string ReferanceId5 { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
     }
 }

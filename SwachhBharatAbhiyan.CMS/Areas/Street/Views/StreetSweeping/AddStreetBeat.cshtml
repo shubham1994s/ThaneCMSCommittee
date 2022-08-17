@@ -24,7 +24,18 @@
         <div class="panel panel-warning col-sm-12 ">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="row">
-                <div class="col-md-4">
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @*@Html.Label("झोन / Zone")*@
+                        @Html.Label("Select Prabhag Samitee")
+                        @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                        @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                        <span class="text-danger" id="err_vtype"></span>
+                        <span class="help-block with-errors"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
                     <div class="form-group">
                         @*@Html.Label("झोन / Zone")*@
                         @Html.Label("Start Beat")
@@ -34,7 +45,7 @@
                         <span class="help-block with-errors"></span>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         @*@Html.Label("झोन / Zone")*@
                         @Html.Label("Mid Beat")
@@ -44,7 +55,7 @@
                         <span class="help-block with-errors"></span>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         @*@Html.Label("झोन / Zone")*@
                         @Html.Label("End Beat")
@@ -85,6 +96,26 @@
             //$('.title_change').text(" वाहन तपशील सादर करा / Add Vehicle Details ");
             $('.title_change').text("Create Street Sweeping Beat ");
         }
+    });
+
+    $('#PrabhagId').change(function () {
+
+        var selectedText = $(this).find("option:selected").text();
+        var selectedValue = $(this).val();
+        $.ajax({
+            type: "get",
+            url: "/StreetSweeping/AddStreetBeat?",
+            data: { PrabhagId: $('#PrabhagId').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                
+
+            }
+        });
+
+        window.location.href = "/Street/StreetSweeping/AddStreetBeat?PrabhagId=" + selectedValue;
+        
     });
    
 </script>
