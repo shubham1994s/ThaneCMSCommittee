@@ -459,23 +459,25 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        public StreetSweepVM GetBeatDetails(int teamId)
+        public StreetSweepVM GetBeatDetails(int teamId,int ? PId)
         {
             try
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
                 {
-                    var Details = db.SP_StreetSweepList().Where(x => x.SSId == teamId).FirstOrDefault();
+                    var Details = db.SP_StreetSweepList(PId).Where(x => x.SSId == teamId).FirstOrDefault();
                     if (Details != null)
                     {
                         StreetSweepVM vechile = new StreetSweepVM();
-                        vechile.BeatList = ListBeat();
+                        vechile.BeatList = ListBeat(PId);
+                        vechile.PrabhagList = ListPrabhag(0);
                         return vechile;
                     }
                     else
                     {
                         StreetSweepVM vechile = new StreetSweepVM();
-                        vechile.BeatList = ListBeat();
+                        vechile.BeatList = ListBeat(PId);
+                        vechile.PrabhagList = ListPrabhag(0);
                         return vechile;
                     }
                 }
@@ -4827,14 +4829,14 @@ namespace SwachBharat.CMS.Bll.Services
         }
 
 
-        public List<SelectListItem> ListBeat()
+        public List<SelectListItem> ListBeat(int? PId = 0)
         {
             var Vehicle = new List<SelectListItem>();
             SelectListItem itemAdd = new SelectListItem() { Text = "--Select Beat--", Value = "0" };
 
             try
             {
-                Vehicle = db.SP_StreetSweepList().ToList()
+                Vehicle = db.SP_StreetSweepList(PId).ToList()
                     .Select(x => new SelectListItem
                     {
                         Text = x.ReferanceId,
@@ -6329,7 +6331,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                 }
                 var SSId = db.StreetSweepingBeats.OrderByDescending(x => x.BeatId).Select(x => x.BeatId).FirstOrDefault();
-                StreetSweepVM vv = GetBeatDetails(SSId);
+                StreetSweepVM vv = GetBeatDetails(SSId,data.PrabhagId);
                 return vv;
             }
             catch (Exception Ex)
