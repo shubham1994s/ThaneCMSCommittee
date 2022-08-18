@@ -222,21 +222,23 @@ namespace SwachhBharatAbhiyan.CMS
                     }
                     else if (ReportName == "Areawise Garbage Type Collection")
                     {
-                        ReportParameter[] param = new ReportParameter[4];
+                        ReportParameter[] param = new ReportParameter[5];
                         param[0] = new ReportParameter("appid", AppID);
                         param[1] = new ReportParameter("from", FromDate);
                         param[2] = new ReportParameter("to", ToDate);
                         param[3] = new ReportParameter("DBName", DB_Name);
+                        param[4] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
 
                     }
                     else if (ReportName == "Dashboard_1")
                     {
-                        ReportParameter[] param = new ReportParameter[4];
+                        ReportParameter[] param = new ReportParameter[5];
                         param[0] = new ReportParameter("appid", AppID);
                         param[1] = new ReportParameter("from", FromDate);
                         param[2] = new ReportParameter("to", ToDate);
                         param[3] = new ReportParameter("DBName", DB_Name);
+                        param[4] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
 
                     }
@@ -255,11 +257,12 @@ namespace SwachhBharatAbhiyan.CMS
                           
                     else if (ReportName == "Housewise Garbage Collection")
                     {
-                        ReportParameter[] param = new ReportParameter[4];
+                        ReportParameter[] param = new ReportParameter[5];
                         param[0] = new ReportParameter("appid", AppID);
                         param[1] = new ReportParameter("from", FromDate);
                         param[2] = new ReportParameter("to", ToDate);
                         param[3] = new ReportParameter("DBName", DB_Name);
+                        param[4] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
 
                     }
@@ -276,13 +279,25 @@ namespace SwachhBharatAbhiyan.CMS
                     }
                     else if (ReportName == "Daywise Collection")
                     {
-                        ReportParameter[] param = new ReportParameter[4];
+                        ReportParameter[] param = new ReportParameter[5];
                         param[0] = new ReportParameter("appid", AppID);
                         param[1] = new ReportParameter("from", FromDate);
                         param[2] = new ReportParameter("to", ToDate);
                         param[3] = new ReportParameter("DBName", DB_Name);
+                        param[4] = new ReportParameter("PId", PId);
                         rptViewer.ServerReport.SetParameters(param);
 
+                    }
+                    else if (ReportName == "Employee_Performance_Report")
+                    {
+                        ReportParameter[] param = new ReportParameter[5];
+                        param[0] = new ReportParameter("appid", AppID);
+                        param[1] = new ReportParameter("DBName", DB_Name);
+                        param[2] = new ReportParameter("from", FromDate);
+                        param[3] = new ReportParameter("to", ToDate);
+                        param[4] = new ReportParameter("PId", PId);
+
+                        rptViewer.ServerReport.SetParameters(param);
                     }
                     else if (ReportName == "T20_1.1")
                     {
@@ -341,16 +356,7 @@ namespace SwachhBharatAbhiyan.CMS
                         param[4] = new ReportParameter("INSERT_ID", INSERT_ID);
                         rptViewer.ServerReport.SetParameters(param);
                     }
-                    else if (ReportName == "Employee_Performance_Report")
-                     {
-                        ReportParameter[] param = new ReportParameter[4];
-                        param[0] = new ReportParameter("appid", AppID);
-                        param[1] = new ReportParameter("DBName", DB_Name);
-                        param[2] = new ReportParameter("from", FromDate);
-                        param[3] = new ReportParameter("to", ToDate);
-                       
-                        rptViewer.ServerReport.SetParameters(param);
-                    }
+                 
 
                     // Liquid Report Start
                    else if (ReportName == "Liquid Ghar Sankalan Tapashil")
