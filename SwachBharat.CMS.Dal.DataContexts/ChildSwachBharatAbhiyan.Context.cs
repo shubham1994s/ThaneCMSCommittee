@@ -18,9 +18,11 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                : base(SwachBharatAppConnection.GetConnectionString(AppId))
+       : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -317,16 +319,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("userid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetEmployeeTarget_Result>("SP_StreetEmployeeTarget", fdateParameter, tdateParameter, useridParameter);
-        }
-    
-        public virtual ObjectResult<SP_EmployeeLiquidCollectionType_Result> SP_EmployeeLiquidCollectionType()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeLiquidCollectionType_Result>("SP_EmployeeLiquidCollectionType");
-        }
-    
-        public virtual ObjectResult<SP_EmployeeStreetCollectionType_Result> SP_EmployeeStreetCollectionType()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeStreetCollectionType_Result>("SP_EmployeeStreetCollectionType");
         }
     
         public virtual ObjectResult<SP_HouseScanify_Result> SP_HouseScanify(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
@@ -1317,6 +1309,24 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepDetails_Result>("SP_StreetSweepDetails", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_EmployeeLiquidCollectionType_Result> SP_EmployeeLiquidCollectionType(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeLiquidCollectionType_Result>("SP_EmployeeLiquidCollectionType", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_EmployeeStreetCollectionType_Result> SP_EmployeeStreetCollectionType(Nullable<int> prabhagId)
+        {
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeStreetCollectionType_Result>("SP_EmployeeStreetCollectionType", prabhagIdParameter);
         }
     }
 }

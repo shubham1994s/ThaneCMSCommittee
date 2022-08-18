@@ -37,12 +37,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<EmployeeStreetCollectionType> getEmployeeStreetCollectionType(int appId)
+        public IEnumerable<EmployeeStreetCollectionType> getEmployeeStreetCollectionType(int appId,int PId)
         {
             List<EmployeeStreetCollectionType> obj = new List<EmployeeStreetCollectionType>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_EmployeeStreetCollectionType().ToList();
+                var data = db.SP_EmployeeStreetCollectionType(PId).ToList();
 
                 foreach (var x in data)
                 {
