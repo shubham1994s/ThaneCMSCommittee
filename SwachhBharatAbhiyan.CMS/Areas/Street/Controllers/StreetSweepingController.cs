@@ -183,7 +183,9 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var guid = Guid.NewGuid().ToString().Split('-');
                 string image_Guid = DateTime.Now.ToString("MMddyyyymmss") + "_" + guid[1] + ".jpg";
-
+             
+                
+                var details = childRepository.GetStreetSweepId(StreetSweep.SSId, PId);
                 //Converting  Url to image 
                 // var url = string.Format("http://api.qrserver.com/v1/create-qr-code/?data="+ point.ReferanceId);
 
@@ -208,7 +210,23 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 response.Close();
                 remoteStream.Close();
                 readStream.Close();
-                StreetSweep.SSQRCode = image_Guid;
+                if(details.SSQRCode == "/Images/QRcode.png" || details.SSQRCode == "/Images/default_not_upload.png")
+                {
+                    StreetSweep.SSQRCode = image_Guid;
+                }
+                else
+                {
+                    string bb = details.SSQRCode;
+                    var ii = bb.Split('/');
+                    if (ii.Length == 6)
+                    {
+                        StreetSweep.SSQRCode = ii[ii.Length - 1];
+                    }
+                    if (ii.Length > 6)
+                    {
+                        StreetSweep.SSQRCode = ii[ii.Length - 1];
+                    }
+                }
 
                 StreetSweepVM pointDetails = childRepository.SaveStreetSweep(StreetSweep, PId);
 
