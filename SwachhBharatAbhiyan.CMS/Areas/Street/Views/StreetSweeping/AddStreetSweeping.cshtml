@@ -50,6 +50,8 @@
             </div>
         </div>
         <div class="row">
+
+
             <div class="col-md-6">
                 <div class="form-group">
                     @*@Html.Label("नाव / Name")*@
@@ -77,10 +79,23 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
+
                 <div class="form-group">
                     @*@Html.Label("वार्ड क्रमांक / Ward No")*@
-                    @Html.Label("Ward / Prabhag")
+                    @Html.Label("Prabhag")
+                    @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopWard()"> + Add Ward </a>*@
+
+                    @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                    @Html.ValidationMessageFor(model => model.PrabhagId, "", new { @class = "text-danger" })
+                    <span class="text-danger" id="err_ward"></span>
+                    <span class="help-block with-errors"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*@Html.Label("वार्ड क्रमांक / Ward No")*@
+                    @Html.Label("Ward")
                     @Html.DropDownListFor(model => model.WardNo, Model.WardList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
                     @Html.ValidationMessageFor(model => model.WardNo, "", new { @class = "text-danger" })
                     <span class="text-danger" id="err_ward"></span>
@@ -88,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     @Html.Label("Area")
                     @Html.DropDownListFor(model => model.areaId, Model.AreaList, new { style = "font-family:Arial, FontAwesome", @class = "form-control RequiredInput validate[required] RequiredInput" })
@@ -206,13 +221,39 @@
 
 
         $('#ZoneId').change(function () {
+            debugger;
             var selectedText = $(this).find("option:selected").text();
             var selectedValue = $(this).val();
 
             $.ajax({
                 type: "post",
-                url: "/DumpYard/LoadWardNoList?",
+                url: "/HouseMaster/LoadPrabhagNoList?",
                 data: { ZoneId: $('#ZoneId').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var prabhag;
+                    for (var i = 0; i < data.length; i++) {
+                        prabhag = prabhag + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+
+                    $('#PrabhagId').html(prabhag);
+
+
+                }
+            });
+
+        });
+
+        $('#PrabhagId').change(function () {
+            debugger;
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/LoadWardNoList?",
+                data: { PrabhagId: $('#PrabhagId').val() },
                 datatype: "json",
                 traditional: true,
                 success: function (data) {
@@ -223,7 +264,7 @@
 
                     $('#WardNo').html(ward);
 
-                    $('#areaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+                    // $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
                 }
             });
 
@@ -486,9 +527,9 @@
     $(document).ready(function () {
         debugger;
         zone();
+        prabhag();
         ward();
         area();
-
         function zone() {
 
             var UserId = $('#ZoneId').val();
@@ -509,6 +550,30 @@
                     }
                     //district = district + '</select>';
                     $('#ZoneId').html(district);
+                }
+            });
+
+        }
+
+        function prabhag() {
+
+            var UserId = $('#PrabhagId').val();
+            $.ajax({
+                type: "post",
+                url: "/HouseMaster/PrabhagList",
+                data: { userId: UserId },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district;
+                    for (var i = 0; i < data.length; i++) {
+
+                        if (data[i].Value == $('#PrabhagId').val()) {
+                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+                    }
+                    //district = district + '</select>';
+                    $('#PrabhagId').html(district);
                 }
             });
 
