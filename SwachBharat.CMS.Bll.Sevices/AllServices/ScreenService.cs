@@ -4988,7 +4988,7 @@ namespace SwachBharat.CMS.Bll.Services
                     Committee = db.CommitteeMasters.Where(x => x.Id == PId).ToList()
                         .Select(x => new SelectListItem
                         {
-                            Text = x.CommitteeName,
+                            Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
                             Value = x.Id.ToString()
                         }).OrderBy(t => t.Text).ToList();
 
@@ -5008,7 +5008,7 @@ namespace SwachBharat.CMS.Bll.Services
                     Committee = db.CommitteeMasters.ToList()
                         .Select(x => new SelectListItem
                         {
-                            Text = x.CommitteeName,
+                            Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
                             Value = x.Id.ToString()
                         }).OrderBy(t => t.Text).ToList();
 
