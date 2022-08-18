@@ -49,12 +49,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<EmployeeLiquidCollectionType> getEmployeeLiquidCollectionType(int appId)
+        public IEnumerable<EmployeeLiquidCollectionType> getEmployeeLiquidCollectionType(int appId, int PId)
         {
             List<EmployeeLiquidCollectionType> obj = new List<EmployeeLiquidCollectionType>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.SP_EmployeeLiquidCollectionType().ToList();
+                var data = db.SP_EmployeeLiquidCollectionType(PId).ToList();
 
                 foreach (var x in data)
                 {

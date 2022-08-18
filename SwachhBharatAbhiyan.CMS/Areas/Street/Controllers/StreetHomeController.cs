@@ -88,8 +88,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
                 IEnumerable<EmployeeStreetCollectionType> obj;
 
                 StreetDashBoardRepository objRep = new StreetDashBoardRepository();
-
-                obj = objRep.getEmployeeStreetCollectionType(SessionHandler.Current.AppId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                obj = objRep.getEmployeeStreetCollectionType(SessionHandler.Current.AppId,PId);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
             else

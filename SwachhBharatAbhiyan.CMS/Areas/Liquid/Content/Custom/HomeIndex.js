@@ -838,7 +838,7 @@ $('#txt_fdate').focus(function () {
 
 // by neha 8 july 2019
 $(document).ready(function () {
-    debugger;
+   // debugger;
     $.ajax({
         type: "post",
         url: "/Liquid/LiquidHome/EmployeeLiquidCollectionType",

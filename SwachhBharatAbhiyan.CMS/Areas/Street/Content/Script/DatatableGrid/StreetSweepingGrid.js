@@ -39,6 +39,7 @@
             },
             { "render": function (data, type, full, meta) { return '<input  class="btn btn-link" type="button" onclick="DownloadQRCode(' + full["Id"] + ')" value="Download" />'; } },
             { "data": "Zone", "autoWidth": false },
+            { "data": "Prabhag", "autoWidth": false },
             { "data": "Ward", "autoWidth": false },
             { "data": "Area", "autoWidth": false },
             { "data": "Address", "autoWidth": false },

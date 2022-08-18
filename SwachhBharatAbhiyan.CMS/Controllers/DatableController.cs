@@ -439,7 +439,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "StreetSweepBeat":
-                    gridRepository = new StreetSweepBeatGrid(0, searchString, appId);
+                    gridRepository = new StreetSweepBeatGrid(0, searchString, appId,PId);
                     return gridRepository;
                     break;
 

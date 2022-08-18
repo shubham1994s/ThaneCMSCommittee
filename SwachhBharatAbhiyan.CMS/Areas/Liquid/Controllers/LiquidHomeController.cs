@@ -111,8 +111,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
                 IEnumerable<EmployeeLiquidCollectionType> obj;
 
                 LiquidDashBoardRepository objRep = new LiquidDashBoardRepository();
-
-                obj = objRep.getEmployeeLiquidCollectionType(SessionHandler.Current.AppId);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                obj = objRep.getEmployeeLiquidCollectionType(SessionHandler.Current.AppId,PId);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
             else

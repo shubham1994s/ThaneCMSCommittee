@@ -22,6 +22,7 @@
             { "data": "ReferanceId3", "name": "ReferanceId3", "autoWidth": false },
             //{ "data": "ReferanceId4", "name": "ReferanceId4", "autoWidth": false },
             //{ "data": "ReferanceId5", "name": "ReferanceId5", "autoWidth": false },
+            { "data": "PrabhagName", "name": "PrabhagName", "autoWidth": false },
 
         ]
     });

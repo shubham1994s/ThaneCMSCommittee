@@ -1858,7 +1858,7 @@ $(document).ready(function () {
             showDefaultText(chart, "No Data available");
             chart.render();
             function showDefaultText(chart, text) {
-                debugger;
+                  debugger;
                 var isEmpty = !(chart.options.data[0].dataPoints && chart.options.data[0].dataPoints.length > 0);
 
 

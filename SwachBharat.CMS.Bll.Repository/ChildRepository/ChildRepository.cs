@@ -92,9 +92,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetVehicleDetails(teamId, PId);
         }
 
-        public StreetSweepVM GetBeat(int teamId)
+        public StreetSweepVM GetBeat(int teamId, int ? PId)
         {
-            return screenService.GetBeatDetails(teamId);
+            return screenService.GetBeatDetails(teamId, PId);
         }
 
         public void DeletVehicleType(int teamId)
