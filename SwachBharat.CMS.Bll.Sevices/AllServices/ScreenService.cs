@@ -4693,6 +4693,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.LWQRCode = data.LWQRCode;
             model.ReferanceId = data.ReferanceId;
             model.lastModifiedDate = DateTime.Now;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 
@@ -6119,7 +6120,7 @@ namespace SwachBharat.CMS.Bll.Services
                     StreetSweep.WardList = ListWardNo(PId);
                     StreetSweep.AreaList = ListArea(PId);
                     StreetSweep.ZoneList = ListZone(PId);
-                    StreetSweep.PrabhagList = ListPrabhag(0);
+                    StreetSweep.PrabhagList = ListPrabhag(PId);
                     return StreetSweep;
                 }
 
@@ -6209,6 +6210,7 @@ namespace SwachBharat.CMS.Bll.Services
                     LiquidWaste.WardList = ListWardNo(PId);
                     LiquidWaste.AreaList = ListArea(PId);
                     LiquidWaste.ZoneList = ListZone(PId);
+                    LiquidWaste.PrabhagList = ListPrabhag(PId);
                     return LiquidWaste;
                 }
 
@@ -6366,6 +6368,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.LWQRCode = data.LWQRCode;
                             model.ReferanceId = data.ReferanceId;
                             model.lastModifiedDate = DateTime.Now;
+                            model.PrabhagId = data.PrabhagId;
                             db.SaveChanges();
                         }
                     }
