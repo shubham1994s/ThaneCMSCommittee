@@ -275,6 +275,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AndroidController.cs" />
+    <Compile Include="Controllers\AttendenceBeatMapController.cs" />
     <Compile Include="Controllers\AttendenceController.cs" />
     <Compile Include="Controllers\CommercialMasterController.cs" />
     <Compile Include="Controllers\ComplaintController.cs" />
@@ -1700,6 +1701,7 @@
     <Content Include="Content\Datatable-assets\js\responsive.bootstrap4.min.js" />
     <Content Include="Content\DatatableGrid\AdminCount.js" />
     <Content Include="Content\DatatableGrid\AriaGrid.js" />
+    <Content Include="Content\DatatableGrid\AttendenceBeatMapGrid.js" />
     <Content Include="Content\DatatableGrid\AttendenceDetailGrid.js" />
     <Content Include="Content\DatatableGrid\AttendenceGrid.js" />
     <Content Include="Content\DatatableGrid\CommercialDetailGrid.js" />
@@ -3297,6 +3299,10 @@
     <Content Include="Views\EmpBeatMap\MenuIndex.cshtml" />
     <Content Include="Views\EmpBeatMap\Index.cshtml" />
     <Content Include="Views\EmpBeatMap\AddEmpBeatMap.cshtml" />
+    <Content Include="Views\AttendenceBeatMap\MenuIndex.cshtml" />
+    <Content Include="Views\AttendenceBeatMap\Index.cshtml" />
+    <Content Include="Views\AttendenceBeatMap\HouseRoute.cshtml" />
+    <Content Include="Views\AttendenceBeatMap\UserRoute.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

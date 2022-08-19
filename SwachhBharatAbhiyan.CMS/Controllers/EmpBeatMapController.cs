@@ -108,7 +108,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         {
             if (SessionHandler.Current.AppId != 0)
             {
-                List<SelectListItem> lstUsers = childRepository.ListUserBeatMap(Emptype);
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                List<SelectListItem> lstUsers = childRepository.ListUserBeatMap(Emptype, PId);
                 return Json(lstUsers, JsonRequestBehavior.AllowGet);
             }
             else

@@ -3209,7 +3209,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="LWName" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="LWAddreLW" Nullable="true" />
           <Property Type="Int32" Name="gcType" Nullable="true" />
-          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" />
           <Property Type="String" Name="LWLat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="LWLong" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="PrabhagId" Nullable="true" />
