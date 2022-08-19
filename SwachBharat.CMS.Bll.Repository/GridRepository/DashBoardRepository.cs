@@ -3121,6 +3121,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                      t1.gcType,
                                      t1.gpId,
                                      t1.userId,
+                                     t1.PrabhagId,
                                      t1.gcDate,
                                      t1.vehicleNumber,
                                      t1.locAddresss,
@@ -3135,7 +3136,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                      t3.areaId,
                                      WardName = t5.WardNo,
                                      AreaName = t6.Area,
-                                     Prabhag = t7.CommitteeName
+                                     t7.Id,
                                  }).ToList();
 
 
@@ -3162,6 +3163,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     if (userId > 0)
                     {
                         var model = data1.Where(c => c.userId == userId).ToList();
+
+                        data1 = model.ToList();
+                    }
+                    if (PId > 0)
+                    {
+                        var model = data1.Where(c => c.PrabhagId == PId).ToList();
 
                         data1 = model.ToList();
                     }
@@ -3215,6 +3222,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             UserName = checkNull(x.LWName),
                             Lat = x.Lat,
                             Long = x.Long,
+                            PrabhagName = db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
                             Address = checkNull(x.locAddresss).Replace("Unnamed Road,", ""),
                             //gpBeforImage = x.gpBeforImage,
                             //gpAfterImage = x.gpAfterImage,
