@@ -836,9 +836,26 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             screenService.SaveEmpBeatMap(data);
         }
 
-        public List<SelectListItem> ListUserBeatMap(string Emptype)
+        public List<SelectListItem> ListUserBeatMap(string Emptype,int PId)
         {
-            return screenService.ListUserBeatMap(Emptype);
+            return screenService.ListUserBeatMap(Emptype, PId);
+        }
+
+        public SBALUserLocationMapView GetHouseByIdforMap(int teamId, int daId)
+        {
+            return screenService.GetHouseByIdforMap(teamId, daId);
+        }
+        public HouseAttenRouteVM GetBeatHouseAttenRoute(int daId, int areaid, int polyId, int ZoneId, int PrabhagNo, int WardNo, int PId)
+        {
+            return screenService.GetBeatHouseAttenRoute(daId, areaid, polyId, ZoneId, PrabhagNo, WardNo, PId);
+        }
+        public List<SelectListItem> LoadListArea(int WardNo)
+        {
+            return screenService.LoadListArea(WardNo);
+        }
+        public List<SelectListItem> ListBeatMapArea(int daId, int? areaid)
+        {
+            return screenService.ListBeatMapArea(daId, areaid);
         }
     }
 }

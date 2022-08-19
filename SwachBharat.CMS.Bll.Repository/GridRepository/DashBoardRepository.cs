@@ -8423,17 +8423,17 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-        public IEnumerable<SBAEmpBeatMapGridRow> EmpBeatMapsData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBAEmpBeatMapGridRow> EmpBeatMapsData(long wildcard, string SearchString, int appId, int PId)
         {
 
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.EmpBeatMaps.Select(x => new SBAEmpBeatMapGridRow
+                var data = db.EmpBeatMaps.Join(db.UserMasters,e => e.userId,u => u.userId,(e,u) => new {e,u }).Where(m => (PId != 0 && m.u.PrabhagId == PId) || PId == 0).Select(x => new SBAEmpBeatMapGridRow
                 {
-                    ebmId = x.ebmId,
-                    userId = x.userId ?? 0,
-                    Type = x.Type,
-                    userName = db.UserMasters.Where(a => a.userId == x.userId).Select(b => b.userName).FirstOrDefault()
+                    ebmId = x.e.ebmId,
+                    userId = x.e.userId ?? 0,
+                    Type = x.e.Type,
+                    userName = x.u.userName
                 }).ToList();
                 if (!string.IsNullOrEmpty(SearchString))
                 {
