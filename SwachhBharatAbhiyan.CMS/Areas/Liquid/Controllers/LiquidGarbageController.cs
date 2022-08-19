@@ -188,7 +188,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
 
             {
                 List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
-                obj = childRepository.GetLiquidIdelTimeNotification();
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                obj = childRepository.GetLiquidIdelTimeNotification(PId);
 
                 //List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>()
                 //{

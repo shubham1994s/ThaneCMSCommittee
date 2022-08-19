@@ -363,7 +363,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "StreetGarbage":
-                    gridRepository = new SSCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3);
+                    gridRepository = new SSCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3,PId);
                     return gridRepository;
                     break;
 
@@ -412,11 +412,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "UserIdelLiquid":
-                    gridRepository = new LiquidIdelGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new LiquidIdelGridRepository(0, searchString, fdate, tdate, userId, appId,PId);
                     return gridRepository;
                     break;
                 case "UserIdelStreet":
-                    gridRepository = new StreetIdelGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new StreetIdelGridRepository(0, searchString, fdate, tdate, userId, appId,PId);
                     return gridRepository;
                     break;
                 case "GarbageCount":

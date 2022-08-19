@@ -806,14 +806,14 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.GetIdelTimeNotification(PId);
         }
-        public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification()
+        public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification(int PId)
         {
-            return screenService.GetLiquidIdelTimeNotification();
+            return screenService.GetLiquidIdelTimeNotification(PId);
         }
 
-        public List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification()
+        public List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification(int PId)
         {
-            return screenService.GetStreetIdelTimeNotification();
+            return screenService.GetStreetIdelTimeNotification(PId);
         }
 
         public List<SBALUserLocationMapView> GetUserTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null)

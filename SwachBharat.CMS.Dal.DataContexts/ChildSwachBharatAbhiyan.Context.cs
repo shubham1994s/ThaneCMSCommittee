@@ -18,10 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-       : base(SwachBharatAppConnection.GetConnectionString(AppId))
+        : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -46,8 +45,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<GarbageCollectionDetail> GarbageCollectionDetails { get; set; }
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<VehicleRegistration> VehicleRegistrations { get; set; }
-        public virtual DbSet<LiquidWasteDetail> LiquidWasteDetails { get; set; }
-        public virtual DbSet<StreetSweepingDetail> StreetSweepingDetails { get; set; }
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
         public virtual DbSet<SS_1_4_ANSWER> SS_1_4_ANSWER { get; set; }
         public virtual DbSet<SS_1_4_QUESTION_13july> SS_1_4_QUESTION_13july { get; set; }
@@ -64,6 +61,8 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<TeritoryMaster> TeritoryMasters { get; set; }
         public virtual DbSet<EmpBeatMap> EmpBeatMaps { get; set; }
         public virtual DbSet<StreetSweepingBeat> StreetSweepingBeats { get; set; }
+        public virtual DbSet<LiquidWasteDetail> LiquidWasteDetails { get; set; }
+        public virtual DbSet<StreetSweepingDetail> StreetSweepingDetails { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -209,82 +208,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_GetLiveTracking_Result> SP_GetLiveTracking()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetLiveTracking_Result>("SP_GetLiveTracking");
-        }
-    
-        public virtual ObjectResult<SP_LSEmployeeSummary_Result> SP_LSEmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid, string emptype)
-        {
-            var fromParameter = from.HasValue ?
-                new ObjectParameter("from", from) :
-                new ObjectParameter("from", typeof(System.DateTime));
-    
-            var toParameter = to.HasValue ?
-                new ObjectParameter("to", to) :
-                new ObjectParameter("to", typeof(System.DateTime));
-    
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(int));
-    
-            var emptypeParameter = emptype != null ?
-                new ObjectParameter("Emptype", emptype) :
-                new ObjectParameter("Emptype", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LSEmployeeSummary_Result>("SP_LSEmployeeSummary", fromParameter, toParameter, useridParameter, emptypeParameter);
-        }
-    
-        public virtual ObjectResult<SP_IdelTimeLiquid_Result> SP_IdelTimeLiquid(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            var fdateParameter = fdate.HasValue ?
-                new ObjectParameter("fdate", fdate) :
-                new ObjectParameter("fdate", typeof(System.DateTime));
-    
-            var tdateParameter = tdate.HasValue ?
-                new ObjectParameter("tdate", tdate) :
-                new ObjectParameter("tdate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimeLiquid_Result>("SP_IdelTimeLiquid", userIdParameter, fdateParameter, tdateParameter);
-        }
-    
-        public virtual ObjectResult<SP_SSEmployeeSummary_Result> SP_SSEmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid, string emptype)
-        {
-            var fromParameter = from.HasValue ?
-                new ObjectParameter("from", from) :
-                new ObjectParameter("from", typeof(System.DateTime));
-    
-            var toParameter = to.HasValue ?
-                new ObjectParameter("to", to) :
-                new ObjectParameter("to", typeof(System.DateTime));
-    
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(int));
-    
-            var emptypeParameter = emptype != null ?
-                new ObjectParameter("Emptype", emptype) :
-                new ObjectParameter("Emptype", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SSEmployeeSummary_Result>("SP_SSEmployeeSummary", fromParameter, toParameter, useridParameter, emptypeParameter);
-        }
-    
-        public virtual ObjectResult<SP_IdelTimestreet_Result> SP_IdelTimestreet(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            var fdateParameter = fdate.HasValue ?
-                new ObjectParameter("fdate", fdate) :
-                new ObjectParameter("fdate", typeof(System.DateTime));
-    
-            var tdateParameter = tdate.HasValue ?
-                new ObjectParameter("tdate", tdate) :
-                new ObjectParameter("tdate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimestreet_Result>("SP_IdelTimestreet", userIdParameter, fdateParameter, tdateParameter);
         }
     
         public virtual ObjectResult<SP_LiquidEmployeeTarget_Result> SP_LiquidEmployeeTarget(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
@@ -1327,6 +1250,98 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_EmployeeStreetCollectionType_Result>("SP_EmployeeStreetCollectionType", prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_LSEmployeeSummary_Result> SP_LSEmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid, string emptype, Nullable<int> prabhagid)
+        {
+            var fromParameter = from.HasValue ?
+                new ObjectParameter("from", from) :
+                new ObjectParameter("from", typeof(System.DateTime));
+    
+            var toParameter = to.HasValue ?
+                new ObjectParameter("to", to) :
+                new ObjectParameter("to", typeof(System.DateTime));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var emptypeParameter = emptype != null ?
+                new ObjectParameter("Emptype", emptype) :
+                new ObjectParameter("Emptype", typeof(string));
+    
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LSEmployeeSummary_Result>("SP_LSEmployeeSummary", fromParameter, toParameter, useridParameter, emptypeParameter, prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_SSEmployeeSummary_Result> SP_SSEmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid, string emptype, Nullable<int> prabhagid)
+        {
+            var fromParameter = from.HasValue ?
+                new ObjectParameter("from", from) :
+                new ObjectParameter("from", typeof(System.DateTime));
+    
+            var toParameter = to.HasValue ?
+                new ObjectParameter("to", to) :
+                new ObjectParameter("to", typeof(System.DateTime));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var emptypeParameter = emptype != null ?
+                new ObjectParameter("Emptype", emptype) :
+                new ObjectParameter("Emptype", typeof(string));
+    
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SSEmployeeSummary_Result>("SP_SSEmployeeSummary", fromParameter, toParameter, useridParameter, emptypeParameter, prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_IdelTimeLiquid_Result> SP_IdelTimeLiquid(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> prabhagId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimeLiquid_Result>("SP_IdelTimeLiquid", userIdParameter, fdateParameter, tdateParameter, prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_IdelTimestreet_Result> SP_IdelTimestreet(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> prabhagId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimestreet_Result>("SP_IdelTimestreet", userIdParameter, fdateParameter, tdateParameter, prabhagIdParameter);
         }
     }
 }

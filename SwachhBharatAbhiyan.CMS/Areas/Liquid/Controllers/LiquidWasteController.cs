@@ -119,7 +119,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
                 var AppDetails = mainRepository.GetApplicationDetails(SessionHandler.Current.AppId);
                 var guid = Guid.NewGuid().ToString().Split('-');
                 string image_Guid = DateTime.Now.ToString("MMddyyyymmss") + "_" + guid[1] + ".jpg";
-
+                var details = childRepository.GetLiquidWasteId(LiquidWaste.LWId, PId);
                 //Converting  Url to image 
                 // var url = string.Format("http://api.qrserver.com/v1/create-qr-code/?data="+ point.ReferanceId);
 
@@ -144,7 +144,24 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Liquid.Controllers
                 response.Close();
                 remoteStream.Close();
                 readStream.Close();
-                LiquidWaste.LWQRCode = image_Guid;
+               
+                if (LiquidWaste.LWQRCode == "/Images/QRcode.png" || LiquidWaste.LWQRCode == "/Images/default_not_upload.png")
+                {
+                    LiquidWaste.LWQRCode = image_Guid;
+                }
+                else
+                {
+                    string bb = details.LWQRCode;
+                    var ii = bb.Split('/');
+                    if (ii.Length == 6)
+                    {
+                        LiquidWaste.LWQRCode = ii[ii.Length - 1];
+                    }
+                    if (ii.Length > 6)
+                    {
+                        LiquidWaste.LWQRCode = ii[ii.Length - 1];
+                    }
+                }
 
                 LiquidWasteVM pointDetails = childRepository.SaveLiquidWastes(LiquidWaste, PId);
 

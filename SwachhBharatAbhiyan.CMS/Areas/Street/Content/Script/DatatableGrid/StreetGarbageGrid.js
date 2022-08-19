@@ -39,12 +39,12 @@
                 "searchable": false
             },
             {
-                "targets": [10],
+                "targets": [11],
                 "visible": false,
                 "searchable": false
             },
             {
-                "targets": [8],
+                "targets": [9],
                 "visible": true,
 
                 "render": function (data, type, full, meta) {
@@ -60,7 +60,7 @@
                 },
             },
             {
-                "targets": [9],
+                "targets": [10],
                 "visible": true,
 
                 "render": function (data, type, full, meta) {
@@ -82,6 +82,7 @@
             { "data": "Id", "name": "Id", "autoWidth": false },
             { "data": "attandDate", "name": "attandDate", "autoWidth": false },
             { "data": "Employee", "name": "Employee", "autoWidth": false },
+            { "data": "PrabhagName", "name": "PrabhagName", "autoWidth": false },
             { "data": "ReferanceId", "name": "ReferanceId", "autoWidth": false },
             { "data": "UserName", "name": "UserName", "autoWidth": false },
             { "data": "Address", "name": "Address", "autoWidth": false },

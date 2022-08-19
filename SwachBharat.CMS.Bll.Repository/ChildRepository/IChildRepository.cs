@@ -270,9 +270,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         List<SBAEmplyeeIdelGrid> GetIdelTimeNotification(int PId);
 
-        List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification();
+        List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification(int PId);
 
-        List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification();
+        List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification(int PId);
 
         List<SBALUserLocationMapView> GetUserTimeWiseRoute(string date = "", DateTime? fTime = null, DateTime? tTime = null, int? userId = null);
 

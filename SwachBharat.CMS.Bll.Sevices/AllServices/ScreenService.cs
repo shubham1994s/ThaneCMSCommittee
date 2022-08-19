@@ -4661,6 +4661,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.SSQRCode = data.SSQRCode;
             model.ReferanceId = data.ReferanceId;
             model.lastModifiedDate = DateTime.Now;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 
@@ -4692,6 +4693,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.LWQRCode = data.LWQRCode;
             model.ReferanceId = data.ReferanceId;
             model.lastModifiedDate = DateTime.Now;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 
@@ -4986,7 +4988,7 @@ namespace SwachBharat.CMS.Bll.Services
                     Committee = db.CommitteeMasters.Where(x => x.Id == PId).ToList()
                         .Select(x => new SelectListItem
                         {
-                            Text = x.CommitteeName,
+                            Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
                             Value = x.Id.ToString()
                         }).OrderBy(t => t.Text).ToList();
 
@@ -5006,7 +5008,7 @@ namespace SwachBharat.CMS.Bll.Services
                     Committee = db.CommitteeMasters.ToList()
                         .Select(x => new SelectListItem
                         {
-                            Text = x.CommitteeName,
+                            Text = x.CommitteeName + " (" + db.ZoneMasters.Where(c => c.zoneId == x.zoneId).FirstOrDefault().name + ")",
                             Value = x.Id.ToString()
                         }).OrderBy(t => t.Text).ToList();
 
@@ -6118,6 +6120,7 @@ namespace SwachBharat.CMS.Bll.Services
                     StreetSweep.WardList = ListWardNo(PId);
                     StreetSweep.AreaList = ListArea(PId);
                     StreetSweep.ZoneList = ListZone(PId);
+                    StreetSweep.PrabhagList = ListPrabhag(PId);
                     return StreetSweep;
                 }
 
@@ -6207,6 +6210,7 @@ namespace SwachBharat.CMS.Bll.Services
                     LiquidWaste.WardList = ListWardNo(PId);
                     LiquidWaste.AreaList = ListArea(PId);
                     LiquidWaste.ZoneList = ListZone(PId);
+                    LiquidWaste.PrabhagList = ListPrabhag(PId);
                     return LiquidWaste;
                 }
 
@@ -6282,6 +6286,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.SSQRCode = data.SSQRCode;
                             model.ReferanceId = data.ReferanceId;
                             model.lastModifiedDate = DateTime.Now;
+                            model.PrabhagId = data.PrabhagId;
                             db.SaveChanges();
                         }
                     }
@@ -6296,7 +6301,7 @@ namespace SwachBharat.CMS.Bll.Services
                 StreetSweepVM vv = GetStreetSweepDetails(SSId, PId);
                 return vv;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -6363,6 +6368,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.LWQRCode = data.LWQRCode;
                             model.ReferanceId = data.ReferanceId;
                             model.lastModifiedDate = DateTime.Now;
+                            model.PrabhagId = data.PrabhagId;
                             db.SaveChanges();
                         }
                     }
@@ -9131,7 +9137,7 @@ namespace SwachBharat.CMS.Bll.Services
             return obj;
         }
 
-        public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification()
+        public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification(int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             // DateTime? fdate = null
@@ -9139,7 +9145,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime fdate = Convert.ToDateTime(dt + " " + "00:00:00");
             DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
 
-            var data = db.SP_IdelTimeLiquid(0, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+            var data = db.SP_IdelTimeLiquid(0, fdate, tdate, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
             //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {
@@ -9170,7 +9176,7 @@ namespace SwachBharat.CMS.Bll.Services
             return obj;
         }
 
-        public List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification()
+        public List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification(int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             // DateTime? fdate = null
@@ -9178,7 +9184,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime fdate = Convert.ToDateTime(dt + " " + "00:00:00");
             DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
 
-            var data = db.SP_IdelTimestreet(0, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+            var data = db.SP_IdelTimestreet(0, fdate, tdate,PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
             //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {

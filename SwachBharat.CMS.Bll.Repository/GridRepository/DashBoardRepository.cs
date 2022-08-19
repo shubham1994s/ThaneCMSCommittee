@@ -3248,7 +3248,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }
             }
         }
-        public IEnumerable<SBAGrabageCollectionGridRow> GetSSCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3)
+        public IEnumerable<SBAGrabageCollectionGridRow> GetSSCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3,int PId)
         {
             {
                 DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
@@ -3270,6 +3270,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                  from t5 in wm.DefaultIfEmpty()
                                  join tm in db.TeritoryMasters on t3.areaId equals tm.Id into tm
                                  from t6 in tm.DefaultIfEmpty()
+                                 join cm in db.CommitteeMasters on t1.PrabhagId equals cm.Id into cm
+                                 from t7 in cm.DefaultIfEmpty()
                                  where (t4.zoneId == param1 || param1 == 0 || param1 == null) && (t3.wardId == param2 || param2 == 0 || param2 == null) && (t3.areaId == param3 || param3 == 0 || param3 == null)
 
                                  select new
@@ -3281,6 +3283,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                      t1.gcType,
                                      t1.gpId,
                                      t1.userId,
+                                     t1.PrabhagId,
                                      t1.gcDate,
                                      t1.vehicleNumber,
                                      t1.locAddresss,
@@ -3295,6 +3298,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                                      t3.areaId,
                                      WardName = t5.WardNo,
                                      AreaName = t6.Area,
+                                     t7.Id,
                                  }).ToList();
 
 
@@ -3302,6 +3306,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     if (userId > 0)
                     {
                         var model = data1.Where(c => c.userId == userId).ToList();
+
+                        data1 = model.ToList();
+                    }
+                    if(PId > 0)
+                    {
+                        var model = data1.Where(c => c.PrabhagId == PId).ToList();
 
                         data1 = model.ToList();
                     }
@@ -3326,6 +3336,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                             UserName = checkNull(x.SSName),
                             Lat = x.Lat,
                             Long = x.Long,
+                            PrabhagName = db.CommitteeMasters.Where(c => c.Id == x.PrabhagId).FirstOrDefault().CommitteeName,
                             Address = checkNull(x.locAddresss).Replace("Unnamed Road,", ""),
                             gpAfterImage = (x.gpAfterImage == "" || x.gpAfterImage is null ? "/Images/default_not_upload.png" : x.gpAfterImage.Trim()),
                             gpBeforImage = (x.gpBeforImage == "" || x.gpAfterImage is null ? "/Images/default_not_upload.png" : x.gpBeforImage.Trim())
@@ -4663,14 +4674,14 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         }
 
 
-        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelDataLiquid(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelDataLiquid(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
 
-                var data = db.SP_IdelTimeLiquid(userId, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+                var data = db.SP_IdelTimeLiquid(userId, fdate, tdate,PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
 
                 foreach (var x in data)
                 {
@@ -4726,14 +4737,14 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelDataStreet(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelDataStreet(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
 
-                var data = db.SP_IdelTimestreet(userId, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+                var data = db.SP_IdelTimestreet(userId, fdate, tdate,PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
 
                 foreach (var x in data)
                 {
@@ -5228,7 +5239,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //}
                     //db.Database.CommandTimeout = 5000;
                     db.Database.CommandTimeout = 500;
-                    var data = db.SP_LSEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, Emptype).ToList();
+                    var data = db.SP_LSEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, Emptype,PId).ToList();
                     // var data2 = data.OrderByDescending(c => c.Startdate).ThenByDescending(c => c.StartTime).ToList();
                     //var data2 = data1.GroupBy(o => o.userId).Select(o => o.First()).AsEnumerable().ToList();
 
@@ -5385,7 +5396,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //}
                     //db.Database.CommandTimeout = 5000;
                     db.Database.CommandTimeout = 500;
-                    var data = db.SP_SSEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, Emptype).ToList();
+                    var data = db.SP_SSEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, Emptype, PId).ToList();
                     // var data2 = data.OrderByDescending(c => c.Startdate).ThenByDescending(c => c.StartTime).ToList();
                     //var data2 = data1.GroupBy(o => o.userId).Select(o => o.First()).AsEnumerable().ToList();
 
