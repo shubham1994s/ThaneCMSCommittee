@@ -8434,12 +8434,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-        public IEnumerable<SBAEmpBeatMapGridRow> EmpBeatMapsData(long wildcard, string SearchString, int appId, int PId)
+        public IEnumerable<SBAEmpBeatMapGridRow> EmpBeatMapsData(long wildcard, string SearchString, int appId, int PId,string EType)
         {
 
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.EmpBeatMaps.Join(db.UserMasters,e => e.userId,u => u.userId,(e,u) => new {e,u }).Where(m => (PId != 0 && m.u.PrabhagId == PId) || PId == 0).Select(x => new SBAEmpBeatMapGridRow
+                var data = db.EmpBeatMaps.Join(db.UserMasters,e => e.userId,u => u.userId,(e,u) => new {e,u }).Where(m => ((PId != 0 && m.u.PrabhagId == PId) || PId == 0) && m.u.EmployeeType == EType).Select(x => new SBAEmpBeatMapGridRow
                 {
                     ebmId = x.e.ebmId,
                     userId = x.e.userId ?? 0,

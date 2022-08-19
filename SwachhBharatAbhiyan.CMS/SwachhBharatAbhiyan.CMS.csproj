@@ -264,6 +264,7 @@
     <Compile Include="Areas\Street\Controllers\StreetAccountController.cs" />
     <Compile Include="Areas\Street\Controllers\StreetAttendenceController.cs" />
     <Compile Include="Areas\Street\Controllers\StreetDumpYardController.cs" />
+    <Compile Include="Areas\Street\Controllers\StreetEmpBeatMapController.cs" />
     <Compile Include="Areas\Street\Controllers\StreetEmployeeController.cs" />
     <Compile Include="Areas\Street\Controllers\StreetGarbageController.cs" />
     <Compile Include="Areas\Street\Controllers\StreetHomeController.cs" />
@@ -1017,6 +1018,7 @@
     <Content Include="Areas\Street\Content\Script\DatatableGrid\AttendenceGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\DumpYardDetailGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\DumpYardGrid.js" />
+    <Content Include="Areas\Street\Content\Script\DatatableGrid\EmpBeatMapGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\EmployeeDetailsGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\EmployeeSummaryGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\Location.js" />
@@ -2794,6 +2796,9 @@
     <Content Include="Areas\Street\Views\StreetGarbage\MenuStreetBitMapIndex.cshtml" />
     <Content Include="Areas\Street\Views\StreetGarbage\StreetBitMapIndex.cshtml" />
     <Content Include="Areas\Street\Views\Shared\_StreetBeatMap.cshtml" />
+    <Content Include="Areas\Street\Views\StreetEmpBeatMap\MenuIndex.cshtml" />
+    <Content Include="Areas\Street\Views\StreetEmpBeatMap\Index.cshtml" />
+    <Content Include="Areas\Street\Views\StreetEmpBeatMap\AddEmpBeatMap.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
