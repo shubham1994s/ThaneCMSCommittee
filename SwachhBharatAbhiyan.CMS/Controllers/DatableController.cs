@@ -363,7 +363,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "StreetGarbage":
-                    gridRepository = new SSCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3);
+                    gridRepository = new SSCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3,PId);
                     return gridRepository;
                     break;
 
