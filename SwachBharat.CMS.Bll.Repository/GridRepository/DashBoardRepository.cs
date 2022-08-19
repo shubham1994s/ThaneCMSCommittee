@@ -4674,14 +4674,14 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         }
 
 
-        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelDataLiquid(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelDataLiquid(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
 
-                var data = db.SP_IdelTimeLiquid(userId, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+                var data = db.SP_IdelTimeLiquid(userId, fdate, tdate,PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
 
                 foreach (var x in data)
                 {
@@ -4737,14 +4737,14 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
             }
         }
 
-        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelDataStreet(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId)
+        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelDataStreet(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
 
-                var data = db.SP_IdelTimestreet(userId, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+                var data = db.SP_IdelTimestreet(userId, fdate, tdate,PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
 
                 foreach (var x in data)
                 {

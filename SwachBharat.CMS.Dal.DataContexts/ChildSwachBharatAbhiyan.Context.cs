@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                   : base(SwachBharatAppConnection.GetConnectionString(AppId))
+        : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -208,40 +208,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_GetLiveTracking_Result> SP_GetLiveTracking()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetLiveTracking_Result>("SP_GetLiveTracking");
-        }
-    
-        public virtual ObjectResult<SP_IdelTimeLiquid_Result> SP_IdelTimeLiquid(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            var fdateParameter = fdate.HasValue ?
-                new ObjectParameter("fdate", fdate) :
-                new ObjectParameter("fdate", typeof(System.DateTime));
-    
-            var tdateParameter = tdate.HasValue ?
-                new ObjectParameter("tdate", tdate) :
-                new ObjectParameter("tdate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimeLiquid_Result>("SP_IdelTimeLiquid", userIdParameter, fdateParameter, tdateParameter);
-        }
-    
-        public virtual ObjectResult<SP_IdelTimestreet_Result> SP_IdelTimestreet(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            var fdateParameter = fdate.HasValue ?
-                new ObjectParameter("fdate", fdate) :
-                new ObjectParameter("fdate", typeof(System.DateTime));
-    
-            var tdateParameter = tdate.HasValue ?
-                new ObjectParameter("tdate", tdate) :
-                new ObjectParameter("tdate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimestreet_Result>("SP_IdelTimestreet", userIdParameter, fdateParameter, tdateParameter);
         }
     
         public virtual ObjectResult<SP_LiquidEmployeeTarget_Result> SP_LiquidEmployeeTarget(Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> userid)
@@ -1334,6 +1300,48 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("prabhagid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SSEmployeeSummary_Result>("SP_SSEmployeeSummary", fromParameter, toParameter, useridParameter, emptypeParameter, prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_IdelTimeLiquid_Result> SP_IdelTimeLiquid(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> prabhagId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimeLiquid_Result>("SP_IdelTimeLiquid", userIdParameter, fdateParameter, tdateParameter, prabhagIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_IdelTimestreet_Result> SP_IdelTimestreet(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> prabhagId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimestreet_Result>("SP_IdelTimestreet", userIdParameter, fdateParameter, tdateParameter, prabhagIdParameter);
         }
     }
 }

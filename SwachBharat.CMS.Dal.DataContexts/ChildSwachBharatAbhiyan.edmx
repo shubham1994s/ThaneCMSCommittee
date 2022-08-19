@@ -936,11 +936,13 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="userId" Type="int" Mode="In" />
           <Parameter Name="fdate" Type="date" Mode="In" />
           <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="PrabhagId" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_IdelTimestreet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
           <Parameter Name="fdate" Type="date" Mode="In" />
           <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="PrabhagId" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_LiquidDashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prabhagid" Type="int" Mode="In" />
@@ -1368,16 +1370,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="WM_Garbage_Sales" EntityType="DevSwachhBharatNagpurModel.WM_Garbage_Sales" />
           <EntitySet Name="Vw_MsgNotification" EntityType="DevSwachhBharatNagpurModel.Vw_MsgNotification" />
           <EntitySet Name="Locations" EntityType="DevSwachhBharatNagpurModel.Location" />
-          <FunctionImport Name="SP_IdelTimeLiquid" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_IdelTimeLiquid_Result)">
-            <Parameter Name="userId" Mode="In" Type="Int32" />
-            <Parameter Name="fdate" Mode="In" Type="DateTime" />
-            <Parameter Name="tdate" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="SP_IdelTimestreet" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_IdelTimestreet_Result)">
-            <Parameter Name="userId" Mode="In" Type="Int32" />
-            <Parameter Name="fdate" Mode="In" Type="DateTime" />
-            <Parameter Name="tdate" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="GarbageCollectionDetails" EntityType="DevSwachhBharatNagpurModel.GarbageCollectionDetail" />
           <FunctionImport Name="SP_LiquidEmployeeTarget" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_LiquidEmployeeTarget_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
@@ -1712,6 +1704,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="userid" Mode="In" Type="Int32" />
             <Parameter Name="Emptype" Mode="In" Type="String" />
             <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_IdelTimeLiquid" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_IdelTimeLiquid_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_IdelTimestreet" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_IdelTimestreet_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -2166,34 +2170,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="EmployeeType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="CType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
-        <ComplexType Name="SP_IdelTimeLiquid_Result">
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
-          <Property Type="DateTime" Name="date" Nullable="true" />
-          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="7" />
-          <Property Type="String" Name="LastTime" Nullable="true" MaxLength="7" />
-          <Property Type="Int32" Name="IdelTime" Nullable="true" />
-          <Property Type="String" Name="StartAddress" Nullable="true" />
-          <Property Type="String" Name="address" Nullable="true" />
-          <Property Type="String" Name="StarLat" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="StartLog" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="SP_IdelTimestreet_Result">
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
-          <Property Type="DateTime" Name="date" Nullable="true" />
-          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="7" />
-          <Property Type="String" Name="LastTime" Nullable="true" MaxLength="7" />
-          <Property Type="Int32" Name="IdelTime" Nullable="true" />
-          <Property Type="String" Name="StartAddress" Nullable="true" />
-          <Property Type="String" Name="address" Nullable="true" />
-          <Property Type="String" Name="StarLat" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="StartLog" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
-        </ComplexType>
         <EntityType Name="GarbageCollectionDetail">
           <Key>
             <PropertyRef Name="gcId" />
@@ -3412,6 +3388,34 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="Totaldumpyard" Nullable="true" />
           <Property Type="Int64" Name="rownum" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="SP_IdelTimeLiquid_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="date" Nullable="true" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="LastTime" Nullable="true" MaxLength="7" />
+          <Property Type="Int32" Name="IdelTime" Nullable="true" />
+          <Property Type="String" Name="StartAddress" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="StarLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="StartLog" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_IdelTimestreet_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="date" Nullable="true" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="LastTime" Nullable="true" MaxLength="7" />
+          <Property Type="Int32" Name="IdelTime" Nullable="true" />
+          <Property Type="String" Name="StartAddress" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="StarLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="StartLog" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3809,42 +3813,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_IdelTimeLiquid" FunctionName="DevSwachhBharatNagpurModel.Store.SP_IdelTimeLiquid">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_IdelTimeLiquid_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="LastTime" ColumnName="LastTime" />
-                <ScalarProperty Name="IdelTime" ColumnName="IdelTime" />
-                <ScalarProperty Name="StartAddress" ColumnName="StartAddress" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="StarLat" ColumnName="StarLat" />
-                <ScalarProperty Name="StartLog" ColumnName="StartLog" />
-                <ScalarProperty Name="lat" ColumnName="lat" />
-                <ScalarProperty Name="long" ColumnName="long" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_IdelTimestreet" FunctionName="DevSwachhBharatNagpurModel.Store.SP_IdelTimestreet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_IdelTimestreet_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="LastTime" ColumnName="LastTime" />
-                <ScalarProperty Name="IdelTime" ColumnName="IdelTime" />
-                <ScalarProperty Name="StartAddress" ColumnName="StartAddress" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="StarLat" ColumnName="StarLat" />
-                <ScalarProperty Name="StartLog" ColumnName="StartLog" />
-                <ScalarProperty Name="lat" ColumnName="lat" />
-                <ScalarProperty Name="long" ColumnName="long" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="GarbageCollectionDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.GarbageCollectionDetail">
               <MappingFragment StoreEntitySet="GarbageCollectionDetails">
@@ -5272,6 +5240,42 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="Totaldistance" ColumnName="Totaldistance" />
                 <ScalarProperty Name="Totaldumpyard" ColumnName="Totaldumpyard" />
                 <ScalarProperty Name="rownum" ColumnName="rownum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_IdelTimeLiquid" FunctionName="DevSwachhBharatNagpurModel.Store.SP_IdelTimeLiquid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_IdelTimeLiquid_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+                <ScalarProperty Name="IdelTime" ColumnName="IdelTime" />
+                <ScalarProperty Name="StartAddress" ColumnName="StartAddress" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="StarLat" ColumnName="StarLat" />
+                <ScalarProperty Name="StartLog" ColumnName="StartLog" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_IdelTimestreet" FunctionName="DevSwachhBharatNagpurModel.Store.SP_IdelTimestreet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_IdelTimestreet_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+                <ScalarProperty Name="IdelTime" ColumnName="IdelTime" />
+                <ScalarProperty Name="StartAddress" ColumnName="StartAddress" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="StarLat" ColumnName="StarLat" />
+                <ScalarProperty Name="StartLog" ColumnName="StartLog" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

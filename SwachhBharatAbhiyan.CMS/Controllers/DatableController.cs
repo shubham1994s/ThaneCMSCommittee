@@ -412,11 +412,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "UserIdelLiquid":
-                    gridRepository = new LiquidIdelGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new LiquidIdelGridRepository(0, searchString, fdate, tdate, userId, appId,PId);
                     return gridRepository;
                     break;
                 case "UserIdelStreet":
-                    gridRepository = new StreetIdelGridRepository(0, searchString, fdate, tdate, userId, appId);
+                    gridRepository = new StreetIdelGridRepository(0, searchString, fdate, tdate, userId, appId,PId);
                     return gridRepository;
                     break;
                 case "GarbageCount":
