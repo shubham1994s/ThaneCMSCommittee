@@ -9137,7 +9137,7 @@ namespace SwachBharat.CMS.Bll.Services
             return obj;
         }
 
-        public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification()
+        public List<SBAEmplyeeIdelGrid> GetLiquidIdelTimeNotification(int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             // DateTime? fdate = null
@@ -9145,7 +9145,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime fdate = Convert.ToDateTime(dt + " " + "00:00:00");
             DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
 
-            var data = db.SP_IdelTimeLiquid(0, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+            var data = db.SP_IdelTimeLiquid(0, fdate, tdate, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
             //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {
@@ -9176,7 +9176,7 @@ namespace SwachBharat.CMS.Bll.Services
             return obj;
         }
 
-        public List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification()
+        public List<SBAEmplyeeIdelGrid> GetStreetIdelTimeNotification(int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
             // DateTime? fdate = null
@@ -9184,7 +9184,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime fdate = Convert.ToDateTime(dt + " " + "00:00:00");
             DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
 
-            var data = db.SP_IdelTimestreet(0, fdate, tdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+            var data = db.SP_IdelTimestreet(0, fdate, tdate,PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
             //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {

@@ -184,7 +184,8 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
 
             {
                 List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
-                obj = childRepository.GetStreetIdelTimeNotification();
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                obj = childRepository.GetStreetIdelTimeNotification(PId);
 
                 //List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>()
                 //{
