@@ -5228,7 +5228,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //}
                     //db.Database.CommandTimeout = 5000;
                     db.Database.CommandTimeout = 500;
-                    var data = db.SP_LSEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, Emptype).ToList();
+                    var data = db.SP_LSEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, Emptype,PId).ToList();
                     // var data2 = data.OrderByDescending(c => c.Startdate).ThenByDescending(c => c.StartTime).ToList();
                     //var data2 = data1.GroupBy(o => o.userId).Select(o => o.First()).AsEnumerable().ToList();
 
@@ -5385,7 +5385,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //}
                     //db.Database.CommandTimeout = 5000;
                     db.Database.CommandTimeout = 500;
-                    var data = db.SP_SSEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, Emptype).ToList();
+                    var data = db.SP_SSEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, Emptype, PId).ToList();
                     // var data2 = data.OrderByDescending(c => c.Startdate).ThenByDescending(c => c.StartTime).ToList();
                     //var data2 = data1.GroupBy(o => o.userId).Select(o => o.First()).AsEnumerable().ToList();
 
