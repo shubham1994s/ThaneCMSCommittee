@@ -614,6 +614,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new EmpBeatMapsGridRepository(0, searchString, appId, PId, "S");
                     return gridRepository;
                     break;
+                case "EmpBeatMapL":
+                    gridRepository = new EmpBeatMapsGridRepository(0, searchString, appId, PId, "L");
+                    return gridRepository;
+                    break;
             }
 
             return null;

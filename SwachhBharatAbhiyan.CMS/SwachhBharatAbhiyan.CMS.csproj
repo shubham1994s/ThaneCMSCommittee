@@ -253,6 +253,7 @@
     <Compile Include="Areas\Liquid\Controllers\LiquidAndroidController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidAttendenceController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidDumpYardController.cs" />
+    <Compile Include="Areas\Liquid\Controllers\LiquidEmpBeatMapController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidEmployeeController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidGarbageController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidHomeController.cs" />
@@ -461,6 +462,7 @@
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\AttendenceGrid.js" />
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\DumpYardDetailGrid.js" />
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\DumpYardGrid.js" />
+    <Content Include="Areas\Liquid\Content\Script\DatatableGrid\EmpBeatMapGrid.js" />
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\EmployeeDetailsGrid.js" />
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\EmployeeSummaryGrid.js" />
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\LiquidGarbageGrid.js" />
@@ -2805,6 +2807,9 @@
     <Content Include="Areas\Street\Views\StreetAttendenceBeatMap\Index.cshtml" />
     <Content Include="Areas\Street\Views\StreetAttendenceBeatMap\UserRoute.cshtml" />
     <Content Include="Areas\Street\Views\StreetAttendenceBeatMap\HouseRoute.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidEmpBeatMap\MenuIndex.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidEmpBeatMap\Index.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidEmpBeatMap\AddEmpBeatMap.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
