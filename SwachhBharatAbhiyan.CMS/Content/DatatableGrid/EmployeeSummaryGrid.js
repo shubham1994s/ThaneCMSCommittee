@@ -2,7 +2,7 @@
     var UserId = $('#selectnumber').val();
     $.ajax({
         type: "post",
-        url: "/Location/UserList?rn=NULL",
+        url: "/Location/UserList?rn=WCT",
         data: { userId: UserId },
         datatype: "json",
         traditional: true,

@@ -147,7 +147,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "post",
-        url: "/Location/UserList",
+        url: "/Location/UserList?rn=WCT",
         data: { userId: UserId, },
         datatype: "json",
         traditional: true,
