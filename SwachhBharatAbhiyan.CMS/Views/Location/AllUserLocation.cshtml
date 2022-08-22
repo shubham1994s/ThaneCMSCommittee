@@ -95,7 +95,7 @@
         $(document).ready(function () {
             $.ajax({
                 type: "post",
-                url: "/Location/UserList",
+                url: "/Location/UserList?rn=WCT",
                 data: { stateId: $('#ddlState').val() },
                 datatype: "json",
                 traditional: true,
