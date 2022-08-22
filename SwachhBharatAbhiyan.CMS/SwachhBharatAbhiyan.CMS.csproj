@@ -262,6 +262,7 @@
     <Compile Include="Areas\Liquid\Controllers\LiquidWasteController.cs" />
     <Compile Include="Areas\Liquid\LiquidAreaRegistration.cs" />
     <Compile Include="Areas\Street\Controllers\StreetAccountController.cs" />
+    <Compile Include="Areas\Street\Controllers\StreetAttendenceBeatMapController.cs" />
     <Compile Include="Areas\Street\Controllers\StreetAttendenceController.cs" />
     <Compile Include="Areas\Street\Controllers\StreetDumpYardController.cs" />
     <Compile Include="Areas\Street\Controllers\StreetEmpBeatMapController.cs" />
@@ -1015,6 +1016,7 @@
     <Content Include="Areas\Street\Content\images\user-image.png" />
     <Content Include="Areas\Street\Content\images\user-image11.png" />
     <Content Include="Areas\Street\Content\images\user.png" />
+    <Content Include="Areas\Street\Content\Script\DatatableGrid\AttendenceBeatMapGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\AttendenceGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\DumpYardDetailGrid.js" />
     <Content Include="Areas\Street\Content\Script\DatatableGrid\DumpYardGrid.js" />
@@ -2799,6 +2801,10 @@
     <Content Include="Areas\Street\Views\StreetEmpBeatMap\MenuIndex.cshtml" />
     <Content Include="Areas\Street\Views\StreetEmpBeatMap\Index.cshtml" />
     <Content Include="Areas\Street\Views\StreetEmpBeatMap\AddEmpBeatMap.cshtml" />
+    <Content Include="Areas\Street\Views\StreetAttendenceBeatMap\MenuIndex.cshtml" />
+    <Content Include="Areas\Street\Views\StreetAttendenceBeatMap\Index.cshtml" />
+    <Content Include="Areas\Street\Views\StreetAttendenceBeatMap\UserRoute.cshtml" />
+    <Content Include="Areas\Street\Views\StreetAttendenceBeatMap\HouseRoute.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
