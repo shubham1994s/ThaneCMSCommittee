@@ -2541,13 +2541,13 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //            .Join(db.UserMasters, u => u.userId, i => i.userId
 
 
-                    var data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == null)
-                                 join t2 in db.UserMasters on t1.userId equals t2.userId
+                    var data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && (l.EmployeeType == null || l.EmployeeType =="CT"))
+                                 join t2 in db.UserMasters.Where(c=> c.EmployeeType == null || c.EmployeeType == "CT") on t1.userId equals t2.userId
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                     if (PId > 0)
                     {
-                        data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == null)
-                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId) on t1.userId equals t2.userId
+                        data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && (l.EmployeeType == null || l.EmployeeType == "CT"))
+                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId && (c.EmployeeType == null || c.EmployeeType == "CT")) on t1.userId equals t2.userId
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                     }
 
@@ -2641,12 +2641,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
                     var data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == "L")
-                                 join t2 in db.UserMasters on t1.userId equals t2.userId
+                                 join t2 in db.UserMasters.Where(c =>  c.EmployeeType == "L") on t1.userId equals t2.userId
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                     if (PId > 0)
                     {
                         data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == "L")
-                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId) on t1.userId equals t2.userId
+                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId && c.EmployeeType == "L") on t1.userId equals t2.userId
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                     }
 
@@ -2740,12 +2740,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
                     var data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == "S")
-                                 join t2 in db.UserMasters on t1.userId equals t2.userId
+                                 join t2 in db.UserMasters.Where(c => c.EmployeeType == "S") on t1.userId equals t2.userId
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                     if (PId > 0)
                     {
                         data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == "S")
-                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId) on t1.userId equals t2.userId
+                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId && c.EmployeeType == "S") on t1.userId equals t2.userId
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
 
                     }
@@ -8442,12 +8442,12 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-        public IEnumerable<SBAEmpBeatMapGridRow> EmpBeatMapsData(long wildcard, string SearchString, int appId, int PId)
+        public IEnumerable<SBAEmpBeatMapGridRow> EmpBeatMapsData(long wildcard, string SearchString, int appId, int PId,string EType)
         {
 
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
-                var data = db.EmpBeatMaps.Join(db.UserMasters,e => e.userId,u => u.userId,(e,u) => new {e,u }).Where(m => (PId != 0 && m.u.PrabhagId == PId) || PId == 0).Select(x => new SBAEmpBeatMapGridRow
+                var data = db.EmpBeatMaps.Join(db.UserMasters,e => e.userId,u => u.userId,(e,u) => new {e,u }).Where(m => ((PId != 0 && m.u.PrabhagId == PId) || PId == 0) && m.u.EmployeeType == EType).Select(x => new SBAEmpBeatMapGridRow
                 {
                     ebmId = x.e.ebmId,
                     userId = x.e.userId ?? 0,
