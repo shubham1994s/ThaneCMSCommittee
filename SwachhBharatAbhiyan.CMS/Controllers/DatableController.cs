@@ -219,7 +219,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
             if (searchString != "" && searchString != null)
             {
-                if (RepositoryName == "Attendence" || RepositoryName == "CTPTAttendence")
+                if (RepositoryName == "Attendence" || RepositoryName == "CTPTAttendence" || RepositoryName== "StreetAttendence" || RepositoryName == "LiquidAttendence")
                 {
                     string[] arr = searchString.Split(',');
                     if (arr.Length == 1)
