@@ -95,7 +95,8 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SBALUserLocationMapView> GetCTPTAttenRoute(int id, int areaid,int PId);
         List<SBALUserLocationMapView> GetLiquidAttenRoute(int id, int areaid,int PId);
         List<SBALUserLocationMapView> GetStreetAttenRoute(int id, int areaid,int PId);
-        
+        HouseAttenRouteVM GetStreetBeatAttenRoute(int daId, int areaid, int polyId, int ZoneId, int PrabhagNo, int WardNo, int PId);
+
         GarbagePointDetailsVM GetGarbagePointById(int teamId,int PId);
         GarbagePointDetailsVM SaveGarbagePoint(GarbagePointDetailsVM data,int PId);
         void DeletGarbagePoint(int teamId);

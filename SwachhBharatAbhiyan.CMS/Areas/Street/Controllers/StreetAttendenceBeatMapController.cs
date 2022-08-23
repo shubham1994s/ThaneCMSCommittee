@@ -10,11 +10,11 @@ using SwachhBharatAbhiyan.CMS.Models.SessionHelper;
 
 namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
 {
-    public class StreetAttendenceController : Controller
+    public class StreetAttendenceBeatMapController : Controller
     {
         IMainRepository mainRepository;
         IChildRepository childRepository;
-        public StreetAttendenceController()
+        public StreetAttendenceBeatMapController()
         {
             if (SessionHandler.Current.AppId != 0)
             {
@@ -120,14 +120,20 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
 
         }
 
-        public ActionResult HouseRouteData(int daId,int areaid)
+        public ActionResult HouseRouteData(int? daId, int? areaid, int? polyId, int? ZoneId, int? PrabhagNo, int? WardNo)
         {
             if (SessionHandler.Current.AppId != 0)
             {
+                int daIdNew = daId ?? 0;
+                int areaidNew = areaid ?? 0;
+                int polyIdNew = polyId ?? 0;
+                int ZoneIdNew = ZoneId ?? 0;
+                int PrabhagNoNew = PrabhagNo ?? 0;
+                int WardNoNew = WardNo ?? 0;
                 int PId = Convert.ToInt32(Session["PrabhagId"]);
 
-                List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
-                obj = childRepository.GetStreetAttenRoute(daId, areaid, PId);
+                HouseAttenRouteVM obj = new HouseAttenRouteVM();
+                obj = childRepository.GetStreetBeatAttenRoute(daIdNew, areaidNew, polyIdNew, ZoneIdNew, PrabhagNoNew, WardNoNew, PId);
                 // return Json(obj);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
@@ -150,6 +156,16 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
 
         }
 
+        public ActionResult ListBeatMapArea(int daId, int? areaid)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                List<SelectListItem> lstAreass = childRepository.ListBeatMapArea(daId, areaid);
+                return Json(lstAreass, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
 
+        }
     }
 }
