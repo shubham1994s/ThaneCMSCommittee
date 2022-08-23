@@ -327,7 +327,10 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.GetStreetBeatAttenRoute(daId, areaid, polyId, ZoneId, PrabhagNo, WardNo, PId);
         }
-
+        public HouseAttenRouteVM GetLiquidBeatAttenRoute(int daId, int areaid, int polyId, int ZoneId, int PrabhagNo, int WardNo, int PId)
+        {
+            return screenService.GetLiquidBeatAttenRoute(daId, areaid, polyId, ZoneId, PrabhagNo, WardNo, PId);
+        }
         public GarbagePointDetailsVM GetGarbagePointById(int teamId, int PId)
         {
             return screenService.GetGarbagePointDetails(teamId, PId);
