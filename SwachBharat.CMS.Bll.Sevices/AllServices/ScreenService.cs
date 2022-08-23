@@ -811,7 +811,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //house.AreaList = ListArea();
 
                     var PPP = new List<SelectListItem>();
-                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
                     PPP.Insert(0, itemAddPPP);
 
                     var WWWW = new List<SelectListItem>();
@@ -935,7 +935,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //house.AreaList = ListArea();
 
                     var PPP = new List<SelectListItem>();
-                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
                     PPP.Insert(0, itemAddPPP);
 
                     var WWWW = new List<SelectListItem>();
@@ -1053,7 +1053,7 @@ namespace SwachBharat.CMS.Bll.Services
                     //house.AreaList = ListArea();
 
                     var PPP = new List<SelectListItem>();
-                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
                     PPP.Insert(0, itemAddPPP);
 
                     var WWWW = new List<SelectListItem>();
@@ -5329,7 +5329,7 @@ namespace SwachBharat.CMS.Bll.Services
             if (PId > 0)
             {
                 var WardNo = new List<SelectListItem>();
-                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
 
                 try
                 {
@@ -5350,7 +5350,7 @@ namespace SwachBharat.CMS.Bll.Services
             else
             {
                 var WardNo = new List<SelectListItem>();
-                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
 
                 try
                 {
@@ -5405,7 +5405,7 @@ namespace SwachBharat.CMS.Bll.Services
             if (PId > 0)
             {
                 var Committee = new List<SelectListItem>();
-                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
 
                 try
                 {
@@ -5425,7 +5425,7 @@ namespace SwachBharat.CMS.Bll.Services
             else
             {
                 var Committee = new List<SelectListItem>();
-                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
 
                 try
                 {
@@ -5611,7 +5611,7 @@ namespace SwachBharat.CMS.Bll.Services
             {
                 try
                 {
-                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                    SelectListItem itemAdd = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
                     WardNo = db.CommitteeMasters.Where(c => c.zoneId == ZoneId).ToList()
                         .Select(x => new SelectListItem
                         {
@@ -9020,7 +9020,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                     }
                     var PPP = new List<SelectListItem>();
-                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samitee", Value = "0" };
+                    SelectListItem itemAddPPP = new SelectListItem() { Text = "Select Prabhag Samiti", Value = "0" };
                     PPP.Insert(0, itemAddPPP);
 
                     var WWWW = new List<SelectListItem>();
