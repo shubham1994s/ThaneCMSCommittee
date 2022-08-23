@@ -15,25 +15,25 @@
         },
 
         "columnDefs":
-        [{
-            "targets": [0],
-            "visible": false,
-            "searchable": false
-        },
-        {
-            "targets": [2],
-            "visible": false,
-            "searchable": false
-        }],
+            [{
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [2],
+                "visible": false,
+                "searchable": false
+            }],
 
         "columns": [
-              { "data": "Id", "name": "Id", "autoWidth": false },
-              { "data": "Name", "name": "Name", "autoWidth": false },
-              { "data": "NameMar", "name": "NameMar", "autoWidth": false },
-              { "data": "Prabhag", "name": "Prabhag", "autoWidth": false },
-              { "data": "ward", "name": "ward", "autoWidth": false },
-       { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer" onclick="Edit(' + full["Id"] + ')" ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
-       //<a  data-toggle="modal" style="cursor:pointer;margin-left:10px;" class="tooltip1" style="cursor:pointer" onclick="Delete(' + full["Id"] + ',' + full["Name"] + ')" ><i class="material-icons delete-icon">delete</i><span class="tooltiptext1">Delete</span> </a>
+            { "data": "Id", "name": "Id", "autoWidth": false },
+            { "data": "Name", "name": "Name", "autoWidth": false },
+            { "data": "NameMar", "name": "NameMar", "autoWidth": false },
+            { "data": "ward", "name": "ward", "autoWidth": false },
+            { "data": "Prabhag", "name": "Prabhag", "autoWidth": false },
+            { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer" onclick="Edit(' + full["Id"] + ')" ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
+            //<a  data-toggle="modal" style="cursor:pointer;margin-left:10px;" class="tooltip1" style="cursor:pointer" onclick="Delete(' + full["Id"] + ',' + full["Name"] + ')" ><i class="material-icons delete-icon">delete</i><span class="tooltiptext1">Delete</span> </a>
         ]
     });
 });

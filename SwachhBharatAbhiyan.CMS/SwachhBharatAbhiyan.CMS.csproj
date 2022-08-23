@@ -251,6 +251,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidAccountController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidAndroidController.cs" />
+    <Compile Include="Areas\Liquid\Controllers\LiquidAttendenceBeatMapController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidAttendenceController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidDumpYardController.cs" />
     <Compile Include="Areas\Liquid\Controllers\LiquidEmpBeatMapController.cs" />
@@ -459,6 +460,7 @@
     <Content Include="Areas\Liquid\Content\images\user-image.png" />
     <Content Include="Areas\Liquid\Content\images\user-image11.png" />
     <Content Include="Areas\Liquid\Content\images\user.png" />
+    <Content Include="Areas\Liquid\Content\Script\DatatableGrid\AttendenceBeatMapGrid.js" />
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\AttendenceGrid.js" />
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\DumpYardDetailGrid.js" />
     <Content Include="Areas\Liquid\Content\Script\DatatableGrid\DumpYardGrid.js" />
@@ -2810,6 +2812,12 @@
     <Content Include="Areas\Liquid\Views\LiquidEmpBeatMap\MenuIndex.cshtml" />
     <Content Include="Areas\Liquid\Views\LiquidEmpBeatMap\Index.cshtml" />
     <Content Include="Areas\Liquid\Views\LiquidEmpBeatMap\AddEmpBeatMap.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidAttendenceBeatMap\MenuIndex.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidAttendenceBeatMap\Index.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidAttendenceBeatMap\UserRoute.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidAttendenceBeatMap\Location.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidAttendenceBeatMap\UserAttendenceLocation.cshtml" />
+    <Content Include="Areas\Liquid\Views\LiquidAttendenceBeatMap\HouseRoute.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
