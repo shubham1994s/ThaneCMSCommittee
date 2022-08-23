@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
-    
+
     @Styles.Render("~/Street/Content/ThemeCss")
     @*@Scripts.Render("~/bundles/modernizr")*@
     @RenderSection("styles", required: false)
@@ -62,7 +62,7 @@
                         @Html.Partial("_LoginPartial")
 
                     </div>
-    </div>
+                </div>
             </nav>
         </header>
         <div class="page-content d-flex align-items-stretch">
@@ -89,10 +89,25 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="/Street/StreetAttendence/MenuIndex">
-                            <i class="svg_attendance"> </i>
-                            @*उपस्थिती*@ Workers Attendance / Route
+                        <a href="#exampledropdownDropdown12" aria-expanded="false" data-toggle="collapse">
+
+                            <i class="svg_attendance" style=" fill: #000;"> </i>
+                            @*कचरा संकलन*@ Workers Attendance / Route
                         </a>
+                        <ul id="exampledropdownDropdown12" class="collapse list-unstyled ">
+                            <li>
+                                <a href="/Street/StreetAttendence/MenuIndex">
+                                    Workers Attendance / Route
+                                    @*उपस्थिती*@
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Street/StreetAttendenceBeatMap/MenuIndex">
+                                    Workers Attendance Beat Map / Route
+                                    @*उपस्थिती*@
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#exampledropdownDropdown1" aria-expanded="false" data-toggle="collapse">
@@ -102,8 +117,8 @@
                         </a>
                         <ul id="exampledropdownDropdown1" class="collapse list-unstyled ">
                             @*<li><a href="/GarbageCollection/MenuHouseGarbageIndex">घर संकलन</a></li>
-        <li><a href="/GarbageCollection/MenuPointGarbageIndex">कचरा पॉईंट संकलन </a></li>
-        <li><a href="/GarbageCollection/MenuDumpYardIndex">डंप यार्ड तपशील</a></li>*@
+                                <li><a href="/GarbageCollection/MenuPointGarbageIndex">कचरा पॉईंट संकलन </a></li>
+                                <li><a href="/GarbageCollection/MenuDumpYardIndex">डंप यार्ड तपशील</a></li>*@
 
                             @*<li><a href="/Street/StreetGarbage/MenuStreetGarbageIndex">Street Sweeping Point</a></li>*@
                             <li><a href="/Street/StreetGarbage/MenuStreetBitMapIndex">Street Sweeping Bit Point</a></li>
@@ -187,9 +202,9 @@
                         </a>
                         <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                             @*<li><a href="/HouseMaster/MenuIndex">घर नोंदणी</a></li>
-        <li><a href="/GarbagePoint/MenuIndex">कचरा पॉइंट नोंदणी</a></li>
-        <li><a href="/DumpYard/MenuIndex">डंप यार्ड नोंदणी</a></li>
-        <li><a href="/Employee/MenuIndex"> कर्मचारी नोंदणी</a></li>*@
+                                <li><a href="/GarbagePoint/MenuIndex">कचरा पॉइंट नोंदणी</a></li>
+                                <li><a href="/DumpYard/MenuIndex">डंप यार्ड नोंदणी</a></li>
+                                <li><a href="/Employee/MenuIndex"> कर्मचारी नोंदणी</a></li>*@
 
                             <li><a href="/Street/StreetSweeping/MenuIndex">Street Sweeping Point Registration </a></li>
                             <li><a href="/Street/StreetSweeping/MenuStreetBeatIndex">Street Sweeping Beat Registration </a></li>
@@ -241,15 +256,15 @@
                         </a>
                         <ul id="exampledropdownDropdown2" class="collapse list-unstyled ">
                             @*<li><a href="/MainMaster/MenuStateIndex">राज्य तपशील</a></li>
-                            <li><a href="/MainMaster/MenuDistrictIndex">जिल्हा तपशील</a></li>
-                            <li><a href="/MainMaster/MenuTalukaIndex">तालुका तपशील</a></li>
-                            <li><a href="/MainMaster/MenuZoneIndex">झोन तपशील</a></li>
-                            <li><a href="/MainMaster/MenuWardIndex">वार्ड तपशील</a></li>
-                            <li><a href="/MainMaster/MenuAreaIndex">क्षेत्र तपशील</a></li>
-                            <li><a href="/MainMaster/MenuVehicleIndex">वाहनाचे प्रकार तपशील</a></li> 
-                            <li><a href="/MainMaster/MenuStateIndex">State Details</a></li>
-                            <li><a href="/MainMaster/MenuDistrictIndex">District Details</a></li>
-                            <li><a href="/MainMaster/MenuTalukaIndex">Taluka Details</a></li>*@
+                                <li><a href="/MainMaster/MenuDistrictIndex">जिल्हा तपशील</a></li>
+                                <li><a href="/MainMaster/MenuTalukaIndex">तालुका तपशील</a></li>
+                                <li><a href="/MainMaster/MenuZoneIndex">झोन तपशील</a></li>
+                                <li><a href="/MainMaster/MenuWardIndex">वार्ड तपशील</a></li>
+                                <li><a href="/MainMaster/MenuAreaIndex">क्षेत्र तपशील</a></li>
+                                <li><a href="/MainMaster/MenuVehicleIndex">वाहनाचे प्रकार तपशील</a></li>
+                                <li><a href="/MainMaster/MenuStateIndex">State Details</a></li>
+                                <li><a href="/MainMaster/MenuDistrictIndex">District Details</a></li>
+                                <li><a href="/MainMaster/MenuTalukaIndex">Taluka Details</a></li>*@
                             <li><a href="/Street/StreetMainMaster/MenuZoneIndex">Zone Details</a></li>
                             <li><a href="/Street/StreetMainMaster/MenuWardIndex">Ward / Prabhag Details</a></li>
                             <li><a href="/Street/StreetMainMaster/MenuAreaIndex">Area Details</a></li>
@@ -291,9 +306,9 @@
                         </ul>
                     </li>
                     @*<li>
-                        <a href="/Android/AndroidAPKMenu">
-                        <img src="~/Areas/Liquid/Content/theme-assets/img/android.svg" style=" margin-right: 5%;"/>Android App</a>
-                    </li>*@
+                            <a href="/Android/AndroidAPKMenu">
+                            <img src="~/Areas/Liquid/Content/theme-assets/img/android.svg" style=" margin-right: 5%;"/>Android App</a>
+                        </li>*@
                     @*<li class="" id="waste_mgmt">
                             <a href="#exampledropdownDropdown11" aria-expanded="false" data-toggle="collapse">
                                 <i class="i_waste"> </i>
@@ -321,7 +336,7 @@
             </nav>
             <div class="content-inner">
 
-        @RenderBody()
+                @RenderBody()
 
                 <footer class="main-footer">
                     <div class="container-fluid">
@@ -336,8 +351,8 @@
                             </div>
                         </div>
                     </div>
-        </footer>
-    </div>
+                </footer>
+            </div>
         </div>
     </div>
 
