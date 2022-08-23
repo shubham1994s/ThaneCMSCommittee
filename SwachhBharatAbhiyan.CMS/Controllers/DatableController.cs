@@ -216,6 +216,25 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             //var appId = ((SessionHandler)Session["clsSession"]).AppId;
             var appId = SessionHandler.Current.AppId;
             int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+            if (searchString != "" && searchString != null)
+            {
+                if (RepositoryName == "Attendence" || RepositoryName == "CTPTAttendence")
+                {
+                    string[] arr = searchString.Split(',');
+                    if (arr.Length == 1)
+                    { 
+                        if (arr[0].ToString() != null && arr[0] != " " && arr[0].ToString() != string.Empty )
+                    {
+                        if (arr[0].ToString() != "undefined")
+                            { 
+                            PId = Convert.ToInt32(arr[0].ToString());
+                            }
+                            searchString = "";
+                        }
+                    }
+                }
+            }
             switch (RepositoryName)
             {
                 case "Location":
