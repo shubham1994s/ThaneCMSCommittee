@@ -216,27 +216,13 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             //var appId = ((SessionHandler)Session["clsSession"]).AppId;
             var appId = SessionHandler.Current.AppId;
             int PId = Convert.ToInt32(Session["PrabhagId"]);
-
-            if (searchString != "" && searchString != null)
-            {
-                var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence" }.Contains(RepositoryName);
+                var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence", "EmployeeSummary", "UserIdel" }.Contains(RepositoryName);
              
-              if(ChkStr == true)
+               if(ChkStr == true)
                 {
-                    string[] arr = searchString.Split(',');
-                    if (arr.Length == 1)
-                    { 
-                        if (arr[0].ToString() != null && arr[0] != " " && arr[0].ToString() != string.Empty )
-                    {
-                        if (arr[0].ToString() != "undefined")
-                            { 
-                            PId = Convert.ToInt32(arr[0].ToString());
-                            }
-                            searchString = "";
-                        }
-                    }
+                 PId = Convert.ToInt32(param1);             
                 }
-            }
+          
             switch (RepositoryName)
             {
                 case "Location":
