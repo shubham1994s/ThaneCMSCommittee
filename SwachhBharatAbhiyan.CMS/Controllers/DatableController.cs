@@ -216,7 +216,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             //var appId = ((SessionHandler)Session["clsSession"]).AppId;
             var appId = SessionHandler.Current.AppId;
             int PId = Convert.ToInt32(Session["PrabhagId"]);
-                var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence", "EmployeeSummary", "UserIdel" }.Contains(RepositoryName);
+                var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence", "EmployeeSummary", "UserIdel"
+                ,"StreetEmployeeSummary","UserIdelStreet","LiquidEmployeeSummary","UserIdelLiquid"}.Contains(RepositoryName);
              
                if(ChkStr == true)
                 {
