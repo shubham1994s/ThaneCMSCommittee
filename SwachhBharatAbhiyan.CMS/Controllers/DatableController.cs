@@ -119,7 +119,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                     if (arr.Length > 4)
                     {
-                        if (arr[4].ToString() != null && arr[4] != "0" && arr[4] != " " && arr[4].ToString() != string.Empty)
+                        if (arr[4].ToString() != null && arr[4] != "0" && arr[4] != " " && arr[4].ToString() != string.Empty && arr[4].ToString() != "undefined")
                         { param1 = Convert.ToInt32(arr[4]); }
                         else param1 = null;
                     }
