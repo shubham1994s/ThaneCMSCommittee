@@ -13,20 +13,49 @@
 
     <div class="container">
         <br />
+        <div class="row" style="text-align: center; display: inline-block; width: 100%;margin-top:2%">
+            <label class="check-container">
+                <input type="radio" checked="checked" value="0" name="rdType">
+                Waste
+                <span class="checkmark"></span>
+            </label>
+            &nbsp; &nbsp;
+            <label class="check-container">
+                <input type="radio" value="1" name="rdType">
+                CT/PT/U
+                <span class="checkmark"></span>
+            </label>
+        </div>
         <div style="width:100%; margin:0 auto;">
             <a href="AddEmpBeatMap" id="AH" class="btn btn-primary btn-sm float-right" type="button">Add Employee Beat Map</a>
-            <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="s" class="form-control form-control-sm" onkeyup="Search()"></label>
-            <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>ebmId</th>
-                        <th>userId</th>
-                        <th> Employee Name</th>
-                        <th> Type</th>
-                        <th data-sortable="false"> Action</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="container" id="divW" style="overflow-y:auto;display:none">
+                <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="s" class="form-control form-control-sm" onkeyup="Search()"></label>
+                <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ebmId</th>
+                            <th>userId</th>
+                            <th> Employee Name</th>
+                            <th> Type</th>
+                            <th data-sortable="false"> Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="container" id="divCT" style="overflow-y:auto;display:none">
+                <label style="display:inline-flex;padding-right:5px" class="float-right">Search:&nbsp;<input type="text" id="sCT" class="form-control form-control-sm" onkeyup="SearchCT()"></label>
+                <table id="demoGridCT" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ebmId</th>
+                            <th>userId</th>
+                            <th> Employee Name</th>
+                            <th> Type</th>
+                            <th data-sortable="false"> Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 
