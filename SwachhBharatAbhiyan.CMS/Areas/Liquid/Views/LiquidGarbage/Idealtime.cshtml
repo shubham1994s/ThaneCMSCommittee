@@ -22,37 +22,79 @@
 
 <body>
     <br />
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="controls">
-                    @*<label>तारखेपासून / From Date</label>*@
-                    <label>From Date</label>
-                    <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
+    @if (@HttpContext.Current.Session["PrabhagId"].ToString() == "0")
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="controls">
+                        @*<label>तारखेपासून / From Date</label>*@
+                        <label>From Date</label>
+                        <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="controls">
-                    @*<label>तारीख पर्यंत / To Date</label>*@
-                    <label>To Date</label>
-                    <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
+                <div class="col-sm-2">
+                    <div class="controls">
+                        @*<label>तारीख पर्यंत / To Date</label>*@
+                        <label>To Date</label>
+                        <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                <label>Select Employee</label>
-                <select id="selectnumber" class="form-control form-control form-control-sm"></select>
-            </div>
-            <div class="col-sm-2">
-                <div class="controls">
-                    <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-success filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                <div class="col-sm-3">
+                    @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                    <label>Select Employee</label>
+                    <select id="selectnumber" class="form-control form-control form-control-sm"></select>
                 </div>
-            </div>
+                <div class="col-sm-3">
+                    @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                    <label>Select Prabhag Samiti</label>
+                    <select id="PrabhagNo" class="form-control form-control form-control-sm"></select>
+                </div>
+                <div class="col-sm-2">
+                    <div class="controls">
+                        <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-primary filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                    </div>
+                </div>
 
+
+            </div>
 
         </div>
+    }
+    else
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="controls">
+                        @*<label>तारखेपासून / From Date</label>*@
+                        <label>From Date</label>
+                        <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="controls">
+                        @*<label>तारीख पर्यंत / To Date</label>*@
+                        <label>To Date</label>
+                        <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                    <label>Select Employee</label>
+                    <select id="selectnumber" class="form-control form-control form-control-sm"></select>
+                </div>
+                <div class="col-sm-2">
+                    <div class="controls">
+                        <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-primary filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                    </div>
+                </div>
 
-    </div>
+
+            </div>
+
+        </div>
+    }
     <br />
     <div class="container-fluid">
         <div class="">

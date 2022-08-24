@@ -4890,7 +4890,13 @@ namespace SwachBharat.CMS.Bll.Services
             WardNumber model = new WardNumber();
             model.Id = data.Id;
             model.WardNo = data.WardNo;
-            model.zoneId = data.PrabhagId;
+            model.PrabhagId = data.PrabhagId;
+            var zone = db.CommitteeMasters.Where(x => x.Id == data.PrabhagId).FirstOrDefault();
+            if (zone != null)
+            {
+                model.zoneId = zone.zoneId;
+            }
+
             return model;
         }
 

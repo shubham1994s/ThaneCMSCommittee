@@ -119,7 +119,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                     if (arr.Length > 4)
                     {
-                        if (arr[4].ToString() != null && arr[4] != "0" && arr[4] != " " && arr[4].ToString() != string.Empty)
+                        if (arr[4].ToString() != null && arr[4] != "0" && arr[4] != " " && arr[4].ToString() != string.Empty && arr[4].ToString() != "undefined")
                         { param1 = Convert.ToInt32(arr[4]); }
                         else param1 = null;
                     }
@@ -216,7 +216,8 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             //var appId = ((SessionHandler)Session["clsSession"]).AppId;
             var appId = SessionHandler.Current.AppId;
             int PId = Convert.ToInt32(Session["PrabhagId"]);
-                var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence", "EmployeeSummary", "UserIdel" }.Contains(RepositoryName);
+                var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence", "EmployeeSummary", "UserIdel"
+                ,"StreetEmployeeSummary","UserIdelStreet","LiquidEmployeeSummary","UserIdelLiquid"}.Contains(RepositoryName);
              
                if(ChkStr == true)
                 {
