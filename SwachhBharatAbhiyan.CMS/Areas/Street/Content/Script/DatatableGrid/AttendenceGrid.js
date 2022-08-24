@@ -159,7 +159,7 @@ function Search() {
     NesEvent = " ";
     var Product = "";
     var catProduct = "";
-    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + PrabhagId +"," + $("#s").val();//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + PrabhagId;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
     // alert(value );
     oTable = $('#demoGrid').DataTable();
     oTable.search(value).draw();
