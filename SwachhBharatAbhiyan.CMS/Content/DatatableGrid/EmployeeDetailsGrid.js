@@ -7,13 +7,13 @@ $(document).ready(function () {
     LoadGrid();
     // $('#demoGrid').css("display", "block");
     $('#btn').hide();
-   
+
 
 });
 
 $('#NotActivebtn').on('click', function (e) {
     debugger;
-    
+
     $('#change').text('Non Active Employee');
     $('#btn').show();
     $("#hdActive").val('false');
@@ -22,7 +22,7 @@ $('#NotActivebtn').on('click', function (e) {
 
 });
 
-function NotActivebtnClick () {
+function NotActivebtnClick() {
     $('#change').text('Non Active Employee');
     $('#btn').show();
     $("#hdActive").val('false');
@@ -50,7 +50,7 @@ function LoadGrid() {
             $("#divNonActiveCT").hide();
             NotActiveEmployeeW();
         }
-        
+
 
     }
     else if (RadioValue == 1) {
@@ -119,21 +119,21 @@ function EmployeeW() {
                         return "<img alt='Photo Not Found' onclick='noImageNotification()' src='/Images/default_not_upload.png' style='height:35px;width:35px;cursor:pointer;'></img>";
                     }
                 },
-                },
-                {
-                    "targets": [7],
-                    "visible": true,
+            },
+            {
+                "targets": [7],
+                "visible": true,
 
-                    "render": function (data, type, full, meta) {
-                        if (full["EmployeeType"] == "" || full["EmployeeType"] == null) {
-                            return "Waste";
-                        }
-                        else {
+                "render": function (data, type, full, meta) {
+                    if (full["EmployeeType"] == "" || full["EmployeeType"] == null) {
+                        return "Waste";
+                    }
+                    else {
 
-                            return "CTPT";
-                        }
-                    },
+                        return "CTPT";
+                    }
                 },
+            },
             ],
 
         "columns": [
@@ -182,6 +182,16 @@ function EmployeeCT() {
             },
             {
                 "targets": [2],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [10],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [11],
                 "visible": false,
                 "searchable": false
             },
@@ -347,21 +357,21 @@ function NotActiveEmployeeW() {
                         return "<img alt='Photo Not Found' onclick='noImageNotification()' src='/Images/default_not_upload.png' style='height:35px;width:35px;cursor:pointer;'></img>";
                     }
                 },
-                },
-                {
-                    "targets": [7],
-                    "visible": true,
+            },
+            {
+                "targets": [7],
+                "visible": true,
 
-                    "render": function (data, type, full, meta) {
-                        if (full["EmployeeType"] == "") {
-                            return "Waste";
-                        }
-                        else {
+                "render": function (data, type, full, meta) {
+                    if (full["EmployeeType"] == "") {
+                        return "Waste";
+                    }
+                    else {
 
-                            return "CTPT";
-                        }
-                    },
+                        return "CTPT";
+                    }
                 },
+            },
             ],
 
         "columns": [
@@ -412,6 +422,16 @@ function NotActiveEmployeeCT() {
             },
             {
                 "targets": [2],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [10],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [11],
                 "visible": false,
                 "searchable": false
             },
@@ -476,11 +496,11 @@ function noImageNotification() {
 }
 
 function PopImages(cel) {
-    
-    $('#myModal_Image').modal('toggle'); 
+
+    $('#myModal_Image').modal('toggle');
     var imgsrc = $(cel).find('img').attr('src');
     var head = $(cel).find('.li_title').text();
-   
+
     jQuery("#imggg").attr('src', imgsrc);
     //jQuery("#latlongData").text(cellValue);
     jQuery("#header_data").html(head);

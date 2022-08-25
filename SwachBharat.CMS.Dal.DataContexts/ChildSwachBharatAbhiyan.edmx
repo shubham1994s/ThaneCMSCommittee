@@ -332,8 +332,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.GramCleaningCo
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CType" Type="varchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.QrEmployeeMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="QrEmployeeMaster">
           <Key>
             <PropertyRef Name="qrEmpId" />
@@ -1090,6 +1088,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Qr_Employee_Daily_Attendance" EntityType="Self.Qr_Employee_Daily_Attendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Qr_Location" EntityType="Self.Qr_Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QrEmployeeMaster" EntityType="Self.QrEmployeeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SauchalayAddress" EntityType="Self.SauchalayAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SS_1_4_ANSWER" EntityType="Self.SS_1_4_ANSWER" Schema="dbo" Table="SS_1.4_ANSWER" store:Type="Tables" />
           <EntitySet Name="SS_1_4_QUESTION_13july" EntityType="Self.SS_1_4_QUESTION_13july" Schema="dbo" Table="SS_1.4_QUESTION_13july" store:Type="Tables" />
@@ -1155,26 +1154,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [GramCleaningComplient].[ref_id] AS [ref_id], 
     [GramCleaningComplient].[Type] AS [Type]
     FROM [dbo].[GramCleaningComplient] AS [GramCleaningComplient]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="QrEmployeeMaster" EntityType="Self.QrEmployeeMaster" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [QrEmployeeMaster].[qrEmpId] AS [qrEmpId], 
-    [QrEmployeeMaster].[appId] AS [appId], 
-    [QrEmployeeMaster].[qrEmpName] AS [qrEmpName], 
-    [QrEmployeeMaster].[qrEmpNameMar] AS [qrEmpNameMar], 
-    [QrEmployeeMaster].[qrEmpLoginId] AS [qrEmpLoginId], 
-    [QrEmployeeMaster].[qrEmpPassword] AS [qrEmpPassword], 
-    [QrEmployeeMaster].[qrEmpMobileNumber] AS [qrEmpMobileNumber], 
-    [QrEmployeeMaster].[qrEmpAddress] AS [qrEmpAddress], 
-    [QrEmployeeMaster].[type] AS [type], 
-    [QrEmployeeMaster].[typeId] AS [typeId], 
-    [QrEmployeeMaster].[userEmployeeNo] AS [userEmployeeNo], 
-    [QrEmployeeMaster].[imoNo] AS [imoNo], 
-    [QrEmployeeMaster].[bloodGroup] AS [bloodGroup], 
-    [QrEmployeeMaster].[isActive] AS [isActive], 
-    [QrEmployeeMaster].[target] AS [target], 
-    [QrEmployeeMaster].[lastModifyDate] AS [lastModifyDate]
-    FROM [dbo].[QrEmployeeMaster] AS [QrEmployeeMaster]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SS_1_4_QUESTION" EntityType="Self.SS_1_4_QUESTION" store:Type="Tables" store:Schema="dbo" store:Name="SS_1.4_QUESTION">
             <DefiningQuery>SELECT 
@@ -1365,7 +1344,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="WM_Garbage_Summary" EntityType="DevSwachhBharatNagpurModel.WM_Garbage_Summary" />
           <FunctionImport Name="SP_GetLiveTracking" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_GetLiveTracking_Result)" />
           <EntitySet Name="ZoneMasters" EntityType="DevSwachhBharatNagpurModel.ZoneMaster" />
-          <EntitySet Name="QrEmployeeMasters" EntityType="DevSwachhBharatNagpurModel.QrEmployeeMaster" />
           <EntitySet Name="GramCleaningComplients" EntityType="DevSwachhBharatNagpurModel.GramCleaningComplient" />
           <EntitySet Name="WM_Garbage_Sales" EntityType="DevSwachhBharatNagpurModel.WM_Garbage_Sales" />
           <EntitySet Name="Vw_MsgNotification" EntityType="DevSwachhBharatNagpurModel.Vw_MsgNotification" />
@@ -1717,6 +1695,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
             <Parameter Name="PrabhagId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="QrEmployeeMasters" EntityType="DevSwachhBharatNagpurModel.QrEmployeeMaster" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2064,27 +2043,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </Key>
           <Property Name="zoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="QrEmployeeMaster">
-          <Key>
-            <PropertyRef Name="qrEmpId" />
-          </Key>
-          <Property Name="qrEmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="appId" Type="Int32" />
-          <Property Name="qrEmpName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="qrEmpNameMar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="qrEmpLoginId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="qrEmpPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="qrEmpMobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="qrEmpAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="typeId" Type="Int32" />
-          <Property Name="userEmployeeNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="imoNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="bloodGroup" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="target" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="lastModifyDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="GramCleaningComplient">
           <Key>
@@ -3416,6 +3374,27 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
         </ComplexType>
+        <EntityType Name="QrEmployeeMaster">
+          <Key>
+            <PropertyRef Name="qrEmpId" />
+          </Key>
+          <Property Name="qrEmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="appId" Type="Int32" />
+          <Property Name="qrEmpName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="qrEmpNameMar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="qrEmpLoginId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="qrEmpPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="qrEmpMobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="qrEmpAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="typeId" Type="Int32" />
+          <Property Name="userEmployeeNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="imoNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bloodGroup" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="target" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="lastModifyDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3700,28 +3679,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               <MappingFragment StoreEntitySet="ZoneMaster">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="zoneId" ColumnName="zoneId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QrEmployeeMasters">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.QrEmployeeMaster">
-              <MappingFragment StoreEntitySet="QrEmployeeMaster">
-                <ScalarProperty Name="lastModifyDate" ColumnName="lastModifyDate" />
-                <ScalarProperty Name="target" ColumnName="target" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
-                <ScalarProperty Name="imoNo" ColumnName="imoNo" />
-                <ScalarProperty Name="userEmployeeNo" ColumnName="userEmployeeNo" />
-                <ScalarProperty Name="typeId" ColumnName="typeId" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="qrEmpAddress" ColumnName="qrEmpAddress" />
-                <ScalarProperty Name="qrEmpMobileNumber" ColumnName="qrEmpMobileNumber" />
-                <ScalarProperty Name="qrEmpPassword" ColumnName="qrEmpPassword" />
-                <ScalarProperty Name="qrEmpLoginId" ColumnName="qrEmpLoginId" />
-                <ScalarProperty Name="qrEmpNameMar" ColumnName="qrEmpNameMar" />
-                <ScalarProperty Name="qrEmpName" ColumnName="qrEmpName" />
-                <ScalarProperty Name="appId" ColumnName="appId" />
-                <ScalarProperty Name="qrEmpId" ColumnName="qrEmpId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5279,6 +5236,28 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="QrEmployeeMasters">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.QrEmployeeMaster">
+              <MappingFragment StoreEntitySet="QrEmployeeMaster">
+                <ScalarProperty Name="lastModifyDate" ColumnName="lastModifyDate" />
+                <ScalarProperty Name="target" ColumnName="target" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+                <ScalarProperty Name="imoNo" ColumnName="imoNo" />
+                <ScalarProperty Name="userEmployeeNo" ColumnName="userEmployeeNo" />
+                <ScalarProperty Name="typeId" ColumnName="typeId" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="qrEmpAddress" ColumnName="qrEmpAddress" />
+                <ScalarProperty Name="qrEmpMobileNumber" ColumnName="qrEmpMobileNumber" />
+                <ScalarProperty Name="qrEmpPassword" ColumnName="qrEmpPassword" />
+                <ScalarProperty Name="qrEmpLoginId" ColumnName="qrEmpLoginId" />
+                <ScalarProperty Name="qrEmpNameMar" ColumnName="qrEmpNameMar" />
+                <ScalarProperty Name="qrEmpName" ColumnName="qrEmpName" />
+                <ScalarProperty Name="appId" ColumnName="appId" />
+                <ScalarProperty Name="qrEmpId" ColumnName="qrEmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
          
         </EntityContainerMapping>
       </Mapping>

@@ -19,6 +19,27 @@
         }
     });
 
+    var UserIdP = $('#PrabhagNo').val();
+    $.ajax({
+        type: "post",
+        url: "/GarbageCollection/PrabhagList",
+        data: { userId: UserIdP },
+        datatype: "json",
+        traditional: true,
+        success: function (data) {
+            var district;
+            for (var i = 0; i < data.length; i++) {
+
+                if (data[i].Value == $('#PrabhagNo').val()) {
+                    district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+                } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+            }
+            //district = district + '</select>';
+            $('#PrabhagNo').html(district);
+        }
+    });
+
+  
     $('#selecttype').html('<option value=0>Select Monitoring Type</option><option value=S>Waste Collection Monitoring Technology</option><option value=SS>Street Sweeping Monitoring System</option><option value=L>Liquid Waste Cleaning Monitoring System</option>');
    
     $("#demoGrid").DataTable({
@@ -128,7 +149,7 @@ function showInventoriesGrid() {
  
 function Search() {
     debugger;
-    var txt_fdate, txt_tdate, Client, UserId;
+    var txt_fdate, txt_tdate, Client, UserId, PrabhagId;
     var name = [];
     var arr = [$('#txt_fdate').val(), $('#txt_tdate').val()];
 
@@ -140,11 +161,12 @@ function Search() {
     txt_fdate = arr[0];
     txt_tdate = arr[1];
     UserId = $('#selectnumber').val();
+    PrabhagId = $('#PrabhagNo').val();
     Client = " ";
     NesEvent = " ";
     var Product = "";
     var catProduct = "";
-    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val();//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
+    var value = txt_fdate + "," + txt_tdate + "," + UserId + "," + $("#s").val() + "," + PrabhagId ;//txt_fdate + "," + txt_tdate + "," + UserId + "," + Client + "," + NesEvent + "," + Product + "," + catProduct + "," + 1;
     // alert(value );
     oTable = $('#demoGrid').DataTable();
     oTable.search(value).draw();

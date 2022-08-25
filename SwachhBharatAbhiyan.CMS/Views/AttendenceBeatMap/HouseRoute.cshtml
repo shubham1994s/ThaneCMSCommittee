@@ -534,6 +534,8 @@
             document.getElementById("ZoneId").value = "0";
             document.getElementById("WardNo").value = "0";
             document.getElementById("AreaId").value = "0";
+            document.getElementById("PrabhagNo").value = "0";
+
             myMap(from, to)
         }
 
@@ -621,7 +623,8 @@
                     var arrCoordinate = m.poly;
                     var innerCount = 0;
                     var outerCount = 0;
-
+                    $("#spnInner").text(innerCount);
+                    $("#spnOuter").text(outerCount);
 
 
                     if (markers.length == 0) {

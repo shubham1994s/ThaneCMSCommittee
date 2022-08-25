@@ -88,10 +88,25 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="/Liquid/LiquidAttendence/MenuIndex">
-                            <i class="svg_attendance"> </i>
-                            @*उपस्थिती*@ Workers Attendance / Route
+                        <a href="#exampledropdownDropdown12" aria-expanded="false" data-toggle="collapse">
+
+                            <i class="svg_attendance" style=" fill: #000;"> </i>
+                            @*कचरा संकलन*@ Workers Attendance / Route
                         </a>
+                        <ul id="exampledropdownDropdown12" class="collapse list-unstyled ">
+                            <li>
+                                <a href="/Liquid/LiquidAttendence/MenuIndex">
+                                    Workers Attendance / Route
+                                    @*उपस्थिती*@
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Liquid/LiquidAttendenceBeatMap/MenuIndex">
+                                    Workers Attendance Beat Map / Route
+                                    @*उपस्थिती*@
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#exampledropdownDropdown1" aria-expanded="false" data-toggle="collapse">
@@ -185,13 +200,14 @@
                         </a>
                         <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                             @*<li><a href="/HouseMaster/MenuIndex">घर नोंदणी</a></li>
-                                <li><a href="/GarbagePoint/MenuIndex">कचरा पॉइंट नोंदणी</a></li>
-                                <li><a href="/DumpYard/MenuIndex">डंप यार्ड नोंदणी</a></li>
-                                <li><a href="/Employee/MenuIndex"> कर्मचारी नोंदणी</a></li>*@
+        <li><a href="/GarbagePoint/MenuIndex">कचरा पॉइंट नोंदणी</a></li>
+        <li><a href="/DumpYard/MenuIndex">डंप यार्ड नोंदणी</a></li>
+        <li><a href="/Employee/MenuIndex"> कर्मचारी नोंदणी</a></li>*@
 
                             <li><a href="/Liquid/LiquidWaste/MenuIndex">Liquid Waste Cleaning Point Registration </a></li>
                             @*<li><a href="/Liquid/LiquidDumpYard/MenuIndex">Dump Yard Registration </a></li>*@
                             <li><a href="/Liquid/LiquidEmployee/MenuIndex">Employee Registration  </a></li>
+                            <li id="EBMR" style="display:block;"><a href="/Liquid/LiquidEmpBeatMap/MenuIndex">Employee Beat Map Registration  </a></li>
 
                         </ul>
                     <li>
