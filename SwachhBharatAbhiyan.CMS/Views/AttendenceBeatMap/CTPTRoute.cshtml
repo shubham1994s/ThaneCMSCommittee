@@ -35,7 +35,6 @@
 
     #play_id {
         left: 87%;
-        width: 5%;
     }
 
     #myRadioGroup {
@@ -136,7 +135,7 @@
     <div class="container " role="form">
         <div class="row">
             <div class="col col-md-12 text-center">
-                <h4 style="font-weight: 700;"><span id="username" style="display:none;">@Model.userName</span> <span id="demo"></span>  <span>House Route</span> </h4>
+                <h4 style="font-weight: 700;"><span id="username" style="display:none;">@Model.userName</span> <span id="demo"></span>  <span>CTPT Route</span> </h4>
                 <h4 style="font-weight: 700;"><span id="date" style="display:none;"></span><span id="demo2"></span></h4>
             </div>
         </div>
@@ -150,9 +149,9 @@
 
 
                 <div class="row">
-
-                    <!--<div class="col-md-3">
-                    <div class="form-group">-->
+                    <!--<div class="col-md-1"></div>
+                    <div class="col-md-3">
+                        <div class="form-group">-->
                     @*@Html.HiddenFor(Model=>Model.ZoneList.ToList(), new { Value = @ViewBag.zonelist })
                         @Html.HiddenFor(Model => Model.ZoneId, new { Value = @ViewBag.ZoneId })*@
                     <!--@Html.Label("झोन / Zone")
@@ -192,8 +191,6 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>-->
-
-
                     <div class="col-sm-3">
                         @*<label>कर्मचारी निवडा / Select Employee</label>*@
                         <label>झोन / Zone</label>
@@ -350,11 +347,9 @@
             </div>
 
         </div>
-
-
     </div>
     <div id="floating-panel" style="display:inline-flex;width:auto;background:transparent;border:none">
-        <a style="margin-left:5px" class="btn btn-sm btn-success" href="/AttendenceBeatMap/Index">Back</a>
+        <a style="margin-left:5px" class="btn btn-sm btn-success" href="/Attendence/CTPTIndex">Back</a>
     </div>
 
     <input type="hidden" value='@Request.QueryString["daId"]' id='HdnIndustries' />
@@ -368,6 +363,8 @@
         </div>
     </div>
 
+    @*<input type="hidden" value="21.1458" id="deflat" />
+        <input type="hidden" value="80.2767" id="deflang" />*@
 
 
     <input type="hidden" value="@ViewBag.lat" id="deflat" />
@@ -375,16 +372,77 @@
     <input type="hidden" value="@ViewBag.username" id="deflang" />
     <input type="hidden" value="0" id="hdBeatMapAreaId" />
 
-
     <style>
         .overlay {
             position: absolute;
             top: 6px;
             left: 105%;
         }
+
+        /*.overlay button {
+                font: 600 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                background-color: #3386c0;
+                color: #fff;
+                display: inline-block;
+                margin: 0;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+
+                .overlay button:hover {
+                    background-color: #4ea0da;
+                }*/
     </style>
     <script>
-        //;
+        debugger;
+        //$('#ZoneId').change(function () {
+        //    debugger;
+        //    var selectedText = $(this).find("option:selected").text();
+        //    var selectedValue = $(this).val();
+
+        //    $.ajax({
+        //        type: "post",
+        //        url: "/Attendence/LoadWardNoList?",
+        //        data: { ZoneId: $('#ZoneId').val() },
+        //        datatype: "json",
+        //        traditional: true,
+        //        success: function (data) {
+        //            var ward;
+        //            for (var i = 0; i < data.length; i++) {
+        //                ward = ward + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+        //            }
+
+        //            $('#WardNo').html(ward);
+
+        //            $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+        //        }
+        //    });
+
+        //});
+
+        //$('#WardNo').change(function () {
+        //    var selectedText = $(this).find("option:selected").text();
+        //    var selectedValue = $(this).val();
+
+        //    $.ajax({
+        //        type: "post",
+        //        url: "/Attendence/LoadAreaList?",
+        //        data: { WardNo: $('#WardNo').val() },
+        //        datatype: "json",
+        //        traditional: true,
+        //        success: function (data) {
+        //            var area;
+        //            for (var i = 0; i < data.length; i++) {
+        //                area = area + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+        //            }
+        //            $('#AreaId').html(area);
+        //        }
+        //    });
+
+        //});
+
         $(document).ready(function () {
             LoadListBeatMapArea();
             //runMaps();
@@ -420,62 +478,13 @@
             $('#hdBeatMapAreaId').val((this.value));
         });
 
-
-        //$('#ZoneId').change(function () {
-        //    //;
-        //    var selectedText = $(this).find("option:selected").text();
-        //    var selectedValue = $(this).val();
-
-        //    $.ajax({
-        //        type: "post",
-        //        url: "/AttendenceBeatMap/LoadWardNoList?",
-        //        data: { ZoneId: $('#ZoneId').val() },
-        //        datatype: "json",
-        //        traditional: true,
-        //        success: function (data) {
-        //            var ward;
-        //            for (var i = 0; i < data.length; i++) {
-        //                ward = ward + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-        //            }
-
-        //            $('#WardNo').html(ward);
-
-        //            $('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
-        //        }
-        //    });
-
-        //});
-
-        //$('#WardNo').change(function () {
-        //    var selectedText = $(this).find("option:selected").text();
-        //    var selectedValue = $(this).val();
-
-        //    $.ajax({
-        //        type: "post",
-        //        url: "/AttendenceBeatMap/LoadAreaList?",
-        //        data: { WardNo: $('#WardNo').val() },
-        //        datatype: "json",
-        //        traditional: true,
-        //        success: function (data) {
-        //            var area;
-        //            for (var i = 0; i < data.length; i++) {
-        //                area = area + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-        //            }
-        //            $('#AreaId').html(area);
-        //        }
-        //    });
-
-        //});
-
-
-
         var from = "";
         var to = "";
         var fromtime = "";
         var totime = "";
 
         function Search() {
-            //;
+            debugger;
             var from = document.getElementById("frompin").value;
             var to = document.getElementById("topin").value;
             if (from == "" || to == "") {
@@ -490,7 +499,7 @@
         }
 
         function SearchTime() {
-            //;
+            debugger;
             var fromtime = document.getElementById("fromtime").value;
             var totime = document.getElementById("totime").value;
             if (fromtime == "" || totime == "") {
@@ -509,7 +518,7 @@
         }
 
         function AreaSearch() {
-            //;
+            debugger;
             //var from = document.getElementById("frompin").value;
             //var to = document.getElementById("topin").value;
             //if (from == "" || to == "") {
@@ -524,7 +533,7 @@
         }
 
         function Reset() {
-            //;
+            debugger;
             var from = "";
             var to = "";
             document.getElementById("frompin").value = "";
@@ -553,7 +562,7 @@
 
 
             function CenterControl(controlDiv, map) {
-                //;
+                debugger;
                 // Set CSS for the control border.
                 var controlUI = document.createElement('div');
 
@@ -577,7 +586,7 @@
             }
 
             function CenterControlPause(controlDivPause, map) {
-                //;
+                debugger;
                 // Set CSS for the control border.
                 var controlUIPause = document.createElement('div');
 
@@ -600,7 +609,7 @@
             }
 
 
-            //;
+            debugger;
             var industries = $("#HdnIndustries").val();
             var ZoneId = $("#ZoneId").val();
             var PrabhagNo = $("#PrabhagNo").val();
@@ -609,11 +618,12 @@
             var fromtime = $("#fromtime").val();
             var totime = $("#totime").val();
             var polyId = $("#hdBeatMapAreaId").val();
+
             var geocoder = new google.maps.Geocoder();
             $.ajax({
 
                 type: "post",
-                url: "/AttendenceBeatMap/HouseRouteData?daId=" + industries + "&areaid=" + areaid + "&polyId=" + polyId + "&ZoneId=" + ZoneId + "&PrabhagNo=" + PrabhagNo + "&WardNo=" + WardNo,
+                url: "/AttendenceBeatMap/CTPTRouteData?daId=" + industries + "&areaid=" + areaid + "&polyId=" + polyId + "&ZoneId=" + ZoneId + "&PrabhagNo=" + PrabhagNo + "&WardNo=" + WardNo,
                 datatype: "json",
                 traditional: true,
                 success: function (m) {
@@ -626,9 +636,8 @@
                     $("#spnInner").text(innerCount);
                     $("#spnOuter").text(outerCount);
 
-
                     if (markers.length == 0) {
-                        //;
+                        debugger;
                         var map = new google.maps.Map(document.getElementById('googleMap'), {
                             zoom: 20,
                             center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
@@ -637,7 +646,7 @@
 
                     }
                     else {
-                        //;
+                        debugger;
                         var mapOptions = {
                             center: new google.maps.LatLng(markers[0].lat, markers[0].log),
                             zoom: 20,
@@ -645,6 +654,7 @@
                             rotateControl: true
                         };
                         var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+
 
                         var polyOld = new google.maps.Polygon({
                             paths: arrCoordinate,
@@ -658,8 +668,6 @@
                         polyOld.setMap(map);
 
 
-
-
                         var centerControlDiv = document.createElement('div');
                         var centerControlDivPause = document.createElement('div');
                         var centerControl = new CenterControl(centerControlDiv, map);
@@ -670,18 +678,18 @@
                         centerControlDivPause.index = 1;
                         //centerControlDiv.style.left = '90%';
                         centerControlDiv.id = "play_id";
-                        centerControlDivPause.id = "pause_id";
+                        centerControlDivPause.id = "pause";
                         centerControlDivPause.style.left = '90%';
                         map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
                         map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDivPause);
 
                         centerControlDiv.addEventListener('click', function () {
-                            //;
+                            debugger;
                             animateCircle(poly, 17);
                         });
 
                         centerControlDivPause.addEventListener('click', function () {
-                            //;
+                            debugger;
                             animateCircle(poly, 7);
                         });
 
@@ -699,7 +707,6 @@
                             if (data.type == 1) {
                                 (function (marker, data) {
                                     if (arrCoordinate.length > 0) {
-
                                         if (data.IsIn == true) {
 
                                             col = '|388e3c|000000';
@@ -708,21 +715,20 @@
 
                                             col = '|f44336|000000';
                                         }
-
-                                    }
-                                    else {
-                                        if (data.WasteType == "0") {
-                                            col = '|f44336|000000'
+                                    } else {
+                                        if (data.WasteType == "CT") {
+                                            col = '|917b0f|000000'
                                         }
-                                        else if (data.WasteType == "1") {
-
-                                            col = '|388e3c|000000';
-
+                                        else if (data.WasteType == "PT") {
+                                            col = '|a0a004|000000'
                                         }
-                                        else if (data.WasteType == "2") {
-                                            col = '|fe9436|000000'
+                                        else if (data.WasteType == "U") {
+                                            col = '|835787|000000'
                                         }
                                     }
+                                    
+
+
                                 })(marker, data);
 
                                 if (data.DyId != null) {
@@ -735,7 +741,7 @@
                                 document.getElementById("date").innerHTML = data.date;
                             }
                             if (data.HouseId != null) {
-                                //;
+                                debugger;
                                 var a = i + 1;
                                 if (a == 1) {
                                     temicon = "../Content/images/img/segregationImg/Start-Point.png";
@@ -956,12 +962,9 @@
                             if (data.type == 1) {
 
                                 (function (marker, data) {
-
+                                    debugger;
                                     if (data.HouseOwnerName == null) {
                                         data.HouseOwnerName = 'Not Available';
-                                    }
-                                    if (data.DumpYardName == null) {
-                                        data.DumpYardName = 'Not Available';
                                     }
                                     if (data.OwnerMobileNo == null) {
                                         data.OwnerMobileNo = '';
@@ -975,51 +978,27 @@
                                     if (data.WasteType == null) {
                                         data.WasteType = '';
                                     }
-                                    else if (data.WasteType == "0") {
-                                        data.WasteType = "Mixed Garbage"
+
+                                    else if (data.WasteType == "CT") {
+                                        data.WasteType = "Community Toilet"
                                     }
-                                    else if (data.WasteType == "1") {
-                                        data.WasteType = "Segregated Garbage"
+                                    else if (data.WasteType == "PT") {
+                                        data.WasteType = "Public Toilet"
                                     }
-                                    else if (data.WasteType == "2") {
-                                        data.WasteType = "Garbage not Received"
+                                    else if (data.WasteType == "U") {
+                                        data.WasteType = "Urinal Toilet"
                                     }
-                                    if (data.gpBeforImage == null || data.gpBeforImage == "") {
+
+
+                                    if (data.gpBeforImage == null) {
                                         data.gpBeforImage = "/Images/default_not_upload.png"
                                     }
-                                    if (data.gpAfterImage == null || data.gpAfterImage == "") {
+                                    if (data.gpAfterImage == null) {
                                         data.gpAfterImage = "/Images/default_not_upload.png"
                                     }
                                     if (data.HouseId != null) {
-                                        //New MNarker Click
-                                        //google.maps.event.addListener(marker, "click", function (e) {
-                                        //
-                                        //    var latlng = new google.maps.LatLng(data.lat, data.log);
-                                        //    var geocoder = geocoder = new google.maps.Geocoder();
-                                        //    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                                        //
-                                        //        if (status == google.maps.GeocoderStatus.OK) {
-                                        //
-                                        //            if (results[1]) {
-                                        //                //alert("Location: " + results[1].formatted_address);
-                                        //                var HouseAddress = results[1].formatted_address;
-                                        //                infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>House Details:</b></h5><p><b>House-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Mobile No:</b>' + data.OwnerMobileNo + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>House Address:</b>' + data.HouseAddress + '</p><p><b>GC Address:</b>' + HouseAddress + '</p><p><b>Garbage type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
-                                        //                infoWindow.open(map, marker);
-                                        //            }
-                                        //            else {
-                                        //                var HouseAddress = "Not Mention";
-                                        //                infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>House Details:</b></h5><p><b>House-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Mobile No:</b>' + data.OwnerMobileNo + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>House Address:</b>' + data.HouseAddress + '</p><p><b>GC Address:</b>' + HouseAddress + '</p><p><b>Garbage type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
-                                        //                infoWindow.open(map, marker);
-                                        //            }
-
-                                        //        }
-                                        //    });
-
-                                        //});
-
-                                        //Old Marker Click
                                         google.maps.event.addListener(marker, "click", function (e) {
-                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>House Details:</b></h5><p><b>House-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Mobile No:</b>' + data.OwnerMobileNo + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>House Address:</b>' + data.HouseAddress + '</p><p><b>Garbage type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
+                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>CT/PT/U   Details:</b></h5><p><b>CT/PT/U-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>CT/PT/U Address:</b>' + data.HouseAddress + '</p><p><b>Cleaning Type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
                                             infoWindow.open(map, marker);
 
                                             //animateCircle(poly,9);
@@ -1027,35 +1006,6 @@
 
                                     }
                                     else if (data.DyId != null) {
-
-
-                                        //New MNarker Click
-                                        //google.maps.event.addListener(marker, "click", function (e) {
-                                        //
-                                        //    var latlng = new google.maps.LatLng(data.lat, data.log);
-                                        //    var geocoder = geocoder = new google.maps.Geocoder();
-                                        //    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                                        //
-                                        //        if (status == google.maps.GeocoderStatus.OK) {
-                                        //
-                                        //            if (results[1]) {
-                                        //                //alert("Location: " + results[1].formatted_address);
-                                        //                var DumpAddress = results[1].formatted_address;
-                                        //                infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>Dump Yard Details:</b></h5><p><b>DumpYard-Id:</b>' + data.DyId + '</p><p><b>Dump Yard Name:</b>' + data.DumpYardName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Dump Yard Address:</b>' + DumpAddress + '</p><p><b>Dry Waste Weight :</b>' + data.DryWaste + '</p><p><b>Wet Waste Weight :</b>' + data.WetWaste + '</p><p><b>Total Waste Weight :</b>' + data.TotWaste + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b>' + data.userName + '</p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
-                                        //                infoWindow.open(map, marker);
-                                        //            }
-                                        //            else {
-                                        //                var DumpAddress = "Not Mention";
-                                        //                infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>Dump Yard Details:</b></h5><p><b>DumpYard-Id:</b>' + data.DyId + '</p><p><b>Dump Yard Name:</b>' + data.DumpYardName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Dump Yard Address:</b>' + DumpAddress + '</p><p><b>Dry Waste Weight :</b>' + data.DryWaste + '</p><p><b>Wet Waste Weight :</b>' + data.WetWaste + '</p><p><b>Total Waste Weight :</b>' + data.TotWaste + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b>' + data.userName + '</p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
-                                        //                infoWindow.open(map, marker);
-                                        //            }
-
-                                        //        }
-                                        //    });
-
-                                        //});
-
-                                        //Old Marker click
                                         google.maps.event.addListener(marker, "click", function (e) {
                                             infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>Dump Yard Details:</b></h5><p><b>DumpYard-Id:</b>' + data.DyId + '</p><p><b>Dump Yard Name:</b>' + data.DumpYardName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Dump Yard Address:</b>' + data.DumpAddress + '</p><p><b>Dry Waste Weight :</b>' + data.DryWaste + '</p><p><b>Wet Waste Weight :</b>' + data.WetWaste + '</p><p><b>Total Waste Weight :</b>' + data.TotWaste + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b>' + data.userName + '</p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
                                             infoWindow.open(map, marker);
@@ -1147,7 +1097,7 @@
                         var path = new google.maps.MVCArray();
 
                         //Initialize the Direction Service
-                        //var service = new google.maps.DirectionsService();
+                        // var service = new google.maps.DirectionsService();
 
                         //Set the Path Stroke Color
                         var poly = new google.maps.Polyline({
@@ -1189,7 +1139,7 @@
                         //Loop and Draw Path Route between the Points on MAP
                         for (var i = 0; i < lat_lng.length; i++) {
                             if ((i + 1) <= lat_lng.length) {
-                                //;
+                                debugger;
                                 var src = lat_lng[i];
                                 var des = lat_lng[i + 1];
                                 path.push(src);
@@ -1225,6 +1175,7 @@
 
     @*Paid API*@
     @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnR8YLcfpwSLWXGO6JR3wFPY133r086DI&callback=myMap" type="text/javascript"></script>*@
+
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -1262,7 +1213,7 @@
         }
 
         $(document).ready(function () {
-            //;
+            debugger;
             var u_date = document.getElementById("date").innerHTML;
             document.getElementById("demo2").innerHTML = u_date;
             $(".jquery-date-time-picker").datetimepicker({
@@ -1285,24 +1236,24 @@
         });
     </script>
     <script>
-                                //$(document).ready(function () {
-                                //    $("input[name$='filter']").click(function () {
+                                    //$(document).ready(function () {
+                                    //    $("input[name$='filter']").click(function () {
 
-                                //        var test = $(this).val();
+                                    //        var test = $(this).val();
 
-                                //        $("div.desc").hide();
-                                //        $("#filter" + test).show();
-                                //    });
-                                //});
+                                    //        $("div.desc").hide();
+                                    //        $("#filter" + test).show();
+                                    //    });
+                                    //});
     </script>
     <script>
-                                //$(document).ready(function () {
-                                //
+                                    //$(document).ready(function () {
+                                    //    debugger;
 
-                                //    var x = document.getElementById("username").innerHTML;
-                                //    var tem = x.charAt(0).toUpperCase() + x.slice(1);
-                                //    document.getElementById("demo").innerHTML = tem;
-                                //});
+                                    //    var x = document.getElementById("username").innerHTML;
+                                    //    var tem = x.charAt(0).toUpperCase() + x.slice(1);
+                                    //    document.getElementById("demo").innerHTML = tem;
+                                    //});
 
     </script>
 </fieldset>

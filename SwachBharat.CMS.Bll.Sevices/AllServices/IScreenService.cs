@@ -265,6 +265,8 @@ namespace SwachBharat.CMS.Bll.Services
         List<SelectListItem> ListUserBeatMap(string Emptype,int PId);
         SBALUserLocationMapView GetHouseByIdforMap(int teamId, int daId);
         HouseAttenRouteVM GetBeatHouseAttenRoute(int daId, int areaid, int polyId, int ZoneId, int PrabhagNo, int WardNo, int PId);
+        HouseAttenRouteVM GetBeatCTPTAttenRoute(int daId, int areaid, int polyId, int ZoneId, int PrabhagNo, int WardNo, int PId);
+
         List<SelectListItem> LoadListArea(int WardNo);
         List<SelectListItem> ListBeatMapArea(int daId, int? areaid);
 

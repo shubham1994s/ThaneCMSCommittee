@@ -1716,6 +1716,7 @@
     <Content Include="Content\DatatableGrid\CommercialGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\CommitteeGrid.js" />
     <Content Include="Content\DatatableGrid\Complaint.js" />
+    <Content Include="Content\DatatableGrid\CTPTAttendenceBeatMapGrid.js" />
     <Content Include="Content\DatatableGrid\CTPTAttendenceGrid.js" />
     <Content Include="Content\DatatableGrid\CTPTCountGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\CTPTGarbageGrid.js" />
@@ -3327,6 +3328,10 @@
     <Content Include="Views\AttendenceBeatMap\Index.cshtml" />
     <Content Include="Views\AttendenceBeatMap\HouseRoute.cshtml" />
     <Content Include="Views\AttendenceBeatMap\UserRoute.cshtml" />
+    <Content Include="Views\AttendenceBeatMap\CTPTMenuIndex.cshtml" />
+    <Content Include="Views\AttendenceBeatMap\CTPTIndex.cshtml" />
+    <Content Include="Views\AttendenceBeatMap\CTPTUserRoute.cshtml" />
+    <Content Include="Views\AttendenceBeatMap\CTPTRoute.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
