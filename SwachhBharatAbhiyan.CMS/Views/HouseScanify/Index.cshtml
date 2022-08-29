@@ -43,108 +43,110 @@
 
         <div class="container">
             <div class="row">
-                <h4 id="ulb_name" class="text-center" style="padding-left:14px;"></h4>
+                <h4 id="ulb_name" class="text-center" style="padding-left:35%;"></h4>
             </div>
             @*<div class="row">
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #ff7676">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Property</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalHouse <span class="card-text">|<b> Updated : </b>@Model.TotalHouseUpdated |<b> Today : </b>@Model.TotalHouseUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #ff7676">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Property</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalHouse <span class="card-text">|<b> Updated : </b>@Model.TotalHouseUpdated |<b> Today : </b>@Model.TotalHouseUpdated_CurrentDay</span></p>
                     </div>
-                    <div class="col-sm-4" hidden="hidden">
-                        <div class="card" style="width: 105%; border-color: #54e69d">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Garbage Point Collection</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalPoint <span class="card-text">|<b> Updated : </b>@Model.TotalPointUpdated |<b> Today : </b>@Model.TotalPointUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-sm-4" hidden="hidden">
+                <div class="card" style="width: 105%; border-color: #54e69d">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Garbage Point Collection</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalPoint <span class="card-text">|<b> Updated : </b>@Model.TotalPointUpdated |<b> Today : </b>@Model.TotalPointUpdated_CurrentDay</span></p>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #54e69d">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Liquid Waste Collection</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalLiquid <span class="card-text">|<b> Updated : </b>@Model.TotalLiquidUpdated |<b> Today : </b>@Model.TotalLiquidUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #54e69d">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Liquid Waste Collection</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalLiquid <span class="card-text">|<b> Updated : </b>@Model.TotalLiquidUpdated |<b> Today : </b>@Model.TotalLiquidUpdated_CurrentDay</span></p>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #ff7676">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Street Sweep Collection</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalStreet <span class="card-text">|<b> Updated : </b>@Model.TotalStreetUpdated |<b> Today : </b>@Model.TotalStreetUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #ff7676">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Street Sweep Collection</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalStreet <span class="card-text">|<b> Updated : </b>@Model.TotalStreetUpdated |<b> Today : </b>@Model.TotalStreetUpdated_CurrentDay</span></p>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-sm-3">
-                        <div class="card" style="border-color:#54c4d8">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Dump Yard Details</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalDump <span class="card-text">|<b> Updated : </b>@Model.TotalDumpUpdated</span> |<b> Today : </b>@Model.TotalDumpUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+            <div class="col-sm-3">
+                <div class="card" style="border-color:#54c4d8">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Dump Yard Details</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalDump <span class="card-text">|<b> Updated : </b>@Model.TotalDumpUpdated</span> |<b> Today : </b>@Model.TotalDumpUpdated_CurrentDay</span></p>
                     </div>
-                </div><br />
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #54e69d">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Residential</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalResidentialUpdated <span class="card-text">|<b> Today : </b>@Model.TotalResidentialUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #54e69d">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Residential</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalResidentialUpdated <span class="card-text">|<b> Today : </b>@Model.TotalResidentialUpdated_CurrentDay</span></p>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #54e69d">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Residential Building</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalBuildingUpdated <span class="card-text">|<b> Today : </b>@Model.TotalBuildingUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #54e69d">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Residential Building</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalBuildingUpdated <span class="card-text">|<b> Today : </b>@Model.TotalBuildingUpdated_CurrentDay</span></p>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #54e69d">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Residential Slum</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalSlumUpdated <span class="card-text">|<b> Today : </b>@Model.TotalSlumUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #54e69d">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Residential Slum</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalSlumUpdated <span class="card-text">|<b> Today : </b>@Model.TotalSlumUpdated_CurrentDay</span></p>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #54e69d">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">Commercial</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalCommercialUpdated <span class="card-text">|<b> Today : </b>@Model.TotalCommercialUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #54e69d">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">Commercial</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalCommercialUpdated <span class="card-text">|<b> Today : </b>@Model.TotalCommercialUpdated_CurrentDay</span></p>
                     </div>
-                </div><br />
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #54e69d">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">SWM Facility</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalSWMUpdated <span class="card-text">|<b> Today : </b>@Model.TotalSWMUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #54e69d">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">SWM Facility</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalSWMUpdated <span class="card-text">|<b> Today : </b>@Model.TotalSWMUpdated_CurrentDay</span></p>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 105%; border-color: #54e69d">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-title text-center" style="font-size:16px">CTPT</p>
-                                <p class="card-text text-center"><b>Total :</b> @Model.TotalCTPTUpdated <span class="card-text">|<b> Today : </b>@Model.TotalCTPTUpdated_CurrentDay</span></p>
-                            </div>
-                        </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 105%; border-color: #54e69d">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-title text-center" style="font-size:16px">CTPT</p>
+                        <p class="card-text text-center"><b>Total :</b> @Model.TotalCTPTUpdated <span class="card-text">|<b> Today : </b>@Model.TotalCTPTUpdated_CurrentDay</span></p>
                     </div>
+                </div>
+            </div>
 
-                </div><br />*@
-
+        </div><br />*@
+            <div class="row">
+                <h4 class="text-center" style="padding-left:40%;"> Scannig Count</h4>
+            </div>
             <div class="row w-100">
                 <div class="col-lg-4">
                     <table style="width:100%">
@@ -234,7 +236,91 @@
                 </div>
             </div>
 
+            <br />
+            <div class="row">
+                <h4 class="text-center" style="padding-left:40%;"> DataEntry Count</h4>
+            </div>
+            <div class="row w-100">
+                <div class="col-lg-4">
+                    <table style="width:100%">
+                        <tr class="text-center">
+                            <th class="bg-b">Name</th>
+                            <th class="bg-b">Total</th>
+                            <th class="bg-b">Updated</th>
+                            <th class="bg-b">Today</th>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Residential Property</td>
+                            <td>@Model.TotalHouse</td>
+                            <td>@Model.TotalHouse_DataEntry</td>
+                            <td>@Model.TodayHouse_DataEntry</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Liquid Waste Collection</td>
+                            <td>@Model.TotalLiquid</td>
+                            <td>@Model.TotalLiquid_DataEntry</td>
+                            <td>@Model.TodayLiquid_DataEntry</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Street Sweep Collection</td>
+                            <td> @Model.TotalStreet</td>
+                            <td>@Model.TotalStreet_DataEntry</td>
+                            <td>@Model.TodayStreet_DataEntry</td>
+                        </tr>
+                     
+                    </table>
+                </div>
+                <div class="col-lg-4">
+                    <table style="width:100%">
+                        <tr class="text-center">
+                            <th class="bg-b">Name</th>
+                            <th class="bg-b">Total</th>
+                            <th class="bg-b">Today</th>
+                        </tr>
+                       
+                        <tr class="text-center">
+                            <td>Residential Building</td>
+                            <td>@Model.TotalBuilding_DataEntry</td>
+                            <td>@Model.TodayBuilding_DataEntry</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Residential Slum</td>
+                            <td>@Model.TotalSlum_DataEntry</td>
+                            <td>@Model.TodaySlum_DataEntry</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-4">
+                    <table style="width:100%">
+                        <tr class="text-center">
+                            <th class="bg-b">Name</th>
+                            <th class="bg-b">Total</th>
+                            <th class="bg-b">Updated</th>
+                            <th class="bg-b">Today</th>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Commercial</td>
+                            <td> @Model.TotalCommercialUpdated</td>
+                            <td>@Model.TotalCommercial_DataEntry</td>
+                            <td>@Model.TodayCommercial_DataEntry</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>SWM Facility</td>
+                            <td>@Model.TotalSWMUpdated</td>
+                            <td>@Model.TotalSWM_DataEntry</td>
+                            <td>@Model.TodaySWM_DataEntry</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>CT / PT / U</td>
+                            <td>@Model.TotalCTPTUpdated</td>
+                            <td>@Model.TotalCTPT_DataEntry</td>
+                            <td>@Model.TodayCTPT_DataEntry</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
+            <br />
             <div class="row">
                 <div class="col-sm-3">
                     <div class="controls">

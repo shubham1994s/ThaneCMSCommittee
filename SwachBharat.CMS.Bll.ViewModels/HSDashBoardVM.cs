@@ -63,6 +63,32 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 
 
 
+        public Nullable<int> TotalHouse_DataEntry { get; set; }
+        public Nullable<int> TodayHouse_DataEntry { get; set; }
+        public Nullable<int> TotalCommercial_DataEntry { get; set; }
+        public Nullable<int> TodayCommercial_DataEntry { get; set; }
+        public Nullable<int> TotalLiquid_DataEntry { get; set; }
+        public Nullable<int> TodayLiquid_DataEntry { get; set; }
+        public Nullable<int> TotalStreet_DataEntry { get; set; }
+
+
+        public Nullable<int> TodayStreet_DataEntry { get; set; }
+        public Nullable<int> TotalSWM_DataEntry { get; set; }
+        public Nullable<int> TodaySWM_DataEntry { get; set; }
+        public Nullable<int> TotalCTPT_DataEntry { get; set; }
+        public Nullable<int> TodayCTPT_DataEntry { get; set; }
+
+        public Nullable<int> TotalSlum_DataEntry { get; set; }
+        public Nullable<int> TodaySlum_DataEntry { get; set; }
+        public Nullable<int> TotalBuilding_DataEntry { get; set; }
+        public Nullable<int> TodayBuilding_DataEntry { get; set; }
+
+
+
+
+
+
+
     }
 
 }

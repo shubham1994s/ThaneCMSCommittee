@@ -5251,7 +5251,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.swmLong = data.swmLong;
             model.ZoneId = data.ZoneId;
             model.ReferanceId = data.ReferanceId;
-            model.modified = DateTime.Now;
+            model.lastModifiedEntry = DateTime.Now;
             model.swmType = (data.swmType == "RW") ? null : data.swmType;
             model.swmSubType = data.swmSubType;
 
@@ -5275,7 +5275,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.commercialLong = data.houseLong;
             model.ZoneId = data.ZoneId;
             model.ReferanceId = data.ReferanceId;
-            model.modified = DateTime.Now;
+            model.lastModifiedEntry = DateTime.Now;
             model.CType = (data.houseCategory == "RW") ? null : data.houseCategory;
             //if (data.WasteType == "DW")
             //{
@@ -5364,7 +5364,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.SSNameMar = data.SSNameMar;
             model.SSQRCode = data.SSQRCode;
             model.ReferanceId = data.ReferanceId;
-            model.lastModifiedDate = DateTime.Now;
+            model.DataEntryDate = DateTime.Now;
             model.PrabhagId = data.PrabhagId;
             return model;
         }
@@ -5396,7 +5396,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.LWNameMar = data.LWNameMar;
             model.LWQRCode = data.LWQRCode;
             model.ReferanceId = data.ReferanceId;
-            model.lastModifiedDate = DateTime.Now;
+            model.DataEntryDate = DateTime.Now;
             model.PrabhagId = data.PrabhagId;
             return model;
         }
@@ -6989,7 +6989,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.SSNameMar = data.SSNameMar;
                             model.SSQRCode = data.SSQRCode;
                             model.ReferanceId = data.ReferanceId;
-                            model.lastModifiedDate = DateTime.Now;
+                            model.DataEntryDate = DateTime.Now;
                             model.PrabhagId = data.PrabhagId;
                             db.SaveChanges();
                         }
@@ -7071,7 +7071,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.LWNameMar = data.LWNameMar;
                             model.LWQRCode = data.LWQRCode;
                             model.ReferanceId = data.ReferanceId;
-                            model.lastModifiedDate = DateTime.Now;
+                            model.DataEntryDate = DateTime.Now;
                             model.PrabhagId = data.PrabhagId;
                             db.SaveChanges();
                         }
@@ -7315,6 +7315,23 @@ namespace SwachBharat.CMS.Bll.Services
                         model.CTPTMinutes = data.CTPTMinutes;
 
 
+                        //For Data Entry Count
+                       model.TotalHouse_DataEntry = data.TotalHouse_DataEntry;
+                       model.TodayHouse_DataEntry = data.TodayHouse_DataEntry;
+                       model.TotalCommercial_DataEntry = data.TotalCommercial_DataEntry;
+                       model.TodayCommercial_DataEntry = data.TodayCommercial_DataEntry;
+                       model.TotalLiquid_DataEntry = data.TotalLiquid_DataEntry;
+                       model.TodayLiquid_DataEntry = data.TodayLiquid_DataEntry;
+                       model.TotalStreet_DataEntry = data.TotalStreet_DataEntry;
+                       model.TodayStreet_DataEntry = data.TodayStreet_DataEntry;
+                       model.TotalSWM_DataEntry = data.TotalSWM_DataEntry;
+                       model.TodaySWM_DataEntry = data.TodaySWM_DataEntry;
+                       model.TotalCTPT_DataEntry = data.TotalCTPT_DataEntry;
+                       model.TodayCTPT_DataEntry = data.TodayCTPT_DataEntry;
+                       model.TotalSlum_DataEntry = data.TotalSlum_DataEntry;
+                       model.TodaySlum_DataEntry = data.TodaySlum_DataEntry;
+                       model.TotalBuilding_DataEntry = data.TotalBuilding_DataEntry;
+                       model.TodayBuilding_DataEntry = data.TodayBuilding_DataEntry;
 
                         return model;
                     }
