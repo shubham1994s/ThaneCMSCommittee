@@ -838,7 +838,8 @@
                                     }
                                     if (data.HouseId != null) {
                                         google.maps.event.addListener(marker, "click", function (e) {
-                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>CT/PT/U   Details:</b></h5><p><b>CT/PT/U-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>CT/PT/U Address:</b>' + data.HouseAddress + '</p><p><b>Cleaning Type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p></div></div>');
+                                         /*   infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>CT/PT/U   Details:</b></h5><p><b>CT/PT/U-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>CT/PT/U Address:</b>' + data.HouseAddress + '</p><p><b>Cleaning Type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');*/
+                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>CT/PT/U   Details:</b></h5><p><b>CT/PT/U-Id:</b>' + data.HouseId + '</p><p><b>Name:</b>' + data.HouseOwnerName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>CT/PT/U Address:</b>' + data.HouseAddress + '</p><p><b>Cleaning Type:</b>' + data.WasteType + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img id="Beforidimage" alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;" onclick="newTabBeforidimage()"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img id="Afteridimage" alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;" onclick="newTabAfteridimage()"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b><span id="emp_name" class="a">' + data.userName + '</span></p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
                                             infoWindow.open(map, marker);
 
                                             //animateCircle(poly,9);
@@ -847,7 +848,7 @@
                                     }
                                     else if (data.DyId != null) {
                                         google.maps.event.addListener(marker, "click", function (e) {
-                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>Dump Yard Details:</b></h5><p><b>DumpYard-Id:</b>' + data.DyId + '</p><p><b>Dump Yard Name:</b>' + data.DumpYardName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Dump Yard Address:</b>' + data.DumpAddress + '</p><p><b>Dry Waste Weight :</b>' + data.DryWaste + '</p><p><b>Wet Waste Weight :</b>' + data.WetWaste + '</p><p><b>Total Waste Weight :</b>' + data.TotWaste + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b>' + data.userName + '</p></div></div>');
+                                            infoWindow.setContent('<div class=infowindow style="max-width:100%"> <h5><b>Dump Yard Details:</b></h5><p><b>DumpYard-Id:</b>' + data.DyId + '</p><p><b>Dump Yard Name:</b>' + data.DumpYardName + '</p><p><b>Date:</b>' + data.date + '</p><p><b>Time:</b>' + data.time + '</p><p><b>Dump Yard Address:</b>' + data.DumpAddress + '</p><p><b>Dry Waste Weight :</b>' + data.DryWaste + '</p><p><b>Wet Waste Weight :</b>' + data.WetWaste + '</p><p><b>Total Waste Weight :</b>' + data.TotWaste + '</p><p><b>Before Image:</b><a target="_blank" href="' + data.gpBeforImage + '"><img id="Beforidimage" alt="Photo Not Found"  src=" ' + data.gpBeforImage + ' " style="height:35px;width:35px;cursor:pointer;margin-left:0px;" onclick="newTabBeforidimage()"></img></a></p><p><b>After Image:</b><a target="_blank" href="' + data.gpAfterImage + '"><img id="Afteridimage" alt="Photo Not Found"  src="' + data.gpAfterImage + '" style="height:35px;width:35px;cursor:pointer;margin-left:0px;" onclick="newTabAfteridimage()"></img></a></p><hr><div><h5><b>Employee Details:</b></h5><p><b>Emp Name:</b>' + data.userName + '</p><p><b>Vehicle No:</b>' + data.vehcileNumber + '</p></div></div>');
                                             infoWindow.open(map, marker);
 
                                             //animateCircle(poly,9);
@@ -1001,7 +1002,33 @@
 
         }
 
+        function newTabBeforidimage() {
+            debugger;
+            var image = new Image();
+            image.src = $('#Beforidimage').attr('src');
+           
+            image.style.width = 500 + "px";
+            image.style.height = 500 + "px";
+            image.style.marginLeft = 32 + "%";
+            image.style.marginTop = 5 + "%";
+            var w = window.open("", '_blank');
+            w.document.write(image.outerHTML);
+            w.document.close();
+        }
 
+        function newTabAfteridimage() {
+            debugger;
+            var image = new Image();
+          
+            image.src = $('#Afteridimage').attr('src');
+            image.style.width = 500 + "px";
+            image.style.height = 500 + "px";
+            image.style.marginLeft = 32 + "%";
+            image.style.marginTop = 5 + "%";
+            var w = window.open("", '_blank');
+            w.document.write(image.outerHTML);
+            w.document.close();
+        }
 
 
 

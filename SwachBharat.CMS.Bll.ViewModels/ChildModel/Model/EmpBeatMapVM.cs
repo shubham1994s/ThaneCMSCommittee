@@ -41,7 +41,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
     }
     public class HouseAttenRouteVM
     {
-        public List<coordinates> poly { get; set; }
+        public List<List<coordinates>> poly { get; set; }
         public List<SBALUserLocationMapView> lstUserLocation { get; set; }
     }
 }
