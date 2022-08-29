@@ -3152,7 +3152,8 @@ namespace SwachBharat.CMS.Bll.Services
             HouseAttenRouteVM houseAtten = new HouseAttenRouteVM();
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             List<List<coordinates>> lstPoly = new List<List<coordinates>>();
-            List<coordinates> poly = new List<coordinates>(); DateTime newdate = DateTime.Now.Date;
+            //List<coordinates> poly = new List<coordinates>();
+            DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
             var att = db.Daily_Attendance.Where(c => c.daID == daId).FirstOrDefault();
             string Time = att.startTime;
@@ -3177,10 +3178,10 @@ namespace SwachBharat.CMS.Bll.Services
             var userName = db.UserMasters.Where(c => c.userId == att.userId).FirstOrDefault();
             EmpBeatMapVM ebm = GetEmpBeatMapByUserId(userName.userId);
             lstPoly = ebm.ebmLatLong;
-            if (lstPoly != null && lstPoly.Count > polyId)
-            {
-                poly = lstPoly[polyId];
-            }
+            //if (lstPoly != null && lstPoly.Count > polyId)
+            //{
+            //    poly = lstPoly[polyId];
+            //}
 
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
@@ -3204,11 +3205,23 @@ namespace SwachBharat.CMS.Bll.Services
                         //DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
                         string dat = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy");
                         string tim = Convert.ToDateTime(d.gcDate).ToString("hh:mm tt");
+                        bool bIsIn = false;
+
                         coordinates p = new coordinates()
                         {
                             lat = Convert.ToDouble(d.Lat),
                             lng = Convert.ToDouble(d.Long)
                         };
+                        if (lstPoly != null && lstPoly.Count > 0)
+                        {
+                            foreach (var poly in lstPoly)
+                            {
+                                if (IsPointInPolygon(poly, p))
+                                {
+                                    bIsIn = true;
+                                }
+                            }
+                        }
                         if (d.CTPTId != null)
                         {
                             if (areaid != 0)
@@ -3239,7 +3252,9 @@ namespace SwachBharat.CMS.Bll.Services
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(PId),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
+
                                     });
                                 }
 
@@ -3273,7 +3288,9 @@ namespace SwachBharat.CMS.Bll.Services
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(PId),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
+
                                     });
                                 }
                             }
@@ -3311,7 +3328,9 @@ namespace SwachBharat.CMS.Bll.Services
                                         WetWaste = d.totalWetWeight.ToString(),
                                         TotWaste = d.totalGcWeight.ToString(),
                                         ZoneList = ListZone(PId),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
+
                                     });
                                 }
 
@@ -3345,7 +3364,9 @@ namespace SwachBharat.CMS.Bll.Services
                                         WetWaste = d.totalWetWeight.ToString(),
                                         TotWaste = d.totalGcWeight.ToString(),
                                         ZoneList = ListZone(PId),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
+
                                     });
                                 }
                             }
@@ -3359,7 +3380,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             }
 
-            houseAtten.poly = poly;
+            houseAtten.poly = lstPoly;
             houseAtten.lstUserLocation = userLocation;
 
             return houseAtten;
@@ -3564,7 +3585,8 @@ namespace SwachBharat.CMS.Bll.Services
 
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             List<List<coordinates>> lstPoly = new List<List<coordinates>>();
-            List<coordinates> poly = new List<coordinates>(); DateTime newdate = DateTime.Now.Date;
+            //List<coordinates> poly = new List<coordinates>();
+            DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
             var att = db.Daily_Attendance.Where(c => c.daID == daId).FirstOrDefault();
             string Time = att.startTime;
@@ -3588,10 +3610,10 @@ namespace SwachBharat.CMS.Bll.Services
             var userName = db.UserMasters.Where(c => c.userId == att.userId).FirstOrDefault();
             EmpBeatMapVM ebm = GetEmpBeatMapByUserId(userName.userId);
             lstPoly = ebm.ebmLatLong;
-            if (lstPoly != null && lstPoly.Count > polyId)
-            {
-                poly = lstPoly[polyId];
-            }
+            //if (lstPoly != null && lstPoly.Count > polyId)
+            //{
+            //    poly = lstPoly[polyId];
+            //}
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
             foreach (var x in data)
@@ -3614,11 +3636,23 @@ namespace SwachBharat.CMS.Bll.Services
                         //DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
                         string dat = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy");
                         string tim = Convert.ToDateTime(d.gcDate).ToString("hh:mm tt");
+                        bool bIsIn = false;
+
                         coordinates p = new coordinates()
                         {
                             lat = Convert.ToDouble(d.Lat),
                             lng = Convert.ToDouble(d.Long)
                         };
+                        if (lstPoly != null && lstPoly.Count > 0)
+                        {
+                            foreach (var poly in lstPoly)
+                            {
+                                if (IsPointInPolygon(poly, p))
+                                {
+                                    bIsIn = true;
+                                }
+                            }
+                        }
                         if (d.LWId != null)
                         {
                             if (areaid != 0)
@@ -3646,7 +3680,9 @@ namespace SwachBharat.CMS.Bll.Services
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(PId),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
+
                                     });
                                 }
 
@@ -3677,7 +3713,9 @@ namespace SwachBharat.CMS.Bll.Services
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(PId),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
+
                                     });
                                 }
                             }
@@ -3767,7 +3805,7 @@ namespace SwachBharat.CMS.Bll.Services
 
 
 
-            houseAtten.poly = poly;
+            houseAtten.poly = lstPoly;
             houseAtten.lstUserLocation = userLocation;
 
             return houseAtten;
@@ -3965,7 +4003,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             List<List<coordinates>> lstPoly = new List<List<coordinates>>();
-            List<coordinates> poly = new List<coordinates>();
+            //List<coordinates> poly = new List<coordinates>();
             DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
             var att = db.Daily_Attendance.Where(c => c.daID == daId).FirstOrDefault();
@@ -3990,10 +4028,10 @@ namespace SwachBharat.CMS.Bll.Services
             var userName = db.UserMasters.Where(c => c.userId == att.userId).FirstOrDefault();
             EmpBeatMapVM ebm = GetEmpBeatMapByUserId(userName.userId);
             lstPoly = ebm.ebmLatLong;
-            if (lstPoly != null && lstPoly.Count > polyId)
-            {
-                poly = lstPoly[polyId];
-            }
+            //if (lstPoly != null && lstPoly.Count > polyId)
+            //{
+            //    poly = lstPoly[polyId];
+            //}
 
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
@@ -4017,11 +4055,24 @@ namespace SwachBharat.CMS.Bll.Services
                         //DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
                         string dat = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy");
                         string tim = Convert.ToDateTime(d.gcDate).ToString("hh:mm tt");
+                        bool bIsIn = false;
+
                         coordinates p = new coordinates()
                         {
                             lat = Convert.ToDouble(d.Lat),
                             lng = Convert.ToDouble(d.Long)
                         };
+                        if (lstPoly != null && lstPoly.Count > 0)
+                        {
+                            foreach (var poly in lstPoly)
+                            {
+                                if (IsPointInPolygon(poly, p))
+                                {
+                                    bIsIn = true;
+                                }
+                            }
+                        }
+                        
                         if (d.SSId != null)
                         {
                             if (areaid != 0)
@@ -4049,7 +4100,9 @@ namespace SwachBharat.CMS.Bll.Services
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(PId),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
+
 
                                     });
                                 }
@@ -4080,7 +4133,9 @@ namespace SwachBharat.CMS.Bll.Services
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(PId),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
+
 
                                     });
                                 }
@@ -4161,11 +4216,11 @@ namespace SwachBharat.CMS.Bll.Services
 
             }
 
-            houseAtten.poly = poly;
+            houseAtten.poly = lstPoly;
             houseAtten.lstUserLocation = userLocation;
 
             return houseAtten;
-            
+
         }
 
         // Added By Saurabh (06 June 2019)
@@ -10485,7 +10540,7 @@ namespace SwachBharat.CMS.Bll.Services
             HouseAttenRouteVM houseAtten = new HouseAttenRouteVM();
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             List<List<coordinates>> lstPoly = new List<List<coordinates>>();
-            List<coordinates> poly = new List<coordinates>();
+            //List<coordinates> poly = new List<coordinates>();
             DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
             var att = db.Daily_Attendance.Where(c => c.daID == daId).FirstOrDefault();
@@ -10513,10 +10568,10 @@ namespace SwachBharat.CMS.Bll.Services
             var userName = db.UserMasters.Where(c => c.userId == att.userId).FirstOrDefault();
             EmpBeatMapVM ebm = GetEmpBeatMapByUserId(userName.userId);
             lstPoly = ebm.ebmLatLong;
-            if (lstPoly != null && lstPoly.Count > polyId)
-            {
-                poly = lstPoly[polyId];
-            }
+            //if (lstPoly != null && lstPoly.Count > polyId)
+            //{
+            //    poly = lstPoly[polyId];
+            //}
 
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
@@ -10533,11 +10588,23 @@ namespace SwachBharat.CMS.Bll.Services
                         //DateTime dt = DateTime.Parse(x.gcDate == null ? DateTime.Now.ToString() : x.gcDate.ToString());
                         string dat = Convert.ToDateTime(d.gcDate).ToString("dd/MM/yyyy");
                         string tim = Convert.ToDateTime(d.gcDate).ToString("hh:mm tt");
+                        bool bIsIn = false;
+
                         coordinates p = new coordinates()
                         {
                             lat = Convert.ToDouble(d.Lat),
                             lng = Convert.ToDouble(d.Long)
                         };
+                        if (lstPoly != null && lstPoly.Count > 0)
+                        {
+                            foreach (var poly in lstPoly)
+                            {
+                                if (IsPointInPolygon(poly, p))
+                                {
+                                    bIsIn = true;
+                                }
+                            }
+                        }
                         if (d.houseId != null)
                         {
                             if (areaid != 0)
@@ -10566,7 +10633,8 @@ namespace SwachBharat.CMS.Bll.Services
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
 
                                     });
                                 }
@@ -10599,7 +10667,8 @@ namespace SwachBharat.CMS.Bll.Services
                                         gpBeforImage = d.gpBeforImage,
                                         gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(),
-                                        IsIn = IsPointInPolygon(poly, p)
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
                                     });
                                 }
                             }
@@ -10637,8 +10706,8 @@ namespace SwachBharat.CMS.Bll.Services
                                         WetWaste = d.totalWetWeight.ToString(),
                                         TotWaste = d.totalGcWeight.ToString(),
                                         ZoneList = ListZone(),
-                                        IsIn = IsPointInPolygon(poly, p)
-
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
                                     });
                                 }
 
@@ -10672,8 +10741,8 @@ namespace SwachBharat.CMS.Bll.Services
                                         WetWaste = d.totalWetWeight.ToString(),
                                         TotWaste = d.totalGcWeight.ToString(),
                                         ZoneList = ListZone(),
-                                        IsIn = IsPointInPolygon(poly, p)
-
+                                        //IsIn = IsPointInPolygon(poly, p)
+                                        IsIn = bIsIn
                                     });
                                 }
                             }
@@ -10693,7 +10762,7 @@ namespace SwachBharat.CMS.Bll.Services
             }
 
 
-            houseAtten.poly = poly;
+            houseAtten.poly = lstPoly;
             houseAtten.lstUserLocation = userLocation;
 
             return houseAtten;

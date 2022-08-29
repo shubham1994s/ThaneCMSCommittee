@@ -444,7 +444,7 @@
         //});
 
         $(document).ready(function () {
-            LoadListBeatMapArea();
+            //LoadListBeatMapArea();
             //runMaps();
         });
 
@@ -656,16 +656,21 @@
                         var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
 
 
-                        var polyOld = new google.maps.Polygon({
-                            paths: arrCoordinate,
-                            clickable: true,
-                            draggable: false,
-                            editable: false,
-                            fillColor: '#ffff00',
-                            fillOpacity: 0.2,
-                        });
+                        if (arrCoordinate.length > 0) {
+                            for (let j = 0; j < arrCoordinate.length; j++) {
+                                var polyOld = new google.maps.Polygon({
+                                    paths: arrCoordinate[j],
+                                    clickable: true,
+                                    draggable: false,
+                                    editable: false,
+                                    fillColor: '#ffff00',
+                                    fillOpacity: 0.2,
+                                });
 
-                        polyOld.setMap(map);
+                                polyOld.setMap(map);
+                            }
+
+                        }
 
 
                         var centerControlDiv = document.createElement('div');
