@@ -219,7 +219,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence", "EmployeeSummary", "UserIdel"
                 ,"StreetEmployeeSummary","UserIdelStreet","LiquidEmployeeSummary","UserIdelLiquid"}.Contains(RepositoryName);
              
-               if(ChkStr == true)
+               if(ChkStr == true && PId==0)
                 {
                  PId = Convert.ToInt32(param1);             
                 }
