@@ -263,5 +263,93 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         }
 
+        public ActionResult CTPTIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+        public ActionResult CTPTMenuIndex()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
+        public ActionResult CTPTUserRoute(int daId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                ViewBag.daId = daId;
+                SBALUserLocationMapView obj = new SBALUserLocationMapView();
+                obj = childRepository.GetCTPTByIdforMap(-1, daId, PId);
+                return View(obj);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+        public ActionResult CTPTUserRouteData(int daId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
+                obj = childRepository.GetCTPTUserAttenRoute(daId);
+                // return Json(obj);
+                return Json(obj, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+        public ActionResult CTPTRoute(int daId)
+        {
+
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+                ViewBag.daId = daId;
+                ViewBag.lat = SessionHandler.Current.Latitude;
+                ViewBag.lang = SessionHandler.Current.Logitude;
+                SBALUserLocationMapView obj = new SBALUserLocationMapView();
+                obj = childRepository.GetCTPTByIdforMap(-1, daId, PId);
+                return View(obj);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+        public ActionResult CTPTRouteData(int? daId, int? areaid, int? polyId, int? ZoneId, int? PrabhagNo, int? WardNo)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int daIdNew = daId ?? 0;
+                int areaidNew = areaid ?? 0;
+                int polyIdNew = polyId ?? 0;
+                int ZoneIdNew = ZoneId ?? 0;
+                int PrabhagNoNew = PrabhagNo ?? 0;
+                int WardNoNew = WardNo ?? 0;
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                HouseAttenRouteVM obj = new HouseAttenRouteVM();
+                
+                obj = childRepository.GetBeatCTPTAttenRoute(daIdNew, areaidNew, polyIdNew, ZoneIdNew, PrabhagNoNew, WardNoNew, PId);
+                
+                // return Json(obj);
+
+                return Json(obj, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
     }
 }

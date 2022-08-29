@@ -856,6 +856,10 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.GetBeatHouseAttenRoute(daId, areaid, polyId, ZoneId, PrabhagNo, WardNo, PId);
         }
+        public HouseAttenRouteVM GetBeatCTPTAttenRoute(int daId, int areaid, int polyId, int ZoneId, int PrabhagNo, int WardNo, int PId)
+        {
+            return screenService.GetBeatCTPTAttenRoute(daId, areaid, polyId, ZoneId, PrabhagNo, WardNo, PId);
+        }
         public List<SelectListItem> LoadListArea(int WardNo)
         {
             return screenService.LoadListArea(WardNo);
