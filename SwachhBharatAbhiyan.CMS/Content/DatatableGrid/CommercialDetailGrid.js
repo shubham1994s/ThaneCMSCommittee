@@ -19,7 +19,13 @@
                 "targets": [0],
                 "visible": false,
                 "searchable": false
-            }],
+            },
+                {
+                    "targets": [9],
+                    "visible": false,
+                    "searchable": false
+                }
+            ],
 
         "columns": [
 

@@ -66,14 +66,14 @@
                     </div>
                     <div class="col-md-4">
                         @*<div class="form-group">
-                                @Html.Label("नाव मराठी / Name Marathi")
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                @Html.TextBoxFor(model => model.houseOwnerMar, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
-                                @Html.ValidationMessageFor(model => model.houseOwnerMar, "", new { @class = "text-danger" })
-                                <span class="text-danger" id="err_name_mar"></span>
-                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                <span class="help-block with-errors"></span>
-                            </div>*@
+                @Html.Label("नाव मराठी / Name Marathi")
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.houseOwnerMar, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                @Html.ValidationMessageFor(model => model.houseOwnerMar, "", new { @class = "text-danger" })
+                <span class="text-danger" id="err_name_mar"></span>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <span class="help-block with-errors"></span>
+            </div>*@
                         <div class="form-group">
                             @*@Html.Label("मोबाइल नंबर / Mobile Number")*@
                             @Html.Label("Mobile Number")
@@ -85,16 +85,23 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
+                        <!--<div class="col-md-4">
+                            <div class="form-group">-->
+                                        @*@Html.Label("घर क्रमांक / House Number")*@
+                                        <!--@Html.Label("Commercial Number")
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.houseNumber, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
+                                @Html.ValidationMessageFor(model => model.houseNumber, "", new { @class = "text-danger" })
+                                <span class="text-danger" id="err_house_num"></span>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <span class="help-block with-errors"></span>
+                            </div>
+                        </div>-->
                     <div class="col-md-4">
                         <div class="form-group">
-                            @*@Html.Label("घर क्रमांक / House Number")*@
-                            @Html.Label("Commercial Number")
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.TextBoxFor(model => model.houseNumber, new { @class = "form-control", style = "font-family:Arial, FontAwesome" })
-                            @Html.ValidationMessageFor(model => model.houseNumber, "", new { @class = "text-danger" })
-                            <span class="text-danger" id="err_house_num"></span>
-                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                            <span class="help-block with-errors"></span>
+                            @*@Html.Label("रेफरेन्स आई डी / Reference Id")*@
+                            @Html.Label("Category")
+                            <input type="text" value="Commercial" readonly="readonly" />
                         </div>
                     </div>
                 </div>
