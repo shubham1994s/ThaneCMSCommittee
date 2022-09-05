@@ -185,7 +185,82 @@
                  //controlSize: 100,
                 center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
+             });
+
+            $.ajax({
+                type: "post",
+                url: "/LiquidLocation/HouseLocationListForEmpBitMap?Emptype=L&Subtype=L",
+                //url: "/Location/HouseLocationList",
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    debugger;
+                    data.length
+
+
+                    var infowindow = new google.maps.InfoWindow();
+                    bounds = new google.maps.LatLngBounds();
+                    var marker, i;
+                    if (data.length > 0) {
+                        //map = new google.maps.Map(document.getElementById('googleMap'), {
+                        //    zoom: 25,
+                        //    center: new google.maps.LatLng(data[0].houseLat, data[0].houseLong),
+                        //    mapTypeId: google.maps.MapTypeId.ROADMAP
+                        //});
+                        //var gar_type;
+                        for (i = 0; i < data.length; i++) {
+                            //debugger;
+                            //gar_type = data[i].garbageType
+                            if (data[i].houseOwnerName == null) {
+                                data[i].houseOwnerName = 'Not Available';
+                            }
+                            if (data[i].houseOwnerMobile == null) {
+                                data[i].houseOwnerMobile = '';
+                            }
+                            if (data[i].houseAddress == null) {
+                                data[i].houseAddress = '';
+                            }
+
+                            var mUrl = "../../Areas/Liquid/Content/images/img/segregationImg/Liquidwaste.png";
+
+                            marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(data[i].houseLat, data[i].houseLong),
+                                map: map,
+
+                                icon: {
+                                    // labelOrigin: new google.maps.Point(16, 65),
+                                    url: mUrl
+                                }
+
+                            });
+
+                            loc = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
+
+                            bounds.extend(loc);
+
+
+                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                return function () {
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h3>' + data[i].houseOwnerName + '</h3><p><b>Liquid Id: </b>' + data[i].ReferanceId + '</p>'
+                                    if (data[i].houseOwnerMobile != '') {
+                                        poptext = poptext + '<p><b>Mobile: </b>' + data[i].houseOwnerMobile + '</p>';
+                                    }
+                                    if (data[i].houseAddress != '') {
+                                        poptext = poptext + '<p><b>Address: </b>' + data[i].houseAddress + '</p>';
+                                    }
+                                    poptext = poptext + '</div>';
+                                    infowindow.setContent(poptext);
+                                    infowindow.open(map, marker);
+                                }
+                            })(marker, i));
+
+                        }
+                    }
+                }
             });
+
+
+
             if ($("#hdebmId").val() == '-1') {
                 $("#divUserList").show();
                 $("#divUserName").hide();

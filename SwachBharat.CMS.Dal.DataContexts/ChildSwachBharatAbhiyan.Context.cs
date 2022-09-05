@@ -18,10 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-       : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -876,43 +875,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SSweeping_Count_Result>("SP_SSweeping_Count", prabhagidParameter);
         }
     
-        public virtual ObjectResult<SP_StreetSweepingOnMapDetails_Result> SP_StreetSweepingOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType, Nullable<int> prabhagId)
-        {
-            var gcDateParameter = gcDate.HasValue ?
-                new ObjectParameter("gcDate", gcDate) :
-                new ObjectParameter("gcDate", typeof(System.DateTime));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            var zoneIdParameter = zoneId.HasValue ?
-                new ObjectParameter("ZoneId", zoneId) :
-                new ObjectParameter("ZoneId", typeof(int));
-    
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("AreaId", areaId) :
-                new ObjectParameter("AreaId", typeof(int));
-    
-            var wardNoParameter = wardNo.HasValue ?
-                new ObjectParameter("WardNo", wardNo) :
-                new ObjectParameter("WardNo", typeof(int));
-    
-            var gcTypeParameter = gcType.HasValue ?
-                new ObjectParameter("gcType", gcType) :
-                new ObjectParameter("gcType", typeof(int));
-    
-            var filterTypeParameter = filterType.HasValue ?
-                new ObjectParameter("FilterType", filterType) :
-                new ObjectParameter("FilterType", typeof(int));
-    
-            var prabhagIdParameter = prabhagId.HasValue ?
-                new ObjectParameter("PrabhagId", prabhagId) :
-                new ObjectParameter("PrabhagId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter, prabhagIdParameter);
-        }
-    
         public virtual ObjectResult<Spbeatmapstatus_Result> Spbeatmapstatus(Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> prabhagId)
         {
             var useridParameter = userid.HasValue ?
@@ -1343,6 +1305,64 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual ObjectResult<SP_HouseScanifyDetails_Result> SP_HouseScanifyDetails()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseScanifyDetails_Result>("SP_HouseScanifyDetails");
+        }
+    
+        public virtual ObjectResult<SP_StreetSweepingOnMapDetails_Result> SP_StreetSweepingOnMapDetails(Nullable<System.DateTime> gcDate, Nullable<int> userId, Nullable<int> zoneId, Nullable<int> prabhagId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> gcType, Nullable<int> filterType, Nullable<int> pId)
+        {
+            var gcDateParameter = gcDate.HasValue ?
+                new ObjectParameter("gcDate", gcDate) :
+                new ObjectParameter("gcDate", typeof(System.DateTime));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var zoneIdParameter = zoneId.HasValue ?
+                new ObjectParameter("ZoneId", zoneId) :
+                new ObjectParameter("ZoneId", typeof(int));
+    
+            var prabhagIdParameter = prabhagId.HasValue ?
+                new ObjectParameter("PrabhagId", prabhagId) :
+                new ObjectParameter("PrabhagId", typeof(int));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("AreaId", areaId) :
+                new ObjectParameter("AreaId", typeof(int));
+    
+            var wardNoParameter = wardNo.HasValue ?
+                new ObjectParameter("WardNo", wardNo) :
+                new ObjectParameter("WardNo", typeof(int));
+    
+            var gcTypeParameter = gcType.HasValue ?
+                new ObjectParameter("gcType", gcType) :
+                new ObjectParameter("gcType", typeof(int));
+    
+            var filterTypeParameter = filterType.HasValue ?
+                new ObjectParameter("FilterType", filterType) :
+                new ObjectParameter("FilterType", typeof(int));
+    
+            var pIdParameter = pId.HasValue ?
+                new ObjectParameter("PId", pId) :
+                new ObjectParameter("PId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, prabhagIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter, pIdParameter);
+        }
+    
+        public virtual ObjectResult<SP_HouseOnMapDetailsForEmpBitMap_Result> SP_HouseOnMapDetailsForEmpBitMap(string empType, string subType, Nullable<int> pId)
+        {
+            var empTypeParameter = empType != null ?
+                new ObjectParameter("EmpType", empType) :
+                new ObjectParameter("EmpType", typeof(string));
+    
+            var subTypeParameter = subType != null ?
+                new ObjectParameter("SubType", subType) :
+                new ObjectParameter("SubType", typeof(string));
+    
+            var pIdParameter = pId.HasValue ?
+                new ObjectParameter("PId", pId) :
+                new ObjectParameter("PId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseOnMapDetailsForEmpBitMap_Result>("SP_HouseOnMapDetailsForEmpBitMap", empTypeParameter, subTypeParameter, pIdParameter);
         }
     }
 }

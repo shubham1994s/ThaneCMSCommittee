@@ -4072,7 +4072,7 @@ namespace SwachBharat.CMS.Bll.Services
                                 }
                             }
                         }
-                        
+
                         if (d.SSId != null)
                         {
                             if (areaid != 0)
@@ -4354,7 +4354,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             else if (Emptype == "S")
             {
-                var data = db.SP_StreetSweepingOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
+                var data = db.SP_StreetSweepingOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -4521,7 +4521,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             else if (Emptype == "S")
             {
-                var data = db.SP_StreetSweepingOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
+                var data = db.SP_StreetSweepingOnMapDetails(Convert.ToDateTime(dt1), userid == -1 ? 0 : userid, zoneId, prabhagId, areaid, wardNo, GarbageType, FilterType, PId).ToList();
                 foreach (var x in data)
                 {
 
@@ -7316,22 +7316,22 @@ namespace SwachBharat.CMS.Bll.Services
 
 
                         //For Data Entry Count
-                       model.TotalHouse_DataEntry = data.TotalHouse_DataEntry;
-                       model.TodayHouse_DataEntry = data.TodayHouse_DataEntry;
-                       model.TotalCommercial_DataEntry = data.TotalCommercial_DataEntry;
-                       model.TodayCommercial_DataEntry = data.TodayCommercial_DataEntry;
-                       model.TotalLiquid_DataEntry = data.TotalLiquid_DataEntry;
-                       model.TodayLiquid_DataEntry = data.TodayLiquid_DataEntry;
-                       model.TotalStreet_DataEntry = data.TotalStreet_DataEntry;
-                       model.TodayStreet_DataEntry = data.TodayStreet_DataEntry;
-                       model.TotalSWM_DataEntry = data.TotalSWM_DataEntry;
-                       model.TodaySWM_DataEntry = data.TodaySWM_DataEntry;
-                       model.TotalCTPT_DataEntry = data.TotalCTPT_DataEntry;
-                       model.TodayCTPT_DataEntry = data.TodayCTPT_DataEntry;
-                       model.TotalSlum_DataEntry = data.TotalSlum_DataEntry;
-                       model.TodaySlum_DataEntry = data.TodaySlum_DataEntry;
-                       model.TotalBuilding_DataEntry = data.TotalBuilding_DataEntry;
-                       model.TodayBuilding_DataEntry = data.TodayBuilding_DataEntry;
+                        model.TotalHouse_DataEntry = data.TotalHouse_DataEntry;
+                        model.TodayHouse_DataEntry = data.TodayHouse_DataEntry;
+                        model.TotalCommercial_DataEntry = data.TotalCommercial_DataEntry;
+                        model.TodayCommercial_DataEntry = data.TodayCommercial_DataEntry;
+                        model.TotalLiquid_DataEntry = data.TotalLiquid_DataEntry;
+                        model.TodayLiquid_DataEntry = data.TodayLiquid_DataEntry;
+                        model.TotalStreet_DataEntry = data.TotalStreet_DataEntry;
+                        model.TodayStreet_DataEntry = data.TodayStreet_DataEntry;
+                        model.TotalSWM_DataEntry = data.TotalSWM_DataEntry;
+                        model.TodaySWM_DataEntry = data.TodaySWM_DataEntry;
+                        model.TotalCTPT_DataEntry = data.TotalCTPT_DataEntry;
+                        model.TodayCTPT_DataEntry = data.TodayCTPT_DataEntry;
+                        model.TotalSlum_DataEntry = data.TotalSlum_DataEntry;
+                        model.TodaySlum_DataEntry = data.TodaySlum_DataEntry;
+                        model.TotalBuilding_DataEntry = data.TotalBuilding_DataEntry;
+                        model.TodayBuilding_DataEntry = data.TodayBuilding_DataEntry;
 
                         return model;
                     }
@@ -9905,7 +9905,7 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime fdate = Convert.ToDateTime(dt + " " + "00:00:00");
             DateTime tdate = Convert.ToDateTime(dt + " " + "23:59:59");
 
-            var data = db.SP_IdelTimestreet(0, fdate, tdate,PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+            var data = db.SP_IdelTimestreet(0, fdate, tdate, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
             //var data = db.SP_IdelTime(0, fdate, fdate).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList();
             foreach (var x in data)
             {
@@ -10412,12 +10412,14 @@ namespace SwachBharat.CMS.Bll.Services
                         {
                             empBeatMap.ebmId = -1;
                             empBeatMap.userId = -1;
+                            empBeatMap.Type = "W";
                         }
                     }
                     else
                     {
                         empBeatMap.ebmId = -1;
                         empBeatMap.userId = -1;
+                        empBeatMap.Type = "W";
 
                     }
 
@@ -10531,7 +10533,7 @@ namespace SwachBharat.CMS.Bll.Services
             return string.Join(":", lstPoly);
         }
 
-        public List<SelectListItem> ListUserBeatMap(string Emptype,int PId)
+        public List<SelectListItem> ListUserBeatMap(string Emptype, int PId)
         {
             var user = new List<SelectListItem>();
             SelectListItem itemAdd = new SelectListItem() { Text = "--Select Employee--", Value = "0" };
@@ -11048,6 +11050,35 @@ namespace SwachBharat.CMS.Bll.Services
             catch (Exception ex) { throw ex; }
 
             return Zone;
+        }
+        public List<SBALocationMapView> GetAllHouseLocationForEmpBitMap(string Emptype, string Subtype, int PId)
+        {
+
+            List<SBALocationMapView> houseLocation = new List<SBALocationMapView>();
+
+            var data = db.SP_HouseOnMapDetailsForEmpBitMap(Emptype, Subtype, PId).ToList();
+            foreach (var x in data)
+            {
+
+                //string gcTime = x.gcDate.ToString();
+                houseLocation.Add(new SBALocationMapView()
+                {
+                    houseId = Convert.ToInt32(x.houseId),
+                    commercialId = Convert.ToInt32(x.commercialId),
+                    CTPTId = Convert.ToInt32(x.ctptId),
+                    SWMId = Convert.ToInt32(x.swmId),
+                    ReferanceId = x.ReferanceId,
+                    houseOwnerName = (x.houseOwner == null ? "" : x.houseOwner),
+                    houseOwnerMobile = (x.houseOwnerMobile == null ? "" : x.houseOwnerMobile),
+                    houseAddress = checkNull(x.houseAddress).Replace("Unnamed Road, ", ""),
+                    houseLat = x.houseLat,
+                    houseLong = x.houseLong,
+                    TOT = x.tot
+
+                });
+            }
+            return houseLocation;
+
         }
 
     }

@@ -278,5 +278,28 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
             else
                 return Redirect("/Account/Login");
         }
+        public ActionResult HouseLocationListForEmpBitMap(string Emptype, string Subtype)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                List<SBALocationMapView> obj = new List<SBALocationMapView>();
+                obj = childRepository.GetAllHouseLocationForEmpBitMap(Emptype, Subtype, PId);
+                // return Json(obj);
+                //if (houseid != null && houseid != "null" && houseid != "-1")
+                //{
+                //    obj = obj.Where(c => c.houseId == Convert.ToInt32(houseid)).ToList();
+                //}
+                // return Json(obj, JsonRequestBehavior.AllowGet);
+
+                var jsonResult = Json(obj, JsonRequestBehavior.AllowGet);
+                jsonResult.MaxJsonLength = int.MaxValue;
+                return jsonResult;
+            }
+            else
+                return Redirect("/Account/Login");
+        }
+
     }
 }

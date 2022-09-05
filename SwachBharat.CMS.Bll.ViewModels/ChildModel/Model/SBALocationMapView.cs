@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
 {
-    public class SBALHouseLocationMapView : BaseVM
+    public class SBALocationMapView : BaseVM
     {
-        public int  ssid { get; set; }
-        public int lwid { get; set; }
         public int houseId { get; set; }
+        public int commercialId { get; set; }
+        public int CTPTId { get; set; }
+        public int SWMId { get; set; }
         public string ReferanceId { get; set; }
         public string houseOwnerName { get; set; }
         public string houseOwnerMobile { get; set; }
@@ -40,13 +41,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> domestic { get; set; }
         public Nullable<int> sanitary { get; set; }
         public int BeatId { get; set; }
-        public int dyid { get; set; }
+        public string TOT { get; set; }
     }
-    public class SBALHouseLocationMapView1
-    {
-        public int houseCount { get; set; }
-
-        public List<SBALHouseLocationMapView> houseList {get; set;}
-    
-  }
 }

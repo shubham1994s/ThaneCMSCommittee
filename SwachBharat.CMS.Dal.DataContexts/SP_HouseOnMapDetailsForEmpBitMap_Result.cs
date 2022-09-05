@@ -11,17 +11,20 @@ namespace SwachBharat.CMS.Dal.DataContexts
 {
     using System;
     
-    public partial class SP_StreetSweepingOnMapDetails_Result
+    public partial class SP_HouseOnMapDetailsForEmpBitMap_Result
     {
         public Nullable<int> userId { get; set; }
-        public int SSId { get; set; }
+        public Nullable<int> houseId { get; set; }
+        public Nullable<int> commercialId { get; set; }
+        public Nullable<int> swmId { get; set; }
+        public Nullable<int> ctptId { get; set; }
         public string ReferanceId { get; set; }
-        public string SSName { get; set; }
-        public string SSAddress { get; set; }
-        public Nullable<int> gcType { get; set; }
-        public Nullable<int> gcDate { get; set; }
-        public string SSLat { get; set; }
-        public string SSLong { get; set; }
+        public string houseOwner { get; set; }
+        public string houseOwnerMobile { get; set; }
+        public string houseAddress { get; set; }
+        public string houseLat { get; set; }
+        public string houseLong { get; set; }
         public Nullable<int> PrabhagId { get; set; }
+        public string tot { get; set; }
     }
 }
