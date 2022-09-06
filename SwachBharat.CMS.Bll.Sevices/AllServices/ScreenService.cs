@@ -10379,7 +10379,8 @@ namespace SwachBharat.CMS.Bll.Services
             string strWardNo = WardNo.ToString();
             try
             {
-                Area = db.TeritoryMasters.Where(a => db.WardNumbers.Where(b => ((PId != 0 && b.PrabhagId == PId) || PId == 0) && ((WardNo != 0 && b.Id == WardNo) || WardNo == 0)).Select(c => c.Id).ToList().Contains(a.wardId ?? 0)).ToList()
+                //Area = db.TeritoryMasters.Where(a => db.WardNumbers.Where(b => ((PId != 0 && b.PrabhagId == PId) || PId == 0) && ((WardNo != 0 && b.Id == WardNo) || WardNo == 0)).Select(c => c.Id).ToList().Contains(a.wardId ?? 0)).ToList()
+                Area = db.TeritoryMasters.Where(a => db.WardNumbers.Where(b => ((PId != 0 && b.PrabhagId == PId) || PId == 0) &&  b.Id == WardNo).Select(c => c.Id).ToList().Contains(a.wardId ?? 0)).ToList()
                     .Select(x => new SelectListItem
                     {
                         Text = x.Area,
