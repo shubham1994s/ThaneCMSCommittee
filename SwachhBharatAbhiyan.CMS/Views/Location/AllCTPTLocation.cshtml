@@ -223,21 +223,29 @@
             </div>
             <div class="col-sm-2">
                 <label>Select Zone</label>
-                <select id="ZoneId" class="form-control form-control form-control-sm"></select>
+                <select id="ZoneId" class="form-control form-control form-control-sm">
+                    <option value="0"> Select Zone</option>
+                </select>
             </div>
             <div class="col-sm-2">
                 <label>Select Prabhag</label>
-                <select id="PrabhagNo" class="form-control form-control form-control-sm"></select>
+                <select id="PrabhagNo" class="form-control form-control form-control-sm">
+                    <option value="0"> Select Prabhag</option>
+                </select>
             </div>
             <div class="col-sm-2">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Ward</label>
-                <select id="selectWard" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
+                <select id="selectWard" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
+                    <option value="0"> Select Ward</option>
+                </select>
             </div>
             <div class="col-sm-2">
                 @*<label>कर्मचारी निवडा / Select Employee</label>*@
                 <label>Select Area</label>
-                <select id="selectArea" class="form-control minimal-form  RequiredInput validate[required] RequiredInput"></select>
+                <select id="selectArea" class="form-control minimal-form  RequiredInput validate[required] RequiredInput">
+                    <option value="0"> Select Area</option>
+                </select>
             </div>
         </div>
         <div class="row">
@@ -355,69 +363,69 @@
 
 
             // For loading all Prabhag
-            $.ajax({
-                type: "post",
-                url: "/GarbageCollection/PrabhagList",
-                data: {},
-                datatype: "json",
-                traditional: true,
-                success: function (data) {
-                    var district;
-                    for (var i = 0; i < data.length; i++) {
+            //$.ajax({
+            //    type: "post",
+            //    url: "/GarbageCollection/PrabhagList",
+            //    data: {},
+            //    datatype: "json",
+            //    traditional: true,
+            //    success: function (data) {
+            //        var district;
+            //        for (var i = 0; i < data.length; i++) {
 
-                        if (data[i].Value == $('#PrabhagNo').val()) {
-                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
-                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
-                    }
-                    //district = district + '</select>';
-                    $('#PrabhagNo').html(district);
-                }
-            });
-
-
-            // For loading all Ward
-            $.ajax({
-                type: "post",
-                url: "/GarbageCollection/WardList",
-                data: {},
-                datatype: "json",
-                traditional: true,
-                success: function (data) {
-                    var district;
-                    for (var i = 0; i < data.length; i++) {
-
-                        if (data[i].Value == $('#selectWard').val()) {
-                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
-                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
-                    }
-                    //district = district + '</select>';
-                    $('#selectWard').html(district);
-                }
-            });
+            //            if (data[i].Value == $('#PrabhagNo').val()) {
+            //                district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+            //            } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+            //        }
+            //        //district = district + '</select>';
+            //        $('#PrabhagNo').html(district);
+            //    }
+            //});
 
 
+            //// For loading all Ward
+            //$.ajax({
+            //    type: "post",
+            //    url: "/GarbageCollection/WardList",
+            //    data: {},
+            //    datatype: "json",
+            //    traditional: true,
+            //    success: function (data) {
+            //        var district;
+            //        for (var i = 0; i < data.length; i++) {
 
-            // For loading all Area
+            //            if (data[i].Value == $('#selectWard').val()) {
+            //                district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+            //            } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+            //        }
+            //        //district = district + '</select>';
+            //        $('#selectWard').html(district);
+            //    }
+            //});
 
-            $.ajax({
-                type: "post",
-                url: "/GarbageCollection/AreaList",
-                data: {},
-                datatype: "json",
-                traditional: true,
-                success: function (data) {
-                    var district;
-                    for (var i = 0; i < data.length; i++) {
 
-                        if (data[i].Value == $('#selectArea').val()) {
-                            district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
-                        } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
 
-                    }
-                    //district = district + '</select>';
-                    $('#selectArea').html(district);
-                }
-            });
+            //// For loading all Area
+
+            //$.ajax({
+            //    type: "post",
+            //    url: "/GarbageCollection/AreaList",
+            //    data: {},
+            //    datatype: "json",
+            //    traditional: true,
+            //    success: function (data) {
+            //        var district;
+            //        for (var i = 0; i < data.length; i++) {
+
+            //            if (data[i].Value == $('#selectArea').val()) {
+            //                district = district + '<option value=' + data[i].Value + ' selected>' + data[i].Text + '</option>';
+            //            } else { district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>'; }
+
+            //        }
+            //        //district = district + '</select>';
+            //        $('#selectArea').html(district);
+            //    }
+            //});
 
 
 
