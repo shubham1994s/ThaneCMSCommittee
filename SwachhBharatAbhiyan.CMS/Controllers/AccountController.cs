@@ -67,13 +67,14 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public async Task<ActionResult> Login(string returnUrl)
+        public async Task<ActionResult> Login(string returnUrl,string Type)
         {
             if (returnUrl !=null)
             {
                 LoginViewModel model = new LoginViewModel( );
                 model.Email = returnUrl;
-                   model.Password = "Admin#123";
+                model.Password = "Admin#123";
+                model.Type = Type;
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, change to shouldLockout: true
                 var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
