@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
     zone();
-    prabhag();
-    ward();
-    area();
+    //prabhag();
+    //ward();
+    //area();
     $('#ZoneId').change(function () {
         var selectedText = $(this).find("option:selected").text();
         var selectedValue = $(this).val();
