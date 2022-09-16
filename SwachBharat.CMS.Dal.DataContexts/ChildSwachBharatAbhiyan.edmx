@@ -43,6 +43,8 @@
           <Property Name="CommitteeName" Type="nvarchar" MaxLength="50" />
           <Property Name="zoneId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Daily_Attendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Daily_Attendance">
           <Key>
             <PropertyRef Name="daID" />
@@ -69,6 +71,8 @@
           <Property Name="WardId" Type="nchar" MaxLength="10" />
           <Property Name="PrabhagId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.DumpYardDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DumpYardDetails">
           <Key>
             <PropertyRef Name="dyId" />
@@ -462,8 +466,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="QRStatus" Type="bit" />
           <Property Name="QRStatusDate" Type="datetime" />
           <Property Name="BinaryQrCodeImage" Type="varbinary(max)" />
-          <Property Name="PrabhagId" Type="int" />
           <Property Name="BeatId" Type="int" />
+          <Property Name="PrabhagId" Type="int" />
           <Property Name="DataEntryDate" Type="datetime" />
         </EntityType>
         <EntityType Name="SWMMaster">
@@ -531,8 +535,8 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.SS_1.4_QUESTIO
           <Property Name="EmployeeType" Type="varchar" MaxLength="10" />
           <Property Name="imoNo2" Type="nvarchar(max)" />
           <Property Name="ComgcTarget" Type="varchar" MaxLength="250" />
-          <Property Name="ZoneId" Type="int" />
           <Property Name="PrabhagId" Type="int" />
+          <Property Name="ZoneId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.UserMaster_Liquid' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -591,6 +595,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.UserMaster_Str
           <Property Name="vehicleNo" Type="nvarchar" MaxLength="300" />
           <Property Name="areaId" Type="int" />
           <Property Name="isActive" Type="bit" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.VehicleType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -604,7 +609,10 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.VehicleType' d
           <Property Name="isActive" Type="bit" />
           <Property Name="RegNo" Type="nvarchar" MaxLength="300" />
           <Property Name="VechileNo" Type="nvarchar" MaxLength="300" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.WardNumber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="WardNumber">
           <Key>
             <PropertyRef Name="Id" />
@@ -672,14 +680,13 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.WM_GarbageSubC
           <Property Name="SubCategory" Type="nvarchar" MaxLength="50" />
           <Property Name="CategoryID" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.ZoneMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ZoneMaster">
           <Key>
             <PropertyRef Name="zoneId" />
           </Key>
           <Property Name="zoneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="500" />
+          <Property Name="PrabhagId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -920,7 +927,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
         </Function>
         <Function Name="SP_HouseOnMapDetailsForEmpBitMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EmpType" Type="varchar" Mode="In" />
-          <Parameter Name="SubType" Type="varchar" Mode="In" />
           <Parameter Name="PId" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_HouseScanify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1088,8 +1094,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
         <EntityContainer Name="DevSwachhBharatNagpurModelStoreContainer">
           <EntitySet Name="CommercialMaster" EntityType="Self.CommercialMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommitteeMaster" EntityType="Self.CommitteeMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DumpYardDetails" EntityType="Self.DumpYardDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmpBeatMap" EntityType="Self.EmpBeatMap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GarbageCollectionDetails" EntityType="Self.GarbageCollectionDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" Schema="dbo" store:Type="Tables" />
@@ -1108,7 +1112,55 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="TeritoryMaster" EntityType="Self.TeritoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VehicleRegistration" EntityType="Self.VehicleRegistration" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WardNumber" EntityType="Self.WardNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Daily_Attendance].[daID] AS [daID], 
+    [Daily_Attendance].[userId] AS [userId], 
+    [Daily_Attendance].[startLat] AS [startLat], 
+    [Daily_Attendance].[startLong] AS [startLong], 
+    [Daily_Attendance].[endLat] AS [endLat], 
+    [Daily_Attendance].[endLong] AS [endLong], 
+    [Daily_Attendance].[startTime] AS [startTime], 
+    [Daily_Attendance].[endTime] AS [endTime], 
+    [Daily_Attendance].[daDate] AS [daDate], 
+    [Daily_Attendance].[daEndDate] AS [daEndDate], 
+    [Daily_Attendance].[vtId] AS [vtId], 
+    [Daily_Attendance].[daStartNote] AS [daStartNote], 
+    [Daily_Attendance].[daEndNote] AS [daEndNote], 
+    [Daily_Attendance].[vehicleNumber] AS [vehicleNumber], 
+    [Daily_Attendance].[batteryStatus] AS [batteryStatus], 
+    [Daily_Attendance].[totalKm] AS [totalKm], 
+    [Daily_Attendance].[OutbatteryStatus] AS [OutbatteryStatus], 
+    [Daily_Attendance].[EmployeeType] AS [EmployeeType], 
+    [Daily_Attendance].[CType] AS [CType], 
+    [Daily_Attendance].[WardId] AS [WardId], 
+    [Daily_Attendance].[PrabhagId] AS [PrabhagId]
+    FROM [dbo].[Daily_Attendance] AS [Daily_Attendance]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DumpYardDetails" EntityType="Self.DumpYardDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DumpYardDetails].[dyId] AS [dyId], 
+    [DumpYardDetails].[dyName] AS [dyName], 
+    [DumpYardDetails].[dyNameMar] AS [dyNameMar], 
+    [DumpYardDetails].[dyLat] AS [dyLat], 
+    [DumpYardDetails].[dyLong] AS [dyLong], 
+    [DumpYardDetails].[dyQRCode] AS [dyQRCode], 
+    [DumpYardDetails].[zoneId] AS [zoneId], 
+    [DumpYardDetails].[wardId] AS [wardId], 
+    [DumpYardDetails].[areaId] AS [areaId], 
+    [DumpYardDetails].[ReferanceId] AS [ReferanceId], 
+    [DumpYardDetails].[dyAddress] AS [dyAddress], 
+    [DumpYardDetails].[lastModifiedDate] AS [lastModifiedDate], 
+    [DumpYardDetails].[userId] AS [userId], 
+    [DumpYardDetails].[EmployeeType] AS [EmployeeType], 
+    [DumpYardDetails].[QRCodeImage] AS [QRCodeImage], 
+    [DumpYardDetails].[QRStatus] AS [QRStatus], 
+    [DumpYardDetails].[QRStatusDate] AS [QRStatusDate], 
+    [DumpYardDetails].[BinaryQrCodeImage] AS [BinaryQrCodeImage], 
+    [DumpYardDetails].[PrabhagId] AS [PrabhagId]
+    FROM [dbo].[DumpYardDetails] AS [DumpYardDetails]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="GamePlayerDetails" EntityType="Self.GamePlayerDetails" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [GamePlayerDetails].[ID] AS [ID], 
@@ -1221,8 +1273,17 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [VehicleType].[descriptionMar] AS [descriptionMar], 
     [VehicleType].[isActive] AS [isActive], 
     [VehicleType].[RegNo] AS [RegNo], 
-    [VehicleType].[VechileNo] AS [VechileNo]
+    [VehicleType].[VechileNo] AS [VechileNo], 
+    [VehicleType].[PrabhagId] AS [PrabhagId]
     FROM [dbo].[VehicleType] AS [VehicleType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WardNumber" EntityType="Self.WardNumber" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WardNumber].[Id] AS [Id], 
+    [WardNumber].[WardNo] AS [WardNo], 
+    [WardNumber].[zoneId] AS [zoneId], 
+    [WardNumber].[PrabhagId] AS [PrabhagId]
+    FROM [dbo].[WardNumber] AS [WardNumber]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="WM_Garbage_Details" EntityType="Self.WM_Garbage_Details" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1266,12 +1327,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [WM_GarbageSubCategory].[SubCategory] AS [SubCategory], 
     [WM_GarbageSubCategory].[CategoryID] AS [CategoryID]
     FROM [dbo].[WM_GarbageSubCategory] AS [WM_GarbageSubCategory]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ZoneMaster].[zoneId] AS [zoneId], 
-    [ZoneMaster].[name] AS [name]
-    FROM [dbo].[ZoneMaster] AS [ZoneMaster]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Vw_MsgNotification" EntityType="Self.Vw_MsgNotification" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1432,14 +1487,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="SearchText" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Daily_Attendance" EntityType="DevSwachhBharatNagpurModel.Daily_Attendance" />
-          <EntitySet Name="SS_1_4_ANSWER" EntityType="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" />
-          <EntitySet Name="SS_1_4_QUESTION_13july" EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION_13july" />
-          <EntitySet Name="SS_1_7_ANSWER" EntityType="DevSwachhBharatNagpurModel.SS_1_7_ANSWER" />
-          <EntitySet Name="SS_1_4_QUESTION" EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION" />
-          <AssociationSet Name="FK_SS_1_4_ANSWER_SS_1_4_ANSWER" Association="DevSwachhBharatNagpurModel.FK_SS_1_4_ANSWER_SS_1_4_ANSWER">
-            <End Role="SS_1_4_ANSWER" EntitySet="SS_1_4_ANSWER" />
-            <End Role="SS_1_4_ANSWER1" EntitySet="SS_1_4_ANSWER" />
-          </AssociationSet>
           <EntitySet Name="DumpYardDetails" EntityType="DevSwachhBharatNagpurModel.DumpYardDetail" />
           <EntitySet Name="CommitteeMasters" EntityType="DevSwachhBharatNagpurModel.CommitteeMaster" />
           <EntitySet Name="WardNumbers" EntityType="DevSwachhBharatNagpurModel.WardNumber" />
@@ -1708,9 +1755,16 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <FunctionImport Name="SP_HouseOnMapDetailsForEmpBitMap" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseOnMapDetailsForEmpBitMap_Result)">
             <Parameter Name="EmpType" Mode="In" Type="String" />
-            <Parameter Name="SubType" Mode="In" Type="String" />
             <Parameter Name="PId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="SS_1_4_ANSWER" EntityType="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" />
+          <EntitySet Name="SS_1_4_QUESTION_13july" EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION_13july" />
+          <EntitySet Name="SS_1_7_ANSWER" EntityType="DevSwachhBharatNagpurModel.SS_1_7_ANSWER" />
+          <EntitySet Name="SS_1_4_QUESTION" EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION" />
+          <AssociationSet Name="FK_SS_1_4_ANSWER_SS_1_4_ANSWER" Association="DevSwachhBharatNagpurModel.FK_SS_1_4_ANSWER_SS_1_4_ANSWER">
+            <End Role="SS_1_4_ANSWER" EntitySet="SS_1_4_ANSWER" />
+            <End Role="SS_1_4_ANSWER1" EntitySet="SS_1_4_ANSWER" />
+          </AssociationSet>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2058,6 +2112,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </Key>
           <Property Name="zoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <EntityType Name="GramCleaningComplient">
           <Key>
@@ -2221,6 +2276,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="isActive" Type="Boolean" />
           <Property Name="RegNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="VechileNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <ComplexType Name="SP_HouseScanify_Result">
           <Property Type="Int32" Name="qrEMpId" Nullable="false" />
@@ -2277,6 +2333,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="vehicleNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="areaId" Type="Int32" />
           <Property Name="isActive" Type="Boolean" />
+          <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
         <ComplexType Name="GetVehicleDetails_Result">
           <Property Type="Int32" Name="vehicleId" Nullable="false" />
@@ -2360,60 +2417,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="WardId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
-        <EntityType Name="SS_1_4_ANSWER">
-          <Key>
-            <PropertyRef Name="ANS_ID" />
-          </Key>
-          <Property Name="ANS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Q_ID" Type="Int32" Nullable="false" />
-          <Property Name="TOTAL_COUNT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="INSERT_DATE" Type="DateTime" Precision="3" />
-          <Property Name="INSERT_ID" Type="Int32" />
-          <NavigationProperty Name="SS_1_4_ANSWER1" Relationship="DevSwachhBharatNagpurModel.FK_SS_1_4_ANSWER_SS_1_4_ANSWER" FromRole="SS_1_4_ANSWER" ToRole="SS_1_4_ANSWER1" />
-          <NavigationProperty Name="SS_1_4_ANSWER2" Relationship="DevSwachhBharatNagpurModel.FK_SS_1_4_ANSWER_SS_1_4_ANSWER" FromRole="SS_1_4_ANSWER1" ToRole="SS_1_4_ANSWER" />
-        </EntityType>
-        <EntityType Name="SS_1_4_QUESTION_13july">
-          <Key>
-            <PropertyRef Name="Q_ID" />
-          </Key>
-          <Property Name="Q_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="QUESTIOND" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="NOTE" Type="String" MaxLength="199" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="SS_1_7_ANSWER">
-          <Key>
-            <PropertyRef Name="Trno" />
-          </Key>
-          <Property Name="Trno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="No_water_bodies" Type="Int32" />
-          <Property Name="No_drain_nallas" Type="Int32" />
-          <Property Name="No_locations" Type="Int32" />
-          <Property Name="No_outlets" Type="Int32" />
-          <Property Name="INSERT_ID" Type="Int32" />
-          <Property Name="INSERT_DATE" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="SS_1_4_QUESTION">
-          <Key>
-            <PropertyRef Name="Q_ID" />
-          </Key>
-          <Property Name="Q_ID" Type="Int32" Nullable="false" />
-          <Property Name="QUESTIOND" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Q_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="NOTE" Type="String" MaxLength="199" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="FK_SS_1_4_ANSWER_SS_1_4_ANSWER">
-          <End Type="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" Role="SS_1_4_ANSWER" Multiplicity="1" />
-          <End Type="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" Role="SS_1_4_ANSWER1" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="SS_1_4_ANSWER">
-              <PropertyRef Name="ANS_ID" />
-            </Principal>
-            <Dependent Role="SS_1_4_ANSWER1">
-              <PropertyRef Name="ANS_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="DumpYardDetail">
           <Key>
             <PropertyRef Name="dyId" />
@@ -3444,6 +3447,60 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="PrabhagId" Nullable="true" />
           <Property Type="String" Name="tot" Nullable="false" MaxLength="1" />
         </ComplexType>
+        <EntityType Name="SS_1_4_ANSWER">
+          <Key>
+            <PropertyRef Name="ANS_ID" />
+          </Key>
+          <Property Name="ANS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Q_ID" Type="Int32" Nullable="false" />
+          <Property Name="TOTAL_COUNT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="INSERT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="INSERT_ID" Type="Int32" />
+          <NavigationProperty Name="SS_1_4_ANSWER1" Relationship="DevSwachhBharatNagpurModel.FK_SS_1_4_ANSWER_SS_1_4_ANSWER" FromRole="SS_1_4_ANSWER" ToRole="SS_1_4_ANSWER1" />
+          <NavigationProperty Name="SS_1_4_ANSWER2" Relationship="DevSwachhBharatNagpurModel.FK_SS_1_4_ANSWER_SS_1_4_ANSWER" FromRole="SS_1_4_ANSWER1" ToRole="SS_1_4_ANSWER" />
+        </EntityType>
+        <EntityType Name="SS_1_4_QUESTION_13july">
+          <Key>
+            <PropertyRef Name="Q_ID" />
+          </Key>
+          <Property Name="Q_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QUESTIOND" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NOTE" Type="String" MaxLength="199" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SS_1_7_ANSWER">
+          <Key>
+            <PropertyRef Name="Trno" />
+          </Key>
+          <Property Name="Trno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="No_water_bodies" Type="Int32" />
+          <Property Name="No_drain_nallas" Type="Int32" />
+          <Property Name="No_locations" Type="Int32" />
+          <Property Name="No_outlets" Type="Int32" />
+          <Property Name="INSERT_ID" Type="Int32" />
+          <Property Name="INSERT_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SS_1_4_QUESTION">
+          <Key>
+            <PropertyRef Name="Q_ID" />
+          </Key>
+          <Property Name="Q_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUESTIOND" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Q_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NOTE" Type="String" MaxLength="199" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_SS_1_4_ANSWER_SS_1_4_ANSWER">
+          <End Type="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" Role="SS_1_4_ANSWER" Multiplicity="1" />
+          <End Type="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" Role="SS_1_4_ANSWER1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SS_1_4_ANSWER">
+              <PropertyRef Name="ANS_ID" />
+            </Principal>
+            <Dependent Role="SS_1_4_ANSWER1">
+              <PropertyRef Name="ANS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3726,6 +3783,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="ZoneMasters">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.ZoneMaster">
               <MappingFragment StoreEntitySet="ZoneMaster">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="zoneId" ColumnName="zoneId" />
               </MappingFragment>
@@ -3899,6 +3957,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="VehicleTypes">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.VehicleType">
               <MappingFragment StoreEntitySet="VehicleType">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="VechileNo" ColumnName="VechileNo" />
                 <ScalarProperty Name="RegNo" ColumnName="RegNo" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
@@ -3965,6 +4024,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySetMapping Name="VehicleRegistrations">
             <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.VehicleRegistration">
               <MappingFragment StoreEntitySet="VehicleRegistration">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="areaId" ColumnName="areaId" />
                 <ScalarProperty Name="vehicleNo" ColumnName="vehicleNo" />
@@ -4074,50 +4134,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="startLat" ColumnName="startLat" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="daID" ColumnName="daID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SS_1_4_ANSWER">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_4_ANSWER">
-              <MappingFragment StoreEntitySet="SS_1_4_ANSWER">
-                <ScalarProperty Name="INSERT_ID" ColumnName="INSERT_ID" />
-                <ScalarProperty Name="INSERT_DATE" ColumnName="INSERT_DATE" />
-                <ScalarProperty Name="TOTAL_COUNT" ColumnName="TOTAL_COUNT" />
-                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
-                <ScalarProperty Name="ANS_ID" ColumnName="ANS_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SS_1_4_QUESTION_13july">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_4_QUESTION_13july">
-              <MappingFragment StoreEntitySet="SS_1_4_QUESTION_13july">
-                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
-                <ScalarProperty Name="QUESTIOND" ColumnName="QUESTIOND" />
-                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SS_1_7_ANSWER">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_7_ANSWER">
-              <MappingFragment StoreEntitySet="SS_1_7_ANSWER">
-                <ScalarProperty Name="INSERT_DATE" ColumnName="INSERT_DATE" />
-                <ScalarProperty Name="INSERT_ID" ColumnName="INSERT_ID" />
-                <ScalarProperty Name="No_outlets" ColumnName="No_outlets" />
-                <ScalarProperty Name="No_locations" ColumnName="No_locations" />
-                <ScalarProperty Name="No_drain_nallas" ColumnName="No_drain_nallas" />
-                <ScalarProperty Name="No_water_bodies" ColumnName="No_water_bodies" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Trno" ColumnName="Trno" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SS_1_4_QUESTION">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_4_QUESTION">
-              <MappingFragment StoreEntitySet="SS_1_4_QUESTION">
-                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
-                <ScalarProperty Name="Q_NO" ColumnName="Q_NO" />
-                <ScalarProperty Name="QUESTIOND" ColumnName="QUESTIOND" />
-                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5345,6 +5361,50 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="SS_1_4_ANSWER">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_4_ANSWER">
+              <MappingFragment StoreEntitySet="SS_1_4_ANSWER">
+                <ScalarProperty Name="INSERT_ID" ColumnName="INSERT_ID" />
+                <ScalarProperty Name="INSERT_DATE" ColumnName="INSERT_DATE" />
+                <ScalarProperty Name="TOTAL_COUNT" ColumnName="TOTAL_COUNT" />
+                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
+                <ScalarProperty Name="ANS_ID" ColumnName="ANS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SS_1_4_QUESTION_13july">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_4_QUESTION_13july">
+              <MappingFragment StoreEntitySet="SS_1_4_QUESTION_13july">
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="QUESTIOND" ColumnName="QUESTIOND" />
+                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SS_1_7_ANSWER">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_7_ANSWER">
+              <MappingFragment StoreEntitySet="SS_1_7_ANSWER">
+                <ScalarProperty Name="INSERT_DATE" ColumnName="INSERT_DATE" />
+                <ScalarProperty Name="INSERT_ID" ColumnName="INSERT_ID" />
+                <ScalarProperty Name="No_outlets" ColumnName="No_outlets" />
+                <ScalarProperty Name="No_locations" ColumnName="No_locations" />
+                <ScalarProperty Name="No_drain_nallas" ColumnName="No_drain_nallas" />
+                <ScalarProperty Name="No_water_bodies" ColumnName="No_water_bodies" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Trno" ColumnName="Trno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SS_1_4_QUESTION">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.SS_1_4_QUESTION">
+              <MappingFragment StoreEntitySet="SS_1_4_QUESTION">
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="Q_NO" ColumnName="Q_NO" />
+                <ScalarProperty Name="QUESTIOND" ColumnName="QUESTIOND" />
+                <ScalarProperty Name="Q_ID" ColumnName="Q_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
          
         </EntityContainerMapping>
       </Mapping>

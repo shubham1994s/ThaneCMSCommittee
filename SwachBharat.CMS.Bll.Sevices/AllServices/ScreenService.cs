@@ -3152,6 +3152,8 @@ namespace SwachBharat.CMS.Bll.Services
             HouseAttenRouteVM houseAtten = new HouseAttenRouteVM();
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             List<List<coordinates>> lstPoly = new List<List<coordinates>>();
+            int houseCount = 0;
+
             //List<coordinates> poly = new List<coordinates>();
             DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
@@ -3182,6 +3184,29 @@ namespace SwachBharat.CMS.Bll.Services
             //{
             //    poly = lstPoly[polyId];
             //}
+
+            var Hdata = db.SP_HouseOnMapDetailsForEmpBitMap(userName.EmployeeType ?? "W", PId).ToList();
+            foreach (var h in Hdata)
+            {
+
+
+                coordinates p = new coordinates()
+                {
+                    lat = Convert.ToDouble(h.houseLat),
+                    lng = Convert.ToDouble(h.houseLong)
+                };
+                if (lstPoly != null && lstPoly.Count > 0)
+                {
+                    foreach (var poly in lstPoly)
+                    {
+                        if (IsPointInPolygon(poly, p))
+                        {
+                            houseCount++;
+                        }
+                    }
+                }
+
+            }
 
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
@@ -3382,7 +3407,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             houseAtten.poly = lstPoly;
             houseAtten.lstUserLocation = userLocation;
-
+            houseAtten.TotalHouseCount = houseCount;
             return houseAtten;
         }
 
@@ -3585,6 +3610,8 @@ namespace SwachBharat.CMS.Bll.Services
 
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             List<List<coordinates>> lstPoly = new List<List<coordinates>>();
+            int houseCount = 0;
+
             //List<coordinates> poly = new List<coordinates>();
             DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
@@ -3614,6 +3641,31 @@ namespace SwachBharat.CMS.Bll.Services
             //{
             //    poly = lstPoly[polyId];
             //}
+
+            var Hdata = db.SP_HouseOnMapDetailsForEmpBitMap(userName.EmployeeType ?? "W", PId).ToList();
+            foreach (var h in Hdata)
+            {
+
+
+                coordinates p = new coordinates()
+                {
+                    lat = Convert.ToDouble(h.houseLat),
+                    lng = Convert.ToDouble(h.houseLong)
+                };
+                if (lstPoly != null && lstPoly.Count > 0)
+                {
+                    foreach (var poly in lstPoly)
+                    {
+                        if (IsPointInPolygon(poly, p))
+                        {
+                            houseCount++;
+                        }
+                    }
+                }
+
+            }
+
+
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
             foreach (var x in data)
@@ -3807,6 +3859,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             houseAtten.poly = lstPoly;
             houseAtten.lstUserLocation = userLocation;
+            houseAtten.TotalHouseCount = houseCount;
 
             return houseAtten;
         }
@@ -4003,6 +4056,8 @@ namespace SwachBharat.CMS.Bll.Services
 
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             List<List<coordinates>> lstPoly = new List<List<coordinates>>();
+            int houseCount = 0;
+
             //List<coordinates> poly = new List<coordinates>();
             DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
@@ -4032,6 +4087,31 @@ namespace SwachBharat.CMS.Bll.Services
             //{
             //    poly = lstPoly[polyId];
             //}
+
+
+            var Hdata = db.SP_HouseOnMapDetailsForEmpBitMap(userName.EmployeeType ?? "W", PId).ToList();
+            foreach (var h in Hdata)
+            {
+
+
+                coordinates p = new coordinates()
+                {
+                    lat = Convert.ToDouble(h.houseLat),
+                    lng = Convert.ToDouble(h.houseLong)
+                };
+                if (lstPoly != null && lstPoly.Count > 0)
+                {
+                    foreach (var poly in lstPoly)
+                    {
+                        if (IsPointInPolygon(poly, p))
+                        {
+                            houseCount++;
+                        }
+                    }
+                }
+
+            }
+
 
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
@@ -4218,6 +4298,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             houseAtten.poly = lstPoly;
             houseAtten.lstUserLocation = userLocation;
+            houseAtten.TotalHouseCount = houseCount;
 
             return houseAtten;
 
@@ -10560,6 +10641,8 @@ namespace SwachBharat.CMS.Bll.Services
             HouseAttenRouteVM houseAtten = new HouseAttenRouteVM();
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
             List<List<coordinates>> lstPoly = new List<List<coordinates>>();
+            int houseCount = 0;
+
             //List<coordinates> poly = new List<coordinates>();
             DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
@@ -10592,6 +10675,28 @@ namespace SwachBharat.CMS.Bll.Services
             //{
             //    poly = lstPoly[polyId];
             //}
+            var Hdata = db.SP_HouseOnMapDetailsForEmpBitMap(userName.EmployeeType ?? "W", PId).ToList();
+            foreach (var h in Hdata)
+            {
+
+
+                coordinates p = new coordinates()
+                {
+                    lat = Convert.ToDouble(h.houseLat),
+                    lng = Convert.ToDouble(h.houseLong)
+                };
+                if (lstPoly != null && lstPoly.Count > 0)
+                {
+                    foreach (var poly in lstPoly)
+                    {
+                        if (IsPointInPolygon(poly, p))
+                        {
+                            houseCount++;
+                        }
+                    }
+                }
+
+            }
 
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
@@ -10784,7 +10889,7 @@ namespace SwachBharat.CMS.Bll.Services
 
             houseAtten.poly = lstPoly;
             houseAtten.lstUserLocation = userLocation;
-
+            houseAtten.TotalHouseCount = houseCount;
             return houseAtten;
         }
         public List<SelectListItem> ListBeatMapArea(int daId, int? areaid)
@@ -11052,15 +11157,34 @@ namespace SwachBharat.CMS.Bll.Services
 
             return Zone;
         }
-        public List<SBALocationMapView> GetAllHouseLocationForEmpBitMap(string Emptype, string Subtype, int PId)
+        public List<SBALocationMapView> GetAllHouseLocationForEmpBitMap(string Emptype, int ebmId, int PId)
         {
 
             List<SBALocationMapView> houseLocation = new List<SBALocationMapView>();
-
-            var data = db.SP_HouseOnMapDetailsForEmpBitMap(Emptype, Subtype, PId).ToList();
+            List<List<coordinates>> lstPoly = new List<List<coordinates>>();
+            bool bIsIn = false;
+            EmpBeatMapVM ebm = GetEmpBeatMap(ebmId);
+            lstPoly = ebm.ebmLatLong;
+            var data = db.SP_HouseOnMapDetailsForEmpBitMap(Emptype, PId).ToList();
             foreach (var x in data)
             {
+                bIsIn = false;
 
+                coordinates p = new coordinates()
+                {
+                    lat = Convert.ToDouble(x.houseLat),
+                    lng = Convert.ToDouble(x.houseLong)
+                };
+                if (lstPoly != null && lstPoly.Count > 0)
+                {
+                    foreach (var poly in lstPoly)
+                    {
+                        if (IsPointInPolygon(poly, p))
+                        {
+                            bIsIn = true;
+                        }
+                    }
+                }
                 //string gcTime = x.gcDate.ToString();
                 houseLocation.Add(new SBALocationMapView()
                 {
@@ -11074,7 +11198,8 @@ namespace SwachBharat.CMS.Bll.Services
                     houseAddress = checkNull(x.houseAddress).Replace("Unnamed Road, ", ""),
                     houseLat = x.houseLat,
                     houseLong = x.houseLong,
-                    TOT = x.tot
+                    TOT = x.tot,
+                    IsIn = bIsIn
 
                 });
             }

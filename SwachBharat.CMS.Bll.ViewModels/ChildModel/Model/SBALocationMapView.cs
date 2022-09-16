@@ -42,5 +42,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> sanitary { get; set; }
         public int BeatId { get; set; }
         public string TOT { get; set; }
+        public bool IsIn { get; set; }
+
     }
 }

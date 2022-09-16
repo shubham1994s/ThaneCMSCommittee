@@ -18,10 +18,9 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-                : base(SwachBharatAppConnection.GetConnectionString(AppId))
+               : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -45,10 +44,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<VehicleRegistration> VehicleRegistrations { get; set; }
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
-        public virtual DbSet<SS_1_4_ANSWER> SS_1_4_ANSWER { get; set; }
-        public virtual DbSet<SS_1_4_QUESTION_13july> SS_1_4_QUESTION_13july { get; set; }
-        public virtual DbSet<SS_1_7_ANSWER> SS_1_7_ANSWER { get; set; }
-        public virtual DbSet<SS_1_4_QUESTION> SS_1_4_QUESTION { get; set; }
         public virtual DbSet<DumpYardDetail> DumpYardDetails { get; set; }
         public virtual DbSet<CommitteeMaster> CommitteeMasters { get; set; }
         public virtual DbSet<WardNumber> WardNumbers { get; set; }
@@ -63,6 +58,10 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<LiquidWasteDetail> LiquidWasteDetails { get; set; }
         public virtual DbSet<StreetSweepingDetail> StreetSweepingDetails { get; set; }
         public virtual DbSet<SWMMaster> SWMMasters { get; set; }
+        public virtual DbSet<SS_1_4_ANSWER> SS_1_4_ANSWER { get; set; }
+        public virtual DbSet<SS_1_4_QUESTION_13july> SS_1_4_QUESTION_13july { get; set; }
+        public virtual DbSet<SS_1_7_ANSWER> SS_1_7_ANSWER { get; set; }
+        public virtual DbSet<SS_1_4_QUESTION> SS_1_4_QUESTION { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -1348,21 +1347,17 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_StreetSweepingOnMapDetails_Result>("SP_StreetSweepingOnMapDetails", gcDateParameter, userIdParameter, zoneIdParameter, prabhagIdParameter, areaIdParameter, wardNoParameter, gcTypeParameter, filterTypeParameter, pIdParameter);
         }
     
-        public virtual ObjectResult<SP_HouseOnMapDetailsForEmpBitMap_Result> SP_HouseOnMapDetailsForEmpBitMap(string empType, string subType, Nullable<int> pId)
+        public virtual ObjectResult<SP_HouseOnMapDetailsForEmpBitMap_Result> SP_HouseOnMapDetailsForEmpBitMap(string empType, Nullable<int> pId)
         {
             var empTypeParameter = empType != null ?
                 new ObjectParameter("EmpType", empType) :
                 new ObjectParameter("EmpType", typeof(string));
     
-            var subTypeParameter = subType != null ?
-                new ObjectParameter("SubType", subType) :
-                new ObjectParameter("SubType", typeof(string));
-    
             var pIdParameter = pId.HasValue ?
                 new ObjectParameter("PId", pId) :
                 new ObjectParameter("PId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseOnMapDetailsForEmpBitMap_Result>("SP_HouseOnMapDetailsForEmpBitMap", empTypeParameter, subTypeParameter, pIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HouseOnMapDetailsForEmpBitMap_Result>("SP_HouseOnMapDetailsForEmpBitMap", empTypeParameter, pIdParameter);
         }
     }
 }

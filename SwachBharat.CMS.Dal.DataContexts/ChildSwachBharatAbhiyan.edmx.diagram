@@ -24,11 +24,6 @@
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.VehicleType" Width="1.5" PointX="3.375" PointY="4.75" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.VehicleRegistration" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.Daily_Attendance" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION_13july" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SS_1_7_ANSWER" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION" Width="1.5" PointX="18.75" PointY="14.75" />
-        <AssociationConnector Association="DevSwachhBharatNagpurModel.FK_SS_1_4_ANSWER_SS_1_4_ANSWER" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.DumpYardDetail" Width="1.5" PointX="11.375" PointY="3.75" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.CommitteeMaster" Width="1.5" PointX="18.375" PointY="11.75" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.WardNumber" Width="1.5" PointX="0.75" PointY="4.75" />
@@ -43,6 +38,11 @@
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.LiquidWasteDetail" Width="1.5" PointX="3.375" PointY="15.75" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.StreetSweepingDetail" Width="1.5" PointX="5.375" PointY="18.75" />
         <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SWMMaster" Width="1.5" PointX="20.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SS_1_4_ANSWER" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION_13july" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SS_1_7_ANSWER" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DevSwachhBharatNagpurModel.SS_1_4_QUESTION" Width="1.5" PointX="5.75" PointY="11.75" />
+        <AssociationConnector Association="DevSwachhBharatNagpurModel.FK_SS_1_4_ANSWER_SS_1_4_ANSWER" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,4 +1,4 @@
-﻿@model SwachBharat.CMS.Bll.ViewModels.ChildModel.Model.EmpBeatMapVM
+@model SwachBharat.CMS.Bll.ViewModels.ChildModel.Model.EmpBeatMapVM
 
 @{
     Layout = null;
@@ -84,6 +84,12 @@
 
             <div class="col-sm-6">
                 <a href="Index" id="AH" class="btn btn-primary btn-sm " style="float: right;" type="button">Back</a>
+            </div>
+        </div>
+        <div class="row">
+            <div style="border: 1px solid #cccccc; width: 35%; margin-right: 5%; border-radius: 4px; padding: 3px;"> <span style="font-weight: bold; font-size: 14px;">Liquid Count :</span><span style="font-weight: bold; font-size: 14px; margin-right: 4%" id="spnInner">0</span></div><br />
+            <div style="border: 1px solid #cccccc; width: 35%; border-radius: 4px; padding: 3px; display:none">
+                <span style="font-weight: bold; font-size: 14px;">Outer Count :</span><span style="font-weight: bold; font-size: 14px;" id="spnOuter">0</span>
             </div>
         </div>
         <div>
@@ -180,35 +186,70 @@
         var curIndexId = 0;
         var runMaps = function () {
 
-             map = new google.maps.Map(document.getElementById('googleMap'), {
-                 zoom: 16,
-                 //controlSize: 100,
-                center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-             });
+             @*arrCoordinate = @Html.Raw(Json.Encode(@Model.ebmLatLong));*@
+
+
+            $("#wait").css("display", "block");
+            $("#googleMap").css("display", "none");
 
             $.ajax({
                 type: "post",
-                url: "/LiquidLocation/HouseLocationListForEmpBitMap?Emptype=L&Subtype=L",
+                url: "/LiquidLocation/HouseLocationListForEmpBitMap?Emptype=L&ebmId=" + $("#hdebmId").val(),
                 //url: "/Location/HouseLocationList",
                 datatype: "json",
                 traditional: true,
-                success: function (data) {
+                success: function (dataObj) {
+
+                    $("#wait").css("display", "none");
+                    $("#googleMap").css("display", "block");
                     debugger;
-                    data.length
+                    arrCoordinate = dataObj.poly;
+                    var data = dataObj.lstUserLocation;
 
-
+                    var innerCount = 0;
+                    var outerCount = 0;
                     var infowindow = new google.maps.InfoWindow();
                     bounds = new google.maps.LatLngBounds();
                     var marker, i;
-                    if (data.length > 0) {
-                        //map = new google.maps.Map(document.getElementById('googleMap'), {
-                        //    zoom: 25,
-                        //    center: new google.maps.LatLng(data[0].houseLat, data[0].houseLong),
-                        //    mapTypeId: google.maps.MapTypeId.ROADMAP
-                        //});
-                        //var gar_type;
+
+                    if (arrCoordinate && arrCoordinate.length > 0) {
+
+                        map = new google.maps.Map(document.getElementById('googleMap'), {
+                            zoom: 16,
+                            //controlSize:100,
+                            center: new google.maps.LatLng(arrCoordinate[0][0].lat, arrCoordinate[0][0].lng),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+                    }
+                    else if (data && data.length > 0) {
+                        map = new google.maps.Map(document.getElementById('googleMap'), {
+                            zoom: 16,
+                            //controlSize: 100,
+                            center: new google.maps.LatLng(data[0].houseLat, data[0].houseLong),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+                    }
+                    else {
+                        map = new google.maps.Map(document.getElementById('googleMap'), {
+                            zoom: 16,
+                            //controlSize: 100,
+                            center: new google.maps.LatLng($('#deflat').val(), $('#deflang').val()),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+                    }
+
+                    if (data && data.length > 0) {
+
                         for (i = 0; i < data.length; i++) {
+                            if (arrCoordinate) {
+                                if (data[i].IsIn == true && arrCoordinate.length > 0) {
+                                    innerCount++;
+
+                                } else if (data[i].IsIn == false && arrCoordinate.length > 0) {
+
+                                    outerCount++;
+                                }
+                            }
                             //debugger;
                             //gar_type = data[i].garbageType
                             if (data[i].houseOwnerName == null) {
@@ -256,10 +297,8 @@
 
                         }
                     }
-                }
-            });
-
-
+                    $("#spnInner").text(innerCount);
+                    $("#spnOuter").text(outerCount);
 
             if ($("#hdebmId").val() == '-1') {
                 $("#divUserList").show();
@@ -270,20 +309,16 @@
                 $("#divUserList").hide();
                 $("#divUserName").show();
                 $("#spnUserName").text($("#hduserName").val());
-                arrCoordinate = @Html.Raw(Json.Encode(@Model.ebmLatLong));
+
+                @*arrCoordinate = @Html.Raw(Json.Encode(@Model.ebmLatLong));*@
 
 
 
 
 
-                if (arrCoordinate.length > 0) {
+                if (arrCoordinate && arrCoordinate.length > 0) {
 
-                    map = new google.maps.Map(document.getElementById('googleMap'), {
-                        zoom: 16,
-                        //controlSize:100,
-                        center: new google.maps.LatLng(arrCoordinate[0][0].lat, arrCoordinate[0][0].lng),
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    });
+                   
                     for (let i = 0; i < arrCoordinate.length;i++) {
                         var polyOld = new google.maps.Polygon({
                             paths: arrCoordinate[i],
@@ -751,6 +786,16 @@
 
             centerControlDiv.index = 1;
             map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
+
+
+
+
+                }
+            });
+
+
+
+
 
 
         };

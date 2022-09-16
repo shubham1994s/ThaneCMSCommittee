@@ -20,5 +20,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public Nullable<bool> isActive { get; set; }
         public string RegNo { get; set; }
         public string VechileNo { get; set; }
+        public Nullable<int> PrabhagId { get; set; }
     }
 }
