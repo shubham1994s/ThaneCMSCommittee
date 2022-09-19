@@ -868,9 +868,9 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         {
             return screenService.ListBeatMapArea(daId, areaid);
         }
-        public List<SBALocationMapView> GetAllHouseLocationForEmpBitMap(string Emptype, string Subtype,int PId)
+        public List<SBALocationMapView> GetAllHouseLocationForEmpBitMap(string Emptype, int ebmId, int PId)
         {
-            return screenService.GetAllHouseLocationForEmpBitMap(Emptype, Subtype, PId);
+            return screenService.GetAllHouseLocationForEmpBitMap(Emptype, ebmId, PId);
         }
     }
 }

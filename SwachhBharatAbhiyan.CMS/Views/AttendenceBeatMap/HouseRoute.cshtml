@@ -340,11 +340,12 @@
                 <label>Select Employee Beat Map Area</label><span style="display: inline-block; font-weight: bold; font-size: 16px;"> : </span>
                 <select id="selectBeatMapArea" class="form-control minimal-form  RequiredInput validate[required] RequiredInput" style="width:auto;height:auto;display:inline-block"></select>
             </div>
-            <div class="col col-md-5 text-center">
+            <div class="col col-md-9 text-center">
                 <div class="row">
-                    <div style="border: 1px solid #cccccc; width: 35%; margin-right: 5%; border-radius: 4px; padding: 3px;"> <span style="font-weight: bold; font-size: 14px;">Inner Count :</span><span style="font-weight: bold; font-size: 14px; margin-right: 4%" id="spnInner">0</span></div><br />
-                    <div style="border: 1px solid #cccccc; width: 35%; border-radius: 4px; padding: 3px; ">
-                        <span style="font-weight: bold; font-size: 14px;">Outer Count :</span><span style="font-weight: bold; font-size: 14px;" id="spnOuter">0</span>
+                    <div style="border: 1px solid #cccccc; width: 30%; margin-right: 5%; border-radius: 4px; padding: 3px;"> <span style="font-weight: bold; font-size: 14px;">Total House Count :</span><span style="font-weight: bold; font-size: 14px; margin-right: 4%" id="spnTotalHCount">0</span></div>
+                    <div style="border: 1px solid #cccccc; width: 30%; margin-right: 5%; border-radius: 4px; padding: 3px;"> <span style="font-weight: bold; font-size: 14px;">Inner Scanned Count :</span><span style="font-weight: bold; font-size: 14px; margin-right: 4%" id="spnInner">0</span></div>
+                    <div style="border: 1px solid #cccccc; width: 30%; border-radius: 4px; padding: 3px; ">
+                        <span style="font-weight: bold; font-size: 14px;">Outer Scanned Count :</span><span style="font-weight: bold; font-size: 14px;" id="spnOuter">0</span>
                     </div>
                 </div>
             </div>
@@ -623,8 +624,11 @@
                     var arrCoordinate = m.poly;
                     var innerCount = 0;
                     var outerCount = 0;
+                    var totalHCount = m.TotalHouseCount;
+
                     $("#spnInner").text(innerCount);
                     $("#spnOuter").text(outerCount);
+                    $("#spnTotalHCount").text(totalHCount);
 
 
                     if (markers.length == 0) {
@@ -646,7 +650,7 @@
                         };
                         var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
 
-                        if (arrCoordinate.length > 0) {
+                        if (arrCoordinate && arrCoordinate.length > 0) {
                             for (let j = 0; j < arrCoordinate.length; j++) {
                                 var polyOld = new google.maps.Polygon({
                                     paths: arrCoordinate[j],
@@ -703,7 +707,7 @@
                             var data = markers[i]
                             if (data.type == 1) {
                                 (function (marker, data) {
-                                    if (arrCoordinate.length > 0) {
+                                    if (arrCoordinate && arrCoordinate.length > 0) {
 
                                         if (data.IsIn == true) {
 
@@ -756,10 +760,10 @@
 
 
                                     if (from == "" && to == "") {
-                                        if (data.IsIn == true && arrCoordinate.length > 0) {
+                                        if (data.IsIn == true && arrCoordinate && arrCoordinate.length > 0) {
                                             innerCount++;
 
-                                        } else if (data.IsIn == false && arrCoordinate.length > 0) {
+                                        } else if (data.IsIn == false && arrCoordinate && arrCoordinate.length > 0) {
 
                                             outerCount++;
                                         }
@@ -778,10 +782,10 @@
                                     }
                                     else {
                                         if (a >= from && a <= to) {
-                                            if (data.IsIn == true && arrCoordinate.length > 0) {
+                                            if (data.IsIn == true && arrCoordinate && arrCoordinate.length > 0) {
                                                 innerCount++;
 
-                                            } else if (data.IsIn == false && arrCoordinate.length > 0) {
+                                            } else if (data.IsIn == false && arrCoordinate && arrCoordinate.length > 0) {
 
                                                 outerCount++;
                                             }
@@ -809,10 +813,10 @@
                                 }
                                 else if (fromtime != "" && totime != "") {
                                     if (data.datetime >= fromtime && data.datetime <= totime) {
-                                        if (data.IsIn == true && arrCoordinate.length > 0) {
+                                        if (data.IsIn == true && arrCoordinate && arrCoordinate.length > 0) {
                                             innerCount++;
 
-                                        } else if (data.IsIn == false && arrCoordinate.length > 0) {
+                                        } else if (data.IsIn == false && arrCoordinate && arrCoordinate.length > 0) {
 
                                             outerCount++;
                                         }
@@ -838,10 +842,10 @@
                                     }
                                 }
                                 else {
-                                    if (data.IsIn == true && arrCoordinate.length > 0) {
+                                    if (data.IsIn == true && arrCoordinate && arrCoordinate.length > 0) {
                                         innerCount++;
 
-                                    } else if (data.IsIn == false && arrCoordinate.length > 0) {
+                                    } else if (data.IsIn == false && arrCoordinate && arrCoordinate.length > 0) {
 
                                         outerCount++;
                                     }
@@ -865,10 +869,10 @@
                             else if (data.DyId != null) {
                                 var a = "D";
                                 if (fromtime == "" && totime == "") {
-                                    if (data.IsIn == true && arrCoordinate.length > 0) {
+                                    if (data.IsIn == true && arrCoordinate && arrCoordinate.length > 0) {
                                         innerCount++;
 
-                                    } else if (data.IsIn == false && arrCoordinate.length > 0) {
+                                    } else if (data.IsIn == false && arrCoordinate && arrCoordinate.length > 0) {
 
                                         outerCount++;
                                     }
@@ -892,10 +896,10 @@
                                 }
                                 else if (fromtime != "" && totime != "") {
                                     if (data.datetime >= fromtime && data.datetime <= totime) {
-                                        if (data.IsIn == true && arrCoordinate.length > 0) {
+                                        if (data.IsIn == true && arrCoordinate && arrCoordinate.length > 0) {
                                             innerCount++;
 
-                                        } else if (data.IsIn == false && arrCoordinate.length > 0) {
+                                        } else if (data.IsIn == false && arrCoordinate && arrCoordinate.length > 0) {
 
                                             outerCount++;
                                         }
@@ -927,10 +931,10 @@
                                 }
                                 else {
                                     // Get Address from server
-                                    if (data.IsIn == true && arrCoordinate.length > 0) {
+                                    if (data.IsIn == true && arrCoordinate && arrCoordinate.length > 0) {
                                         innerCount++;
 
-                                    } else if (data.IsIn == false && arrCoordinate.length > 0) {
+                                    } else if (data.IsIn == false && arrCoordinate && arrCoordinate.length > 0) {
 
                                         outerCount++;
                                     }

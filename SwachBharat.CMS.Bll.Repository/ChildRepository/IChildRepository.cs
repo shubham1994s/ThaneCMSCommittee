@@ -290,7 +290,7 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
 
         List<SelectListItem> LoadListArea(int WardNo);
         List<SelectListItem> ListBeatMapArea(int daId, int? areaid);
-        List<SBALocationMapView> GetAllHouseLocationForEmpBitMap(string Emptype, string Subtype, int PId);
+        List<SBALocationMapView> GetAllHouseLocationForEmpBitMap(string Emptype, int ebmId, int PId);
 
     }
 }
