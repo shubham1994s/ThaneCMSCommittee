@@ -12,6 +12,12 @@
 <header>
     @*<h1>@ViewBag.userid Scanning Summary</h1>*@
 </header>
+<style>
+    .modal-body img {
+        max-height: 450px !important;
+        max-width: 100%;
+    }
+</style>
 <body>
     <div class="col-sm-1">
         <span class="backk">
@@ -144,18 +150,21 @@
         </center>*@
                     <div class="row">
                         <div class="col-md-6" style="padding-top:1rem;text-align:left;padding-left:8%">
-                            <center><h5>Before Image</h5></center>
-                            <img class="img-responsive" id="imggg1" alt="Photo Not Found">
-                            <br />
-                            <p> <b id="hide_date">Date: </b><span id="dateData1"></span></p>
-                            <p> <b id="hide_add">Address: </b><span id="latlongData"></span></p>
+                            <center>
+                                <h5>Before Image</h5>
+                                <img class="img-responsive" id="imggg1" alt="Photo Not Found">
+                                <br />
+                                <p> <b id="hide_date">Date: </b><span id="dateData1"></span></p>
+                                <p> <b id="hide_add">Address: </b><span id="latlongData"></span></p>
+                            </center>
                         </div>
                         <div class="col-md-6" style="padding-top:1rem;text-align:left;padding-left:8%">
-                            <center><h5>After Image</h5></center>
+                            <center><h5>After Image</h5>
                             <img class="img-responsive" id="imggg" alt="Photo Not Found">
                             <br />
                             <p> <b id="hide_date">Date: </b><span id="dateData"></span></p>
                             <p> <b id="hide_add">Address: </b><span id="latlongData1"></span></p>
+                            </center>
                         </div>
                     </div>
 
