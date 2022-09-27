@@ -278,14 +278,18 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
             else
                 return Redirect("/Account/Login");
         }
-        public ActionResult HouseLocationListForEmpBitMap(string Emptype, string Subtype)
+        public ActionResult HouseLocationListForEmpBitMap(string Emptype,int ebmId)
         {
             if (SessionHandler.Current.AppId != 0)
             {
                 int PId = Convert.ToInt32(Session["PrabhagId"]);
+                SBALocationMapViewVM obj = new SBALocationMapViewVM();
+                List<SBALocationMapView> objLoc = new List<SBALocationMapView>();
+                EmpBeatMapVM empBeatMap = childRepository.GetEmpBeatMap(ebmId);
 
-                List<SBALocationMapView> obj = new List<SBALocationMapView>();
-                obj = childRepository.GetAllHouseLocationForEmpBitMap(Emptype, Subtype, PId);
+                objLoc = childRepository.GetAllHouseLocationForEmpBitMap(Emptype, ebmId, PId);
+                obj.lstUserLocation = objLoc;
+                obj.poly = empBeatMap.ebmLatLong;
                 // return Json(obj);
                 //if (houseid != null && houseid != "null" && houseid != "-1")
                 //{
