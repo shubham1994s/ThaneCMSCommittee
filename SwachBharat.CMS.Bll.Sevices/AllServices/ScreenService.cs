@@ -386,7 +386,7 @@ namespace SwachBharat.CMS.Bll.Services
                         var model = db.VehicleTypes.Where(x => x.vtId == data.Id).FirstOrDefault();
                         if (model != null)
                         {
-                            model.vtId = data.Id;
+                            //model.vtId = data.Id;
                             model.description = data.description;
                             model.descriptionMar = data.descriptionMar;
                             model.isActive = data.isActive;
@@ -401,7 +401,7 @@ namespace SwachBharat.CMS.Bll.Services
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

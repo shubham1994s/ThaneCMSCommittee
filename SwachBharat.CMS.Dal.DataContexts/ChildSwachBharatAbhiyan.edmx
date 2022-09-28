@@ -597,8 +597,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.UserMaster_Str
           <Property Name="isActive" Type="bit" />
           <Property Name="PrabhagId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.VehicleType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VehicleType">
           <Key>
             <PropertyRef Name="vtId" />
@@ -1114,6 +1112,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="TeritoryMaster" EntityType="Self.TeritoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VehicleRegistration" EntityType="Self.VehicleRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1268,17 +1267,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
     [UserMaster_Street].[imoNo2] AS [imoNo2]
     FROM [dbo].[UserMaster_Street] AS [UserMaster_Street]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="VehicleType" EntityType="Self.VehicleType" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VehicleType].[vtId] AS [vtId], 
-    [VehicleType].[description] AS [description], 
-    [VehicleType].[descriptionMar] AS [descriptionMar], 
-    [VehicleType].[isActive] AS [isActive], 
-    [VehicleType].[RegNo] AS [RegNo], 
-    [VehicleType].[VechileNo] AS [VechileNo], 
-    [VehicleType].[PrabhagId] AS [PrabhagId]
-    FROM [dbo].[VehicleType] AS [VehicleType]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="WardNumber" EntityType="Self.WardNumber" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [WardNumber].[Id] AS [Id], 
@@ -1425,7 +1413,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="VehicleTypes" EntityType="DevSwachhBharatNagpurModel.VehicleType" />
           <FunctionImport Name="SP_HouseScanify" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_HouseScanify_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
@@ -1767,8 +1754,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <End Role="SS_1_4_ANSWER1" EntitySet="SS_1_4_ANSWER" />
           </AssociationSet>
           <FunctionImport Name="GetVehicleDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.GetVehicleDetails_Result)">
-            <Parameter Name="PId" Mode="In" Type="Int32" />
+          <Parameter Name="PId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="VehicleTypes" EntityType="DevSwachhBharatNagpurModel.VehicleType" />
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2270,18 +2258,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
           <Property Type="Int32" Name="Count" Nullable="true" />
         </ComplexType>
-        <EntityType Name="VehicleType">
-          <Key>
-            <PropertyRef Name="vtId" />
-          </Key>
-          <Property Name="vtId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="descriptionMar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="RegNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="VechileNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="PrabhagId" Type="Int32" />
-        </EntityType>
         <ComplexType Name="SP_HouseScanify_Result">
           <Property Type="Int32" Name="qrEMpId" Nullable="false" />
           <Property Type="String" Name="qrEmpName" Nullable="true" MaxLength="500" />
@@ -3506,6 +3482,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Boolean" Name="isActive" Nullable="true" />
           <Property Type="String" Name="prabhag" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="vtId" />
+          </Key>
+          <Property Name="vtId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="descriptionMar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="RegNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="VechileNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PrabhagId" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3959,19 +3947,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="VehicleTypes">
-            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.VehicleType">
-              <MappingFragment StoreEntitySet="VehicleType">
-                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
-                <ScalarProperty Name="VechileNo" ColumnName="VechileNo" />
-                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="descriptionMar" ColumnName="descriptionMar" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="vtId" ColumnName="vtId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_HouseScanify" FunctionName="DevSwachhBharatNagpurModel.Store.SP_HouseScanify">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_HouseScanify_Result">
@@ -5411,6 +5386,19 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="VehicleTypes">
+            <EntityTypeMapping TypeName="DevSwachhBharatNagpurModel.VehicleType">
+              <MappingFragment StoreEntitySet="VehicleType">
+                <ScalarProperty Name="PrabhagId" ColumnName="PrabhagId" />
+                <ScalarProperty Name="VechileNo" ColumnName="VechileNo" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="descriptionMar" ColumnName="descriptionMar" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="vtId" ColumnName="vtId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
          
         </EntityContainerMapping>
       </Mapping>
