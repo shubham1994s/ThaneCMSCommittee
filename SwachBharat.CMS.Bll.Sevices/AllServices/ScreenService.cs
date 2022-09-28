@@ -441,6 +441,7 @@ namespace SwachBharat.CMS.Bll.Services
                         vechile.AreaList = ListArea(PId);
                         vechile.WardList = ListWardNo(PId);
                         vechile.VehicleList = ListVehicle();
+                        vechile.PrabhagList = ListPrabhag(PId);
                         return vechile;
                     }
                     else
@@ -449,6 +450,7 @@ namespace SwachBharat.CMS.Bll.Services
                         vechile.AreaList = ListArea(PId);
                         vechile.WardList = ListWardNo(PId);
                         vechile.VehicleList = ListVehicle();
+                        vechile.PrabhagList = ListPrabhag(PId);
                         return vechile;
                     }
                 }
@@ -504,6 +506,7 @@ namespace SwachBharat.CMS.Bll.Services
                             model.vehicleNo = data.vehicleNumber;
                             model.areaId = data.AreaId;
                             model.isActive = data.isActive;
+                            model.PrabhagId = data.PrabhagId;
                             db.SaveChanges();
                         }
                     }
@@ -5237,6 +5240,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.vehicleNo = data.vehicleNumber;
             model.areaId = data.AreaId;
             model.isActive = data.isActive;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 
@@ -6101,6 +6105,7 @@ namespace SwachBharat.CMS.Bll.Services
             model.vehicleType = data.vehicleType;
             model.AreaId = data.areaId;
             model.isActive = data.isActive;
+            model.PrabhagId = data.PrabhagId;
             return model;
         }
 

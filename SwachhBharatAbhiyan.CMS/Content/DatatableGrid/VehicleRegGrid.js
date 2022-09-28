@@ -25,6 +25,7 @@
             { "data": "Id", "name": "Id", "autoWidth": true },
             { "data": "VehileNumber", "name": "VehileNumber", "autoWidth": true },
             { "data": "VehileType", "name": "VehileType", "autoWidth": true },
+            { "data": "Prabhag", "name": "Prabhag", "autoWidth": true },
             { "data": "Area", "name": "Area", "autoWidth": true },
             { "data": "isActive", "name": "isActive", "autoWidth": true},
             { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"  onclick="Edit(' + full["Id"] + ')" ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },

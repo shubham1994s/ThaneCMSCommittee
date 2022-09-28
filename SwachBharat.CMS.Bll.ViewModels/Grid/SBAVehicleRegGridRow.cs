@@ -13,5 +13,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Grid
         public string VehileNumber { get; set; }
         public string Area { get; set; }
         public string isActive { get; set; }
+        public string Prabhag { get; set; }
     }
 }

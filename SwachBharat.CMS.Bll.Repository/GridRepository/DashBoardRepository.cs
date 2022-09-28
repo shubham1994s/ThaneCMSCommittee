@@ -478,18 +478,19 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         }
 
 
-        public IEnumerable<SBAVehicleRegGridRow> GetVehicleRegData(long wildcard, string SearchString, int appId)
+        public IEnumerable<SBAVehicleRegGridRow> GetVehicleRegData(long wildcard, string SearchString, int appId,int PId)
         {
             List<SBAVehicleRegGridRow> obj = new List<SBAVehicleRegGridRow>();
             using (var db = new DevChildSwachhBharatNagpurEntities(appId))
             {
 
-                var data = db.GetVehicleDetails().Select(x => new SBAVehicleRegGridRow
+                var data = db.GetVehicleDetails(PId).Select(x => new SBAVehicleRegGridRow
                 {
                     Id = x.vehicleId,
                     VehileType = x.vehicleType.ToString(),
                     VehileNumber = x.vehicleNo,
                     Area = x.area.ToString(),
+                    Prabhag = x.prabhag.ToString(),
                     isActive = x.isActive.ToString()
 
                 }).ToList();
@@ -503,6 +504,8 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         item.VehileNumber = "";
                     if (item.Area == null || item.Area == "")
                         item.Area = "";
+                    if (item.Prabhag == null || item.Prabhag == "")
+                        item.Prabhag = "";
                     if (item.isActive == "True")
                         item.isActive = "Active";
                     else item.isActive = "Not Active";
@@ -512,6 +515,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     var model = data.Where(c => ((string.IsNullOrEmpty(c.VehileType) ? " " : c.VehileType) + " " +
                                                             (string.IsNullOrEmpty(c.VehileNumber) ? " " : c.VehileNumber) + " " +
                                                             (string.IsNullOrEmpty(c.Area) ? " " : c.Area) + " " +
+                                                            (string.IsNullOrEmpty(c.Prabhag) ? " " : c.Prabhag) + " " +
                                                             (string.IsNullOrEmpty(c.isActive) ? " " : c.isActive)).ToUpper().Contains(SearchString.ToUpper())).ToList();
                     data = model.ToList();
                 }

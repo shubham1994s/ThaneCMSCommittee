@@ -13,9 +13,9 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository.Grid
         DashBoardRepository objRep = new DashBoardRepository();
 
 
-        public VehicleRegGridRepository(long wildcard, string SearchString, int appId)
+        public VehicleRegGridRepository(long wildcard, string SearchString, int appId,int PId)
         {
-            dataSet = objRep.GetVehicleRegData(wildcard, SearchString, appId);
+            dataSet = objRep.GetVehicleRegData(wildcard, SearchString, appId, PId);
         }
 
         public string GetDataTabelJson(string sortColumn, string sortColumnDir, string draw, string length, string searchValue, string start)

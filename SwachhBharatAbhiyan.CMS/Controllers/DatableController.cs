@@ -309,7 +309,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     return gridRepository;
                     break;
                 case "VehicleRegDetail":
-                    gridRepository = new VehicleRegGridRepository(0, searchString, appId);
+                    gridRepository = new VehicleRegGridRepository(0, searchString, appId, PId);
                     return gridRepository;
                     break;
                 case "PointDetail":

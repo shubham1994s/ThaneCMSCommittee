@@ -18,5 +18,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public string vehicleNo { get; set; }
         public string area { get; set; }
         public Nullable<bool> isActive { get; set; }
+        public string prabhag { get; set; }
     }
 }

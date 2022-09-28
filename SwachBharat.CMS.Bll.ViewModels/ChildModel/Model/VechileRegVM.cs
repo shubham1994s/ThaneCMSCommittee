@@ -13,7 +13,6 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public string vehicleNumber { get; set; }
         public Nullable<int> AreaId { get; set; }
         public Nullable<bool> isActive { get; set; }
-
-
+        public Nullable<int> PrabhagId { get; set; }
     }
 }

@@ -51,15 +51,25 @@
                 </div>
                 <div class="row">
                     <!--<div class="col-md-6">
-                    <div class="form-group">-->
+        <div class="form-group">-->
                     @*@Html.Label("झोन / Zone")*@
                     <!--@Html.Label("Area")-->
                     @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
                     <!--@Html.DropDownListFor(model => model.AreaId, Model.AreaList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                <span class="text-danger" id="err_varea"></span>
+                <span class="help-block with-errors"></span>
+            </div>
+        </div>-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @*@Html.Label("झोन / Zone")*@
+                            @Html.Label("Prabhag")
+                            @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
+                            @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
                             <span class="text-danger" id="err_varea"></span>
                             <span class="help-block with-errors"></span>
                         </div>
-                    </div>-->
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             @*@Html.Label("झोन / Zone")*@
@@ -70,6 +80,9 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
+                    
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" style="margin-top:-5px">
                             <br />
@@ -79,22 +92,22 @@
 
                     </div>
                 </div>
-                <div class="row">
-                    @*<div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
-                            </div>
-                        </div>*@
+                    <div class="row">
+                        @*<div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>*@
 
-                    <div class="form-group1">
-                        <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
-                            <span class="glyphicon glyphicon-saved"></span>
-                            <span id="buttonName">Save</span>
-                        </button>
+                        <div class="form-group1">
+                            <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
+                                <span class="glyphicon glyphicon-saved"></span>
+                                <span id="buttonName">Save</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
 
@@ -116,6 +129,31 @@
             $('.title_change').text("Add Vehicle Details ");
         }
     });
+
+    $('#PrabhagId').change(function () {
+        var selectedText = $(this).find("option:selected").text();
+        var selectedValue = $(this).val();
+
+        $.ajax({
+            type: "post",
+            url: "/HouseMaster/LoadWardNoList",
+            data: { PrabhagId: $('#PrabhagId').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                var ward;
+                for (var i = 0; i < data.length; i++) {
+                    ward = ward + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                }
+
+                $('#AreaId').html(ward);
+
+                //$('#AreaId').find('option').remove().end().append('<option value="0">--Select Area--</option>');
+            }
+        });
+
+    });
+
     $("#btnSubmit").click(function () {
         //alert("aa");
         if ($.trim($("#vehicleNumber").val()) == '') {

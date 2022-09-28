@@ -744,7 +744,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="year" Type="int" Mode="In" />
           <Parameter Name="month" Type="int" Mode="In" />
         </Function>
-        <Function Name="GetVehicleDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetVehicleDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PId" Type="int" Mode="In" />
+        </Function>
         <Function Name="HouseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prabhagid" Type="int" Mode="In" />
         </Function>
@@ -1441,7 +1443,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="SegidSub" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="VehicleRegistrations" EntityType="DevSwachhBharatNagpurModel.VehicleRegistration" />
-          <FunctionImport Name="GetVehicleDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.GetVehicleDetails_Result)" />
           <FunctionImport Name="SP_GetHSHouseDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_GetHSHouseDetails_Result)">
             <Parameter Name="fdate" Mode="In" Type="DateTime" />
             <Parameter Name="tdate" Mode="In" Type="DateTime" />
@@ -1765,6 +1766,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <End Role="SS_1_4_ANSWER" EntitySet="SS_1_4_ANSWER" />
             <End Role="SS_1_4_ANSWER1" EntitySet="SS_1_4_ANSWER" />
           </AssociationSet>
+          <FunctionImport Name="GetVehicleDetails" ReturnType="Collection(DevSwachhBharatNagpurModel.GetVehicleDetails_Result)">
+            <Parameter Name="PId" Mode="In" Type="Int32" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -2335,13 +2339,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="isActive" Type="Boolean" />
           <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
-        <ComplexType Name="GetVehicleDetails_Result">
-          <Property Type="Int32" Name="vehicleId" Nullable="false" />
-          <Property Type="String" Name="vehicleType" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="vehicleNo" Nullable="true" MaxLength="300" />
-          <Property Type="String" Name="area" Nullable="false" MaxLength="250" />
-          <Property Type="Boolean" Name="isActive" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="SP_GetHSHouseDetails_Result">
           <Property Type="Int32" Name="userId" Nullable="true" />
           <Property Type="Int32" Name="houseId" Nullable="false" />
@@ -3501,6 +3498,14 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetVehicleDetails_Result">
+          <Property Type="Int32" Name="vehicleId" Nullable="false" />
+          <Property Type="String" Name="vehicleType" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="vehicleNo" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="area" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+          <Property Type="String" Name="prabhag" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4033,17 +4038,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetVehicleDetails" FunctionName="DevSwachhBharatNagpurModel.Store.GetVehicleDetails">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.GetVehicleDetails_Result">
-                <ScalarProperty Name="vehicleId" ColumnName="vehicleId" />
-                <ScalarProperty Name="vehicleType" ColumnName="vehicleType" />
-                <ScalarProperty Name="vehicleNo" ColumnName="vehicleNo" />
-                <ScalarProperty Name="area" ColumnName="area" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_GetHSHouseDetails" FunctionName="DevSwachhBharatNagpurModel.Store.SP_GetHSHouseDetails">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_GetHSHouseDetails_Result">
@@ -5405,6 +5399,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetVehicleDetails" FunctionName="DevSwachhBharatNagpurModel.Store.GetVehicleDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.GetVehicleDetails_Result">
+                <ScalarProperty Name="vehicleId" ColumnName="vehicleId" />
+                <ScalarProperty Name="vehicleType" ColumnName="vehicleType" />
+                <ScalarProperty Name="vehicleNo" ColumnName="vehicleNo" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="prabhag" ColumnName="prabhag" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
          
         </EntityContainerMapping>
       </Mapping>
