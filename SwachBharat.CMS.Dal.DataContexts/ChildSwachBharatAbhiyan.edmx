@@ -807,6 +807,12 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="prabhagid" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_CTPTEmployeeSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from" Type="date" Mode="In" />
+          <Parameter Name="to" Type="date" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_CTPTGarbageCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="appId" Type="int" Mode="In" />
           <Parameter Name="userid" Type="int" Mode="In" />
@@ -1757,6 +1763,12 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Parameter Name="PId" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="VehicleTypes" EntityType="DevSwachhBharatNagpurModel.VehicleType" />
+          <FunctionImport Name="SP_CTPTEmployeeSummary" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_CTPTEmployeeSummary_Result)">
+            <Parameter Name="from" Mode="In" Type="DateTime" />
+            <Parameter Name="to" Mode="In" Type="DateTime" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
          
         </EntityContainer>
         <ComplexType Name="CurrentAllUserLocation_Result">
@@ -3494,6 +3506,21 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="VechileNo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="PrabhagId" Type="Int32" />
         </EntityType>
+        <ComplexType Name="SP_CTPTEmployeeSummary_Result">
+          <Property Type="Int32" Name="daID" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="Startdate" Nullable="true" />
+          <Property Type="DateTime" Name="Enddate" Nullable="true" />
+          <Property Type="String" Name="InBatteryStatus" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="OutBatteryStatus" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Totalhousecollection" Nullable="true" />
+          <Property Type="Decimal" Name="Totaldistance" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="Totaldumpyard" Nullable="true" />
+          <Property Type="Int64" Name="rownum" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5399,6 +5426,25 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_CTPTEmployeeSummary" FunctionName="DevSwachhBharatNagpurModel.Store.SP_CTPTEmployeeSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_CTPTEmployeeSummary_Result">
+                <ScalarProperty Name="daID" ColumnName="daID" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Startdate" ColumnName="Startdate" />
+                <ScalarProperty Name="Enddate" ColumnName="Enddate" />
+                <ScalarProperty Name="InBatteryStatus" ColumnName="InBatteryStatus" />
+                <ScalarProperty Name="OutBatteryStatus" ColumnName="OutBatteryStatus" />
+                <ScalarProperty Name="Totalhousecollection" ColumnName="Totalhousecollection" />
+                <ScalarProperty Name="Totaldistance" ColumnName="Totaldistance" />
+                <ScalarProperty Name="Totaldumpyard" ColumnName="Totaldumpyard" />
+                <ScalarProperty Name="rownum" ColumnName="rownum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
          
         </EntityContainerMapping>
       </Mapping>

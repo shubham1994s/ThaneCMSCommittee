@@ -217,7 +217,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             var appId = SessionHandler.Current.AppId;
             int PId = Convert.ToInt32(Session["PrabhagId"]);
                 var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence", "EmployeeSummary", "UserIdel"
-                ,"StreetEmployeeSummary","UserIdelStreet","LiquidEmployeeSummary","UserIdelLiquid"}.Contains(RepositoryName);
+                ,"StreetEmployeeSummary","UserIdelStreet","LiquidEmployeeSummary","UserIdelLiquid","EmployeeSummaryCTPT"}.Contains(RepositoryName);
              
                if(ChkStr == true && PId==0)
                 {
@@ -480,8 +480,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, null,PId);
                     return gridRepository;
                     break;
-
-
+                case "EmployeeSummaryCTPT":
+                    gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "CT", PId);
+                    return gridRepository;
+                    break;
                 case "LiquidEmployeeSummary":
                     gridRepository = new EmpolyeeSummaryGridRepository(0, searchString, fdate, tdate, userId, appId, "L", PId);
                     return gridRepository;

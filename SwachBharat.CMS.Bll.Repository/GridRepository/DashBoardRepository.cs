@@ -5241,6 +5241,164 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                 }
 
             }
+            else if (Emptype == "CT")
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+                    //if (userId == 0)
+                    //{
+                    //     userId = null; 
+                    //}
+                    //db.Database.CommandTimeout = 5000;
+                    db.Database.CommandTimeout = 500;
+                    var data = db.SP_CTPTEmployeeSummary(fdate, tdate, userId <= 0 ? null : userId, PId).ToList();
+                    // var data2 = data.OrderByDescending(c => c.Startdate).ThenByDescending(c => c.StartTime).ToList();
+                    //var data2 = data1.GroupBy(o => o.userId).Select(o => o.First()).AsEnumerable().ToList();
+
+                    foreach (var x in data)
+                    {
+                        //TimeSpan spWorkMin = TimeSpan.FromMinutes(Convert.ToDouble(x.IdelTime));
+                        //string workHours = spWorkMin.ToString(@"hh\:mm");
+
+                        string EndDate = "";
+                        if (x.Enddate == null)
+                        {
+                            EndDate = "";
+                        }
+                        else
+                        {
+                            EndDate = Convert.ToDateTime(x.Enddate).ToString("dd/MM/yyyy");
+                        }
+
+                        //DateTime time = Convert.ToDateTime(x.StartTime);
+                        string displayTime = Convert.ToDateTime(x.Startdate).ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+                        string time = Convert.ToDateTime(x.StartTime).ToString("HH:mm:ss");
+                        obj.Add(new SBAEmpolyeeSummaryGrid()
+                        {
+                            UserName = x.userName,
+                            userId = x.userId,
+                            // Date = Convert.ToDateTime(x.date).ToString("dd/MM/yyyy"),
+                            daDate = (x.Startdate == null ? "" : Convert.ToDateTime(x.Startdate).ToString("dd/MM/yyyy")),
+                            StartTime = x.StartTime,
+                            DaEndDate = EndDate,
+                            EndTime = x.EndTime,
+                            Totalhousecollection = (x.Totalhousecollection).ToString(),
+                            Totaldumpyard = (x.Totaldumpyard).ToString(),
+                            Totaldistance = string.Format("{0:0.0}", (x.Totaldistance)).ToString(),
+                            InBatteryStatus = x.InBatteryStatus,
+                            OutBatteryStatus = x.OutBatteryStatus,
+                            daDateTIme = (displayTime + " " + time),
+
+                            //daDateTIme = Convert.ToDateTime(x.Startdate + x.StartTime).ToString("dd/MM/yyyy hh:mm tt"),
+                            //DateTime startDate = Convert.ToDateTime(a + " " + Time1);
+
+                            //String.Format("{0:0.00}", 123.4567);
+                            //IdelTime = workHours
+                            //AnsDate = Convert.ToDateTime(x.AnsDate).ToString("dd/MM/yyyy hh:mm tt"),
+                        });
+                    }
+
+
+                    //if (Convert.ToDateTime(fdate).ToString("dd/MM/yyyy") == Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy"))
+                    //{
+                    //    data = data.Where(c => (c.daDate == fdate || c.daEndDate == fdate || c.endTime == "")).ToList();
+
+                    //    //data = data.GroupBy(o => o.userId).Select(o => o.First()).AsEnumerable().ToList();
+                    //}
+                    //else {
+
+                    //    var abc = data.Where(c => (c.daDate >= fdate && c.daDate <= tdate) || (c.daDate >= fdate && c.daDate <= tdate)).ToList();
+                    //}
+
+                    //foreach (var x in data)
+                    //{
+
+                    //    ///x.daDate = checkNull(x.daDate.tp);
+                    //    x.endLat = checkNull(x.endLat);
+                    //    x.endLong = checkNull(x.endLong);
+                    //    x.endTime = checkNull(x.endTime);
+                    //    x.startLat = checkNull(x.startLat);
+                    //    x.startLong = checkNull(x.startLong);
+                    //    x.startTime = checkNull(x.startTime);
+                    //    //x.vehicleNumber = checkNull(x.vehicleNumber);
+                    //    //x.daEndNote = checkNull(x.daEndNote);
+                    //    //x.daStartNote = checkNull(x.daStartNote);
+                    //    string endate = "";
+                    //    if (x.daEndDate == null)
+                    //    {
+                    //        endate = "";
+                    //    }
+                    //    else {
+                    //        endate = Convert.ToDateTime(x.daEndDate).ToString("dd/MM/yyyy");
+                    //    }
+                    //    obj.Add(new SBAAttendenceGrid()
+                    //    {
+                    //        daID = x.daID,
+                    //        userId = Convert.ToInt32(x.userId),
+                    //        userName = db.UserMasters.Where(c => c.userId == x.userId).FirstOrDefault().userName,
+                    //        daDate = Convert.ToDateTime(x.daDate).ToString("dd/MM/yyyy"),
+                    //        daEndDate = endate,
+                    //        startTime = x.startTime,
+                    //        endTime = x.endTime,
+                    //        startLat = x.startLat,
+                    //        startLong = x.startLong,
+                    //        endLat = x.startLong,
+                    //        endLong = x.endLong,
+                    //        vtId = vt,
+                    //        vehicleNumber = x.vehicleNumber,
+                    //        CompareDate = x.daDate,
+                    //    });
+                    //}
+
+                    //if (!string.IsNullOrEmpty(SearchString))
+                    //{
+                    //    var model = obj.Where(c => c.vehicleNumber.Contains(SearchString) || c.daDate.Contains(SearchString) || c.endTime.Contains(SearchString) || c.startLat.Contains(SearchString) || c.endLat.Contains(SearchString) || c.startTime.Contains(SearchString) || c.userName.Contains(SearchString) || c.vtId.Contains(SearchString)
+
+                    //    || c.vehicleNumber.ToLower().Contains(SearchString) || c.vtId.ToLower().Contains(SearchString) || c.daDate.ToLower().Contains(SearchString) || c.endTime.ToLower().Contains(SearchString) || c.startLat.ToLower().Contains(SearchString) || c.endLat.ToLower().Contains(SearchString) || c.startTime.ToLower().Contains(SearchString) || c.userName.ToLower().Contains(SearchString)).ToList();
+
+                    //    obj = model.ToList();
+                    //}
+
+                    //if (!string.IsNullOrEmpty(fdate.ToString()))
+                    //{
+                    //    DateTime? dt1 = null;
+                    //    if (!string.IsNullOrEmpty(tdate.ToString()))
+                    //    { dt1 = tdate; }
+                    //    else { dt1 = fdate; }
+                    //    obj = obj.Where(fullEntry => fullEntry.CompareDate >= fdate && fullEntry.CompareDate <= dt1).OrderByDescending(c => c.CompareDate).ToList();
+                    //}
+
+                    //comment by saurabh - 24 July 2019
+                    //if (userId > 0)
+                    //{
+                    //    var model = obj.Where(c => c.userId == userId).ToList();
+
+                    //    obj = model.ToList();
+                    //}
+                    //return obj.OrderByDescending(c => c.daID );
+
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        var model = obj.Where(c => c.daDate.Contains(SearchString) || c.UserName.Contains(SearchString)
+
+                        || c.daDate.ToLower().Contains(SearchString) || c.UserName.ToLower().Contains(SearchString)).ToList();
+
+                        obj = model.ToList();
+                    }
+
+                    if (userId > 0)
+                    {
+                        var model = obj.Where(c => c.userId == userId).ToList();
+
+                        obj = model.ToList();
+                    }
+                    //return obj.OrderByDescending(c => c.daID);
+                    var f = obj.OrderByDescending(c => DateTime.Parse(c.daDateTIme)).ToList();
+                    return f;
+                }
+
+            }
             else if (Emptype == "L")
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(appId))

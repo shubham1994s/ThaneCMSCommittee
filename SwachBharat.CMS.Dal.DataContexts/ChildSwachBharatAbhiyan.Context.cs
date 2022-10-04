@@ -1363,5 +1363,26 @@ namespace SwachBharat.CMS.Dal.DataContexts
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetVehicleDetails_Result>("GetVehicleDetails", pIdParameter);
         }
+    
+        public virtual ObjectResult<SP_CTPTEmployeeSummary_Result> SP_CTPTEmployeeSummary(Nullable<System.DateTime> from, Nullable<System.DateTime> to, Nullable<int> userid, Nullable<int> prabhagid)
+        {
+            var fromParameter = from.HasValue ?
+                new ObjectParameter("from", from) :
+                new ObjectParameter("from", typeof(System.DateTime));
+    
+            var toParameter = to.HasValue ?
+                new ObjectParameter("to", to) :
+                new ObjectParameter("to", typeof(System.DateTime));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTEmployeeSummary_Result>("SP_CTPTEmployeeSummary", fromParameter, toParameter, useridParameter, prabhagidParameter);
+        }
     }
 }
