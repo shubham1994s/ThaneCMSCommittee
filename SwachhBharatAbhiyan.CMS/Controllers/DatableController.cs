@@ -217,7 +217,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             var appId = SessionHandler.Current.AppId;
             int PId = Convert.ToInt32(Session["PrabhagId"]);
                 var ChkStr = new string[] { "Attendence", "CTPTAttendence", "StreetAttendence", "LiquidAttendence", "EmployeeSummary", "UserIdel"
-                ,"StreetEmployeeSummary","UserIdelStreet","LiquidEmployeeSummary","UserIdelLiquid","EmployeeSummaryCTPT"}.Contains(RepositoryName);
+                ,"StreetEmployeeSummary","UserIdelStreet","LiquidEmployeeSummary","UserIdelLiquid","EmployeeSummaryCTPT","UserIdelCTPT"}.Contains(RepositoryName);
              
                if(ChkStr == true && PId==0)
                 {
@@ -230,7 +230,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new LocationGridRepository(0, searchString, fdate, tdate, userId, appId, null, PId);
                     return gridRepository;
                     break;
-
+                case "LocationCTPT":
+                    gridRepository = new LocationGridRepository(0, searchString, fdate, tdate, userId, appId, "CT", PId);
+                    return gridRepository;
+                    break;
                 case "LiquidLocation":
                     gridRepository = new LocationGridRepository(0, searchString, fdate, tdate, userId, appId, "L", PId);
                     return gridRepository;
@@ -415,10 +418,13 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
 
                 case "UserIdel":
-                    gridRepository = new IdelGridRepository(0, searchString, fdate, tdate, userId, appId, PId);
+                    gridRepository = new IdelGridRepository(0, searchString, fdate, tdate, userId, appId,null, PId);
                     return gridRepository;
                     break;
-
+                case "UserIdelCTPT":
+                    gridRepository = new IdelGridRepository(0, searchString, fdate, tdate, userId, appId,"CT", PId);
+                    return gridRepository;
+                    break;
                 case "UserIdelLiquid":
                     gridRepository = new LiquidIdelGridRepository(0, searchString, fdate, tdate, userId, appId,PId);
                     return gridRepository;

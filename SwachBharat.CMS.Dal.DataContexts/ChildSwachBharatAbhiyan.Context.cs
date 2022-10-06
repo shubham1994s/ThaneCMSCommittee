@@ -1384,5 +1384,26 @@ namespace SwachBharat.CMS.Dal.DataContexts
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTEmployeeSummary_Result>("SP_CTPTEmployeeSummary", fromParameter, toParameter, useridParameter, prabhagidParameter);
         }
+    
+        public virtual ObjectResult<SP_IdelTimeCTPT_Result> SP_IdelTimeCTPT(Nullable<int> userId, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> prabhagid)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var fdateParameter = fdate.HasValue ?
+                new ObjectParameter("fdate", fdate) :
+                new ObjectParameter("fdate", typeof(System.DateTime));
+    
+            var tdateParameter = tdate.HasValue ?
+                new ObjectParameter("tdate", tdate) :
+                new ObjectParameter("tdate", typeof(System.DateTime));
+    
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimeCTPT_Result>("SP_IdelTimeCTPT", userIdParameter, fdateParameter, tdateParameter, prabhagidParameter);
+        }
     }
 }

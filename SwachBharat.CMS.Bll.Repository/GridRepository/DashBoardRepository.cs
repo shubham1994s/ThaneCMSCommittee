@@ -2545,13 +2545,111 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     //            .Join(db.UserMasters, u => u.userId, i => i.userId
 
 
-                    var data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && (l.EmployeeType == null || l.EmployeeType =="CT"))
-                                 join t2 in db.UserMasters.Where(c=> c.EmployeeType == null || c.EmployeeType == "CT") on t1.userId equals t2.userId
+                    var data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == null )
+                                 join t2 in db.UserMasters.Where(c=> c.EmployeeType == null ) on t1.userId equals t2.userId
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                     if (PId > 0)
                     {
-                        data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && (l.EmployeeType == null || l.EmployeeType == "CT"))
-                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId && (c.EmployeeType == null || c.EmployeeType == "CT")) on t1.userId equals t2.userId
+                        data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate && l.EmployeeType == null)
+                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId && c.EmployeeType == null ) on t1.userId equals t2.userId
+                                 select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
+                    }
+
+                    if (userId > 0)
+                    {
+                        var model = data1.Where(c => c.userId == userId).ToList();
+
+                        data1 = model.ToList();
+                    }
+
+                    foreach (var x in data1)
+                    {
+                        string dat = Convert.ToDateTime(x.datetime).ToString("dd/MM/yyyy");
+
+                        string t = Convert.ToDateTime(x.datetime).ToString("hh:mm tt");
+
+                        data.Add(new SBALocationGridRow
+                        {
+                            locId = x.locId,
+
+                            //userName = db.UserMasters.FirstOrDefault(c => c.userId == x.userId).userName,
+                            userId = Convert.ToInt32(x.userId),
+                            userName = x.userName,
+                            date = dat,
+                            time = t,// Convert.ToDateTime(x.datetime).ToString("hh:mm:ss"),
+                                     //string filtered = new string(original.SkipWhile(c => c == ';').ToArray());
+
+                            latlong = checkNull(x.address).Replace("Unnamed Road, ", ""),
+                            CompareDate = x.datetime,
+                        });
+
+
+                    }
+                    foreach (var item in data)
+                    {
+                        if (item.userName != null && item.userName == "")
+                            item.userName = "";
+                        item.latlong = checkNull(item.latlong);
+                        item.date = checkNull(item.date);
+                        item.time = checkNull(item.time);
+
+
+                    }
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        //var model = data.Where(c => c.userName.Contains(SearchString) || c.date.Contains(SearchString) || c.time.Contains(SearchString) || c.latlong.Contains(SearchString) 
+
+                        //|| c.userName.ToLower().Contains(SearchString) || c.date.ToLower().Contains(SearchString) || c.time.ToLower().Contains(SearchString) || c.latlong.ToLower().Contains(SearchString) 
+
+                        //|| c.userName.ToUpper().Contains(SearchString) || c.date.ToUpper().Contains(SearchString) || c.time.ToUpper().Contains(SearchString) || c.latlong.ToUpper().Contains(SearchString) 
+                        //).ToList();
+
+                        var model = data.Where(c => ((string.IsNullOrEmpty(c.userName) ? " " : c.userName) + " " +
+                                         (string.IsNullOrEmpty(c.date) ? " " : c.date) + " " +
+                                         (string.IsNullOrEmpty(c.time) ? " " : c.time) + " " +
+                                         (string.IsNullOrEmpty(c.latlong) ? " " : c.latlong)).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+
+                        data = model.OrderByDescending(c => c.date).ToList().ToList();
+                    }
+                    //if (!string.IsNullOrEmpty(fdate.ToString()))
+                    //{
+
+                    //    DateTime? dt1 = null;
+                    //    if (!string.IsNullOrEmpty(tdate.ToString()))
+                    //    { dt1 = tdate; }
+                    //    else { dt1 = fdate; }
+                    //    data = data.Where(fullEntry => fullEntry.CompareDate >= fdate && fullEntry.CompareDate <= dt1).OrderByDescending(c => c.CompareDate).ToList();
+
+                    //}MyList.OrderBy(x => x.StartDate).ThenByDescending(x => x.EndDate);
+                    //if (userId > 0)
+                    //{
+                    //    var model = data.Where(c => c.userId == userId).ToList();
+
+                    //    data = model.ToList();
+                    //}
+                    return data.OrderByDescending(c => c.CompareDate).ToList().ToList(); ;
+                }
+            }
+            else if (Emptype == "CT")
+            {
+                using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
+                {
+                    List<SBALocationGridRow> data = new List<SBALocationGridRow>();
+                    //  var data = db.GarbageCollectionDetails.Where(x => x.gcType == 3 & x.gcDate >= fdate & x.gcDate <= tdate).Select(x => new SBAGrabageCollectionGridRow
+
+
+                    //var data1 = db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate)
+                    //            .Join(db.UserMasters, u => u.userId, i => i.userId
+
+
+                    var data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate &&  l.EmployeeType == "CT")
+                                 join t2 in db.UserMasters.Where(c =>  c.EmployeeType == "CT") on t1.userId equals t2.userId
+                                 select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
+                    if (PId > 0)
+                    {
+                        data1 = (from t1 in db.Locations.Where(l => l.datetime >= fdate && l.datetime <= tdate &&  l.EmployeeType == "CT")
+                                 join t2 in db.UserMasters.Where(c => c.PrabhagId == PId &&  c.EmployeeType == "CT") on t1.userId equals t2.userId
                                  select new { t1.locId, t1.userId, t1.datetime, t1.address, t2.userName }).ToList();
                     }
 
@@ -4622,66 +4720,132 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
         }
 
 
-        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int PId)
+        public IEnumerable<SBAEmplyeeIdelGrid> GetIdelData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId,string EmpType, int PId)
         {
             List<SBAEmplyeeIdelGrid> obj = new List<SBAEmplyeeIdelGrid>();
-            using (var db = new DevChildSwachhBharatNagpurEntities(appId))
+            if (EmpType == null)
             {
-
-
-                var data = db.SP_IdelTime(userId, fdate, tdate, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
-
-                foreach (var x in data)
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
-                    TimeSpan spWorkMin = TimeSpan.FromMinutes(Convert.ToDouble(x.IdelTime));
-                    string workHours = spWorkMin.ToString(@"hh\:mm");
 
-                    string displayTime = Convert.ToDateTime(x.date).ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
-                    string time = Convert.ToDateTime(x.StartTime).ToString("HH:mm:ss");
 
-                    obj.Add(new SBAEmplyeeIdelGrid()
+                    var data = db.SP_IdelTime(userId, fdate, tdate, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
+
+                    foreach (var x in data)
                     {
-                        UserName = x.userName,
-                        Date = Convert.ToDateTime(x.date).ToString("dd/MM/yyyy"),
-                        StartTime = x.StartTime,
-                        EndTime = x.LastTime,
-                        StartAddress = checkNull(x.StartAddress).Replace("Unnamed Road, ", ""),
-                        EndAddress = checkNull(x.address).Replace("Unnamed Road, ", ""),
-                        IdelTime = workHours,
-                        userId = x.userId,
-                        startLat = x.StarLat,
-                        startLong = x.StartLog,
-                        EndLat = x.lat,
-                        EndLong = x.@long,
-                        daDateTIme = (displayTime + " " + time)
+                        TimeSpan spWorkMin = TimeSpan.FromMinutes(Convert.ToDouble(x.IdelTime));
+                        string workHours = spWorkMin.ToString(@"hh\:mm");
 
-                    });
+                        string displayTime = Convert.ToDateTime(x.date).ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
+                        string time = Convert.ToDateTime(x.StartTime).ToString("HH:mm:ss");
+
+                        obj.Add(new SBAEmplyeeIdelGrid()
+                        {
+                            UserName = x.userName,
+                            Date = Convert.ToDateTime(x.date).ToString("dd/MM/yyyy"),
+                            StartTime = x.StartTime,
+                            EndTime = x.LastTime,
+                            StartAddress = checkNull(x.StartAddress).Replace("Unnamed Road, ", ""),
+                            EndAddress = checkNull(x.address).Replace("Unnamed Road, ", ""),
+                            IdelTime = workHours,
+                            userId = x.userId,
+                            startLat = x.StarLat,
+                            startLong = x.StartLog,
+                            EndLat = x.lat,
+                            EndLong = x.@long,
+                            daDateTIme = (displayTime + " " + time)
+
+                        });
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        //var model = data.Where(c => c.userName.Contains(SearchString) || c.StartAddress.Contains(SearchString) || c.LastTime.Contains(SearchString) || c.address.Contains(SearchString) || c.StartTime.Contains(SearchString) || Convert.ToString(c.IdelTime).Contains(SearchString)
+
+                        //|| c.userName.ToLower().Contains(SearchString) || c.StartAddress.ToLower().Contains(SearchString) || c.address.ToLower().Contains(SearchString) || c.LastTime.ToLower().Contains(SearchString) || c.StartTime.ToLower().Contains(SearchString) || Convert.ToString(c.IdelTime).ToLower().Contains(SearchString)
+
+                        //   || c.userName.ToUpper().Contains(SearchString) || c.StartAddress.ToUpper().Contains(SearchString) || c.address.ToUpper().Contains(SearchString) || c.LastTime.ToUpper().Contains(SearchString) || c.StartTime.ToUpper().Contains(SearchString) || Convert.ToString(c.IdelTime).ToUpper().Contains(SearchString)).ToList();
+
+
+                        var model = obj.Where(c => ((c.UserName == null ? " " : c.UserName) + " " +
+                                                     (c.StartAddress == null ? " " : c.StartAddress) + " " +
+                                                     (c.EndTime == null ? " " : c.EndTime) + " " +
+                                                     (c.EndAddress == null ? "" : c.EndAddress) + " " +
+                                                     (c.StartTime == null ? " " : c.StartTime) + " " +
+                                                     (Convert.ToString(c.IdelTime) == null ? " " : Convert.ToString(c.IdelTime))).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+                        obj = model.ToList();
+                    }
+                    // data = model.OrderByDescending(c => c.DisplayTime).ToList();
+
+                    //Address= checkNull(x.Address).Replace("Unnamed Road, ", ""),
+                    //MyList.OrderBy(x => x.StartDate).ThenByDescending(x => x.EndDate);
+                    //return obj;
+                    return obj.OrderByDescending(c => c.daDateTIme).ToList();
                 }
 
-                if (!string.IsNullOrEmpty(SearchString))
+            }
+            else
+            {
+                using (var db = new DevChildSwachhBharatNagpurEntities(appId))
                 {
-                    //var model = data.Where(c => c.userName.Contains(SearchString) || c.StartAddress.Contains(SearchString) || c.LastTime.Contains(SearchString) || c.address.Contains(SearchString) || c.StartTime.Contains(SearchString) || Convert.ToString(c.IdelTime).Contains(SearchString)
-
-                    //|| c.userName.ToLower().Contains(SearchString) || c.StartAddress.ToLower().Contains(SearchString) || c.address.ToLower().Contains(SearchString) || c.LastTime.ToLower().Contains(SearchString) || c.StartTime.ToLower().Contains(SearchString) || Convert.ToString(c.IdelTime).ToLower().Contains(SearchString)
-
-                    //   || c.userName.ToUpper().Contains(SearchString) || c.StartAddress.ToUpper().Contains(SearchString) || c.address.ToUpper().Contains(SearchString) || c.LastTime.ToUpper().Contains(SearchString) || c.StartTime.ToUpper().Contains(SearchString) || Convert.ToString(c.IdelTime).ToUpper().Contains(SearchString)).ToList();
 
 
-                    var model = obj.Where(c => ((c.UserName == null ? " " : c.UserName) + " " +
-                                                 (c.StartAddress == null ? " " : c.StartAddress) + " " +
-                                                 (c.EndTime == null ? " " : c.EndTime) + " " +
-                                                 (c.EndAddress == null ? "" : c.EndAddress) + " " +
-                                                 (c.StartTime == null ? " " : c.StartTime) + " " +
-                                                 (Convert.ToString(c.IdelTime) == null ? " " : Convert.ToString(c.IdelTime))).ToUpper().Contains(SearchString.ToUpper())).ToList();
+                    var data = db.SP_IdelTimeCTPT(userId, fdate, tdate, PId).Where(c => c.IdelTime != null & c.IdelTime > 15).ToList().OrderByDescending(c => c.StartTime);
 
-                    obj = model.ToList();
+                    foreach (var x in data)
+                    {
+                        TimeSpan spWorkMin = TimeSpan.FromMinutes(Convert.ToDouble(x.IdelTime));
+                        string workHours = spWorkMin.ToString(@"hh\:mm");
+
+                        string displayTime = Convert.ToDateTime(x.date).ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
+                        string time = Convert.ToDateTime(x.StartTime).ToString("HH:mm:ss");
+
+                        obj.Add(new SBAEmplyeeIdelGrid()
+                        {
+                            UserName = x.userName,
+                            Date = Convert.ToDateTime(x.date).ToString("dd/MM/yyyy"),
+                            StartTime = x.StartTime,
+                            EndTime = x.LastTime,
+                            StartAddress = checkNull(x.StartAddress).Replace("Unnamed Road, ", ""),
+                            EndAddress = checkNull(x.address).Replace("Unnamed Road, ", ""),
+                            IdelTime = workHours,
+                            userId = x.userId,
+                            startLat = x.StarLat,
+                            startLong = x.StartLog,
+                            EndLat = x.lat,
+                            EndLong = x.@long,
+                            daDateTIme = (displayTime + " " + time)
+
+                        });
+                    }
+
+                    if (!string.IsNullOrEmpty(SearchString))
+                    {
+                        //var model = data.Where(c => c.userName.Contains(SearchString) || c.StartAddress.Contains(SearchString) || c.LastTime.Contains(SearchString) || c.address.Contains(SearchString) || c.StartTime.Contains(SearchString) || Convert.ToString(c.IdelTime).Contains(SearchString)
+
+                        //|| c.userName.ToLower().Contains(SearchString) || c.StartAddress.ToLower().Contains(SearchString) || c.address.ToLower().Contains(SearchString) || c.LastTime.ToLower().Contains(SearchString) || c.StartTime.ToLower().Contains(SearchString) || Convert.ToString(c.IdelTime).ToLower().Contains(SearchString)
+
+                        //   || c.userName.ToUpper().Contains(SearchString) || c.StartAddress.ToUpper().Contains(SearchString) || c.address.ToUpper().Contains(SearchString) || c.LastTime.ToUpper().Contains(SearchString) || c.StartTime.ToUpper().Contains(SearchString) || Convert.ToString(c.IdelTime).ToUpper().Contains(SearchString)).ToList();
+
+
+                        var model = obj.Where(c => ((c.UserName == null ? " " : c.UserName) + " " +
+                                                     (c.StartAddress == null ? " " : c.StartAddress) + " " +
+                                                     (c.EndTime == null ? " " : c.EndTime) + " " +
+                                                     (c.EndAddress == null ? "" : c.EndAddress) + " " +
+                                                     (c.StartTime == null ? " " : c.StartTime) + " " +
+                                                     (Convert.ToString(c.IdelTime) == null ? " " : Convert.ToString(c.IdelTime))).ToUpper().Contains(SearchString.ToUpper())).ToList();
+
+                        obj = model.ToList();
+                    }
+                    // data = model.OrderByDescending(c => c.DisplayTime).ToList();
+
+                    //Address= checkNull(x.Address).Replace("Unnamed Road, ", ""),
+                    //MyList.OrderBy(x => x.StartDate).ThenByDescending(x => x.EndDate);
+                    //return obj;
+                    return obj.OrderByDescending(c => c.daDateTIme).ToList();
                 }
-                // data = model.OrderByDescending(c => c.DisplayTime).ToList();
 
-                //Address= checkNull(x.Address).Replace("Unnamed Road, ", ""),
-                //MyList.OrderBy(x => x.StartDate).ThenByDescending(x => x.EndDate);
-                //return obj;
-                return obj.OrderByDescending(c => c.daDateTIme).ToList();
             }
         }
 

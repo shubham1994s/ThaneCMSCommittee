@@ -9,65 +9,104 @@
    <script src="~/Content/DatatableGrid/Location.js"></script>
 
 <body><br />
-    <div class="container">
+      <div class="container">
+          <div class="row" style="text-align: center; display: inline-block; width: 100%;margin-top:2%">
+              <label class="check-container">
+                  <input type="radio" checked="checked" value="0" name="rdType">
+                  Waste
+                  <span class="checkmark"></span>
+              </label>
+              &nbsp; &nbsp;
+              <label class="check-container">
+                  <input type="radio" value="1" name="rdType">
+                  CT/PT/U
+                  <span class="checkmark"></span>
+              </label>
+          </div>
+          <div class="row">
+              <div class="col-sm-3">
+                  <div class="controls">
+                      @*<label>तारखेपासून / From Date</label>*@
+                      <label>From Date</label>
+                      <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="controls">
+                      @*<label>तारीख पर्यंत / To Date</label>*@
+                      <label>To Date</label>
+                      <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
+                  </div>
+              </div>
+              <div class="col-sm-4">
+                  @*<label>कर्मचारी निवडा / Select Employee</label>*@
+                  <label>Select Employee</label>
+                  <select id="selectnumber" class="form-control form-control-sm"></select>
+              </div>
+              <div class="col-sm-2">
+                  <div class="controls">
+                      <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-primary filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
+                  </div>
+              </div>
+          </div>
 
-        <div class="row">
-                    <div class="col-sm-3">
-                        <div class="controls">
-                            @*<label>तारखेपासून / From Date</label>*@
-                            <label>From Date</label>
-                            <input id="txt_fdate" class="datepicker form-control form-control-sm" type="text" />
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="controls">
-                            @*<label>तारीख पर्यंत / To Date</label>*@
-                            <label>To Date</label>
-                            <input id="txt_tdate" class="datepicker form-control form-control-sm" type="text" />
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        @*<label>कर्मचारी निवडा / Select Employee</label>*@
-                        <label>Select Employee</label>
-                        <select id="selectnumber" class="form-control form-control-sm"></select>
-                    </div>
-            <div class="col-sm-2">
-                <div class="controls">
-                    <input data-background-color="filter-button-box-color" style="margin-top:28px;" class="btn btn-sm btn-primary filter-button-style" type="button" value="Filter Records" id="filter" onclick="Search()" />
-                </div>
-            </div>
-        </div>
-
-    </div>
+      </div>
    
     <div class="container">
         <br />
         <div style="width:100%; margin:0 auto;">
-            <label style="display:inline-flex" class="float-right">Search:&nbsp;<input type="text" id="s" class="form-control form-control-sm" onkeyup="Search()"></label>         
-            <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
-                <thead>
-                    @*<tr>
+            <div class="container" id="divW" style="overflow-y:auto;display:none">
+                <label style="display:inline-flex" class="float-right">Search:&nbsp;<input type="text" id="s" class="form-control form-control-sm" onkeyup="SearchW()"></label>
+                <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                    <thead>
+                        @*<tr>
                         <th>locId</th>
                         <th> नाव / Name </th>
                         <th>तारीख / Date </th>
                         <th>वेळ / Time </th>
-                        <th>पत्ता/ Address </th>    
-                        <th data-sortable="false">स्थान / Location </th>                   
+                        <th>पत्ता/ Address </th>
+                        <th data-sortable="false">स्थान / Location </th>
                     </tr>*@
 
-                    <tr>
+                        <tr>
+                            <th>locId</th>
+                            <th> Name </th>
+                            <th> Date </th>
+                            <th> Time </th>
+                            <th> Address </th>
+                            <th> CompareDate </th>
+                            <th data-sortable="false"> Location </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="container" id="divCTPT" style="overflow-y:auto;display:none">
+                <label style="display:inline-flex" class="float-right">Search:&nbsp;<input type="text" id="sCTPT" class="form-control form-control-sm" onkeyup="SearchCTPT()"></label>
+                <table id="demoGridCTPT" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+                    <thead>
+                        @*<tr>
                         <th>locId</th>
-                        <th> Name </th>
-                        <th> Date </th>
-                        <th> Time </th>
-                        <th> Address </th>
-                        <th> CompareDate </th>
-                        <th data-sortable="false"> Location </th>
-                    </tr>
-                </thead>
-            </table>
+                        <th> नाव / Name </th>
+                        <th>तारीख / Date </th>
+                        <th>वेळ / Time </th>
+                        <th>पत्ता/ Address </th>
+                        <th data-sortable="false">स्थान / Location </th>
+                    </tr>*@
+
+                        <tr>
+                            <th>locId</th>
+                            <th> Name </th>
+                            <th> Date </th>
+                            <th> Time </th>
+                            <th> Address </th>
+                            <th> CompareDate </th>
+                            <th data-sortable="false"> Location </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
-    </div>
+        </div>
 </body>
 </html> 
 
