@@ -23,6 +23,7 @@
             //{ "data": "ReferanceId4", "name": "ReferanceId4", "autoWidth": false },
             //{ "data": "ReferanceId5", "name": "ReferanceId5", "autoWidth": false },
             { "data": "PrabhagName", "name": "PrabhagName", "autoWidth": false },
+            { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer"  onclick="Edit(' + full["Id"] + ',' + full["PrabhagId"] + ')" ><i class="material-icons edit-icon">edit</i><span class="tooltiptext1">Edit</span> </a>'; }, "width": "10%" },
 
         ]
     });
@@ -32,10 +33,10 @@ function DownloadQRCode(Id) {
     window.location.href = "/Street/StreetSweeping/Export?id=" + Id;
 };
 
-function Edit(Id) {
+function Edit(Id, PrabhagId) {
     //alert("Aa");
     if (Id != null) {
-        var url = "/Street/StreetSweeping/AddStreetSweeping?teamId=" + Id;
+        var url = "/Street/StreetSweeping/AddStreetBeat?teamId=" + Id + "&PrabhagId=" + PrabhagId;
         window.location.href = url;
     }
 };

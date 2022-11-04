@@ -86,7 +86,7 @@ namespace SwachhBharatAbhiyan.CMS.Areas.Street.Controllers
         public ActionResult AddStreetBeat(int teamId = -1,int ? PrabhagId=0)
         {
             if (SessionHandler.Current.AppId != 0)
-            { 
+            {
                 if(PrabhagId==0)
                 { 
                 PrabhagId = Convert.ToInt32(Session["PrabhagId"]);
