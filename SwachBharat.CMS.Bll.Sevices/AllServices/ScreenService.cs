@@ -467,12 +467,28 @@ namespace SwachBharat.CMS.Bll.Services
             {
                 using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
                 {
-                    var Details = db.SP_StreetSweepList(PId).Where(x => x.SSId == teamId).FirstOrDefault();
-                    if (Details != null)
+                    var StreetBeat = db.StreetSweepingBeats.Where(a => a.BeatId == teamId && a.PrabhagId == PId).FirstOrDefault();
+                    //var Details = db.SP_StreetSweepList(PId).Where(x => x.SSId == teamId).FirstOrDefault();
+                    if (StreetBeat != null)
                     {
+                        List<SelectListItem> beatRefIdList = db.StreetSweepingDetails.Where(a => a.ReferanceId == StreetBeat.ReferanceId1 || a.ReferanceId == StreetBeat.ReferanceId2 || a.ReferanceId == StreetBeat.ReferanceId3 || a.ReferanceId == StreetBeat.ReferanceId4 || a.ReferanceId == StreetBeat.ReferanceId5).Select(b => b.ReferanceId).Distinct()
+                                                            .Select(ReferanceId => new SelectListItem
+                                                            {
+                                                                Text = ReferanceId,
+                                                                Value = ReferanceId
+                                                            }).ToList();
+                       
                         StreetSweepVM vechile = new StreetSweepVM();
+                        vechile.BeatId = teamId;
                         vechile.BeatList = ListBeat(PId);
+                        vechile.BeatList.AddRange(beatRefIdList);
+                        vechile.SSBeatone = StreetBeat.ReferanceId1;
+                        vechile.SSBeattwo = StreetBeat.ReferanceId2;
+                        vechile.SSBeatthree = StreetBeat.ReferanceId3;
+                        vechile.SSBeatfour = StreetBeat.ReferanceId4;
+                        vechile.SSBeatfive = StreetBeat.ReferanceId5;
                         vechile.PrabhagList = ListPrabhag(0);
+                        vechile.PrabhagId = StreetBeat.PrabhagId;
                         return vechile;
                     }
                     else
@@ -480,6 +496,7 @@ namespace SwachBharat.CMS.Bll.Services
                         StreetSweepVM vechile = new StreetSweepVM();
                         vechile.BeatList = ListBeat(PId);
                         vechile.PrabhagList = ListPrabhag(0);
+                        vechile.BeatId = teamId;
                         return vechile;
                     }
                 }

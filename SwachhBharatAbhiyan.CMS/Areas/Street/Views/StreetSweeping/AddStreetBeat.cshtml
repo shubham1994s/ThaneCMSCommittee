@@ -33,7 +33,17 @@ using (Html.BeginForm("AddStreetBeat", "StreetSweeping", FormMethod.Post, new { 
                             @*@Html.Label("झोन / Zone")*@
                             @Html.Label("Select Prabhag Samitee")
                             @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                            @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+                            @if (Model.BeatId > 0)
+                            {
+                                @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", required = "required", @disabled = "disabled", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(model => model.PrabhagId, Model.PrabhagList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+
+                            }
                             <span class="text-danger" id="err_vtype"></span>
                             <span class="help-block with-errors"></span>
                         </div>
@@ -79,7 +89,7 @@ using (Html.BeginForm("AddStreetBeat", "StreetSweeping", FormMethod.Post, new { 
                 <button type="submit" name="submit" class="btn" id="btnSubmit" onclick="return Validate()">
 
                     <span class="glyphicon glyphicon-saved"></span>
-                    <span id="buttonName">Save</span>
+                    <span id="buttonName">@ViewBag.SubmitValue</span>
                 </button><br /><br>
             </div>
         </div>
@@ -112,7 +122,7 @@ using (Html.BeginForm("AddStreetBeat", "StreetSweeping", FormMethod.Post, new { 
                             @*@Html.Label("झोन / Zone")*@
                             @Html.Label("Start Beat")
                             @*<a class="pull-right add_popup_clear" style="color:#3ab59e;text-decoration:underline!important;cursor:pointer" onclick="PopZone()"> + Add Zone </a>*@
-                            @Html.DropDownListFor(model => model.SSBeatone, Model.BeatList, new { style = "font-family:Arial, FontAwesome",required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
+                            @Html.DropDownListFor(model => model.SSBeatone, Model.BeatList, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
                             <span class="text-danger" id="err_vtype"></span>
                             <span class="help-block with-errors"></span>
                         </div>
@@ -159,11 +169,11 @@ using (Html.BeginForm("AddStreetBeat", "StreetSweeping", FormMethod.Post, new { 
 <script>
     $(document).ready(function () {
         debugger;
-        var id = $('#Id').val();
+        var id = $('#BeatId').val();
         if (id > 0) {
-            $('#buttonName').text("Save Changes");
+            $('#buttonName').text("Update");
             //$('.title_change').text("वाहन तपशील सादर बदला / Edit Vehicle Details");
-            $('.title_change').text("Edit Vehicle Details");
+            $('.title_change').text("Edit Sweeping Beat Details");
         } else {
             $('#buttonName').text("Save");
             //$('.title_change').text(" वाहन तपशील सादर करा / Add Vehicle Details ");
@@ -187,19 +197,19 @@ using (Html.BeginForm("AddStreetBeat", "StreetSweeping", FormMethod.Post, new { 
 
         var selectedText = $(this).find("option:selected").text();
         var selectedValue = $(this).val();
-        $.ajax({
-            type: "get",
-            url: "/StreetSweeping/AddStreetBeat?",
-            data: { PrabhagId: $('#PrabhagId').val() },
-            datatype: "json",
-            traditional: true,
-            success: function (data) {
+        //$.ajax({
+        //    type: "get",
+        //    url: "/StreetSweeping/AddStreetBeat?",
+        //    data: { PrabhagId: $('#PrabhagId').val(), BeatId: $('#BeatId').val()},
+        //    datatype: "json",
+        //    traditional: true,
+        //    success: function (data) {
 
 
-            }
-        });
+        //    }
+        //});
 
-        window.location.href = "/Street/StreetSweeping/AddStreetBeat?PrabhagId=" + selectedValue;
+        window.location.href = "/Street/StreetSweeping/AddStreetBeat?PrabhagId=" + selectedValue + "&teamId=" + $('#BeatId').val();
 
     });
 
