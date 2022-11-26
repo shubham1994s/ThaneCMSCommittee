@@ -39,7 +39,9 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 ViewBag.YoccFeddbackLink = SessionHandler.Current.YoccFeddbackLink;
                 var PrabhagId = Session["PrabhagId"];
                int PId = Convert.ToInt32(Session["PrabhagId"]);
-
+                DevSwachhBharatMainEntities dbmain = new DevSwachhBharatMainEntities();
+                var apikey = dbmain.GoogleAPIDetails.Select(a => a.GoogleAPI).FirstOrDefault();
+                Session["apikey"] = apikey;
                 var details = childRepository.GetDashBoardDetails(PId);
                 return View(details);
             }

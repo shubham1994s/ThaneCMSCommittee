@@ -160,7 +160,7 @@
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="GamePlayerDetail.cs">
-      <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+      <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="Game_AnswerType.cs">
       <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
@@ -179,6 +179,9 @@
     </Compile>
     <Compile Include="GetVehicleDetails_Result.cs">
       <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GoogleAPIDetail.cs">
+      <DependentUpon>MainSwachBharatAbhiyan.tt</DependentUpon>
     </Compile>
     <Compile Include="GramCleaningComplient.cs">
       <DependentUpon>ChildSwachBharatAbhiyan.tt</DependentUpon>

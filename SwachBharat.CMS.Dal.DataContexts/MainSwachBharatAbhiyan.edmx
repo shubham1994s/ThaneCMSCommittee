@@ -5,9 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DevSwachhBharatMainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatMain.dbo.AD_USER_MST_LIQUID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AD_USER_MST_LIQUID">
           <Key>
             <PropertyRef Name="ADUM_USER_CODE" />
+            
+            
+            
+            
+            
           </Key>
           <Property Name="ADUM_USER_CODE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SERVER_ID" Type="tinyint" />
@@ -60,9 +67,16 @@
           <Property Name="IMO_NO" Type="nvarchar" MaxLength="1" />
           <Property Name="PrabhagId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatMain.dbo.AD_USER_MST_STREET' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AD_USER_MST_STREET">
           <Key>
             <PropertyRef Name="ADUM_USER_CODE" />
+            
+            
+            
+            
+            
           </Key>
           <Property Name="ADUM_USER_CODE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SERVER_ID" Type="tinyint" />
@@ -167,6 +181,15 @@
           <Property Name="VehicalQRCode" Type="nvarchar" MaxLength="250" />
           <Property Name="AppAreaLatLong" Type="nvarchar(max)" />
           <Property Name="IsAreaActive" Type="bit" />
+          <Property Name="Today_HouseScanCount" Type="int" />
+          <Property Name="Today_LiquidScanCount" Type="int" />
+          <Property Name="Today_StreetScanCount" Type="int" />
+          <Property Name="Total_HouseCount" Type="int" />
+          <Property Name="Total_LiquidCount" Type="int" />
+          <Property Name="Total_StreetCount" Type="int" />
+          <Property Name="Today_DumpScanCount" Type="int" />
+          <Property Name="Total_DumpCount" Type="int" />
+          <Property Name="AppLink" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
@@ -286,6 +309,13 @@
           <Property Name="DeviceId" Type="nvarchar" MaxLength="500" />
           <Property Name="Created" Type="datetime" />
         </EntityType>
+        <EntityType Name="GoogleAPIDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="GoogleAPI" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Sauchalay_feedback">
           <Key>
             <PropertyRef Name="SauchalayFeedback_ID" />
@@ -399,9 +429,7 @@
         <Function Name="SP_Admin_table" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_Admin2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DevSwachhBharatMainModelStoreContainer">
-          <EntitySet Name="AD_USER_MST_LIQUID" EntityType="Self.AD_USER_MST_LIQUID" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AD_USER_MST_SA" EntityType="Self.AD_USER_MST_SA" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AD_USER_MST_STREET" EntityType="Self.AD_USER_MST_STREET" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AppConnection" EntityType="Self.AppConnection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AppDetails" EntityType="Self.AppDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -415,11 +443,64 @@
           <EntitySet Name="GameDetails" EntityType="Self.GameDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GameMaster" EntityType="Self.GameMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GamePlayerDetails" EntityType="Self.GamePlayerDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoogleAPIDetails" EntityType="Self.GoogleAPIDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sauchalay_feedback" EntityType="Self.Sauchalay_feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="state_districts" EntityType="Self.state_districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subscriptions" EntityType="Self.Subscriptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tehsil" EntityType="Self.tehsil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInApps" EntityType="Self.UserInApps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_USER_MST_LIQUID" EntityType="Self.AD_USER_MST_LIQUID" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AD_USER_MST_LIQUID].[ADUM_USER_CODE] AS [ADUM_USER_CODE], 
+    [AD_USER_MST_LIQUID].[SERVER_ID] AS [SERVER_ID], 
+    [AD_USER_MST_LIQUID].[APP_ID] AS [APP_ID], 
+    [AD_USER_MST_LIQUID].[ADUM_USER_ID] AS [ADUM_USER_ID], 
+    [AD_USER_MST_LIQUID].[ADUM_USER_NAME] AS [ADUM_USER_NAME], 
+    [AD_USER_MST_LIQUID].[ADUM_LOGIN_ID] AS [ADUM_LOGIN_ID], 
+    [AD_USER_MST_LIQUID].[ADUM_PASSWORD] AS [ADUM_PASSWORD], 
+    [AD_USER_MST_LIQUID].[ADUM_EMPLOYEE_ID] AS [ADUM_EMPLOYEE_ID], 
+    [AD_USER_MST_LIQUID].[ADUM_DESIGNATION] AS [ADUM_DESIGNATION], 
+    [AD_USER_MST_LIQUID].[ADUM_MOBILE] AS [ADUM_MOBILE], 
+    [AD_USER_MST_LIQUID].[ADUM_EMAIL] AS [ADUM_EMAIL], 
+    [AD_USER_MST_LIQUID].[LOCAL_USER_NAME] AS [LOCAL_USER_NAME], 
+    [AD_USER_MST_LIQUID].[PROFILE_IMAGE] AS [PROFILE_IMAGE], 
+    [AD_USER_MST_LIQUID].[ADUM_FRDT] AS [ADUM_FRDT], 
+    [AD_USER_MST_LIQUID].[ADUM_TODT] AS [ADUM_TODT], 
+    [AD_USER_MST_LIQUID].[ADUM_STATUS] AS [ADUM_STATUS], 
+    [AD_USER_MST_LIQUID].[UPDATE_FLAG] AS [UPDATE_FLAG], 
+    [AD_USER_MST_LIQUID].[LAST_UPDATE] AS [LAST_UPDATE], 
+    [AD_USER_MST_LIQUID].[AD_USER_TYPE_ID] AS [AD_USER_TYPE_ID], 
+    [AD_USER_MST_LIQUID].[MOBILE_ID] AS [MOBILE_ID], 
+    [AD_USER_MST_LIQUID].[IS_ACTIVE] AS [IS_ACTIVE], 
+    [AD_USER_MST_LIQUID].[IMO_NO] AS [IMO_NO]
+    FROM [dbo].[AD_USER_MST_LIQUID] AS [AD_USER_MST_LIQUID]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AD_USER_MST_STREET" EntityType="Self.AD_USER_MST_STREET" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AD_USER_MST_STREET].[ADUM_USER_CODE] AS [ADUM_USER_CODE], 
+    [AD_USER_MST_STREET].[SERVER_ID] AS [SERVER_ID], 
+    [AD_USER_MST_STREET].[APP_ID] AS [APP_ID], 
+    [AD_USER_MST_STREET].[ADUM_USER_ID] AS [ADUM_USER_ID], 
+    [AD_USER_MST_STREET].[ADUM_USER_NAME] AS [ADUM_USER_NAME], 
+    [AD_USER_MST_STREET].[ADUM_LOGIN_ID] AS [ADUM_LOGIN_ID], 
+    [AD_USER_MST_STREET].[ADUM_PASSWORD] AS [ADUM_PASSWORD], 
+    [AD_USER_MST_STREET].[ADUM_EMPLOYEE_ID] AS [ADUM_EMPLOYEE_ID], 
+    [AD_USER_MST_STREET].[ADUM_DESIGNATION] AS [ADUM_DESIGNATION], 
+    [AD_USER_MST_STREET].[ADUM_MOBILE] AS [ADUM_MOBILE], 
+    [AD_USER_MST_STREET].[ADUM_EMAIL] AS [ADUM_EMAIL], 
+    [AD_USER_MST_STREET].[LOCAL_USER_NAME] AS [LOCAL_USER_NAME], 
+    [AD_USER_MST_STREET].[PROFILE_IMAGE] AS [PROFILE_IMAGE], 
+    [AD_USER_MST_STREET].[ADUM_FRDT] AS [ADUM_FRDT], 
+    [AD_USER_MST_STREET].[ADUM_TODT] AS [ADUM_TODT], 
+    [AD_USER_MST_STREET].[ADUM_STATUS] AS [ADUM_STATUS], 
+    [AD_USER_MST_STREET].[UPDATE_FLAG] AS [UPDATE_FLAG], 
+    [AD_USER_MST_STREET].[LAST_UPDATE] AS [LAST_UPDATE], 
+    [AD_USER_MST_STREET].[AD_USER_TYPE_ID] AS [AD_USER_TYPE_ID], 
+    [AD_USER_MST_STREET].[MOBILE_ID] AS [MOBILE_ID], 
+    [AD_USER_MST_STREET].[IS_ACTIVE] AS [IS_ACTIVE], 
+    [AD_USER_MST_STREET].[IMO_NO] AS [IMO_NO]
+    FROM [dbo].[AD_USER_MST_STREET] AS [AD_USER_MST_STREET]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -595,6 +676,7 @@
           <EntitySet Name="AppConnections" EntityType="DevSwachhBharatMainModel.AppConnection" />
           <EntitySet Name="AD_USER_MST_SA" EntityType="DevSwachhBharatMainModel.AD_USER_MST_SA" />
           <EntitySet Name="tehsils" EntityType="DevSwachhBharatMainModel.tehsil" />
+          <EntitySet Name="GoogleAPIDetails" EntityType="DevSwachhBharatMainModel.GoogleAPIDetail" />
         </EntityContainer>
         <ComplexType Name="SP_Admin2_Result">
           <Property Type="String" Name="appName" Nullable="true" MaxLength="500" />
@@ -800,6 +882,15 @@
           <Property Name="VehicalQRCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="AppAreaLatLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsAreaActive" Type="Boolean" />
+          <Property Name="Today_HouseScanCount" Type="Int32" />
+          <Property Name="Today_LiquidScanCount" Type="Int32" />
+          <Property Name="Today_StreetScanCount" Type="Int32" />
+          <Property Name="Total_HouseCount" Type="Int32" />
+          <Property Name="Total_LiquidCount" Type="Int32" />
+          <Property Name="Total_StreetCount" Type="Int32" />
+          <Property Name="Today_DumpScanCount" Type="Int32" />
+          <Property Name="Total_DumpCount" Type="Int32" />
+          <Property Name="AppLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AppConnection">
           <Key>
@@ -851,6 +942,13 @@
           <Property Name="longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="state" Type="Int32" />
           <Property Name="district" Type="Int32" />
+        </EntityType>
+        <EntityType Name="GoogleAPIDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="GoogleAPI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1104,6 +1202,15 @@
           <EntitySetMapping Name="AppDetails">
             <EntityTypeMapping TypeName="DevSwachhBharatMainModel.AppDetail">
               <MappingFragment StoreEntitySet="AppDetails">
+                <ScalarProperty Name="AppLink" ColumnName="AppLink" />
+                <ScalarProperty Name="Total_DumpCount" ColumnName="Total_DumpCount" />
+                <ScalarProperty Name="Today_DumpScanCount" ColumnName="Today_DumpScanCount" />
+                <ScalarProperty Name="Total_StreetCount" ColumnName="Total_StreetCount" />
+                <ScalarProperty Name="Total_LiquidCount" ColumnName="Total_LiquidCount" />
+                <ScalarProperty Name="Total_HouseCount" ColumnName="Total_HouseCount" />
+                <ScalarProperty Name="Today_StreetScanCount" ColumnName="Today_StreetScanCount" />
+                <ScalarProperty Name="Today_LiquidScanCount" ColumnName="Today_LiquidScanCount" />
+                <ScalarProperty Name="Today_HouseScanCount" ColumnName="Today_HouseScanCount" />
                 <ScalarProperty Name="IsAreaActive" ColumnName="IsAreaActive" />
                 <ScalarProperty Name="AppAreaLatLong" ColumnName="AppAreaLatLong" />
                 <ScalarProperty Name="VehicalQRCode" ColumnName="VehicalQRCode" />
@@ -1223,6 +1330,14 @@
                 <ScalarProperty Name="name_mar" ColumnName="name_mar" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoogleAPIDetails">
+            <EntityTypeMapping TypeName="DevSwachhBharatMainModel.GoogleAPIDetail">
+              <MappingFragment StoreEntitySet="GoogleAPIDetails">
+                <ScalarProperty Name="GoogleAPI" ColumnName="GoogleAPI" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
