@@ -28,6 +28,7 @@
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AppConnection" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.AD_USER_MST_SA" Width="1.5" PointX="9.375" PointY="13.75" />
         <EntityTypeShape EntityType="DevSwachhBharatMainModel.tehsil" Width="1.5" PointX="11.375" PointY="13.75" />
+        <EntityTypeShape EntityType="DevSwachhBharatMainModel.GoogleAPIDetail" Width="1.5" PointX="7.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
