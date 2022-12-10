@@ -3340,6 +3340,7 @@
     <Content Include="Views\GarbageCollection\MenuDSIGarbageIndex.cshtml" />
     <Content Include="Views\GarbageCollection\DSIGarbageIndex.cshtml" />
     <Content Include="Views\Attendence\DSIUserRoute.cshtml" />
+    <Content Include="Views\Report\DYSIVisitingReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
