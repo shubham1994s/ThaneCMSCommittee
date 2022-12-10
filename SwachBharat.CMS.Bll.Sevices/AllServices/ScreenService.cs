@@ -3163,7 +3163,10 @@ namespace SwachBharat.CMS.Bll.Services
             DateTime newdate = DateTime.Now.Date;
             var datt = newdate;
             var att = db.Daily_Attendance.Where(c => c.daID == daId).FirstOrDefault();
-            string Time = att.startTime;
+            var useridnew = db.Daily_Attendance.Where(c => c.userId == att.userId && c.daDate == att.daDate).FirstOrDefault();
+            string Time = useridnew.startTime;
+
+            //string Time = att.startTime;
             DateTime date = DateTime.Parse(Time, System.Globalization.CultureInfo.CurrentCulture);
             string t = date.ToString("hh:mm:ss tt");
             string dt = Convert.ToDateTime(att.daDate).ToString("MM/dd/yyyy");
@@ -3179,7 +3182,8 @@ namespace SwachBharat.CMS.Bll.Services
                 DateTime date2 = DateTime.Parse(Time2, System.Globalization.CultureInfo.CurrentCulture);
                 string t2 = date2.ToString("hh:mm:ss tt");
                 string dt2 = Convert.ToDateTime(att.daEndDate).ToString("MM/dd/yyyy");
-                edate = Convert.ToDateTime(dt2 + " " + t2);
+                //edate = Convert.ToDateTime(dt2 + " " + t2);
+                edate = DateTime.Now;
             }
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
