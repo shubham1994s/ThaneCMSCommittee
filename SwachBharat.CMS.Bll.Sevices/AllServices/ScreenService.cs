@@ -3211,7 +3211,8 @@ namespace SwachBharat.CMS.Bll.Services
                                 var street = db.StreetSweepingDetails.Where(c => c.ReferanceId == d.dsiScanId & c.areaId == areaid).FirstOrDefault();
                                 var liquid = db.LiquidWasteDetails.Where(c => c.ReferanceId == d.dsiScanId & c.areaId == areaid).FirstOrDefault();
                                 var commercial = db.CommercialMasters.Where(c => c.ReferanceId == d.dsiScanId & c.AreaId == areaid).FirstOrDefault();
-                                var dump = db.SWMMasters.Where(c => c.ReferanceId == d.dsiScanId & c.AreaId == areaid).FirstOrDefault();
+                                var swm = db.SWMMasters.Where(c => c.ReferanceId == d.dsiScanId & c.AreaId == areaid).FirstOrDefault();
+                                var ctpt = db.SauchalayAddresses.Where(c => c.ReferanceId == d.dsiScanId & c.AreaId == areaid).FirstOrDefault();
                                 if (house != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
@@ -3313,7 +3314,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                                     });
                                 }
-                                else if (dump != null)
+                                else if (swm != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
                                     {
@@ -3327,9 +3328,38 @@ namespace SwachBharat.CMS.Bll.Services
                                         vehcileNumber = att.vehicleNumber,
                                         userMobile = userName.userMobileNumber,
                                         type = Convert.ToInt32(x.type),
-                                        HouseId = dump.ReferanceId,
-                                        HouseAddress = (dump.swmAddress == null ? "" : dump.swmAddress.Replace("Unnamed Road, ", "")),
-                                        HouseOwnerName = dump.swmName,
+                                        HouseId = swm.ReferanceId,
+                                        HouseAddress = (swm.swmAddress == null ? "" : swm.swmAddress.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = swm.swmName,
+                                        // OwnerMobileNo = dump.dyNameMar,
+                                        WasteType = d.garbageType.ToString(),
+                                        gpBeforImage = d.gpBeforImage,
+                                        gpAfterImage = d.gpAfterImage,
+                                        // DryWaste = d.totalDryWeight.ToString(),
+                                        // WetWaste = d.totalWetWeight.ToString(),
+                                        //TotWaste = d.totalGcWeight.ToString(),
+                                        ZoneList = ListZone(PId),
+
+                                    });
+                                }
+
+                                else if (ctpt != null)
+                                {
+                                    userLocation.Add(new SBALUserLocationMapView()
+                                    {
+                                        userName = userName.userName,
+                                        datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                        date = dat,
+                                        time = tim,
+                                        lat = d.Lat,
+                                        log = d.Long,
+                                        address = x.address,
+                                        vehcileNumber = att.vehicleNumber,
+                                        userMobile = userName.userMobileNumber,
+                                        type = Convert.ToInt32(x.type),
+                                        HouseId = ctpt.ReferanceId,
+                                        HouseAddress = (ctpt.Address == null ? "" : ctpt.Address.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = ctpt.Name,
                                         // OwnerMobileNo = dump.dyNameMar,
                                         WasteType = d.garbageType.ToString(),
                                         gpBeforImage = d.gpBeforImage,
@@ -3349,7 +3379,8 @@ namespace SwachBharat.CMS.Bll.Services
                                 var street = db.StreetSweepingDetails.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
                                 var liquid = db.LiquidWasteDetails.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
                                 var commercial = db.CommercialMasters.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
-                                var dump = db.SWMMasters.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
+                                var swm = db.SWMMasters.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
+                                var ctpt = db.SauchalayAddresses.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
                                 if (house != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
@@ -3455,7 +3486,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                                     });
                                 }
-                                else if (dump != null)
+                                else if (swm != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
                                     {
@@ -3469,9 +3500,37 @@ namespace SwachBharat.CMS.Bll.Services
                                         vehcileNumber = att.vehicleNumber,
                                         userMobile = userName.userMobileNumber,
                                         type = Convert.ToInt32(x.type),
-                                        HouseId = dump.ReferanceId,
-                                        HouseAddress = (dump.swmAddress == null ? "" : dump.swmAddress.Replace("Unnamed Road, ", "")),
-                                        HouseOwnerName = dump.swmName,
+                                        HouseId = swm.ReferanceId,
+                                        HouseAddress = (swm.swmAddress == null ? "" : swm.swmAddress.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = swm.swmName,
+                                        // OwnerMobileNo = dump.dyNameMar,
+                                        WasteType = d.garbageType.ToString(),
+                                        gpBeforImage = d.gpBeforImage,
+                                        gpAfterImage = d.gpAfterImage,
+                                        // DryWaste = d.totalDryWeight.ToString(),
+                                        // WetWaste = d.totalWetWeight.ToString(),
+                                        //TotWaste = d.totalGcWeight.ToString(),
+                                        ZoneList = ListZone(PId),
+
+                                    });
+                                }
+                                else if (ctpt != null)
+                                {
+                                    userLocation.Add(new SBALUserLocationMapView()
+                                    {
+                                        userName = userName.userName,
+                                        datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                        date = dat,
+                                        time = tim,
+                                        lat = d.Lat,
+                                        log = d.Long,
+                                        address = x.address,
+                                        vehcileNumber = att.vehicleNumber,
+                                        userMobile = userName.userMobileNumber,
+                                        type = Convert.ToInt32(x.type),
+                                        HouseId = ctpt.ReferanceId,
+                                        HouseAddress = (ctpt.Address == null ? "" : ctpt.Address.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = ctpt.Name,
                                         // OwnerMobileNo = dump.dyNameMar,
                                         WasteType = d.garbageType.ToString(),
                                         gpBeforImage = d.gpBeforImage,
