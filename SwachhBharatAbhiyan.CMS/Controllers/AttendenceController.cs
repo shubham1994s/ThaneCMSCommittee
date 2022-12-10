@@ -127,6 +127,22 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         }
 
+        public ActionResult DSIUserRoute(int daId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                int PId = Convert.ToInt32(Session["PrabhagId"]);
+
+                ViewBag.daId = daId;
+                SBALUserLocationMapView obj = new SBALUserLocationMapView();
+                obj = childRepository.GetDSIByIdforMap(-1, daId, PId);
+                return View(obj);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
         public ActionResult CTPTUserRoute(int daId)
         {
             if (SessionHandler.Current.AppId != 0)
@@ -148,6 +164,20 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
             {
                 List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
                 obj = childRepository.GetUserAttenRoute(daId);
+                // return Json(obj);
+                return Json(obj, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Redirect("/Account/Login");
+
+        }
+
+        public ActionResult DSIUserRouteData(int daId)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                List<SBALUserLocationMapView> obj = new List<SBALUserLocationMapView>();
+                obj = childRepository.GetDSIUserAttenRoute(daId);
                 // return Json(obj);
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
