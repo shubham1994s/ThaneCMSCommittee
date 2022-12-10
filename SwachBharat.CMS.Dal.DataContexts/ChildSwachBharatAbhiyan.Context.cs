@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -40,7 +40,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<WM_Garbage_Sales> WM_Garbage_Sales { get; set; }
         public virtual DbSet<Vw_MsgNotification> Vw_MsgNotification { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<GarbageCollectionDetail> GarbageCollectionDetails { get; set; }
         public virtual DbSet<VehicleRegistration> VehicleRegistrations { get; set; }
         public virtual DbSet<Daily_Attendance> Daily_Attendance { get; set; }
         public virtual DbSet<DumpYardDetail> DumpYardDetails { get; set; }
@@ -62,6 +61,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
         public virtual DbSet<SS_1_7_ANSWER> SS_1_7_ANSWER { get; set; }
         public virtual DbSet<SS_1_4_QUESTION> SS_1_4_QUESTION { get; set; }
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
+        public virtual DbSet<GarbageCollectionDetail> GarbageCollectionDetails { get; set; }
     
         public virtual ObjectResult<GetAttendenceDetailsTotal_Result> GetAttendenceDetailsTotal(Nullable<int> userId, Nullable<int> year, Nullable<int> month)
         {
@@ -469,15 +469,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("prabhagid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_CTPTScanify_Count_Result>("SP_CTPTScanify_Count", prabhagidParameter);
-        }
-    
-        public virtual ObjectResult<SP_Dashboard_Details_Result> SP_Dashboard_Details(Nullable<int> prabhagid)
-        {
-            var prabhagidParameter = prabhagid.HasValue ?
-                new ObjectParameter("prabhagid", prabhagid) :
-                new ObjectParameter("prabhagid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result>("SP_Dashboard_Details", prabhagidParameter);
         }
     
         public virtual ObjectResult<SP_TotalHouseCollection_Count_Result> SP_TotalHouseCollection_Count(Nullable<System.DateTime> gcdate, Nullable<int> prabhagid)
@@ -1404,6 +1395,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("prabhagid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimeCTPT_Result>("SP_IdelTimeCTPT", userIdParameter, fdateParameter, tdateParameter, prabhagidParameter);
+        }
+    
+        public virtual ObjectResult<SP_Dashboard_Details_Result> SP_Dashboard_Details(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result>("SP_Dashboard_Details", prabhagidParameter);
         }
     }
 }

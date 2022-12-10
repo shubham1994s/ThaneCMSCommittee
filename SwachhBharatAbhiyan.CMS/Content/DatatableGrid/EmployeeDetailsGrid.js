@@ -128,6 +128,9 @@ function EmployeeW() {
                     if (full["EmployeeType"] == "" || full["EmployeeType"] == null) {
                         return "Waste";
                     }
+                    else if (full["EmployeeType"] == "DSI") {
+                        return "Deputy Or Sub-inspector";
+                    }
                     else {
 
                         return "CTPT";

@@ -873,7 +873,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
-                    }).Where(x => x.isActive == "True" && ((EType == "W" && x.EmployeeType == null) || (EType == "CT" && x.EmployeeType == "CT"))).ToList();
+                    }).Where(x => x.isActive == "True" && ((EType == "W" && x.EmployeeType == null || x.EmployeeType=="DSI") || (EType == "CT" && x.EmployeeType == "CT"))).ToList();
 
                     foreach (var item in data)
                     {
