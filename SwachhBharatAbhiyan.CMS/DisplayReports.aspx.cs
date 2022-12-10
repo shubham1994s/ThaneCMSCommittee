@@ -356,10 +356,20 @@ namespace SwachhBharatAbhiyan.CMS
                         param[4] = new ReportParameter("INSERT_ID", INSERT_ID);
                         rptViewer.ServerReport.SetParameters(param);
                     }
-                 
 
+                    else if (ReportName == "DISIVisitingReport")
+                    {
+                        ReportParameter[] param = new ReportParameter[4];
+                        param[0] = new ReportParameter("from", FromDate);
+                        param[1] = new ReportParameter("to", ToDate);
+                        param[2] = new ReportParameter("userid", UserId);
+                        param[3] = new ReportParameter("AppId", AppID);
+                        rptViewer.ServerReport.SetParameters(param);
+
+                        // param[1] = new ReportParameter("clientid", _userInfo.ClientID.ToString());
+                    }
                     // Liquid Report Start
-                   else if (ReportName == "Liquid Ghar Sankalan Tapashil")
+                    else if (ReportName == "Liquid Ghar Sankalan Tapashil")
                     {
                         ReportParameter[] param = new ReportParameter[5];
                        // param[0] = new ReportParameter("Appid", AppID);

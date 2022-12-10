@@ -3337,6 +3337,7 @@
     <Content Include="Views\Attendence\DSIMenuIndex.cshtml" />
     <Content Include="Views\Attendence\DSIRoute.cshtml" />
     <Content Include="Views\Attendence\DSIUserRoute.cshtml" />
+    <Content Include="Views\Report\DYSIVisitingReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
