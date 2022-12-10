@@ -43,8 +43,6 @@
           <Property Name="CommitteeName" Type="nvarchar" MaxLength="50" />
           <Property Name="zoneId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Daily_Attendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Daily_Attendance">
           <Key>
             <PropertyRef Name="daID" />
@@ -844,6 +842,17 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
         <Function Name="SP_Dashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prabhagid" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_DSIGarbageCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="appId" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="ZoneId" Type="int" Mode="In" />
+          <Parameter Name="AreaId" Type="int" Mode="In" />
+          <Parameter Name="WardNo" Type="int" Mode="In" />
+          <Parameter Name="prabhagid" Type="int" Mode="In" />
+          <Parameter Name="PrabhagNo" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_DumpYardDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_EmployeeHouseCollectionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="prabhagid" Type="int" Mode="In" />
@@ -1108,6 +1117,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
         <EntityContainer Name="DevSwachhBharatNagpurModelStoreContainer">
           <EntitySet Name="CommercialMaster" EntityType="Self.CommercialMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommitteeMaster" EntityType="Self.CommitteeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmpBeatMap" EntityType="Self.EmpBeatMap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GarbageCollectionDetails" EntityType="Self.GarbageCollectionDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" Schema="dbo" store:Type="Tables" />
@@ -1128,31 +1138,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <EntitySet Name="VehicleRegistration" EntityType="Self.VehicleRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Daily_Attendance" EntityType="Self.Daily_Attendance" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Daily_Attendance].[daID] AS [daID], 
-    [Daily_Attendance].[userId] AS [userId], 
-    [Daily_Attendance].[startLat] AS [startLat], 
-    [Daily_Attendance].[startLong] AS [startLong], 
-    [Daily_Attendance].[endLat] AS [endLat], 
-    [Daily_Attendance].[endLong] AS [endLong], 
-    [Daily_Attendance].[startTime] AS [startTime], 
-    [Daily_Attendance].[endTime] AS [endTime], 
-    [Daily_Attendance].[daDate] AS [daDate], 
-    [Daily_Attendance].[daEndDate] AS [daEndDate], 
-    [Daily_Attendance].[vtId] AS [vtId], 
-    [Daily_Attendance].[daStartNote] AS [daStartNote], 
-    [Daily_Attendance].[daEndNote] AS [daEndNote], 
-    [Daily_Attendance].[vehicleNumber] AS [vehicleNumber], 
-    [Daily_Attendance].[batteryStatus] AS [batteryStatus], 
-    [Daily_Attendance].[totalKm] AS [totalKm], 
-    [Daily_Attendance].[OutbatteryStatus] AS [OutbatteryStatus], 
-    [Daily_Attendance].[EmployeeType] AS [EmployeeType], 
-    [Daily_Attendance].[CType] AS [CType], 
-    [Daily_Attendance].[WardId] AS [WardId], 
-    [Daily_Attendance].[PrabhagId] AS [PrabhagId]
-    FROM [dbo].[Daily_Attendance] AS [Daily_Attendance]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="DumpYardDetails" EntityType="Self.DumpYardDetails" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [DumpYardDetails].[dyId] AS [dyId], 
@@ -1782,7 +1767,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           </FunctionImport>
           <EntitySet Name="GarbageCollectionDetails" EntityType="DevSwachhBharatNagpurModel.GarbageCollectionDetail" />
           <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)">
+          <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DSIGarbageCollection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_DSIGarbageCollection_Result)">
+            <Parameter Name="appId" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
             <Parameter Name="prabhagid" Mode="In" Type="Int32" />
+            <Parameter Name="PrabhagNo" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -3553,6 +3549,14 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalSWMCurrent" Nullable="true" />
           <Property Type="Int32" Name="TodayDSIAttandence" Nullable="true" />
           <Property Type="Int32" Name="TotalDSIAttandence" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_DSIGarbageCollection_Result">
+          <Property Type="Int32" Name="gcId" Nullable="false" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="dsiScanId" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="dsiAddress" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -5497,6 +5501,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalSWMCurrent" ColumnName="TotalSWMCurrent" />
                 <ScalarProperty Name="TodayDSIAttandence" ColumnName="TodayDSIAttandence" />
                 <ScalarProperty Name="TotalDSIAttandence" ColumnName="TotalDSIAttandence" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DSIGarbageCollection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_DSIGarbageCollection">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_DSIGarbageCollection_Result">
+                <ScalarProperty Name="gcId" ColumnName="gcId" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="dsiScanId" ColumnName="dsiScanId" />
+                <ScalarProperty Name="dsiAddress" ColumnName="dsiAddress" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
