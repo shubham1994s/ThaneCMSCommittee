@@ -2791,6 +2791,61 @@ namespace SwachBharat.CMS.Bll.Services
             return userLocation;
         }
 
+        public List<SBALUserLocationMapView> GetDSIUserAttenRoute(int daId)
+        {
+            List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
+            DateTime newdate = DateTime.Now.Date;
+            var datt = newdate;
+            var att = db.Daily_Attendance.Where(c => c.daID == daId).FirstOrDefault();
+            string Time = att.startTime;
+            DateTime date = DateTime.Parse(Time, System.Globalization.CultureInfo.CurrentCulture);
+            string t = date.ToString("hh:mm:ss tt");
+            string dt = Convert.ToDateTime(att.daDate).ToString("MM/dd/yyyy");
+            DateTime? fdate = Convert.ToDateTime(dt + " " + t);
+            DateTime? edate;
+            if (att.endTime == "" | att.endTime == null)
+            {
+                edate = DateTime.Now;
+            }
+            else
+            {
+                string Time2 = att.endTime;
+                DateTime date2 = DateTime.Parse(Time2, System.Globalization.CultureInfo.CurrentCulture);
+                string t2 = date2.ToString("hh:mm:ss tt");
+                string dt2 = Convert.ToDateTime(att.daEndDate).ToString("MM/dd/yyyy");
+                edate = Convert.ToDateTime(dt2 + " " + t2);
+            }
+            var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == null).OrderBy(x => x.locId).ToList();
+
+
+            foreach (var x in data)
+            {
+
+                string dat = Convert.ToDateTime(x.datetime).ToString("dd/MM/yyyy");
+                string tim = Convert.ToDateTime(x.datetime).ToString("hh:mm tt");
+                var userName = db.UserMasters.Where(c => c.userId == att.userId).FirstOrDefault();
+
+                userLocation.Add(new SBALUserLocationMapView()
+                {
+                    userId = userName.userId,
+                    userName = userName.userName,
+                    datetime = Convert.ToDateTime(x.datetime).ToString("HH:mm"),
+                    date = dat,
+                    time = tim,
+                    lat = x.lat,
+                    log = x.@long,
+                    address = checkNull(x.address).Replace("Unnamed Road, ", ""),
+                    vehcileNumber = att.vehicleNumber,
+                    userMobile = userName.userMobileNumber,
+                    // type = Convert.ToInt32(x.type),
+
+                });
+
+            }
+
+            return userLocation;
+        }
+
         public List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int daId)
         {
             List<SBALUserLocationMapView> userLocation = new List<SBALUserLocationMapView>();
@@ -3156,7 +3211,8 @@ namespace SwachBharat.CMS.Bll.Services
                                 var street = db.StreetSweepingDetails.Where(c => c.ReferanceId == d.dsiScanId & c.areaId == areaid).FirstOrDefault();
                                 var liquid = db.LiquidWasteDetails.Where(c => c.ReferanceId == d.dsiScanId & c.areaId == areaid).FirstOrDefault();
                                 var commercial = db.CommercialMasters.Where(c => c.ReferanceId == d.dsiScanId & c.AreaId == areaid).FirstOrDefault();
-                                var dump = db.SWMMasters.Where(c => c.ReferanceId == d.dsiScanId & c.AreaId == areaid).FirstOrDefault();
+                                var swm = db.SWMMasters.Where(c => c.ReferanceId == d.dsiScanId & c.AreaId == areaid).FirstOrDefault();
+                                var ctpt = db.SauchalayAddresses.Where(c => c.ReferanceId == d.dsiScanId & c.AreaId == areaid).FirstOrDefault();
                                 if (house != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
@@ -3258,7 +3314,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                                     });
                                 }
-                                else if (dump != null)
+                                else if (swm != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
                                     {
@@ -3272,9 +3328,38 @@ namespace SwachBharat.CMS.Bll.Services
                                         vehcileNumber = att.vehicleNumber,
                                         userMobile = userName.userMobileNumber,
                                         type = Convert.ToInt32(x.type),
-                                        HouseId = dump.ReferanceId,
-                                        HouseAddress = (dump.swmAddress == null ? "" : dump.swmAddress.Replace("Unnamed Road, ", "")),
-                                        HouseOwnerName = dump.swmName,
+                                        HouseId = swm.ReferanceId,
+                                        HouseAddress = (swm.swmAddress == null ? "" : swm.swmAddress.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = swm.swmName,
+                                        // OwnerMobileNo = dump.dyNameMar,
+                                        WasteType = d.garbageType.ToString(),
+                                        gpBeforImage = d.gpBeforImage,
+                                        gpAfterImage = d.gpAfterImage,
+                                        // DryWaste = d.totalDryWeight.ToString(),
+                                        // WetWaste = d.totalWetWeight.ToString(),
+                                        //TotWaste = d.totalGcWeight.ToString(),
+                                        ZoneList = ListZone(PId),
+
+                                    });
+                                }
+
+                                else if (ctpt != null)
+                                {
+                                    userLocation.Add(new SBALUserLocationMapView()
+                                    {
+                                        userName = userName.userName,
+                                        datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                        date = dat,
+                                        time = tim,
+                                        lat = d.Lat,
+                                        log = d.Long,
+                                        address = x.address,
+                                        vehcileNumber = att.vehicleNumber,
+                                        userMobile = userName.userMobileNumber,
+                                        type = Convert.ToInt32(x.type),
+                                        HouseId = ctpt.ReferanceId,
+                                        HouseAddress = (ctpt.Address == null ? "" : ctpt.Address.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = ctpt.Name,
                                         // OwnerMobileNo = dump.dyNameMar,
                                         WasteType = d.garbageType.ToString(),
                                         gpBeforImage = d.gpBeforImage,
@@ -3294,7 +3379,8 @@ namespace SwachBharat.CMS.Bll.Services
                                 var street = db.StreetSweepingDetails.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
                                 var liquid = db.LiquidWasteDetails.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
                                 var commercial = db.CommercialMasters.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
-                                var dump = db.SWMMasters.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
+                                var swm = db.SWMMasters.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
+                                var ctpt = db.SauchalayAddresses.Where(c => c.ReferanceId == d.dsiScanId).FirstOrDefault();
                                 if (house != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
@@ -3400,7 +3486,7 @@ namespace SwachBharat.CMS.Bll.Services
 
                                     });
                                 }
-                                else if (dump != null)
+                                else if (swm != null)
                                 {
                                     userLocation.Add(new SBALUserLocationMapView()
                                     {
@@ -3414,9 +3500,37 @@ namespace SwachBharat.CMS.Bll.Services
                                         vehcileNumber = att.vehicleNumber,
                                         userMobile = userName.userMobileNumber,
                                         type = Convert.ToInt32(x.type),
-                                        HouseId = dump.ReferanceId,
-                                        HouseAddress = (dump.swmAddress == null ? "" : dump.swmAddress.Replace("Unnamed Road, ", "")),
-                                        HouseOwnerName = dump.swmName,
+                                        HouseId = swm.ReferanceId,
+                                        HouseAddress = (swm.swmAddress == null ? "" : swm.swmAddress.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = swm.swmName,
+                                        // OwnerMobileNo = dump.dyNameMar,
+                                        WasteType = d.garbageType.ToString(),
+                                        gpBeforImage = d.gpBeforImage,
+                                        gpAfterImage = d.gpAfterImage,
+                                        // DryWaste = d.totalDryWeight.ToString(),
+                                        // WetWaste = d.totalWetWeight.ToString(),
+                                        //TotWaste = d.totalGcWeight.ToString(),
+                                        ZoneList = ListZone(PId),
+
+                                    });
+                                }
+                                else if (ctpt != null)
+                                {
+                                    userLocation.Add(new SBALUserLocationMapView()
+                                    {
+                                        userName = userName.userName,
+                                        datetime = Convert.ToDateTime(d.gcDate).ToString("HH:mm"),
+                                        date = dat,
+                                        time = tim,
+                                        lat = d.Lat,
+                                        log = d.Long,
+                                        address = x.address,
+                                        vehcileNumber = att.vehicleNumber,
+                                        userMobile = userName.userMobileNumber,
+                                        type = Convert.ToInt32(x.type),
+                                        HouseId = ctpt.ReferanceId,
+                                        HouseAddress = (ctpt.Address == null ? "" : ctpt.Address.Replace("Unnamed Road, ", "")),
+                                        HouseOwnerName = ctpt.Name,
                                         // OwnerMobileNo = dump.dyNameMar,
                                         WasteType = d.garbageType.ToString(),
                                         gpBeforImage = d.gpBeforImage,

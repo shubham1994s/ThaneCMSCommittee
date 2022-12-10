@@ -75,6 +75,7 @@ namespace SwachBharat.CMS.Bll.Services
         List<SBALUserLocationMapView> GetUserAttenLocation(int userId);
         List<SBALUserLocationMapView> GetUserAttenRoute(int userId);
 
+        List<SBALUserLocationMapView> GetDSIUserAttenRoute(int userId);
         List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int userId);
 
         //Added By Saurabh(11 July 2019)

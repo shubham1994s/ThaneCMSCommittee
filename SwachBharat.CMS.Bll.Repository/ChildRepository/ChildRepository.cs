@@ -303,6 +303,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetUserAttenRoute(daId);
         }
 
+        public List<SBALUserLocationMapView> GetDSIUserAttenRoute(int daId)
+        {
+            return screenService.GetDSIUserAttenRoute(daId);
+        }
+
         public List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int daId)
         {
             return screenService.GetCTPTUserAttenRoute(daId);

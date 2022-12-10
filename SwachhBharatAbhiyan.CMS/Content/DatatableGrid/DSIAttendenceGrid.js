@@ -111,7 +111,7 @@
             { "data": "endLong", "name": "endLong", "autoWidth": true },
 
             { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer" onclick="dsi_route(' + full["daID"] + ')" ><i class="material-icons location-icon">location_on</i><span class="tooltiptext1">Visit Route</span> </a>'; }, "width": "10%" },
-            { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer" onclick="user_route(' + full["daID"] + ')" ><i class="material-icons location-icon">location_on</i><span class="tooltiptext1">Route</span> </a>'; }, "width": "10%" },
+            { "render": function (data, type, full, meta) { return '<a  data-toggle="modal" class="tooltip1" style="cursor:pointer" onclick="dsiuser_route(' + full["daID"] + ')" ><i class="material-icons location-icon">location_on</i><span class="tooltiptext1">DSI Route</span> </a>'; }, "width": "10%" },
 
             { "data": "vtId", "name": "vtId", "autoWidth": true },
             { "data": "vehicleNumber", "name": "vehicleNumber", "autoWidth": true },
@@ -131,8 +131,8 @@ function test(id) {
     window.location.href = "/Attendence/Location?daId=" + id;
 };
 
-function user_route(id) {
-    window.location.href = "/Attendence/UserRoute?daId=" + id;
+function dsiuser_route(id) {
+    window.location.href = "/Attendence/DSIUserRoute?daId=" + id;
 };
 
 function dsi_route(id) {

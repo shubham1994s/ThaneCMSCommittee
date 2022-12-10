@@ -89,6 +89,8 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         List<SBALUserLocationMapView> GetUserAttenLocation(int id);
         List<SBALUserLocationMapView> GetUserAttenRoute(int id);
 
+        List<SBALUserLocationMapView> GetDSIUserAttenRoute(int id);
+
         List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int id);
 
         //Added By Saurabh (11 July 2019)
