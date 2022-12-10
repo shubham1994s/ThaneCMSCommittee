@@ -1722,6 +1722,7 @@
     <Content Include="Content\DatatableGrid\CTPTGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\District.js" />
     <Content Include="Content\DatatableGrid\DSIAttendenceGrid.js" />
+    <Content Include="Content\DatatableGrid\DSIGarbageGrid.js" />
     <Content Include="Content\DatatableGrid\DumpYardDetailGrid.js" />
     <Content Include="Content\DatatableGrid\DumpYardGrid.js" />
     <Content Include="Content\DatatableGrid\EmpBeatMapGrid.js" />
@@ -3336,6 +3337,8 @@
     <Content Include="Views\Attendence\DSIIndex.cshtml" />
     <Content Include="Views\Attendence\DSIMenuIndex.cshtml" />
     <Content Include="Views\Attendence\DSIRoute.cshtml" />
+    <Content Include="Views\GarbageCollection\MenuDSIGarbageIndex.cshtml" />
+    <Content Include="Views\GarbageCollection\DSIGarbageIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
