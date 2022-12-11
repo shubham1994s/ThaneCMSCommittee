@@ -277,6 +277,7 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
         public ActionResult DSIRouteData(int daId, int areaid)
         {
+
             if (SessionHandler.Current.AppId != 0)
             {
                 int PId = Convert.ToInt32(Session["PrabhagId"]);
