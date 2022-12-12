@@ -3187,8 +3187,8 @@ namespace SwachBharat.CMS.Bll.Services
                 DateTime date2 = DateTime.Parse(Time2, System.Globalization.CultureInfo.CurrentCulture);
                 string t2 = date2.ToString("hh:mm:ss tt");
                 string dt2 = Convert.ToDateTime(att.daEndDate).ToString("MM/dd/yyyy");
-                //edate = Convert.ToDateTime(dt2 + " " + t2);
-                edate = DateTime.Now;
+                edate = Convert.ToDateTime(dt2 + " " + t2);
+                //edate = DateTime.Now;
             }
             var data = db.Locations.Where(c => c.userId == att.userId & c.datetime >= fdate & c.datetime <= edate & c.type == 1).OrderByDescending(a => a.datetime).ToList();
 
@@ -3409,10 +3409,10 @@ namespace SwachBharat.CMS.Bll.Services
                                         HouseId = house.ReferanceId,
                                         HouseAddress = (house.houseAddress == null ? "" : house.houseAddress.Replace("Unnamed Road, ", "")),
                                         HouseOwnerName = house.houseOwner,
-                                        OwnerMobileNo = house.houseOwnerMobile,
+                                        //OwnerMobileNo = house.houseOwnerMobile,
                                         WasteType = d.garbageType.ToString(),
-                                        gpBeforImage = d.gpBeforImage,
-                                        gpAfterImage = d.gpAfterImage,
+                                       // gpBeforImage = d.gpBeforImage,
+                                       // gpAfterImage = d.gpAfterImage,
                                         ZoneList = ListZone(PId),
 
                                     });
@@ -5288,11 +5288,12 @@ namespace SwachBharat.CMS.Bll.Services
                         CTPTLat = x.Lat,
                         CTPTLong = x.Long,
                         TOT = x.tot,
+                        TotalNoSeat = db.SauchalayAddresses.Where(s => s.ReferanceId == x.ReferanceId).Select(s => s.Tns).FirstOrDefault(),
                         // address = x.commercialAddress,
                         //vehcileNumber = x.v,
                         //userMobile = x.mobile,
                         //garbageType = x.garbageType
-                    });
+                    }) ;
                 }
 
 

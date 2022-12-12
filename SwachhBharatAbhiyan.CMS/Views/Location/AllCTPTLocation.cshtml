@@ -667,7 +667,7 @@
                         if (gar_type != null) {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].CTPTName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>';
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].CTPTName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p><p> <b>Seats: </b>' + data[i].TotalNoSeat + '</p >';
                                     //if (data[i].commercialOwnerMobile != '') {
                                     //    poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
                                     //}
@@ -685,7 +685,7 @@
                         else {
                             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                 return function () {
-                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].CTPTName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p>'
+                                    var poptext = '<div class=infowindow style="max-width:190px"> <h4 style="text-transform: capitalize;">' + data[i].CTPTName + '</h4><p><b>CTPT Id: </b>' + data[i].ReferanceId + '</p><p> <b>Seats: </b>' + data[i].TotalNoSeat + '</p >'
                                     //if (data[i].commercialOwnerMobile != '') {
                                     //    poptext = poptext + '<p><b>Mobile: </b>' + data[i].commercialOwnerMobile + '</p>';
                                     //}
