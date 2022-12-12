@@ -1766,9 +1766,6 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="prabhagid" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="GarbageCollectionDetails" EntityType="DevSwachhBharatNagpurModel.GarbageCollectionDetail" />
-          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)">
-          <Parameter Name="prabhagid" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_DSIGarbageCollection" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_DSIGarbageCollection_Result)">
             <Parameter Name="appId" Mode="In" Type="Int32" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
@@ -1779,6 +1776,9 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
             <Parameter Name="WardNo" Mode="In" Type="Int32" />
             <Parameter Name="prabhagid" Mode="In" Type="Int32" />
             <Parameter Name="PrabhagNo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result)">
+            <Parameter Name="prabhagid" Mode="In" Type="Int32" />
           </FunctionImport>
          
         </EntityContainer>
@@ -3536,6 +3536,14 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Name="PrabhagId" Type="Int32" />
           <Property Name="dsiScanId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="SP_DSIGarbageCollection_Result">
+          <Property Type="Int32" Name="gcId" Nullable="false" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="dsiScanId" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="dsiAddress" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="SP_Dashboard_Details_Result">
           <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
           <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
@@ -3549,14 +3557,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
           <Property Type="Int32" Name="TotalSWMCurrent" Nullable="true" />
           <Property Type="Int32" Name="TodayDSIAttandence" Nullable="true" />
           <Property Type="Int32" Name="TotalDSIAttandence" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="SP_DSIGarbageCollection_Result">
-          <Property Type="Int32" Name="gcId" Nullable="false" />
-          <Property Type="DateTime" Name="gcDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="dsiScanId" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="dsiAddress" Nullable="true" />
+          <Property Type="Int32" Name="TotalVisit" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -5486,6 +5487,18 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_DSIGarbageCollection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_DSIGarbageCollection">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_DSIGarbageCollection_Result">
+                <ScalarProperty Name="gcId" ColumnName="gcId" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="dsiScanId" ColumnName="dsiScanId" />
+                <ScalarProperty Name="dsiAddress" ColumnName="dsiAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_Dashboard_Details" FunctionName="DevSwachhBharatNagpurModel.Store.SP_Dashboard_Details">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_Dashboard_Details_Result">
@@ -5501,18 +5514,7 @@ warning 6002: The table/view 'LIVEAdvanceDevSwachhBharatThane.dbo.Vw_MsgNotifica
                 <ScalarProperty Name="TotalSWMCurrent" ColumnName="TotalSWMCurrent" />
                 <ScalarProperty Name="TodayDSIAttandence" ColumnName="TodayDSIAttandence" />
                 <ScalarProperty Name="TotalDSIAttandence" ColumnName="TotalDSIAttandence" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_DSIGarbageCollection" FunctionName="DevSwachhBharatNagpurModel.Store.SP_DSIGarbageCollection">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DevSwachhBharatNagpurModel.SP_DSIGarbageCollection_Result">
-                <ScalarProperty Name="gcId" ColumnName="gcId" />
-                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="dsiScanId" ColumnName="dsiScanId" />
-                <ScalarProperty Name="dsiAddress" ColumnName="dsiAddress" />
+                <ScalarProperty Name="TotalVisit" ColumnName="TotalVisit" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -18,7 +18,7 @@ namespace SwachBharat.CMS.Dal.DataContexts
     public partial class DevChildSwachhBharatNagpurEntities : DbContext
     {
         public DevChildSwachhBharatNagpurEntities(int AppId)
-               : base(SwachBharatAppConnection.GetConnectionString(AppId))
+                 : base(SwachBharatAppConnection.GetConnectionString(AppId))
         {
         }
 
@@ -1397,15 +1397,6 @@ namespace SwachBharat.CMS.Dal.DataContexts
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_IdelTimeCTPT_Result>("SP_IdelTimeCTPT", userIdParameter, fdateParameter, tdateParameter, prabhagidParameter);
         }
     
-        public virtual ObjectResult<SP_Dashboard_Details_Result> SP_Dashboard_Details(Nullable<int> prabhagid)
-        {
-            var prabhagidParameter = prabhagid.HasValue ?
-                new ObjectParameter("prabhagid", prabhagid) :
-                new ObjectParameter("prabhagid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result>("SP_Dashboard_Details", prabhagidParameter);
-        }
-    
         public virtual ObjectResult<SP_DSIGarbageCollection_Result> SP_DSIGarbageCollection(Nullable<int> appId, Nullable<int> userid, Nullable<System.DateTime> fdate, Nullable<System.DateTime> tdate, Nullable<int> zoneId, Nullable<int> areaId, Nullable<int> wardNo, Nullable<int> prabhagid, Nullable<int> prabhagNo)
         {
             var appIdParameter = appId.HasValue ?
@@ -1445,6 +1436,15 @@ namespace SwachBharat.CMS.Dal.DataContexts
                 new ObjectParameter("PrabhagNo", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_DSIGarbageCollection_Result>("SP_DSIGarbageCollection", appIdParameter, useridParameter, fdateParameter, tdateParameter, zoneIdParameter, areaIdParameter, wardNoParameter, prabhagidParameter, prabhagNoParameter);
+        }
+    
+        public virtual ObjectResult<SP_Dashboard_Details_Result> SP_Dashboard_Details(Nullable<int> prabhagid)
+        {
+            var prabhagidParameter = prabhagid.HasValue ?
+                new ObjectParameter("prabhagid", prabhagid) :
+                new ObjectParameter("prabhagid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Dashboard_Details_Result>("SP_Dashboard_Details", prabhagidParameter);
         }
     }
 }
