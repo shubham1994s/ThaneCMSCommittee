@@ -87,7 +87,7 @@
                                 ElistItems.Add(new SelectListItem { Text = "Select", Value = "0" });
                                 ElistItems.Add(new SelectListItem { Text = "Waste", Value = "Waste" });
                                 ElistItems.Add(new SelectListItem { Text = "CT/PT/U", Value = "CT" });
-                                ElistItems.Add(new SelectListItem { Text = "D/SI", Value = "DSI" });
+                                ElistItems.Add(new SelectListItem { Text = "DYSI/SI", Value = "DSI" });
 
                             }
                             @Html.DropDownListFor(model => model.EmployeeType, ElistItems, new { style = "font-family:Arial, FontAwesome", required = "required", @class = "form-control RequiredInput validate[required] RequiredInput" })
@@ -318,7 +318,7 @@
     $("#EmployeeType").change(function () {
 
         var empType = $(this).val();
-        if (empType == "CT") {
+        if (empType == "CT" || empType == "DSI" ) {
             $("#divTarget").hide();
             if ($("#userId").val() > 0) {
 
