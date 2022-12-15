@@ -6688,14 +6688,27 @@ namespace SwachBharat.CMS.Bll.Services
             }
         }
 
-        private UserMasterVM FillUserMasterViewModel(UserMaster data)
+        private HouseScanifyEmployeeDetailsVM FillUserMasterViewModel(UserMaster data)
         {
-            UserMasterVM model = new UserMasterVM();
-            model.LoginId = data.userLoginId;
-            // model.qrEmpLoginId = data.qrEmpLoginId;
-            //model.NameMar = data.AreaMar;
-            //model.wardId = data.wardId;
+            try
+            {
+                HouseScanifyEmployeeDetailsVM model = new HouseScanifyEmployeeDetailsVM();
+            if (data != null)
+            {
+                model.LoginId = (data.userLoginId.ToString() == "" ? "" : data.userLoginId);
+            }
+            else
+            {
+                model.LoginId = "";
+            }
+
+          
             return model;
+               }
+            catch
+            {
+                throw;
+            }
         }
         private VehicleTypeVM FillVehicleViewModel(VehicleType data)
         {
@@ -8048,29 +8061,52 @@ namespace SwachBharat.CMS.Bll.Services
         {
             try
             {
+                HouseScanifyEmployeeDetailsVM user = new HouseScanifyEmployeeDetailsVM();
                 using (var db = new DevChildSwachhBharatNagpurEntities(AppID))
                 {
+                    if(teamId==0)
+                    { 
                     var Details = db.QrEmployeeMasters.Where(x => x.qrEmpId == teamId || x.qrEmpLoginId.ToUpper()
                     == name.ToUpper()).FirstOrDefault();
 
                     var Details1 = db.UserMasters.Where(x => x.userId == teamId || x.userLoginId.ToUpper()
-                    == name.ToUpper()).FirstOrDefault();
+                    == name.ToUpper() && x.EmployeeType==null).FirstOrDefault();
 
                     if (Details != null || Details1 != null)
                     {
-                        HouseScanifyEmployeeDetailsVM user = FillUserViewModel(Details, Details1);
+                         user = FillUserViewModel(Details, Details1);
                         // area.WardList = ListWardNo();
+                        
+                    }
                         return user;
                     }
-                    //if (Details1 != null)
-                    //{
-                    //    HouseScanifyEmployeeDetailsVM user = FillUserViewModel(Details1);
-                    //    // area.WardList = ListWardNo();
-                    //    return user;
-                    //}
+                    if (teamId == 1)
+                    {
+                        var Details1 = db.UserMasters.Where(x => x.userId == teamId || x.userLoginId.ToUpper()
+                   == name.ToUpper() && x.EmployeeType == "CT").FirstOrDefault();
+                        if (Details1 != null)
+                        {
+                           user = FillUserMasterViewModel(Details1);
+                            // area.WardList = ListWardNo();
+                            
+                        }
+                        return user;
+                    }
+                    if (teamId == 2)
+                    {
+                        var Details1 = db.UserMasters.Where(x => x.userId == teamId || x.userLoginId.ToUpper()
+                   == name.ToUpper() && x.EmployeeType == "DSI").FirstOrDefault();
+                        if (Details1 != null)
+                        {
+                            user = FillUserMasterViewModel(Details1);
+                            // area.WardList = ListWardNo();
+
+                        }
+                        return user;
+                    }
                     else
                     {
-                        HouseScanifyEmployeeDetailsVM user = new HouseScanifyEmployeeDetailsVM();
+                        user = new HouseScanifyEmployeeDetailsVM();
                         // area.WardList = ListWardNo();
 
                         return user;

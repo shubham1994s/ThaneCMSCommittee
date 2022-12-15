@@ -184,6 +184,9 @@
                     <span class="text-danger" id="err_login"></span>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <span class="help-block with-errors"></span>
+
+
+                   
                 </div>
             </div>
             <div class="col-md-6">
@@ -493,6 +496,24 @@
             return false;
         }
     });
+
+    $("#WardNo").keyup(function () {
+
+
+        var WardNo = $("#WardNo").val();
+        $.ajax({
+            url: "/MainMaster/CheckWardDetails?userName=" + WardNo,
+            type: "POST",
+            data: { WardNo: WardNo }
+        })
+            .done(function (msg) {
+                if (msg == 1) {
+                    $('#err_ward').text('');
+                } else {
+                    $('#err_ward').text('This Name Is Already Exist!');
+                }
+            });
+    });
     $("#btnSubmit").click(function () {
         var regexp = '/^\S*$/';
         if ($.trim($("#EmployeeType").val()) == '0') {
@@ -580,6 +601,23 @@
 
         return true;
     });
+    $("#userLoginId").keyup(function () {
+        debugger;
 
+        var userLoginId = $("#userLoginId").val();
+        var emptype = $("#EmployeeType").val();
+        $.ajax({
+            url: "/Employee/CheckUserDetails?user1=" + userLoginId ,
+            type: "POST",
+            data: { userLoginId: userLoginId, emptype: emptype }
+        })
+            .done(function (msg) {
+                if (msg == 1) {
+                    $('#err_login').text('');
+                } else {
+                    $('#err_login').text('This Login Id Is Already Exist!');
+                }
+            });
+    });
 
 </script>
