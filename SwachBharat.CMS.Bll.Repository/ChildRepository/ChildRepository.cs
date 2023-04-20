@@ -222,6 +222,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetHouseByIdforMap(teamId, daId, PId);
         }
 
+        public SBALUserLocationMapView GetDSIByIdforMap(int teamId, int daId, int PId)
+        {
+            return screenService.GetDSIByIdforMap(teamId, daId, PId);
+        }
+
         public SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId,int PId)
         {
             return screenService.GetCTPTByIdforMap(teamId, daId, PId);
@@ -298,6 +303,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
             return screenService.GetUserAttenRoute(daId);
         }
 
+        public List<SBALUserLocationMapView> GetDSIUserAttenRoute(int daId)
+        {
+            return screenService.GetDSIUserAttenRoute(daId);
+        }
+
         public List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int daId)
         {
             return screenService.GetCTPTUserAttenRoute(daId);
@@ -307,6 +317,11 @@ namespace SwachBharat.CMS.Bll.Repository.ChildRepository
         public List<SBALUserLocationMapView> GetHouseAttenRoute(int daId,int areaid,int PId)
         {
             return screenService.GetHouseAttenRoute(daId,areaid, PId);
+        }
+
+        public List<SBALUserLocationMapView> GetDSIAttenRoute(int daId, int areaid, int PId)
+        {
+            return screenService.GetDSIAttenRoute(daId, areaid, PId);
         }
 
         public List<SBALUserLocationMapView> GetCTPTAttenRoute(int daId, int areaid,int PId)

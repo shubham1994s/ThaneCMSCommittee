@@ -20,5 +20,7 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> garbageType { get; set; }
 
         public string TOT { get; set; }
+
+        public Nullable<int> TotalNoSeat { get; set; }
     }
 }

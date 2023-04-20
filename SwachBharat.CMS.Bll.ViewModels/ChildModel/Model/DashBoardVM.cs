@@ -170,5 +170,11 @@ namespace SwachBharat.CMS.Bll.ViewModels.ChildModel.Model
         public Nullable<int> TotalSWMScanCount { get; set; }
         public Nullable<int> TodayScanSWMCount { get; set; }
 
+
+        public Nullable<int> TodayDSIAttandence { get; set; }
+        public Nullable<int> TotalDSIAttandence { get; set; }
+
+        public Nullable<int> TotalDSIVisit { get; set; }
+
     }
 }

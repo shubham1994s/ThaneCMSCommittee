@@ -251,6 +251,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "","CT", PId);
                     return gridRepository;
                     break;
+                case "ActiveEmployeeDSI":
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "", "DSI", PId);
+                    return gridRepository;
+                    break;
                 case "LiquidActiveEmployee":
                     gridRepository = new EmployeeGridRepository(0, searchString, appId, "1", "L","", PId);
                     return gridRepository;
@@ -266,6 +270,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     break;
                 case "NotActiveEmployeeCT":
                     gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "", "CT", PId);
+                    return gridRepository;
+                    break;
+
+                case "NotActiveEmployeeDSI":
+                    gridRepository = new EmployeeGridRepository(0, searchString, appId, "0", "", "DSI", PId);
                     return gridRepository;
                     break;
                 case "NotActiveLiquidEmployee":
@@ -347,6 +356,10 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                     gridRepository = new ResBuildingGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, param6, PId);
                     return gridRepository;
                     break;
+                case "GarbageDSI":
+                    gridRepository = new DSIGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, param6, PId);
+                    return gridRepository;
+                    break;
                 case "GarbageResidentialSlum":
                     gridRepository = new ResSlumGarbageCollectionGridRepository(0, searchString, fdate, tdate, userId, appId, param1, param2, param3, param4, param5, param6, PId);
                     return gridRepository;
@@ -385,6 +398,11 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
 
                 case "Attendence":
                     gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, null,PId);
+                    return gridRepository;
+                    break;
+
+                case "DSIAttendence":
+                    gridRepository = new AttendeceGridRepository(0, searchString, fdate, tdate, userId, appId, "DSI", PId);
                     return gridRepository;
                     break;
 

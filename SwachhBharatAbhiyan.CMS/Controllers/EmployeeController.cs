@@ -93,6 +93,72 @@ namespace SwachhBharatAbhiyan.CMS.Controllers
                 return Redirect("/Account/Login");
         }
 
+
+        [HttpPost]
+        public ActionResult CheckUserDetails(string user1)
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                childRepository = new ChildRepository(SessionHandler.Current.AppId);
+                //string user1 = "";
+
+                //if (obj.userLoginId != null)
+                //{
+                //    user1 = obj.userLoginId;
+                //}
+                //ElistItems.Add(new SelectListItem { Text = "Waste", Value = "Waste" });
+                //ElistItems.Add(new SelectListItem { Text = "CT/PT/U", Value = "CT" });
+                //ElistItems.Add(new SelectListItem { Text = "DYSI/SI", Value = "DSI" });
+                //int e=0;
+                //if(emptype== "Waste")
+                //{
+                //    e = 0;
+                //}
+
+                //if (emptype == "CT")
+                //{
+                //    e = 1;
+                //}
+                //if (emptype == "DSI")
+                //{
+                //    e = 2;
+                //}
+                EmployeeDetailsVM obj = new EmployeeDetailsVM();
+                HouseScanifyEmployeeDetailsVM user = childRepository.GetUser(0, user1);
+
+                if (obj.userId > 0)
+                {
+                    if (user.qrEmpId == 0)
+                    {
+                        user.qrEmpId = obj.userId;
+                    }
+                    if (user1 == obj.userLoginId & user.qrEmpId != obj.userId)
+                    {
+                        return Json(false, JsonRequestBehavior.AllowGet);
+                    }
+                    else if (user1 == user.qrEmpLoginId & user.qrEmpId != obj.userId)
+                    {
+                        return Json(false, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                        return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                else
+                 if (user.qrEmpLoginId != null)
+                {
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    return Json(true, JsonRequestBehavior.AllowGet);
+
+            }
+            else
+                return Json(true, JsonRequestBehavior.AllowGet);
+
+
+
+
+        }
         [HttpGet]
         public ActionResult DeleteEmployee(int teamId)
         {

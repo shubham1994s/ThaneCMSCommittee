@@ -873,7 +873,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                         Prabhag = db.CommitteeMasters.FirstOrDefault(c => c.Id == x.PrabhagId).CommitteeName,
 
 
-                    }).Where(x => x.isActive == "True" && ((EType == "W" && x.EmployeeType == null) || (EType == "CT" && x.EmployeeType == "CT"))).ToList();
+                    }).Where(x => x.isActive == "True" && ((EType == "W" && x.EmployeeType == null ) || (EType == "CT" && x.EmployeeType == "CT") || (EType == "DSI" && x.EmployeeType == "DSI"))).ToList();
 
                     foreach (var item in data)
                     {
@@ -970,7 +970,7 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
 
 
 
-                    }).Where(x => x.isActive == "False" && ((EType == "W" && x.EmployeeType == null) || (EType == "CT" && x.EmployeeType == "CT"))).ToList();
+                    }).Where(x => x.isActive == "False" && ((EType == "W" && x.EmployeeType == null) || (EType == "CT" && x.EmployeeType == "CT") || (EType == "DSI" && x.EmployeeType == "DSI"))).ToList();
 
                     foreach (var item in data)
                     {
@@ -4273,6 +4273,67 @@ namespace SwachBharat.CMS.Bll.Repository.GridRepository
                     (c.ReferanceId == null ? "" : c.ReferanceId) + " " + 
                     (c.Address == null ? " " : c.Address) + " " + 
                     (c.Employee == null ? " " : c.Employee) + " " + 
+                    (c.attandDate == null ? " " : c.attandDate) + " " +
+                     (c.PrabhagName == null ? " " : c.PrabhagName) + " " +
+                    (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())
+                       ).ToList();
+
+
+                    data = model.OrderByDescending(c => c.gcDate).ToList().ToList();
+                }
+
+                if (userId > 0)
+                {
+                    var model = data.Where(c => c.userId == userId).ToList();
+
+                    data = model.ToList();
+                }
+                return data.OrderByDescending(c => c.gcDate).ToList().ToList(); ;
+
+            }
+        }
+
+
+
+        public IEnumerable<SBAGrabageCollectionGridRow> GetDSIGarbageCollectionData(long wildcard, string SearchString, DateTime? fdate, DateTime? tdate, int userId, int appId, int? param1, int? param2, int? param3, int? param4, int? param5, int? param6, int PId)
+        {
+            DevSwachhBharatMainEntities dbMain = new DevSwachhBharatMainEntities();
+            var appDetails = dbMain.AppDetails.Where(x => x.AppId == appId).FirstOrDefault();
+            string ThumbnaiUrlAPI = appDetails.baseImageUrl + appDetails.basePath + appDetails.Collection + "/";
+
+            using (DevChildSwachhBharatNagpurEntities db = new DevChildSwachhBharatNagpurEntities(appId))
+            {
+
+                //DateTime frmDt = DateTime.Now;
+                //frmDt = frmDt.AddDays(-1);
+                var data = db.SP_DSIGarbageCollection(appId, userId, fdate, tdate, param1, param2, param3, PId, param6).Select(x => new SBAGrabageCollectionGridRow
+                {
+                    Id = x.gcId,
+                    gcDate = x.gcDate,
+                    // gcType = 1,
+                    Employee = x.userName,
+                    attandDate = Convert.ToDateTime(x.gcDate).ToString("dd/MM/yyyy hh:mm tt"),
+                    ReferanceId = x.dsiScanId,
+                    Address = x.dsiAddress,
+                    userId = x.userId
+
+
+                }).OrderByDescending(c => c.gcDate).ToList().ToList();
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    //var model = data.Where(c => c.UserName.Contains(SearchString) || c.HouseNumber.Contains(SearchString) || c.VehicleNumber.Contains(SearchString) || c.ReferanceId.Contains(SearchString) || c.Address.Contains(SearchString) || c.Employee.Contains(SearchString) || c.attandDate.Contains(SearchString) || c.Note.Contains(SearchString)
+
+                    //   || c.UserName.ToLower().Contains(SearchString) || c.HouseNumber.ToLower().Contains(SearchString) || c.VehicleNumber.ToLower().Contains(SearchString) || c.ReferanceId.ToLower().Contains(SearchString) || c.Address.ToLower().Contains(SearchString) || c.Employee.ToLower().Contains(SearchString) || c.attandDate.ToLower().Contains(SearchString) || c.Note.ToLower().Contains(SearchString)
+
+                    //   || c.UserName.ToUpper().Contains(SearchString) || c.HouseNumber.ToUpper().Contains(SearchString) || c.VehicleNumber.ToUpper().Contains(SearchString) || c.ReferanceId.ToUpper().Contains(SearchString) || c.Address.ToUpper().Contains(SearchString) || c.Employee.ToUpper().Contains(SearchString) || c.attandDate.ToUpper().Contains(SearchString) || c.Note.ToUpper().Contains(SearchString)
+                    //   ).ToList();
+                    var model = data.Where(c => ((c.UserName == null ? " " : c.UserName) + " " +
+                    (c.HouseNumber == null ? " " : c.HouseNumber) + " " +
+                    (c.VehicleNumber == null ? " " : c.VehicleNumber) + " " +
+                    (c.ReferanceId == null ? "" : c.ReferanceId) + " " +
+                    (c.Address == null ? " " : c.Address) + " " +
+                    (c.Employee == null ? " " : c.Employee) + " " +
                     (c.attandDate == null ? " " : c.attandDate) + " " +
                      (c.PrabhagName == null ? " " : c.PrabhagName) + " " +
                     (c.Note == null ? " " : c.Note)).ToUpper().Contains(SearchString.ToUpper())

@@ -56,6 +56,8 @@ namespace SwachBharat.CMS.Bll.Services
         CommercialDetailsVM GetCommercialDetails(int teamId,int PId);
         SBALUserLocationMapView GetHouseByIdforMap(int teamId,int daId,int PId);
 
+        SBALUserLocationMapView GetDSIByIdforMap(int teamId, int daId, int PId);
+
         SBALUserLocationMapView GetCTPTByIdforMap(int teamId, int daId,int PId);
         SBALUserLocationMapView GetLiquidByIdforMap(int teamId, int daId,string EmpType);
         HouseDetailsVM SaveHouseDetails(HouseDetailsVM data,int PId);
@@ -73,10 +75,13 @@ namespace SwachBharat.CMS.Bll.Services
         List<SBALUserLocationMapView> GetUserAttenLocation(int userId);
         List<SBALUserLocationMapView> GetUserAttenRoute(int userId);
 
+        List<SBALUserLocationMapView> GetDSIUserAttenRoute(int userId);
         List<SBALUserLocationMapView> GetCTPTUserAttenRoute(int userId);
 
         //Added By Saurabh(11 July 2019)
         List<SBALUserLocationMapView> GetHouseAttenRoute(int userId,int areaid,int PId);
+
+        List<SBALUserLocationMapView> GetDSIAttenRoute(int userId, int areaid, int PId);
 
         List<SBALUserLocationMapView> GetCTPTAttenRoute(int userId, int areaid,int PId);
         List<SBALUserLocationMapView> GetLiquidAttenRoute(int userId, int areaid,int PId);
